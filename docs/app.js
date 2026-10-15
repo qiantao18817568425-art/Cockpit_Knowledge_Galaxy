@@ -14,6 +14,8 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let graph, nodes=[], edges=[], byId=new Map(), neighbors=new Map(), dust=[], stars=[];
 let width=0,height=0,dpr=1, yaw=.22,pitch=-.18,zoom=1,selected=null,projected=[],pointer=null;
 let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
+const focus={x:0,y:0,z:0};
+const focusTarget={x:0,y:0,z:0};
 
 function seeded(id){let n=2166136261;for(const char of id){n^=char.charCodeAt(0);n=Math.imul(n,16777619)}return (n>>>0)/4294967296}
 function randomStream(seedValue){let n=seedValue>>>0;return()=>((n=(Math.imul(n,1664525)+1013904223)>>>0)/4294967296)}
@@ -44,7 +46,7 @@ function prepare(raw){
 }
 
 function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
-function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);const x=p.x*cy+p.z*sy,z=p.z*cy-p.x*sy,y=p.y*cx-z*sx,depth=p.y*sx+z*cx;const perspective=950/(950-depth),fit=Math.min(width/1100,height/700)*zoom;return{x:width/2+x*perspective*fit,y:height/2+y*perspective*fit,z:depth,p:perspective,fit}}
+function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const x=px*cy+pz*sy,z=pz*cy-px*sy,y=py*cx-z*sx,depth=py*sx+z*cx;const perspective=950/(950-depth),fit=Math.min(width/1100,height/700)*zoom;return{x:width/2+x*perspective*fit,y:height/2+y*perspective*fit,z:depth,p:perspective,fit}}
 function glow(x,y,r,color,alpha){const gradient=ctx.createRadialGradient(x,y,0,x,y,r);gradient.addColorStop(0,color+alpha);gradient.addColorStop(1,color+'00');ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
 
 function background(){
@@ -90,14 +92,14 @@ function draw(){
     if(!visible(n))continue;
     const active=n.id===selected,neighbor=related?.has(n.id),match=query&&matching.has(n.id),dim=(query&&!match)||(selected&&!active&&!neighbor);
     ctx.globalAlpha=dim?.13:Math.max(.45,Math.min(1,.75+n.z/950));
-    const radius=Math.max(2.4,n.r*n.p*n.fit),color=colors[n.kind];
+    const radius=Math.max(2.4,n.r*n.p*n.fit*(active?1.35:1)),color=colors[n.kind];
     glow(n.x,n.y,radius*(active?5:3.7),color,active?'75':'33');
     ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=active?22:11;ctx.beginPath();ctx.arc(n.x,n.y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
     if(active){ctx.strokeStyle='#f8fcff';ctx.lineWidth=1.5;ctx.stroke()}
     ctx.globalAlpha=1;
     const showLabel=n.kind==='root'||n.kind==='topic'||active||match||neighbor||(!selected&&!query&&featuredIds.has(n.id));
     if(!showLabel)continue;
-    const size=n.kind==='root'?17:n.kind==='topic'?13:11;
+    const size=active?17:n.kind==='root'?17:n.kind==='topic'?13:11;
     ctx.font=`${n.kind==='root'||n.kind==='topic'?650:500} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
     const text=n.title.length>21?n.title.slice(0,20)+'…':n.title;
     const textWidth=ctx.measureText(text).width,x=n.x+radius+7,y=n.y;
@@ -110,8 +112,8 @@ function draw(){
 }
 
 function updateMotionLabel(query){
-  const spinning=auto&&!document.hidden&&!query&&performance.now()-lastAction>10000;
-  const next=spinning?'银河缓慢旋转':query?'搜索聚焦':auto?'互动中 · 稍后旋转':'旋转已暂停';
+  const spinning=auto&&!document.hidden&&!query&&!selected&&performance.now()-lastAction>10000;
+  const next=selected?'节点聚焦':spinning?'银河缓慢旋转':query?'搜索聚焦':auto?'互动中 · 稍后旋转':'旋转已暂停';
   if(next===currentStatus)return;
   currentStatus=next;motionLabel.textContent=next;motionLight.style.background=spinning?'#91d8ff':'#aab7d1';motionLight.style.boxShadow=spinning?'0 0 10px #91d8ff':'none';
 }
@@ -120,6 +122,7 @@ function interaction(){lastAction=performance.now()}
 function showNode(id){
   const node=byId.get(id);if(!node)return;
   selected=id;interaction();detail.hidden=false;
+  focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labels[node.kind];
   document.querySelector('#detail-title').textContent=node.title;
   document.querySelector('#detail-description').textContent=node.description;
@@ -133,7 +136,7 @@ function showNode(id){
   for(const other of relations.slice(0,8)){const item=document.createElement('button');item.type='button';item.textContent=byId.get(other).title;item.addEventListener('click',()=>showNode(other));list.append(item)}
   if(relations.length>8){const more=document.createElement('small');more.textContent=`另有 ${relations.length-8} 个关联节点`;list.append(more)}
 }
-function clearSelection(){selected=null;detail.hidden=true;interaction()}
+function clearSelection(){selected=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;interaction()}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
@@ -148,7 +151,9 @@ function syncFilters(){for(const button of document.querySelectorAll('.filter'))
 
 function frame(time){
   const delta=Math.min(50,time-previousFrame);previousFrame=time;
-  if(auto&&!document.hidden&&!search.value.trim()&&time-lastAction>10000){yaw+=delta*.00017;pitch=-.18+Math.sin(time*.00022)*.065;if(selected){selected=null;detail.hidden=true}}
+  const easing=reducedMotion?1:1-Math.exp(-delta/260);
+  for(const axis of ['x','y','z'])focus[axis]+=(focusTarget[axis]-focus[axis])*easing;
+  if(auto&&!document.hidden&&!selected&&!search.value.trim()&&time-lastAction>10000){yaw+=delta*.00017;pitch=-.18+Math.sin(time*.00022)*.065}
   draw();requestAnimationFrame(frame);
 }
 
@@ -163,7 +168,7 @@ document.querySelector('#detail-close').addEventListener('click',clearSelection)
 for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{const kind=button.dataset.kind;hidden.has(kind)?hidden.delete(kind):hidden.add(kind);syncFilters();interaction()});
 document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';interaction()});
 motionToggle.addEventListener('click',()=>{auto=!auto;motionToggle.textContent=auto?'暂停':'旋转';motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');interaction()});
-for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{const action=button.dataset.zoom;if(action==='reset'){yaw=.22;pitch=-.18;zoom=1}else zoom=Math.max(.6,Math.min(2.3,zoom*(action==='in'?1.2:1/1.2)));interaction()});
+for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{const action=button.dataset.zoom;if(action==='reset'){yaw=.22;pitch=-.18;zoom=1;clearSelection()}else zoom=Math.max(.6,Math.min(2.3,zoom*(action==='in'?1.2:1/1.2)));interaction()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)lastAction=performance.now()-11000});
 new ResizeObserver(resize).observe(canvas);resize();
 

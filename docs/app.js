@@ -90,7 +90,7 @@ function draw(){
   const occupied=[];
   for(const n of sorted){
     if(!visible(n))continue;
-    const active=n.id===selected,neighbor=related?.has(n.id),match=query&&matching.has(n.id),dim=(query&&!match)||(selected&&!active&&!neighbor);
+    const active=n.id===selected,neighbor=related?.has(n.id),match=query&&matching.has(n.id),dim=(query&&!match&&!active&&!neighbor)||(selected&&!active&&!neighbor);
     ctx.globalAlpha=dim?.13:Math.max(.45,Math.min(1,.75+n.z/950));
     const radius=Math.max(2.4,n.r*n.p*n.fit*(active?1.35:1)),color=colors[n.kind];
     glow(n.x,n.y,radius*(active?5:3.7),color,active?'75':'33');

@@ -16,7 +16,7 @@ jobs:
       - name: Read public architecture site source
         run: |
           git clone --depth 1 --filter=blob:none --sparse https://github.com/qiantao18817568425-art/Architecture_Learning-.git upstream
-          git -C upstream sparse-checkout set docs/index.html docs/architecture docs/lessons content/learning-progress.json
+          git -C upstream sparse-checkout set --no-cone docs/index.html docs/architecture/ docs/lessons/ content/learning-progress.json
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

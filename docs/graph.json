@@ -1,0 +1,2029 @@
+{
+  "meta": {
+    "title": "座舱知识银河",
+    "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
+    "sourceUpdatedOn": "2026-10-15",
+    "chapterCount": 25,
+    "lessonCount": 44,
+    "reviewCount": 23,
+    "relationNotice": "连线为主题归类、目录或课程顺序；不表示已验证的实车硬件连接或故障因果。"
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "title": "座舱知识",
+      "kind": "root",
+      "description": "公开架构章节与每日学习课程的关系入口。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
+      "source": "公开学习站点"
+    },
+    {
+      "id": "topic:system",
+      "title": "整机与平台",
+      "kind": "topic",
+      "description": "系统边界、平台基线和整体架构",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:virtualization",
+      "title": "虚拟化",
+      "kind": "topic",
+      "description": "Hypervisor、Host 与 Guest 边界",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:android",
+      "title": "Android AAOS",
+      "kind": "topic",
+      "description": "Android 服务、应用与系统机制",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:yocto",
+      "title": "Yocto Host",
+      "kind": "topic",
+      "description": "宿主系统与平台服务",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:mcu",
+      "title": "MCU 与车信号",
+      "kind": "topic",
+      "description": "MCU、电源控制和车辆接口",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:tbox",
+      "title": "TBox 与连接",
+      "kind": "topic",
+      "description": "车联网通信与外部连接",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:display",
+      "title": "显示与 HMI",
+      "kind": "topic",
+      "description": "显示、首帧与人机界面",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:camera",
+      "title": "Camera / AVM",
+      "kind": "topic",
+      "description": "视频采集、环视与帧流",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:audio",
+      "title": "音频与语音",
+      "kind": "topic",
+      "description": "播放、采集与音频策略",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:power",
+      "title": "电源与生命周期",
+      "kind": "topic",
+      "description": "休眠、唤醒、启动与恢复",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:cross",
+      "title": "跨域通信",
+      "kind": "topic",
+      "description": "接口、消息与状态同步",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "topic:diagnosis",
+      "title": "诊断与证据",
+      "kind": "topic",
+      "description": "日志、复盘与工程验证",
+      "url": null,
+      "source": "主题索引"
+    },
+    {
+      "id": "chapter:00",
+      "title": "00 前言",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/00.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "chapter:01",
+      "title": "01 三张架构图阅读指南",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/01.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "chapter:02",
+      "title": "02 整机与虚拟化架构",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/02.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system",
+        "virtualization"
+      ]
+    },
+    {
+      "id": "chapter:03",
+      "title": "03 MT8676-SDK与UMDP",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/03.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "chapter:04",
+      "title": "04 三图模块字典",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/04.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "chapter:05",
+      "title": "05 通信机制与异常诊断基础",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/05.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "cross",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:06",
+      "title": "06 Android内部机制与稳定性",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/06.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "android"
+      ]
+    },
+    {
+      "id": "chapter:07",
+      "title": "07 SOS-Yocto内部机制",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/07.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "yocto"
+      ]
+    },
+    {
+      "id": "chapter:08",
+      "title": "08 MCU内部机制",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/08.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "mcu"
+      ]
+    },
+    {
+      "id": "chapter:09",
+      "title": "09 TBox通信模组内部机制",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "tbox"
+      ]
+    },
+    {
+      "id": "chapter:10",
+      "title": "10 车辆仪表与诊断业务流程",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/10.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "mcu",
+        "cross"
+      ]
+    },
+    {
+      "id": "chapter:11",
+      "title": "11 显示相机与驾驶辅助业务流程",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/11.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "display",
+        "camera"
+      ]
+    },
+    {
+      "id": "chapter:12",
+      "title": "12 音频与语音业务流程",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/12.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "chapter:13",
+      "title": "13 通信模块业务流程",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/13.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "tbox",
+        "cross"
+      ]
+    },
+    {
+      "id": "chapter:14",
+      "title": "14 系统生命周期业务流程",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "power"
+      ]
+    },
+    {
+      "id": "chapter:15",
+      "title": "15 统一诊断手册",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/15.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:16",
+      "title": "16 全量附录与索引",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/16.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:17",
+      "title": "17 MT8676与MT8668平台差异及迁移边界",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/17.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "chapter:18",
+      "title": "18 盟博OS架构与服务边界",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/18.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "yocto"
+      ]
+    },
+    {
+      "id": "chapter:19",
+      "title": "19 Camera跨域架构与DDR资源预算",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/19.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "camera"
+      ]
+    },
+    {
+      "id": "chapter:20",
+      "title": "20 跨域通信时间同步与状态一致性",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/20.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "chapter:21",
+      "title": "21 学习站点分类评估与知识库映射",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/21.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:22",
+      "title": "22 来源索引与覆盖说明",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/22.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:23",
+      "title": "23 PVT实战诊断与工程验证",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "chapter:24",
+      "title": "24 启动时序与并行依赖逐步解读",
+      "kind": "chapter",
+      "description": "公开架构正文。主题关联用于导航，不代表当前车型连接已被实车验证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/24.html",
+      "source": "座舱架构实践 · 中文版",
+      "topics": [
+        "power",
+        "display"
+      ]
+    },
+    {
+      "id": "course:day-1",
+      "title": "Day 1 - 智能座舱全景与系统边界",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-1",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-2",
+      "title": "Day 2 - 汽车电子电气架构与域间协同",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-2",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-3",
+      "title": "Day 3 - 座舱域控制器",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-3",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-4",
+      "title": "Day 4 - 座舱芯片 SoC/MCU/GPU/NPU/DSP",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-4",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "mcu"
+      ]
+    },
+    {
+      "id": "course:day-5",
+      "title": "Day 5 - 一芯多屏与 HMI",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-5",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display"
+      ]
+    },
+    {
+      "id": "course:day-6",
+      "title": "Day 6 - 车载操作系统 QNX/Linux/Android",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-6",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "android"
+      ]
+    },
+    {
+      "id": "course:day-7",
+      "title": "Day 7 - 座舱电源管理 I：上下电与启动时序",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-7",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-8",
+      "title": "Day 8 - 座舱电源管理 II：休眠唤醒与低功耗",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-8",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-9",
+      "title": "Day 9 - CAN/LIN/以太网：座舱网络基础",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-9",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "mcu",
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-10",
+      "title": "Day 10 - SOA 架构",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-10",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-1",
+      "title": "Week 2 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-1",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-11",
+      "title": "Day 11 - AUTOSAR CP/AP 与座舱中间件",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-11",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-12",
+      "title": "Day 12 - SOME/IP 深入：服务、方法、事件、字段",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-12",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-13",
+      "title": "Day 13 - SOME/IP Service Discovery",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-13",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "course:week-entry-2",
+      "title": "Week 3 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-2",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-3",
+      "title": "Week 3 - 周末总结反思与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-3",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-14",
+      "title": "Day 14 - 服务版本、接口兼容与异常处理",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-14",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-15",
+      "title": "Day 15 - SOA 服务边界设计",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-15",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-4",
+      "title": "Week 4 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-4",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-5",
+      "title": "Week 4 - 周末总结反思与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-5",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-16",
+      "title": "Day 16 - 接口治理、权限、安全和服务降级",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-16",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-17",
+      "title": "Day 17 - OS 内通信：Binder、D-Bus、Unix Socket、共享内存",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-17",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "android",
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-18",
+      "title": "Day 18 - 核间通信：Mailbox、IPI、共享内存、Ring Buffer",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-18",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-19",
+      "title": "Day 19 - 虚拟化通信：VirtIO、虚拟中断、Guest 生命周期",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-19",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-20",
+      "title": "Day 20 - 时间同步 I：RTC、GNSS、T-Box、网络时间、AUTOSAR Time Base",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-20",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "course:week-entry-6",
+      "title": "Week 6 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-6",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-21",
+      "title": "Day 21 - 时间同步 II：Camera、Audio、传感器、HMI 和日志时间戳对齐",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-21",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "camera"
+      ]
+    },
+    {
+      "id": "course:day-22",
+      "title": "Day 22 - Android Activity、Window、Task 与 Focus",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-22",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "android"
+      ]
+    },
+    {
+      "id": "course:day-23",
+      "title": "Day 23 - Android 多屏、多用户与 HMI",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-23",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "android",
+        "display"
+      ]
+    },
+    {
+      "id": "course:week-entry-7",
+      "title": "Week 7 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-7",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-8",
+      "title": "Week 7 - 周六总结反思与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-8",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-9",
+      "title": "Week 7 - 周日总结反思与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-9",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-24",
+      "title": "Day 24 - Surface、SurfaceFlinger、HWC、BufferQueue",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-24",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-25",
+      "title": "Day 25 - VSYNC、合成、送显和屏端链路",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-25",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-26",
+      "title": "Day 26 - Vehicle HAL、system_server 与系统服务",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-26",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-27",
+      "title": "Day 27 - Android ANR、Watchdog、Native Crash 和启动稳定性",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-27",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "android",
+        "power"
+      ]
+    },
+    {
+      "id": "course:week-entry-10",
+      "title": "Week 8 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-10",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-11",
+      "title": "Week 8 - 周六巩固与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-11",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-12",
+      "title": "Week 8 - 周日巩固与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-12",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-28",
+      "title": "Day 28 - Camera Sensor、SerDes、CSI、ISP",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-28",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "camera"
+      ]
+    },
+    {
+      "id": "course:day-29",
+      "title": "Day 29 - Camera Buffer、DMA、IOMMU 与显示链路",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-29",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "camera"
+      ]
+    },
+    {
+      "id": "course:day-30",
+      "title": "Day 30 - 倒车影像和 360 环视",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-30",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "camera"
+      ]
+    },
+    {
+      "id": "course:day-31",
+      "title": "Day 31 - DMS、OMS 图像管线",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-31",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-13",
+      "title": "Week 9 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-13",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-14",
+      "title": "Week 9 - 周六巩固与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-14",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:week-entry-15",
+      "title": "Week 9 - 周日巩固与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-15",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-32",
+      "title": "Day 32 - Camera 黑屏、冻帧和首帧延迟",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-32",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "camera"
+      ]
+    },
+    {
+      "id": "course:day-33",
+      "title": "Day 33 - Camera 标定、诊断和故障恢复",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-33",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "camera",
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-34",
+      "title": "Day 34 - Audio I：音频总体架构、音源和音频焦点",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-34",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "course:week-entry-16",
+      "title": "Week 10 - 周五反思总结",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#week-entry-16",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "course:day-35",
+      "title": "Day 35 - Audio II：Codec、DSP、功放、Route 和 Mixer",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-35",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "course:day-36",
+      "title": "Day 36 - Audio III：混音、音量、延迟和多音区",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/#day-36",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "course:day-37",
+      "title": "Day 37 - Audio IV：ANC、电话、导航播报与提示音",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-37.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "course:week-11-saturday",
+      "title": "Week 11 - 周六音频巩固与综合题",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-11-saturday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "course:week-11-sunday",
+      "title": "Week 11 - 周日音频证据链、恢复方案与测试整合",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-11-sunday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio",
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-38",
+      "title": "Day 38 - STR / Resume I：状态边界、跨域屏障与显示恢复",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-38.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-39",
+      "title": "Day 39 - STR / Resume II：跨域恢复依赖、竞态与超时预算",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-39.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "cross"
+      ]
+    },
+    {
+      "id": "course:week-12-friday",
+      "title": "Week 12 - 周五反思总结：音频并发与跨域恢复",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-12-friday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "audio",
+        "power"
+      ]
+    },
+    {
+      "id": "course:week-12-sunday",
+      "title": "Week 12 - 周日整合：跨层取证、恢复设计与测试闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-12-sunday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "course:day-40",
+      "title": "Day 40 - 显示首帧与黑屏证据闭环",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-40.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "course:day-41",
+      "title": "Day 41 - Hypervisor / VM Reset I：故障域与设备状态重建",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-41.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "course:week-13-friday",
+      "title": "Week 13 - 周五反思总结：显示首帧、VM Reset 与设备状态重建",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-13-friday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "display"
+      ]
+    },
+    {
+      "id": "course:week-13-saturday",
+      "title": "Week 13 - 周六巩固：显示首帧、VM Reset 与证据链训练",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-13-saturday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "display"
+      ]
+    },
+    {
+      "id": "course:week-13-sunday",
+      "title": "Week 13 - 周日整合：跨层取证、恢复设计与测试闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-13-sunday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "course:day-42",
+      "title": "Day 42 - Hypervisor / VM Reset II：看门狗责任与恢复策略",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-42.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "power"
+      ]
+    },
+    {
+      "id": "course:day-43",
+      "title": "Day 43 - Ethernet / SOME-IP I：服务可用性、会话与数据新鲜度",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-43.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ]
+    },
+    {
+      "id": "course:day-44",
+      "title": "Day 44 - Ethernet / SOME-IP II：故障隔离、恢复策略与测试闭环",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-44.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "cross"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "root",
+      "to": "topic:system",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:virtualization",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:android",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:yocto",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:mcu",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:tbox",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:display",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:camera",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:audio",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:power",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:cross",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:diagnosis",
+      "type": "主题目录"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:00",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:01",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:02",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "chapter:02",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:03",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:04",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "chapter:05",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:05",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "chapter:06",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:yocto",
+      "to": "chapter:07",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:mcu",
+      "to": "chapter:08",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:tbox",
+      "to": "chapter:09",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:mcu",
+      "to": "chapter:10",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "chapter:10",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "chapter:11",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "chapter:11",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "chapter:12",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:tbox",
+      "to": "chapter:13",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "chapter:13",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "chapter:14",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:15",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:16",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "chapter:17",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:yocto",
+      "to": "chapter:18",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "chapter:19",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "chapter:20",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:21",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:22",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "chapter:23",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "chapter:24",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "chapter:24",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-1",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-2",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-3",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:mcu",
+      "to": "course:day-4",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-5",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "course:day-6",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-7",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-8",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:mcu",
+      "to": "course:day-9",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-9",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-10",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-1",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-11",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-12",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-13",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-2",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-3",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-14",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-15",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-4",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-5",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-16",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "course:day-17",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-17",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-18",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:day-19",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-19",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-20",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-6",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-21",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-21",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "course:day-22",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "course:day-23",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-23",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-7",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-8",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-9",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-24",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-25",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-26",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:android",
+      "to": "course:day-27",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-27",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-10",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-11",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-12",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-28",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-29",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-29",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-30",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-31",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-13",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-14",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-15",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-32",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-32",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:camera",
+      "to": "course:day-33",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-33",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:day-34",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:system",
+      "to": "course:week-entry-16",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:day-35",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:day-36",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:day-37",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:week-11-saturday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:week-11-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-11-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-38",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-38",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-39",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-39",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:audio",
+      "to": "course:week-12-friday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-12-friday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-12-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-12-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:day-40",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:day-40",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:day-41",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:day-41",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:week-13-friday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:week-13-friday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:week-13-saturday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:display",
+      "to": "course:week-13-saturday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-13-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-13-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:day-42",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-42",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-43",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-44",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-44",
+      "type": "主题归类"
+    },
+    {
+      "from": "course:day-1",
+      "to": "course:day-2",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-2",
+      "to": "course:day-3",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-3",
+      "to": "course:day-4",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-4",
+      "to": "course:day-5",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-5",
+      "to": "course:day-6",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-6",
+      "to": "course:day-7",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-7",
+      "to": "course:day-8",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-8",
+      "to": "course:day-9",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-9",
+      "to": "course:day-10",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-10",
+      "to": "course:day-11",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-11",
+      "to": "course:day-12",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-12",
+      "to": "course:day-13",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-13",
+      "to": "course:day-14",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-14",
+      "to": "course:day-15",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-15",
+      "to": "course:day-16",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-16",
+      "to": "course:day-17",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-17",
+      "to": "course:day-18",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-18",
+      "to": "course:day-19",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-19",
+      "to": "course:day-20",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-20",
+      "to": "course:day-21",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-21",
+      "to": "course:day-22",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-22",
+      "to": "course:day-23",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-23",
+      "to": "course:day-24",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-24",
+      "to": "course:day-25",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-25",
+      "to": "course:day-26",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-26",
+      "to": "course:day-27",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-27",
+      "to": "course:day-28",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-28",
+      "to": "course:day-29",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-29",
+      "to": "course:day-30",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-30",
+      "to": "course:day-31",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-31",
+      "to": "course:day-32",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-32",
+      "to": "course:day-33",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-33",
+      "to": "course:day-34",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-34",
+      "to": "course:day-35",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-35",
+      "to": "course:day-36",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-36",
+      "to": "course:day-37",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-37",
+      "to": "course:day-38",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-38",
+      "to": "course:day-39",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-39",
+      "to": "course:day-40",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-40",
+      "to": "course:day-41",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-41",
+      "to": "course:day-42",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-42",
+      "to": "course:day-43",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-43",
+      "to": "course:day-44",
+      "type": "课程顺序"
+    }
+  ]
+}
+

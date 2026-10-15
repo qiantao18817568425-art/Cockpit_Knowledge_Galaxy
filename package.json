@@ -1,0 +1,11 @@
+{
+  "name": "cockpit-knowledge-galaxy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:data": "node scripts/build-graph.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
+

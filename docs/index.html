@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="座舱知识银河：以 Obsidian 式 3D 关系图探索公开座舱架构章节与每日学习课程。">
+  <meta name="theme-color" content="#090d19">
+  <title>座舱知识银河 · 架构与课程关系图</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="workbench" aria-label="座舱知识银河工作台">
+    <canvas id="galaxy" aria-label="3D 座舱知识关系图。拖动旋转，滚轮缩放，点击节点查看原文。"></canvas>
+
+    <section class="glass controls" aria-label="图谱控制">
+      <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
+      <label class="search-label" for="search">搜索知识</label>
+      <input id="search" type="search" autocomplete="off" placeholder="模块、链路、Day、关键词…">
+      <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
+      <div class="section-label">显示节点</div>
+      <button class="filter" type="button" data-kind="topic" aria-pressed="true"><i class="swatch topic"></i>主题星系<span>✓</span></button>
+      <button class="filter" type="button" data-kind="chapter" aria-pressed="true"><i class="swatch chapter"></i>架构章节<span>✓</span></button>
+      <button class="filter" type="button" data-kind="lesson" aria-pressed="true"><i class="swatch lesson"></i>Day 课程<span>✓</span></button>
+      <button class="filter" type="button" data-kind="review" aria-pressed="true"><i class="swatch review"></i>Week 复盘<span>✓</span></button>
+      <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
+      <div class="counts" id="counts">正在载入公开知识目录…</div>
+    </section>
+
+    <div class="glass motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
+
+    <aside id="detail" class="glass detail" aria-live="polite" hidden>
+      <button id="detail-close" class="detail-close" type="button" aria-label="关闭节点详情">×</button>
+      <div id="detail-kind" class="detail-kind"></div>
+      <h2 id="detail-title"></h2>
+      <p id="detail-description"></p>
+      <div class="detail-source"><span>来源</span><strong id="detail-source"></strong></div>
+      <a id="detail-link" class="source-link" target="_blank" rel="noopener noreferrer" hidden>打开原文 ↗</a>
+      <div class="related"><b>直接关联</b><div id="related-list"></div></div>
+    </aside>
+
+    <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
+
+    <div class="hint">拖动旋转 · 滚轮缩放 · 点击星点查看原文<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
+  </main>
+</body>
+</html>
+

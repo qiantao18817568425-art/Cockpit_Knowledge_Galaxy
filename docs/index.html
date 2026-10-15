@@ -11,7 +11,7 @@
 </head>
 <body>
   <main class="workbench" aria-label="座舱知识银河工作台">
-    <canvas id="galaxy" aria-label="3D 座舱知识关系图。拖动旋转，滚轮缩放，点击节点查看原文。"></canvas>
+    <canvas id="galaxy" aria-label="3D 座舱知识关系图。点击节点将它切换到中心，拖动旋转，滚轮缩放，详情中可打开原文。"></canvas>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
@@ -41,7 +41,7 @@
 
     <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
 
-    <div class="hint">拖动旋转 · 滚轮缩放 · 点击星点查看原文<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
+    <div class="hint">点击星点切换中心 · 拖动旋转 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
   </main>
 </body>
 </html>

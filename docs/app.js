@@ -6,6 +6,7 @@ const results = document.querySelector('#results');
 const motionLabel = document.querySelector('#motion-label');
 const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
+const hoverCard = document.querySelector('#hover-card');
 
 const colors = { root:'#e6f5ff', topic:'#74bbff', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885' };
 const labels = { root:'知识入口', topic:'主题星系', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘' };
@@ -13,6 +14,8 @@ const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let graph, nodes=[], edges=[], byId=new Map(), neighbors=new Map(), dust=[], stars=[];
 let width=0,height=0,dpr=1, yaw=.22,pitch=-.18,zoom=1,selected=null,projected=[],pointer=null;
+let hovered=null;
+const hoverLevels=new Map();
 let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
@@ -48,6 +51,9 @@ function prepare(raw){
 function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const x=px*cy+pz*sy,z=pz*cy-px*sy,y=py*cx-z*sx,depth=py*sx+z*cx;const perspective=950/(950-depth),fit=Math.min(width/1100,height/700)*zoom;return{x:width/2+x*perspective*fit,y:height/2+y*perspective*fit,z:depth,p:perspective,fit}}
 function glow(x,y,r,color,alpha){const gradient=ctx.createRadialGradient(x,y,0,x,y,r);gradient.addColorStop(0,color+alpha);gradient.addColorStop(1,color+'00');ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
+function pickNode(x,y){let hit=null,best=Infinity;for(const n of projected){if(n.kind!=='root'&&hidden.has(n.kind))continue;const distance=Math.hypot(n.x-x,n.y-y),range=Math.max(15,n.r*n.p*n.fit+10);if(distance<=range&&distance<best){hit=n;best=distance}}return hit}
+function setHovered(id){if(hovered===id)return;hovered=id;canvas.classList.toggle('is-hovering',!!id);hoverCard.classList.toggle('is-visible',!!id);hoverCard.setAttribute('aria-hidden',String(!id));if(id){const n=byId.get(id);hoverLevels.set(id,hoverLevels.get(id)||0);document.querySelector('#hover-kind').textContent=labels[n.kind];document.querySelector('#hover-title').textContent=n.title;document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`}interaction()}
+function positionHoverCard(map){if(!hovered)return;const n=map.get(hovered);if(!n)return;const x=Math.max(14,Math.min(width-hoverCard.offsetWidth-14,n.x+24));const y=Math.max(14,Math.min(height-hoverCard.offsetHeight-14,n.y+18));hoverCard.style.left=`${x}px`;hoverCard.style.top=`${y}px`}
 
 function background(){
   const radial=ctx.createRadialGradient(width*.5,height*.5,4,width*.5,height*.5,Math.max(width,height)*.8);
@@ -65,7 +71,8 @@ function draw(){
   const query=search.value.trim().toLocaleLowerCase();
   const matching=new Set(query?nodes.filter(n=>n.title.toLocaleLowerCase().includes(query)).map(n=>n.id):[]);
   const visible=n=>n.kind==='root'||!hidden.has(n.kind);
-  const related=selected?neighbors.get(selected):null;
+  const emphasis=hovered||selected;
+  const related=emphasis?neighbors.get(emphasis):null;
 
   for(const d of dust.map(p=>({...project(p),size:p.size,tone:p.tone})).sort((a,b)=>a.z-b.z)){
     ctx.globalAlpha=Math.max(.07,Math.min(.48,(d.z+600)/1200*.48));ctx.fillStyle=d.tone<.55?'#83bcff':'#c3a7ff';ctx.beginPath();ctx.arc(d.x,d.y,Math.max(.3,d.size*d.p*d.fit),0,Math.PI*2);ctx.fill();
@@ -73,12 +80,13 @@ function draw(){
 
   projected=nodes.map(n=>({...n,...project(n)}));
   const map=new Map(projected.map(n=>[n.id,n]));
+  positionHoverCard(map);
   for(const edge of edges){
     if(edge.type==='课程顺序'&&!sequenceVisible)continue;
     const a=map.get(edge.from),b=map.get(edge.to);
     if(!visible(a)||!visible(b))continue;
-    const active=selected&&(edge.from===selected||edge.to===selected);
-    const dim=(query&&!matching.has(a.id)&&!matching.has(b.id))||(selected&&!active);
+    const active=emphasis&&(edge.from===emphasis||edge.to===emphasis);
+    const dim=(query&&!matching.has(a.id)&&!matching.has(b.id)&&!active)||(emphasis&&!active);
     ctx.globalAlpha=dim?.05:active?.68:edge.type==='课程顺序'?.13:.23;
     ctx.strokeStyle=active?'#b7d8ff':edge.type==='课程顺序'?'#b5a4e7':'#7599c6';ctx.lineWidth=active?1.5:1;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
@@ -87,33 +95,46 @@ function draw(){
   const sorted=[...projected].sort((a,b)=>a.z-b.z);
   const featured=sorted.filter(n=>n.kind==='chapter'||n.kind==='lesson'||n.kind==='review').slice(-16);
   const featuredIds=new Set(featured.map(n=>n.id));
+  const labelQueue=[];
   const occupied=[];
   for(const n of sorted){
     if(!visible(n))continue;
-    const active=n.id===selected,neighbor=related?.has(n.id),match=query&&matching.has(n.id),dim=(query&&!match&&!active&&!neighbor)||(selected&&!active&&!neighbor);
+    const active=n.id===selected,preview=n.id===hovered,neighbor=related?.has(n.id),match=query&&matching.has(n.id),hover=hoverLevels.get(n.id)||0;
+    const dim=(query&&!match&&!active&&!preview&&!neighbor)||(emphasis&&!active&&!preview&&!neighbor);
     ctx.globalAlpha=dim?.13:Math.max(.45,Math.min(1,.75+n.z/950));
-    const radius=Math.max(2.4,n.r*n.p*n.fit*(active?1.35:1)),color=colors[n.kind];
-    glow(n.x,n.y,radius*(active?5:3.7),color,active?'75':'33');
-    ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=active?22:11;ctx.beginPath();ctx.arc(n.x,n.y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-    if(active){ctx.strokeStyle='#f8fcff';ctx.lineWidth=1.5;ctx.stroke()}
+    const radius=Math.max(2.4,n.r*n.p*n.fit*(active?1.35:1)*(1+hover*.38)),color=colors[n.kind];
+    glow(n.x,n.y,radius*(active||preview?5:3.7),color,active||preview?'75':'33');
+    ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=active||preview?22:11;ctx.beginPath();ctx.arc(n.x,n.y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+    if(active||hover>.3){ctx.strokeStyle='#f8fcff';ctx.lineWidth=1.5;ctx.stroke()}
     ctx.globalAlpha=1;
-    const showLabel=n.kind==='root'||n.kind==='topic'||active||match||neighbor||(!selected&&!query&&featuredIds.has(n.id));
+    const showLabel=n.kind==='root'||n.kind==='topic'||active||preview||hover>.02||match||neighbor||(!emphasis&&!query&&featuredIds.has(n.id));
     if(!showLabel)continue;
-    const size=active?17:n.kind==='root'?17:n.kind==='topic'?13:11;
+    labelQueue.push({n,active,preview,hover,dim,radius,color});
+  }
+  labelQueue.sort((a,b)=>(Number(a.active)+Number(a.preview)*2)-(Number(b.active)+Number(b.preview)*2));
+  for(const {n,active,preview,hover,dim,radius,color} of labelQueue){
+    const baseSize=active?17:n.kind==='root'?17:n.kind==='topic'?13:11;
+    const size=baseSize+(24-baseSize)*hover;
     ctx.font=`${n.kind==='root'||n.kind==='topic'?650:500} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
-    const text=n.title.length>21?n.title.slice(0,20)+'…':n.title;
-    const textWidth=ctx.measureText(text).width,x=n.x+radius+7,y=n.y;
-    if(x+textWidth>width-8||x<6||y<10||y>height-10)continue;
+    const limit=hover>.5?32:21;
+    const text=n.title.length>limit?n.title.slice(0,limit-1)+'…':n.title;
+    const textWidth=ctx.measureText(text).width;
+    let x=n.x+radius+7+hover*4;
+    if(x+textWidth>width-12)x=n.x-radius-9-textWidth;
+    const y=Math.max(size,Math.min(height-size,n.y-hover*7));
+    if(x<8||x+textWidth>width-8)continue;
     const box={x:x-2,y:y-size*.65,w:textWidth+4,h:size*1.3};
-    if(!active&&!match&&occupied.some(p=>box.x<p.x+p.w&&box.x+box.w>p.x&&box.y<p.y+p.h&&box.y+box.h>p.y))continue;
-    occupied.push(box);ctx.globalAlpha=dim?.25:.94;ctx.fillStyle=active?'#ffffff':'#dce8f8';ctx.shadowColor='#06101f';ctx.shadowBlur=5;ctx.textBaseline='middle';ctx.fillText(text,x,y);ctx.shadowBlur=0;ctx.globalAlpha=1;
+    if(!active&&!preview&&hover<.15&&occupied.some(p=>box.x<p.x+p.w&&box.x+box.w>p.x&&box.y<p.y+p.h&&box.y+box.h>p.y))continue;
+    occupied.push(box);
+    if(hover>.03){ctx.globalAlpha=hover*.82;ctx.fillStyle='#0d2039';ctx.strokeStyle=color;ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(x-8,y-size*.82,textWidth+16,size*1.64,7);ctx.fill();ctx.globalAlpha=hover*.55;ctx.stroke()}
+    ctx.globalAlpha=dim?.25:.94;ctx.fillStyle=active||preview?'#ffffff':'#dce8f8';ctx.shadowColor=hover>.03?color:'#06101f';ctx.shadowBlur=hover>.03?18*hover:5;ctx.textBaseline='middle';ctx.fillText(text,x,y);ctx.shadowBlur=0;ctx.globalAlpha=1;
   }
   updateMotionLabel(query);
 }
 
 function updateMotionLabel(query){
-  const spinning=auto&&!document.hidden&&!query&&!selected&&performance.now()-lastAction>10000;
-  const next=selected?'节点聚焦':spinning?'银河缓慢旋转':query?'搜索聚焦':auto?'互动中 · 稍后旋转':'旋转已暂停';
+  const spinning=auto&&!document.hidden&&!query&&!selected&&!hovered&&performance.now()-lastAction>10000;
+  const next=hovered?'悬停预览':selected?'节点聚焦':spinning?'银河缓慢旋转':query?'搜索聚焦':auto?'互动中 · 稍后旋转':'旋转已暂停';
   if(next===currentStatus)return;
   currentStatus=next;motionLabel.textContent=next;motionLight.style.background=spinning?'#91d8ff':'#aab7d1';motionLight.style.boxShadow=spinning?'0 0 10px #91d8ff':'none';
 }
@@ -153,14 +174,17 @@ function frame(time){
   const delta=Math.min(50,time-previousFrame);previousFrame=time;
   const easing=reducedMotion?1:1-Math.exp(-delta/260);
   for(const axis of ['x','y','z'])focus[axis]+=(focusTarget[axis]-focus[axis])*easing;
-  if(auto&&!document.hidden&&!selected&&!search.value.trim()&&time-lastAction>10000){yaw+=delta*.00017;pitch=-.18+Math.sin(time*.00022)*.065}
+  const hoverEasing=reducedMotion?1:1-Math.exp(-delta/130);
+  for(const [id,level] of hoverLevels){const next=level+((id===hovered?1:0)-level)*hoverEasing;if(next<.01&&id!==hovered)hoverLevels.delete(id);else hoverLevels.set(id,next)}
+  if(auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&time-lastAction>10000){yaw+=delta*.00017;pitch=-.18+Math.sin(time*.00022)*.065}
   draw();requestAnimationFrame(frame);
 }
 
-canvas.addEventListener('pointerdown',event=>{pointer={x:event.clientX,y:event.clientY,yaw,pitch,moved:false};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');interaction()});
-canvas.addEventListener('pointermove',event=>{if(!pointer)return;const dx=event.clientX-pointer.x,dy=event.clientY-pointer.y;if(Math.abs(dx)+Math.abs(dy)>5)pointer.moved=true;if(pointer.moved){yaw=pointer.yaw+dx*.006;pitch=Math.max(-.95,Math.min(.95,pointer.pitch+dy*.004));interaction()}});
-canvas.addEventListener('pointerup',event=>{if(pointer&&!pointer.moved){const bounds=canvas.getBoundingClientRect(),x=event.clientX-bounds.left,y=event.clientY-bounds.top;const hit=projected.filter(n=>n.kind==='root'||!hidden.has(n.kind)).map(n=>({id:n.id,d:Math.hypot(n.x-x,n.y-y)})).sort((a,b)=>a.d-b.d)[0];if(hit&&hit.d<23)showNode(hit.id);else clearSelection()}pointer=null;canvas.classList.remove('dragging');interaction()});
-canvas.addEventListener('pointercancel',()=>{pointer=null;canvas.classList.remove('dragging')});
+canvas.addEventListener('pointerdown',event=>{setHovered(null);pointer={x:event.clientX,y:event.clientY,yaw,pitch,moved:false};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');interaction()});
+canvas.addEventListener('pointermove',event=>{if(pointer){const dx=event.clientX-pointer.x,dy=event.clientY-pointer.y;if(Math.abs(dx)+Math.abs(dy)>5)pointer.moved=true;if(pointer.moved){yaw=pointer.yaw+dx*.006;pitch=Math.max(-.95,Math.min(.95,pointer.pitch+dy*.004));interaction()}return}if(event.pointerType==='touch')return;const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)});
+canvas.addEventListener('pointerup',event=>{if(pointer&&!pointer.moved){const bounds=canvas.getBoundingClientRect(),hit=pickNode(event.clientX-bounds.left,event.clientY-bounds.top);if(hit)showNode(hit.id);else clearSelection()}pointer=null;canvas.classList.remove('dragging');if(event.pointerType!=='touch'){const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)}interaction()});
+canvas.addEventListener('pointercancel',()=>{pointer=null;canvas.classList.remove('dragging');setHovered(null)});
+canvas.addEventListener('pointerleave',()=>{if(!pointer)setHovered(null)});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,Math.min(2.3,zoom*(event.deltaY<0?1.09:1/1.09)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});
 search.addEventListener('keydown',event=>{if(event.key==='Escape'){search.value='';renderResults();search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}});

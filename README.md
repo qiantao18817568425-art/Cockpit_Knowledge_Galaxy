@@ -9,7 +9,7 @@
 | **1、座舱知识银河** | [打开 3D 关系图](https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/) | 搜索主题、切换中心节点、查看关联和课程顺序。 |
 | **2、座舱架构实践** | [打开架构章节](https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/index.html) | 阅读平台、运行域、模块职责与业务链路。 |
 | **3、座舱架构学习** | [打开每日与每周课程](https://qiantao18817568425-art.github.io/Architecture_Learning-/) | 按 Day / Week 学习与复盘。 |
-| **4、原始资料** | [打开分类目录](https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-sources.html) | 按 15 个类别检索 299 份去重资料及其图谱关系；其中 295 份原件可下载。 |
+| **4、原始资料** | [打开分类目录](https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-sources.html) | 按 15 个类别检索 299 份去重资料及其图谱关系；299 份原件均可下载。 |
 
 图谱和原站均公开发布，无需 GitHub 登录即可阅读。GitHub Pages 使用本仓库 `main` 分支的 `docs/` 目录。
 
@@ -38,7 +38,7 @@
 
 同步只读取这些公开页面和学习进度文件。原始资料目录由人工维护；自动更新不会覆盖它。本仓库不采集或上传私有日志、异常包、账号信息和内部项目证据。
 
-电源分类由 [`content/power-taxonomy.json`](content/power-taxonomy.json)人工维护，来源链接只指向已公开的架构章节。原始资料分类由 [`content/raw-taxonomy.json`](content/raw-taxonomy.json)人工维护，分类目录在 `docs/raw-sources.json`；其中 295 份已提供原件下载，剩余 4 份较大的文件仍在准备。分类是学习索引，状态名、供电策略、跨域握手和唤醒线路是否适用于某辆车，仍须按车型、硬件、软件版本及实车证据确认。新增课程时，可在分类文件补充适用的细分链路；自动更新不会覆盖人工分类。
+电源分类由 [`content/power-taxonomy.json`](content/power-taxonomy.json)人工维护，来源链接只指向已公开的架构章节。原始资料分类由 [`content/raw-taxonomy.json`](content/raw-taxonomy.json)人工维护，分类目录在 `docs/raw-sources.json`；299 份原件均提供下载，其中 4 份大文件位于 [GitHub Release](https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy/releases/tag/raw-sources-2026-10-16)。分类是学习索引，状态名、供电策略、跨域握手和唤醒线路是否适用于某辆车，仍须按车型、硬件、软件版本及实车证据确认。新增课程时，可在分类文件补充适用的细分链路；自动更新不会覆盖人工分类。
 
 本地重建与检查：
 

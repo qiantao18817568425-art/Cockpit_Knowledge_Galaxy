@@ -8,9 +8,36 @@
     "lessons": ["day-7", "day-8", "day-38"]
   },
   {
+    "id": "state-input",
+    "parent": "inputs",
+    "title": "ACC 与车辆状态输入",
+    "description": "先确认车辆输入由谁采集、状态何时有效，再核对电源策略是否采用了该状态；信号定义以现车版本为准。",
+    "sourcePath": "architecture/14.html#accstrsuspendresume",
+    "chapters": ["08", "14"],
+    "lessons": ["day-7", "day-8"]
+  },
+  {
+    "id": "state-policy",
+    "parent": "inputs",
+    "title": "目标电源态与策略门槛",
+    "description": "区分外部状态、目标电源态和允许切换的条件，避免把一条输入变化视为休眠已完成。",
+    "sourcePath": "architecture/14.html#业务流程-flow-38",
+    "chapters": ["14", "23"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
     "id": "mcu",
     "title": "MCU 电源控制与握手",
     "description": "区分 MCU 的电源状态、控制请求、SoC 应答和实际硬件状态；接口与引脚须按当前板级资料核对。",
+    "sourcePath": "architecture/08.html#86-电源与安全",
+    "chapters": ["08", "14"],
+    "lessons": ["day-7", "day-8"]
+  },
+  {
+    "id": "mcu-handshake",
+    "parent": "mcu",
+    "title": "MCU 与 SoC 电源握手",
+    "description": "逐项核对请求、应答、状态回读和供电结果；控制路径与电源路径分别取证。",
     "sourcePath": "architecture/08.html#86-电源与安全",
     "chapters": ["08", "14"],
     "lessons": ["day-7", "day-8"]
@@ -22,6 +49,24 @@
     "sourcePath": "architecture/08.html#86-电源与安全",
     "chapters": ["04", "08", "09"],
     "lessons": ["day-7"]
+  },
+  {
+    "id": "primary-supply",
+    "parent": "supply",
+    "title": "主供电与电源域",
+    "description": "把电源轨、PMIC 控制和 SoC 软件状态分别标注；实际电源域与测点须按板级版本确认。",
+    "sourcePath": "architecture/08.html#86-电源与安全",
+    "chapters": ["04", "08"],
+    "lessons": ["day-7"]
+  },
+  {
+    "id": "backup-supply",
+    "parent": "supply",
+    "title": "备电与保持业务",
+    "description": "区分掉电后的保持供电、独立域运行和整机复电；TBox 与 MCU 的保持范围待项目硬件资料核实。",
+    "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
+    "chapters": ["08", "09"],
+    "lessons": ["day-7", "day-8"]
   },
   {
     "id": "boot",
@@ -40,12 +85,75 @@
     "lessons": ["day-8", "day-38", "day-39"]
   },
   {
+    "id": "android-prep",
+    "parent": "host-guest",
+    "title": "Android Guest 休眠准备",
+    "description": "检查应用与系统服务的准备、阻塞和完成回报，再与其他运行域对齐同一次休眠尝试。",
+    "sourcePath": "architecture/14.html#分层子链与方向-1",
+    "chapters": ["06", "14", "23"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
+    "id": "tbox-guest-prep",
+    "parent": "host-guest",
+    "title": "TBox Guest 保持与休眠",
+    "description": "核对通信业务的保持要求、Guest 电源态和跨域通知；具体保活策略须按项目版本确认。",
+    "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
+    "chapters": ["09", "14"],
+    "lessons": ["day-8"]
+  },
+  {
+    "id": "hypervisor-barrier",
+    "parent": "host-guest",
+    "title": "Hypervisor 跨 VM 屏障",
+    "description": "把各 Guest 的完成状态与 Host 进入低功耗的门槛分开；实际参与 VM 和顺序以当前部署为准。",
+    "sourcePath": "architecture/02.html#23-hypervisorhost-与-guest",
+    "chapters": ["02", "14"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
+    "id": "yocto-host-prep",
+    "parent": "host-guest",
+    "title": "Yocto Host 设备准备",
+    "description": "核对 Host 对物理设备、共享资源和 Guest 的依赖，再确认是否允许平台进入更深低功耗。",
+    "sourcePath": "architecture/07.html#71-启动与生命周期",
+    "chapters": ["07", "14"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
     "id": "suspend",
     "title": "Suspend 进入与阻塞",
     "description": "按请求、准备、设备挂起和实际低功耗逐阶段判断；WakeLock、设备回调与时钟可能阻塞进入。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
     "chapters": ["14", "15", "23"],
     "lessons": ["day-8", "day-38", "day-39"]
+  },
+  {
+    "id": "entry-blockers",
+    "parent": "suspend",
+    "title": "请求前后与保持唤醒",
+    "description": "先找休眠请求和进入内核的边界，再检查是否有持续活跃的任务或唤醒保持。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["14", "23"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
+    "id": "device-suspend",
+    "parent": "suspend",
+    "title": "内核与设备挂起阶段",
+    "description": "逐阶段看任务冻结、设备回调和平台进入条件，记录最早未完成的接口。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["14", "23"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
+    "id": "low-power-residency",
+    "parent": "suspend",
+    "title": "低功耗驻留与电流",
+    "description": "休眠流程成功后仍需验证平台驻留和实际电流；软件成功消息不能代替硬件测量。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["08", "23"],
+    "lessons": ["day-8", "day-38"]
   },
   {
     "id": "wake",
@@ -56,10 +164,46 @@
     "lessons": ["day-8", "day-38"]
   },
   {
+    "id": "wake-source",
+    "parent": "wake",
+    "title": "唤醒请求与来源",
+    "description": "将车辆、定时、通信和设备中断按来源归类；须与同一次休眠及当前版本的唤醒映射关联。",
+    "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
+    "chapters": ["08", "09", "14"],
+    "lessons": ["day-8"]
+  },
+  {
+    "id": "abort-or-wake",
+    "parent": "wake",
+    "title": "进入中断与真正唤醒",
+    "description": "先证明平台曾稳定进入低功耗，再判定是睡前中断、快速唤醒还是正常唤醒。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["14", "23"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
     "id": "tbox",
     "title": "TBox / RTC 低功耗与远程唤醒",
     "description": "将 RTC、Modem 和独立唤醒源分开；TBox 是否保留、唤醒优先级与线路连接待当前项目确认。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
+    "chapters": ["09", "13"],
+    "lessons": ["day-8"]
+  },
+  {
+    "id": "rtc-schedule",
+    "parent": "tbox",
+    "title": "RTC 定时与远程唤醒",
+    "description": "核对定时任务、触发时刻、唤醒来源和后续业务请求，避免把时间接近视为因果。",
+    "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
+    "chapters": ["09", "14"],
+    "lessons": ["day-8"]
+  },
+  {
+    "id": "modem-retention",
+    "parent": "tbox",
+    "title": "Modem 保活与远控链路",
+    "description": "区分通信模块保持、网络重建和远控业务就绪；是否独立供电待车型资料确认。",
+    "sourcePath": "architecture/09.html#94-modem-与-telephony",
     "chapters": ["09", "13"],
     "lessons": ["day-8"]
   },
@@ -72,11 +216,47 @@
     "lessons": ["day-8", "day-38", "day-39"]
   },
   {
+    "id": "vm-resume",
+    "parent": "resume",
+    "title": "Host 与 VM 恢复顺序",
+    "description": "先确认 Host、设备与 Guest 的新会话状态，再判定后续资源是否可复用。",
+    "sourcePath": "architecture/14.html#业务流程-flow-38",
+    "chapters": ["02", "14"],
+    "lessons": ["day-8", "day-38"]
+  },
+  {
+    "id": "business-resume",
+    "parent": "resume",
+    "title": "服务重连与业务可用",
+    "description": "核对订阅重建、权威状态回读和可见业务结果，防止 Resume 完成后界面或功能仍旧失效。",
+    "sourcePath": "architecture/15.html#15610-唤醒后状态不恢复",
+    "chapters": ["09", "14", "15"],
+    "lessons": ["day-8", "day-39"]
+  },
+  {
     "id": "diagnostics",
     "title": "低功耗证据与日志留存",
     "description": "用同一 boot、同一次 suspend attempt 的阶段、驻留和唤醒证据定位断点，并检查断电时日志是否真的落盘。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
     "chapters": ["15", "23"],
+    "lessons": ["day-38", "day-39"]
+  },
+  {
+    "id": "entry-evidence",
+    "parent": "diagnostics",
+    "title": "睡不下去的阶段证据",
+    "description": "用同一次尝试的请求、阻塞、设备挂起和平台状态定位最早断点，保留跨域时间依据。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["15", "23"],
+    "lessons": ["day-38", "day-39"]
+  },
+  {
+    "id": "current-evidence",
+    "parent": "diagnostics",
+    "title": "睡着后高电流的证据",
+    "description": "把频繁唤醒、外设保持、时钟驻留和硬件电流分开验证；比较必须使用相同状态与测量条件。",
+    "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
+    "chapters": ["08", "23"],
     "lessons": ["day-38", "day-39"]
   }
 ]

@@ -29,11 +29,21 @@ function prepare(raw){
   const topicNodes=raw.nodes.filter(n=>n.kind==='topic');
   const topicPositions=new Map(topicNodes.map((n,i)=>{const a=i*Math.PI*2/topicNodes.length-.6;return[n.id,{x:Math.cos(a)*330,y:Math.sin(a*1.7)*115,z:Math.sin(a)*250}]}));
   const subtopicNodes=raw.nodes.filter(n=>n.kind==='subtopic');
-  const subtopicPositions=new Map(subtopicNodes.map((n,i)=>{const a=i*Math.PI*2/subtopicNodes.length;const parent=topicPositions.get(`topic:${n.topics?.[0]}`)||{x:0,y:0,z:0};return[n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100}]}));
+  const powerCategories=subtopicNodes.filter(n=>n.depth===1);
+  const subtopicPositions=new Map(powerCategories.map((n,i)=>{const a=i*Math.PI*2/powerCategories.length;const parent=topicPositions.get(n.parentId)||{x:0,y:0,z:0};return[n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100}]}));
+  const childrenByParent=new Map();
+  for(const node of subtopicNodes.filter(n=>n.depth===2)){
+    if(!childrenByParent.has(node.parentId))childrenByParent.set(node.parentId,[]);
+    childrenByParent.get(node.parentId).push(node);
+  }
+  for(const [parentId,children] of childrenByParent){
+    const parent=subtopicPositions.get(parentId);if(!parent)continue;
+    children.forEach((n,i)=>{const a=i*Math.PI*2/children.length+.35;subtopicPositions.set(n.id,{x:parent.x+Math.cos(a)*51,y:parent.y+Math.sin(a)*39,z:parent.z+Math.sin(a+.7)*49})});
+  }
   nodes=raw.nodes.map(n=>{
     if(n.kind==='root')return{...n,x:0,y:0,z:0,r:11};
     if(n.kind==='topic')return{...n,...topicPositions.get(n.id),r:7.7};
-    if(n.kind==='subtopic')return{...n,...subtopicPositions.get(n.id),r:5.9};
+    if(n.kind==='subtopic')return{...n,...subtopicPositions.get(n.id),r:n.depth===1?5.9:4.1};
     const parent=topicPositions.get(`topic:${n.topics?.[0]||'system'}`)||{x:0,y:0,z:0};
     const r1=seeded(n.id+'a'),r2=seeded(n.id+'b'),r3=seeded(n.id+'c');
     const a=r1*Math.PI*2,spread=n.kind==='chapter'?80:n.kind==='lesson'?128:153;
@@ -45,7 +55,7 @@ function prepare(raw){
   for(const e of edges){neighbors.get(e.from).add(e.to);neighbors.get(e.to).add(e.from)}
   dust=Array.from({length:420},()=>{const a=random()*Math.PI*2,r=Math.sqrt(random())*590;return{x:Math.cos(a)*r,y:(random()-.5)*78,z:Math.sin(a)*r*.75,size:random()*1.2+.25,tone:random()}});
   stars=Array.from({length:140},()=>({x:random(),y:random(),r:random()*.9+.2,a:random()*.45+.12}));
-  document.querySelector('#counts').textContent=`${raw.meta.subtopicCount||0} 条细分链路 · ${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
+  document.querySelector('#counts').textContent=`${raw.meta.powerCategoryCount||0} 类电源主题 · ${raw.meta.powerPathCount||0} 条细分路径 · ${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');

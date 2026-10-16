@@ -93,6 +93,9 @@ for (const branch of powerTaxonomy) {
   const id = `subtopic:power:${branch.id}`;
   if (knownIds.has(id)) throw new Error(`Duplicate power branch: ${id}`);
   if (!branch.sourcePath.startsWith('architecture/')) throw new Error(`Unexpected power source: ${branch.sourcePath}`);
+  const parentId = branch.parent ? `subtopic:power:${branch.parent}` : 'topic:power';
+  if (!knownIds.has(parentId)) throw new Error(`Missing power parent ${parentId} for ${id}`);
+  if (branch.parent && nodes.find(node => node.id === parentId)?.parentId !== 'topic:power') throw new Error(`Power paths must have a category parent: ${id}`);
   const linked = [
     ...branch.chapters.map(number => `chapter:${number}`),
     ...branch.lessons.map(lesson => `course:${lesson}`)
@@ -100,10 +103,10 @@ for (const branch of powerTaxonomy) {
   for (const target of linked) if (!knownIds.has(target)) throw new Error(`Missing power target ${target} for ${id}`);
   nodes.push({
     id, title:branch.title, kind:'subtopic', description:branch.description,
-    url:`${siteBase}${branch.sourcePath}`, source:'公开架构章节 · 电源细分索引', topics:['power']
+    url:`${siteBase}${branch.sourcePath}`, source:'公开架构章节 · 电源细分索引', topics:['power'], parentId, depth:branch.parent?2:1
   });
   knownIds.add(id);
-  edges.push({ from:'topic:power', to:id, type:'主题细分' });
+  edges.push({ from:parentId, to:id, type:'主题细分' });
   for (const target of linked) edges.push({ from:id, to:target, type:'内容索引' });
 }
 
@@ -119,6 +122,8 @@ const data = {
     lessonCount:daily.length,
     reviewCount:reviews.length,
     subtopicCount:powerTaxonomy.length,
+    powerCategoryCount:powerTaxonomy.filter(branch => !branch.parent).length,
+    powerPathCount:powerTaxonomy.filter(branch => branch.parent).length,
     relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
   },
   nodes, edges

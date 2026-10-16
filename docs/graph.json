@@ -6,7 +6,9 @@
     "chapterCount": 25,
     "lessonCount": 44,
     "reviewCount": 23,
-    "subtopicCount": 10,
+    "subtopicCount": 30,
+    "powerCategoryCount": 10,
+    "powerPathCount": 20,
     "relationNotice": "连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。"
   },
   "nodes": [
@@ -1166,7 +1168,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:state-input",
+      "title": "ACC 与车辆状态输入",
+      "kind": "subtopic",
+      "description": "先确认车辆输入由谁采集、状态何时有效，再核对电源策略是否采用了该状态；信号定义以现车版本为准。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html#accstrsuspendresume",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:inputs",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:state-policy",
+      "title": "目标电源态与策略门槛",
+      "kind": "subtopic",
+      "description": "区分外部状态、目标电源态和允许切换的条件，避免把一条输入变化视为休眠已完成。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html#业务流程-flow-38",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:inputs",
+      "depth": 2
     },
     {
       "id": "subtopic:power:mcu",
@@ -1177,7 +1207,22 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:mcu-handshake",
+      "title": "MCU 与 SoC 电源握手",
+      "kind": "subtopic",
+      "description": "逐项核对请求、应答、状态回读和供电结果；控制路径与电源路径分别取证。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/08.html#86-电源与安全",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:mcu",
+      "depth": 2
     },
     {
       "id": "subtopic:power:supply",
@@ -1188,7 +1233,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:primary-supply",
+      "title": "主供电与电源域",
+      "kind": "subtopic",
+      "description": "把电源轨、PMIC 控制和 SoC 软件状态分别标注；实际电源域与测点须按板级版本确认。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/08.html#86-电源与安全",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:supply",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:backup-supply",
+      "title": "备电与保持业务",
+      "kind": "subtopic",
+      "description": "区分掉电后的保持供电、独立域运行和整机复电；TBox 与 MCU 的保持范围待项目硬件资料核实。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html#96-rtc唤醒与-suspendresume",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:supply",
+      "depth": 2
     },
     {
       "id": "subtopic:power:boot",
@@ -1199,7 +1272,9 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
     },
     {
       "id": "subtopic:power:host-guest",
@@ -1210,7 +1285,61 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:android-prep",
+      "title": "Android Guest 休眠准备",
+      "kind": "subtopic",
+      "description": "检查应用与系统服务的准备、阻塞和完成回报，再与其他运行域对齐同一次休眠尝试。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html#分层子链与方向-1",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:host-guest",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:tbox-guest-prep",
+      "title": "TBox Guest 保持与休眠",
+      "kind": "subtopic",
+      "description": "核对通信业务的保持要求、Guest 电源态和跨域通知；具体保活策略须按项目版本确认。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html#96-rtc唤醒与-suspendresume",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:host-guest",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:hypervisor-barrier",
+      "title": "Hypervisor 跨 VM 屏障",
+      "kind": "subtopic",
+      "description": "把各 Guest 的完成状态与 Host 进入低功耗的门槛分开；实际参与 VM 和顺序以当前部署为准。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/02.html#23-hypervisorhost-与-guest",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:host-guest",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:yocto-host-prep",
+      "title": "Yocto Host 设备准备",
+      "kind": "subtopic",
+      "description": "核对 Host 对物理设备、共享资源和 Guest 的依赖，再确认是否允许平台进入更深低功耗。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/07.html#71-启动与生命周期",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:host-guest",
+      "depth": 2
     },
     {
       "id": "subtopic:power:suspend",
@@ -1221,7 +1350,48 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:entry-blockers",
+      "title": "请求前后与保持唤醒",
+      "kind": "subtopic",
+      "description": "先找休眠请求和进入内核的边界，再检查是否有持续活跃的任务或唤醒保持。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:suspend",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:device-suspend",
+      "title": "内核与设备挂起阶段",
+      "kind": "subtopic",
+      "description": "逐阶段看任务冻结、设备回调和平台进入条件，记录最早未完成的接口。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:suspend",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:low-power-residency",
+      "title": "低功耗驻留与电流",
+      "kind": "subtopic",
+      "description": "休眠流程成功后仍需验证平台驻留和实际电流；软件成功消息不能代替硬件测量。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:suspend",
+      "depth": 2
     },
     {
       "id": "subtopic:power:wake",
@@ -1232,7 +1402,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:wake-source",
+      "title": "唤醒请求与来源",
+      "kind": "subtopic",
+      "description": "将车辆、定时、通信和设备中断按来源归类；须与同一次休眠及当前版本的唤醒映射关联。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html#96-rtc唤醒与-suspendresume",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:wake",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:abort-or-wake",
+      "title": "进入中断与真正唤醒",
+      "kind": "subtopic",
+      "description": "先证明平台曾稳定进入低功耗，再判定是睡前中断、快速唤醒还是正常唤醒。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:wake",
+      "depth": 2
     },
     {
       "id": "subtopic:power:tbox",
@@ -1243,7 +1441,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:rtc-schedule",
+      "title": "RTC 定时与远程唤醒",
+      "kind": "subtopic",
+      "description": "核对定时任务、触发时刻、唤醒来源和后续业务请求，避免把时间接近视为因果。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html#96-rtc唤醒与-suspendresume",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:tbox",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:modem-retention",
+      "title": "Modem 保活与远控链路",
+      "kind": "subtopic",
+      "description": "区分通信模块保持、网络重建和远控业务就绪；是否独立供电待车型资料确认。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html#94-modem-与-telephony",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:tbox",
+      "depth": 2
     },
     {
       "id": "subtopic:power:resume",
@@ -1254,7 +1480,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:vm-resume",
+      "title": "Host 与 VM 恢复顺序",
+      "kind": "subtopic",
+      "description": "先确认 Host、设备与 Guest 的新会话状态，再判定后续资源是否可复用。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html#业务流程-flow-38",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:resume",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:business-resume",
+      "title": "服务重连与业务可用",
+      "kind": "subtopic",
+      "description": "核对订阅重建、权威状态回读和可见业务结果，防止 Resume 完成后界面或功能仍旧失效。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/15.html#15610-唤醒后状态不恢复",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:resume",
+      "depth": 2
     },
     {
       "id": "subtopic:power:diagnostics",
@@ -1265,7 +1519,35 @@
       "source": "公开架构章节 · 电源细分索引",
       "topics": [
         "power"
-      ]
+      ],
+      "parentId": "topic:power",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:power:entry-evidence",
+      "title": "睡不下去的阶段证据",
+      "kind": "subtopic",
+      "description": "用同一次尝试的请求、阻塞、设备挂起和平台状态定位最早断点，保留跨域时间依据。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:diagnostics",
+      "depth": 2
+    },
+    {
+      "id": "subtopic:power:current-evidence",
+      "title": "睡着后高电流的证据",
+      "kind": "subtopic",
+      "description": "把频繁唤醒、外设保持、时钟驻留和硬件电流分开验证；比较必须使用相同状态与测量条件。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/23.html#236-低功耗与日志持久化",
+      "source": "公开架构章节 · 电源细分索引",
+      "topics": [
+        "power"
+      ],
+      "parentId": "subtopic:power:diagnostics",
+      "depth": 2
     }
   ],
   "edges": [
@@ -1975,6 +2257,56 @@
       "type": "内容索引"
     },
     {
+      "from": "subtopic:power:inputs",
+      "to": "subtopic:power:state-input",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:state-input",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-input",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-input",
+      "to": "course:day-7",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-input",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:inputs",
+      "to": "subtopic:power:state-policy",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:state-policy",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-policy",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-policy",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:state-policy",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:mcu",
       "type": "主题细分"
@@ -1996,6 +2328,31 @@
     },
     {
       "from": "subtopic:power:mcu",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:mcu",
+      "to": "subtopic:power:mcu-handshake",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:mcu-handshake",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:mcu-handshake",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:mcu-handshake",
+      "to": "course:day-7",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:mcu-handshake",
       "to": "course:day-8",
       "type": "内容索引"
     },
@@ -2022,6 +2379,51 @@
     {
       "from": "subtopic:power:supply",
       "to": "course:day-7",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:supply",
+      "to": "subtopic:power:primary-supply",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:primary-supply",
+      "to": "chapter:04",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:primary-supply",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:primary-supply",
+      "to": "course:day-7",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:supply",
+      "to": "subtopic:power:backup-supply",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:backup-supply",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:backup-supply",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:backup-supply",
+      "to": "course:day-7",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:backup-supply",
+      "to": "course:day-8",
       "type": "内容索引"
     },
     {
@@ -2085,6 +2487,106 @@
       "type": "内容索引"
     },
     {
+      "from": "subtopic:power:host-guest",
+      "to": "subtopic:power:android-prep",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:android-prep",
+      "to": "chapter:06",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:android-prep",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:android-prep",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:android-prep",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:android-prep",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:host-guest",
+      "to": "subtopic:power:tbox-guest-prep",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:tbox-guest-prep",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:tbox-guest-prep",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:tbox-guest-prep",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:host-guest",
+      "to": "subtopic:power:hypervisor-barrier",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:hypervisor-barrier",
+      "to": "chapter:02",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:hypervisor-barrier",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:hypervisor-barrier",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:hypervisor-barrier",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:host-guest",
+      "to": "subtopic:power:yocto-host-prep",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:yocto-host-prep",
+      "to": "chapter:07",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:yocto-host-prep",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:yocto-host-prep",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:yocto-host-prep",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:suspend",
       "type": "主题细分"
@@ -2117,6 +2619,81 @@
     {
       "from": "subtopic:power:suspend",
       "to": "course:day-39",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:suspend",
+      "to": "subtopic:power:entry-blockers",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:entry-blockers",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-blockers",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-blockers",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-blockers",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:suspend",
+      "to": "subtopic:power:device-suspend",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:device-suspend",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:device-suspend",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:device-suspend",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:device-suspend",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:suspend",
+      "to": "subtopic:power:low-power-residency",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:low-power-residency",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:low-power-residency",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:low-power-residency",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:low-power-residency",
+      "to": "course:day-38",
       "type": "内容索引"
     },
     {
@@ -2155,6 +2732,56 @@
       "type": "内容索引"
     },
     {
+      "from": "subtopic:power:wake",
+      "to": "subtopic:power:wake-source",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:wake-source",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:wake-source",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:wake-source",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:wake-source",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:wake",
+      "to": "subtopic:power:abort-or-wake",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:abort-or-wake",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:abort-or-wake",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:abort-or-wake",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:abort-or-wake",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:tbox",
       "type": "主题细分"
@@ -2171,6 +2798,46 @@
     },
     {
       "from": "subtopic:power:tbox",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:tbox",
+      "to": "subtopic:power:rtc-schedule",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:rtc-schedule",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:rtc-schedule",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:rtc-schedule",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:tbox",
+      "to": "subtopic:power:modem-retention",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:modem-retention",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:modem-retention",
+      "to": "chapter:13",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:modem-retention",
       "to": "course:day-8",
       "type": "内容索引"
     },
@@ -2210,6 +2877,61 @@
       "type": "内容索引"
     },
     {
+      "from": "subtopic:power:resume",
+      "to": "subtopic:power:vm-resume",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:vm-resume",
+      "to": "chapter:02",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:vm-resume",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:vm-resume",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:vm-resume",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:resume",
+      "to": "subtopic:power:business-resume",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:business-resume",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:business-resume",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:business-resume",
+      "to": "chapter:15",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:business-resume",
+      "to": "course:day-8",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:business-resume",
+      "to": "course:day-39",
+      "type": "内容索引"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:diagnostics",
       "type": "主题细分"
@@ -2231,6 +2953,56 @@
     },
     {
       "from": "subtopic:power:diagnostics",
+      "to": "course:day-39",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:diagnostics",
+      "to": "subtopic:power:entry-evidence",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:entry-evidence",
+      "to": "chapter:15",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-evidence",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-evidence",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:entry-evidence",
+      "to": "course:day-39",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:diagnostics",
+      "to": "subtopic:power:current-evidence",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:power:current-evidence",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:current-evidence",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:current-evidence",
+      "to": "course:day-38",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:power:current-evidence",
       "to": "course:day-39",
       "type": "内容索引"
     },

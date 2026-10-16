@@ -29,10 +29,15 @@ test('every edge resolves and states an index relation',()=>{
 test('power management has traceable, detailed learning paths',()=>{
   const branches=graph.nodes.filter(node=>node.kind==='subtopic'&&node.id.startsWith('subtopic:power:'));
   assert.equal(branches.length,graph.meta.subtopicCount);
-  assert.ok(branches.length>=10);
+  assert.equal(graph.meta.powerCategoryCount,branches.filter(node=>node.depth===1).length);
+  assert.equal(graph.meta.powerPathCount,branches.filter(node=>node.depth===2).length);
+  assert.ok(graph.meta.powerCategoryCount>=10);
+  assert.ok(graph.meta.powerPathCount>=20);
   for(const branch of branches){
     assert.ok(branch.url?.startsWith(graph.meta.sourceSite+'architecture/'),branch.id);
-    assert.ok(graph.edges.some(edge=>edge.from==='topic:power'&&edge.to===branch.id&&edge.type==='主题细分'),branch.id);
+    assert.ok(graph.edges.some(edge=>edge.from===branch.parentId&&edge.to===branch.id&&edge.type==='主题细分'),branch.id);
+    if(branch.depth===1)assert.equal(branch.parentId,'topic:power',branch.id);
+    else assert.ok(branches.some(parent=>parent.id===branch.parentId&&parent.depth===1),branch.id);
     assert.ok(graph.edges.filter(edge=>edge.from===branch.id&&edge.type==='内容索引').length>=2,branch.id);
   }
   const powerTargets=new Set(graph.edges.filter(edge=>edge.from.startsWith('subtopic:power:')).map(edge=>edge.to));

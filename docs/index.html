@@ -11,7 +11,7 @@
 </head>
 <body>
   <main class="workbench" aria-label="座舱知识银河工作台">
-    <canvas id="galaxy" aria-label="3D 座舱知识关系图。点击节点将它切换到中心，拖动旋转，滚轮缩放，详情中可打开原文。"></canvas>
+    <canvas id="galaxy" aria-label="3D 座舱知识关系图。鼠标悬停预览并放大标题，点击节点将它切换到中心，拖动旋转，滚轮缩放。"></canvas>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
@@ -30,6 +30,8 @@
 
     <div class="glass motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
 
+    <div id="hover-card" class="glass hover-card" aria-hidden="true"><span id="hover-kind"></span><strong id="hover-title"></strong><small id="hover-meta"></small></div>
+
     <aside id="detail" class="glass detail" aria-live="polite" hidden>
       <button id="detail-close" class="detail-close" type="button" aria-label="关闭节点详情">×</button>
       <div id="detail-kind" class="detail-kind"></div>
@@ -42,7 +44,7 @@
 
     <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
 
-    <div class="hint">点击星点切换中心 · 拖动旋转 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
+    <div class="hint">悬停星点预览 · 点击切换中心 · 拖动旋转 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
   </main>
 </body>
 </html>

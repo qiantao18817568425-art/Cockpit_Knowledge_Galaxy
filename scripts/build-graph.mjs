@@ -29,6 +29,14 @@ const topics = [
   ['diagnosis', '诊断与证据', '日志、复盘与工程验证']
 ];
 
+// A topic is an index node, so its reading link points to a public entry chapter.
+// Keep these chapter numbers in chapterTopics as well, so the link and graph agree.
+const topicLandingChapters = {
+  system:'02', virtualization:'02', android:'06', yocto:'07', mcu:'08',
+  tbox:'09', display:'11', camera:'11', audio:'12', power:'14',
+  cross:'05', diagnosis:'15'
+};
+
 const chapterTopics = {
   '00':['system'],'01':['system'],'02':['system','virtualization'],'03':['system'],'04':['system'],
   '05':['cross','diagnosis'],'06':['android'],'07':['yocto'],'08':['mcu','power'],'09':['tbox','power'],
@@ -59,7 +67,10 @@ function classify(title) {
 const nodes = [{ id:'root', title:'座舱知识', kind:'root', description:'公开架构章节与每日学习课程的关系入口。', url:siteBase, source:'公开学习站点' }];
 const edges = [];
 for (const [id,title,description] of topics) {
-  nodes.push({ id:`topic:${id}`, title, kind:'topic', description, url:null, source:'主题索引' });
+  const chapter = topicLandingChapters[id];
+  if (!chapter || !chapterTopics[chapter]?.includes(id)) throw new Error(`Invalid topic reading chapter: ${id}`);
+  nodes.push({ id:`topic:${id}`, title, kind:'topic', description,
+    url:`${siteBase}architecture/${chapter}.html`, source:`公开架构章节 · ${chapter} 章入门` });
   edges.push({ from:'root', to:`topic:${id}`, type:'主题目录' });
 }
 

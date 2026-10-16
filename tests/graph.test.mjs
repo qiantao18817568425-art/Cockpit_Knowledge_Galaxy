@@ -1,9 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const graph = JSON.parse(await readFile(new URL('../docs/graph.json', import.meta.url),'utf8'));
 const ids = new Set(graph.nodes.map(n=>n.id));
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const sourceRoot = ['upstream', '../Architecture_Learning-'].map(p=>path.resolve(projectRoot,p)).find(p=>existsSync(path.join(p,'docs','index.html')));
 
 test('public learning content is complete and traceable',()=>{
   assert.ok(graph.nodes.filter(n=>n.kind==='chapter').length>=25);
@@ -23,6 +28,27 @@ test('every edge resolves and states an index relation',()=>{
     assert.ok(ids.has(edge.from),edge.from);
     assert.ok(ids.has(edge.to),edge.to);
     assert.ok(['主题目录','主题归类','主题细分','内容索引','课程顺序'].includes(edge.type));
+  }
+});
+
+test('every public reading link resolves to a published file and heading', async()=>{
+  assert.ok(sourceRoot,'public source checkout is required for link validation');
+  const sourceSite = new URL(graph.meta.sourceSite);
+  const cache = new Map();
+  for (const node of graph.nodes) {
+    assert.ok(node.url,`Missing reading link: ${node.id}`);
+    const url = new URL(node.url);
+    assert.equal(url.origin,sourceSite.origin,node.id);
+    assert.ok(url.pathname.startsWith(sourceSite.pathname),node.id);
+    const relative = decodeURIComponent(url.pathname.slice(sourceSite.pathname.length)) || 'index.html';
+    const file = path.join(sourceRoot,'docs',relative);
+    assert.ok(existsSync(file),`${node.id}: ${relative}`);
+    if (!url.hash) continue;
+    if (!cache.has(file)) cache.set(file,new Set([...((await readFile(file,'utf8')).matchAll(/\bid="([^"]+)"/g))].map(match=>match[1])));
+    assert.ok(cache.get(file).has(decodeURIComponent(url.hash.slice(1))),`${node.id}: ${relative}${url.hash}`);
+  }
+  for (const topic of graph.nodes.filter(node=>node.kind==='topic')) {
+    assert.ok(graph.nodes.some(node=>node.kind==='chapter'&&node.url===topic.url&&graph.edges.some(edge=>edge.from===topic.id&&edge.to===node.id)),topic.id);
   }
 });
 

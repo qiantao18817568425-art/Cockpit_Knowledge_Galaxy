@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-15",
+    "sourceUpdatedOn": "2026-10-16",
     "chapterCount": 25,
     "lessonCount": 44,
-    "reviewCount": 23,
+    "reviewCount": 24,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -25,96 +25,96 @@
       "title": "整机与平台",
       "kind": "topic",
       "description": "系统边界、平台基线和整体架构",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/02.html",
+      "source": "公开架构章节 · 02 章入门"
     },
     {
       "id": "topic:virtualization",
       "title": "虚拟化",
       "kind": "topic",
       "description": "Hypervisor、Host 与 Guest 边界",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/02.html",
+      "source": "公开架构章节 · 02 章入门"
     },
     {
       "id": "topic:android",
       "title": "Android AAOS",
       "kind": "topic",
       "description": "Android 服务、应用与系统机制",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/06.html",
+      "source": "公开架构章节 · 06 章入门"
     },
     {
       "id": "topic:yocto",
       "title": "Yocto Host",
       "kind": "topic",
       "description": "宿主系统与平台服务",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/07.html",
+      "source": "公开架构章节 · 07 章入门"
     },
     {
       "id": "topic:mcu",
       "title": "MCU 与车信号",
       "kind": "topic",
       "description": "MCU、电源控制和车辆接口",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/08.html",
+      "source": "公开架构章节 · 08 章入门"
     },
     {
       "id": "topic:tbox",
       "title": "TBox 与连接",
       "kind": "topic",
       "description": "车联网通信与外部连接",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/09.html",
+      "source": "公开架构章节 · 09 章入门"
     },
     {
       "id": "topic:display",
       "title": "显示与 HMI",
       "kind": "topic",
       "description": "显示、首帧与人机界面",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/11.html",
+      "source": "公开架构章节 · 11 章入门"
     },
     {
       "id": "topic:camera",
       "title": "Camera / AVM",
       "kind": "topic",
       "description": "视频采集、环视与帧流",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/11.html",
+      "source": "公开架构章节 · 11 章入门"
     },
     {
       "id": "topic:audio",
       "title": "音频与语音",
       "kind": "topic",
       "description": "播放、采集与音频策略",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/12.html",
+      "source": "公开架构章节 · 12 章入门"
     },
     {
       "id": "topic:power",
       "title": "电源与生命周期",
       "kind": "topic",
       "description": "休眠、唤醒、启动与恢复",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/14.html",
+      "source": "公开架构章节 · 14 章入门"
     },
     {
       "id": "topic:cross",
       "title": "跨域通信",
       "kind": "topic",
       "description": "接口、消息与状态同步",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/05.html",
+      "source": "公开架构章节 · 05 章入门"
     },
     {
       "id": "topic:diagnosis",
       "title": "诊断与证据",
       "kind": "topic",
       "description": "日志、复盘与工程验证",
-      "url": null,
-      "source": "主题索引"
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/15.html",
+      "source": "公开架构章节 · 15 章入门"
     },
     {
       "id": "chapter:00",
@@ -1157,6 +1157,18 @@
       "topics": [
         "power",
         "cross"
+      ]
+    },
+    {
+      "id": "course:week-14-friday",
+      "title": "Week 14 - 周五反思总结：VM 看门狗、SOME/IP 新鲜度与恢复闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-14-friday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "power"
       ]
     },
     {
@@ -2224,6 +2236,16 @@
     {
       "from": "topic:cross",
       "to": "course:day-44",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:virtualization",
+      "to": "course:week-14-friday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-14-friday",
       "type": "主题归类"
     },
     {

@@ -162,7 +162,11 @@ function showNode(id){
   document.querySelector('#detail-description').textContent=node.description;
   document.querySelector('#detail-source').textContent=node.source;
   const link=document.querySelector('#detail-link');
-  if(node.url&&node.url.startsWith(graph.meta.sourceSite)){link.href=node.url;link.hidden=false}else{link.removeAttribute('href');link.hidden=true}
+  if(node.url&&node.url.startsWith(graph.meta.sourceSite)){
+    link.href=node.url;
+    link.textContent=node.kind==='topic'?'阅读相关章节 ↗':node.kind==='root'?'前往学习站点 ↗':node.kind==='subtopic'?'阅读对应段落 ↗':'打开原文 ↗';
+    link.hidden=false;
+  }else{link.removeAttribute('href');link.hidden=true}
   const list=document.querySelector('#related-list');list.replaceChildren();
   const order={subtopic:0,chapter:1,lesson:2,review:3,topic:4,root:5};
   const relations=[...neighbors.get(id)].filter(other=>byId.has(other)).sort((a,b)=>order[byId.get(a).kind]-order[byId.get(b).kind]);

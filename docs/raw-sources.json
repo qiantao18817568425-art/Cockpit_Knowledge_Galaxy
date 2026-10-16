@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "原始资料",
-    "state": "公开目录；原件下载待上传",
+    "state": "公开目录；部分原件已上线",
     "physicalFiles": 340,
     "uniqueContents": 301,
     "listedDocuments": 299,
     "archiveMembers": 214,
-    "downloadReady": 0,
-    "notice": "分类依据文件名、来源清单与文字索引。资料所有者已确认可公开；原件仍在上传准备中，当前没有可用下载链接。技术结论和适用版本尚需逐页确认。"
+    "downloadReady": 11,
+    "notice": "已有 11 份原件可下载，其余仍在上传准备中。分类依据文件名、来源清单与文字索引；技术结论和适用版本尚需逐页确认。"
   },
   "categories": [
     {
@@ -4017,7 +4017,7 @@
         "17"
       ],
       "reviewState": "来源直接引证",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-78ba6687962e.pdf"
     },
     {
       "id": "232daa16ff71",
@@ -4036,7 +4036,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-232daa16ff71.pdf"
     },
     {
       "id": "45653c777bca",
@@ -4055,7 +4055,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-45653c777bca.pdf"
     },
     {
       "id": "f22832cfa268",
@@ -4074,7 +4074,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-f22832cfa268.pdf"
     },
     {
       "id": "b3ab2e67d52d",
@@ -4097,7 +4097,7 @@
         "23"
       ],
       "reviewState": "来源直接引证",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
       "id": "e8cfe763d374",
@@ -4117,7 +4117,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-e8cfe763d374.pdf"
     },
     {
       "id": "bd4864cd0a67",
@@ -4137,7 +4137,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-bd4864cd0a67.pdf"
     },
     {
       "id": "bbb5ef8aa8ec",
@@ -4157,7 +4157,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-bbb5ef8aa8ec.pdf"
     },
     {
       "id": "02961279599c",
@@ -4177,7 +4177,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-02961279599c.pdf"
     },
     {
       "id": "872b38c6d67f",
@@ -4196,7 +4196,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-872b38c6d67f.pdf"
     },
     {
       "id": "c79914693d64",
@@ -4215,7 +4215,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-c79914693d64.pdf"
     },
     {
       "id": "0d324bedb45f",

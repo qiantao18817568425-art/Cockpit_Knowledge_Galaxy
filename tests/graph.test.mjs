@@ -72,7 +72,14 @@ test('raw materials have a distinct category and complete classified directory',
     assert.ok(document.name&&document.format,document.id);
     assert.match(document.sha256,/^[0-9a-f]{64}$/);
     for(const chapter of document.chapterCandidates)assert.ok(ids.has(`chapter:${chapter}`),document.id);
-    if(document.downloadUrl)assert.ok(document.downloadUrl.startsWith('https://'),document.id);
+    if(document.downloadUrl){
+      assert.ok(document.downloadUrl.startsWith('https://'),document.id);
+      const url=new URL(document.downloadUrl);
+      if(url.hostname.endsWith('.github.io')){
+        const relative=url.pathname.replace('/Cockpit_Knowledge_Galaxy/','');
+        assert.ok(existsSync(path.join(projectRoot,'docs',relative)),document.id);
+      }
+    }
   }
   for(const category of categories){
     assert.equal(category.parentId,'topic:raw');

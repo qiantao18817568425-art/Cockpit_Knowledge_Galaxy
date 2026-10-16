@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "原始资料",
-    "state": "公开目录；部分原件已上线",
+    "state": "原件下载已公开",
     "physicalFiles": 340,
     "uniqueContents": 301,
     "listedDocuments": 299,
     "archiveMembers": 214,
-    "downloadReady": 295,
-    "notice": "已有 295 份原件可下载，其余仍在上传准备中。分类依据文件名、来源清单与文字索引；技术结论和适用版本尚需逐页确认。"
+    "downloadReady": 299,
+    "notice": "原件可从公开仓库或 GitHub Release 下载。分类依据文件名、来源清单与文字索引；技术结论和适用版本尚需逐页确认。"
   },
   "categories": [
     {
@@ -701,7 +701,7 @@
         "19"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy/releases/download/untagged-7d7c1cf42c40cf03bb90/raw-3ffda3633b49.rar"
     },
     {
       "id": "59ccf9c0f25e",
@@ -3429,7 +3429,7 @@
         "17"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy/releases/download/untagged-7d7c1cf42c40cf03bb90/raw-e2519aa16e3b.zip"
     },
     {
       "id": "b1c3ea09c6d9",
@@ -4387,7 +4387,7 @@
         "23"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy/releases/download/untagged-7d7c1cf42c40cf03bb90/raw-543e357866a5.rar"
     },
     {
       "id": "e673c34c0d4c",
@@ -5890,7 +5890,7 @@
         "12"
       ],
       "reviewState": "待逐页核实",
-      "downloadUrl": null
+      "downloadUrl": "https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy/releases/download/untagged-7d7c1cf42c40cf03bb90/raw-5a70e60b5e6d.rar"
     },
     {
       "id": "742b67255442",

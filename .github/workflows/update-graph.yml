@@ -2,8 +2,13 @@ name: Update public knowledge graph
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/build-graph.mjs'
+      - '.github/workflows/update-graph.yml'
   schedule:
     - cron: '35 1 * * *'
+    - cron: '45 12 * * *'
 
 permissions:
   contents: write

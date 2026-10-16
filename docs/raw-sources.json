@@ -196,6 +196,7 @@
   "documents": [
     {
       "id": "a8a1aa448b88",
+      "sha256": "a8a1aa448b88aab3698bd7624623364b41f2b918ad41c5779638d0bf504be2d0",
       "name": "MT8668_Android_IPO_User_Manual_CN_V1.0.pdf",
       "category": "android",
       "platform": "MT8668",
@@ -213,6 +214,7 @@
     },
     {
       "id": "3e5afcb20755",
+      "sha256": "3e5afcb20755477f48a0e693256c7e0c43eb492577e086ea176df9d2883b5dea",
       "name": "MT8676_Android_DDR_User_Manual_ V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -230,6 +232,7 @@
     },
     {
       "id": "37f5ed85e31d",
+      "sha256": "37f5ed85e31d177bec5008a94aa2bd7c335e029c28cdbcaa22d6a4da5a3090ab",
       "name": "MT8676_Android_DDR_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -247,6 +250,7 @@
     },
     {
       "id": "4372e62da7d8",
+      "sha256": "4372e62da7d87002e5138f919ba78b4664beb8f610ecd75d7fa70b6ccc878605",
       "name": "MT8676_Android_GPS_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -264,6 +268,7 @@
     },
     {
       "id": "83cce0f0d84a",
+      "sha256": "83cce0f0d84a739f3b93094348cefb9c10f42204211294b65b19f67d5b8b60a8",
       "name": "MT8676_Android_GPS_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -281,6 +286,7 @@
     },
     {
       "id": "4276ac3d43b1",
+      "sha256": "4276ac3d43b181b362f5b976d77ff79217e99f4b140f3eeb27a8582e4c034931",
       "name": "MT8676_Android_General_Introduction_V1.1.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -298,6 +304,7 @@
     },
     {
       "id": "fe5c7bebad68",
+      "sha256": "fe5c7bebad68b805756e19c974b8a8ff4555029b54339390bb11204e0cff63cf",
       "name": "MT8676_Android_General_Introduction_V1.1.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -315,6 +322,7 @@
     },
     {
       "id": "9d35060e0261",
+      "sha256": "9d35060e0261f340ad93de9785cd05d7827300af2e102c334e12295478726c86",
       "name": "MT8676_Android_I2C_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -332,6 +340,7 @@
     },
     {
       "id": "cd4da46210e1",
+      "sha256": "cd4da46210e1b296950232ce2617127674e6285c410074885f7229f0e9379ab8",
       "name": "MT8676_Android_I2C_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -349,6 +358,7 @@
     },
     {
       "id": "fb0f163b34e6",
+      "sha256": "fb0f163b34e67743aa1ee9f34286cd4323645f69d33bbaa2a45f990405e8d448",
       "name": "MT8676_Android_IPO_User_Manual_ V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -366,6 +376,7 @@
     },
     {
       "id": "d5578aaa112e",
+      "sha256": "d5578aaa112e1ee2fcfa7b41814e688670ef50022b8baf75744f2c879b8b6835",
       "name": "MT8676_Android_IPO_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -383,6 +394,7 @@
     },
     {
       "id": "07ba8708b032",
+      "sha256": "07ba8708b032bf7231c9d9c9d152c122e53b532484a9dc4ab4d1857fe0ae50e6",
       "name": "MT8676_Android_System_User_Manual_ V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -400,6 +412,7 @@
     },
     {
       "id": "6bd2fa3feaf4",
+      "sha256": "6bd2fa3feaf49817d226b303ca661335275bc566cff3de8787cc559dbbad5bcd",
       "name": "MT8676_Android_System_User_Manual_V1.0.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -417,6 +430,7 @@
     },
     {
       "id": "b724dfbe0dbe",
+      "sha256": "b724dfbe0dbe6a1689c24ee810f4fceb3be5d52c45ab890dfb53812ca28599a4",
       "name": "MT8676_Android_UART_User_Manual_V1.1.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -434,6 +448,7 @@
     },
     {
       "id": "fe255878b698",
+      "sha256": "fe255878b698d185a5327ff9aec9659c436e8dd83ca2e05402948c443f1682c9",
       "name": "MT8676_Android_UART_User_Manual_V1.1.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -451,6 +466,7 @@
     },
     {
       "id": "aa85206665a9",
+      "sha256": "aa85206665a9f9761cc089882b5538814f24de8a07ef0285cc9fc8abc347eb2f",
       "name": "android系统起不来分析.pdf",
       "category": "android",
       "platform": "MT8676",
@@ -468,6 +484,7 @@
     },
     {
       "id": "b1169fd18761",
+      "sha256": "b1169fd18761031a5bd6b916d6eb1b79d00ac8bc1302f2748cacef8b76d043b2",
       "name": "3OS time synchronization.pdf",
       "category": "android",
       "platform": "待确认",
@@ -487,6 +504,7 @@
     },
     {
       "id": "6c11069e244f",
+      "sha256": "6c11069e244f90d74172da48786a3b14a2bfcad4e445d7ab42d8689e912b0699",
       "name": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -505,6 +523,7 @@
     },
     {
       "id": "4330ba7eddf6",
+      "sha256": "4330ba7eddf6ea04d40083018799771a5afe0e05e2e851a4c3d325ac256c4934",
       "name": "MT8668_Android_Camera_Turbo_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -523,6 +542,7 @@
     },
     {
       "id": "2faacfd1b738",
+      "sha256": "2faacfd1b73865cbcc5260d578dd6811b0c71ddb0ea23f8800672a1d8e69c6ad",
       "name": "MT8668_Android_DVR_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -541,6 +561,7 @@
     },
     {
       "id": "355d4f791169",
+      "sha256": "355d4f791169e10496dfc12ad0cf551389672336cc970f7d7e0ebef318ee53b6",
       "name": "MT8668_Camera_Sensor_Driver_Bringup_SOP_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -561,6 +582,7 @@
     },
     {
       "id": "db487565233b",
+      "sha256": "db487565233bce46dacdcefd88e97b854d031ddef35f3b2053a916c98030c02e",
       "name": "MT8668_Hypervisor_Camera_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -587,6 +609,7 @@
     },
     {
       "id": "1f7b85f8dfc6",
+      "sha256": "1f7b85f8dfc6e2af860aeb10694148b8769e80f138a14f911edf105d88140256",
       "name": "MT8668_Hypervisor_Vcodec_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -606,6 +629,7 @@
     },
     {
       "id": "d5c445e4df99",
+      "sha256": "d5c445e4df99aae84f4b5132eceb11b9a771cd80f442ab18495a19dce5f602a3",
       "name": "MT8668_Yocto_AVM_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -624,6 +648,7 @@
     },
     {
       "id": "e2124eed8257",
+      "sha256": "e2124eed82570bb848c9206a0dda5d201ed8cae25a34abc97baa8e3bb016978b",
       "name": "MT8668_Yocto_Camera_Driver_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -642,6 +667,7 @@
     },
     {
       "id": "ce4327878058",
+      "sha256": "ce43278780583c3205ac05c21a903d4afbfbab36dea69f0606e32eda88f0c5ad",
       "name": "MT8668_Yocto_FastRVC_User_Manual_CN_V1.0.pdf",
       "category": "camera",
       "platform": "MT8668",
@@ -660,6 +686,7 @@
     },
     {
       "id": "3ffda3633b49",
+      "sha256": "3ffda3633b4942537992bbf391f3c0beab5d819f506bbf1d4addb9f423d46661",
       "name": "CSI.rar",
       "category": "camera",
       "platform": "MT8676",
@@ -678,6 +705,7 @@
     },
     {
       "id": "59ccf9c0f25e",
+      "sha256": "59ccf9c0f25e88d1113e94af9be0579c4aff1726b00af0081d62ef19f5297ebc",
       "name": "DVR分享.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -696,6 +724,7 @@
     },
     {
       "id": "140b4869f951",
+      "sha256": "140b4869f951f8385dbd61613e391efbca33108e9c8a4d10211620271a9ac703",
       "name": "EVS软件开发培训1223.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -714,6 +743,7 @@
     },
     {
       "id": "1fce1e40a576",
+      "sha256": "1fce1e40a576c515932d2f44c7339bb7688e24f98c0c1bd3a33ecc429705be5d",
       "name": "MT8676_Android_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -732,6 +762,7 @@
     },
     {
       "id": "2cb616e3e186",
+      "sha256": "2cb616e3e186a7922abd0920c595235bd29ed09743b4d19a230bb11658b1d611",
       "name": "MT8676_Android_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -750,6 +781,7 @@
     },
     {
       "id": "74c716f63dfe",
+      "sha256": "74c716f63dfe7a9e0d9b6c1571a5b3e87cf5e403df10ee03c0681c6ddc4f3c14",
       "name": "MT8676_Android_Camera_Driver_User_Manual_V1.2.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -768,6 +800,7 @@
     },
     {
       "id": "b0adb12e154f",
+      "sha256": "b0adb12e154f917273b9897625e7f3a130f56bc3862a9b1dc4a12b5514a180c5",
       "name": "MT8676_Android_Camera_Driver_User_Manual_V1.2.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -786,6 +819,7 @@
     },
     {
       "id": "e914c6daaad7",
+      "sha256": "e914c6daaad72d23572f4a8b89efbddd775c133afa03c4d8180a5e24016b956f",
       "name": "MT8676_Android_Camera_Turbo_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -804,6 +838,7 @@
     },
     {
       "id": "984278ee09e5",
+      "sha256": "984278ee09e54d49a21cdac813941b600c4c48f3decac280ced6baebb1a0ff6c",
       "name": "MT8676_Android_Camera_Turbo_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -822,6 +857,7 @@
     },
     {
       "id": "01d0f7d1891c",
+      "sha256": "01d0f7d1891c66a7a9eb60b6760bcf9b1577806b46ec8fefa7bae437dc649dd5",
       "name": "MT8676_Android_DVR_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -840,6 +876,7 @@
     },
     {
       "id": "6344b359854e",
+      "sha256": "6344b359854edd3e7860c0e0b6e0efb848fa309ec32bd07d6bc816ab65508995",
       "name": "MT8676_Android_DVR_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -858,6 +895,7 @@
     },
     {
       "id": "fa5f43dca8d4",
+      "sha256": "fa5f43dca8d4f35cfc6086c274a06e5e71f73af28f9fd5587977ab8f3dc668b2",
       "name": "MT8676_Android_FastRVC_User_Manual_ V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -876,6 +914,7 @@
     },
     {
       "id": "bf16d2b93d43",
+      "sha256": "bf16d2b93d43ff18181e2e59182d17957213bf10b129e0740809278bba39ae54",
       "name": "MT8676_Android_FastRVC_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -894,6 +933,7 @@
     },
     {
       "id": "7a235c6e6765",
+      "sha256": "7a235c6e676504868dce30bc90cd389de402a75c56e222157b6c17ed76fca6e5",
       "name": "MT8676_Hypervisor_Camera_ISP_Driver_Introduction_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -913,6 +953,7 @@
     },
     {
       "id": "52452e66baed",
+      "sha256": "52452e66baedfe2e6395db8cdb0afdd4c60a306f699d7bab5e84075ac95f2f21",
       "name": "MT8676_Hypervisor_Camera_MW_Introduction_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -932,6 +973,7 @@
     },
     {
       "id": "28f33b5b442f",
+      "sha256": "28f33b5b442f91b64187c3310408346502acea5ba33597c7c35762d01eb6c14c",
       "name": "MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -953,6 +995,7 @@
     },
     {
       "id": "8ffa08647b60",
+      "sha256": "8ffa08647b60118ffaff0affaef01189ca3800981abd021e1af3af5cb20ed357",
       "name": "MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -972,6 +1015,7 @@
     },
     {
       "id": "2ca0cfa195c8",
+      "sha256": "2ca0cfa195c8759df452547652c024c8fa9a4d86a817aaab06675d56f0008432",
       "name": "MT8676_Hypervisor_Vcodec_User_Manual_V1.2.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -991,6 +1035,7 @@
     },
     {
       "id": "4e82f0cb886e",
+      "sha256": "4e82f0cb886e5414fb29e593684bac3e731738204be92b5a66e89c24340a5fe2",
       "name": "MT8676_Hypervisor_Vcodec_User_Manual_V1.2.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1010,6 +1055,7 @@
     },
     {
       "id": "e8c210d3eda4",
+      "sha256": "e8c210d3eda459a4896411fdcf96720093501f411c3ffb5e73c672f0b80859b1",
       "name": "MT8676_Yocto_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1028,6 +1074,7 @@
     },
     {
       "id": "0a8a2336080c",
+      "sha256": "0a8a2336080c09009f28bc5399bdb384e3ed1650a84c58ec6c0a93bf5351bb0b",
       "name": "MT8676_Yocto_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1046,6 +1093,7 @@
     },
     {
       "id": "781dfbb6e151",
+      "sha256": "781dfbb6e151225f9c1308b8788afc82fee19b61ceadee192e33f09fd992ffa5",
       "name": "MT8676_Yocto_Camera_Driver_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1064,6 +1112,7 @@
     },
     {
       "id": "3bd2f904e632",
+      "sha256": "3bd2f904e632b94eb9bdfdf1278eb700d8fbdbcdc993de502352e7d7d8616408",
       "name": "MT8676_Yocto_Camera_Driver_User_Manual_V1.1.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1082,6 +1131,7 @@
     },
     {
       "id": "6fb99f5d4fea",
+      "sha256": "6fb99f5d4fea2f56057a054ce982ffcf47eb47e15dddb956458460b12e92eec3",
       "name": "MT8676_Yocto_Camera_Turbo_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1100,6 +1150,7 @@
     },
     {
       "id": "0ae0c98cf808",
+      "sha256": "0ae0c98cf80898dc33926df07ceb901de63989dee620579d37dbfe25f7bdd6cd",
       "name": "MT8676_Yocto_Camera_Turbo_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1118,6 +1169,7 @@
     },
     {
       "id": "231ce2823668",
+      "sha256": "231ce28236686bf0fda2b9c30506e9a577c343d0b454749185c3a072b2ea29fd",
       "name": "MT8676_Yocto_FastRVC_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1136,6 +1188,7 @@
     },
     {
       "id": "24e652ef273a",
+      "sha256": "24e652ef273aedee47e2de50ce1d78e6d46c57cc8a01655854081e27d9245582",
       "name": "MT8676_Yocto_FastRVC_User_Manual_V1.0.pdf",
       "category": "camera",
       "platform": "MT8676",
@@ -1154,6 +1207,7 @@
     },
     {
       "id": "81a8c931d000",
+      "sha256": "81a8c931d00044808287b7a610d13cf5436f72a3538ed9325683dd6434fd60de",
       "name": "MT8668_Hypervisor_GPIO_User_Manual_CN_V1.0.pdf",
       "category": "mcu",
       "platform": "MT8668",
@@ -1172,6 +1226,7 @@
     },
     {
       "id": "9f37a8db2acd",
+      "sha256": "9f37a8db2acdc0978f537d46c88228a20c2b8bbed18f24af597ad1e78af26894",
       "name": "MT8668_Hypervisor_SPI_User_Manual_CN_V1.0.pdf",
       "category": "mcu",
       "platform": "MT8668",
@@ -1191,6 +1246,7 @@
     },
     {
       "id": "7d1e0f95c34f",
+      "sha256": "7d1e0f95c34f85cdc6979f47ac270c6505d949845921de1c7f4bbba86a8f8818",
       "name": "MT8668_Yocto_SPI_User_Manual_CN_V1.0.pdf",
       "category": "mcu",
       "platform": "MT8668",
@@ -1209,6 +1265,7 @@
     },
     {
       "id": "40192730210a",
+      "sha256": "40192730210a5820491d465b71a4cdcf43299eacee893fb5fef67f14bbb988b3",
       "name": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1227,6 +1284,7 @@
     },
     {
       "id": "d3691b28be36",
+      "sha256": "d3691b28be364182c4fe052a2943639d3c95cf26488c150069894918452fddfa",
       "name": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1245,6 +1303,7 @@
     },
     {
       "id": "183254d73cbd",
+      "sha256": "183254d73cbdc6354fdbeb70560cacba23b015a870a82ca111eb481be6ffb856",
       "name": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1263,6 +1322,7 @@
     },
     {
       "id": "852e551201a0",
+      "sha256": "852e551201a0d34065d5651a2e32f5023cb750c2a213666f0552a10899623bcb",
       "name": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1281,6 +1341,7 @@
     },
     {
       "id": "2397734a51c2",
+      "sha256": "2397734a51c2dd97e166bee5d534cd6d7cb4c2a62aee976959deb6b7733187a1",
       "name": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1299,6 +1360,7 @@
     },
     {
       "id": "1befc8374cfe",
+      "sha256": "1befc8374cfe1ae3cf3c9f80b352f9f3cc640a12eb79b74443eeb9a2da669b1e",
       "name": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1317,6 +1379,7 @@
     },
     {
       "id": "398af5949db9",
+      "sha256": "398af5949db91dae695f03dc12fe6a1125e8e8acc154e0e6874dd2869387836c",
       "name": "vehicle方案.pdf",
       "category": "mcu",
       "platform": "MT8676",
@@ -1335,6 +1398,7 @@
     },
     {
       "id": "4ae975b91299",
+      "sha256": "4ae975b912995cfb91ffc9c068804002297acf1434a520e201d5eaecedddeb65",
       "name": "EINT培训.rar",
       "category": "mcu",
       "platform": "待确认",
@@ -1353,6 +1417,7 @@
     },
     {
       "id": "58bac8d6e11b",
+      "sha256": "58bac8d6e11b80ddc418a00bf7d1489a851b4f68f8d5aa74005ab848f0f6441c",
       "name": "MT8668_Android_BT_User_Manual_CN_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8668",
@@ -1371,6 +1436,7 @@
     },
     {
       "id": "be1aff227afa",
+      "sha256": "be1aff227afa79140c50d66b18cbb5f20b0a483c18c2c9345a0f4ee90f7b33cc",
       "name": "MT8668_Android_Wifi_User_Manual_CN_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8668",
@@ -1389,6 +1455,7 @@
     },
     {
       "id": "63729693d95a",
+      "sha256": "63729693d95a1e713a15ae15da64c5067671f96a94aa360dd1503b57698476d1",
       "name": "MT8668_GNSS_Specification_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8668",
@@ -1407,6 +1474,7 @@
     },
     {
       "id": "617e4896eb57",
+      "sha256": "617e4896eb57b5d039a5f95ee82d1aa655cbf7cb72a4fac18e86d4923575546d",
       "name": "MT8668_Hypervisor_GNSS_User_Manual_CN_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8668",
@@ -1426,6 +1494,7 @@
     },
     {
       "id": "7a9437a7db8a",
+      "sha256": "7a9437a7db8a9d2567347610bda7c92e6344b8e9101a338566737bbc37ac2710",
       "name": "MT8668_Yocto_eCall_User_Manual_CN_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8668",
@@ -1444,6 +1513,7 @@
     },
     {
       "id": "b6db294b7916",
+      "sha256": "b6db294b79165d3283fee197d88db9e1141c3e595bffa1fd0a05dab6b3885b1a",
       "name": "Hypervisor Tbox(L+L+A)架构.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1462,6 +1532,7 @@
     },
     {
       "id": "f24f4fe4d19c",
+      "sha256": "f24f4fe4d19c328b0e24906961ce3bd30fc30a7ad2a1a2089f8340743c0e3d23",
       "name": "MT8676 TBOX子系统架构设计.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1480,6 +1551,7 @@
     },
     {
       "id": "e52de38fef83",
+      "sha256": "e52de38fef8323a9db826821d4f3ca04dec7a3014f60d8c4003d79ba4561191c",
       "name": "MT8676_Android_BT_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1498,6 +1570,7 @@
     },
     {
       "id": "200f3c05d9cd",
+      "sha256": "200f3c05d9cd4f2c30c770e0af3ca12fc401ca29521c340ba4c52dfbc41466be",
       "name": "MT8676_Android_BT_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1516,6 +1589,7 @@
     },
     {
       "id": "7a498a5dfafa",
+      "sha256": "7a498a5dfafabddf40348e1991613eec33df10001831aaa56bd460b6082f5aaa",
       "name": "MT8676_Android_WiFi_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1534,6 +1608,7 @@
     },
     {
       "id": "f1e3a5801e5d",
+      "sha256": "f1e3a5801e5da7aa11ee2b86751d2a4926c54584fe34bcbca923728c966fe780",
       "name": "MT8676_Android_WiFi_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1552,6 +1627,7 @@
     },
     {
       "id": "73b34cf0a80b",
+      "sha256": "73b34cf0a80bae3c86a7b99332676c1d4a8523d8368bd93246ffb6761bfbf27b",
       "name": "MT8676_Hypervisor_GNSS_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1571,6 +1647,7 @@
     },
     {
       "id": "14958f21236f",
+      "sha256": "14958f21236f05586caa4aa472693ff476bac4ada9d67b4df6e5271c2d789fdd",
       "name": "MT8676_Hypervisor_GNSS_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1590,6 +1667,7 @@
     },
     {
       "id": "250adb38e25c",
+      "sha256": "250adb38e25c6b6283b34771f9c10c85d7cf089d2ab7507a1b8be3fdc5054777",
       "name": "MT8676_Yocto_eCall_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1608,6 +1686,7 @@
     },
     {
       "id": "d5672b3d4f5d",
+      "sha256": "d5672b3d4f5d7f56aae6086e5a2c1f1cb7352465475a875f3432c2550ed705db",
       "name": "MT8676_Yocto_eCall_User_Manual_V1.0.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1626,6 +1705,7 @@
     },
     {
       "id": "6e1afbe19015",
+      "sha256": "6e1afbe19015438d4d0a0a9e70ebabbb5b50c0049acaf77ddbd03014d048bcda",
       "name": "MT86xx+Workshop+Tbox.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1644,6 +1724,7 @@
     },
     {
       "id": "a7e4b3132313",
+      "sha256": "a7e4b3132313dbd1482d5c999455eee62dd17af84bed605ab6f8b9d2b19d43b5",
       "name": "MTK平台网络配置.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1662,6 +1743,7 @@
     },
     {
       "id": "3e6385ac82ab",
+      "sha256": "3e6385ac82abc82c1286b53e3f015e732b31f900aae44a4c638b0dfa6dd910b5",
       "name": "PCIE DEBUG GUIDE.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1680,6 +1762,7 @@
     },
     {
       "id": "6a7c492cf597",
+      "sha256": "6a7c492cf5972dabac2e07f4a265741b489e1fe5c73a76526d9576c6eb93ead9",
       "name": "PCIE.rar",
       "category": "tbox",
       "platform": "MT8676",
@@ -1698,6 +1781,7 @@
     },
     {
       "id": "839d3d6f2a0d",
+      "sha256": "839d3d6f2a0d72c15285e214af5c02f97939a3ca3108103e1e649fe2d6f23617",
       "name": "TBOX未登录TSP.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1715,6 +1799,7 @@
     },
     {
       "id": "6ee6bf39eea0",
+      "sha256": "6ee6bf39eea025810453843da734726f4415bcbe00fa1fe6b95145a2af988855",
       "name": "eCall_Overview_V1.2.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1733,6 +1818,7 @@
     },
     {
       "id": "3c456da9d243",
+      "sha256": "3c456da9d243acbc7ac0efdb5a5f8818f20d55f759909a8c42a810c83ae35266",
       "name": "tbox整车无网络案例分享.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1750,6 +1836,7 @@
     },
     {
       "id": "9eae122081b6",
+      "sha256": "9eae122081b6b7a9fe905370c74db60d2b566f058f1d0f249771b1966136f670",
       "name": "刷机后无网络.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1768,6 +1855,7 @@
     },
     {
       "id": "6035c10be62b",
+      "sha256": "6035c10be62bf7dc85227b467a9bef5429074ae8e9df45170e918cafdd40dab6",
       "name": "蓝牙架构.pdf",
       "category": "tbox",
       "platform": "MT8676",
@@ -1786,6 +1874,7 @@
     },
     {
       "id": "0de6d012049c",
+      "sha256": "0de6d012049cc85ed7edda783b32f77158b36d457fbe167fe66d51967c3c52ad",
       "name": "Tbox_Telephony_MD and mdlog SOP.pdf",
       "category": "tbox",
       "platform": "待确认",
@@ -1804,6 +1893,7 @@
     },
     {
       "id": "c4d8634dee6e",
+      "sha256": "c4d8634dee6e6e26c19cd4d7a585e5e7dd82a0218d0b77c14e82bce05e170ee1",
       "name": "modem log常见分析方法.pdf",
       "category": "tbox",
       "platform": "待确认",
@@ -1825,6 +1915,7 @@
     },
     {
       "id": "fefa132a945d",
+      "sha256": "fefa132a945d047b8e41bd500838416bfcd5739f1f1241d2c0db18ed12ca1eab",
       "name": "MT8668_Android_SDCard_User_Manual_CN_V1.0.pdf",
       "category": "usb",
       "platform": "MT8668",
@@ -1842,6 +1933,7 @@
     },
     {
       "id": "dbba8095559d",
+      "sha256": "dbba8095559df846bc1033021efaf57e29a6c640886ce138c269b90f15d657ac",
       "name": "MT8668_Android_USB_User_Manual_CN_V1.0.pdf",
       "category": "usb",
       "platform": "MT8668",
@@ -1859,6 +1951,7 @@
     },
     {
       "id": "e2492abe19ec",
+      "sha256": "e2492abe19ec2eda045d46dacb77b1f2385fb5604d099632603326aba014653c",
       "name": "MT8668_USB_Customer_Support_SOP_CN_V1.0.pdf",
       "category": "usb",
       "platform": "MT8668",
@@ -1877,6 +1970,7 @@
     },
     {
       "id": "cba4630088f7",
+      "sha256": "cba4630088f7550654ba8f62646f299747944f50938ddb86a981e943a6970b79",
       "name": "MT8668_Yocto_SDCard_User_Manual_CN_V1.0.pdf",
       "category": "usb",
       "platform": "MT8668",
@@ -1894,6 +1988,7 @@
     },
     {
       "id": "f71b132e4ab4",
+      "sha256": "f71b132e4ab44b81b20e91259057337aa2118e9d8de169121054692154cc2573",
       "name": "MT8668_Yocto_USB_User_Manual_CN_V1.0.pdf",
       "category": "usb",
       "platform": "MT8668",
@@ -1911,6 +2006,7 @@
     },
     {
       "id": "36817cbb1339",
+      "sha256": "36817cbb13397a9e28b5c3f5c6a494fefae608b0eaa4aa6024ad271a2b803ba3",
       "name": "MT8676_Android_SDCard_User_Manual_ V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -1928,6 +2024,7 @@
     },
     {
       "id": "a3042f158d97",
+      "sha256": "a3042f158d97a85ec50802b34c9ed60e5b1fbc57d25d28f02dd31e8522301408",
       "name": "MT8676_Android_SDCard_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -1945,6 +2042,7 @@
     },
     {
       "id": "afa3d415e857",
+      "sha256": "afa3d415e857143e01ffb0397c6e3e4b2d965b4264aa160c8195de2eed9ea335",
       "name": "MT8676_Android_USB_User_Manual_ V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -1962,6 +2060,7 @@
     },
     {
       "id": "f89d9f4cd89b",
+      "sha256": "f89d9f4cd89bb3ef1bcc33978266a396f270e85a8b6fe4fe5ba98a4766895e25",
       "name": "MT8676_Android_USB_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -1979,6 +2078,7 @@
     },
     {
       "id": "8f66a6dab8b6",
+      "sha256": "8f66a6dab8b6e346156ffba7f28021e185dbaed2f9afb2114f76aca0421a5865",
       "name": "MT8676_Yocto_SDCard_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -1996,6 +2096,7 @@
     },
     {
       "id": "4b5c8e0b65ad",
+      "sha256": "4b5c8e0b65ad55b7f059b403ff24aac8e0d82aca793028bb9675724f892810cc",
       "name": "MT8676_Yocto_SDCard_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -2013,6 +2114,7 @@
     },
     {
       "id": "998ce13df798",
+      "sha256": "998ce13df79878658efbe1a84a3751e69d7ac328acb5939eb628fafc9ed8ca40",
       "name": "MT8676_Yocto_USB_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -2030,6 +2132,7 @@
     },
     {
       "id": "45d28fd50a95",
+      "sha256": "45d28fd50a95d0b496cf73f3624d39b7da89d1b1c885ac6ab5f841208ecd4cfb",
       "name": "MT8676_Yocto_USB_User_Manual_V1.0.pdf",
       "category": "usb",
       "platform": "MT8676",
@@ -2047,6 +2150,7 @@
     },
     {
       "id": "36e7fa1f93e4",
+      "sha256": "36e7fa1f93e450d23fb6181356c30250c21d619b8756f8e4339c7d5cbaa84aef",
       "name": "SSUSB.rar",
       "category": "usb",
       "platform": "MT8676",
@@ -2064,6 +2168,7 @@
     },
     {
       "id": "aa722a95a0ab",
+      "sha256": "aa722a95a0ab0ffaa90cab15c197ea8b401a80544c306e6569a2b636640c10b6",
       "name": "MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2081,6 +2186,7 @@
     },
     {
       "id": "18ec91283d4d",
+      "sha256": "18ec91283d4dc5fd725690e8bd2c63aa7ea942c10cef6cf874f2266564f4bec2",
       "name": "MT8668_Yocto_Property_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2098,6 +2204,7 @@
     },
     {
       "id": "4c95c7252a57",
+      "sha256": "4c95c7252a57a32ee46245dd74dedb354affa43c9c8488046a4cdc2fe06c204e",
       "name": "MT8668_Yocto_Sentry_Mode_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2115,6 +2222,7 @@
     },
     {
       "id": "20554ef2677e",
+      "sha256": "20554ef2677ee10827dd92dca95d5298cdeb910379cc6950a466bdaa5b523f35",
       "name": "MT8668_Yocto_System_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2132,6 +2240,7 @@
     },
     {
       "id": "dbdab38836d5",
+      "sha256": "dbdab38836d52c215e28a3b5e2bca1cf2b2e5ca5cec43dd7b62d15df7beb1dfa",
       "name": "MT8668_Yocto_T-Box_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2151,6 +2260,7 @@
     },
     {
       "id": "e7b728514d1d",
+      "sha256": "e7b728514d1d4e8fad05553b4deb1fc3bd32ae9b264994eb737ab4a0e42b72fd",
       "name": "MT8668_Yocto_UART_User_Manual_CN_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8668",
@@ -2168,6 +2278,7 @@
     },
     {
       "id": "dc694aa327b5",
+      "sha256": "dc694aa327b58fb77b611bffd9605476ea5ec1d6ab67bc958b0ee3e9834fda11",
       "name": "MT8676_Yocto_GPS_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2185,6 +2296,7 @@
     },
     {
       "id": "4348c8ad81a0",
+      "sha256": "4348c8ad81a08a4f3823b86e5b3e52a03b2033367285087ceb84b11907034a17",
       "name": "MT8676_Yocto_GPS_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2202,6 +2314,7 @@
     },
     {
       "id": "e81920c10d11",
+      "sha256": "e81920c10d1110533d256cbead4267519b632c0edc21b235cd4430763194fde4",
       "name": "MT8676_Yocto_General_Introduction_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2219,6 +2332,7 @@
     },
     {
       "id": "b4d883053c20",
+      "sha256": "b4d883053c20fd02ea9760703770ab5b6cac14cb54889c8a1c6ec1c6b8fa0758",
       "name": "MT8676_Yocto_General_Introduction_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2236,6 +2350,7 @@
     },
     {
       "id": "2e0992f640ab",
+      "sha256": "2e0992f640abec9ca7db927700cff45e6b23ed37d1d9912f46ce55290188c60f",
       "name": "MT8676_Yocto_Property_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2253,6 +2368,7 @@
     },
     {
       "id": "46a716eaaab4",
+      "sha256": "46a716eaaab4bd02df26d46de6c90065da8d51fc5b5a0d39c58dfe0b0b106fb9",
       "name": "MT8676_Yocto_Property_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2270,6 +2386,7 @@
     },
     {
       "id": "6cfac687decb",
+      "sha256": "6cfac687decb4e548b5ffe6f6510124f3e44a390506e019e1a0b0dffae801150",
       "name": "MT8676_Yocto_Sentry_Mode_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2287,6 +2404,7 @@
     },
     {
       "id": "f59aa6695702",
+      "sha256": "f59aa6695702a0834c4fa3b8b65fb74b5a69f444f39e0c2c629e3a26347fb8eb",
       "name": "MT8676_Yocto_Sentry_Mode_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2304,6 +2422,7 @@
     },
     {
       "id": "15e56401fb86",
+      "sha256": "15e56401fb86b3c1f79f0d1730aac8da1366ce50ba99b819270bb9951977792e",
       "name": "MT8676_Yocto_System_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2321,6 +2440,7 @@
     },
     {
       "id": "5cdc83a70bf8",
+      "sha256": "5cdc83a70bf8c0e2512b766ace98f1ba2edb221b9b9e9b7d11eef1ddd9edd2f7",
       "name": "MT8676_Yocto_System_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2338,6 +2458,7 @@
     },
     {
       "id": "444fcacd8f06",
+      "sha256": "444fcacd8f06041bd87410fcbd5cc30b252191e0a35cdbc09203d48984a3bb88",
       "name": "MT8676_Yocto_T-Box_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2355,6 +2476,7 @@
     },
     {
       "id": "0bcc7a720a9d",
+      "sha256": "0bcc7a720a9d7977288ea975eecb6c0e2e07a4a9ff3a4d80111cb35ac08f35b6",
       "name": "MT8676_Yocto_T-Box_User_Manual_V1.0.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2372,6 +2494,7 @@
     },
     {
       "id": "63e4e4b10e6b",
+      "sha256": "63e4e4b10e6b30733a25b70ce55ebed8f4f6b6ae98e0692ae6e94550dd93b1ae",
       "name": "MT8676_Yocto_UART_User_Manual_V1.1.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2389,6 +2512,7 @@
     },
     {
       "id": "60ac08ad3143",
+      "sha256": "60ac08ad314307c155401eec4309ab6c6a32b234e924a263dea8a6be85e25704",
       "name": "MT8676_Yocto_UART_User_Manual_V1.1.pdf",
       "category": "yocto",
       "platform": "MT8676",
@@ -2406,6 +2530,7 @@
     },
     {
       "id": "7807e7a6bd97",
+      "sha256": "7807e7a6bd971e1cf097ae2418a1bc454e578a7170ab170ebbb6f4c1af0d8528",
       "name": "MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf",
       "category": "boot",
       "platform": "MT8668",
@@ -2425,6 +2550,7 @@
     },
     {
       "id": "5b4522578daf",
+      "sha256": "5b4522578daf0c990428cf50963fda608f8424848e2dde8cbd33cb09178d13bd",
       "name": "MT8676_Android_OTA_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2443,6 +2569,7 @@
     },
     {
       "id": "bcd7023dd6c3",
+      "sha256": "bcd7023dd6c3de223d5b104a2a770d8c267ee8e2d988122215f3654719fa138a",
       "name": "MT8676_Android_OTA_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2461,6 +2588,7 @@
     },
     {
       "id": "b41590638432",
+      "sha256": "b415906384329cf8ebcb719c1d83bdf8121542ce2e3f287da85be07dfd2847c0",
       "name": "MT8676_Android_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2480,6 +2608,7 @@
     },
     {
       "id": "25514cae24e4",
+      "sha256": "25514cae24e48ad29ca4816cce914c5e647fb301fa5d59aea60451c14cdf8b70",
       "name": "MT8676_Android_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2499,6 +2628,7 @@
     },
     {
       "id": "ebcdec122bb5",
+      "sha256": "ebcdec122bb5ca48d52b38fc083c31891f173cc306c8d3e783f2d7f569bf1a2d",
       "name": "MT8676_Yocto_OTA_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2517,6 +2647,7 @@
     },
     {
       "id": "15941d5cdc16",
+      "sha256": "15941d5cdc16d0019d9d620f878422f7206776525cceaebd0e9f3174014d7d3e",
       "name": "MT8676_Yocto_OTA_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2535,6 +2666,7 @@
     },
     {
       "id": "3b1e52e682f9",
+      "sha256": "3b1e52e682f9252e086b3e4d2132d9f535c910504d74c41101900fd885c6bb6a",
       "name": "MT8676_Yocto_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2554,6 +2686,7 @@
     },
     {
       "id": "3b4bd744f5de",
+      "sha256": "3b4bd744f5de8c2618fdfea7aead92f8fdade1ba59dd682f1a4ed84de96da412",
       "name": "MT8676_Yocto_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "boot",
       "platform": "MT8676",
@@ -2573,6 +2706,7 @@
     },
     {
       "id": "ee34dd854e09",
+      "sha256": "ee34dd854e097e7a464a3ac5c5d85ed298a7be37464c648c5135dae10de9744a",
       "name": "MTK86系列平台安全启动详细设计说明资料.zip",
       "category": "boot",
       "platform": "MT8676",
@@ -2592,6 +2726,7 @@
     },
     {
       "id": "c94a6f788bd3",
+      "sha256": "c94a6f788bd31105c1d7e7a76c5d3d8849c2934367d6c63d610f8da290c62a93",
       "name": "Yocto SELinux Introduction(8676).pdf",
       "category": "security",
       "platform": "MT8676",
@@ -2610,6 +2745,7 @@
     },
     {
       "id": "390860030f5a",
+      "sha256": "390860030f5ac38cd3b8797e12b3d43400b4eb0025e7d9a49e141a9764e414ab",
       "name": "奇瑞项目Yocto SELinux 介绍 资料.zip",
       "category": "security",
       "platform": "待确认",
@@ -2628,6 +2764,7 @@
     },
     {
       "id": "3ca55da6a9f2",
+      "sha256": "3ca55da6a9f26a8384e3509db1b0c79e8870054de25c3e53f17a735bd4f70794",
       "name": "MT8668_Android_AI_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2648,6 +2785,7 @@
     },
     {
       "id": "defe098f947a",
+      "sha256": "defe098f947a7a04a09734350d5fe0bbb21fc5ca46d4eaf55605eda07944fc03",
       "name": "MT8668_Android_GPU_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2668,6 +2806,7 @@
     },
     {
       "id": "a9dd302399ca",
+      "sha256": "a9dd302399ca377a3bf228b9bb3917f5937fb3b8f0b2eed3280e323bf330fb16",
       "name": "MT8668_Android_SDK_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2688,6 +2827,7 @@
     },
     {
       "id": "7a0c89b2f3e7",
+      "sha256": "7a0c89b2f3e716272619ab03eed66056597cfc0a9857f84c4d36541428b6b2fc",
       "name": "MT8668_Android_Thermal_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2708,6 +2848,7 @@
     },
     {
       "id": "0970f5784a42",
+      "sha256": "0970f5784a42cf14b22e5cc6803736b7f4c228eda0910489ed3c27ad9fb8b4ba",
       "name": "MT8668_Application_Processor_Technical_Brief_V0.1.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2728,6 +2869,7 @@
     },
     {
       "id": "45846faca00d",
+      "sha256": "45846faca00dec6453b30985c4a59cdd1000a726a730c1fb51682417cd23ae2d",
       "name": "MT8668_SCP_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2748,6 +2890,7 @@
     },
     {
       "id": "daaf8317f91f",
+      "sha256": "daaf8317f91f1edc3d244c4d8ed6a6a9208e6a8b3788d3f8b35f87478c3ee42a",
       "name": "MT8668_Yocto_AI_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2768,6 +2911,7 @@
     },
     {
       "id": "2576411b5ab1",
+      "sha256": "2576411b5ab1e9977203026f326e956644401b8943acf323bc01b600a08ff7e8",
       "name": "MT8668_Yocto_GPU_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2788,6 +2932,7 @@
     },
     {
       "id": "0072a842cf3c",
+      "sha256": "0072a842cf3ca7534921d0ff027237ab1cd9fac41e6192657f6b49c95fefca5c",
       "name": "MT8668_Yocto_Thermal_User_Manual_CN_V1.0.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2808,6 +2953,7 @@
     },
     {
       "id": "d6b8534c0193",
+      "sha256": "d6b8534c01933235774797130370b94072100c95d297469265f03ea62e8d4f5f",
       "name": "P5B系列车规级模组产品规格书_v2.0_20260629.pdf",
       "category": "platform",
       "platform": "MT8668",
@@ -2825,6 +2971,7 @@
     },
     {
       "id": "11b9316f312a",
+      "sha256": "11b9316f312a85d7ccc655d3ac0520331696bfa3b8e2dbf913fa2ac85e31a9a4",
       "name": "0007-000001-957 MT6685_DCXO_DataSheet_V1.4.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2845,6 +2992,7 @@
     },
     {
       "id": "98b9631a8af5",
+      "sha256": "98b9631a8af57157edbb11b3a6c99412e8261c516adc3ad3b755910bd6dd725d",
       "name": "8676快速开发手册-V1.1.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2865,6 +3013,7 @@
     },
     {
       "id": "074e04a0dae5",
+      "sha256": "074e04a0dae59ffcde2801beebe4631ab9b9f872132af209e5cb3fd71672fead",
       "name": "MT6197_ibis.rar",
       "category": "platform",
       "platform": "MT8676",
@@ -2885,6 +3034,7 @@
     },
     {
       "id": "5d77a1dea038",
+      "sha256": "5d77a1dea0381cb1761ba942a5b40029a0d4d4da5ca6498878c0529d4b33cd92",
       "name": "MT6686_Datasheet_V1.4.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2905,6 +3055,7 @@
     },
     {
       "id": "369a167bab94",
+      "sha256": "369a167bab945805277e9e0d6e18ebbea48c20b4ec55f29642d9914df87e1c5b",
       "name": "MT8676_Android_AI_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2925,6 +3076,7 @@
     },
     {
       "id": "27c28fa1cf19",
+      "sha256": "27c28fa1cf199443eea0a0e1591ec4bdc7aef132ee12e98af595a7846012e2f7",
       "name": "MT8676_Android_AI_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2945,6 +3097,7 @@
     },
     {
       "id": "81862b4f99af",
+      "sha256": "81862b4f99af859aa8fedaccd7eb34196c510dc8eecb4e5a50b2d38f37b47dfd",
       "name": "MT8676_Android_GPU_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2965,6 +3118,7 @@
     },
     {
       "id": "9efe4b97a91b",
+      "sha256": "9efe4b97a91bad7baae5d10f5668167ed7e111c5626eefc498091eb1ee029060",
       "name": "MT8676_Android_GPU_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -2985,6 +3139,7 @@
     },
     {
       "id": "f202b6567e43",
+      "sha256": "f202b6567e43ea42434564c1985abd4bc8827884f65e72de3ca96c6082bb44d5",
       "name": "MT8676_Android_SDK_User_Manual_ V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3005,6 +3160,7 @@
     },
     {
       "id": "a34c5b731928",
+      "sha256": "a34c5b731928dce574ec960712d18dc91be506a21182dec3ea84110db7997320",
       "name": "MT8676_Android_SDK_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3025,6 +3181,7 @@
     },
     {
       "id": "4a5404071a65",
+      "sha256": "4a5404071a658bc325d8308b1a2ff266ad5f09d7ac63dc0e11a4db5ce6259d6d",
       "name": "MT8676_Android_Thermal_User_Manual_ V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3045,6 +3202,7 @@
     },
     {
       "id": "508dbeafcf88",
+      "sha256": "508dbeafcf88144a780c2057a4378f57b9dec2f0592396e88103250d9e93f978",
       "name": "MT8676_Android_Thermal_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3065,6 +3223,7 @@
     },
     {
       "id": "286280b15067",
+      "sha256": "286280b150671c80d5cd72bbd5f9bc5a8235d41334253474eab7efab1f634ce0",
       "name": "MT8676_SCP_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3085,6 +3244,7 @@
     },
     {
       "id": "add7ebe4914c",
+      "sha256": "add7ebe4914ce4fb1987b29163d46a3c19aa5cb33180116067dadc3819122c7f",
       "name": "MT8676_SCP_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3105,6 +3265,7 @@
     },
     {
       "id": "b0dbacda5c87",
+      "sha256": "b0dbacda5c8790210fcf321fdd79d03e9c45b62fbd1621e78386a08a08e20c45",
       "name": "MT8676_YOCTO_SCP_User_Manual_zh_V1.01.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3125,6 +3286,7 @@
     },
     {
       "id": "38c50e5e32f9",
+      "sha256": "38c50e5e32f9a6d9ce2b504f8c3550761c1654ce7e3e8fcaa0c5e6ef07e9ca1f",
       "name": "MT8676_Yocto_AI_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3145,6 +3307,7 @@
     },
     {
       "id": "c9b8980cc5a6",
+      "sha256": "c9b8980cc5a633a56c827ae664ded94dabf777bf3409051347de96b59f32c87b",
       "name": "MT8676_Yocto_AI_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3165,6 +3328,7 @@
     },
     {
       "id": "a14bf24fda30",
+      "sha256": "a14bf24fda30996a73aeecc021377dd1e97c96851f9711dd4dd71a705d4c99b3",
       "name": "MT8676_Yocto_GPU_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3185,6 +3349,7 @@
     },
     {
       "id": "770f8cb07c32",
+      "sha256": "770f8cb07c3235be482ca06e9dfab05697e9af6b5e5223bab221e78c81b7745b",
       "name": "MT8676_Yocto_GPU_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3205,6 +3370,7 @@
     },
     {
       "id": "76602ab493ab",
+      "sha256": "76602ab493abc0563af0897a6debe65e41a325b68a0ad7d6c23ecb1906a37b08",
       "name": "MT8676_Yocto_Thermal_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3225,6 +3391,7 @@
     },
     {
       "id": "41ce1e67fadb",
+      "sha256": "41ce1e67fadb6fc896b854d387d590c8efa88766b2db3fc74ff491040319b2ad",
       "name": "MT8676_Yocto_Thermal_User_Manual_V1.0.pdf",
       "category": "platform",
       "platform": "MT8676",
@@ -3245,6 +3412,7 @@
     },
     {
       "id": "e2519aa16e3b",
+      "sha256": "e2519aa16e3bf37e50890592254a8c8089f34ce1400fd59ec5a15e83fe7ace9c",
       "name": "P39.A03.H5_V2.1QR对外资料1023.zip",
       "category": "platform",
       "platform": "MT8676",
@@ -3265,6 +3433,7 @@
     },
     {
       "id": "b1c3ea09c6d9",
+      "sha256": "b1c3ea09c6d9c78266524bb0a267224ad0e4b0ede3489ad98129b96f08467104",
       "name": "U2.rar",
       "category": "platform",
       "platform": "MT8676",
@@ -3285,6 +3454,7 @@
     },
     {
       "id": "ff3311f490ff",
+      "sha256": "ff3311f490ffb66b751d65fea09dfab209f06b6a83d0fb3ccfe12cb1a698f075",
       "name": "汇报材料--软件开发培训.pptx",
       "category": "platform",
       "platform": "待确认",
@@ -3302,6 +3472,7 @@
     },
     {
       "id": "0554d880bcfb",
+      "sha256": "0554d880bcfb92541cd01ef47d5d5163b578054f8cb5170ba2204b625af4c77c",
       "name": "MT8668_DSI_Bringup_SOP_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3322,6 +3493,7 @@
     },
     {
       "id": "0ac675257290",
+      "sha256": "0ac675257290614f556debe715546a221bb502765e0efb7799720b2c20247252",
       "name": "MT8668_DSI_Bringup_SOP_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3342,6 +3514,7 @@
     },
     {
       "id": "e6f862cdda05",
+      "sha256": "e6f862cdda05f6ab226dfd244182a2b14d8531edd9ec0d8fd4d04dcf774fdb84",
       "name": "MT8668_Hypervisor_Display_User_Manual_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3363,6 +3536,7 @@
     },
     {
       "id": "d2054c264cae",
+      "sha256": "d2054c264cae4f251f1ec7d42985679c8ad32a4dbf0181faa985490b3ad272c4",
       "name": "MT8668_Hypervisor_Display_User_Manual_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3383,6 +3557,7 @@
     },
     {
       "id": "f389ba21d747",
+      "sha256": "f389ba21d747d1079729e4f34cb52681e43e2206dddeedd96361ef85c603bffc",
       "name": "MT8668_Hypervisor_Multi_Display_Proxy-Wayland_User_Manual_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3407,6 +3582,7 @@
     },
     {
       "id": "e6746757e7bf",
+      "sha256": "e6746757e7bf0d0665757673e779eb110c22b81a66d71acc0adbdf359190b595",
       "name": "MT8668_Hypervisor_Touch_User_Manual_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3426,6 +3602,7 @@
     },
     {
       "id": "1ae2434832d6",
+      "sha256": "1ae2434832d69efbd637ea20754b949cca43639dec360f71222adbeea7b7c7c5",
       "name": "MT8668_Yocto_Panel_User_Manual_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3444,6 +3621,7 @@
     },
     {
       "id": "a0a4b6d5cee9",
+      "sha256": "a0a4b6d5cee93e90af29a602decc1631f0fae383ac6f611acf65e8f3ef0d4e33",
       "name": "MT8676_Bringup_SOP_DSI_CN_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3464,6 +3642,7 @@
     },
     {
       "id": "a861eabc5efa",
+      "sha256": "a861eabc5efa0069def436ae572a481a28af06767c94388799fdcee5bd55acd9",
       "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8668",
@@ -3482,6 +3661,7 @@
     },
     {
       "id": "14b704107bcc",
+      "sha256": "14b704107bcccfcd978027c39c4c2ce845cb577ad1df4d2068707436cba8de3c",
       "name": "DPTX.rar",
       "category": "display",
       "platform": "MT8676",
@@ -3500,6 +3680,7 @@
     },
     {
       "id": "377e840a30a0",
+      "sha256": "377e840a30a0e2ce4bfa6d893711e96ddf1fb277b9fa5cdda995e5ecf577cd40",
       "name": "DSI.rar",
       "category": "display",
       "platform": "MT8676",
@@ -3518,6 +3699,7 @@
     },
     {
       "id": "1619663e55af",
+      "sha256": "1619663e55af75d298ea6846a7ab577577418eaef27c844142097ed8a9566e1a",
       "name": "MT8676_Android_DSI_Panel_User_Manual_ V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3536,6 +3718,7 @@
     },
     {
       "id": "6d1c9931e889",
+      "sha256": "6d1c9931e889ed4b70dee811bd529dac8b36f4043508ad8df8397462b4c64aab",
       "name": "MT8676_Android_DSI_Panel_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3554,6 +3737,7 @@
     },
     {
       "id": "5aac82d4d7aa",
+      "sha256": "5aac82d4d7aa46cf1b9fc8a15bc6ae3c5aebcbcbc893f343b1bb8a39a70aaca1",
       "name": "MT8676_Android_Display_User_Manual_ V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3573,6 +3757,7 @@
     },
     {
       "id": "9ec9003f71b1",
+      "sha256": "9ec9003f71b1b9f52e0b8bee0e7812a09a1ccdcd03549e1f71b5e8582c0d9f04",
       "name": "MT8676_Android_Display_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3592,6 +3777,7 @@
     },
     {
       "id": "1ee440ddc61d",
+      "sha256": "1ee440ddc61d849a9cfe5b752f87898cc941a04801f4566fdd7b25df874312a8",
       "name": "MT8676_Display_Panel_Issue_Debug_SOP_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3612,6 +3798,7 @@
     },
     {
       "id": "ed864e63e29b",
+      "sha256": "ed864e63e29b06eef375c22005d19b1d1669ec4108f069de0097bb459ac0b1ac",
       "name": "MT8676_Hypervisor_Display_User_Manual_V1.1.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3632,6 +3819,7 @@
     },
     {
       "id": "753ab8dd0db2",
+      "sha256": "753ab8dd0db2bfa1207006f0b024d40f557a94a56538ee72f1a65d9861a807a5",
       "name": "MT8676_Hypervisor_Display_User_Manual_V1.3.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3652,6 +3840,7 @@
     },
     {
       "id": "30174454fb71",
+      "sha256": "30174454fb71777676a8a441756baed7d6cfd427f303ffcaf7633eb047a94a1e",
       "name": "MT8676_Hypervisor_Display_User_Manual_V1.3.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3672,6 +3861,7 @@
     },
     {
       "id": "318e6af558f5",
+      "sha256": "318e6af558f566e235d27c798023e812c620c39ae92aae395d4dee5c79e110d2",
       "name": "MT8676_Hypervisor_Touch_User_Manual_V1.1.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3691,6 +3881,7 @@
     },
     {
       "id": "4bdcab0b5af6",
+      "sha256": "4bdcab0b5af6c8e3bf7a605806faadd8aee05e1486d661a7a9a965ee235c3b7f",
       "name": "MT8676_Hypervisor_Touch_User_Manual_V1.1.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3710,6 +3901,7 @@
     },
     {
       "id": "36a4f8b59bde",
+      "sha256": "36a4f8b59bdec2f096c363d35b0de8b4d8cb04431a30215195a6fad2122094a5",
       "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3728,6 +3920,7 @@
     },
     {
       "id": "2ba0a3c4a44e",
+      "sha256": "2ba0a3c4a44efa041e98cf80796269750afc21e050ed0aecbdeb0448ee397079",
       "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3746,6 +3939,7 @@
     },
     {
       "id": "b229bc10d601",
+      "sha256": "b229bc10d601f283bcc9faf20155c3633366025030f16e008b2a5d607067fa68",
       "name": "MT8676_Yocto_Display_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3765,6 +3959,7 @@
     },
     {
       "id": "1a3df9ee9ed8",
+      "sha256": "1a3df9ee9ed82f61f16ed055650e6e09f958f4af98ec14f96566e35236419a06",
       "name": "MT8676_Yocto_Display_User_Manual_V1.0.pdf",
       "category": "display",
       "platform": "MT8676",
@@ -3784,6 +3979,7 @@
     },
     {
       "id": "b41e1bc58922",
+      "sha256": "b41e1bc5892288f9a50f80d3c54938f6f400824083fd6a4c6bb3a6f6406c1402",
       "name": "weston介绍和应用.pdf",
       "category": "display",
       "platform": "待确认",
@@ -3804,6 +4000,7 @@
     },
     {
       "id": "78ba6687962e",
+      "sha256": "78ba6687962ea157f14eee1aced9267c4bc6c35699607e8675e3e1176a74ce83",
       "name": "MT8668_Hypervisor_Suspend_Resume_User_Manual_CN_V1.0.pdf",
       "category": "power",
       "platform": "MT8668",
@@ -3824,6 +4021,7 @@
     },
     {
       "id": "232daa16ff71",
+      "sha256": "232daa16ff71548a5fca2be532a3272bcd834a8b5f26ef9ede317c8b5f2d9928",
       "name": "MT6363_Design_Notice_for_MT8676_V01.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3842,6 +4040,7 @@
     },
     {
       "id": "45653c777bca",
+      "sha256": "45653c777bcadf0ae77efdb09036d83c1dd1da15d6900108c5b3f9ac977ac5e2",
       "name": "MT8676_Android_Suspend_Resume_User_Manual_ V1.0.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3860,6 +4059,7 @@
     },
     {
       "id": "f22832cfa268",
+      "sha256": "f22832cfa268b21b6d9fe1f9e546bf6b8ef960f18fa9c7b52aaab37162c6acaa",
       "name": "MT8676_Android_Suspend_Resume_User_Manual_V1.0.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3878,6 +4078,7 @@
     },
     {
       "id": "b3ab2e67d52d",
+      "sha256": "b3ab2e67d52d5192a4a1a2abea73e1419f5813b2465eb1a93404268c9e469b65",
       "name": "MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3900,6 +4101,7 @@
     },
     {
       "id": "e8cfe763d374",
+      "sha256": "e8cfe763d37479350adb15d332225918bee8875a50fd878278d834e00e80d073",
       "name": "MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3919,6 +4121,7 @@
     },
     {
       "id": "bd4864cd0a67",
+      "sha256": "bd4864cd0a6775ff1eec3b0d071925dd4f406cea71fedd8505d11cba7d07eac7",
       "name": "MT8676_Hypervisor_Suspend_Resume_V1.1.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3938,6 +4141,7 @@
     },
     {
       "id": "bbb5ef8aa8ec",
+      "sha256": "bbb5ef8aa8ec40ca36708eb881fcb77c5b8050a4c0f1145a68dce585ea371681",
       "name": "MT8676_Hypervisor_Suspend_Resume_V1.2.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3957,6 +4161,7 @@
     },
     {
       "id": "02961279599c",
+      "sha256": "02961279599c269def44d2fc7768c283d01179defe4878fac5c6b7adfad8be35",
       "name": "MT8676_Hypervisor_Suspend_Resume_sample(1).pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3976,6 +4181,7 @@
     },
     {
       "id": "872b38c6d67f",
+      "sha256": "872b38c6d67fec1eee0e4cd1ac1c876be8ef0c06d82fbac8d4193424d7cfe0ae",
       "name": "MT8676_Yocto_Suspend_Resume_User_Manual_V1.0.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -3994,6 +4200,7 @@
     },
     {
       "id": "c79914693d64",
+      "sha256": "c79914693d64bbc7c84fdc1ddefe2e0dbe51d5e63764a4376d3753b1f11f0752",
       "name": "MT8676_Yocto_Suspend_Resume_User_Manual_V1.0.pdf",
       "category": "power",
       "platform": "MT8676",
@@ -4012,6 +4219,7 @@
     },
     {
       "id": "0d324bedb45f",
+      "sha256": "0d324bedb45f25a9b81defa68e8470f5038fc80be45700fc5475db12cee9f715",
       "name": "MT8676_Android_AEE_User_Manual_V1.0.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4030,6 +4238,7 @@
     },
     {
       "id": "5d4fbbe82209",
+      "sha256": "5d4fbbe82209404645b9c235483d97d1c4625b25ef0aea0b1d57b556afee29bb",
       "name": "MT8676_Android_AEE_User_Manual_V1.0.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4048,6 +4257,7 @@
     },
     {
       "id": "b2b210bfd555",
+      "sha256": "b2b210bfd555858f62adb9236fd01798d706eb7b45896a9c8ecb90116cd00799",
       "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4066,6 +4276,7 @@
     },
     {
       "id": "891b4546ef85",
+      "sha256": "891b4546ef85b38067503ecea54567949d7214111f0cc57ecbae2f260fac05d9",
       "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4084,6 +4295,7 @@
     },
     {
       "id": "7ace10c59839",
+      "sha256": "7ace10c5983949c671b67b679cf443518e6850e9fd4aa6c1c38383b9e97e7d13",
       "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4102,6 +4314,7 @@
     },
     {
       "id": "3dfcfd692b65",
+      "sha256": "3dfcfd692b651f6bfb7a28827a415a42a986a3906c5db2f03c1467c19da5e66d",
       "name": "lmkd+引发的system_server+SWT.pdf",
       "category": "stability",
       "platform": "MT8676",
@@ -4121,6 +4334,7 @@
     },
     {
       "id": "107ee51d6420",
+      "sha256": "107ee51d6420420a0aca0cf1104b384ff5e80977ef5f51f7d34e80ae3df047b9",
       "name": "Mtrace Tool 使用说明.docx",
       "category": "stability",
       "platform": "待确认",
@@ -4139,6 +4353,7 @@
     },
     {
       "id": "8d74a6884c58",
+      "sha256": "8d74a6884c58374b4bf12b56e2f1aff18807dd55c80129f1f6d3f8bab6428f7e",
       "name": "使用page_owner定位内存泄露.rar",
       "category": "stability",
       "platform": "待确认",
@@ -4157,6 +4372,7 @@
     },
     {
       "id": "543e357866a5",
+      "sha256": "543e357866a50574d5d72702ce29be443479a043477bfa0f1987ee8371305da4",
       "name": "系统稳定性资料分享.rar",
       "category": "stability",
       "platform": "待确认",
@@ -4175,6 +4391,7 @@
     },
     {
       "id": "e673c34c0d4c",
+      "sha256": "e673c34c0d4c3d1ce61e0257104750baeac28715d0a60d7be466bcca4e5c993e",
       "name": "MT8668_Hypervisor_AI_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4194,6 +4411,7 @@
     },
     {
       "id": "398c051fcb7f",
+      "sha256": "398c051fcb7f51504e53d82008b628c435240a964bdc9a46489249f4c24c2501",
       "name": "MT8668_Hypervisor_Clock_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4214,6 +4432,7 @@
     },
     {
       "id": "99f3e33f914d",
+      "sha256": "99f3e33f914dcebe4fee976ba04aa4ffca6c5cee48b3dfc760c44abd929d652b",
       "name": "MT8668_Hypervisor_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4235,6 +4454,7 @@
     },
     {
       "id": "6891b99c5e09",
+      "sha256": "6891b99c5e0953d4958d05b3f7af081567cf8f49b7a33fe7ead8f125c7d1414f",
       "name": "MT8668_Hypervisor_GPU_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4255,6 +4475,7 @@
     },
     {
       "id": "adec16da0d62",
+      "sha256": "adec16da0d62a268966ed8e5145b8d0b89f419c9c6d53684d21d94777bd34684",
       "name": "MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4273,6 +4494,7 @@
     },
     {
       "id": "3f04bd3f157a",
+      "sha256": "3f04bd3f157ad1b1754b3f294cf10fa4cafa94340b4099fab097fc70c5ce8def",
       "name": "MT8668_Hypervisor_I2C_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4293,6 +4515,7 @@
     },
     {
       "id": "d2f773042f68",
+      "sha256": "d2f773042f681c31555a701c96f0df9195563c144d33a2d42574e3143f93103d",
       "name": "MT8668_Hypervisor_OP-TEE_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4313,6 +4536,7 @@
     },
     {
       "id": "58292e0d0987",
+      "sha256": "58292e0d098722a18555a674b9f40f221c63b588935dd6530e20d08a1696fe68",
       "name": "MT8668_Hypervisor_OTA_LLA_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4331,6 +4555,7 @@
     },
     {
       "id": "cb4f3b88886b",
+      "sha256": "cb4f3b88886b853b76a47ca65d1c1034520f43ef090f1c95877970331c167534",
       "name": "MT8668_Hypervisor_Performance_User_Manual_CN_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4351,6 +4576,7 @@
     },
     {
       "id": "607cd3a86dd3",
+      "sha256": "607cd3a86dd30f4b094c07f3d11b5e1b677dee4247a21b2f551355d703621b95",
       "name": "MT8668_Hypervisor_Reserved_Memory_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4371,6 +4597,7 @@
     },
     {
       "id": "88161ea5f13a",
+      "sha256": "88161ea5f13a3ae7ded76ed7bdece0805fda9105eabf1b0c08918ce24ec336cc",
       "name": "MT8668_Hypervisor_SDCard_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4391,6 +4618,7 @@
     },
     {
       "id": "0b8cec92f7cc",
+      "sha256": "0b8cec92f7cc2731cc97af8f20ba9e1e9516a5f18428688155d3581b99efc52a",
       "name": "MT8668_Hypervisor_Secure_Boot_Remote_Signature_SOP_V0.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4413,6 +4641,7 @@
     },
     {
       "id": "d78592d209d4",
+      "sha256": "d78592d209d4e56fc8da2a18a91febd655128122f94af395d119a0e2d0d966f2",
       "name": "MT8668_Hypervisor_Secure_Boot_User_Manual_CN_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4433,6 +4662,7 @@
     },
     {
       "id": "cd58cb9b620f",
+      "sha256": "cd58cb9b620fd3ecb12f62fd420fe8a9a1de7914a5795cfe8874968eef566f86",
       "name": "MT8668_Hypervisor_System_LLA_User_Manual_CN_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4452,6 +4682,7 @@
     },
     {
       "id": "4e0dab399b5c",
+      "sha256": "4e0dab399b5c59e3cca72e38ece9e44c4786d8c6151b51ce548e459680a83c1f",
       "name": "MT8668_Hypervisor_UART_User_Manual_CN_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4472,6 +4703,7 @@
     },
     {
       "id": "2d16db982b9d",
+      "sha256": "2d16db982b9dbf079f3479b1be9c458f8b541f1c3c4a1824feafec51c62cdcbb",
       "name": "MT8668_Hypervisor_USB_LLA_User_Manual_CN_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8668",
@@ -4492,6 +4724,7 @@
     },
     {
       "id": "0488ba34acae",
+      "sha256": "0488ba34acae311ff5120d234adc0e83266993c5e8561d1ba063faa4ff654435",
       "name": "GWM+KE__VM-1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4511,6 +4744,7 @@
     },
     {
       "id": "3e135840f638",
+      "sha256": "3e135840f638410cd8449ffc22020d6963e97b211adf4234ce6a145561eddf8d",
       "name": "MT8676_Hypervisor_AI_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4530,6 +4764,7 @@
     },
     {
       "id": "0ffc4e91d4e3",
+      "sha256": "0ffc4e91d4e3f5728e433a2fda0e617597d4c3d660df96a02091bd3ac6364e0c",
       "name": "MT8676_Hypervisor_AI_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4549,6 +4784,7 @@
     },
     {
       "id": "b71a9b733004",
+      "sha256": "b71a9b733004c98f63a075c3244c94cbcd7a5c25c69e967f201c47f3387493f6",
       "name": "MT8676_Hypervisor_Clock_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4569,6 +4805,7 @@
     },
     {
       "id": "967c72386c01",
+      "sha256": "967c72386c0189e4666dfdef6b7112f51a052ec138e07deb872bd97ce0eaf484",
       "name": "MT8676_Hypervisor_Clock_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4589,6 +4826,7 @@
     },
     {
       "id": "b17a1b72d94d",
+      "sha256": "b17a1b72d94d428bda0821d1e1d48bb08525c8eb7d034673cf25082621989925",
       "name": "MT8676_Hypervisor_GPU_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4609,6 +4847,7 @@
     },
     {
       "id": "d85a6dc3de1f",
+      "sha256": "d85a6dc3de1ff28783808d490ab9789fc607250f9736c74ff8a22101cddcb4a0",
       "name": "MT8676_Hypervisor_GPU_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4629,6 +4868,7 @@
     },
     {
       "id": "7a3b9551a0d4",
+      "sha256": "7a3b9551a0d4182a72f2d4f1ac1b88e1aca1e15170ca29efab2fa16379c8eab9",
       "name": "MT8676_Hypervisor_I2C_User_Manual_V1.2.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4649,6 +4889,7 @@
     },
     {
       "id": "17d10bf0927d",
+      "sha256": "17d10bf0927d089d53543739067f9ab0c96ae856bb81a71bd28ce0dcda524f62",
       "name": "MT8676_Hypervisor_I2C_User_Manual_V1.2.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4669,6 +4910,7 @@
     },
     {
       "id": "b339a40764b5",
+      "sha256": "b339a40764b57a904f6139dfbce7fd7e87c72e546829f3bcc96ff88a92f89b62",
       "name": "MT8676_Hypervisor_Log_Introduction_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4689,6 +4931,7 @@
     },
     {
       "id": "1a36c8bd89a4",
+      "sha256": "1a36c8bd89a487745b75fe94ef1d696751b29991a33c33dc7b2bf6ec7a3c1cee",
       "name": "MT8676_Hypervisor_OP-TEE_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4709,6 +4952,7 @@
     },
     {
       "id": "7cf96d09b15a",
+      "sha256": "7cf96d09b15aa3c3cd7d4ca93b7b06556afdbd00e6638b0037f2f5e9c7ad80f4",
       "name": "MT8676_Hypervisor_OP-TEE_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4729,6 +4973,7 @@
     },
     {
       "id": "17db370a3228",
+      "sha256": "17db370a32288f1b0daebc16c1a79a97b858aeb1dd1ef32826f035700dc5330f",
       "name": "MT8676_Hypervisor_OTA_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4748,6 +4993,7 @@
     },
     {
       "id": "521a9a064592",
+      "sha256": "521a9a0645921d9a6407e2f17f4d32c059cffdc2e88cb484958d808151cfbf8b",
       "name": "MT8676_Hypervisor_OTA_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4767,6 +5013,7 @@
     },
     {
       "id": "7f22bbdfff2f",
+      "sha256": "7f22bbdfff2f6f0655fcdc3b24a5ee86e04364cadb802e14563b8ab370cfa8f7",
       "name": "MT8676_Hypervisor_Reserved_Memory_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4787,6 +5034,7 @@
     },
     {
       "id": "bdd771d7f372",
+      "sha256": "bdd771d7f372ce12285255b6ec0adc0d9a1fc0fc27a951dba5d30b7d5d7635ed",
       "name": "MT8676_Hypervisor_Reserved_Memory_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4807,6 +5055,7 @@
     },
     {
       "id": "6252ad362114",
+      "sha256": "6252ad36211480a2791bbebfe9da8e90cbb0cb1be998cdbe1ecd158c80a4e6c0",
       "name": "MT8676_Hypervisor_SDCard_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4827,6 +5076,7 @@
     },
     {
       "id": "98681c23e375",
+      "sha256": "98681c23e3754eb7f42c755cf1ca36a24c997d3586e3c596f8c8760e73dcd76b",
       "name": "MT8676_Hypervisor_SDCard_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4847,6 +5097,7 @@
     },
     {
       "id": "2b1a7d97f0a2",
+      "sha256": "2b1a7d97f0a2e98635779efa15c6cd8a1c58b03d9a29d85f22b53e7b2b601d3c",
       "name": "MT8676_Hypervisor_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4868,6 +5119,7 @@
     },
     {
       "id": "8fb29ac94bce",
+      "sha256": "8fb29ac94bce928de429376509412d010820fe3b00843f9322862f1ab45f1dd5",
       "name": "MT8676_Hypervisor_Secure_Boot_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4889,6 +5141,7 @@
     },
     {
       "id": "ccd5b795d5d9",
+      "sha256": "ccd5b795d5d99a4025fbec2a577ea68db61c30aa10ece3c1c352a18ebf98eae8",
       "name": "MT8676_Hypervisor_System_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4908,6 +5161,7 @@
     },
     {
       "id": "0ee3f30c7a2c",
+      "sha256": "0ee3f30c7a2cf4a6396cda919dda94091db46dcf3af61cb09299b71ff7cca025",
       "name": "MT8676_Hypervisor_System_User_Manual_V1.2.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4927,6 +5181,7 @@
     },
     {
       "id": "eb1ea503dfd4",
+      "sha256": "eb1ea503dfd4ee0021b8c6cd5e0001975b032d3de7b307061872cb02ef91056c",
       "name": "MT8676_Hypervisor_T-Box_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4947,6 +5202,7 @@
     },
     {
       "id": "65f0b3b1b2de",
+      "sha256": "65f0b3b1b2de428a064b2557ee7f7fb06fda0647bf55ec9fecbac0d4f5c2abef",
       "name": "MT8676_Hypervisor_T-Box_User_Manual_V1.1.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4967,6 +5223,7 @@
     },
     {
       "id": "34c55692de98",
+      "sha256": "34c55692de982f925c405fdb7a4c181377ab366a914c00b0f83dc09bfd00cde5",
       "name": "MT8676_Hypervisor_UART_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -4987,6 +5244,7 @@
     },
     {
       "id": "242e09880a72",
+      "sha256": "242e09880a72bd8bffef90bd9113e4dd0960f1f199930e3bd80f4b3c9a7ec102",
       "name": "MT8676_Hypervisor_UART_User_Manual_V1.0.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -5007,6 +5265,7 @@
     },
     {
       "id": "35d787f62e6d",
+      "sha256": "35d787f62e6dc5e094e3cde15485ba6502a3f1dcddc84074e3ee224b25a7d45f",
       "name": "T-Hyper+CPU+调度说明.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -5025,6 +5284,7 @@
     },
     {
       "id": "01e41793db8d",
+      "sha256": "01e41793db8db378ddee9543e6411426ec130334c2733edc59369a9332718f92",
       "name": "vmnet配置说明.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -5044,6 +5304,7 @@
     },
     {
       "id": "86df72575171",
+      "sha256": "86df72575171659a2d7358b2025d0b8c1b9d418b01353cefd7a7cf0c622e485c",
       "name": "低速总线虚拟化配置.pdf",
       "category": "virtualization",
       "platform": "MT8676",
@@ -5061,6 +5322,7 @@
     },
     {
       "id": "dff007dcc6b0",
+      "sha256": "dff007dcc6b0465339e9753e3b513fbac5d40cf2fbaf43c88b79b1319fa882fe",
       "name": "Vsock api 文档v2.0.pdf",
       "category": "virtualization",
       "platform": "待确认",
@@ -5080,6 +5342,7 @@
     },
     {
       "id": "ebfa2518d112",
+      "sha256": "ebfa2518d1122b55709ba61ea93589d126756f1e8bb74ce1b79ba4e0664a149a",
       "name": "vosck使用案例.rar",
       "category": "virtualization",
       "platform": "待确认",
@@ -5099,6 +5362,7 @@
     },
     {
       "id": "9b473bff3155",
+      "sha256": "9b473bff31553b7feaf6957d35dad75ff689be60103328881c7eade1ebed93ba",
       "name": "全虚拟化和半虚拟化GPU差异.pdf",
       "category": "virtualization",
       "platform": "待确认",
@@ -5118,6 +5382,7 @@
     },
     {
       "id": "bfd28e7774c5",
+      "sha256": "bfd28e7774c576b6c9780c11eae628e4154e09f1f930d279587937c11fc2bcb8",
       "name": "MT8668_Android_FBE_Debug_SOP_CN_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8668",
@@ -5136,6 +5401,7 @@
     },
     {
       "id": "4ed1bbbfed20",
+      "sha256": "4ed1bbbfed20ebd00446d90337389d7060dd1f48a1713a066cacbc7007e43419",
       "name": "MT8668_Android_Sensor_lssue_Debug_SOP_CN_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8668",
@@ -5154,6 +5420,7 @@
     },
     {
       "id": "3ea5dbd9f6ab",
+      "sha256": "3ea5dbd9f6ab5f57c974c837b8c07532741f1678815cb0954a796222a7e62b5c",
       "name": "Low_power_debug_sop_v1.4.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5172,6 +5439,7 @@
     },
     {
       "id": "ad653e0a5c99",
+      "sha256": "ad653e0a5c99f5fac46140f3f4c59f39f8e4c9ccd8f5b01d867153f94c8635b9",
       "name": "MT8676_Android_DebugLoggerUI_User_Manual_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5190,6 +5458,7 @@
     },
     {
       "id": "13d506954e81",
+      "sha256": "13d506954e8173f09c86ae2119f30f96da255967e301879494ccf56b2e4e8eb2",
       "name": "MT8676_Android_DebugLoggerUI_User_Manual_V1.1.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5208,6 +5477,7 @@
     },
     {
       "id": "2ce096834385",
+      "sha256": "2ce096834385ecd1a47bdcffdf4a87557c3da67c976686436c03eb9c7da30393",
       "name": "MT8676_Android_FBE_Debug_SOP_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5226,6 +5496,7 @@
     },
     {
       "id": "2ba1f7bc0db6",
+      "sha256": "2ba1f7bc0db6721e80def3a70261997894104b688d3e5040c450d135488a68f9",
       "name": "MT8676_Android_Sensor_lssue_Debug_SOP_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5244,6 +5515,7 @@
     },
     {
       "id": "f608befe136c",
+      "sha256": "f608befe136c7acb0bc77fad20b2c83974032a5fd53dcd12affbb7cd6dcd73b3",
       "name": "MT8676_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5263,6 +5535,7 @@
     },
     {
       "id": "508bdcafc604",
+      "sha256": "508bdcafc604c506a524aec6dd9534e2b7b8e42d47013836cb38afcb947d0d83",
       "name": "MT8676_Yocto_Log_Tool_Introduction_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5281,6 +5554,7 @@
     },
     {
       "id": "2131e9dacedf",
+      "sha256": "2131e9dacedfef849cd98202b00d95668853f84c4032a19822cd98f1e0aff78f",
       "name": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5299,6 +5573,7 @@
     },
     {
       "id": "e81eb416e8a5",
+      "sha256": "e81eb416e8a55892bae2a2815438b8287b064e6c8970f892b2cc3fef585dab5a",
       "name": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5317,6 +5592,7 @@
     },
     {
       "id": "a0ea4cd59f56",
+      "sha256": "a0ea4cd59f56e118b78ce53b3ee40288de210e19251ea3c74d05882fb0947e36",
       "name": "MTK_Log_SOS_dump_uos_pstore.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5335,6 +5611,7 @@
     },
     {
       "id": "1e4d22f0c69a",
+      "sha256": "1e4d22f0c69a0f542704bc09553953323cfe961f09b1f038be160d344de1ebe5",
       "name": "MTK_Log_SOS_shutdown_pstore_dump_to_BLK.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5353,6 +5630,7 @@
     },
     {
       "id": "9fb78cf7bec9",
+      "sha256": "9fb78cf7bec9df016456df891e313b2d4444442dd1dff40545ddda65c38437b2",
       "name": "PVT经验教训记录表.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5371,6 +5649,7 @@
     },
     {
       "id": "843085143d8a",
+      "sha256": "843085143d8a62a45daf1bbfbb26fb322561216b5a86674c29e3d87b706afaa8",
       "name": "SF_debug方法.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5389,6 +5668,7 @@
     },
     {
       "id": "815b1152cb31",
+      "sha256": "815b1152cb315c7de0e8fd1d9a2751c05a91291295680faa27bce5d34d2cf764",
       "name": "显示问题common+sop.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5407,6 +5687,7 @@
     },
     {
       "id": "0f87b2ff1abc",
+      "sha256": "0f87b2ff1abcc12b6de413722a24d38e5385908cab007e619745e368b6cbf6c7",
       "name": "汇报材料--软件开发培训-音视频解码常见问题及分析.pdf",
       "category": "diagnosis",
       "platform": "MT8676",
@@ -5425,6 +5706,7 @@
     },
     {
       "id": "3ffcd662cc34",
+      "sha256": "3ffcd662cc344638878828546d7fa476498e1c6fa823c90bc49d2e7c32dc0fa2",
       "name": "常用日志说明.url",
       "category": "diagnosis",
       "platform": "待确认",
@@ -5443,6 +5725,7 @@
     },
     {
       "id": "c31539cad8dd",
+      "sha256": "c31539cad8dd6a236d4ba79ec38313309d74cde4b059e1ecad2030b04cca6963",
       "name": "软件开发培训-音视频解码常见问题及分析.pdf",
       "category": "diagnosis",
       "platform": "待确认",
@@ -5463,6 +5746,7 @@
     },
     {
       "id": "0ff179c39e73",
+      "sha256": "0ff179c39e735ee6be508657f629112b67a3e3d058cc41d10ed0ad4d0916f794",
       "name": "Audio模块 8676 vs 8668.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5481,6 +5765,7 @@
     },
     {
       "id": "a7ec0789a073",
+      "sha256": "a7ec0789a073145cab98ed28b33236606eecbf545e2a25a958121c22820eb5ca",
       "name": "GPU_PARAVIRT_Codebase_DIFF_Introduction_Audio.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5499,6 +5784,7 @@
     },
     {
       "id": "6799a6ae5ba0",
+      "sha256": "6799a6ae5ba0b337e00429272166c3012920c48d75e1dcce29946374d264bd52",
       "name": "MT8668_Android_Audio_User_Manual_CN_V1.0.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5516,6 +5802,7 @@
     },
     {
       "id": "04511451ad4d",
+      "sha256": "04511451ad4d3f2f746dc85a9fa1c622d094345c12e30f5f396bf47ee9e845dc",
       "name": "MT8668_Audio_HW_Interface_User_Guide_V1.1.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5534,6 +5821,7 @@
     },
     {
       "id": "91086931dad2",
+      "sha256": "91086931dad2dd5a1b9c6effe2cd5ebcfbcd55cdff0c6726d9f1f8fee156d66e",
       "name": "MT8668_Public_domain_audio_planning-202601-to-PVT.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5552,6 +5840,7 @@
     },
     {
       "id": "860275ad7461",
+      "sha256": "860275ad746124897caf5476cbc858638fa1ae11926c6cb8042c50428ddc3d7d",
       "name": "MT8668_Yocto_Audio_User_Manual_CN_V1.0.pdf",
       "category": "audio",
       "platform": "MT8668",
@@ -5569,6 +5858,7 @@
     },
     {
       "id": "ac6a8bed3a3e",
+      "sha256": "ac6a8bed3a3e0789bc085e2fe3ca7aecb27ea3a8e61fa7ed43cf55fc7be4bcf1",
       "name": "8676平台Audio通路参考设计.drawio.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5586,6 +5876,7 @@
     },
     {
       "id": "5a70e60b5e6d",
+      "sha256": "5a70e60b5e6d45d783c8ccbdd540841df9ef68bb59bdecd6829d18b69b1e1d02",
       "name": "Aurisys_exe_V1.2620.01.rar",
       "category": "audio",
       "platform": "MT8676",
@@ -5603,6 +5894,7 @@
     },
     {
       "id": "742b67255442",
+      "sha256": "742b67255442b38bb988886d439719d4b7c920262f99e3aed59eb514ff803657",
       "name": "Auto Adsp Task Config Guide.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5620,6 +5912,7 @@
     },
     {
       "id": "6d282f57b1ca",
+      "sha256": "6d282f57b1ca564746bae282f2662622863d791b1c446cb9f77111652ed06837",
       "name": "LK Audio初始化.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5637,6 +5930,7 @@
     },
     {
       "id": "bc8290b990b1",
+      "sha256": "bc8290b990b109d0d3412712c36778d834680e0a0caff246f116298e4962c782",
       "name": "MT8676_Android_Audio_User_Manual_ V1.0.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5654,6 +5948,7 @@
     },
     {
       "id": "38c540b592d3",
+      "sha256": "38c540b592d33eabbf58322905b8cd986fcaa8a52af4b60127289c3f82592f5b",
       "name": "MT8676_Android_Audio_User_Manual_V1.1.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5671,6 +5966,7 @@
     },
     {
       "id": "c5db8e284bad",
+      "sha256": "c5db8e284bad75735ea1b9a1bf53de00a36d7a1a0df57697549df6353a7bc570",
       "name": "MT8676_Audio_倍频介绍.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5688,6 +5984,7 @@
     },
     {
       "id": "ca45b12d0d50",
+      "sha256": "ca45b12d0d50bfc6a47c73581aceb32413403a93d1507393e8adad90e6115940",
       "name": "MT8676_Yocto_Audio_User_Manual_V1.0.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5705,6 +6002,7 @@
     },
     {
       "id": "10a842dbdf31",
+      "sha256": "10a842dbdf313a2720f4715e1cbcfe1a1b26fa312fb387764361cdff54a168e4",
       "name": "MT8676_Yocto_Audio_User_Manual_V1.0.pdf",
       "category": "audio",
       "platform": "MT8676",
@@ -5722,6 +6020,7 @@
     },
     {
       "id": "09d7c99d2c2a",
+      "sha256": "09d7c99d2c2afeb6e790e50f90c599726f6c18073e8aa7af2982ac2e357620e8",
       "name": "MTK+Audio+技术培训材料.pdf",
       "category": "audio",
       "platform": "MT8676",

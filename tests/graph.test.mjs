@@ -70,6 +70,8 @@ test('raw materials have a distinct category and complete classified directory',
   for(const document of rawCatalog.documents){
     assert.ok(valid.has(document.category),document.id);
     assert.ok(document.name&&document.format,document.id);
+    assert.match(document.sha256,/^[0-9a-f]{64}$/);
+    for(const chapter of document.chapterCandidates)assert.ok(ids.has(`chapter:${chapter}`),document.id);
     if(document.downloadUrl)assert.ok(document.downloadUrl.startsWith('https://'),document.id);
   }
   for(const category of categories){

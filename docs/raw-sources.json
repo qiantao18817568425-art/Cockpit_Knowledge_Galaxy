@@ -1,0 +1,5741 @@
+{
+  "meta": {
+    "title": "原始资料",
+    "state": "公开目录；原件下载待上传",
+    "physicalFiles": 340,
+    "uniqueContents": 301,
+    "listedDocuments": 299,
+    "archiveMembers": 214,
+    "downloadReady": 0,
+    "notice": "分类依据文件名、来源清单与文字索引。资料所有者已确认可公开；原件仍在上传准备中，当前没有可用下载链接。技术结论和适用版本尚需逐页确认。"
+  },
+  "categories": [
+    {
+      "id": "platform",
+      "title": "平台与 SDK",
+      "count": 34,
+      "chapters": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "virtualization",
+      "title": "虚拟化与跨域",
+      "count": 48,
+      "chapters": [
+        "02",
+        "05",
+        "20"
+      ],
+      "topics": [
+        "virtualization",
+        "cross"
+      ]
+    },
+    {
+      "id": "android",
+      "title": "Android AAOS",
+      "count": 17,
+      "chapters": [
+        "06"
+      ],
+      "topics": [
+        "android"
+      ]
+    },
+    {
+      "id": "yocto",
+      "title": "Yocto Host",
+      "count": 20,
+      "chapters": [
+        "07",
+        "18"
+      ],
+      "topics": [
+        "yocto"
+      ]
+    },
+    {
+      "id": "mcu",
+      "title": "MCU 与车辆信号",
+      "count": 11,
+      "chapters": [
+        "08",
+        "10"
+      ],
+      "topics": [
+        "mcu"
+      ]
+    },
+    {
+      "id": "tbox",
+      "title": "TBox 与网络",
+      "count": 26,
+      "chapters": [
+        "09",
+        "13"
+      ],
+      "topics": [
+        "tbox"
+      ]
+    },
+    {
+      "id": "display",
+      "title": "显示与触控",
+      "count": 26,
+      "chapters": [
+        "11",
+        "15"
+      ],
+      "topics": [
+        "display"
+      ]
+    },
+    {
+      "id": "camera",
+      "title": "Camera 与视频",
+      "count": 36,
+      "chapters": [
+        "11",
+        "19"
+      ],
+      "topics": [
+        "camera"
+      ]
+    },
+    {
+      "id": "audio",
+      "title": "音频与语音",
+      "count": 16,
+      "chapters": [
+        "12"
+      ],
+      "topics": [
+        "audio"
+      ]
+    },
+    {
+      "id": "power",
+      "title": "电源与生命周期",
+      "count": 11,
+      "chapters": [
+        "14",
+        "23"
+      ],
+      "topics": [
+        "power"
+      ]
+    },
+    {
+      "id": "boot",
+      "title": "启动与升级",
+      "count": 10,
+      "chapters": [
+        "14",
+        "24"
+      ],
+      "topics": [
+        "power",
+        "system"
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "稳定性与性能",
+      "count": 9,
+      "chapters": [
+        "15",
+        "23"
+      ],
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "diagnosis",
+      "title": "诊断与日志",
+      "count": 19,
+      "chapters": [
+        "15",
+        "23"
+      ],
+      "topics": [
+        "diagnosis"
+      ]
+    },
+    {
+      "id": "usb",
+      "title": "USB 与存储",
+      "count": 14,
+      "chapters": [
+        "16"
+      ],
+      "topics": [
+        "system"
+      ]
+    },
+    {
+      "id": "security",
+      "title": "安全与 TEE",
+      "count": 2,
+      "chapters": [
+        "02",
+        "23"
+      ],
+      "topics": [
+        "virtualization"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "id": "a8a1aa448b88",
+      "name": "MT8668_Android_IPO_User_Manual_CN_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1052844,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3e5afcb20755",
+      "name": "MT8676_Android_DDR_User_Manual_ V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 584314,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "37f5ed85e31d",
+      "name": "MT8676_Android_DDR_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 814385,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4372e62da7d8",
+      "name": "MT8676_Android_GPS_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 676228,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "83cce0f0d84a",
+      "name": "MT8676_Android_GPS_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 614150,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4276ac3d43b1",
+      "name": "MT8676_Android_General_Introduction_V1.1.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 702540,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "fe5c7bebad68",
+      "name": "MT8676_Android_General_Introduction_V1.1.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 557457,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "9d35060e0261",
+      "name": "MT8676_Android_I2C_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 651211,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "cd4da46210e1",
+      "name": "MT8676_Android_I2C_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 426171,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "fb0f163b34e6",
+      "name": "MT8676_Android_IPO_User_Manual_ V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 752516,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d5578aaa112e",
+      "name": "MT8676_Android_IPO_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1062208,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "07ba8708b032",
+      "name": "MT8676_Android_System_User_Manual_ V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1495383,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6bd2fa3feaf4",
+      "name": "MT8676_Android_System_User_Manual_V1.0.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1848606,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b724dfbe0dbe",
+      "name": "MT8676_Android_UART_User_Manual_V1.1.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 637105,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "fe255878b698",
+      "name": "MT8676_Android_UART_User_Manual_V1.1.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 408734,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "aa85206665a9",
+      "name": "android系统起不来分析.pdf",
+      "category": "android",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 502998,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b1169fd18761",
+      "name": "3OS time synchronization.pdf",
+      "category": "android",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 283292,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07",
+        "09",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "6c11069e244f",
+      "name": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 747593,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4330ba7eddf6",
+      "name": "MT8668_Android_Camera_Turbo_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 458474,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2faacfd1b738",
+      "name": "MT8668_Android_DVR_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 992589,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "355d4f791169",
+      "name": "MT8668_Camera_Sensor_Driver_Bringup_SOP_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1212242,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "启动/升级",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "db487565233b",
+      "name": "MT8668_Hypervisor_Camera_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1405393,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "01",
+        "02",
+        "04",
+        "05",
+        "07",
+        "11",
+        "17",
+        "19",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "1f7b85f8dfc6",
+      "name": "MT8668_Hypervisor_Vcodec_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 807214,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d5c445e4df99",
+      "name": "MT8668_Yocto_AVM_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 14178715,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e2124eed8257",
+      "name": "MT8668_Yocto_Camera_Driver_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 2082484,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ce4327878058",
+      "name": "MT8668_Yocto_FastRVC_User_Manual_CN_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 557272,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3ffda3633b49",
+      "name": "CSI.rar",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 356896351,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "59ccf9c0f25e",
+      "name": "DVR分享.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3722216,
+      "copies": 2,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "140b4869f951",
+      "name": "EVS软件开发培训1223.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2700242,
+      "copies": 2,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1fce1e40a576",
+      "name": "MT8676_Android_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2315995,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2cb616e3e186",
+      "name": "MT8676_Android_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2134966,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "74c716f63dfe",
+      "name": "MT8676_Android_Camera_Driver_User_Manual_V1.2.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1823407,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b0adb12e154f",
+      "name": "MT8676_Android_Camera_Driver_User_Manual_V1.2.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1601171,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e914c6daaad7",
+      "name": "MT8676_Android_Camera_Turbo_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1107574,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "984278ee09e5",
+      "name": "MT8676_Android_Camera_Turbo_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 922242,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "01d0f7d1891c",
+      "name": "MT8676_Android_DVR_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 831506,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6344b359854e",
+      "name": "MT8676_Android_DVR_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 658067,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "fa5f43dca8d4",
+      "name": "MT8676_Android_FastRVC_User_Manual_ V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 473168,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bf16d2b93d43",
+      "name": "MT8676_Android_FastRVC_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 664953,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7a235c6e6765",
+      "name": "MT8676_Hypervisor_Camera_ISP_Driver_Introduction_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1371074,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "52452e66baed",
+      "name": "MT8676_Hypervisor_Camera_MW_Introduction_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 661109,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "28f33b5b442f",
+      "name": "MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 659665,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "17",
+        "19",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "8ffa08647b60",
+      "name": "MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 489554,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2ca0cfa195c8",
+      "name": "MT8676_Hypervisor_Vcodec_User_Manual_V1.2.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 923244,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4e82f0cb886e",
+      "name": "MT8676_Hypervisor_Vcodec_User_Manual_V1.2.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 759935,
+      "copies": 1,
+      "facets": [
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e8c210d3eda4",
+      "name": "MT8676_Yocto_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2267180,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0a8a2336080c",
+      "name": "MT8676_Yocto_Camera_Driver_JSON_Arch_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1962216,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "781dfbb6e151",
+      "name": "MT8676_Yocto_Camera_Driver_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1774719,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3bd2f904e632",
+      "name": "MT8676_Yocto_Camera_Driver_User_Manual_V1.1.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1576604,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6fb99f5d4fea",
+      "name": "MT8676_Yocto_Camera_Turbo_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 533067,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0ae0c98cf808",
+      "name": "MT8676_Yocto_Camera_Turbo_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 391049,
+      "copies": 1,
+      "facets": [
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "231ce2823668",
+      "name": "MT8676_Yocto_FastRVC_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 553821,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "24e652ef273a",
+      "name": "MT8676_Yocto_FastRVC_User_Manual_V1.0.pdf",
+      "category": "camera",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 376534,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "11",
+        "19"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "81a8c931d000",
+      "name": "MT8668_Hypervisor_GPIO_User_Manual_CN_V1.0.pdf",
+      "category": "mcu",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 578856,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "9f37a8db2acd",
+      "name": "MT8668_Hypervisor_SPI_User_Manual_CN_V1.0.pdf",
+      "category": "mcu",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 874375,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7d1e0f95c34f",
+      "name": "MT8668_Yocto_SPI_User_Manual_CN_V1.0.pdf",
+      "category": "mcu",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 874716,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "40192730210a",
+      "name": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 835109,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d3691b28be36",
+      "name": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 647073,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "183254d73cbd",
+      "name": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 580912,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "852e551201a0",
+      "name": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 413738,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2397734a51c2",
+      "name": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 831286,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1befc8374cfe",
+      "name": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 766281,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "398af5949db9",
+      "name": "vehicle方案.pdf",
+      "category": "mcu",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1117561,
+      "copies": 2,
+      "facets": [
+        "MCU/车信号"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "4ae975b91299",
+      "name": "EINT培训.rar",
+      "category": "mcu",
+      "platform": "待确认",
+      "format": "RAR",
+      "bytes": 988963,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "08",
+        "10"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "58bac8d6e11b",
+      "name": "MT8668_Android_BT_User_Manual_CN_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 758096,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "be1aff227afa",
+      "name": "MT8668_Android_Wifi_User_Manual_CN_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 739893,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "63729693d95a",
+      "name": "MT8668_GNSS_Specification_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 492518,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "617e4896eb57",
+      "name": "MT8668_Hypervisor_GNSS_User_Manual_CN_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 714734,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7a9437a7db8a",
+      "name": "MT8668_Yocto_eCall_User_Manual_CN_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 939721,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b6db294b7916",
+      "name": "Hypervisor Tbox(L+L+A)架构.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 776626,
+      "copies": 2,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "f24f4fe4d19c",
+      "name": "MT8676 TBOX子系统架构设计.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 795351,
+      "copies": 2,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "12"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "e52de38fef83",
+      "name": "MT8676_Android_BT_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 615673,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "200f3c05d9cd",
+      "name": "MT8676_Android_BT_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 542508,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7a498a5dfafa",
+      "name": "MT8676_Android_WiFi_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 769922,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f1e3a5801e5d",
+      "name": "MT8676_Android_WiFi_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 550767,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "73b34cf0a80b",
+      "name": "MT8676_Hypervisor_GNSS_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 750914,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "14958f21236f",
+      "name": "MT8676_Hypervisor_GNSS_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 562151,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "250adb38e25c",
+      "name": "MT8676_Yocto_eCall_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 905620,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d5672b3d4f5d",
+      "name": "MT8676_Yocto_eCall_User_Manual_V1.0.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 722552,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6e1afbe19015",
+      "name": "MT86xx+Workshop+Tbox.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 630887,
+      "copies": 2,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a7e4b3132313",
+      "name": "MTK平台网络配置.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 112371,
+      "copies": 3,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3e6385ac82ab",
+      "name": "PCIE DEBUG GUIDE.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3837135,
+      "copies": 2,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6a7c492cf597",
+      "name": "PCIE.rar",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 8476772,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "839d3d6f2a0d",
+      "name": "TBOX未登录TSP.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2949549,
+      "copies": 2,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "13"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "6ee6bf39eea0",
+      "name": "eCall_Overview_V1.2.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1219631,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3c456da9d243",
+      "name": "tbox整车无网络案例分享.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1362984,
+      "copies": 2,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "13"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "9eae122081b6",
+      "name": "刷机后无网络.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2481095,
+      "copies": 2,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6035c10be62b",
+      "name": "蓝牙架构.pdf",
+      "category": "tbox",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2401275,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0de6d012049c",
+      "name": "Tbox_Telephony_MD and mdlog SOP.pdf",
+      "category": "tbox",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 789098,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "13"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "c4d8634dee6e",
+      "name": "modem log常见分析方法.pdf",
+      "category": "tbox",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 4778939,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "09",
+        "13",
+        "15",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "fefa132a945d",
+      "name": "MT8668_Android_SDCard_User_Manual_CN_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 673804,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "dbba8095559d",
+      "name": "MT8668_Android_USB_User_Manual_CN_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 951288,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e2492abe19ec",
+      "name": "MT8668_USB_Customer_Support_SOP_CN_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 791684,
+      "copies": 1,
+      "facets": [
+        "USB/存储",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "cba4630088f7",
+      "name": "MT8668_Yocto_SDCard_User_Manual_CN_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 682079,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f71b132e4ab4",
+      "name": "MT8668_Yocto_USB_User_Manual_CN_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 944820,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "36817cbb1339",
+      "name": "MT8676_Android_SDCard_User_Manual_ V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 475488,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a3042f158d97",
+      "name": "MT8676_Android_SDCard_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 667591,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "afa3d415e857",
+      "name": "MT8676_Android_USB_User_Manual_ V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 727520,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f89d9f4cd89b",
+      "name": "MT8676_Android_USB_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1022730,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "8f66a6dab8b6",
+      "name": "MT8676_Yocto_SDCard_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 680317,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4b5c8e0b65ad",
+      "name": "MT8676_Yocto_SDCard_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 488198,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "998ce13df798",
+      "name": "MT8676_Yocto_USB_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1022941,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "45d28fd50a95",
+      "name": "MT8676_Yocto_USB_User_Manual_V1.0.pdf",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 727924,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "36e7fa1f93e4",
+      "name": "SSUSB.rar",
+      "category": "usb",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 5200275,
+      "copies": 1,
+      "facets": [
+        "USB/存储"
+      ],
+      "chapterCandidates": [
+        "16"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "aa722a95a0ab",
+      "name": "MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 716841,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "18ec91283d4d",
+      "name": "MT8668_Yocto_Property_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 906224,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4c95c7252a57",
+      "name": "MT8668_Yocto_Sentry_Mode_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 991545,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "20554ef2677e",
+      "name": "MT8668_Yocto_System_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1273592,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "dbdab38836d5",
+      "name": "MT8668_Yocto_T-Box_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 921819,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "03",
+        "09",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "e7b728514d1d",
+      "name": "MT8668_Yocto_UART_User_Manual_CN_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 603177,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "dc694aa327b5",
+      "name": "MT8676_Yocto_GPS_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 742259,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4348c8ad81a0",
+      "name": "MT8676_Yocto_GPS_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 634244,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e81920c10d11",
+      "name": "MT8676_Yocto_General_Introduction_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 682475,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b4d883053c20",
+      "name": "MT8676_Yocto_General_Introduction_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 555120,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2e0992f640ab",
+      "name": "MT8676_Yocto_Property_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 822676,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "46a716eaaab4",
+      "name": "MT8676_Yocto_Property_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 677464,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6cfac687decb",
+      "name": "MT8676_Yocto_Sentry_Mode_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1015778,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f59aa6695702",
+      "name": "MT8676_Yocto_Sentry_Mode_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 859591,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "15e56401fb86",
+      "name": "MT8676_Yocto_System_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1278364,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5cdc83a70bf8",
+      "name": "MT8676_Yocto_System_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 927103,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "444fcacd8f06",
+      "name": "MT8676_Yocto_T-Box_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 551202,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0bcc7a720a9d",
+      "name": "MT8676_Yocto_T-Box_User_Manual_V1.0.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 536265,
+      "copies": 1,
+      "facets": [
+        "连接/TBox"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "63e4e4b10e6b",
+      "name": "MT8676_Yocto_UART_User_Manual_V1.1.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 628557,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "60ac08ad3143",
+      "name": "MT8676_Yocto_UART_User_Manual_V1.1.pdf",
+      "category": "yocto",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 409237,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "07"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7807e7a6bd97",
+      "name": "MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 668097,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5b4522578daf",
+      "name": "MT8676_Android_OTA_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 859683,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bcd7023dd6c3",
+      "name": "MT8676_Android_OTA_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 815860,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b41590638432",
+      "name": "MT8676_Android_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 691560,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "25514cae24e4",
+      "name": "MT8676_Android_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 477594,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ebcdec122bb5",
+      "name": "MT8676_Yocto_OTA_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 886367,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "15941d5cdc16",
+      "name": "MT8676_Yocto_OTA_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 719259,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3b1e52e682f9",
+      "name": "MT8676_Yocto_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 668310,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3b4bd744f5de",
+      "name": "MT8676_Yocto_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 480549,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ee34dd854e09",
+      "name": "MTK86系列平台安全启动详细设计说明资料.zip",
+      "category": "boot",
+      "platform": "MT8676",
+      "format": "ZIP",
+      "bytes": 3779644,
+      "copies": 2,
+      "facets": [
+        "安全/TEE",
+        "启动/升级"
+      ],
+      "chapterCandidates": [
+        "14",
+        "24"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "c94a6f788bd3",
+      "name": "Yocto SELinux Introduction(8676).pdf",
+      "category": "security",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1125010,
+      "copies": 1,
+      "facets": [
+        "安全/TEE"
+      ],
+      "chapterCandidates": [
+        "07",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "390860030f5a",
+      "name": "奇瑞项目Yocto SELinux 介绍 资料.zip",
+      "category": "security",
+      "platform": "待确认",
+      "format": "ZIP",
+      "bytes": 1074100,
+      "copies": 1,
+      "facets": [
+        "安全/TEE"
+      ],
+      "chapterCandidates": [
+        "02",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3ca55da6a9f2",
+      "name": "MT8668_Android_AI_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 922731,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "defe098f947a",
+      "name": "MT8668_Android_GPU_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 986016,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a9dd302399ca",
+      "name": "MT8668_Android_SDK_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1560559,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7a0c89b2f3e7",
+      "name": "MT8668_Android_Thermal_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 733448,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0970f5784a42",
+      "name": "MT8668_Application_Processor_Technical_Brief_V0.1.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 3433811,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "45846faca00d",
+      "name": "MT8668_SCP_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 2561737,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "daaf8317f91f",
+      "name": "MT8668_Yocto_AI_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 900029,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2576411b5ab1",
+      "name": "MT8668_Yocto_GPU_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 775056,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0072a842cf3c",
+      "name": "MT8668_Yocto_Thermal_User_Manual_CN_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 549021,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d6b8534c0193",
+      "name": "P5B系列车规级模组产品规格书_v2.0_20260629.pdf",
+      "category": "platform",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1338279,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "11b9316f312a",
+      "name": "0007-000001-957 MT6685_DCXO_DataSheet_V1.4.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1564372,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "98b9631a8af5",
+      "name": "8676快速开发手册-V1.1.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 11596962,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "074e04a0dae5",
+      "name": "MT6197_ibis.rar",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 11787144,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5d77a1dea038",
+      "name": "MT6686_Datasheet_V1.4.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1235407,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "369a167bab94",
+      "name": "MT8676_Android_AI_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1021484,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "27c28fa1cf19",
+      "name": "MT8676_Android_AI_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 858811,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "81862b4f99af",
+      "name": "MT8676_Android_GPU_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 908917,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "9efe4b97a91b",
+      "name": "MT8676_Android_GPU_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 787863,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f202b6567e43",
+      "name": "MT8676_Android_SDK_User_Manual_ V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1248678,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a34c5b731928",
+      "name": "MT8676_Android_SDK_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1553055,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4a5404071a65",
+      "name": "MT8676_Android_Thermal_User_Manual_ V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 531842,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "508dbeafcf88",
+      "name": "MT8676_Android_Thermal_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 712996,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "286280b15067",
+      "name": "MT8676_SCP_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2297926,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "add7ebe4914c",
+      "name": "MT8676_SCP_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1958325,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b0dbacda5c87",
+      "name": "MT8676_YOCTO_SCP_User_Manual_zh_V1.01.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2058432,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "38c50e5e32f9",
+      "name": "MT8676_Yocto_AI_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 968058,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "c9b8980cc5a6",
+      "name": "MT8676_Yocto_AI_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 781192,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a14bf24fda30",
+      "name": "MT8676_Yocto_GPU_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 714048,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "770f8cb07c32",
+      "name": "MT8676_Yocto_GPU_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 470412,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "76602ab493ab",
+      "name": "MT8676_Yocto_Thermal_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 586051,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "41ce1e67fadb",
+      "name": "MT8676_Yocto_Thermal_User_Manual_V1.0.pdf",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 434706,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e2519aa16e3b",
+      "name": "P39.A03.H5_V2.1QR对外资料1023.zip",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "ZIP",
+      "bytes": 42941761,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b1c3ea09c6d9",
+      "name": "U2.rar",
+      "category": "platform",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 4228,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "03",
+        "04",
+        "17"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ff3311f490ff",
+      "name": "汇报材料--软件开发培训.pptx",
+      "category": "platform",
+      "platform": "待确认",
+      "format": "PPTX",
+      "bytes": 17403804,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "0554d880bcfb",
+      "name": "MT8668_DSI_Bringup_SOP_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 5612682,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "启动/升级",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0ac675257290",
+      "name": "MT8668_DSI_Bringup_SOP_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 5612768,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "启动/升级",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e6f862cdda05",
+      "name": "MT8668_Hypervisor_Display_User_Manual_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 751281,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "17",
+        "19"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "d2054c264cae",
+      "name": "MT8668_Hypervisor_Display_User_Manual_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 751525,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f389ba21d747",
+      "name": "MT8668_Hypervisor_Multi_Display_Proxy-Wayland_User_Manual_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 989860,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "05",
+        "07",
+        "11",
+        "17",
+        "19",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "e6746757e7bf",
+      "name": "MT8668_Hypervisor_Touch_User_Manual_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 897775,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1ae2434832d6",
+      "name": "MT8668_Yocto_Panel_User_Manual_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1879554,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a0a4b6d5cee9",
+      "name": "MT8676_Bringup_SOP_DSI_CN_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 5833897,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "启动/升级",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a861eabc5efa",
+      "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 3213507,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "14b704107bcc",
+      "name": "DPTX.rar",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 3512444,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "377e840a30a0",
+      "name": "DSI.rar",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 38626227,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1619663e55af",
+      "name": "MT8676_Android_DSI_Panel_User_Manual_ V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2553137,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6d1c9931e889",
+      "name": "MT8676_Android_DSI_Panel_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3299442,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5aac82d4d7aa",
+      "name": "MT8676_Android_Display_User_Manual_ V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 721952,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "9ec9003f71b1",
+      "name": "MT8676_Android_Display_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 880877,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1ee440ddc61d",
+      "name": "MT8676_Display_Panel_Issue_Debug_SOP_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 4028533,
+      "copies": 2,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ed864e63e29b",
+      "name": "MT8676_Hypervisor_Display_User_Manual_V1.1.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 873110,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "753ab8dd0db2",
+      "name": "MT8676_Hypervisor_Display_User_Manual_V1.3.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1428979,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "30174454fb71",
+      "name": "MT8676_Hypervisor_Display_User_Manual_V1.3.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1429174,
+      "copies": 2,
+      "facets": [
+        "图形/显示",
+        "视频/Camera",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "318e6af558f5",
+      "name": "MT8676_Hypervisor_Touch_User_Manual_V1.1.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 658381,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4bdcab0b5af6",
+      "name": "MT8676_Hypervisor_Touch_User_Manual_V1.1.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 488935,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "36a4f8b59bde",
+      "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3213479,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2ba0a3c4a44e",
+      "name": "MT8676_Yocto_DSI_Panel_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2554147,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b229bc10d601",
+      "name": "MT8676_Yocto_Display_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 881028,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1a3df9ee9ed8",
+      "name": "MT8676_Yocto_Display_User_Manual_V1.0.pdf",
+      "category": "display",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 722307,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "视频/Camera"
+      ],
+      "chapterCandidates": [
+        "11",
+        "15"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b41e1bc58922",
+      "name": "weston介绍和应用.pdf",
+      "category": "display",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 1251113,
+      "copies": 1,
+      "facets": [
+        "图形/显示"
+      ],
+      "chapterCandidates": [
+        "04",
+        "07",
+        "11",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "78ba6687962e",
+      "name": "MT8668_Hypervisor_Suspend_Resume_User_Manual_CN_V1.0.pdf",
+      "category": "power",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 731962,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "14",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "232daa16ff71",
+      "name": "MT6363_Design_Notice_for_MT8676_V01.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1906151,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "45653c777bca",
+      "name": "MT8676_Android_Suspend_Resume_User_Manual_ V1.0.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 651071,
+      "copies": 1,
+      "facets": [
+        "电源/时钟"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f22832cfa268",
+      "name": "MT8676_Android_Suspend_Resume_User_Manual_V1.0.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 838217,
+      "copies": 1,
+      "facets": [
+        "电源/时钟"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b3ab2e67d52d",
+      "name": "MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1504785,
+      "copies": 2,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "08",
+        "14",
+        "17",
+        "20",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "e8cfe763d374",
+      "name": "MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 729867,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bd4864cd0a67",
+      "name": "MT8676_Hypervisor_Suspend_Resume_V1.1.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 514176,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bbb5ef8aa8ec",
+      "name": "MT8676_Hypervisor_Suspend_Resume_V1.2.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 721164,
+      "copies": 2,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "02961279599c",
+      "name": "MT8676_Hypervisor_Suspend_Resume_sample(1).pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2076233,
+      "copies": 2,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "872b38c6d67f",
+      "name": "MT8676_Yocto_Suspend_Resume_User_Manual_V1.0.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 754428,
+      "copies": 1,
+      "facets": [
+        "电源/时钟"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "c79914693d64",
+      "name": "MT8676_Yocto_Suspend_Resume_User_Manual_V1.0.pdf",
+      "category": "power",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 573703,
+      "copies": 1,
+      "facets": [
+        "电源/时钟"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0d324bedb45f",
+      "name": "MT8676_Android_AEE_User_Manual_V1.0.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 800209,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5d4fbbe82209",
+      "name": "MT8676_Android_AEE_User_Manual_V1.0.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 661271,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b2b210bfd555",
+      "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 761471,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "891b4546ef85",
+      "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 618044,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7ace10c59839",
+      "name": "MT8676_Yocto_AEE_User_Manual_V1.0.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 617725,
+      "copies": 2,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3dfcfd692b65",
+      "name": "lmkd+引发的system_server+SWT.pdf",
+      "category": "stability",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2110460,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06",
+        "15",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "107ee51d6420",
+      "name": "Mtrace Tool 使用说明.docx",
+      "category": "stability",
+      "platform": "待确认",
+      "format": "DOCX",
+      "bytes": 2676619,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "06",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "8d74a6884c58",
+      "name": "使用page_owner定位内存泄露.rar",
+      "category": "stability",
+      "platform": "待确认",
+      "format": "RAR",
+      "bytes": 1819500,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "543e357866a5",
+      "name": "系统稳定性资料分享.rar",
+      "category": "stability",
+      "platform": "待确认",
+      "format": "RAR",
+      "bytes": 572820959,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e673c34c0d4c",
+      "name": "MT8668_Hypervisor_AI_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 924580,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "398c051fcb7f",
+      "name": "MT8668_Hypervisor_Clock_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 568783,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "99f3e33f914d",
+      "name": "MT8668_Hypervisor_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1568915,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "虚拟化基础",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6891b99c5e09",
+      "name": "MT8668_Hypervisor_GPU_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 832651,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "adec16da0d62",
+      "name": "MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 626963,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "03",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "3f04bd3f157a",
+      "name": "MT8668_Hypervisor_I2C_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 724834,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d2f773042f68",
+      "name": "MT8668_Hypervisor_OP-TEE_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1152022,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "58292e0d0987",
+      "name": "MT8668_Hypervisor_OTA_LLA_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1915091,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "cb4f3b88886b",
+      "name": "MT8668_Hypervisor_Performance_User_Manual_CN_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 878262,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "607cd3a86dd3",
+      "name": "MT8668_Hypervisor_Reserved_Memory_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 970780,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "88161ea5f13a",
+      "name": "MT8668_Hypervisor_SDCard_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 777928,
+      "copies": 1,
+      "facets": [
+        "USB/存储",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0b8cec92f7cc",
+      "name": "MT8668_Hypervisor_Secure_Boot_Remote_Signature_SOP_V0.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 339197,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级",
+        "虚拟化基础",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d78592d209d4",
+      "name": "MT8668_Hypervisor_Secure_Boot_User_Manual_CN_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 733246,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "14",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "cd58cb9b620f",
+      "name": "MT8668_Hypervisor_System_LLA_User_Manual_CN_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1155445,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "01",
+        "02",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "4e0dab399b5c",
+      "name": "MT8668_Hypervisor_UART_User_Manual_CN_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 700375,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2d16db982b9d",
+      "name": "MT8668_Hypervisor_USB_LLA_User_Manual_CN_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 983399,
+      "copies": 1,
+      "facets": [
+        "USB/存储",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0488ba34acae",
+      "name": "GWM+KE__VM-1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 865399,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3e135840f638",
+      "name": "MT8676_Hypervisor_AI_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1078757,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0ffc4e91d4e3",
+      "name": "MT8676_Hypervisor_AI_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 859652,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b71a9b733004",
+      "name": "MT8676_Hypervisor_Clock_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 694129,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "967c72386c01",
+      "name": "MT8676_Hypervisor_Clock_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 527111,
+      "copies": 1,
+      "facets": [
+        "电源/时钟",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b17a1b72d94d",
+      "name": "MT8676_Hypervisor_GPU_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 826716,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "d85a6dc3de1f",
+      "name": "MT8676_Hypervisor_GPU_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 562959,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7a3b9551a0d4",
+      "name": "MT8676_Hypervisor_I2C_User_Manual_V1.2.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 724959,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "17d10bf0927d",
+      "name": "MT8676_Hypervisor_I2C_User_Manual_V1.2.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 471844,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "b339a40764b5",
+      "name": "MT8676_Hypervisor_Log_Introduction_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 478675,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "1a36c8bd89a4",
+      "name": "MT8676_Hypervisor_OP-TEE_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1074868,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7cf96d09b15a",
+      "name": "MT8676_Hypervisor_OP-TEE_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 850718,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "17db370a3228",
+      "name": "MT8676_Hypervisor_OTA_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2889834,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "521a9a064592",
+      "name": "MT8676_Hypervisor_OTA_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2425465,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "7f22bbdfff2f",
+      "name": "MT8676_Hypervisor_Reserved_Memory_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 971364,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bdd771d7f372",
+      "name": "MT8676_Hypervisor_Reserved_Memory_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 858862,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6252ad362114",
+      "name": "MT8676_Hypervisor_SDCard_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 779135,
+      "copies": 1,
+      "facets": [
+        "USB/存储",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "98681c23e375",
+      "name": "MT8676_Hypervisor_SDCard_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 560754,
+      "copies": 1,
+      "facets": [
+        "USB/存储",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2b1a7d97f0a2",
+      "name": "MT8676_Hypervisor_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 749020,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "8fb29ac94bce",
+      "name": "MT8676_Hypervisor_Secure_Boot_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 549225,
+      "copies": 1,
+      "facets": [
+        "安全/TEE",
+        "启动/升级",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ccd5b795d5d9",
+      "name": "MT8676_Hypervisor_System_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 733767,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "0ee3f30c7a2c",
+      "name": "MT8676_Hypervisor_System_User_Manual_V1.2.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1025005,
+      "copies": 1,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "eb1ea503dfd4",
+      "name": "MT8676_Hypervisor_T-Box_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 849884,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "65f0b3b1b2de",
+      "name": "MT8676_Hypervisor_T-Box_User_Manual_V1.1.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 631259,
+      "copies": 1,
+      "facets": [
+        "连接/TBox",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "34c55692de98",
+      "name": "MT8676_Hypervisor_UART_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 700045,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "242e09880a72",
+      "name": "MT8676_Hypervisor_UART_User_Manual_V1.0.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 612908,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "35d787f62e6d",
+      "name": "T-Hyper+CPU+调度说明.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 190382,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "01e41793db8d",
+      "name": "vmnet配置说明.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 463452,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "05",
+        "13",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "86df72575171",
+      "name": "低速总线虚拟化配置.pdf",
+      "category": "virtualization",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 339367,
+      "copies": 2,
+      "facets": [
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "dff007dcc6b0",
+      "name": "Vsock api 文档v2.0.pdf",
+      "category": "virtualization",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 345846,
+      "copies": 1,
+      "facets": [
+        "设备接口/跨域"
+      ],
+      "chapterCandidates": [
+        "05",
+        "13",
+        "20"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "ebfa2518d112",
+      "name": "vosck使用案例.rar",
+      "category": "virtualization",
+      "platform": "待确认",
+      "format": "RAR",
+      "bytes": 355737,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "02",
+        "05",
+        "20"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "9b473bff3155",
+      "name": "全虚拟化和半虚拟化GPU差异.pdf",
+      "category": "virtualization",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 811674,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "虚拟化基础"
+      ],
+      "chapterCandidates": [
+        "02",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "bfd28e7774c5",
+      "name": "MT8668_Android_FBE_Debug_SOP_CN_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1388502,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "4ed1bbbfed20",
+      "name": "MT8668_Android_Sensor_lssue_Debug_SOP_CN_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 2066934,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3ea5dbd9f6ab",
+      "name": "Low_power_debug_sop_v1.4.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1514967,
+      "copies": 2,
+      "facets": [
+        "电源/时钟",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "ad653e0a5c99",
+      "name": "MT8676_Android_DebugLoggerUI_User_Manual_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 643178,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "13d506954e81",
+      "name": "MT8676_Android_DebugLoggerUI_User_Manual_V1.1.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 906578,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2ce096834385",
+      "name": "MT8676_Android_FBE_Debug_SOP_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1274496,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2ba1f7bc0db6",
+      "name": "MT8676_Android_Sensor_lssue_Debug_SOP_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2001790,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "f608befe136c",
+      "name": "MT8676_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1927310,
+      "copies": 1,
+      "facets": [
+        "性能/共享资源",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "508bdcafc604",
+      "name": "MT8676_Yocto_Log_Tool_Introduction_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 621212,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "2131e9dacedf",
+      "name": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 630449,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "e81eb416e8a5",
+      "name": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 636289,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "a0ea4cd59f56",
+      "name": "MTK_Log_SOS_dump_uos_pstore.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 312617,
+      "copies": 2,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "1e4d22f0c69a",
+      "name": "MTK_Log_SOS_shutdown_pstore_dump_to_BLK.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 524953,
+      "copies": 2,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "14",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "9fb78cf7bec9",
+      "name": "PVT经验教训记录表.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3864030,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "843085143d8a",
+      "name": "SF_debug方法.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2544493,
+      "copies": 2,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "815b1152cb31",
+      "name": "显示问题common+sop.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 679913,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "0f87b2ff1abc",
+      "name": "汇报材料--软件开发培训-音视频解码常见问题及分析.pdf",
+      "category": "diagnosis",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2201006,
+      "copies": 2,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "3ffcd662cc34",
+      "name": "常用日志说明.url",
+      "category": "diagnosis",
+      "platform": "待确认",
+      "format": "URL",
+      "bytes": 115,
+      "copies": 1,
+      "facets": [
+        "诊断/证据"
+      ],
+      "chapterCandidates": [
+        "15",
+        "23"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "c31539cad8dd",
+      "name": "软件开发培训-音视频解码常见问题及分析.pdf",
+      "category": "diagnosis",
+      "platform": "待确认",
+      "format": "PDF",
+      "bytes": 881712,
+      "copies": 1,
+      "facets": [
+        "待内容复核"
+      ],
+      "chapterCandidates": [
+        "06",
+        "15",
+        "20",
+        "23"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "0ff179c39e73",
+      "name": "Audio模块 8676 vs 8668.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 2126678,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "a7ec0789a073",
+      "name": "GPU_PARAVIRT_Codebase_DIFF_Introduction_Audio.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1234881,
+      "copies": 1,
+      "facets": [
+        "图形/显示",
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6799a6ae5ba0",
+      "name": "MT8668_Android_Audio_User_Manual_CN_V1.0.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 2545940,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "04511451ad4d",
+      "name": "MT8668_Audio_HW_Interface_User_Guide_V1.1.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 379331,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "91086931dad2",
+      "name": "MT8668_Public_domain_audio_planning-202601-to-PVT.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 253783,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12",
+        "17"
+      ],
+      "reviewState": "来源直接引证",
+      "downloadUrl": null
+    },
+    {
+      "id": "860275ad7461",
+      "name": "MT8668_Yocto_Audio_User_Manual_CN_V1.0.pdf",
+      "category": "audio",
+      "platform": "MT8668",
+      "format": "PDF",
+      "bytes": 1453719,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ac6a8bed3a3e",
+      "name": "8676平台Audio通路参考设计.drawio.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 759551,
+      "copies": 2,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "5a70e60b5e6d",
+      "name": "Aurisys_exe_V1.2620.01.rar",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "RAR",
+      "bytes": 909227333,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "742b67255442",
+      "name": "Auto Adsp Task Config Guide.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 370150,
+      "copies": 2,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "6d282f57b1ca",
+      "name": "LK Audio初始化.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 754127,
+      "copies": 2,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "bc8290b990b1",
+      "name": "MT8676_Android_Audio_User_Manual_ V1.0.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 2109803,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "38c540b592d3",
+      "name": "MT8676_Android_Audio_User_Manual_V1.1.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 3145789,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "c5db8e284bad",
+      "name": "MT8676_Audio_倍频介绍.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 447843,
+      "copies": 2,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "ca45b12d0d50",
+      "name": "MT8676_Yocto_Audio_User_Manual_V1.0.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1651120,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "10a842dbdf31",
+      "name": "MT8676_Yocto_Audio_User_Manual_V1.0.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 1463299,
+      "copies": 1,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    },
+    {
+      "id": "09d7c99d2c2a",
+      "name": "MTK+Audio+技术培训材料.pdf",
+      "category": "audio",
+      "platform": "MT8676",
+      "format": "PDF",
+      "bytes": 6921113,
+      "copies": 2,
+      "facets": [
+        "音频/语音"
+      ],
+      "chapterCandidates": [
+        "12"
+      ],
+      "reviewState": "待逐页核实",
+      "downloadUrl": null
+    }
+  ]
+}

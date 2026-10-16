@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const graph = JSON.parse(await readFile(new URL('../docs/graph.json', import.meta.url),'utf8'));
+const rawCatalog = JSON.parse(await readFile(new URL('../docs/raw-sources.json', import.meta.url),'utf8'));
 const ids = new Set(graph.nodes.map(n=>n.id));
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceRoot = ['upstream', '../Architecture_Learning-'].map(p=>path.resolve(projectRoot,p)).find(p=>existsSync(path.join(p,'docs','index.html')));
@@ -37,6 +38,12 @@ test('every public reading link resolves to a published file and heading', async
   const cache = new Map();
   for (const node of graph.nodes) {
     assert.ok(node.url,`Missing reading link: ${node.id}`);
+    if (node.url.startsWith('./raw-sources.html')) {
+      assert.ok(existsSync(path.join(projectRoot,'docs','raw-sources.html')),node.id);
+      const category = new URL(node.url,'https://example.invalid/').searchParams.get('category');
+      if (category) assert.ok(rawCatalog.categories.some(item=>item.id===category),node.id);
+      continue;
+    }
     const url = new URL(node.url);
     assert.equal(url.origin,sourceSite.origin,node.id);
     assert.ok(url.pathname.startsWith(sourceSite.pathname),node.id);
@@ -48,8 +55,28 @@ test('every public reading link resolves to a published file and heading', async
     assert.ok(cache.get(file).has(decodeURIComponent(url.hash.slice(1))),`${node.id}: ${relative}${url.hash}`);
   }
   for (const topic of graph.nodes.filter(node=>node.kind==='topic')) {
+    if (topic.id==='topic:raw') continue;
     assert.ok(graph.nodes.some(node=>node.kind==='chapter'&&node.url===topic.url&&graph.edges.some(edge=>edge.from===topic.id&&edge.to===node.id)),topic.id);
   }
+});
+
+test('raw materials have a distinct category and complete classified directory',()=>{
+  const categories=graph.nodes.filter(node=>node.id.startsWith('subtopic:raw:'));
+  assert.equal(categories.length,graph.meta.rawCategoryCount);
+  assert.equal(categories.length,rawCatalog.categories.length);
+  assert.equal(graph.meta.rawDocumentCount,rawCatalog.documents.length);
+  assert.equal(new Set(rawCatalog.documents.map(document=>document.id)).size,rawCatalog.documents.length);
+  const valid=new Set(rawCatalog.categories.map(category=>category.id));
+  for(const document of rawCatalog.documents){
+    assert.ok(valid.has(document.category),document.id);
+    assert.ok(document.name&&document.format,document.id);
+    if(document.downloadUrl)assert.ok(document.downloadUrl.startsWith('https://'),document.id);
+  }
+  for(const category of categories){
+    assert.equal(category.parentId,'topic:raw');
+    assert.ok(graph.edges.some(edge=>edge.from==='topic:raw'&&edge.to===category.id),category.id);
+  }
+  assert.ok(!JSON.stringify(rawCatalog).includes('I:\\学习资料'),'local source paths must not be published');
 });
 
 test('power management has traceable, detailed learning paths',()=>{

@@ -9,6 +9,8 @@ const siteBase = 'https://qiantao18817568425-art.github.io/Architecture_Learning
 const archDir = path.join(sourceRoot, 'docs', 'architecture');
 const lessonDir = path.join(sourceRoot, 'docs', 'lessons');
 const powerTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'power-taxonomy.json'), 'utf8'));
+const rawTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'raw-taxonomy.json'), 'utf8'));
+const rawCatalog = JSON.parse(await readFile(path.join(projectRoot, 'docs', 'raw-sources.json'), 'utf8'));
 
 function plain(value) {
   return value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
@@ -26,7 +28,8 @@ const topics = [
   ['audio', '音频与语音', '播放、采集与音频策略'],
   ['power', '电源与生命周期', '休眠、唤醒、启动与恢复'],
   ['cross', '跨域通信', '接口、消息与状态同步'],
-  ['diagnosis', '诊断与证据', '日志、复盘与工程验证']
+  ['diagnosis', '诊断与证据', '日志、复盘与工程验证'],
+  ['raw', '原始资料', '按平台、技术域与文件版本检索原始资料；当前为分类目录']
 ];
 
 // A topic is an index node, so its reading link points to a public entry chapter.
@@ -68,9 +71,10 @@ const nodes = [{ id:'root', title:'座舱知识', kind:'root', description:'公�
 const edges = [];
 for (const [id,title,description] of topics) {
   const chapter = topicLandingChapters[id];
-  if (!chapter || !chapterTopics[chapter]?.includes(id)) throw new Error(`Invalid topic reading chapter: ${id}`);
+  if (id !== 'raw' && (!chapter || !chapterTopics[chapter]?.includes(id))) throw new Error(`Invalid topic reading chapter: ${id}`);
   nodes.push({ id:`topic:${id}`, title, kind:'topic', description,
-    url:`${siteBase}architecture/${chapter}.html`, source:`公开架构章节 · ${chapter} 章入门` });
+    url:id==='raw'?'./raw-sources.html':`${siteBase}architecture/${chapter}.html`,
+    source:id==='raw'?'原始资料分类目录':`公开架构章节 · ${chapter} 章入门` });
   edges.push({ from:'root', to:`topic:${id}`, type:'主题目录' });
 }
 
@@ -121,6 +125,20 @@ for (const branch of powerTaxonomy) {
   for (const target of linked) edges.push({ from:id, to:target, type:'内容索引' });
 }
 
+const rawCategoryCounts = new Map(rawCatalog.categories.map(category=>[category.id,category.count]));
+for (const category of rawTaxonomy) {
+  const id = `subtopic:raw:${category.id}`;
+  if (knownIds.has(id) || !rawCategoryCounts.has(category.id)) throw new Error(`Invalid raw category: ${id}`);
+  for (const chapter of category.chapters) if (!knownIds.has(`chapter:${chapter}`)) throw new Error(`Missing raw chapter ${chapter}`);
+  for (const topic of category.topics) if (!knownIds.has(`topic:${topic}`)) throw new Error(`Missing raw topic ${topic}`);
+  nodes.push({id,title:category.title,kind:'subtopic',description:`${rawCategoryCounts.get(category.id)} 份不同内容。按原始文件归类，技术结论与适用版本待核。`,
+    url:`./raw-sources.html?category=${category.id}`,source:'原始资料分类目录',topics:['raw'],parentId:'topic:raw',depth:1});
+  knownIds.add(id);
+  edges.push({from:'topic:raw',to:id,type:'主题细分'});
+  for (const chapter of category.chapters) edges.push({from:id,to:`chapter:${chapter}`,type:'内容索引'});
+  for (const topic of category.topics) edges.push({from:id,to:`topic:${topic}`,type:'主题归类'});
+}
+
 const daily = nodes.filter(n=>n.kind==='lesson').sort((a,b)=>Number(a.id.slice(11))-Number(b.id.slice(11)));
 for(let i=1;i<daily.length;i++) edges.push({ from:daily[i-1].id, to:daily[i].id, type:'课程顺序' });
 const reviews = nodes.filter(n=>n.kind==='review');
@@ -135,6 +153,8 @@ const data = {
     subtopicCount:powerTaxonomy.length,
     powerCategoryCount:powerTaxonomy.filter(branch => !branch.parent).length,
     powerPathCount:powerTaxonomy.filter(branch => branch.parent).length,
+    rawCategoryCount:rawTaxonomy.length,
+    rawDocumentCount:rawCatalog.documents.length,
     relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
   },
   nodes, edges

@@ -10,6 +10,7 @@ const hoverCard = document.querySelector('#hover-card');
 
 const colors = { root:'#e6f5ff', topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885' };
 const labels = { root:'知识入口', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘' };
+const labelFor=node=>node.id.startsWith('subtopic:raw:')?'资料分类':labels[node.kind];
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let graph, nodes=[], edges=[], byId=new Map(), neighbors=new Map(), dust=[], stars=[];
@@ -29,8 +30,10 @@ function prepare(raw){
   const topicNodes=raw.nodes.filter(n=>n.kind==='topic');
   const topicPositions=new Map(topicNodes.map((n,i)=>{const a=i*Math.PI*2/topicNodes.length-.6;return[n.id,{x:Math.cos(a)*330,y:Math.sin(a*1.7)*115,z:Math.sin(a)*250}]}));
   const subtopicNodes=raw.nodes.filter(n=>n.kind==='subtopic');
-  const powerCategories=subtopicNodes.filter(n=>n.depth===1);
-  const subtopicPositions=new Map(powerCategories.map((n,i)=>{const a=i*Math.PI*2/powerCategories.length;const parent=topicPositions.get(n.parentId)||{x:0,y:0,z:0};return[n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100}]}));
+  const groups=new Map();
+  for(const node of subtopicNodes.filter(n=>n.depth===1)){if(!groups.has(node.parentId))groups.set(node.parentId,[]);groups.get(node.parentId).push(node)}
+  const subtopicPositions=new Map();
+  for(const [parentId,children] of groups){const parent=topicPositions.get(parentId)||{x:0,y:0,z:0};children.forEach((n,i)=>{const a=i*Math.PI*2/children.length;subtopicPositions.set(n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100})})}
   const childrenByParent=new Map();
   for(const node of subtopicNodes.filter(n=>n.depth===2)){
     if(!childrenByParent.has(node.parentId))childrenByParent.set(node.parentId,[]);
@@ -55,7 +58,7 @@ function prepare(raw){
   for(const e of edges){neighbors.get(e.from).add(e.to);neighbors.get(e.to).add(e.from)}
   dust=Array.from({length:420},()=>{const a=random()*Math.PI*2,r=Math.sqrt(random())*590;return{x:Math.cos(a)*r,y:(random()-.5)*78,z:Math.sin(a)*r*.75,size:random()*1.2+.25,tone:random()}});
   stars=Array.from({length:140},()=>({x:random(),y:random(),r:random()*.9+.2,a:random()*.45+.12}));
-  document.querySelector('#counts').textContent=`${raw.meta.powerCategoryCount||0} 类电源主题 · ${raw.meta.powerPathCount||0} 条细分路径 · ${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
+  document.querySelector('#counts').textContent=`${raw.meta.rawCategoryCount||0} 类原始资料 · ${raw.meta.rawDocumentCount||0} 份不同内容 · ${raw.meta.powerCategoryCount||0} 类电源主题 · ${raw.meta.powerPathCount||0} 条细分路径 · ${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
@@ -65,7 +68,7 @@ function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;hei
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const x=px*cy+pz*sy,z=pz*cy-px*sy,y=py*cx-z*sx,depth=py*sx+z*cx;const perspective=950/(950-depth),fit=Math.min(width/1100,height/700)*zoom;return{x:width/2+x*perspective*fit,y:height/2+y*perspective*fit,z:depth,p:perspective,fit}}
 function glow(x,y,r,color,alpha){const gradient=ctx.createRadialGradient(x,y,0,x,y,r);gradient.addColorStop(0,color+alpha);gradient.addColorStop(1,color+'00');ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
 function pickNode(x,y){let hit=null,best=Infinity;for(const n of projected){if(n.kind!=='root'&&hidden.has(n.kind))continue;const distance=Math.hypot(n.x-x,n.y-y),range=Math.max(15,n.r*n.p*n.fit+10);if(distance<=range&&distance<best){hit=n;best=distance}}return hit}
-function setHovered(id){if(hovered===id)return;hovered=id;canvas.classList.toggle('is-hovering',!!id);hoverCard.classList.toggle('is-visible',!!id);hoverCard.setAttribute('aria-hidden',String(!id));if(id){const n=byId.get(id);hoverLevels.set(id,hoverLevels.get(id)||0);document.querySelector('#hover-kind').textContent=labels[n.kind];document.querySelector('#hover-title').textContent=n.title;document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`}interaction()}
+function setHovered(id){if(hovered===id)return;hovered=id;canvas.classList.toggle('is-hovering',!!id);hoverCard.classList.toggle('is-visible',!!id);hoverCard.setAttribute('aria-hidden',String(!id));if(id){const n=byId.get(id);hoverLevels.set(id,hoverLevels.get(id)||0);document.querySelector('#hover-kind').textContent=labelFor(n);document.querySelector('#hover-title').textContent=n.title;document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`}interaction()}
 function positionHoverCard(map){if(!hovered)return;const n=map.get(hovered);if(!n)return;const x=Math.max(14,Math.min(width-hoverCard.offsetWidth-14,n.x+24));const y=Math.max(14,Math.min(height-hoverCard.offsetHeight-14,n.y+18));hoverCard.style.left=`${x}px`;hoverCard.style.top=`${y}px`}
 
 function background(){
@@ -157,14 +160,14 @@ function showNode(id){
   const node=byId.get(id);if(!node)return;
   selected=id;interaction();detail.hidden=false;
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
-  document.querySelector('#detail-kind').textContent=labels[node.kind];
+  document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
   document.querySelector('#detail-description').textContent=node.description;
   document.querySelector('#detail-source').textContent=node.source;
   const link=document.querySelector('#detail-link');
-  if(node.url&&node.url.startsWith(graph.meta.sourceSite)){
+  if(node.url&&(node.url.startsWith(graph.meta.sourceSite)||node.url.startsWith('./raw-sources.html'))){
     link.href=node.url;
-    link.textContent=node.kind==='topic'?'阅读相关章节 ↗':node.kind==='root'?'前往学习站点 ↗':node.kind==='subtopic'?'阅读对应段落 ↗':'打开原文 ↗';
+    link.textContent=node.id==='topic:raw'?'查看原始资料目录 ↗':node.id.startsWith('subtopic:raw:')?'查看分类资料 ↗':node.kind==='topic'?'阅读相关章节 ↗':node.kind==='root'?'前往学习站点 ↗':node.kind==='subtopic'?'阅读对应段落 ↗':'打开原文 ↗';
     link.hidden=false;
   }else{link.removeAttribute('href');link.hidden=true}
   const list=document.querySelector('#related-list');list.replaceChildren();
@@ -180,7 +183,7 @@ function renderResults(){
   const matches=nodes.filter(n=>n.title.toLocaleLowerCase().includes(q)).slice(0,10);
   results.hidden=false;
   if(!matches.length){const empty=document.createElement('div');empty.className='empty-result';empty.textContent='没有匹配的节点';empty.style.padding='9px';empty.style.color='#a9bad6';results.append(empty);return}
-  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labels[n.kind];item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}
+  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}
   if(matches.length===1)showNode(matches[0].id);
 }
 function syncFilters(){for(const button of document.querySelectorAll('.filter')){const on=!hidden.has(button.dataset.kind);button.setAttribute('aria-pressed',String(on));button.querySelector('span').textContent=on?'✓':'○'}}

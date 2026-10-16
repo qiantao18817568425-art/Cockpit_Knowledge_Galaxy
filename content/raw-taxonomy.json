@@ -1,0 +1,17 @@
+[
+  {"id":"platform","title":"平台与 SDK","domain":"平台与 SDK","chapters":["02","03","04","17"],"topics":["system"]},
+  {"id":"virtualization","title":"虚拟化与跨域","domain":"虚拟化与跨域","chapters":["02","05","20"],"topics":["virtualization","cross"]},
+  {"id":"android","title":"Android AAOS","domain":"Android AAOS","chapters":["06"],"topics":["android"]},
+  {"id":"yocto","title":"Yocto Host","domain":"Yocto Host","chapters":["07","18"],"topics":["yocto"]},
+  {"id":"mcu","title":"MCU 与车辆信号","domain":"MCU 与车辆信号","chapters":["08","10"],"topics":["mcu"]},
+  {"id":"tbox","title":"TBox 与网络","domain":"TBox 与网络","chapters":["09","13"],"topics":["tbox"]},
+  {"id":"display","title":"显示与触控","domain":"显示与触控","chapters":["11","15"],"topics":["display"]},
+  {"id":"camera","title":"Camera 与视频","domain":"Camera 与视频","chapters":["11","19"],"topics":["camera"]},
+  {"id":"audio","title":"音频与语音","domain":"音频与语音","chapters":["12"],"topics":["audio"]},
+  {"id":"power","title":"电源与生命周期","domain":"电源与生命周期","chapters":["14","23"],"topics":["power"]},
+  {"id":"boot","title":"启动与升级","domain":"启动与升级","chapters":["14","24"],"topics":["power","system"]},
+  {"id":"stability","title":"稳定性与性能","domain":"稳定性与性能","chapters":["15","23"],"topics":["diagnosis"]},
+  {"id":"diagnosis","title":"诊断与日志","domain":"诊断与日志","chapters":["15","23"],"topics":["diagnosis"]},
+  {"id":"usb","title":"USB 与存储","domain":"USB 与存储","chapters":["16"],"topics":["system"]},
+  {"id":"security","title":"安全与 TEE","domain":"安全与 TEE","chapters":["02","23"],"topics":["virtualization"]}
+]

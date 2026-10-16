@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="座舱原始资料分类与知识图谱关联目录。">
+  <title>原始资料 · 座舱知识银河</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,"Microsoft YaHei",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 55% 0,#203760,#0b1428 54%,#070b16);color:#edf4ff}
+    a{color:#a7d9ff}button,input,select{font:inherit}button{cursor:pointer}
+    .shell{max-width:1280px;margin:auto;padding:32px 24px 70px}
+    .back{text-decoration:none;font-size:13px}.eyebrow{margin:40px 0 8px;color:#98bce7;font-size:12px;letter-spacing:.18em}
+    h1{margin:0;font-size:clamp(28px,5vw,54px);letter-spacing:.03em}p{line-height:1.7;color:#bfd0e8}
+    .intro{max-width:850px}.metrics{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
+    .metric{min-width:135px;padding:13px 17px;border:1px solid #52698783;border-radius:12px;background:#13243bd9}
+    .metric strong{display:block;font-size:23px}.metric span{display:block;margin-top:3px;color:#9fb8d7;font-size:11px}
+    .notice{padding:13px 17px;border-left:3px solid #f5bb74;border-radius:7px;background:#1b2740;color:#e4d4bd;font-size:12px}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 14px}
+    input{flex:1;min-width:220px;min-height:40px;padding:8px 11px;border:1px solid #5b708f;border-radius:7px;background:#0d1a2d;color:#f0f6ff}
+    .categories{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+    .categories button{padding:7px 10px;border:1px solid #536987;border-radius:999px;background:#142841;color:#cbdcf2;font-size:12px}
+    .categories button[aria-pressed=true]{border-color:#8dc9ff;background:#27527c;color:white}
+    .categories button span{margin-left:5px;color:#a5b9d2}
+    .result-count{margin:16px 0;color:#a9c2df;font-size:12px}
+    .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:11px}
+    .item{min-width:0;padding:15px;border:1px solid #455d7c;border-radius:12px;background:#112138d9}
+    .item h2{margin:0 0 11px;overflow-wrap:anywhere;font-size:14px;line-height:1.45}
+    .tags{display:flex;gap:5px;flex-wrap:wrap}.tags span{padding:3px 6px;border-radius:4px;background:#273c5a;color:#c4d6eb;font-size:10px}
+    .item p{margin:10px 0 0;color:#a8bbd4;font-size:11px}
+    .item a,.unavailable{display:inline-block;margin-top:12px;padding:8px 10px;border-radius:6px;font-size:11px}
+    .item a{background:#255c87;color:white;text-decoration:none}.item a:hover{background:#3179af}
+    .unavailable{border:1px solid #61738a;color:#9eb0c8}
+    .error{padding:20px;border:1px solid #a86e71;border-radius:9px;background:#442a32;color:#fff}
+    @media(max-width:600px){.shell{padding:20px 14px 50px}.eyebrow{margin-top:28px}.list{grid-template-columns:1fr}}
+  </style>
+  <script type="module">
+    const state={data:null,category:new URLSearchParams(location.search).get('category')||'all',query:''};
+    const $=selector=>document.querySelector(selector);
+    const formatSize=bytes=>bytes>=1048576?`${(bytes/1048576).toFixed(1)} MB`:`${(bytes/1024).toFixed(0)} KB`;
+    function render(){
+      const {data,category,query}=state;if(!data)return;
+      const categoryNames=new Map(data.categories.map(item=>[item.id,item.title]));
+      const filtered=data.documents.filter(item=>(category==='all'||item.category===category)&&
+        (!query||[item.name,item.platform,item.format,...item.facets].join(' ').toLocaleLowerCase().includes(query)));
+      $('#result-count').textContent=`显示 ${filtered.length} / ${data.documents.length} 份不同内容`;
+      const list=$('#list');list.replaceChildren();
+      for(const item of filtered){
+        const card=document.createElement('article');card.className='item';
+        const title=document.createElement('h2');title.textContent=item.name;card.append(title);
+        const tags=document.createElement('div');tags.className='tags';
+        for(const label of [categoryNames.get(item.category),item.platform,item.format,...item.facets.slice(0,3)]){
+          if(!label)continue;const tag=document.createElement('span');tag.textContent=label;tags.append(tag);
+        }card.append(tags);
+        const details=document.createElement('p');details.textContent=`${formatSize(item.bytes)} · ${item.copies} 个文件副本 · ${item.reviewState}`;card.append(details);
+        if(item.downloadUrl){const link=document.createElement('a');link.href=item.downloadUrl;link.textContent='下载原件 ↗';link.target='_blank';link.rel='noopener noreferrer';card.append(link)}
+        else{const unavailable=document.createElement('span');unavailable.className='unavailable';unavailable.textContent='下载准备中';card.append(unavailable)}
+        list.append(card);
+      }
+    }
+    try{
+      const response=await fetch('./raw-sources.json',{cache:'no-cache'});
+      if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      state.data=await response.json();
+      const data=state.data;
+      $('#notice').textContent=data.meta.notice;
+      $('#physical').textContent=data.meta.physicalFiles;
+      $('#unique').textContent=data.meta.uniqueContents;
+      $('#listed').textContent=data.meta.listedDocuments;
+      $('#archives').textContent=data.meta.archiveMembers;
+      const buttons=$('#categories');
+      for(const category of [{id:'all',title:'全部',count:data.documents.length},...data.categories]){
+        const button=document.createElement('button');button.type='button';button.textContent=category.title;
+        const count=document.createElement('span');count.textContent=category.count;button.append(count);
+        button.setAttribute('aria-pressed',String(state.category===category.id));
+        button.addEventListener('click',()=>{state.category=category.id;history.replaceState(null,'',category.id==='all'?'raw-sources.html':`?category=${encodeURIComponent(category.id)}`);for(const item of buttons.children)item.setAttribute('aria-pressed',String(item===button));render()});
+        buttons.append(button);
+      }
+      $('#search').addEventListener('input',event=>{state.query=event.target.value.trim().toLocaleLowerCase();render()});
+      render();
+    }catch(error){const message=document.createElement('p');message.className='error';message.textContent='资料目录未能加载，请确认 raw-sources.json 已随网页发布。';$('#list').replaceChildren(message);console.error(error)}
+  </script>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="index.html">← 返回座舱知识银河</a>
+    <div class="eyebrow">COCKPIT SOURCE LIBRARY</div>
+    <h1>原始资料</h1>
+    <p class="intro">按平台和技术域查找原始材料，再回到图谱阅读对应的架构章节。目录保留重复副本关系；资料标题和分类只用于检索，技术结论须核对原页、车型与软件硬件版本。</p>
+    <div class="metrics">
+      <div class="metric"><strong id="physical">—</strong><span>原始文件</span></div>
+      <div class="metric"><strong id="unique">—</strong><span>不同内容</span></div>
+      <div class="metric"><strong id="listed">—</strong><span>可列入资料</span></div>
+      <div class="metric"><strong id="archives">—</strong><span>压缩包一级成员</span></div>
+    </div>
+    <p class="notice" id="notice">正在读取资料目录…</p>
+    <div class="toolbar"><input id="search" type="search" placeholder="搜索资料名、平台或技术标签" aria-label="搜索资料"></div>
+    <nav class="categories" id="categories" aria-label="原始资料分类"></nav>
+    <div class="result-count" id="result-count" role="status"></div>
+    <section class="list" id="list" aria-label="原始资料列表"></section>
+  </main>
+</body>
+</html>

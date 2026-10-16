@@ -9,6 +9,8 @@
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
+    "rawCategoryCount": 15,
+    "rawDocumentCount": 299,
     "relationNotice": "连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。"
   },
   "nodes": [
@@ -115,6 +117,14 @@
       "description": "日志、复盘与工程验证",
       "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/15.html",
       "source": "公开架构章节 · 15 章入门"
+    },
+    {
+      "id": "topic:raw",
+      "title": "原始资料",
+      "kind": "topic",
+      "description": "按平台、技术域与文件版本检索原始资料；当前为分类目录",
+      "url": "./raw-sources.html",
+      "source": "原始资料分类目录"
     },
     {
       "id": "chapter:00",
@@ -1560,6 +1570,201 @@
       ],
       "parentId": "subtopic:power:diagnostics",
       "depth": 2
+    },
+    {
+      "id": "subtopic:raw:platform",
+      "title": "平台与 SDK",
+      "kind": "subtopic",
+      "description": "34 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=platform",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:virtualization",
+      "title": "虚拟化与跨域",
+      "kind": "subtopic",
+      "description": "48 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=virtualization",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:android",
+      "title": "Android AAOS",
+      "kind": "subtopic",
+      "description": "17 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=android",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:yocto",
+      "title": "Yocto Host",
+      "kind": "subtopic",
+      "description": "20 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=yocto",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:mcu",
+      "title": "MCU 与车辆信号",
+      "kind": "subtopic",
+      "description": "11 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=mcu",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:tbox",
+      "title": "TBox 与网络",
+      "kind": "subtopic",
+      "description": "26 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=tbox",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:display",
+      "title": "显示与触控",
+      "kind": "subtopic",
+      "description": "26 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=display",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:camera",
+      "title": "Camera 与视频",
+      "kind": "subtopic",
+      "description": "36 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=camera",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:audio",
+      "title": "音频与语音",
+      "kind": "subtopic",
+      "description": "16 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=audio",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:power",
+      "title": "电源与生命周期",
+      "kind": "subtopic",
+      "description": "11 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=power",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:boot",
+      "title": "启动与升级",
+      "kind": "subtopic",
+      "description": "10 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=boot",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:stability",
+      "title": "稳定性与性能",
+      "kind": "subtopic",
+      "description": "9 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=stability",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:diagnosis",
+      "title": "诊断与日志",
+      "kind": "subtopic",
+      "description": "19 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=diagnosis",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:usb",
+      "title": "USB 与存储",
+      "kind": "subtopic",
+      "description": "14 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=usb",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
+    },
+    {
+      "id": "subtopic:raw:security",
+      "title": "安全与 TEE",
+      "kind": "subtopic",
+      "description": "2 份不同内容。按原始文件归类，技术结论与适用版本待核。",
+      "url": "./raw-sources.html?category=security",
+      "source": "原始资料分类目录",
+      "topics": [
+        "raw"
+      ],
+      "parentId": "topic:raw",
+      "depth": 1
     }
   ],
   "edges": [
@@ -1621,6 +1826,11 @@
     {
       "from": "root",
       "to": "topic:diagnosis",
+      "type": "主题目录"
+    },
+    {
+      "from": "root",
+      "to": "topic:raw",
       "type": "主题目录"
     },
     {
@@ -3027,6 +3237,316 @@
       "from": "subtopic:power:current-evidence",
       "to": "course:day-39",
       "type": "内容索引"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:platform",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:platform",
+      "to": "chapter:02",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:platform",
+      "to": "chapter:03",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:platform",
+      "to": "chapter:04",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:platform",
+      "to": "chapter:17",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:platform",
+      "to": "topic:system",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:virtualization",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:virtualization",
+      "to": "chapter:02",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:virtualization",
+      "to": "chapter:05",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:virtualization",
+      "to": "chapter:20",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:virtualization",
+      "to": "topic:virtualization",
+      "type": "主题归类"
+    },
+    {
+      "from": "subtopic:raw:virtualization",
+      "to": "topic:cross",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:android",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:android",
+      "to": "chapter:06",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:android",
+      "to": "topic:android",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:yocto",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:yocto",
+      "to": "chapter:07",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:yocto",
+      "to": "chapter:18",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:yocto",
+      "to": "topic:yocto",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:mcu",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:mcu",
+      "to": "chapter:08",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:mcu",
+      "to": "chapter:10",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:mcu",
+      "to": "topic:mcu",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:tbox",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:tbox",
+      "to": "chapter:09",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:tbox",
+      "to": "chapter:13",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:tbox",
+      "to": "topic:tbox",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:display",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:display",
+      "to": "chapter:11",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:display",
+      "to": "chapter:15",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:display",
+      "to": "topic:display",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:camera",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:camera",
+      "to": "chapter:11",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:camera",
+      "to": "chapter:19",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:camera",
+      "to": "topic:camera",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:audio",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:audio",
+      "to": "chapter:12",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:audio",
+      "to": "topic:audio",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:power",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:power",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:power",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:power",
+      "to": "topic:power",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:boot",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:boot",
+      "to": "chapter:14",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:boot",
+      "to": "chapter:24",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:boot",
+      "to": "topic:power",
+      "type": "主题归类"
+    },
+    {
+      "from": "subtopic:raw:boot",
+      "to": "topic:system",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:stability",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:stability",
+      "to": "chapter:15",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:stability",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:stability",
+      "to": "topic:diagnosis",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:diagnosis",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:diagnosis",
+      "to": "chapter:15",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:diagnosis",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:diagnosis",
+      "to": "topic:diagnosis",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:usb",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:usb",
+      "to": "chapter:16",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:usb",
+      "to": "topic:system",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:raw",
+      "to": "subtopic:raw:security",
+      "type": "主题细分"
+    },
+    {
+      "from": "subtopic:raw:security",
+      "to": "chapter:02",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:security",
+      "to": "chapter:23",
+      "type": "内容索引"
+    },
+    {
+      "from": "subtopic:raw:security",
+      "to": "topic:virtualization",
+      "type": "主题归类"
     },
     {
       "from": "course:day-1",

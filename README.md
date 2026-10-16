@@ -9,6 +9,7 @@
 | **1、座舱知识银河** | [打开 3D 关系图](https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/) | 搜索主题、切换中心节点、查看关联和课程顺序。 |
 | **2、座舱架构实践** | [打开架构章节](https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/index.html) | 阅读平台、运行域、模块职责与业务链路。 |
 | **3、座舱架构学习** | [打开每日与每周课程](https://qiantao18817568425-art.github.io/Architecture_Learning-/) | 按 Day / Week 学习与复盘。 |
+| **4、原始资料** | [打开分类目录](https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-sources.html) | 按 15 个类别检索 299 份去重资料及其图谱关系；原件下载正在准备。 |
 
 图谱和原站均公开发布，无需 GitHub 登录即可阅读。GitHub Pages 使用本仓库 `main` 分支的 `docs/` 目录。
 
@@ -17,6 +18,7 @@
 - **主题星系**：整机与平台、虚拟化、Android AAOS、Yocto Host、MCU、TBox、显示、Camera、音频、电源、跨域通信和诊断等入口。
 - **电源细分链路**：10 类主题下展开 20 条路径，分别学习车辆输入与策略、MCU 握手、供电、Guest/Host/Hypervisor 准备、Suspend 各阶段、真实唤醒、TBox/RTC、业务恢复，以及“睡不下去”和“睡着后电流偏高”的不同证据。每条路径连接有对应内容的公开章节与课程。
 - **架构章节**：索引原站的中文版架构正文。
+- **原始资料**：独立主题与 15 个分类节点，连接相关架构章节，并提供 299 份去重资料的检索目录。资料是否适用于当前车型仍须按版本核对。
 - **Day 课程与 Week 复盘**：索引原站公开的专题内容；页面左侧显示当前实际收录数量。
 - **知识连线**：表示主题目录、主题细分、内容索引或课程顺序。连线**不代表**已验证的实车硬件连接、协议路径或故障因果。
 
@@ -34,9 +36,9 @@
 
 数据源是原仓库公开发布的 `docs/index.html`、`docs/architecture/`、`docs/lessons/` 和 `content/learning-progress.json`。本仓库的 [GitHub Actions 更新流程](.github/workflows/update-graph.yml)会在北京时间 **20:45** 和次日 **09:35** 检查原仓库，重建并验证 `docs/graph.json`；索引有变化才提交，随后由 GitHub Pages 发布。也可在 Actions 页面手动运行该流程。定时任务可能受 GitHub 排队影响，因此更新不是实时的。
 
-同步只读取这些公开页面和学习进度文件。本仓库不采集或上传私有日志、异常包、账号信息和内部项目证据。
+同步只读取这些公开页面和学习进度文件。原始资料目录由人工维护；自动更新不会覆盖它。本仓库不采集或上传私有日志、异常包、账号信息和内部项目证据。
 
-电源分类由 [`content/power-taxonomy.json`](content/power-taxonomy.json)人工维护，来源链接只指向已公开的架构章节。补充的 MTK/PVT 资料仅用于本地核对分类覆盖，不作为公开图谱的原文、图片或下载附件。分类是学习索引，状态名、供电策略、跨域握手和唤醒线路是否适用于某辆车，仍须按车型、硬件、软件版本及实车证据确认。新增课程时，可在该文件补充适用的细分链路；自动更新不会覆盖人工分类。
+电源分类由 [`content/power-taxonomy.json`](content/power-taxonomy.json)人工维护，来源链接只指向已公开的架构章节。原始资料分类由 [`content/raw-taxonomy.json`](content/raw-taxonomy.json)人工维护，分类目录在 `docs/raw-sources.json`；当前目录仅发布元数据，原件下载链接尚未上线。分类是学习索引，状态名、供电策略、跨域握手和唤醒线路是否适用于某辆车，仍须按车型、硬件、软件版本及实车证据确认。新增课程时，可在分类文件补充适用的细分链路；自动更新不会覆盖人工分类。
 
 本地重建与检查：
 

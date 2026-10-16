@@ -7,6 +7,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #a9d9
 .workbench{position:relative;width:100%;height:100svh;min-height:560px;overflow:hidden;background:#090d19;color:#edf3ff;isolation:isolate}
 #galaxy{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 #galaxy.dragging{cursor:grabbing}
+#galaxy.is-hovering{cursor:pointer}
 .glass{position:absolute;z-index:2;border:1px solid #54638980;border-radius:11px;background:#0e192ce8;box-shadow:0 14px 40px #030711a8;backdrop-filter:blur(16px)}
 .controls{top:20px;left:20px;width:226px;padding:17px}
 .brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -40,6 +41,11 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #a9d9
 .motion-light{width:7px;height:7px;border-radius:50%;background:#91d8ff;box-shadow:0 0 10px #91d8ff}
 .motion button{padding:3px 7px;border:0;border-radius:5px;background:#263b61;color:#e3efff;font-size:11px}
 .motion button:hover{background:#365080}
+.hover-card{z-index:3;width:214px;max-width:calc(100vw - 28px);padding:10px 12px;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(6px) scale(.96);transition:opacity .16s ease,transform .16s ease,visibility .16s ease}
+.hover-card.is-visible{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.hover-card span{display:block;color:#95c5f4;font-size:10px}
+.hover-card strong{display:block;margin:3px 0 5px;color:#f5faff;font-size:13px;line-height:1.35}
+.hover-card small{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;color:#b8cae4;font-size:10px;line-height:1.45}
 .detail{right:20px;bottom:65px;width:267px;max-height:calc(100vh - 140px);overflow:auto;padding:16px}
 .detail[hidden]{display:none}
 .detail-close{position:absolute;top:8px;right:9px;width:26px;height:26px;border:0;background:transparent;color:#abbcda;font-size:19px}

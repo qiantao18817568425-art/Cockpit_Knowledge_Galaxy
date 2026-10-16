@@ -28,6 +28,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #a9d9
 .filter[aria-pressed="false"]{opacity:.45}
 .swatch{width:8px;height:8px;border-radius:50%}
 .swatch.topic{background:#74bbff;box-shadow:0 0 10px #74bbff}
+.swatch.subtopic{background:#f7aadd;box-shadow:0 0 10px #f7aadd}
 .swatch.chapter{background:#7fe2cd;box-shadow:0 0 10px #7fe2cd}
 .swatch.lesson{background:#baa4ff;box-shadow:0 0 10px #baa4ff}
 .swatch.review{background:#ffc885;box-shadow:0 0 10px #ffc885}
@@ -68,4 +69,3 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #a9d9
 @media(max-width:720px){.workbench{min-height:620px}.controls{top:10px;left:10px;width:170px;padding:11px}.brand{gap:6px;margin-bottom:10px}.brand-orb{width:18px;height:18px}.brand h1{font-size:13px}.brand p{font-size:9px}.motion{top:10px;right:10px;padding:6px;font-size:10px}.detail{right:10px;bottom:50px;width:210px;max-height:50vh;padding:11px}.detail p{display:none}.zoom{right:10px;bottom:10px}.hint{left:10px;bottom:12px;max-width:45%;font-size:9px}.counts{font-size:9px}}
 @media(max-width:400px){.controls{width:148px}.brand h1{font-size:12px}.motion{gap:4px}.motion button{padding:2px 4px}.detail{width:175px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-

@@ -8,6 +8,7 @@ const sourceRoot = path.resolve(sourceArg >= 0 ? process.argv[sourceArg + 1] : p
 const siteBase = 'https://qiantao18817568425-art.github.io/Architecture_Learning-/';
 const archDir = path.join(sourceRoot, 'docs', 'architecture');
 const lessonDir = path.join(sourceRoot, 'docs', 'lessons');
+const powerTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'power-taxonomy.json'), 'utf8'));
 
 function plain(value) {
   return value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
@@ -30,10 +31,10 @@ const topics = [
 
 const chapterTopics = {
   '00':['system'],'01':['system'],'02':['system','virtualization'],'03':['system'],'04':['system'],
-  '05':['cross','diagnosis'],'06':['android'],'07':['yocto'],'08':['mcu'],'09':['tbox'],
+  '05':['cross','diagnosis'],'06':['android'],'07':['yocto'],'08':['mcu','power'],'09':['tbox','power'],
   '10':['mcu','cross'],'11':['display','camera'],'12':['audio'],'13':['tbox','cross'],
-  '14':['power'],'15':['diagnosis'],'16':['diagnosis'],'17':['system'],'18':['yocto'],
-  '19':['camera'],'20':['cross'],'21':['diagnosis'],'22':['diagnosis'],'23':['diagnosis'],'24':['power','display']
+  '14':['power'],'15':['diagnosis','power'],'16':['diagnosis'],'17':['system'],'18':['yocto'],
+  '19':['camera'],'20':['cross'],'21':['diagnosis'],'22':['diagnosis'],'23':['diagnosis','power'],'24':['power','display']
 };
 
 const keywordTopics = [
@@ -87,6 +88,25 @@ for (const match of home.matchAll(lessonPattern)) {
   for (const topic of assignedTopics) edges.push({ from:`topic:${topic}`, to:`course:${id}`, type:'主题归类' });
 }
 
+const knownIds = new Set(nodes.map(node => node.id));
+for (const branch of powerTaxonomy) {
+  const id = `subtopic:power:${branch.id}`;
+  if (knownIds.has(id)) throw new Error(`Duplicate power branch: ${id}`);
+  if (!branch.sourcePath.startsWith('architecture/')) throw new Error(`Unexpected power source: ${branch.sourcePath}`);
+  const linked = [
+    ...branch.chapters.map(number => `chapter:${number}`),
+    ...branch.lessons.map(lesson => `course:${lesson}`)
+  ];
+  for (const target of linked) if (!knownIds.has(target)) throw new Error(`Missing power target ${target} for ${id}`);
+  nodes.push({
+    id, title:branch.title, kind:'subtopic', description:branch.description,
+    url:`${siteBase}${branch.sourcePath}`, source:'公开架构章节 · 电源细分索引', topics:['power']
+  });
+  knownIds.add(id);
+  edges.push({ from:'topic:power', to:id, type:'主题细分' });
+  for (const target of linked) edges.push({ from:id, to:target, type:'内容索引' });
+}
+
 const daily = nodes.filter(n=>n.kind==='lesson').sort((a,b)=>Number(a.id.slice(11))-Number(b.id.slice(11)));
 for(let i=1;i<daily.length;i++) edges.push({ from:daily[i-1].id, to:daily[i].id, type:'课程顺序' });
 const reviews = nodes.filter(n=>n.kind==='review');
@@ -98,11 +118,11 @@ const data = {
     chapterCount:chapterNumbers.length,
     lessonCount:daily.length,
     reviewCount:reviews.length,
-    relationNotice:'连线为主题归类、目录或课程顺序；不表示已验证的实车硬件连接或故障因果。'
+    subtopicCount:powerTaxonomy.length,
+    relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
   },
   nodes, edges
 };
 await mkdir(path.join(projectRoot,'docs'),{recursive:true});
 await writeFile(path.join(projectRoot,'docs','graph.json'),JSON.stringify(data,null,2)+'\n','utf8');
 console.log(`Graph generated: ${nodes.length} nodes, ${edges.length} edges; ${daily.length} days, ${reviews.length} reviews.`);
-

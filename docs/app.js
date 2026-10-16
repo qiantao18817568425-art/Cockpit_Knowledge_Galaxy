@@ -8,8 +8,8 @@ const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
 
-const colors = { root:'#e6f5ff', topic:'#74bbff', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885' };
-const labels = { root:'知识入口', topic:'主题星系', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘' };
+const colors = { root:'#e6f5ff', topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885' };
+const labels = { root:'知识入口', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘' };
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let graph, nodes=[], edges=[], byId=new Map(), neighbors=new Map(), dust=[], stars=[];
@@ -28,9 +28,12 @@ function prepare(raw){
   graph=raw;
   const topicNodes=raw.nodes.filter(n=>n.kind==='topic');
   const topicPositions=new Map(topicNodes.map((n,i)=>{const a=i*Math.PI*2/topicNodes.length-.6;return[n.id,{x:Math.cos(a)*330,y:Math.sin(a*1.7)*115,z:Math.sin(a)*250}]}));
+  const subtopicNodes=raw.nodes.filter(n=>n.kind==='subtopic');
+  const subtopicPositions=new Map(subtopicNodes.map((n,i)=>{const a=i*Math.PI*2/subtopicNodes.length;const parent=topicPositions.get(`topic:${n.topics?.[0]}`)||{x:0,y:0,z:0};return[n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100}]}));
   nodes=raw.nodes.map(n=>{
     if(n.kind==='root')return{...n,x:0,y:0,z:0,r:11};
     if(n.kind==='topic')return{...n,...topicPositions.get(n.id),r:7.7};
+    if(n.kind==='subtopic')return{...n,...subtopicPositions.get(n.id),r:5.9};
     const parent=topicPositions.get(`topic:${n.topics?.[0]||'system'}`)||{x:0,y:0,z:0};
     const r1=seeded(n.id+'a'),r2=seeded(n.id+'b'),r3=seeded(n.id+'c');
     const a=r1*Math.PI*2,spread=n.kind==='chapter'?80:n.kind==='lesson'?128:153;
@@ -42,7 +45,7 @@ function prepare(raw){
   for(const e of edges){neighbors.get(e.from).add(e.to);neighbors.get(e.to).add(e.from)}
   dust=Array.from({length:420},()=>{const a=random()*Math.PI*2,r=Math.sqrt(random())*590;return{x:Math.cos(a)*r,y:(random()-.5)*78,z:Math.sin(a)*r*.75,size:random()*1.2+.25,tone:random()}});
   stars=Array.from({length:140},()=>({x:random(),y:random(),r:random()*.9+.2,a:random()*.45+.12}));
-  document.querySelector('#counts').textContent=`${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
+  document.querySelector('#counts').textContent=`${raw.meta.subtopicCount||0} 条细分链路 · ${raw.meta.chapterCount} 章架构 · ${raw.meta.lessonCount} 个 Day · ${raw.meta.reviewCount} 条 Week 复盘`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
@@ -113,9 +116,9 @@ function draw(){
   }
   labelQueue.sort((a,b)=>(Number(a.active)+Number(a.preview)*2)-(Number(b.active)+Number(b.preview)*2));
   for(const {n,active,preview,hover,dim,radius,color} of labelQueue){
-    const baseSize=active?17:n.kind==='root'?17:n.kind==='topic'?13:11;
+    const baseSize=active?17:n.kind==='root'?17:n.kind==='topic'?13:n.kind==='subtopic'?12:11;
     const size=baseSize+(24-baseSize)*hover;
-    ctx.font=`${n.kind==='root'||n.kind==='topic'?650:500} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
+    ctx.font=`${n.kind==='root'||n.kind==='topic'||n.kind==='subtopic'?650:500} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
     const limit=hover>.5?32:21;
     const text=n.title.length>limit?n.title.slice(0,limit-1)+'…':n.title;
     const textWidth=ctx.measureText(text).width;
@@ -151,11 +154,9 @@ function showNode(id){
   const link=document.querySelector('#detail-link');
   if(node.url&&node.url.startsWith(graph.meta.sourceSite)){link.href=node.url;link.hidden=false}else{link.removeAttribute('href');link.hidden=true}
   const list=document.querySelector('#related-list');list.replaceChildren();
-  const relations=[...neighbors.get(id)].filter(other=>byId.has(other)).sort((a,b)=>{
-    const ak=byId.get(a).kind,bk=byId.get(b).kind;return (ak==='topic'?1:0)-(bk==='topic'?1:0);
-  });
-  for(const other of relations.slice(0,8)){const item=document.createElement('button');item.type='button';item.textContent=byId.get(other).title;item.addEventListener('click',()=>showNode(other));list.append(item)}
-  if(relations.length>8){const more=document.createElement('small');more.textContent=`另有 ${relations.length-8} 个关联节点`;list.append(more)}
+  const order={subtopic:0,chapter:1,lesson:2,review:3,topic:4,root:5};
+  const relations=[...neighbors.get(id)].filter(other=>byId.has(other)).sort((a,b)=>order[byId.get(a).kind]-order[byId.get(b).kind]);
+  for(const other of relations){const item=document.createElement('button');item.type='button';item.textContent=byId.get(other).title;item.addEventListener('click',()=>showNode(other));list.append(item)}
 }
 function clearSelection(){selected=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;interaction()}
 
@@ -202,4 +203,3 @@ try{
   prepare(await response.json());
   requestAnimationFrame(frame);
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
-

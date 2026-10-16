@@ -22,7 +22,21 @@ test('every edge resolves and states an index relation',()=>{
   for(const edge of graph.edges){
     assert.ok(ids.has(edge.from),edge.from);
     assert.ok(ids.has(edge.to),edge.to);
-    assert.ok(['主题目录','主题归类','课程顺序'].includes(edge.type));
+    assert.ok(['主题目录','主题归类','主题细分','内容索引','课程顺序'].includes(edge.type));
   }
 });
 
+test('power management has traceable, detailed learning paths',()=>{
+  const branches=graph.nodes.filter(node=>node.kind==='subtopic'&&node.id.startsWith('subtopic:power:'));
+  assert.equal(branches.length,graph.meta.subtopicCount);
+  assert.ok(branches.length>=10);
+  for(const branch of branches){
+    assert.ok(branch.url?.startsWith(graph.meta.sourceSite+'architecture/'),branch.id);
+    assert.ok(graph.edges.some(edge=>edge.from==='topic:power'&&edge.to===branch.id&&edge.type==='主题细分'),branch.id);
+    assert.ok(graph.edges.filter(edge=>edge.from===branch.id&&edge.type==='内容索引').length>=2,branch.id);
+  }
+  const powerTargets=new Set(graph.edges.filter(edge=>edge.from.startsWith('subtopic:power:')).map(edge=>edge.to));
+  for(const target of ['chapter:08','chapter:09','chapter:14','chapter:15','chapter:23','chapter:24','course:day-7','course:day-8','course:day-38','course:day-39']){
+    assert.ok(powerTargets.has(target),target);
+  }
+});

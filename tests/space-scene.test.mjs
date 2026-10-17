@@ -2,10 +2,17 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  clampLabelX,
   depthLabelStyle,
   fibonacciSpherePoint,
   orbitPose,
 } from '../docs/space-scene.js';
+
+test('labels at the screen edge are clamped into view instead of disappearing',()=>{
+  assert.equal(clampLabelX(-42,120,800),8);
+  assert.equal(clampLabelX(760,120,800),672);
+  assert.equal(clampLabelX(300,120,800),300);
+});
 
 test('fibonacci sphere distributes every topic on a deterministic 3D shell',()=>{
   const points=Array.from({length:12},(_,index)=>fibonacciSpherePoint(index,12,330));

@@ -8,6 +8,10 @@ export function fibonacciSpherePoint(index,total,radius=1){
   return{x:Math.cos(angle)*ring*radius,y:y*radius,z:Math.sin(angle)*ring*radius};
 }
 
+export function clampLabelX(x,textWidth,viewportWidth,padding=8){
+  return Math.max(padding,Math.min(viewportWidth-textWidth-padding,x));
+}
+
 export function depthLabelStyle({depth=0,perspective=1,kind='component',active=false,hover=0}){
   const importance={root:9,topic:4,platform:3,domain:3,subtopic:2}[kind]||0;
   const depthLevel=Math.max(0,Math.min(1,(depth+560)/1120));

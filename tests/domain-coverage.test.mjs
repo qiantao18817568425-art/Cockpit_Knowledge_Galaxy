@@ -16,6 +16,18 @@ test('platform runtime knowledge has scoped boundaries and interfaces',()=>{
 });
 test('HMI media knowledge separates control, frame, playback and capture paths',()=>{
   for(const id of ['component:android-display','component:yocto-display','component:physical-display','component:backlight','interface:input-event','observation:first-frame','component:camera-control','interface:camera-frame','component:avm-stitch','observation:camera-four-stream','process:audio-playback','process:audio-capture','component:aec-reference','component:dsp-variant']) assert.ok(ids.has(id),id);
+  for(const id of ['component:android-display','component:yocto-display','component:physical-display','component:backlight']){
+    const entity=merged.entities.find(item=>item.id===id);
+    assert.ok(entity.knowledge?.role&&entity.knowledge?.observations?.length,id);
+  }
+  for(const id of ['rel:hmi:001','rel:hmi:002','rel:hmi:003','rel:hmi:004','rel:hmi:005']){
+    const relation=merged.relations.find(item=>item.id===id);
+    assert.ok(relation.why&&relation.verification?.length,id);
+  }
+  const displayClaims=merged.claims.filter(item=>item.relationId==='rel:hmi:001');
+  assert.ok(displayClaims.some(item=>item.status==='documented_reference'&&item.platforms?.includes('MT8676')));
+  assert.ok(displayClaims.some(item=>item.status==='inferred_mapping'&&item.platforms?.includes('MT8668')));
+  assert.equal(displayClaims.some(item=>item.status==='documented_reference'&&item.platforms?.includes('MT8668')),false);
 });
 test('connectivity lifecycle knowledge preserves layered boundaries',()=>{
   for(const id of ['component:ethernet-pcs','component:ethernet-phy','process:l3-connectivity','component:wifi-sta','component:wifi-softap','process:phone-link','component:modem','process:remote-wake','state:cold-boot','state:str-resume','state:vm-recreate','state:process-restart','component:usb-connector','component:usb-controller','component:block-device','component:filesystem-volume','interface:tee-transport','component:tee-service','component:secure-storage']) assert.ok(ids.has(id),id);
@@ -28,4 +40,3 @@ test('all sources map to knowledge or an explicit terminal review state',()=>{
   assert.equal(register.documents.filter(x=>x.processingState==='indexed'&&!x.knowledgeIds.length).length,0);
   assert.deepEqual(validateKnowledgeModel(merged),[]);
 });
-

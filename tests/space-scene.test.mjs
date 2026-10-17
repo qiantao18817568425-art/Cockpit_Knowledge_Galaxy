@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   clampLabelX,
   depthLabelStyle,
+  drillVisibleNodeIds,
   fibonacciSpherePoint,
   fitLabelSize,
   frontLabelLimit,
@@ -13,6 +14,39 @@ import {
   selectFrontLabelIds,
   starPulse,
 } from '../docs/space-scene.js';
+
+const drillGraph={nodes:[
+  {id:'root',kind:'root',hierarchyLevel:0},
+  {id:'l1-a',kind:'pyramid',primaryParentId:'root',hierarchyLevel:1},
+  {id:'l1-b',kind:'pyramid',primaryParentId:'root',hierarchyLevel:1},
+  {id:'domain',kind:'domain',primaryParentId:'l1-a',hierarchyLevel:2},
+  {id:'selected',kind:'component',primaryParentId:'domain',hierarchyLevel:3},
+  {id:'child-a',kind:'interface',primaryParentId:'selected',hierarchyLevel:4},
+  {id:'child-b',kind:'observation',primaryParentId:'selected',hierarchyLevel:4},
+  {id:'neighbor-a',kind:'component',primaryParentId:'domain',hierarchyLevel:3},
+  {id:'neighbor-b',kind:'component',primaryParentId:'domain',hierarchyLevel:3},
+  {id:'ev',kind:'evidence',primaryParentId:'source',hierarchyLevel:5},
+  {id:'ev-sibling',kind:'evidence',primaryParentId:'source',hierarchyLevel:5},
+  {id:'source',kind:'source',primaryParentId:'l1-b',hierarchyLevel:4}
+],edges:[
+  {from:'selected',to:'neighbor-a',type:'depends_on',pathClass:'control'},
+  {from:'selected',to:'neighbor-b',type:'carries_data_to',pathClass:'data'},
+  {from:'selected',to:'ev',type:'supported_by',pathClass:'diagnostic'},
+  {from:'ev',to:'source',type:'supported_by',pathClass:'diagnostic'},
+  {from:'ev-sibling',to:'source',type:'supported_by',pathClass:'diagnostic'}
+]};
+
+test('drill visibility starts at L1 and focuses ancestors, children and capped technical neighbors',()=>{
+  assert.deepEqual([...drillVisibleNodeIds(drillGraph,{selectedId:null})].sort(),['l1-a','l1-b','root'].sort());
+  const focused=drillVisibleNodeIds(drillGraph,{selectedId:'selected',technicalNeighborLimit:1});
+  for(const id of ['root','l1-a','domain','selected','child-a','child-b'])assert.ok(focused.has(id),id);
+  assert.equal(['neighbor-a','neighbor-b'].filter(id=>focused.has(id)).length,1);
+  assert.equal(focused.has('ev'),false);
+  const withEvidence=drillVisibleNodeIds(drillGraph,{selectedId:'selected',evidenceVisible:true});
+  assert.ok(withEvidence.has('ev'));
+  assert.ok(withEvidence.has('source'));
+  assert.equal(withEvidence.has('ev-sibling'),false);
+});
 
 test('label density stays sparse across desktop and mobile views',()=>{
   assert.equal(frontLabelLimit(1600),16);
@@ -100,4 +134,3 @@ test('idle orbit advances yaw and adds a gentle three-axis camera drift',()=>{
   assert.notEqual(later.roll,start.roll);
   assert.ok(Math.abs(later.roll)<.08);
 });
-

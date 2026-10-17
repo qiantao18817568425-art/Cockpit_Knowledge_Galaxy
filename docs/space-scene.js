@@ -68,3 +68,43 @@ export function orbitPose(pose,time,delta){
   };
 }
 
+export function drillVisibleNodeIds(graph,{selectedId=null,expandedDepth=1,evidenceVisible=false,technicalNeighborLimit=8,matchingIds=[]}={}){
+  const byId=new Map(graph.nodes.map(node=>[node.id,node])),visible=new Set(['root']),matches=new Set(matchingIds||[]);
+  if(!selectedId){for(const node of graph.nodes)if(node.primaryParentId==='root'&&node.hierarchyLevel===1)visible.add(node.id);for(const id of matches)visible.add(id);return visible;}
+  let cursor=byId.get(selectedId),guard=new Set();
+  while(cursor&&!guard.has(cursor.id)){visible.add(cursor.id);guard.add(cursor.id);cursor=cursor.primaryParentId?byId.get(cursor.primaryParentId):undefined;}
+  let frontier=[selectedId];
+  for(let depth=0;depth<Math.max(0,expandedDepth);depth++){
+    const next=[];
+    for(const parentId of frontier)for(const node of graph.nodes)if(node.primaryParentId===parentId){visible.add(node.id);next.push(node.id);}
+    frontier=next;
+  }
+  const neighbors=[];
+  for(const edge of graph.edges){
+    if(edge.from!==selectedId&&edge.to!==selectedId)continue;
+    const other=edge.from===selectedId?edge.to:edge.from,node=byId.get(other);if(!node)continue;
+    if(edge.type==='supported_by'||node.kind==='source'||node.kind==='evidence'){
+      if(evidenceVisible)visible.add(other);
+      continue;
+    }
+    if(edge.layer==='hierarchy'||edge.pathClass==='hierarchy'||edge.pathClass==='index')continue;
+    neighbors.push({id:other,priority:edge.pathClass==='data'?4:edge.pathClass==='control'?3:edge.pathClass==='power'?2:1});
+  }
+  neighbors.sort((a,b)=>b.priority-a.priority||a.id.localeCompare(b.id));
+  for(const item of neighbors.slice(0,Math.max(0,technicalNeighborLimit)))visible.add(item.id);
+  if(evidenceVisible){
+    const evidenceScope=new Set([selectedId]);
+    for(const edge of graph.edges){
+      if(edge.from!==selectedId&&edge.to!==selectedId)continue;
+      if(edge.type==='supported_by')evidenceScope.add(edge.from===selectedId?edge.to:edge.from);
+      for(const claim of edge.claims||[])for(const evidenceId of claim.evidenceIds||[])evidenceScope.add(evidenceId);
+    }
+    let changed=true;
+    while(changed){changed=false;for(const edge of graph.edges)if(edge.type==='supported_by'){
+      if(evidenceScope.has(edge.from)&&!evidenceScope.has(edge.to)){evidenceScope.add(edge.to);changed=true;}
+    }}
+    for(const id of evidenceScope){const node=byId.get(id);if(id===selectedId||node?.kind==='source'||node?.kind==='evidence')visible.add(id);}
+  }
+  for(const id of matches)visible.add(id);
+  return visible;
+}

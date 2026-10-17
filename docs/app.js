@@ -1,5 +1,5 @@
 import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js';
-import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,selectFrontLabelIds,starPulse} from './space-scene.js';
+import {clampLabelX,depthLabelStyle,drillVisibleNodeIds,fibonacciSpherePoint,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,selectFrontLabelIds,starPulse} from './space-scene.js';
 import {markdownDownloadSpec,referenceAction} from './reader-actions.js';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
@@ -11,8 +11,8 @@ const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
 
-const colors = { root:'#e6f5ff', topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
-const labels = { root:'知识入口', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
+const colors = { root:'#e6f5ff', pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
+const labels = { root:'知识入口',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
 const labelFor=node=>node.id.startsWith('subtopic:raw:')?'资料分类':labels[node.kind];
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -35,32 +35,25 @@ const random=randomStream(41867);
 
 function prepare(raw){
   graph=raw;
-  const topicNodes=raw.nodes.filter(n=>n.kind==='topic');
-  const topicPositions=new Map(topicNodes.map((n,i)=>[n.id,fibonacciSpherePoint(i,topicNodes.length,330)]));
-  const subtopicNodes=raw.nodes.filter(n=>n.kind==='subtopic');
-  const groups=new Map();
-  for(const node of subtopicNodes.filter(n=>n.depth===1)){if(!groups.has(node.parentId))groups.set(node.parentId,[]);groups.get(node.parentId).push(node)}
-  const subtopicPositions=new Map();
-  for(const [parentId,children] of groups){const parent=topicPositions.get(parentId)||{x:0,y:0,z:0};children.forEach((n,i)=>{const a=i*Math.PI*2/children.length;subtopicPositions.set(n.id,{x:parent.x+Math.cos(a)*145,y:parent.y+Math.sin(a)*104,z:parent.z+Math.sin(a+.8)*100})})}
-  const childrenByParent=new Map();
-  for(const node of subtopicNodes.filter(n=>n.depth===2)){
-    if(!childrenByParent.has(node.parentId))childrenByParent.set(node.parentId,[]);
-    childrenByParent.get(node.parentId).push(node);
+  const hierarchyPositions=new Map([['root',{x:0,y:0,z:0}]]),maxLevel=Math.max(...raw.nodes.map(node=>node.hierarchyLevel||0));
+  for(let level=1;level<=maxLevel;level++){
+    const groups=new Map();
+    for(const node of raw.nodes.filter(item=>item.hierarchyLevel===level)){const parent=node.primaryParentId||'root';if(!groups.has(parent))groups.set(parent,[]);groups.get(parent).push(node);}
+    for(const [parentId,children] of groups){
+      const parent=hierarchyPositions.get(parentId)||{x:0,y:0,z:0};
+      children.sort((a,b)=>(a.hierarchyOrder||0)-(b.hierarchyOrder||0)||a.title.localeCompare(b.title,'zh-CN'));
+      children.forEach((node,index)=>{
+        if(level===1){hierarchyPositions.set(node.id,fibonacciSpherePoint(index,children.length,330));return;}
+        const angle=index*Math.PI*2/Math.max(1,children.length)+seeded(parentId)*Math.PI*2;
+        const radius=Math.max(48,178-level*23),tilt=(seeded(node.id)-.5)*radius*.9;
+        hierarchyPositions.set(node.id,{x:parent.x+Math.cos(angle)*radius,y:parent.y+Math.sin(angle)*radius*.7,z:parent.z+tilt});
+      });
+    }
   }
-  for(const [parentId,children] of childrenByParent){
-    const parent=subtopicPositions.get(parentId);if(!parent)continue;
-    children.forEach((n,i)=>{const a=i*Math.PI*2/children.length+.35;subtopicPositions.set(n.id,{x:parent.x+Math.cos(a)*51,y:parent.y+Math.sin(a)*39,z:parent.z+Math.sin(a+.7)*49})});
-  }
-  const domainTopic={platform:'system',virtualization:'virtualization',android:'android',yocto:'yocto',mcu:'mcu',tbox:'tbox',display:'display',hmi:'display',camera:'camera',audio:'audio',power:'power','cross-domain':'cross',connectivity:'cross',lifecycle:'power',usb:'diagnosis',security:'virtualization',assurance:'diagnosis',performance:'diagnosis',diagnosis:'diagnosis'};
   nodes=raw.nodes.map(n=>{
     if(n.kind==='root')return{...n,x:0,y:0,z:0,r:11};
-    if(n.kind==='topic')return{...n,...topicPositions.get(n.id),r:7.7};
-    if(n.kind==='subtopic')return{...n,...subtopicPositions.get(n.id),r:n.depth===1?5.9:4.1};
-    const parent=topicPositions.get(`topic:${n.topics?.[0]||domainTopic[n.domain]||'system'}`)||{x:0,y:0,z:0};
-    const r1=seeded(n.id+'a'),r2=seeded(n.id+'b'),r3=seeded(n.id+'c');
-    const a=r1*Math.PI*2,spread=n.kind==='chapter'?80:n.kind==='lesson'?128:153;
-    const semantic=n.layer==='knowledge'||n.layer==='evidence';
-    return{...n,x:parent.x+Math.cos(a)*(semantic?95:spread)+(r3-.5)*38,y:parent.y+Math.sin(a)*(semantic?72:spread*.74),z:parent.z+(r2-.5)*(semantic?150:spread*1.75),r:n.kind==='chapter'?5.1:n.kind==='lesson'?3.6:n.kind==='domain'?6.2:n.kind==='platform'?6:n.kind==='component'?4.5:n.kind==='interface'?4:n.kind==='evidence'?3.2:n.kind==='source'?2.7:3.5};
+    const position=hierarchyPositions.get(n.id)||{x:0,y:0,z:0};
+    return{...n,...position,r:n.kind==='pyramid'?7.8:n.kind==='domain'?6.2:n.kind==='platform'?6:n.kind==='component'?4.8:n.kind==='interface'?4:n.kind==='evidence'?3.2:n.kind==='source'?2.7:n.kind==='chapter'?4.2:n.kind==='lesson'?3.4:3.8};
   });
   byId=new Map(nodes.map(n=>[n.id,n]));
   edges=raw.edges.filter(e=>byId.has(e.from)&&byId.has(e.to));
@@ -75,7 +68,7 @@ function prepare(raw){
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
 }
-function refreshVisible(){if(!graph)return;viewState.selectedId=selected;visibleIds=visibleNodeIds(graph,viewState)}
+function refreshVisible(){if(!graph)return;viewState.selectedId=selected;const allowed=visibleNodeIds(graph,viewState);const drill=drillVisibleNodeIds(graph,{selectedId:selected,expandedDepth:1,evidenceVisible:viewState.evidenceVisible,matchingIds});visibleIds=new Set([...drill].filter(id=>allowed.has(id)||matchingIds.has(id)))}
 
 function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch),cr=Math.cos(roll),sr=Math.sin(roll);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const yawX=px*cy+pz*sy,z=pz*cy-px*sy,pitchY=py*cx-z*sx,depth=py*sx+z*cx;const x=yawX*cr-pitchY*sr,y=yawX*sr+pitchY*cr;const perspective=950/(950-depth),fit=Math.max(.52,Math.min(width/1450,height/980))*zoom;return{x:width/2+x*perspective*fit,y:height/2+y*perspective*fit,z:depth,p:perspective,fit}}
@@ -138,7 +131,7 @@ function draw(){
     const dim=(query&&!matching.has(a.id)&&!matching.has(b.id)&&!active)||(emphasis&&!active);
     const indexEdge=edge.pathClass==='index';
     ctx.globalAlpha=dim?.05:active?.68:indexEdge?.06:edge.type==='课程顺序'?.13:.23;
-    const pathColor={control:'#74bbff',data:'#7fe2cd',power:'#ffc15d',diagnostic:'#f7aadd'}[edge.pathClass];
+    const pathColor={control:'#74bbff',data:'#7fe2cd',power:'#ffc15d',state:'#d6a7ff',diagnostic:'#f7aadd'}[edge.pathClass];
     ctx.strokeStyle=active?'#ffffff':(pathColor||(edge.type==='课程顺序'?'#b5a4e7':indexEdge?'#536b90':'#7599c6'));ctx.lineWidth=active?1.7:indexEdge?.7:edge.pathClass?1.15:1;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
   }ctx.globalAlpha=1;
@@ -208,6 +201,7 @@ function appendReason(container,label,value,className='reader-reason'){
 function appendSupports(container,supports=[]){
   if(!supports.length)return;const block=document.createElement('div');block.className='citation-supports';const heading=document.createElement('b');heading.textContent='具体支撑关系';const list=document.createElement('ul');for(const support of supports.slice(0,5)){const item=document.createElement('li');item.textContent=`${support.direct?'直接':'相邻'} · ${support.title}`;list.append(item)}block.append(heading,list);container.append(block);
 }
+function referenceMeta(reference,status){const platforms=reference.platforms?.length?` · ${reference.platforms.join('/')}`:'';return `${pagesLabel(reference.pages)} · ${status}${platforms}`}
 function emptyReader(container,text){const item=document.createElement('div');item.className='reader-empty';item.textContent=text;container.append(item)}
 function closeReaderPreview(){const section=document.querySelector('#reader-preview-section');section.hidden=true;document.querySelector('#reader-preview').src='about:blank'}
 function showReference(reference){
@@ -216,7 +210,7 @@ function showReference(reference){
   document.querySelector('#reader-preview-title').textContent=reference.title||'资料预览';
   const open=document.querySelector('#reader-preview-open');open.href=action.externalUrl;
   const download=document.querySelector('#reader-preview-download');download.hidden=!action.canDownload;download.href=action.externalUrl;download.download=reference.title||'原始资料';
-  frame.title=`${reference.title||'资料'}在线预览`;frame.src=action.externalUrl;section.hidden=false;section.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+  frame.title=`${reference.title||'资料'}在线预览`;frame.src=action.externalUrl;section.hidden=false;detail.scrollTo({top:Math.max(0,section.offsetTop-12),behavior:reducedMotion?'auto':'smooth'});
 }
 function appendReferenceActions(container,reference){
   const action=referenceAction(reference.url);if(!action.externalUrl)return;
@@ -228,18 +222,35 @@ function appendReferenceActions(container,reference){
 }
 function renderReader(model){
   document.querySelector('#reader-summary').textContent=model.summary;
-  document.querySelector('#reader-summary-basis').textContent={curated_summary:'人工整理摘要',curated_description:'知识图谱整理',graph_synthesis:'知识图谱综合整理',generated_outline:'图谱结构提纲'}[model.summaryBasis]||'知识整理';
+  document.querySelector('#reader-summary-basis').textContent={curated_summary:'人工整理摘要',structured_knowledge:'结构化知识',classification_only:'待吸收'}[model.summaryBasis]||'知识整理';
   document.querySelector('#reader-notice').textContent=model.notice;
-  const insights=document.querySelector('#reader-insights');insights.replaceChildren();
-  if(!model.insights.length)emptyReader(insights,'当前节点暂无可继续展开的图谱关系。');
-  for(const insight of model.insights){const card=document.createElement('article');card.className='reader-insight';const label=document.createElement('strong');label.textContent=`${insight.pathLabel} · 图谱关系衍生`;const text=document.createElement('p');text.textContent=insight.text;card.append(label,text);appendReason(card,'为什么有关',insight.whyRelated);appendReason(card,'引用依据',insight.evidenceBasis,'reader-reason evidence-basis');card.addEventListener('click',()=>showNode(insight.relatedId));insights.append(card)}
-  const citations=document.querySelector('#reader-citations');citations.replaceChildren();
+  const breadcrumb=document.querySelector('#reader-breadcrumb');breadcrumb.replaceChildren();
+  for(const [index,item] of model.breadcrumb.entries()){const button=document.createElement('button');button.type='button';button.textContent=item.title;button.addEventListener('click',()=>showNode(item.id));breadcrumb.append(button);if(index<model.breadcrumb.length-1){const sep=document.createElement('span');sep.textContent='›';sep.setAttribute('aria-hidden','true');breadcrumb.append(sep)}}
+  const responsibility=document.querySelector('#reader-responsibility');responsibility.replaceChildren();
+  if(model.contentState==='awaiting_absorption')emptyReader(responsibility,'资料尚未吸收：当前只保留层级和分类，不生成技术职责。');
+  else{
+    appendReason(responsibility,'职责',model.responsibility.role,'responsibility-block role');
+    for(const [label,values] of [['输入',model.responsibility.input],['内部机制',model.responsibility.mechanism],['输出',model.responsibility.output],['证据边界',model.responsibility.limits]])if(values?.length)appendReason(responsibility,label,values.join('；'),'responsibility-block');
+  }
+  const children=document.querySelector('#reader-children');children.replaceChildren();
+  if(!model.children.length)emptyReader(children,'当前节点没有更下一层的公开节点。');
+  for(const child of model.children){const button=document.createElement('button');button.type='button';button.className='drill-card';const title=document.createElement('strong');title.textContent=child.title;const text=document.createElement('span');text.textContent=child.role;button.append(title,text);button.addEventListener('click',()=>showNode(child.id));children.append(button)}
+  const paths=document.querySelector('#reader-paths');paths.replaceChildren();
+  const pathNames={control:'控制路径',data:'数据路径',power:'电源路径',state:'状态路径',diagnostic:'诊断路径'};
+  for(const [pathClass,items] of Object.entries(model.technicalPaths||{})){const group=document.createElement('section');group.className=`path-group ${pathClass}`;const heading=document.createElement('h4');heading.textContent=pathNames[pathClass]||pathClass;group.append(heading);for(const item of items){const card=document.createElement('button');card.type='button';card.className='path-card';const title=document.createElement('strong');title.textContent=item.relatedTitle;const why=document.createElement('span');why.textContent=item.whyRelated||item.why;card.append(title,why);for(const [label,value] of [['输入',item.input],['交接',item.handoff],['输出',item.output],['验证',(item.verification||[]).join('；')]])if(value){const row=document.createElement('small');row.textContent=`${label}：${value}`;card.append(row)}card.addEventListener('click',()=>showNode(item.relatedId));group.append(card)}paths.append(group)}
+  if(!paths.children.length)emptyReader(paths,model.contentState==='awaiting_absorption'?'资料尚未吸收，暂无可发布的技术链。':'当前节点暂无结构化技术关系。');
+  const observations=document.querySelector('#reader-observations');observations.replaceChildren();
+  if(!model.observations.length)emptyReader(observations,'当前没有已吸收的观测点。');else{const list=document.createElement('ul');for(const value of model.observations){const item=document.createElement('li');item.textContent=value;list.append(item)}observations.append(list)}
+  const citations=document.querySelector('#reader-citations');citations.replaceChildren();let citationCount=0;
   const represented=new Set();
-  for(const reference of model.references.filter(item=>item.kind==='article')){const card=document.createElement('article');card.className='citation-card article';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(reference.pages)} · ${reference.status||'published_article'}`;head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReason(card,'为什么引用',reference.whyCited,'citation-why');appendReason(card,'证据边界',reference.evidenceBoundary,'citation-boundary');appendReferenceActions(card,reference);citations.append(card);represented.add(reference.url)}
-  for(const citation of model.citations){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=citation.sourceName;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(citation.pages)} · ${citation.status}`;head.append(title,meta);card.append(head);if(citation.summary){const text=document.createElement('p');text.textContent=citation.summary;card.append(text)}appendReason(card,'为什么引用',citation.whyCited,'citation-why');appendSupports(card,citation.displaySupports||citation.supports);appendReason(card,'证据边界',citation.evidenceBoundary,'citation-boundary');if(citation.url){appendReferenceActions(card,{title:citation.sourceName,url:citation.url});represented.add(citation.url)}citations.append(card)}
-  for(const reference of model.references.filter(item=>item.kind==='source'&&!represented.has(item.url))){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(reference.pages)} · ${reference.status||'source_register'}`;head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReason(card,'为什么引用',reference.whyCited,'citation-why');appendSupports(card,reference.supports);appendReason(card,'证据边界',reference.evidenceBoundary,'citation-boundary');appendReferenceActions(card,reference);citations.append(card)}
+  for(const reference of model.references.filter(item=>item.kind==='article')){const card=document.createElement('article');card.className='citation-card article';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=referenceMeta(reference,reference.status||'published_article');head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReason(card,'为什么引用',reference.whyCited,'citation-why');appendReason(card,'证据边界',reference.evidenceBoundary,'citation-boundary');appendReferenceActions(card,reference);citations.append(card);citationCount++;represented.add(reference.url)}
+  for(const citation of model.citations){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=citation.sourceName;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=referenceMeta(citation,citation.status);head.append(title,meta);card.append(head);if(citation.summary){const text=document.createElement('p');text.textContent=citation.summary;card.append(text)}appendReason(card,'为什么引用',citation.whyCited,'citation-why');appendSupports(card,citation.displaySupports||citation.supports);appendReason(card,'证据边界',citation.evidenceBoundary,'citation-boundary');if(citation.url){appendReferenceActions(card,{title:citation.sourceName,url:citation.url});represented.add(citation.url)}citations.append(card);citationCount++}
+  for(const reference of model.references.filter(item=>item.kind==='source'&&!represented.has(item.url))){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=referenceMeta(reference,reference.status||'source_register');head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReason(card,'为什么引用',reference.whyCited,'citation-why');appendSupports(card,reference.supports);appendReason(card,'证据边界',reference.evidenceBoundary,'citation-boundary');appendReferenceActions(card,reference);citations.append(card);citationCount++}
   if(!citations.children.length)emptyReader(citations,'当前节点尚未绑定可公开加载的原始资料或文章。');
-  document.querySelector('#reader-citation-count').textContent=`${citations.children.length} 项`;
+  document.querySelector('#reader-citation-count').textContent=`${citationCount} 项`;
+  const navigation=document.querySelector('#reader-navigation-list');navigation.replaceChildren();
+  if(!model.navigation.length)emptyReader(navigation,'当前没有额外分类关系。');
+  for(const item of model.navigation){const button=document.createElement('button');button.type='button';button.textContent=`${item.relatedTitle} · ${item.relationType}`;button.title=item.whyRelated;button.addEventListener('click',()=>showNode(item.relatedId));navigation.append(button)}
 }
 function downloadReaderSummary(){
   if(!currentReader)return;const spec=markdownDownloadSpec(currentReader.title,readerMarkdown(currentReader));const url=URL.createObjectURL(new Blob([spec.content],{type:spec.type}));const link=document.createElement('a');link.href=url;link.download=spec.filename;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),0);
@@ -250,13 +261,9 @@ function showNode(id){
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
-  currentReader=buildReaderModel(graph,id);renderReader(currentReader);closeReaderPreview();
+  currentReader=buildReaderModel(graph,id,{platforms:viewState.platforms});renderReader(currentReader);closeReaderPreview();
   const scope=document.querySelector('#detail-scope');scope.replaceChildren();
   for(const value of [...(currentReader.scope.platforms||[]),currentReader.scope.runtimeDomain,currentReader.scope.version,currentReader.scope.status].filter(Boolean)){const tag=document.createElement('span');tag.textContent=value;scope.append(tag)}
-  const list=document.querySelector('#related-list');list.replaceChildren();
-  const order={subtopic:0,chapter:1,lesson:2,review:3,topic:4,root:5};
-  const relations=[...neighbors.get(id)].filter(other=>byId.has(other)).sort((a,b)=>order[byId.get(a).kind]-order[byId.get(b).kind]);
-  for(const other of relations){const item=document.createElement('button');item.type='button';item.textContent=byId.get(other).title;item.addEventListener('click',()=>showNode(other));list.append(item)}
   detail.scrollTop=0;
 }
 function clearSelection(){selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction()}
@@ -266,6 +273,7 @@ function renderResults(){
   if(!q){matchingIds=new Set();results.hidden=true;clearSelection();return}
   const matches=rankSearchResults(nodes,q,viewState).slice(0,10);
   matchingIds=new Set(matches.slice(0,8).map(node=>node.id));
+  refreshVisible();
   results.hidden=false;
   if(!matches.length){const empty=document.createElement('div');empty.className='empty-result';empty.textContent='没有匹配的节点';empty.style.padding='9px';empty.style.color='#a9bad6';results.append(empty);return}
   for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}
@@ -297,7 +305,7 @@ document.querySelector('#detail-close').addEventListener('click',clearSelection)
 document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
 for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{const kind=button.dataset.kind;hidden.has(kind)?hidden.delete(kind):hidden.add(kind);syncFilters();interaction()});
-for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{const value=button.dataset.platform;viewState.platforms=viewState.platforms.includes(value)?viewState.platforms.filter(x=>x!==value):[...viewState.platforms,value];button.setAttribute('aria-pressed',String(viewState.platforms.includes(value)));refreshVisible();interaction()});
+for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{const value=button.dataset.platform;viewState.platforms=viewState.platforms.includes(value)?viewState.platforms.filter(x=>x!==value):[...viewState.platforms,value];button.setAttribute('aria-pressed',String(viewState.platforms.includes(value)));refreshVisible();if(selected)showNode(selected);interaction()});
 for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{const value=button.dataset.path;viewState.pathClasses=viewState.pathClasses.includes(value)?viewState.pathClasses.filter(x=>x!==value):[...viewState.pathClasses,value];button.setAttribute('aria-pressed',String(viewState.pathClasses.includes(value)));refreshVisible();interaction()});
 document.querySelector('#evidence-toggle').addEventListener('click',event=>{viewState.evidenceVisible=!viewState.evidenceVisible;event.currentTarget.setAttribute('aria-pressed',String(viewState.evidenceVisible));event.currentTarget.textContent=viewState.evidenceVisible?'● 隐藏所选节点证据':'○ 展开所选节点证据';refreshVisible();interaction()});
 document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';interaction()});
@@ -312,4 +320,3 @@ try{
   prepare(await response.json());
   requestAnimationFrame(frame);
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
-

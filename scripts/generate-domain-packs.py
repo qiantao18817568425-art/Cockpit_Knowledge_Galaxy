@@ -31,15 +31,35 @@ def make_pack(name,entities,rels):
         if set(rel.get('platforms',[]))=={'MT8668','MT8676'}: rel['scope']='shared'
         relations.append(rel)
         evid=f'ev:{name}:{idx:03d}'
-        evidence.append({'id':evid,'sourceId':src['id'],'pages':pages or [evidence_page.get(category,1)],'status':rel.get('status','documented_reference'),
+        src_platforms=[src['platform']] if src.get('platform') in {'MT8668','MT8676'} else []
+        evidence.append({'id':evid,'sourceId':src['id'],'pages':pages or [evidence_page.get(category,1)],'status':rel.get('status','documented_reference'),'platforms':src_platforms,
           'summary':f"核对《{src['name']}》对应章节后，将“{ALL_ENTITY_TITLES.get(rel['from'],rel['from'])}”与“{ALL_ENTITY_TITLES.get(rel['to'],rel['to'])}”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"})
         evidence_ids=[evid]
+        evidence_platforms={evid:set(src_platforms)}
         for extra_idx,extra in enumerate(additional,1):
           extra_src=next(d for d in docs if d['id']==extra['sourceId']); extra_id=f'{evid}:{extra_idx}'; evidence_ids.append(extra_id)
-          evidence.append({'id':extra_id,'sourceId':extra_src['id'],'pages':extra['pages'],'status':rel.get('status','documented_reference'),
+          extra_platforms=[extra_src['platform']] if extra_src.get('platform') in {'MT8668','MT8676'} else []
+          evidence_platforms[extra_id]=set(extra_platforms)
+          evidence.append({'id':extra_id,'sourceId':extra_src['id'],'pages':extra['pages'],'status':rel.get('status','documented_reference'),'platforms':extra_platforms,
             'summary':f"《{extra_src['name']}》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。"})
-        claims.append({'id':f'claim:{name}:{idx:03d}','relationId':rid,'evidenceIds':evidence_ids,
-          'status':rel.get('status','documented_reference'),'platforms':rel.get('platforms',[])})
+        claim_id=f'claim:{name}:{idx:03d}'; relation_platforms=rel.get('platforms',[]); relation_status=rel.get('status','documented_reference')
+        if relation_status=='documented_reference':
+          covered=set().union(*evidence_platforms.values()) if evidence_platforms else set()
+          documented=[platform for platform in relation_platforms if platform in covered]
+          missing=[platform for platform in relation_platforms if platform not in covered]
+          if documented:
+            documented_evidence=[eid for eid in evidence_ids if evidence_platforms[eid]&set(documented)]
+            claims.append({'id':claim_id,'relationId':rid,'evidenceIds':documented_evidence,
+              'status':'documented_reference','platforms':documented})
+          if missing:
+            claims.append({'id':f'{claim_id}:inferred','relationId':rid,'evidenceIds':evidence_ids,
+              'status':'inferred_mapping','platforms':missing})
+          if not relation_platforms:
+            claims.append({'id':claim_id,'relationId':rid,'evidenceIds':evidence_ids,
+              'status':'inferred_mapping','platforms':[]})
+        else:
+          claims.append({'id':claim_id,'relationId':rid,'evidenceIds':evidence_ids,
+            'status':relation_status,'platforms':relation_platforms})
     return {'entities':entities,'relations':relations,'claims':claims,'evidence':evidence}
 
 power_entities=[
@@ -168,4 +188,3 @@ packs={'power':make_pack('power',power_entities,power_rels),'platform-runtime':m
 out=ROOT/'content/domain-packs'; out.mkdir(parents=True,exist_ok=True)
 for name,data in packs.items(): (out/f'{name}.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print({k:(len(v['entities']),len(v['relations'])) for k,v in packs.items()})
-

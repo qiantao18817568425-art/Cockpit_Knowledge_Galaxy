@@ -11,7 +11,25 @@
       ],
       "description": "整机与平台",
       "aliases": [],
-      "runtimeDomain": "platform"
+      "runtimeDomain": "platform",
+      "knowledge": {
+        "role": "定义座舱 SoC 平台范围、共性能力和平台差异，是所有运行域与功能链的硬件和版本坐标。",
+        "input": [
+          "车型、SoC 与软硬件版本定义"
+        ],
+        "mechanism": [
+          "区分共享能力、平台变体与未确认配置"
+        ],
+        "output": [
+          "可供各知识分支引用的平台适用范围"
+        ],
+        "observations": [
+          "SoC 型号、板级版本和软件基线"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "domain:virtualization",
@@ -24,7 +42,25 @@
       ],
       "description": "虚拟化",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "描述 Hypervisor 对 Guest、Host、虚拟设备和生命周期的隔离与调度边界。",
+        "input": [
+          "VM 配置、物理资源和启动/休眠请求"
+        ],
+        "mechanism": [
+          "划分 vCPU、内存、中断及虚拟 I/O 责任"
+        ],
+        "output": [
+          "Guest 可运行环境和跨域资源边界"
+        ],
+        "observations": [
+          "VM generation、Guest 状态和虚拟设备状态"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "domain:android",
@@ -37,7 +73,25 @@
       ],
       "description": "Android AAOS",
       "aliases": [],
-      "runtimeDomain": "android"
+      "runtimeDomain": "android",
+      "knowledge": {
+        "role": "承载 AAOS Framework、系统服务、应用和 Android 域内 IPC。",
+        "input": [
+          "车辆服务输入、设备能力和应用请求"
+        ],
+        "mechanism": [
+          "通过 Framework、Binder 与 HAL 组织业务"
+        ],
+        "output": [
+          "HMI、音频、连接等用户功能结果"
+        ],
+        "observations": [
+          "system_server、Binder、服务 Ready 与业务日志"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "domain:yocto",
@@ -50,7 +104,25 @@
       ],
       "description": "Yocto Host",
       "aliases": [],
-      "runtimeDomain": "yocto"
+      "runtimeDomain": "yocto",
+      "knowledge": {
+        "role": "作为 Host 承担物理设备、平台服务、共享资源和部分跨域服务。",
+        "input": [
+          "物理设备状态、Guest 请求和车辆侧消息"
+        ],
+        "mechanism": [
+          "调度 Host 服务、设备驱动与跨域路由"
+        ],
+        "output": [
+          "设备控制结果和送往 Guest/外域的服务数据"
+        ],
+        "observations": [
+          "Host 服务状态、驱动计数和路由日志"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "domain:mcu",
@@ -63,7 +135,25 @@
       ],
       "description": "MCU 与车信号",
       "aliases": [],
-      "runtimeDomain": "mcu"
+      "runtimeDomain": "mcu",
+      "knowledge": {
+        "role": "承担车辆信号采集、实时控制、电源策略和 SoC 外部控制。",
+        "input": [
+          "车辆总线、离散输入和电源状态"
+        ],
+        "mechanism": [
+          "执行实时状态机并通过板级接口与 SoC 交互"
+        ],
+        "output": [
+          "车辆状态、唤醒/休眠控制和执行结果"
+        ],
+        "observations": [
+          "CAN/E2E、心跳、重启原因和接口状态"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "domain:cross-domain",
@@ -76,7 +166,25 @@
       ],
       "description": "跨域通信",
       "aliases": [],
-      "runtimeDomain": "cross-domain"
+      "runtimeDomain": "cross-domain",
+      "knowledge": {
+        "role": "定义 Android、Yocto、MCU、TBox 与虚拟机之间的消息、状态和数据交接。",
+        "input": [
+          "跨域请求、事件、状态与数据"
+        ],
+        "mechanism": [
+          "通过明确的传输接口完成序列化、路由和消费"
+        ],
+        "output": [
+          "接收域可验证的消息或状态更新"
+        ],
+        "observations": [
+          "sequence、request ID、时间戳、发布与消费日志"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "component:hypervisor",
@@ -89,7 +197,25 @@
       ],
       "description": "Hypervisor",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "隔离并调度 Host 与 Guest，管理虚拟资源和 VM 生命周期。",
+        "input": [
+          "平台资源、VM 配置和生命周期请求"
+        ],
+        "mechanism": [
+          "建立运行域隔离并提供虚拟设备/通道"
+        ],
+        "output": [
+          "Host/Guest 运行状态和虚拟资源交付"
+        ],
+        "observations": [
+          "VM create/destroy、generation、vCPU 和 virtio 状态"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "component:yocto-host",
@@ -102,7 +228,25 @@
       ],
       "description": "Yocto Host",
       "aliases": [],
-      "runtimeDomain": "yocto"
+      "runtimeDomain": "yocto",
+      "knowledge": {
+        "role": "持有物理设备与 Host 服务，为 Guest 和外部域提供平台能力。",
+        "input": [
+          "设备中断、驱动状态、跨域请求"
+        ],
+        "mechanism": [
+          "运行驱动、服务和消息路由"
+        ],
+        "output": [
+          "设备结果、服务状态与跨域发布"
+        ],
+        "observations": [
+          "Host boot、服务 Ready、驱动和 FDBus 日志"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "component:mcu",
@@ -115,7 +259,25 @@
       ],
       "description": "MCU",
       "aliases": [],
-      "runtimeDomain": "mcu"
+      "runtimeDomain": "mcu",
+      "knowledge": {
+        "role": "执行实时车身与电源控制，并把车辆状态交给座舱 SoC。",
+        "input": [
+          "CAN/CANFD、GPIO、唤醒与电源输入"
+        ],
+        "mechanism": [
+          "实时状态机、E2E 校验和板级接口控制"
+        ],
+        "output": [
+          "车辆状态、心跳和 SoC 控制请求"
+        ],
+        "observations": [
+          "MCU tick、心跳、重启原因、总线与接口错误"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "component:tbox",
@@ -128,7 +290,25 @@
       ],
       "description": "TBox",
       "aliases": [],
-      "runtimeDomain": "tbox"
+      "runtimeDomain": "tbox",
+      "knowledge": {
+        "role": "承载蜂窝通信、远控和车联网业务，并与座舱域交换服务状态。",
+        "input": [
+          "Modem/网络状态、云端或车辆请求"
+        ],
+        "mechanism": [
+          "运行通信协议与远控业务"
+        ],
+        "output": [
+          "SOME/IP 服务、远控结果和唤醒请求"
+        ],
+        "observations": [
+          "网络注册、服务发现、请求 ID 和业务回执"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "interface:binder",
@@ -141,7 +321,25 @@
       ],
       "description": "Binder",
       "aliases": [],
-      "runtimeDomain": "android"
+      "runtimeDomain": "android",
+      "knowledge": {
+        "role": "在 Android Guest 内部连接进程、Framework 服务与客户端。",
+        "input": [
+          "Android 进程发起的事务和对象引用"
+        ],
+        "mechanism": [
+          "Binder 驱动与线程池完成域内 IPC"
+        ],
+        "output": [
+          "目标 Android 进程收到的事务或返回值"
+        ],
+        "observations": [
+          "binder transaction、线程池、死亡通知和超时"
+        ],
+        "limits": [
+          "Binder 在本知识模型中是 Android 域内接口；跨域映射需单独证据"
+        ]
+      }
     },
     {
       "id": "interface:fdbus",
@@ -154,7 +352,25 @@
       ],
       "description": "FDBus",
       "aliases": [],
-      "runtimeDomain": "cross-domain"
+      "runtimeDomain": "cross-domain",
+      "knowledge": {
+        "role": "承载 Host 服务与其他运行域之间的发布、订阅和请求消息。",
+        "input": [
+          "服务发布、订阅和消息负载"
+        ],
+        "mechanism": [
+          "按 channel/topic 路由并维护连接"
+        ],
+        "output": [
+          "消费者收到的消息与状态更新"
+        ],
+        "observations": [
+          "连接状态、topic、sequence 与两端时间戳"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "interface:someip",
@@ -167,7 +383,25 @@
       ],
       "description": "SOME/IP",
       "aliases": [],
-      "runtimeDomain": "cross-domain"
+      "runtimeDomain": "cross-domain",
+      "knowledge": {
+        "role": "承载以太网服务发现、方法、事件与状态数据。",
+        "input": [
+          "服务实例、事件或方法请求"
+        ],
+        "mechanism": [
+          "SOME/IP 与服务发现完成寻址和交付"
+        ],
+        "output": [
+          "目标 ECU/进程收到的服务数据"
+        ],
+        "observations": [
+          "SD offer/find、method/event、sequence 和 freshness"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "interface:vsock",
@@ -180,7 +414,25 @@
       ],
       "description": "Vsock",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "在虚拟机边界上传递 Guest 与 Host 的请求或数据。",
+        "input": [
+          "Guest/Host 请求与负载"
+        ],
+        "mechanism": [
+          "通过 VM socket 通道完成寻址和收发"
+        ],
+        "output": [
+          "对端进程收到的消息或响应"
+        ],
+        "observations": [
+          "CID/端口、request ID、收发返回和 VM generation"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "interface:virtio",
@@ -193,7 +445,25 @@
       ],
       "description": "virtio",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "向 Guest 提供标准化虚拟设备和 virtqueue 数据交换。",
+        "input": [
+          "Guest 驱动请求与描述符"
+        ],
+        "mechanism": [
+          "Host backend 与 virtqueue 协同处理"
+        ],
+        "output": [
+          "虚拟设备完成通知与数据"
+        ],
+        "observations": [
+          "virtqueue index、kick/callback、descriptor 和 backend 状态"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "observation:sequence",
@@ -206,7 +476,25 @@
       ],
       "description": "Sequence ID",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "用连续序号识别跨域消息是否丢失、乱序或重复。",
+        "input": [
+          "消息 sequence"
+        ],
+        "mechanism": [
+          "对比发送端与接收端的同一序列"
+        ],
+        "output": [
+          "首个断点和丢失区间"
+        ],
+        "observations": [
+          "两端 sequence 日志和重启边界"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "observation:freshness",
@@ -219,7 +507,25 @@
       ],
       "description": "Freshness / Timestamp",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "用时间戳或 freshness 判断状态是否仍有效。",
+        "input": [
+          "状态时间戳、计数器或 freshness 字段"
+        ],
+        "mechanism": [
+          "统一时间基准后比较产生、传输与消费时刻"
+        ],
+        "output": [
+          "陈旧状态、延迟或更新停止的判断"
+        ],
+        "observations": [
+          "两端时间戳、时钟偏差和最后更新时间"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "observation:boot-generation",
@@ -232,7 +538,25 @@
       ],
       "description": "Boot / VM Generation",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "把日志和消息绑定到同一次启动或 VM 实例，避免跨代拼接因果。",
+        "input": [
+          "boot ID、VM generation 和重建事件"
+        ],
+        "mechanism": [
+          "划分运行周期并拒绝跨代关联"
+        ],
+        "output": [
+          "同一生命周期内的证据时间线"
+        ],
+        "observations": [
+          "boot ID、VM create/destroy 与服务重连记录"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     },
     {
       "id": "observation:request-id",
@@ -245,7 +569,25 @@
       ],
       "description": "Request ID",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "把一次请求在发送、路由、处理和响应阶段关联起来。",
+        "input": [
+          "request ID 或 transaction ID"
+        ],
+        "mechanism": [
+          "在各端追踪同一标识"
+        ],
+        "output": [
+          "请求是否到达、处理和返回的分段结论"
+        ],
+        "observations": [
+          "客户端、通道与服务端同一 ID 的日志"
+        ],
+        "limits": [
+          "具体接口启用范围、VMID、通道编号与当前车型版本待项目资料确认"
+        ]
+      }
     }
   ],
   "relations": [
@@ -260,6 +602,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Hypervisor 约束 Host 的启动、资源与生命周期边界，使 Yocto Host 在受控平台环境中运行。",
+      "input": "VM/Host 配置与生命周期请求",
+      "handoff": "Hypervisor 到 Yocto Host 的虚拟化管理边界",
+      "output": "可运行的 Host 环境",
+      "verification": [
+        "Hypervisor 启动记录与 Host boot/generation 对齐"
       ]
     },
     {
@@ -273,6 +622,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "MT8676 与 MT8668 属于相邻平台族，共享座舱能力模型，但实现参数和版本差异必须分别核对。",
+      "input": "两平台资料中的能力与版本定义",
+      "handoff": "平台变体对照，不表示参数可直接互换",
+      "output": "共性能力与差异清单",
+      "verification": [
+        "两平台原始资料分别定位并标出相同项/差异项"
       ]
     },
     {
@@ -286,6 +642,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Android Guest 由 Hypervisor 提供隔离运行环境与虚拟资源，因此其生命周期必须关联所属 VM generation。",
+      "input": "Android VM 配置与启动请求",
+      "handoff": "Android Guest 到 Hypervisor 的 VM 边界",
+      "output": "Android Guest 运行实例",
+      "verification": [
+        "VM create/start 与 Android boot ID 对齐"
       ]
     },
     {
@@ -299,6 +662,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Yocto Host 通过 FDBus 发布 Host 服务或状态，使订阅方能够跨进程或跨域消费。",
+      "input": "Host 服务状态或消息负载",
+      "handoff": "Yocto 服务到 FDBus channel/topic",
+      "output": "可被订阅方接收的发布消息",
+      "verification": [
+        "发布日志、topic/sequence 与消费端日志对应"
       ]
     },
     {
@@ -312,6 +682,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Android Guest 内部服务通过 Binder 暴露事务接口，该关系限定在 Android 进程边界内。",
+      "input": "Android 服务事务与对象引用",
+      "handoff": "Android Guest 内的 Binder 进程间边界",
+      "output": "客户端收到的事务结果",
+      "verification": [
+        "Binder transaction、服务注册与客户端返回"
       ]
     },
     {
@@ -325,6 +702,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "TBox 通过 SOME/IP 暴露或消费车联网服务，使座舱域能够获取网络与远控状态。",
+      "input": "TBox 服务状态或业务消息",
+      "handoff": "TBox 到车载以太网 SOME/IP 服务边界",
+      "output": "SOME/IP 事件、方法结果或服务状态",
+      "verification": [
+        "服务发现、实例 ID、请求与回执对齐"
       ]
     },
     {
@@ -338,6 +722,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Android Guest 通过 Vsock 向 Host 或其他 VM 发送请求，跨越虚拟机隔离边界。",
+      "input": "Guest 请求、request ID 与负载",
+      "handoff": "Android Guest 到 Host/VM 的 Vsock 通道",
+      "output": "对端收到的请求或返回",
+      "verification": [
+        "两端 CID/端口、request ID 与 VM generation 对齐"
       ]
     },
     {
@@ -351,6 +742,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Android Guest 的虚拟设备访问依赖 virtio 前后端和 virtqueue 正常推进。",
+      "input": "Guest 驱动描述符与设备请求",
+      "handoff": "Guest virtio frontend 到 Host backend",
+      "output": "设备数据与完成通知",
+      "verification": [
+        "virtqueue kick/callback、index 与 backend 状态"
       ]
     },
     {
@@ -364,6 +762,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "MCU 通过 SPI/IPCL 向 SoC 发送实时控制或状态消息，形成板级跨域控制通道。",
+      "input": "MCU 状态、控制请求和序号",
+      "handoff": "MCU 到 SoC 的 SPI/IPCL 板级边界",
+      "output": "Host/SoC 收到的控制或状态消息",
+      "verification": [
+        "MCU 与 Host 两端 sequence、中断和收发计数"
       ]
     },
     {
@@ -377,6 +782,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "FDBus 消息的 sequence 可证明发布后是否连续到达消费端。",
+      "input": "FDBus 消息序号",
+      "handoff": "消息流到诊断观测的映射",
+      "output": "丢失、乱序或重复区间",
+      "verification": [
+        "发送与接收端同一 sequence 对照"
       ]
     },
     {
@@ -390,6 +802,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "SOME/IP 状态需要用 freshness 或时间戳判断是否仍代表当前车辆状态。",
+      "input": "SOME/IP 事件与时间戳",
+      "handoff": "服务消息到时效性观测",
+      "output": "状态新鲜度结论",
+      "verification": [
+        "发布、网络接收与消费时间统一基准"
       ]
     },
     {
@@ -403,6 +822,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Hypervisor 的 VM 事件必须绑定 boot/VM generation，才能区分重建前后的不同运行实例。",
+      "input": "VM 生命周期事件",
+      "handoff": "虚拟化状态到运行周期间的关联",
+      "output": "本次 VM 实例的证据边界",
+      "verification": [
+        "VM generation、create/destroy 与 Guest boot 对齐"
       ]
     },
     {
@@ -416,6 +842,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Vsock 请求用 request ID 贯穿 Guest、通道和对端处理，便于定位最早未交付阶段。",
+      "input": "Vsock 请求与 request ID",
+      "handoff": "跨 VM 通道到事务观测",
+      "output": "请求分段交付结果",
+      "verification": [
+        "Guest send、Host receive、response 使用同一 ID"
       ]
     }
   ],
@@ -428,8 +861,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:001:inferred",
+      "relationId": "rel:runtime:001",
+      "evidenceIds": [
+        "ev:runtime:001"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -453,8 +896,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:003:inferred",
+      "relationId": "rel:runtime:003",
+      "evidenceIds": [
+        "ev:runtime:003"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -465,7 +918,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:runtime:004:inferred",
+      "relationId": "rel:runtime:004",
+      "evidenceIds": [
+        "ev:runtime:004"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -477,7 +940,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:runtime:005:inferred",
+      "relationId": "rel:runtime:005",
+      "evidenceIds": [
+        "ev:runtime:005"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -489,8 +962,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:006:inferred",
+      "relationId": "rel:runtime:006",
+      "evidenceIds": [
+        "ev:runtime:006"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -501,8 +984,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:007:inferred",
+      "relationId": "rel:runtime:007",
+      "evidenceIds": [
+        "ev:runtime:007"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -513,8 +1006,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:008:inferred",
+      "relationId": "rel:runtime:008",
+      "evidenceIds": [
+        "ev:runtime:008"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -525,8 +1028,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:009:inferred",
+      "relationId": "rel:runtime:009",
+      "evidenceIds": [
+        "ev:runtime:009"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -537,8 +1050,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:010:inferred",
+      "relationId": "rel:runtime:010",
+      "evidenceIds": [
+        "ev:runtime:010"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -549,8 +1072,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:011:inferred",
+      "relationId": "rel:runtime:011",
+      "evidenceIds": [
+        "ev:runtime:011"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -561,8 +1094,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:012:inferred",
+      "relationId": "rel:runtime:012",
+      "evidenceIds": [
+        "ev:runtime:012"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -573,8 +1116,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:013:inferred",
+      "relationId": "rel:runtime:013",
+      "evidenceIds": [
+        "ev:runtime:013"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     }
   ],
@@ -586,7 +1139,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Yocto Host”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Yocto Host”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:002",
@@ -595,7 +1151,10 @@
         6
       ],
       "status": "inferred_mapping",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“MT8676”与“MT8668”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“MT8676”与“MT8668”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:002:1",
@@ -604,7 +1163,10 @@
         6
       ],
       "status": "inferred_mapping",
-      "summary": "《MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。"
+      "summary": "《MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:runtime:003",
@@ -613,7 +1175,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Hypervisor”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Hypervisor”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:004",
@@ -622,7 +1187,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“Yocto Host”与“FDBus”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“Yocto Host”与“FDBus”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:runtime:005",
@@ -631,7 +1199,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Android_IPO_User_Manual_CN_V1.0.pdf》对应章节后，将“Android Guest”与“Binder”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Android_IPO_User_Manual_CN_V1.0.pdf》对应章节后，将“Android Guest”与“Binder”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:runtime:006",
@@ -640,7 +1211,10 @@
         2
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“TBox”与“SOME/IP”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“TBox”与“SOME/IP”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:007",
@@ -649,7 +1223,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Vsock”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Vsock”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:008",
@@ -658,7 +1235,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“virtio”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“virtio”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:009",
@@ -667,7 +1247,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:010",
@@ -676,7 +1259,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“FDBus”与“Sequence ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“FDBus”与“Sequence ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:011",
@@ -685,7 +1271,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“SOME/IP”与“Freshness / Timestamp”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“SOME/IP”与“Freshness / Timestamp”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:012",
@@ -694,7 +1283,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:runtime:013",
@@ -703,8 +1295,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Vsock”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Vsock”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ]
 }
-

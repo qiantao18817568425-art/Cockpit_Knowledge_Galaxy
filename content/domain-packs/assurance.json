@@ -11,7 +11,25 @@
       ],
       "description": "稳定性与质量保障",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "组织稳定性、恢复策略、验证与 TPM 闭环。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "稳定性与质量保障 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:performance",
@@ -24,7 +42,26 @@
       ],
       "description": "性能与卡顿",
       "aliases": [],
-      "runtimeDomain": "performance"
+      "runtimeDomain": "performance",
+      "knowledge": {
+        "role": "组织 CPU、IO、内存、调度与帧链的性能诊断。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「CPU / IO / Memory」的数据、控制或状态",
+          "交付给「帧端到端链路」的数据、控制或状态"
+        ],
+        "observations": [
+          "性能与卡顿 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:diagnosis",
@@ -37,7 +74,25 @@
       ],
       "description": "诊断与证据",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "组织跨域时间线、异常包、观测和证据边界。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "诊断与证据 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "failure:app-crash",
@@ -50,7 +105,25 @@
       ],
       "description": "App / Process Crash",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "表示应用或普通进程直接崩溃，需与后续重启和上游触发分开。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「state:process-restart」的数据、控制或状态"
+        ],
+        "observations": [
+          "App / Process Crash 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "failure:system-server",
@@ -63,7 +136,25 @@
       ],
       "description": "system_server Restart",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "表示 system_server 直接失效并引发 Android Framework 级恢复。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「state:process-restart」的数据、控制或状态"
+        ],
+        "observations": [
+          "system_server Restart 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "failure:vm-reset",
@@ -76,7 +167,25 @@
       ],
       "description": "Guest / VM Reset",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "表示 Guest/VM 级复位或重建，影响该 VM 内多项服务。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「state:vm-recreate」的数据、控制或状态"
+        ],
+        "observations": [
+          "Guest / VM Reset 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "failure:host-reset",
@@ -89,7 +198,25 @@
       ],
       "description": "Host / SoC Reset",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "表示 Host/SoC 级复位并导致更广泛的运行域重启。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「state:cold-boot」的数据、控制或状态"
+        ],
+        "observations": [
+          "Host / SoC Reset 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:db-ke-forensics",
@@ -102,7 +229,25 @@
       ],
       "description": "DB / KE 八步取证",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "按异常分类、寄存器、调用栈和符号版本固定步骤分析 DB/KE 包。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「最早可信致命证据」的数据、控制或状态"
+        ],
+        "observations": [
+          "DB / KE 八步取证 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "observation:first-fatal",
@@ -115,7 +260,25 @@
       ],
       "description": "最早可信致命证据",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "在统一时间线中定位最早致命事件，避免把清理和恢复当作根因。",
+        "input": [
+          "来自「DB / KE 八步取证」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "在统一时间基准和运行周期内解释观测"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "最早可信致命证据 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "observation:cpu-io-memory",
@@ -128,7 +291,25 @@
       ],
       "description": "CPU / IO / Memory",
       "aliases": [],
-      "runtimeDomain": "performance"
+      "runtimeDomain": "performance",
+      "knowledge": {
+        "role": "联合检查 CPU、iowait、内存压力、调度和限额。",
+        "input": [
+          "来自「性能与卡顿」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "在统一时间基准和运行周期内解释观测"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "CPU / IO / Memory 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "observation:frame-chain",
@@ -141,7 +322,25 @@
       ],
       "description": "帧端到端链路",
       "aliases": [],
-      "runtimeDomain": "performance"
+      "runtimeDomain": "performance",
+      "knowledge": {
+        "role": "沿输入、合成、提交、vblank 和呈现检查端到端帧时延。",
+        "input": [
+          "来自「性能与卡顿」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "在统一时间基准和运行周期内解释观测"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "帧端到端链路 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:log-producer",
@@ -154,7 +353,25 @@
       ],
       "description": "Log Producer / Caller",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "产生运行日志并控制频率、级别和重复输出。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Log Storm Amplification」的数据、控制或状态"
+        ],
+        "observations": [
+          "Log Producer / Caller 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:log-retention",
@@ -167,7 +384,25 @@
       ],
       "description": "Log Retention / Rotation",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "执行日志落盘、轮转、容量和断电留存。",
+        "input": [
+          "来自「Log Storm Amplification」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "Log Retention / Rotation 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "failure:log-storm",
@@ -180,7 +415,25 @@
       ],
       "description": "Log Storm Amplification",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "表示高频重复日志消耗 CPU/IO/空间并覆盖早期证据。",
+        "input": [
+          "来自「Log Producer / Caller」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Log Retention / Rotation」的数据、控制或状态"
+        ],
+        "observations": [
+          "Log Storm Amplification 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:tpm-trigger",
@@ -193,7 +446,25 @@
       ],
       "description": "TPM 触发与首轮牵头",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "明确用户现象、影响、版本、时间和首轮分析入口。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「直接失效与责任边界」的数据、控制或状态"
+        ],
+        "observations": [
+          "TPM 触发与首轮牵头 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:tpm-direct-failure",
@@ -206,7 +477,25 @@
       ],
       "description": "直接失效与责任边界",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "用最早可证实断点界定直接失效环节与首轮责任域。",
+        "input": [
+          "来自「TPM 触发与首轮牵头」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「恢复与修复」的数据、控制或状态"
+        ],
+        "observations": [
+          "直接失效与责任边界 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:tpm-recovery",
@@ -219,7 +508,25 @@
       ],
       "description": "恢复与修复",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "区分临时恢复、异常处理和永久修复责任。",
+        "input": [
+          "来自「直接失效与责任边界」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「验证与关闭」的数据、控制或状态"
+        ],
+        "observations": [
+          "恢复与修复 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:tpm-verification",
@@ -232,7 +539,25 @@
       ],
       "description": "验证与关闭",
       "aliases": [],
-      "runtimeDomain": "assurance"
+      "runtimeDomain": "assurance",
+      "knowledge": {
+        "role": "用触发场景、正常路径、异常恢复和相邻业务回归完成关闭。",
+        "input": [
+          "来自「恢复与修复」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "验证与关闭 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     }
   ],
   "relations": [
@@ -247,6 +572,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "App/Process Crash 是直接失效，Process Restart 是其后的恢复动作；恢复成功不证明崩溃根因。",
+      "input": "「App / Process Crash」产生的可验证输入或状态",
+      "handoff": "assurance 到 下游 的 fails_as 边界",
+      "output": "「state:process-restart」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「App / Process Crash」与「state:process-restart」"
       ]
     },
     {
@@ -260,6 +592,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "system_server 失效会触发 Framework 服务重建或进程重启，应把直接失效与恢复结果分开。",
+      "input": "「system_server Restart」产生的可验证输入或状态",
+      "handoff": "assurance 到 下游 的 fails_as 边界",
+      "output": "「state:process-restart」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「system_server Restart」与「state:process-restart」"
       ]
     },
     {
@@ -273,6 +612,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "VM Reset 是 Guest 级直接失效，VM Recreate 是后续重建，影响范围跨多个 Guest 服务。",
+      "input": "「Guest / VM Reset」产生的可验证输入或状态",
+      "handoff": "assurance 到 下游 的 fails_as 边界",
+      "output": "「state:vm-recreate」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Guest / VM Reset」与「state:vm-recreate」"
       ]
     },
     {
@@ -286,6 +632,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Host Reset 是 Host/SoC 级直接失效，Cold Boot 是下游恢复路径。",
+      "input": "「Host / SoC Reset」产生的可验证输入或状态",
+      "handoff": "assurance 到 下游 的 fails_as 边界",
+      "output": "「state:cold-boot」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Host / SoC Reset」与「state:cold-boot」"
       ]
     },
     {
@@ -299,6 +652,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "DB/KE 取证以 First Fatal 为时间线锚点，再分析寄存器、堆栈和符号。",
+      "input": "「DB / KE 八步取证」产生的可验证输入或状态",
+      "handoff": "diagnosis 到 diagnosis 的 observed_by 边界",
+      "output": "「最早可信致命证据」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「DB / KE 八步取证」与「最早可信致命证据」"
       ]
     },
     {
@@ -312,6 +672,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "CPU/IO/Memory 观测用于区分算力、存储和内存压力对性能的贡献。",
+      "input": "「性能与卡顿」产生的可验证输入或状态",
+      "handoff": "performance 到 performance 的 observed_by 边界",
+      "output": "「CPU / IO / Memory」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「性能与卡顿」与「CPU / IO / Memory」"
       ]
     },
     {
@@ -325,6 +692,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Frame Chain 把输入、合成、提交与呈现串起来，用于定位卡顿的最早断点。",
+      "input": "「性能与卡顿」产生的可验证输入或状态",
+      "handoff": "performance 到 performance 的 observed_by 边界",
+      "output": "「帧端到端链路」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「性能与卡顿」与「帧端到端链路」"
       ]
     },
     {
@@ -338,6 +712,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Log Producer 失控或重试循环会表现为 Log Storm，并可能放大 CPU/IO 压力。",
+      "input": "「Log Producer / Caller」产生的可验证输入或状态",
+      "handoff": "diagnosis 到 diagnosis 的 fails_as 边界",
+      "output": "「Log Storm Amplification」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Log Producer / Caller」与「Log Storm Amplification」"
       ]
     },
     {
@@ -351,6 +732,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Log Storm 的证据保留和影响程度取决于 Log Retention、轮转和容量策略。",
+      "input": "「Log Storm Amplification」产生的可验证输入或状态",
+      "handoff": "diagnosis 到 diagnosis 的 depends_on 边界",
+      "output": "「Log Retention / Rotation」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Log Storm Amplification」与「Log Retention / Rotation」"
       ]
     },
     {
@@ -364,6 +752,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "TPM 从现象触发进入直接失效定位，先确定最早断点再讨论最终根因。",
+      "input": "「TPM 触发与首轮牵头」产生的可验证输入或状态",
+      "handoff": "assurance 到 assurance 的 transitions_to 边界",
+      "output": "「直接失效与责任边界」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「TPM 触发与首轮牵头」与「直接失效与责任边界」"
       ]
     },
     {
@@ -377,6 +772,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "确认直接失效后，需要区分触发方、修复方和恢复策略方来组织措施。",
+      "input": "「直接失效与责任边界」产生的可验证输入或状态",
+      "handoff": "assurance 到 assurance 的 transitions_to 边界",
+      "output": "「恢复与修复」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「直接失效与责任边界」与「恢复与修复」"
       ]
     },
     {
@@ -390,6 +792,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "恢复或修复措施只有经过触发、正常、异常恢复和相邻业务回归才能关闭。",
+      "input": "「恢复与修复」产生的可验证输入或状态",
+      "handoff": "assurance 到 assurance 的 transitions_to 边界",
+      "output": "「验证与关闭」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「恢复与修复」与「验证与关闭」"
       ]
     }
   ],
@@ -402,8 +811,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:001:inferred",
+      "relationId": "rel:assurance:001",
+      "evidenceIds": [
+        "ev:assurance:001"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -414,8 +833,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:002:inferred",
+      "relationId": "rel:assurance:002",
+      "evidenceIds": [
+        "ev:assurance:002"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -426,8 +855,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:003:inferred",
+      "relationId": "rel:assurance:003",
+      "evidenceIds": [
+        "ev:assurance:003"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -438,8 +877,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:004:inferred",
+      "relationId": "rel:assurance:004",
+      "evidenceIds": [
+        "ev:assurance:004"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -450,8 +899,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:005:inferred",
+      "relationId": "rel:assurance:005",
+      "evidenceIds": [
+        "ev:assurance:005"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -462,8 +921,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:006:inferred",
+      "relationId": "rel:assurance:006",
+      "evidenceIds": [
+        "ev:assurance:006"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -474,8 +943,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:007:inferred",
+      "relationId": "rel:assurance:007",
+      "evidenceIds": [
+        "ev:assurance:007"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -486,8 +965,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:008:inferred",
+      "relationId": "rel:assurance:008",
+      "evidenceIds": [
+        "ev:assurance:008"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -498,8 +987,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:009:inferred",
+      "relationId": "rel:assurance:009",
+      "evidenceIds": [
+        "ev:assurance:009"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -510,8 +1009,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:010:inferred",
+      "relationId": "rel:assurance:010",
+      "evidenceIds": [
+        "ev:assurance:010"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -522,8 +1031,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:011:inferred",
+      "relationId": "rel:assurance:011",
+      "evidenceIds": [
+        "ev:assurance:011"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -534,8 +1053,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:012:inferred",
+      "relationId": "rel:assurance:012",
+      "evidenceIds": [
+        "ev:assurance:012"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     }
   ],
@@ -547,7 +1076,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“App / Process Crash”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“App / Process Crash”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:002",
@@ -556,7 +1088,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“system_server Restart”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“system_server Restart”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:003",
@@ -565,7 +1100,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Guest / VM Reset”与“VM Recreate”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Guest / VM Reset”与“VM Recreate”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:004",
@@ -574,7 +1112,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Host / SoC Reset”与“Cold Boot”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Host / SoC Reset”与“Cold Boot”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:005",
@@ -583,7 +1124,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“DB / KE 八步取证”与“最早可信致命证据”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“DB / KE 八步取证”与“最早可信致命证据”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:006",
@@ -592,7 +1136,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“CPU / IO / Memory”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“CPU / IO / Memory”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:007",
@@ -601,7 +1148,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“帧端到端链路”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“帧端到端链路”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:008",
@@ -610,7 +1160,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Producer / Caller”与“Log Storm Amplification”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Producer / Caller”与“Log Storm Amplification”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:009",
@@ -619,7 +1172,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Storm Amplification”与“Log Retention / Rotation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Storm Amplification”与“Log Retention / Rotation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:010",
@@ -628,7 +1184,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“TPM 触发与首轮牵头”与“直接失效与责任边界”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“TPM 触发与首轮牵头”与“直接失效与责任边界”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:011",
@@ -637,7 +1196,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“直接失效与责任边界”与“恢复与修复”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“直接失效与责任边界”与“恢复与修复”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:assurance:012",
@@ -646,8 +1208,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“恢复与修复”与“验证与关闭”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“恢复与修复”与“验证与关闭”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ]
 }
-

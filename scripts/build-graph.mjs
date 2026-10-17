@@ -2,6 +2,7 @@ import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {loadKnowledgeContent, compileKnowledgeGraph} from './lib/knowledge-model.mjs';
+import {loadHierarchy,applyHierarchy,validateHierarchy,buildHierarchyEdges} from './lib/hierarchy-model.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceArg = process.argv.indexOf('--source');
@@ -74,7 +75,7 @@ const edges = [];
 for (const [id,title,description] of topics) {
   const chapter = topicLandingChapters[id];
   if (id !== 'raw' && (!chapter || !chapterTopics[chapter]?.includes(id))) throw new Error(`Invalid topic reading chapter: ${id}`);
-  nodes.push({ id:`topic:${id}`, title, kind:'topic', description,
+  nodes.push({ id:`topic:${id}`, title, kind:'topic', description, navigationOnly:true,
     url:id==='raw'?'./raw-sources.html':`${siteBase}architecture/${chapter}.html`,
     source:id==='raw'?'原始资料分类目录':`公开架构章节 · ${chapter} 章入门` });
   edges.push({ from:'root', to:`topic:${id}`, type:'主题目录' });
@@ -119,7 +120,8 @@ for (const branch of powerTaxonomy) {
   ];
   for (const target of linked) if (!knownIds.has(target)) throw new Error(`Missing power target ${target} for ${id}`);
   nodes.push({
-    id, title:branch.title, kind:'subtopic', description:branch.description,
+    id, title:branch.title, kind:'subtopic', description:branch.description, knowledge:branch.knowledge,
+    branchType:branch.parent?'subchain':'chain', contentState:branch.knowledge?.role?'absorbed':'awaiting_absorption',
     url:`${siteBase}${branch.sourcePath}`, source:'公开架构章节 · 电源细分索引', topics:['power'], parentId, depth:branch.parent?2:1
   });
   knownIds.add(id);
@@ -187,6 +189,12 @@ for(const node of semantic.nodes){
 for(const node of semantic.nodes.filter(node=>node.kind==='source'))for(const knowledgeId of node.knowledgeIds||[])if(semanticById.has(knowledgeId)){
   edges.push({id:`index:source:${node.id}:${knowledgeId}`,from:node.id,to:knowledgeId,type:'belongs_to',pathClass:'index',layer:'index',hiddenByDefault:true});
 }
+const hierarchy=await loadHierarchy(path.join(projectRoot,'content','hierarchy.json'));
+const hierarchicalNodes=applyHierarchy(nodes,hierarchy);
+const hierarchyIssues=validateHierarchy(hierarchicalNodes,{rootId:hierarchy.rootId||'root'});
+if(hierarchyIssues.length)throw new Error(`Hierarchy invalid:\n${hierarchyIssues.join('\n')}`);
+const hierarchyEdges=buildHierarchyEdges(hierarchicalNodes);
+edges.push(...hierarchyEdges);
 const data = {
   meta: {
     title:'座舱知识银河',
@@ -203,13 +211,13 @@ const data = {
     semantic:semantic.meta,
     sourceCoverage:{total:sourceRegister.summary.publicDocuments,mapped:sourceRegister.summary.mappedDocuments,
       archiveDocuments:sourceRegister.summary.archiveDocuments,processingStates:sourceRegister.summary.processingStates},
-    layers:{navigation:true,knowledge:true,evidence:'on-demand'},
+    hierarchy:{nodeCount:hierarchicalNodes.length,edgeCount:hierarchyEdges.length,maxLevel:Math.max(...hierarchicalNodes.map(node=>node.hierarchyLevel||0))},
+    layers:{hierarchy:true,navigation:true,knowledge:true,evidence:'on-demand'},
     relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
   },
-  nodes, edges
+  nodes:hierarchicalNodes, edges
 };
 await mkdir(path.join(projectRoot,'docs'),{recursive:true});
 await writeFile(path.join(projectRoot,'docs','graph.json'),JSON.stringify(data,null,2)+'\n','utf8');
 await writeFile(path.join(projectRoot,'docs','source-register.json'),JSON.stringify(sourceRegister,null,2)+'\n','utf8');
-console.log(`Graph generated: ${nodes.length} nodes, ${edges.length} edges; ${daily.length} days, ${reviews.length} reviews.`);
-
+console.log(`Graph generated: ${hierarchicalNodes.length} nodes, ${edges.length} edges; ${daily.length} days, ${reviews.length} reviews.`);

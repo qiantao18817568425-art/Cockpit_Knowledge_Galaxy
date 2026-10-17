@@ -20,7 +20,7 @@
       <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
       <div class="section-label">知识层</div>
       <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
-      <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
+      <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="state" aria-pressed="false">状态</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
       <button id="evidence-toggle" class="sequence" type="button" aria-pressed="false">○ 展开所选节点证据</button>
       <div class="section-label">导航层</div>
       <button class="filter" type="button" data-kind="topic" aria-pressed="true"><i class="swatch topic"></i>主题星系<span>✓</span></button>
@@ -30,7 +30,7 @@
       <button class="filter" type="button" data-kind="review" aria-pressed="true"><i class="swatch review"></i>Week 复盘<span>✓</span></button>
       <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
       <div class="counts" id="counts">正在载入公开知识目录…</div>
-      <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="diagnostic">诊断</span></div>
+      <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="state">状态</span><span class="diagnostic">诊断</span></div>
       <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="knowledge-coverage.html">覆盖报告 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></nav>
     </section>
 
@@ -46,31 +46,47 @@
         <div id="detail-scope" class="detail-scope"></div>
         <button id="reader-download-summary" class="reader-download" type="button">下载专题总结</button>
       </header>
+      <nav id="reader-breadcrumb" class="reader-breadcrumb" aria-label="知识层级路径"></nav>
       <section class="reader-section" aria-labelledby="reader-summary-title">
         <div class="reader-heading"><h3 id="reader-summary-title">专题总结</h3><span id="reader-summary-basis" class="basis-badge"></span></div>
         <p id="reader-summary"></p>
       </section>
-      <section class="reader-section" aria-labelledby="reader-insights-title">
-        <div class="reader-heading"><h3 id="reader-insights-title">衍生理解：为什么有关</h3><span class="basis-badge derived">图谱关系衍生</span></div>
-        <div id="reader-insights" class="reader-insights"></div>
+      <section class="reader-section" aria-labelledby="reader-responsibility-title">
+        <div class="reader-heading"><h3 id="reader-responsibility-title">本层职责</h3><span class="basis-badge">输入 · 机制 · 输出</span></div>
+        <div id="reader-responsibility" class="reader-responsibility"></div>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-children-title">
+        <div class="reader-heading"><h3 id="reader-children-title">继续向下钻</h3><span class="basis-badge">直接子层</span></div>
+        <div id="reader-children" class="reader-children"></div>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-paths-title">
+        <div class="reader-heading"><h3 id="reader-paths-title">正常技术链：为什么有关</h3><span class="basis-badge derived">结构化技术关系</span></div>
+        <div id="reader-paths" class="reader-paths"></div>
+        <div id="reader-insights" class="reader-insights" hidden></div>
         <p id="reader-notice" class="reader-notice"></p>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-observations-title">
+        <div class="reader-heading"><h3 id="reader-observations-title">如何验证</h3><span class="basis-badge">观测点</span></div>
+        <div id="reader-observations" class="reader-observations"></div>
       </section>
       <section class="reader-section" aria-labelledby="reader-citations-title">
         <div class="reader-heading"><h3 id="reader-citations-title">引用资料与文章：为什么引用</h3><span id="reader-citation-count" class="citation-count"></span></div>
         <div id="reader-citations" class="reader-citations"></div>
       </section>
+      <details id="reader-navigation" class="reader-navigation">
+        <summary>导航关系与内容归类</summary>
+        <div id="reader-navigation-list"></div>
+      </details>
       <section id="reader-preview-section" class="reader-preview-section" aria-label="资料在线预览" hidden>
         <div class="preview-toolbar"><strong id="reader-preview-title">资料预览</strong><div><a id="reader-preview-open" target="_blank" rel="noopener noreferrer">打开原文</a><a id="reader-preview-download" download hidden>下载</a><button id="reader-preview-close" type="button" aria-label="关闭资料预览">关闭</button></div></div>
         <iframe id="reader-preview" title="资料在线预览" loading="lazy" referrerpolicy="no-referrer"></iframe>
         <p>若资料因站点安全策略不能嵌入，请使用“打开原文”或“下载”。</p>
       </section>
-      <div class="related"><b>直接关联</b><div id="related-list"></div></div>
     </aside>
 
     <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
 
-    <div class="hint">镜头前方节点显示名称 · 拖动产生惯性 · 点击切换中心 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 连线表示知识归类，不代表已验证的实车连接</div>
+    <div class="hint">镜头前方节点显示名称 · 拖动产生惯性 · 点击切换中心 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 层级线用于下钻；技术线按控制、数据、电源、状态和诊断分色</div>
   </main>
 </body>
 </html>
-

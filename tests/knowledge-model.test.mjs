@@ -21,3 +21,13 @@ test('invalid model reports structural and evidence errors',async()=>{
   }
 });
 
+test('documented claims cannot cover a platform absent from their evidence',async()=>{
+  const model=await load('knowledge-model-valid.json');
+  model.sources[0].platform='MT8676';
+  model.evidence[0].platforms=['MT8676'];
+  model.relations[0].platforms=['MT8668','MT8676'];
+  model.relations[0].scope='shared';
+  model.claims[0].platforms=['MT8668','MT8676'];
+  const issues=validateKnowledgeModel(model);
+  assert.ok(issues.some(issue=>issue.includes('documented claim platform lacks evidence')&&issue.includes('MT8668')));
+});

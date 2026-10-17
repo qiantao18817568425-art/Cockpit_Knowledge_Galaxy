@@ -11,7 +11,25 @@
       ],
       "description": "HMI",
       "aliases": [],
-      "runtimeDomain": "hmi"
+      "runtimeDomain": "hmi",
+      "knowledge": {
+        "role": "组织座舱界面、输入和用户可见反馈，并把显示、触摸、Camera 与音频体验关联到各自技术链。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "HMI 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:display",
@@ -24,7 +42,25 @@
       ],
       "description": "显示与触控",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "display",
+      "knowledge": {
+        "role": "组织 Android 合成、Host scanout、物理屏、背光和触摸输入边界。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "显示与触控 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:camera",
@@ -37,7 +73,25 @@
       ],
       "description": "Camera / AVM",
       "aliases": [],
-      "runtimeDomain": "camera"
+      "runtimeDomain": "camera",
+      "knowledge": {
+        "role": "组织 Camera 控制、视频帧、AVM 拼接和多路帧观测。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "Camera / AVM 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:audio",
@@ -50,7 +104,25 @@
       ],
       "description": "音频与语音",
       "aliases": [],
-      "runtimeDomain": "audio"
+      "runtimeDomain": "audio",
+      "knowledge": {
+        "role": "组织播放、采集、AEC 参考、DSP 和功放方向的音频链。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "音频与语音 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:android-display",
@@ -63,7 +135,29 @@
       ],
       "description": "Android HWC / SurfaceFlinger",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "android",
+      "knowledge": {
+        "role": "在 Android Guest 内汇总应用图层并完成合成、validate/present 与显示提交，形成交给 Host 显示链的上游结果。",
+        "input": [
+          "应用和系统界面图层",
+          "显示刷新与首帧触发"
+        ],
+        "mechanism": [
+          "SurfaceFlinger 组织图层合成",
+          "HWC validate/present 完成硬件合成协商与提交"
+        ],
+        "output": [
+          "可供 Yocto Host 显示栈继续处理的合成结果",
+          "首帧 submit/present 观测事件"
+        ],
+        "observations": [
+          "SurfaceFlinger/HWC validate、present 返回",
+          "首帧提交时间与失败码"
+        ],
+        "limits": [
+          "资料只支撑参考链路，当前车型的 displayId、buffer 共享细节和完整时序待版本资料确认"
+        ]
+      }
     },
     {
       "id": "component:yocto-display",
@@ -76,7 +170,27 @@
       ],
       "description": "Yocto DRM / Weston",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "yocto",
+      "knowledge": {
+        "role": "在 Yocto Host 侧承接 Guest 显示提交，并通过 Weston/DRM/KMS 组织 scanout 与物理输出。",
+        "input": [
+          "Android Guest 产生的合成显示结果"
+        ],
+        "mechanism": [
+          "Weston/DRM 选择显示资源并执行 atomic commit",
+          "维持 CRTC、plane 与 vblank 状态"
+        ],
+        "output": [
+          "送往物理显示链的扫描输出数据"
+        ],
+        "observations": [
+          "DRM atomic commit 返回",
+          "CRTC/plane 状态与 vblank 计数"
+        ],
+        "limits": [
+          "Guest 到 Host 的具体共享缓冲协议和当前版本资源编号待确认"
+        ]
+      }
     },
     {
       "id": "component:physical-display",
@@ -89,7 +203,28 @@
       ],
       "description": "物理屏 / SerDes",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "physical-device",
+      "knowledge": {
+        "role": "承接 Host 输出的显示数据，经可能存在的 SerDes 与面板链路形成用户可见画面。",
+        "input": [
+          "Yocto DRM/Weston 输出的扫描显示数据",
+          "独立的背光使能或亮度控制"
+        ],
+        "mechanism": [
+          "显示数据经过物理传输链到达面板",
+          "面板扫描与背光共同形成可见结果"
+        ],
+        "output": [
+          "用户可见画面"
+        ],
+        "observations": [
+          "SerDes 链路锁定或视频同步状态",
+          "面板供电、背光状态和实际画面"
+        ],
+        "limits": [
+          "SerDes 器件型号、物理接线、连接器、displayId 与当前车型版本均为未知或待确认项"
+        ]
+      }
     },
     {
       "id": "component:backlight",
@@ -102,7 +237,27 @@
       ],
       "description": "背光",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "physical-device",
+      "knowledge": {
+        "role": "根据 MCU 或电源策略控制屏幕发光条件，使已经送达面板的像素数据能够被用户看到。",
+        "input": [
+          "MCU 背光使能或亮度策略",
+          "屏幕电源与系统状态"
+        ],
+        "mechanism": [
+          "执行背光使能、关闭或亮度调节"
+        ],
+        "output": [
+          "屏幕发光状态"
+        ],
+        "observations": [
+          "背光控制命令与反馈",
+          "屏幕供电和亮度实际状态"
+        ],
+        "limits": [
+          "具体 GPIO、PWM、驱动器型号和电压时序待当前车型原理图与版本定义确认"
+        ]
+      }
     },
     {
       "id": "interface:input-event",
@@ -115,7 +270,25 @@
       ],
       "description": "Input Event",
       "aliases": [],
-      "runtimeDomain": "display"
+      "runtimeDomain": "display",
+      "knowledge": {
+        "role": "把触摸或输入设备事件交给 Android 输入框架进行分发。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「component:android-guest」的数据、控制或状态"
+        ],
+        "observations": [
+          "Input Event 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "observation:first-frame",
@@ -128,7 +301,105 @@
       ],
       "description": "首帧 submit / present",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "android",
+      "knowledge": {
+        "role": "证明 Android 显示链已开始提交首帧，用于界定应用/HWC 与后续 Host、物理显示链之间的最早断点。",
+        "input": [
+          "SurfaceFlinger/HWC 首次有效提交事件"
+        ],
+        "mechanism": [
+          "记录 submit/present 时间、结果与所属启动或 VM generation"
+        ],
+        "output": [
+          "首帧是否已离开 Android 显示阶段的诊断结论"
+        ],
+        "observations": [
+          "首帧 submit/present 日志和时间戳"
+        ],
+        "limits": [
+          "首帧提交成功不能单独证明 Host scanout、SerDes、面板或背光正常"
+        ]
+      }
+    },
+    {
+      "id": "interface:display-submit",
+      "title": "validate / present 提交",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Android 显示合成阶段的提交接口与结果。",
+      "aliases": [
+        "HWC present"
+      ],
+      "runtimeDomain": "android",
+      "contentState": "awaiting_absorption"
+    },
+    {
+      "id": "interface:drm-atomic",
+      "title": "DRM atomic commit",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Host 显示资源配置与提交机制。",
+      "aliases": [
+        "atomic commit"
+      ],
+      "runtimeDomain": "yocto",
+      "contentState": "awaiting_absorption"
+    },
+    {
+      "id": "observation:serdes-link",
+      "title": "SerDes 链路锁定与视频同步",
+      "kind": "observation",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "物理显示传输链的锁定、同步和错误观测。",
+      "aliases": [
+        "link lock"
+      ],
+      "runtimeDomain": "physical-device",
+      "contentState": "awaiting_absorption"
+    },
+    {
+      "id": "failure:display-no-image",
+      "title": "有数据但无可见画面",
+      "kind": "failure_mode",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "用于区分像素数据、物理链路、面板和背光阶段的失效表现。",
+      "aliases": [
+        "黑屏"
+      ],
+      "runtimeDomain": "physical-device",
+      "contentState": "awaiting_absorption"
+    },
+    {
+      "id": "interface:backlight-control",
+      "title": "背光使能 / 亮度控制",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "MCU 或电源策略到背光执行端的控制接口。",
+      "aliases": [
+        "backlight enable"
+      ],
+      "runtimeDomain": "mcu",
+      "contentState": "awaiting_absorption"
     },
     {
       "id": "component:camera-control",
@@ -141,7 +412,25 @@
       ],
       "description": "Camera Control",
       "aliases": [],
-      "runtimeDomain": "camera"
+      "runtimeDomain": "camera",
+      "knowledge": {
+        "role": "下发 Camera 启停、流配置和 AVM 业务控制，不承载视频帧本身。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「AVM 四路拼接」的数据、控制或状态"
+        ],
+        "observations": [
+          "Camera Control 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "interface:camera-frame",
@@ -154,7 +443,25 @@
       ],
       "description": "Camera Frame Data",
       "aliases": [],
-      "runtimeDomain": "camera"
+      "runtimeDomain": "camera",
+      "knowledge": {
+        "role": "承载传感器到处理/拼接阶段的视频帧和时序信息。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「AVM 四路拼接」的数据、控制或状态"
+        ],
+        "observations": [
+          "Camera Frame Data 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:avm-stitch",
@@ -167,7 +474,26 @@
       ],
       "description": "AVM 四路拼接",
       "aliases": [],
-      "runtimeDomain": "camera"
+      "runtimeDomain": "camera",
+      "knowledge": {
+        "role": "对多路 Camera 帧进行同步、拼接并形成环视输出。",
+        "input": [
+          "来自「Camera Control」的输入、状态或触发",
+          "来自「Camera Frame Data」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「四路帧计数」的数据、控制或状态"
+        ],
+        "observations": [
+          "AVM 四路拼接 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "observation:camera-four-stream",
@@ -180,7 +506,25 @@
       ],
       "description": "四路帧计数",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "同时检查四路输入的帧计数、时间连续性和缺帧情况。",
+        "input": [
+          "来自「AVM 四路拼接」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "在统一时间基准和运行周期内解释观测"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "四路帧计数 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:audio-playback",
@@ -193,7 +537,25 @@
       ],
       "description": "Audio Playback",
       "aliases": [],
-      "runtimeDomain": "audio"
+      "runtimeDomain": "audio",
+      "knowledge": {
+        "role": "把应用或系统音频经策略、路由和 DSP 送往输出设备。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「ADSP / External DSP Variant」的数据、控制或状态"
+        ],
+        "observations": [
+          "Audio Playback 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:audio-capture",
@@ -206,7 +568,25 @@
       ],
       "description": "Audio Capture",
       "aliases": [],
-      "runtimeDomain": "audio"
+      "runtimeDomain": "audio",
+      "knowledge": {
+        "role": "把麦克风采集数据经前处理送往语音或录音消费者。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「AEC / Echo Reference」的数据、控制或状态"
+        ],
+        "observations": [
+          "Audio Capture 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:aec-reference",
@@ -219,7 +599,25 @@
       ],
       "description": "AEC / Echo Reference",
       "aliases": [],
-      "runtimeDomain": "audio"
+      "runtimeDomain": "audio",
+      "knowledge": {
+        "role": "向 AEC 提供与实际播放对应的 Echo Reference，避免回声和 TTS 回灌。",
+        "input": [
+          "来自「Audio Capture」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「ADSP / External DSP Variant」的数据、控制或状态"
+        ],
+        "observations": [
+          "AEC / Echo Reference 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:dsp-variant",
@@ -232,7 +630,26 @@
       ],
       "description": "ADSP / External DSP Variant",
       "aliases": [],
-      "runtimeDomain": "audio"
+      "runtimeDomain": "audio",
+      "knowledge": {
+        "role": "表示片内 ADSP 或外部 DSP 的项目实现差异，参数不可直接互换。",
+        "input": [
+          "来自「Audio Playback」的输入、状态或触发",
+          "来自「AEC / Echo Reference」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "ADSP / External DSP Variant 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     }
   ],
   "relations": [
@@ -244,6 +661,14 @@
       "to": "component:yocto-display",
       "type": "carries_data_to",
       "pathClass": "data",
+      "why": "Android HWC / SurfaceFlinger 完成图层合成与显示提交后，显示数据必须交给 Yocto Host 显示栈继续完成物理输出。",
+      "input": "Android 应用与系统界面图层的合成结果",
+      "handoff": "Android Guest 到 Yocto Host 的显示边界；具体共享缓冲协议待版本资料确认",
+      "output": "供 Weston/DRM/KMS 选择资源并提交的显示数据",
+      "verification": [
+        "Android 侧 validate/present 成功且时间连续",
+        "Host 侧收到对应帧并产生 DRM 提交"
+      ],
       "platforms": [
         "MT8668",
         "MT8676"
@@ -257,6 +682,14 @@
       "to": "component:physical-display",
       "type": "carries_data_to",
       "pathClass": "data",
+      "why": "Yocto DRM / Weston 完成 scanout 资源提交后，显示数据需要继续经过物理输出链和可能存在的 SerDes 才能到达面板。",
+      "input": "Host 已提交的扫描输出数据",
+      "handoff": "Yocto Host 显示控制器到物理显示设备边界",
+      "output": "到达面板并可被扫描显示的像素数据",
+      "verification": [
+        "DRM atomic commit 成功且 vblank/scanout 持续",
+        "物理链路锁定或视频同步状态正常"
+      ],
       "platforms": [
         "MT8668",
         "MT8676"
@@ -270,6 +703,14 @@
       "to": "component:backlight",
       "type": "controls",
       "pathClass": "control",
+      "why": "MCU 根据整车电源与显示策略决定背光的使能或亮度，使屏幕发光状态与车辆状态一致。",
+      "input": "车辆状态和 MCU 显示/电源策略",
+      "handoff": "MCU 到背光执行端的控制边界；具体 GPIO/PWM 待确认",
+      "output": "背光开启、关闭或亮度状态",
+      "verification": [
+        "MCU 控制请求与状态反馈一致",
+        "背光供电和实际亮度随命令变化"
+      ],
       "platforms": [
         "MT8668",
         "MT8676"
@@ -283,6 +724,14 @@
       "to": "component:android-guest",
       "type": "carries_data_to",
       "pathClass": "data",
+      "why": "触摸或输入设备产生的 input event 需要进入 Android Guest，才能被 InputReader、窗口和应用消费。",
+      "input": "输入设备上报的事件与坐标",
+      "handoff": "物理输入链到 Android Guest 输入框架边界",
+      "output": "Android 可分发的输入事件",
+      "verification": [
+        "内核输入事件连续",
+        "Android InputReader/Dispatcher 接收到同一事件"
+      ],
       "platforms": [
         "MT8668",
         "MT8676"
@@ -296,6 +745,14 @@
       "to": "observation:first-frame",
       "type": "observed_by",
       "pathClass": "diagnostic",
+      "why": "首帧 submit / present 是 Android 显示链是否完成第一次有效提交的观测点，可用于区分上游未出帧与下游未显示。",
+      "input": "Android 显示合成与提交状态",
+      "handoff": "业务启动状态到显示诊断时间线",
+      "output": "首帧是否已经离开 Android 显示阶段的证据",
+      "verification": [
+        "submit/present 的时间、返回值与 boot/VM generation 一致",
+        "与 Host 首次 DRM 提交按同一时间基准关联"
+      ],
       "platforms": [
         "MT8668",
         "MT8676"
@@ -312,6 +769,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Camera Control 负责启停和配置 AVM 拼接流程，控制请求与视频帧数据必须分开验证。",
+      "input": "「Camera Control」产生的可验证输入或状态",
+      "handoff": "camera 到 camera 的 controls 边界",
+      "output": "「AVM 四路拼接」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Camera Control」与「AVM 四路拼接」"
       ]
     },
     {
@@ -325,6 +789,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Camera Frame Data 把多路视频帧送入 AVM 拼接，需以同一路 frame/sequence 证明真实交付。",
+      "input": "「Camera Frame Data」产生的可验证输入或状态",
+      "handoff": "camera 到 camera 的 carries_data_to 边界",
+      "output": "「AVM 四路拼接」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Camera Frame Data」与「AVM 四路拼接」"
       ]
     },
     {
@@ -338,6 +809,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "四路帧计数用于确认 AVM 拼接的每一路输入是否持续，不能用单路正常代替四路正常。",
+      "input": "「AVM 四路拼接」产生的可验证输入或状态",
+      "handoff": "camera 到 diagnosis 的 observed_by 边界",
+      "output": "「四路帧计数」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「AVM 四路拼接」与「四路帧计数」"
       ]
     },
     {
@@ -351,6 +829,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Audio Playback 的 PCM 数据需要进入项目选定的 DSP 路径后才能继续送往输出链。",
+      "input": "「Audio Playback」产生的可验证输入或状态",
+      "handoff": "audio 到 audio 的 carries_data_to 边界",
+      "output": "「ADSP / External DSP Variant」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Audio Playback」与「ADSP / External DSP Variant」"
       ]
     },
     {
@@ -364,6 +849,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Audio Capture 需要把采集数据交给 AEC/Echo Reference 相关处理，供语音链使用。",
+      "input": "「Audio Capture」产生的可验证输入或状态",
+      "handoff": "audio 到 audio 的 carries_data_to 边界",
+      "output": "「AEC / Echo Reference」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Audio Capture」与「AEC / Echo Reference」"
       ]
     },
     {
@@ -377,6 +869,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "AEC Reference 必须与实际 DSP 播放路径对应，否则回声参考与扬声器输出会失配。",
+      "input": "「AEC / Echo Reference」产生的可验证输入或状态",
+      "handoff": "audio 到 audio 的 depends_on 边界",
+      "output": "「ADSP / External DSP Variant」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「AEC / Echo Reference」与「ADSP / External DSP Variant」"
       ]
     }
   ],
@@ -389,8 +888,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:001:inferred",
+      "relationId": "rel:hmi:001",
+      "evidenceIds": [
+        "ev:hmi:001"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -401,8 +910,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:002:inferred",
+      "relationId": "rel:hmi:002",
+      "evidenceIds": [
+        "ev:hmi:002"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -413,8 +932,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:003:inferred",
+      "relationId": "rel:hmi:003",
+      "evidenceIds": [
+        "ev:hmi:003"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -425,8 +954,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:004:inferred",
+      "relationId": "rel:hmi:004",
+      "evidenceIds": [
+        "ev:hmi:004"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -437,8 +976,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:005:inferred",
+      "relationId": "rel:hmi:005",
+      "evidenceIds": [
+        "ev:hmi:005"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -449,8 +998,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:006:inferred",
+      "relationId": "rel:hmi:006",
+      "evidenceIds": [
+        "ev:hmi:006"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -461,8 +1020,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:007:inferred",
+      "relationId": "rel:hmi:007",
+      "evidenceIds": [
+        "ev:hmi:007"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -473,8 +1042,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:008:inferred",
+      "relationId": "rel:hmi:008",
+      "evidenceIds": [
+        "ev:hmi:008"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -485,8 +1064,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:009:inferred",
+      "relationId": "rel:hmi:009",
+      "evidenceIds": [
+        "ev:hmi:009"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -497,8 +1086,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:010:inferred",
+      "relationId": "rel:hmi:010",
+      "evidenceIds": [
+        "ev:hmi:010"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -509,8 +1108,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:011:inferred",
+      "relationId": "rel:hmi:011",
+      "evidenceIds": [
+        "ev:hmi:011"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     }
   ],
@@ -522,7 +1131,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“Yocto DRM / Weston”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“Yocto DRM / Weston”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:002",
@@ -531,7 +1143,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Yocto DRM / Weston”与“物理屏 / SerDes”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Yocto DRM / Weston”与“物理屏 / SerDes”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:003",
@@ -540,7 +1155,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“MCU”与“背光”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“MCU”与“背光”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:004",
@@ -549,7 +1167,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Input Event”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Input Event”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:005",
@@ -558,7 +1179,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“首帧 submit / present”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“首帧 submit / present”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:006",
@@ -567,7 +1191,10 @@
         8
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Control”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Control”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:007",
@@ -576,7 +1203,10 @@
         8
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Frame Data”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Frame Data”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:008",
@@ -585,7 +1215,10 @@
         8
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“AVM 四路拼接”与“四路帧计数”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“AVM 四路拼接”与“四路帧计数”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:009",
@@ -594,7 +1227,10 @@
         24
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Playback”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Playback”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:010",
@@ -603,7 +1239,10 @@
         24
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Capture”与“AEC / Echo Reference”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Capture”与“AEC / Echo Reference”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:hmi:011",
@@ -612,8 +1251,10 @@
         24
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“AEC / Echo Reference”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“AEC / Echo Reference”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ]
 }
-

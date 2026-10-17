@@ -4,8 +4,33 @@
     "title": "车辆电源输入与状态策略",
     "description": "从 ACC/点火等输入进入电源策略，核对状态定义、触发条件和消抖。状态名与数值须按车型版本确认。",
     "sourcePath": "architecture/14.html#accstrsuspendresume",
-    "chapters": ["08", "14"],
-    "lessons": ["day-7", "day-8", "day-38"]
+    "chapters": [
+      "08",
+      "14"
+    ],
+    "lessons": [
+      "day-7",
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "从 ACC/点火等输入进入电源策略，核对状态定义、触发条件和消抖。状态名与数值须按车型版本确认。",
+      "input": [
+        "车辆 ACC/点火和状态输入"
+      ],
+      "mechanism": [
+        "完成状态有效性、消抖与目标电源态判定"
+      ],
+      "output": [
+        "向 MCU/SoC 电源策略交付明确目标"
+      ],
+      "observations": [
+        "输入值、有效时刻、目标态与门槛结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "state-input",
@@ -13,8 +38,32 @@
     "title": "ACC 与车辆状态输入",
     "description": "先确认车辆输入由谁采集、状态何时有效，再核对电源策略是否采用了该状态；信号定义以现车版本为准。",
     "sourcePath": "architecture/14.html#accstrsuspendresume",
-    "chapters": ["08", "14"],
-    "lessons": ["day-7", "day-8"]
+    "chapters": [
+      "08",
+      "14"
+    ],
+    "lessons": [
+      "day-7",
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "先确认车辆输入由谁采集、状态何时有效，再核对电源策略是否采用了该状态；信号定义以现车版本为准。",
+      "input": [
+        "车辆 ACC/点火和状态输入"
+      ],
+      "mechanism": [
+        "完成状态有效性、消抖与目标电源态判定"
+      ],
+      "output": [
+        "向 MCU/SoC 电源策略交付明确目标"
+      ],
+      "observations": [
+        "输入值、有效时刻、目标态与门槛结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "state-policy",
@@ -22,16 +71,64 @@
     "title": "目标电源态与策略门槛",
     "description": "区分外部状态、目标电源态和允许切换的条件，避免把一条输入变化视为休眠已完成。",
     "sourcePath": "architecture/14.html#业务流程-flow-38",
-    "chapters": ["14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "区分外部状态、目标电源态和允许切换的条件，避免把一条输入变化视为休眠已完成。",
+      "input": [
+        "车辆 ACC/点火和状态输入"
+      ],
+      "mechanism": [
+        "完成状态有效性、消抖与目标电源态判定"
+      ],
+      "output": [
+        "向 MCU/SoC 电源策略交付明确目标"
+      ],
+      "observations": [
+        "输入值、有效时刻、目标态与门槛结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "mcu",
     "title": "MCU 电源控制与握手",
     "description": "区分 MCU 的电源状态、控制请求、SoC 应答和实际硬件状态；接口与引脚须按当前板级资料核对。",
     "sourcePath": "architecture/08.html#86-电源与安全",
-    "chapters": ["08", "14"],
-    "lessons": ["day-7", "day-8"]
+    "chapters": [
+      "08",
+      "14"
+    ],
+    "lessons": [
+      "day-7",
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "区分 MCU 的电源状态、控制请求、SoC 应答和实际硬件状态；接口与引脚须按当前板级资料核对。",
+      "input": [
+        "车辆状态和目标电源态"
+      ],
+      "mechanism": [
+        "MCU 状态机执行请求、应答和回读"
+      ],
+      "output": [
+        "向 SoC 与板级电源接口交付控制结果"
+      ],
+      "observations": [
+        "MCU 状态、握手序号、接口反馈与实际供电"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "mcu-handshake",
@@ -39,16 +136,64 @@
     "title": "MCU 与 SoC 电源握手",
     "description": "逐项核对请求、应答、状态回读和供电结果；控制路径与电源路径分别取证。",
     "sourcePath": "architecture/08.html#86-电源与安全",
-    "chapters": ["08", "14"],
-    "lessons": ["day-7", "day-8"]
+    "chapters": [
+      "08",
+      "14"
+    ],
+    "lessons": [
+      "day-7",
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "逐项核对请求、应答、状态回读和供电结果；控制路径与电源路径分别取证。",
+      "input": [
+        "车辆状态和目标电源态"
+      ],
+      "mechanism": [
+        "MCU 状态机执行请求、应答和回读"
+      ],
+      "output": [
+        "向 SoC 与板级电源接口交付控制结果"
+      ],
+      "observations": [
+        "MCU 状态、握手序号、接口反馈与实际供电"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "supply",
     "title": "主电、备电与 PMIC",
     "description": "将供电来源切换、PMIC 控制和软件电源态分开记录；备电业务与 TBox 保持策略需要项目资料验证。",
     "sourcePath": "architecture/08.html#86-电源与安全",
-    "chapters": ["04", "08", "09"],
-    "lessons": ["day-7"]
+    "chapters": [
+      "04",
+      "08",
+      "09"
+    ],
+    "lessons": [
+      "day-7"
+    ],
+    "knowledge": {
+      "role": "将供电来源切换、PMIC 控制和软件电源态分开记录；备电业务与 TBox 保持策略需要项目资料验证。",
+      "input": [
+        "主电、备电和 PMIC 控制条件"
+      ],
+      "mechanism": [
+        "区分供电来源、软件状态与真实电源轨"
+      ],
+      "output": [
+        "形成可测量的电压、电流与保持结果"
+      ],
+      "observations": [
+        "PMIC 状态、电源轨、电流和备电切换"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "primary-supply",
@@ -56,8 +201,31 @@
     "title": "主供电与电源域",
     "description": "把电源轨、PMIC 控制和 SoC 软件状态分别标注；实际电源域与测点须按板级版本确认。",
     "sourcePath": "architecture/08.html#86-电源与安全",
-    "chapters": ["04", "08"],
-    "lessons": ["day-7"]
+    "chapters": [
+      "04",
+      "08"
+    ],
+    "lessons": [
+      "day-7"
+    ],
+    "knowledge": {
+      "role": "把电源轨、PMIC 控制和 SoC 软件状态分别标注；实际电源域与测点须按板级版本确认。",
+      "input": [
+        "主电、备电和 PMIC 控制条件"
+      ],
+      "mechanism": [
+        "区分供电来源、软件状态与真实电源轨"
+      ],
+      "output": [
+        "形成可测量的电压、电流与保持结果"
+      ],
+      "observations": [
+        "PMIC 状态、电源轨、电流和备电切换"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "backup-supply",
@@ -65,24 +233,98 @@
     "title": "备电与保持业务",
     "description": "区分掉电后的保持供电、独立域运行和整机复电；TBox 与 MCU 的保持范围待项目硬件资料核实。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["08", "09"],
-    "lessons": ["day-7", "day-8"]
+    "chapters": [
+      "08",
+      "09"
+    ],
+    "lessons": [
+      "day-7",
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "区分掉电后的保持供电、独立域运行和整机复电；TBox 与 MCU 的保持范围待项目硬件资料核实。",
+      "input": [
+        "主电、备电和 PMIC 控制条件"
+      ],
+      "mechanism": [
+        "区分供电来源、软件状态与真实电源轨"
+      ],
+      "output": [
+        "形成可测量的电压、电流与保持结果"
+      ],
+      "observations": [
+        "PMIC 状态、电源轨、电流和备电切换"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "boot",
     "title": "上电、冷启动与业务 Ready",
     "description": "分开上电、Host/VM 启动、服务 Ready、首帧和业务可用，不以进程启动代替完整恢复。",
     "sourcePath": "architecture/24.html#24-启动时序从上电到业务可用",
-    "chapters": ["07", "14", "24"],
-    "lessons": ["day-7"]
+    "chapters": [
+      "07",
+      "14",
+      "24"
+    ],
+    "lessons": [
+      "day-7"
+    ],
+    "knowledge": {
+      "role": "分开上电、Host/VM 启动、服务 Ready、首帧和业务可用，不以进程启动代替完整恢复。",
+      "input": [
+        "上电与复位条件"
+      ],
+      "mechanism": [
+        "依次建立 Host、VM、服务和首帧"
+      ],
+      "output": [
+        "形成可用的座舱业务"
+      ],
+      "observations": [
+        "各启动阶段、Ready、首帧和业务结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "host-guest",
     "title": "Host / Guest / Hypervisor 休眠屏障",
     "description": "Host 发起、Guest 完成相应阶段后再进入更深休眠；具体顺序与完成条件以当前版本为准。",
     "sourcePath": "architecture/14.html#accstrsuspendresume",
-    "chapters": ["02", "14", "23"],
-    "lessons": ["day-8", "day-38", "day-39"]
+    "chapters": [
+      "02",
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "Host 发起、Guest 完成相应阶段后再进入更深休眠；具体顺序与完成条件以当前版本为准。",
+      "input": [
+        "休眠请求与各运行域当前状态"
+      ],
+      "mechanism": [
+        "Host/Guest/Hypervisor 汇聚完成条件"
+      ],
+      "output": [
+        "允许进入内核和更深低功耗"
+      ],
+      "observations": [
+        "各域 ack、barrier、VM generation 与超时"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "android-prep",
@@ -90,8 +332,33 @@
     "title": "Android Guest 休眠准备",
     "description": "检查应用与系统服务的准备、阻塞和完成回报，再与其他运行域对齐同一次休眠尝试。",
     "sourcePath": "architecture/14.html#分层子链与方向-1",
-    "chapters": ["06", "14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "06",
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "检查应用与系统服务的准备、阻塞和完成回报，再与其他运行域对齐同一次休眠尝试。",
+      "input": [
+        "休眠请求与各运行域当前状态"
+      ],
+      "mechanism": [
+        "Host/Guest/Hypervisor 汇聚完成条件"
+      ],
+      "output": [
+        "允许进入内核和更深低功耗"
+      ],
+      "observations": [
+        "各域 ack、barrier、VM generation 与超时"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "tbox-guest-prep",
@@ -99,8 +366,31 @@
     "title": "TBox Guest 保持与休眠",
     "description": "核对通信业务的保持要求、Guest 电源态和跨域通知；具体保活策略须按项目版本确认。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["09", "14"],
-    "lessons": ["day-8"]
+    "chapters": [
+      "09",
+      "14"
+    ],
+    "lessons": [
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "核对通信业务的保持要求、Guest 电源态和跨域通知；具体保活策略须按项目版本确认。",
+      "input": [
+        "休眠请求与各运行域当前状态"
+      ],
+      "mechanism": [
+        "Host/Guest/Hypervisor 汇聚完成条件"
+      ],
+      "output": [
+        "允许进入内核和更深低功耗"
+      ],
+      "observations": [
+        "各域 ack、barrier、VM generation 与超时"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "hypervisor-barrier",
@@ -108,8 +398,32 @@
     "title": "Hypervisor 跨 VM 屏障",
     "description": "把各 Guest 的完成状态与 Host 进入低功耗的门槛分开；实际参与 VM 和顺序以当前部署为准。",
     "sourcePath": "architecture/02.html#23-hypervisorhost-与-guest",
-    "chapters": ["02", "14"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "02",
+      "14"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "把各 Guest 的完成状态与 Host 进入低功耗的门槛分开；实际参与 VM 和顺序以当前部署为准。",
+      "input": [
+        "休眠请求与各运行域当前状态"
+      ],
+      "mechanism": [
+        "Host/Guest/Hypervisor 汇聚完成条件"
+      ],
+      "output": [
+        "允许进入内核和更深低功耗"
+      ],
+      "observations": [
+        "各域 ack、barrier、VM generation 与超时"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "yocto-host-prep",
@@ -117,16 +431,66 @@
     "title": "Yocto Host 设备准备",
     "description": "核对 Host 对物理设备、共享资源和 Guest 的依赖，再确认是否允许平台进入更深低功耗。",
     "sourcePath": "architecture/07.html#71-启动与生命周期",
-    "chapters": ["07", "14"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "07",
+      "14"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "核对 Host 对物理设备、共享资源和 Guest 的依赖，再确认是否允许平台进入更深低功耗。",
+      "input": [
+        "休眠请求与各运行域当前状态"
+      ],
+      "mechanism": [
+        "Host/Guest/Hypervisor 汇聚完成条件"
+      ],
+      "output": [
+        "允许进入内核和更深低功耗"
+      ],
+      "observations": [
+        "各域 ack、barrier、VM generation 与超时"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "suspend",
     "title": "Suspend 进入与阻塞",
     "description": "按请求、准备、设备挂起和实际低功耗逐阶段判断；WakeLock、设备回调与时钟可能阻塞进入。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["14", "15", "23"],
-    "lessons": ["day-8", "day-38", "day-39"]
+    "chapters": [
+      "14",
+      "15",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "按请求、准备、设备挂起和实际低功耗逐阶段判断；WakeLock、设备回调与时钟可能阻塞进入。",
+      "input": [
+        "已满足的跨域休眠门槛"
+      ],
+      "mechanism": [
+        "执行冻结、设备 suspend、noirq 与平台进入"
+      ],
+      "output": [
+        "进入稳定低功耗驻留或给出 abort"
+      ],
+      "observations": [
+        "wakelock、设备回调、时钟、驻留与电流"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "entry-blockers",
@@ -134,8 +498,32 @@
     "title": "请求前后与保持唤醒",
     "description": "先找休眠请求和进入内核的边界，再检查是否有持续活跃的任务或唤醒保持。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "先找休眠请求和进入内核的边界，再检查是否有持续活跃的任务或唤醒保持。",
+      "input": [
+        "已满足的跨域休眠门槛"
+      ],
+      "mechanism": [
+        "执行冻结、设备 suspend、noirq 与平台进入"
+      ],
+      "output": [
+        "进入稳定低功耗驻留或给出 abort"
+      ],
+      "observations": [
+        "wakelock、设备回调、时钟、驻留与电流"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "device-suspend",
@@ -143,8 +531,32 @@
     "title": "内核与设备挂起阶段",
     "description": "逐阶段看任务冻结、设备回调和平台进入条件，记录最早未完成的接口。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "逐阶段看任务冻结、设备回调和平台进入条件，记录最早未完成的接口。",
+      "input": [
+        "已满足的跨域休眠门槛"
+      ],
+      "mechanism": [
+        "执行冻结、设备 suspend、noirq 与平台进入"
+      ],
+      "output": [
+        "进入稳定低功耗驻留或给出 abort"
+      ],
+      "observations": [
+        "wakelock、设备回调、时钟、驻留与电流"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "low-power-residency",
@@ -152,16 +564,66 @@
     "title": "低功耗驻留与电流",
     "description": "休眠流程成功后仍需验证平台驻留和实际电流；软件成功消息不能代替硬件测量。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["08", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "08",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "休眠流程成功后仍需验证平台驻留和实际电流；软件成功消息不能代替硬件测量。",
+      "input": [
+        "已满足的跨域休眠门槛"
+      ],
+      "mechanism": [
+        "执行冻结、设备 suspend、noirq 与平台进入"
+      ],
+      "output": [
+        "进入稳定低功耗驻留或给出 abort"
+      ],
+      "observations": [
+        "wakelock、设备回调、时钟、驻留与电流"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "wake",
     "title": "唤醒源与真实唤醒",
     "description": "区分软件 wake 请求、未睡着的 abort 和稳定休眠后的硬件唤醒；IRQ 与 wake source 要按本次 boot 映射。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["08", "09", "14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "08",
+      "09",
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "区分软件 wake 请求、未睡着的 abort 和稳定休眠后的硬件唤醒；IRQ 与 wake source 要按本次 boot 映射。",
+      "input": [
+        "休眠尝试、唤醒请求与硬件中断"
+      ],
+      "mechanism": [
+        "区分 abort、快速唤醒和稳定休眠后的真实唤醒"
+      ],
+      "output": [
+        "产生有效 wake reason 并启动恢复"
+      ],
+      "observations": [
+        "wake source、IRQ、驻留时长和同一 boot 关联"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "wake-source",
@@ -169,8 +631,32 @@
     "title": "唤醒请求与来源",
     "description": "将车辆、定时、通信和设备中断按来源归类；须与同一次休眠及当前版本的唤醒映射关联。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["08", "09", "14"],
-    "lessons": ["day-8"]
+    "chapters": [
+      "08",
+      "09",
+      "14"
+    ],
+    "lessons": [
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "将车辆、定时、通信和设备中断按来源归类；须与同一次休眠及当前版本的唤醒映射关联。",
+      "input": [
+        "休眠尝试、唤醒请求与硬件中断"
+      ],
+      "mechanism": [
+        "区分 abort、快速唤醒和稳定休眠后的真实唤醒"
+      ],
+      "output": [
+        "产生有效 wake reason 并启动恢复"
+      ],
+      "observations": [
+        "wake source、IRQ、驻留时长和同一 boot 关联"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "abort-or-wake",
@@ -178,16 +664,63 @@
     "title": "进入中断与真正唤醒",
     "description": "先证明平台曾稳定进入低功耗，再判定是睡前中断、快速唤醒还是正常唤醒。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["14", "23"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "14",
+      "23"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "先证明平台曾稳定进入低功耗，再判定是睡前中断、快速唤醒还是正常唤醒。",
+      "input": [
+        "休眠尝试、唤醒请求与硬件中断"
+      ],
+      "mechanism": [
+        "区分 abort、快速唤醒和稳定休眠后的真实唤醒"
+      ],
+      "output": [
+        "产生有效 wake reason 并启动恢复"
+      ],
+      "observations": [
+        "wake source、IRQ、驻留时长和同一 boot 关联"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "tbox",
     "title": "TBox / RTC 低功耗与远程唤醒",
     "description": "将 RTC、Modem 和独立唤醒源分开；TBox 是否保留、唤醒优先级与线路连接待当前项目确认。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["09", "13"],
-    "lessons": ["day-8"]
+    "chapters": [
+      "09",
+      "13"
+    ],
+    "lessons": [
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "将 RTC、Modem 和独立唤醒源分开；TBox 是否保留、唤醒优先级与线路连接待当前项目确认。",
+      "input": [
+        "RTC、Modem、远控和保持策略"
+      ],
+      "mechanism": [
+        "维持或重建通信并按策略发起唤醒"
+      ],
+      "output": [
+        "向座舱域交付唤醒与业务请求"
+      ],
+      "observations": [
+        "定时、网络注册、远控 request ID 和供电保持"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "rtc-schedule",
@@ -195,8 +728,31 @@
     "title": "RTC 定时与远程唤醒",
     "description": "核对定时任务、触发时刻、唤醒来源和后续业务请求，避免把时间接近视为因果。",
     "sourcePath": "architecture/09.html#96-rtc唤醒与-suspendresume",
-    "chapters": ["09", "14"],
-    "lessons": ["day-8"]
+    "chapters": [
+      "09",
+      "14"
+    ],
+    "lessons": [
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "核对定时任务、触发时刻、唤醒来源和后续业务请求，避免把时间接近视为因果。",
+      "input": [
+        "RTC、Modem、远控和保持策略"
+      ],
+      "mechanism": [
+        "维持或重建通信并按策略发起唤醒"
+      ],
+      "output": [
+        "向座舱域交付唤醒与业务请求"
+      ],
+      "observations": [
+        "定时、网络注册、远控 request ID 和供电保持"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "modem-retention",
@@ -204,16 +760,65 @@
     "title": "Modem 保活与远控链路",
     "description": "区分通信模块保持、网络重建和远控业务就绪；是否独立供电待车型资料确认。",
     "sourcePath": "architecture/09.html#94-modem-与-telephony",
-    "chapters": ["09", "13"],
-    "lessons": ["day-8"]
+    "chapters": [
+      "09",
+      "13"
+    ],
+    "lessons": [
+      "day-8"
+    ],
+    "knowledge": {
+      "role": "区分通信模块保持、网络重建和远控业务就绪；是否独立供电待车型资料确认。",
+      "input": [
+        "RTC、Modem、远控和保持策略"
+      ],
+      "mechanism": [
+        "维持或重建通信并按策略发起唤醒"
+      ],
+      "output": [
+        "向座舱域交付唤醒与业务请求"
+      ],
+      "observations": [
+        "定时、网络注册、远控 request ID 和供电保持"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "resume",
     "title": "Resume 与跨域业务恢复",
     "description": "先核对原会话是否有效，再恢复失效资源、订阅和权威状态；以业务结果验收。",
     "sourcePath": "architecture/15.html#15610-唤醒后状态不恢复",
-    "chapters": ["09", "14", "15"],
-    "lessons": ["day-8", "day-38", "day-39"]
+    "chapters": [
+      "09",
+      "14",
+      "15"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "先核对原会话是否有效，再恢复失效资源、订阅和权威状态；以业务结果验收。",
+      "input": [
+        "有效唤醒与新运行周期状态"
+      ],
+      "mechanism": [
+        "按 Host、设备、VM、服务和订阅顺序恢复"
+      ],
+      "output": [
+        "形成用户可见的业务恢复结果"
+      ],
+      "observations": [
+        "resume 阶段、资源重建、状态回读和业务验收"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "vm-resume",
@@ -221,8 +826,32 @@
     "title": "Host 与 VM 恢复顺序",
     "description": "先确认 Host、设备与 Guest 的新会话状态，再判定后续资源是否可复用。",
     "sourcePath": "architecture/14.html#业务流程-flow-38",
-    "chapters": ["02", "14"],
-    "lessons": ["day-8", "day-38"]
+    "chapters": [
+      "02",
+      "14"
+    ],
+    "lessons": [
+      "day-8",
+      "day-38"
+    ],
+    "knowledge": {
+      "role": "先确认 Host、设备与 Guest 的新会话状态，再判定后续资源是否可复用。",
+      "input": [
+        "有效唤醒与新运行周期状态"
+      ],
+      "mechanism": [
+        "按 Host、设备、VM、服务和订阅顺序恢复"
+      ],
+      "output": [
+        "形成用户可见的业务恢复结果"
+      ],
+      "observations": [
+        "resume 阶段、资源重建、状态回读和业务验收"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "business-resume",
@@ -230,16 +859,65 @@
     "title": "服务重连与业务可用",
     "description": "核对订阅重建、权威状态回读和可见业务结果，防止 Resume 完成后界面或功能仍旧失效。",
     "sourcePath": "architecture/15.html#15610-唤醒后状态不恢复",
-    "chapters": ["09", "14", "15"],
-    "lessons": ["day-8", "day-39"]
+    "chapters": [
+      "09",
+      "14",
+      "15"
+    ],
+    "lessons": [
+      "day-8",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "核对订阅重建、权威状态回读和可见业务结果，防止 Resume 完成后界面或功能仍旧失效。",
+      "input": [
+        "有效唤醒与新运行周期状态"
+      ],
+      "mechanism": [
+        "按 Host、设备、VM、服务和订阅顺序恢复"
+      ],
+      "output": [
+        "形成用户可见的业务恢复结果"
+      ],
+      "observations": [
+        "resume 阶段、资源重建、状态回读和业务验收"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "diagnostics",
     "title": "低功耗证据与日志留存",
     "description": "用同一 boot、同一次 suspend attempt 的阶段、驻留和唤醒证据定位断点，并检查断电时日志是否真的落盘。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["15", "23"],
-    "lessons": ["day-38", "day-39"]
+    "chapters": [
+      "15",
+      "23"
+    ],
+    "lessons": [
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "用同一 boot、同一次 suspend attempt 的阶段、驻留和唤醒证据定位断点，并检查断电时日志是否真的落盘。",
+      "input": [
+        "同一次 boot 和 suspend attempt 的跨域证据"
+      ],
+      "mechanism": [
+        "统一时间基准并定位最早可证实断点"
+      ],
+      "output": [
+        "形成可复核的直接失效与证据缺口"
+      ],
+      "observations": [
+        "阶段日志、驻留、电流、wake reason 和持久化结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "entry-evidence",
@@ -247,8 +925,32 @@
     "title": "睡不下去的阶段证据",
     "description": "用同一次尝试的请求、阻塞、设备挂起和平台状态定位最早断点，保留跨域时间依据。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["15", "23"],
-    "lessons": ["day-38", "day-39"]
+    "chapters": [
+      "15",
+      "23"
+    ],
+    "lessons": [
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "用同一次尝试的请求、阻塞、设备挂起和平台状态定位最早断点，保留跨域时间依据。",
+      "input": [
+        "同一次 boot 和 suspend attempt 的跨域证据"
+      ],
+      "mechanism": [
+        "统一时间基准并定位最早可证实断点"
+      ],
+      "output": [
+        "形成可复核的直接失效与证据缺口"
+      ],
+      "observations": [
+        "阶段日志、驻留、电流、wake reason 和持久化结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   },
   {
     "id": "current-evidence",
@@ -256,7 +958,31 @@
     "title": "睡着后高电流的证据",
     "description": "把频繁唤醒、外设保持、时钟驻留和硬件电流分开验证；比较必须使用相同状态与测量条件。",
     "sourcePath": "architecture/23.html#236-低功耗与日志持久化",
-    "chapters": ["08", "23"],
-    "lessons": ["day-38", "day-39"]
+    "chapters": [
+      "08",
+      "23"
+    ],
+    "lessons": [
+      "day-38",
+      "day-39"
+    ],
+    "knowledge": {
+      "role": "把频繁唤醒、外设保持、时钟驻留和硬件电流分开验证；比较必须使用相同状态与测量条件。",
+      "input": [
+        "同一次 boot 和 suspend attempt 的跨域证据"
+      ],
+      "mechanism": [
+        "统一时间基准并定位最早可证实断点"
+      ],
+      "output": [
+        "形成可复核的直接失效与证据缺口"
+      ],
+      "observations": [
+        "阶段日志、驻留、电流、wake reason 和持久化结果"
+      ],
+      "limits": [
+        "状态名、MCU 码值、GPIO/IRQ、tick 单位、电源轨与阈值均按本次车型和版本验证"
+      ]
+    }
   }
 ]

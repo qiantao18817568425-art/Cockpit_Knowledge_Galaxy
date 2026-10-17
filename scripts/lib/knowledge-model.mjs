@@ -65,6 +65,8 @@ export function validateKnowledgeModel(model) {
   const entityIds = new Set(entities.map(item => item.id));
   const relationIds = new Set(relations.map(item => item.id));
   const evidenceIds = new Set(evidence.map(item => item.id));
+  const sourcesById = new Map(sources.map(item => [item.id, item]));
+  const evidenceById = new Map(evidence.map(item => [item.id, item]));
 
   for (const entity of entities) {
     if (!ENTITY_KINDS.has(entity.kind)) issues.push(`invalid entity kind: ${entity.id} (${entity.kind})`);
@@ -88,6 +90,20 @@ export function validateKnowledgeModel(model) {
     if (!Array.isArray(claim.evidenceIds) || claim.evidenceIds.length === 0) issues.push(`missing evidence: ${claim.id}`);
     else for (const id of claim.evidenceIds) if (!evidenceIds.has(id)) issues.push(`missing evidence: ${claim.id} -> ${id}`);
     if (!EVIDENCE_STATUSES.has(claim.status)) issues.push(`invalid claim status: ${claim.id} (${claim.status})`);
+    if (claim.status === 'documented_reference') {
+      const coveredPlatforms = new Set();
+      for (const id of claim.evidenceIds || []) {
+        const item = evidenceById.get(id);
+        const source = item ? sourcesById.get(item.sourceId) : undefined;
+        const declared = item?.platforms || source?.platforms || (source?.platform ? [source.platform] : []);
+        for (const platform of declared || []) if (platform === 'MT8668' || platform === 'MT8676') coveredPlatforms.add(platform);
+      }
+      if (coveredPlatforms.size) for (const platform of claim.platforms || []) {
+        if ((platform === 'MT8668' || platform === 'MT8676') && !coveredPlatforms.has(platform)) {
+          issues.push(`documented claim platform lacks evidence: ${claim.id} (${platform})`);
+        }
+      }
+    }
   }
   return issues;
 }
@@ -119,7 +135,7 @@ export function compileKnowledgeGraph(model) {
   for (const claim of model.claims || []) {
     const relation = (model.relations || []).find(item => item.id === claim.relationId);
     for (const evidenceId of claim.evidenceIds || []) {
-      edges.push({id:`support:${claim.id}:${evidenceId}`,from:relation.from,to:evidenceId,type:'supported_by',pathClass:'diagnostic',layer:'evidence',hiddenByDefault:true,claimId:claim.id});
+      edges.push({id:`support:${claim.id}:${evidenceId}`,from:relation.from,to:evidenceId,type:'supported_by',pathClass:'diagnostic',layer:'evidence',hiddenByDefault:true,claimId:claim.id,status:claim.status,platforms:claim.platforms||[]});
     }
   }
   for (const item of model.evidence || []) {
@@ -128,4 +144,3 @@ export function compileKnowledgeGraph(model) {
   return {nodes, edges, meta:{entityCount:(model.entities || []).length, relationCount:(model.relations || []).length,
     evidenceCount:(model.evidence || []).length, sourceCount:(model.sources || []).length, claimCount:(model.claims || []).length}};
 }
-

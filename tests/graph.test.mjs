@@ -28,15 +28,46 @@ test('every edge resolves and states a navigation or semantic relation',()=>{
   for(const edge of graph.edges){
     assert.ok(ids.has(edge.from),edge.from);
     assert.ok(ids.has(edge.to),edge.to);
-    assert.ok(['主题目录','主题归类','主题细分','内容索引','课程顺序','belongs_to','runs_on','controls','sends_to','publishes','subscribes','carries_data_to','powers','transitions_to','depends_on','observed_by','fails_as','supported_by','variant_of','conflicts_with','supersedes'].includes(edge.type),edge.type);
+    assert.ok(['primary_contains','主题目录','主题归类','主题细分','内容索引','课程顺序','belongs_to','runs_on','controls','sends_to','publishes','subscribes','carries_data_to','powers','transitions_to','depends_on','observed_by','fails_as','supported_by','variant_of','conflicts_with','supersedes'].includes(edge.type),edge.type);
   }
+});
+
+test('every published node has one reachable primary hierarchy path',()=>{
+  const hierarchyEdges=graph.edges.filter(edge=>edge.type==='primary_contains');
+  const parents=new Map();
+  for(const edge of hierarchyEdges){
+    assert.equal(edge.pathClass,'hierarchy');
+    assert.equal(edge.layer,'hierarchy');
+    assert.ok(!parents.has(edge.to),`multiple primary parents: ${edge.to}`);
+    parents.set(edge.to,edge.from);
+  }
+  assert.equal(hierarchyEdges.length,graph.nodes.length-1);
+  for(const node of graph.nodes){
+    if(node.id==='root'){assert.equal(node.hierarchyLevel,0);continue;}
+    assert.equal(parents.get(node.id),node.primaryParentId,node.id);
+    const seen=new Set();let cursor=node.id;
+    while(cursor!=='root'){
+      assert.ok(!seen.has(cursor),`cycle: ${node.id}`);seen.add(cursor);
+      cursor=parents.get(cursor);assert.ok(cursor,`unreachable: ${node.id}`);
+    }
+  }
+  assert.equal(graph.meta.hierarchy.nodeCount,graph.nodes.length);
+});
+
+test('legacy architecture topics live under the course index instead of duplicating semantic domains',()=>{
+  for(const node of graph.nodes.filter(node=>node.kind==='topic'&&node.id!=='topic:raw')){
+    assert.equal(node.primaryParentId,'pyramid:course:chapters',node.id);
+    assert.equal(node.navigationOnly,true,node.id);
+  }
+  assert.equal(graph.nodes.find(node=>node.id==='domain:power').primaryParentId,'pyramid:lifecycle');
+  assert.equal(graph.nodes.find(node=>node.id==='domain:virtualization').primaryParentId,'pyramid:platform');
 });
 
 test('every public reading link resolves to a published file and heading', async()=>{
   assert.ok(sourceRoot,'public source checkout is required for link validation');
   const sourceSite = new URL(graph.meta.sourceSite);
   const cache = new Map();
-  for (const node of graph.nodes.filter(node=>node.layer!=='knowledge'&&node.layer!=='evidence')) {
+  for (const node of graph.nodes.filter(node=>!['knowledge','evidence','hierarchy'].includes(node.layer))) {
     assert.ok(node.url,`Missing reading link: ${node.id}`);
     if (node.url.startsWith('./raw-sources.html')) {
       assert.ok(existsSync(path.join(projectRoot,'docs','raw-sources.html')),node.id);
@@ -136,4 +167,3 @@ test('power management has traceable, detailed learning paths',()=>{
     assert.ok(powerTargets.has(target),target);
   }
 });
-

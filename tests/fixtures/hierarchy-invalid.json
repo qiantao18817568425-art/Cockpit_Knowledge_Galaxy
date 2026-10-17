@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    {"id":"root","title":"座舱知识","kind":"root","hierarchyLevel":0},
+    {"id":"missing","title":"Missing","kind":"component","primaryParentId":"not-there","hierarchyLevel":1},
+    {"id":"cycle:a","title":"A","kind":"component","primaryParentId":"cycle:b","hierarchyLevel":2},
+    {"id":"cycle:b","title":"B","kind":"component","primaryParentId":"cycle:a","hierarchyLevel":1},
+    {"id":"gap","title":"Gap","kind":"component","primaryParentId":"root","hierarchyLevel":3},
+    {"id":"unreachable","title":"Unreachable","kind":"component","hierarchyLevel":1},
+    {"id":"duplicate","title":"Duplicate A","kind":"component","primaryParentId":"root","hierarchyLevel":1},
+    {"id":"duplicate","title":"Duplicate B","kind":"component","primaryParentId":"root","hierarchyLevel":1}
+  ]
+}

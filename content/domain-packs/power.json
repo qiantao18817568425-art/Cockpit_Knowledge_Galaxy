@@ -11,7 +11,25 @@
       ],
       "description": "座舱供电、低功耗、休眠和唤醒主域。",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "组织车辆输入、MCU/SoC 握手、Host/Guest 屏障、内核挂起、真实低功耗、唤醒和业务恢复。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "电源与生命周期 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "platform:mt8668",
@@ -23,7 +41,25 @@
       ],
       "description": "MT8668",
       "aliases": [],
-      "runtimeDomain": "platform"
+      "runtimeDomain": "platform",
+      "knowledge": {
+        "role": "标识 MT8668 平台适用范围，用于约束资料与实现差异。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "MT8668 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "platform:mt8676",
@@ -35,7 +71,25 @@
       ],
       "description": "MT8676",
       "aliases": [],
-      "runtimeDomain": "platform"
+      "runtimeDomain": "platform",
+      "knowledge": {
+        "role": "标识 MT8676 平台适用范围，用于约束资料与实现差异。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "MT8676 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:vehicle-power-input",
@@ -48,7 +102,25 @@
       ],
       "description": "车辆电源输入",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "汇集 ACC、点火与车辆状态，作为电源策略的外部触发。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「MCU PowerManager」的状态、控制或结果"
+        ],
+        "observations": [
+          "车辆电源输入 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:mcu-power-manager",
@@ -61,7 +133,26 @@
       ],
       "description": "MCU PowerManager",
       "aliases": [],
-      "runtimeDomain": "mcu"
+      "runtimeDomain": "mcu",
+      "knowledge": {
+        "role": "在 MCU 侧判定目标电源态并组织与 SoC 的请求、应答和板级控制。",
+        "input": [
+          "来自「车辆电源输入」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「GPIO / Wake IRQ」的状态、控制或结果",
+          "交付给「SPI / IPCL」的状态、控制或结果"
+        ],
+        "observations": [
+          "MCU PowerManager 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "interface:gpio-wake",
@@ -74,7 +165,25 @@
       ],
       "description": "GPIO / Wake IRQ",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "承载板级唤醒或电源控制的离散信号与中断。",
+        "input": [
+          "来自「MCU PowerManager」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "在接口两端完成发送、接收与反馈核对"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "GPIO / Wake IRQ 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "interface:spi-ipcl",
@@ -87,7 +196,25 @@
       ],
       "description": "SPI / IPCL",
       "aliases": [],
-      "runtimeDomain": "cross-domain"
+      "runtimeDomain": "cross-domain",
+      "knowledge": {
+        "role": "承载 MCU 与 SoC 之间的电源控制消息和状态回读。",
+        "input": [
+          "来自「MCU PowerManager」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "在接口两端完成发送、接收与反馈核对"
+        ],
+        "output": [
+          "交付给「Yocto SleepManager」的状态、控制或结果"
+        ],
+        "observations": [
+          "SPI / IPCL 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:yocto-sleep-manager",
@@ -99,7 +226,25 @@
       ],
       "description": "Yocto SleepManager",
       "aliases": [],
-      "runtimeDomain": "yocto"
+      "runtimeDomain": "yocto",
+      "knowledge": {
+        "role": "在 Yocto Host 汇聚休眠条件并协调后续 Hypervisor/内核阶段。",
+        "input": [
+          "来自「SPI / IPCL」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「Hypervisor Suspend Barrier」的状态、控制或结果"
+        ],
+        "observations": [
+          "Yocto SleepManager 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:hypervisor-barrier",
@@ -111,7 +256,27 @@
       ],
       "description": "Hypervisor Suspend Barrier",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "等待相关 Guest/VM 完成休眠准备，再允许 Host 进入更深阶段。",
+        "input": [
+          "来自「Yocto SleepManager」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「Android Guest」的状态、控制或结果",
+          "交付给「TBox Guest」的状态、控制或结果",
+          "交付给「Kernel Suspend」的状态、控制或结果"
+        ],
+        "observations": [
+          "Hypervisor Suspend Barrier 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:hypervisor-suspend-v11",
@@ -123,7 +288,25 @@
       ],
       "description": "Hypervisor Suspend V1.1",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "保留 Hypervisor Suspend V1.1 版本流程，供差异核对。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「Hypervisor Suspend V1.3」的状态、控制或结果"
+        ],
+        "observations": [
+          "Hypervisor Suspend V1.1 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:hypervisor-suspend-v13",
@@ -135,7 +318,25 @@
       ],
       "description": "Hypervisor Suspend V1.3",
       "aliases": [],
-      "runtimeDomain": "virtualization"
+      "runtimeDomain": "virtualization",
+      "knowledge": {
+        "role": "保留 Hypervisor Suspend V1.3 版本流程，供差异核对。",
+        "input": [
+          "来自「Hypervisor Suspend V1.1」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "Hypervisor Suspend V1.3 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:android-guest",
@@ -148,7 +349,25 @@
       ],
       "description": "Android Guest",
       "aliases": [],
-      "runtimeDomain": "android"
+      "runtimeDomain": "android",
+      "knowledge": {
+        "role": "执行 Android 应用、Framework 与设备服务的休眠准备和恢复。",
+        "input": [
+          "来自「Hypervisor Suspend Barrier」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "Android Guest 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:tbox-guest",
@@ -160,7 +379,25 @@
       ],
       "description": "TBox Guest",
       "aliases": [],
-      "runtimeDomain": "tbox"
+      "runtimeDomain": "tbox",
+      "knowledge": {
+        "role": "按通信保持策略完成 TBox Guest 的休眠、保活或恢复。",
+        "input": [
+          "来自「Hypervisor Suspend Barrier」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "TBox Guest 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "process:kernel-suspend",
@@ -172,7 +409,26 @@
       ],
       "description": "Kernel Suspend",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "执行 Linux 冻结、设备 suspend、late/noirq 与平台挂起阶段。",
+        "input": [
+          "来自「Hypervisor Suspend Barrier」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「ATF」的状态、控制或结果",
+          "交付给「Wake Source」的状态、控制或结果"
+        ],
+        "observations": [
+          "Kernel Suspend 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:atf",
@@ -184,7 +440,25 @@
       ],
       "description": "ATF",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "在安全固件层承接内核低功耗请求并进入平台电源管理。",
+        "input": [
+          "来自「Kernel Suspend」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「SPM」的状态、控制或结果"
+        ],
+        "observations": [
+          "ATF 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:spm",
@@ -196,7 +470,25 @@
       ],
       "description": "SPM",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "控制 SoC 低功耗模式、时钟与电源域进入条件。",
+        "input": [
+          "来自「ATF」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「PMIC / VCORE / DRAM」的状态、控制或结果"
+        ],
+        "observations": [
+          "SPM 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:pmic",
@@ -208,7 +500,26 @@
       ],
       "description": "PMIC / VCORE / DRAM",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "把平台电源控制转换为可测量的电源轨结果。",
+        "input": [
+          "来自「SPM」的状态、请求或结果",
+          "来自「Backup Power」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「MT6363 Buck / LDO」的状态、控制或结果"
+        ],
+        "observations": [
+          "PMIC / VCORE / DRAM 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:mt6363",
@@ -220,7 +531,25 @@
       ],
       "description": "MT6363 Buck / LDO",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "执行 MT6363 Buck/LDO 的具体供电输出。",
+        "input": [
+          "来自「PMIC / VCORE / DRAM」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "MT6363 Buck / LDO 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "state:power-active",
@@ -232,7 +561,26 @@
       ],
       "description": "Active",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "表示系统与业务处于活动运行状态。",
+        "input": [
+          "来自「Resume」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "按进入条件、驻留条件和退出条件维护生命周期状态"
+        ],
+        "output": [
+          "交付给「Suspend Entry」的状态、控制或结果",
+          "交付给「framework_wake」的状态、控制或结果"
+        ],
+        "observations": [
+          "Active 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "state:power-suspend-entry",
@@ -244,7 +592,26 @@
       ],
       "description": "Suspend Entry",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "表示休眠请求已进入准备和挂起流程但尚未证明低功耗驻留。",
+        "input": [
+          "来自「Active」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "按进入条件、驻留条件和退出条件维护生命周期状态"
+        ],
+        "output": [
+          "交付给「Suspended」的状态、控制或结果",
+          "交付给「suspend_abort」的状态、控制或结果"
+        ],
+        "observations": [
+          "Suspend Entry 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "state:power-suspended",
@@ -256,7 +623,26 @@
       ],
       "description": "Suspended",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "表示平台已满足条件并进入稳定低功耗驻留。",
+        "input": [
+          "来自「Suspend Entry」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "按进入条件、驻留条件和退出条件维护生命周期状态"
+        ],
+        "output": [
+          "交付给「Resume」的状态、控制或结果",
+          "交付给「wake_after_suspend」的状态、控制或结果"
+        ],
+        "observations": [
+          "Suspended 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "state:power-resume",
@@ -268,7 +654,25 @@
       ],
       "description": "Resume",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "表示有效唤醒后正在恢复设备、VM、服务和业务。",
+        "input": [
+          "来自「Suspended」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "按进入条件、驻留条件和退出条件维护生命周期状态"
+        ],
+        "output": [
+          "交付给「Active」的状态、控制或结果"
+        ],
+        "observations": [
+          "Resume 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "observation:wake-source",
@@ -280,7 +684,25 @@
       ],
       "description": "Wake Source",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "记录内核识别的唤醒来源并与本次休眠尝试关联。",
+        "input": [
+          "来自「Kernel Suspend」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "绑定同一 boot、VM generation 和 suspend attempt 后解释观测"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "Wake Source 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "observation:framework-wake",
@@ -292,7 +714,25 @@
       ],
       "description": "framework_wake",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "记录 Framework 层的唤醒请求或恢复触发。",
+        "input": [
+          "来自「Active」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "绑定同一 boot、VM generation 和 suspend attempt 后解释观测"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "framework_wake 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "observation:suspend-abort",
@@ -304,7 +744,25 @@
       ],
       "description": "suspend_abort",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "证明系统在完成低功耗驻留前中止本次 suspend。",
+        "input": [
+          "来自「Suspend Entry」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "绑定同一 boot、VM generation 和 suspend attempt 后解释观测"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "suspend_abort 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "observation:wake-after-suspend",
@@ -316,7 +774,25 @@
       ],
       "description": "wake_after_suspend",
       "aliases": [],
-      "runtimeDomain": "diagnosis"
+      "runtimeDomain": "diagnosis",
+      "knowledge": {
+        "role": "证明平台曾进入 suspend 后又发生有效唤醒。",
+        "input": [
+          "来自「Suspended」的状态、请求或结果"
+        ],
+        "mechanism": [
+          "绑定同一 boot、VM generation 和 suspend attempt 后解释观测"
+        ],
+        "output": [
+          "本阶段可验证的状态或物理结果"
+        ],
+        "observations": [
+          "wake_after_suspend 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     },
     {
       "id": "component:backup-power",
@@ -328,7 +804,25 @@
       ],
       "description": "Backup Power",
       "aliases": [],
-      "runtimeDomain": "power"
+      "runtimeDomain": "power",
+      "knowledge": {
+        "role": "在主电变化时为规定域提供备电或保持供电。",
+        "input": [
+          "所属电源阶段的触发条件与版本范围"
+        ],
+        "mechanism": [
+          "执行所属电源阶段的处理并保留输入、状态和输出证据"
+        ],
+        "output": [
+          "交付给「PMIC / VCORE / DRAM」的状态、控制或结果"
+        ],
+        "observations": [
+          "Backup Power 的输入、内部状态、输出及同一运行周期证据"
+        ],
+        "limits": [
+          "MCU 码值、GPIO/IRQ、tick 单位、固定阈值和现车接线均不得脱离当前版本字典解释"
+        ]
+      }
     }
   ],
   "relations": [
@@ -343,6 +837,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "车辆电源输入只有被 MCU 电源策略采集并判定后，才会形成座舱上下电或休眠目标。",
+      "input": "ACC/点火与车辆状态",
+      "handoff": "车辆输入到 MCU PowerManager 的策略边界",
+      "output": "MCU 可执行的目标电源态",
+      "verification": [
+        "输入有效时刻、MCU 采集值和目标态一致"
       ]
     },
     {
@@ -356,6 +857,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "MCU PowerManager 根据策略驱动唤醒/控制接口，但软件命令必须与板级信号结果分别验证。",
+      "input": "MCU 目标态与控制命令",
+      "handoff": "MCU 状态机到 GPIO/Wake IRQ 板级边界",
+      "output": "可测量的离散控制或中断状态",
+      "verification": [
+        "MCU 命令、GPIO/IRQ 电平和对端识别一致"
       ]
     },
     {
@@ -369,6 +877,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "MCU 通过 SPI/IPCL 把电源请求和状态交给 SoC，形成跨芯片握手的发送阶段。",
+      "input": "MCU 电源请求、状态与序号",
+      "handoff": "MCU 到 SoC 的 SPI/IPCL 边界",
+      "output": "SoC 可接收的电源控制消息",
+      "verification": [
+        "两端 sequence、中断、发送和接收计数对齐"
       ]
     },
     {
@@ -381,6 +896,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "SPI/IPCL 接收的电源消息需要交给 Yocto SleepManager，才能进入 Host 侧休眠协调。",
+      "input": "SoC 收到的 MCU 电源消息",
+      "handoff": "SPI/IPCL 接收端到 Yocto 服务边界",
+      "output": "SleepManager 可处理的休眠或唤醒事件",
+      "verification": [
+        "通道接收与 SleepManager 处理使用同一消息标识"
       ]
     },
     {
@@ -393,6 +915,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Yocto SleepManager 汇聚 Host 条件后驱动 Hypervisor 屏障，开始跨 VM 完成条件检查。",
+      "input": "Host 休眠目标和准备状态",
+      "handoff": "Yocto 服务到 Hypervisor 生命周期边界",
+      "output": "跨 VM suspend barrier 请求",
+      "verification": [
+        "SleepManager 请求、barrier 建立和超时记录"
       ]
     },
     {
@@ -405,6 +934,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Hypervisor 屏障必须等待 Android Guest 完成其休眠准备，避免共享资源仍在使用。",
+      "input": "barrier 请求和 Android VM 状态",
+      "handoff": "Hypervisor 到 Android Guest 生命周期边界",
+      "output": "Android Guest 完成或阻塞状态",
+      "verification": [
+        "VM generation、请求、ack 和超时对应"
       ]
     },
     {
@@ -417,6 +953,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Hypervisor 屏障同时纳入 TBox Guest 的保持或休眠要求，通信域策略需单独验证。",
+      "input": "barrier 请求和 TBox 保活策略",
+      "handoff": "Hypervisor 到 TBox Guest 生命周期边界",
+      "output": "TBox Guest 完成、保持或阻塞状态",
+      "verification": [
+        "TBox 策略、VM 状态与 barrier 结果对应"
       ]
     },
     {
@@ -429,6 +972,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "各运行域满足屏障后才进入 Kernel Suspend，VM 完成不等于硬件已经低功耗。",
+      "input": "跨 VM 完成状态",
+      "handoff": "Hypervisor/Host 协调到 Linux suspend 入口",
+      "output": "内核 suspend attempt",
+      "verification": [
+        "barrier 完成与内核 suspend entry 时间连续"
       ]
     },
     {
@@ -441,6 +991,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "V1.1 与 V1.3 资料描述存在版本差异，因此保留冲突以避免混用时序和条件。",
+      "input": "两个版本的 suspend 流程定义",
+      "handoff": "版本对照边界",
+      "output": "明确的共性、差异和待确认当前版本",
+      "verification": [
+        "两版原文逐项对照并绑定现车软件基线"
       ]
     },
     {
@@ -453,6 +1010,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Kernel Suspend 完成设备阶段后把平台低功耗请求交给 ATF。",
+      "input": "内核 suspend 与平台进入条件",
+      "handoff": "Linux 内核到安全固件边界",
+      "output": "ATF 可执行的低功耗请求",
+      "verification": [
+        "内核最后阶段与 ATF 入口时间、返回值对应"
       ]
     },
     {
@@ -465,6 +1029,13 @@
       "pathClass": "control",
       "platforms": [
         "MT8676"
+      ],
+      "why": "ATF 校验平台条件后控制 SPM 进入相应 SoC 低功耗模式。",
+      "input": "安全固件低功耗参数",
+      "handoff": "ATF 到 SPM 平台电源控制边界",
+      "output": "SPM 模式与控制请求",
+      "verification": [
+        "ATF 调用、SPM 状态和失败码"
       ]
     },
     {
@@ -477,6 +1048,13 @@
       "pathClass": "power",
       "platforms": [
         "MT8676"
+      ],
+      "why": "SPM 控制 PMIC/电源域进入目标状态，软件完成消息需由实际电源结果验证。",
+      "input": "SPM 低功耗模式和电源域控制",
+      "handoff": "SoC 电源控制到 PMIC 边界",
+      "output": "PMIC 电源轨目标状态",
+      "verification": [
+        "SPM 状态、PMIC 寄存器与电压/电流测量"
       ]
     },
     {
@@ -489,6 +1067,13 @@
       "pathClass": "power",
       "platforms": [
         "MT8676"
+      ],
+      "why": "PMIC 通过 MT6363 Buck/LDO 输出具体电源轨，决定物理供电结果。",
+      "input": "PMIC 电源轨配置",
+      "handoff": "PMIC 控制到 MT6363 输出级",
+      "output": "可测量的 Buck/LDO 电压与保持状态",
+      "verification": [
+        "配置、PG/状态与板级测点一致"
       ]
     },
     {
@@ -501,6 +1086,13 @@
       "pathClass": "power",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Backup Power 在主电变化时维持规定电源域，但保持范围不能由软件状态推定。",
+      "input": "备电输入与切换条件",
+      "handoff": "备电源到 PMIC/保持电源域",
+      "output": "规定时间内的供电保持结果",
+      "verification": [
+        "主备切换、PMIC 状态、电压与电流曲线"
       ]
     },
     {
@@ -510,9 +1102,16 @@
       "from": "state:power-active",
       "to": "state:power-suspend-entry",
       "type": "transitions_to",
-      "pathClass": "control",
+      "pathClass": "state",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Active 收到有效目标态并满足门槛后进入 Suspend Entry，表示流程开始而非已经睡着。",
+      "input": "活动态和有效休眠触发",
+      "handoff": "电源状态机进入条件",
+      "output": "Suspend Entry 状态",
+      "verification": [
+        "目标态、门槛和状态迁移时间"
       ]
     },
     {
@@ -522,9 +1121,16 @@
       "from": "state:power-suspend-entry",
       "to": "state:power-suspended",
       "type": "transitions_to",
-      "pathClass": "control",
+      "pathClass": "state",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Suspend Entry 只有在跨域、设备和平台条件全部完成后才能进入 Suspended。",
+      "input": "各阶段完成条件",
+      "handoff": "软件准备到稳定低功耗驻留边界",
+      "output": "Suspended 状态",
+      "verification": [
+        "最后完成项、平台进入和驻留证据"
       ]
     },
     {
@@ -534,9 +1140,16 @@
       "from": "state:power-suspended",
       "to": "state:power-resume",
       "type": "transitions_to",
-      "pathClass": "control",
+      "pathClass": "state",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Suspended 在有效 wake source 到达后转入 Resume，需先证明此前真实驻留。",
+      "input": "稳定低功耗状态和有效唤醒源",
+      "handoff": "硬件唤醒到恢复状态机",
+      "output": "Resume 状态",
+      "verification": [
+        "驻留时长、wake reason 与 resume 入口"
       ]
     },
     {
@@ -546,9 +1159,16 @@
       "from": "state:power-resume",
       "to": "state:power-active",
       "type": "transitions_to",
-      "pathClass": "control",
+      "pathClass": "state",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Resume 完成设备、VM、服务和业务恢复后返回 Active。",
+      "input": "恢复阶段完成状态",
+      "handoff": "恢复状态机到活动业务边界",
+      "output": "Active 与业务可用结果",
+      "verification": [
+        "设备/VM/服务 Ready 及用户功能验收"
       ]
     },
     {
@@ -561,6 +1181,13 @@
       "pathClass": "diagnostic",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Kernel Suspend 的 wake source 记录用于判断请求后最早唤醒或阻塞位置。",
+      "input": "本次 suspend attempt",
+      "handoff": "内核流程到 wake source 观测",
+      "output": "唤醒来源或无来源的证据缺口",
+      "verification": [
+        "同一 boot 的 suspend 日志、IRQ 与 wakeup_sources"
       ]
     },
     {
@@ -573,6 +1200,13 @@
       "pathClass": "diagnostic",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Active 阶段的 framework_wake 说明上层发起或保持唤醒，但不能单独证明硬件已睡醒。",
+      "input": "Framework 唤醒请求",
+      "handoff": "Android Framework 到电源诊断时间线",
+      "output": "上层唤醒触发记录",
+      "verification": [
+        "调用方、时间戳与底层状态关联"
       ]
     },
     {
@@ -585,6 +1219,13 @@
       "pathClass": "diagnostic",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Suspend Entry 出现 suspend_abort 表明流程在驻留前中止，应定位最早未完成阶段。",
+      "input": "进入中的 suspend attempt",
+      "handoff": "挂起阶段到 abort 观测",
+      "output": "中止阶段与直接阻塞证据",
+      "verification": [
+        "abort 原因、设备回调、wakelock 和返回码"
       ]
     },
     {
@@ -597,6 +1238,13 @@
       "pathClass": "diagnostic",
       "platforms": [
         "MT8676"
+      ],
+      "why": "Suspended 后出现 wake_after_suspend 可证明先睡后醒，再继续核对真实唤醒源。",
+      "input": "已确认的低功耗驻留",
+      "handoff": "稳定休眠到唤醒观测",
+      "output": "有效唤醒时间与来源",
+      "verification": [
+        "驻留、IRQ/wake reason 和 resume 时间线"
       ]
     }
   ],
@@ -609,8 +1257,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:001:inferred",
+      "relationId": "rel:power:001",
+      "evidenceIds": [
+        "ev:power:001"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -621,8 +1279,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:002:inferred",
+      "relationId": "rel:power:002",
+      "evidenceIds": [
+        "ev:power:002"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -633,17 +1301,27 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
       ]
     },
     {
-      "id": "claim:power:004",
+      "id": "claim:power:003:inferred",
+      "relationId": "rel:power:003",
+      "evidenceIds": [
+        "ev:power:003"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:power:004:inferred",
       "relationId": "rel:power:004",
       "evidenceIds": [
         "ev:power:004"
       ],
-      "status": "documented_reference",
+      "status": "inferred_mapping",
       "platforms": [
         "MT8676"
       ]
@@ -856,7 +1534,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“车辆电源输入”与“MCU PowerManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“车辆电源输入”与“MCU PowerManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:002",
@@ -865,7 +1546,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“GPIO / Wake IRQ”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“GPIO / Wake IRQ”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:003",
@@ -874,7 +1558,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:004",
@@ -883,7 +1570,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“SPI / IPCL”与“Yocto SleepManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“SPI / IPCL”与“Yocto SleepManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:power:005",
@@ -892,7 +1582,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Yocto SleepManager”与“Hypervisor Suspend Barrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Yocto SleepManager”与“Hypervisor Suspend Barrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:006",
@@ -901,7 +1594,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:007",
@@ -910,7 +1606,10 @@
         2
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“TBox Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“TBox Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:008",
@@ -919,7 +1618,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Kernel Suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Kernel Suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:009",
@@ -928,7 +1630,10 @@
         6
       ],
       "status": "conflicting",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf》对应章节后，将“Hypervisor Suspend V1.1”与“Hypervisor Suspend V1.3”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf》对应章节后，将“Hypervisor Suspend V1.1”与“Hypervisor Suspend V1.3”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:009:1",
@@ -937,7 +1642,10 @@
         6
       ],
       "status": "conflicting",
-      "summary": "《MT8676_Hypervisor_Suspend_Resume_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。"
+      "summary": "《MT8676_Hypervisor_Suspend_Resume_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:010",
@@ -946,7 +1654,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“ATF”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“ATF”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:011",
@@ -955,7 +1666,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“ATF”与“SPM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“ATF”与“SPM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:012",
@@ -964,7 +1678,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“SPM”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“SPM”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:013",
@@ -976,7 +1693,10 @@
         ]
       ],
       "status": "documented_reference",
-      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“PMIC / VCORE / DRAM”与“MT6363 Buck / LDO”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“PMIC / VCORE / DRAM”与“MT6363 Buck / LDO”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:014",
@@ -985,7 +1705,10 @@
         16
       ],
       "status": "documented_reference",
-      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“Backup Power”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“Backup Power”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:015",
@@ -994,7 +1717,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“Suspend Entry”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“Suspend Entry”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:016",
@@ -1003,7 +1729,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“Suspended”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“Suspended”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:017",
@@ -1012,7 +1741,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“Resume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“Resume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:018",
@@ -1021,7 +1753,10 @@
         5
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Resume”与“Active”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Resume”与“Active”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:019",
@@ -1030,7 +1765,10 @@
         8
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“Wake Source”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“Wake Source”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:020",
@@ -1039,7 +1777,10 @@
         7
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“framework_wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“framework_wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:021",
@@ -1048,7 +1789,10 @@
         14
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“suspend_abort”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“suspend_abort”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:power:022",
@@ -1057,8 +1801,10 @@
         15
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“wake_after_suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“wake_after_suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ]
 }
-

@@ -1,25 +1,33 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {buildReaderModel,detailModel,expandEvidenceNeighborhood,rankSearchResults,readerMarkdown,visibleNodeIds} from '../docs/graph-model.js';
+import {buildBreadcrumb,buildHierarchyIndex,buildReaderModel,detailModel,directChildren,expandEvidenceNeighborhood,groupTechnicalRelations,rankSearchResults,readerMarkdown,visibleNodeIds} from '../docs/graph-model.js';
+import {readFile} from 'node:fs/promises';
 const graph={nodes:[
- {id:'a',title:'SleepManager',description:'协调系统进入休眠并跟踪恢复条件。',aliases:['休眠管理器'],kind:'component',layer:'knowledge',platforms:['MT8676'],url:'https://example/article'},
- {id:'b',title:'PMIC',description:'执行电源轨控制。',kind:'component',layer:'knowledge',platforms:['MT8676']},
+ {id:'a',title:'SleepManager',description:'协调系统进入休眠并跟踪恢复条件。',aliases:['休眠管理器'],kind:'component',layer:'knowledge',platforms:['MT8676'],url:'https://example/article',knowledge:{role:'协调系统进入休眠并跟踪恢复条件。',input:['休眠请求'],output:['休眠协调结果'],observations:['休眠状态']}},
+ {id:'b',title:'PMIC',description:'执行电源轨控制。',kind:'component',layer:'knowledge',platforms:['MT8676'],knowledge:{role:'执行电源轨控制。',input:['电源控制'],output:['电源轨'],observations:['电压状态']}},
  {id:'c',title:'电源轨状态',description:'用于确认硬件供电结果。',kind:'observation',layer:'knowledge',platforms:['MT8676']},
  {id:'ev',title:'证据',kind:'evidence',layer:'evidence',hiddenByDefault:true,status:'documented_reference',summary:'手册第 4 页说明 PMIC 与电源轨状态。',sourceName:'manual.pdf',pages:[4],downloadUrl:'https://example/a'},
  {id:'ev2',title:'证据 2',kind:'evidence',layer:'evidence',hiddenByDefault:true,status:'documented_reference',summary:'同页还说明了状态回读。',sourceName:'manual.pdf',pages:[4],downloadUrl:'https://example/a'},
  {id:'ev3',title:'推断证据',kind:'evidence',layer:'evidence',hiddenByDefault:true,status:'inferred_mapping',summary:'同页内容被用于另一平台的推断映射。',sourceName:'manual.pdf',pages:[4],downloadUrl:'https://example/a'},
  {id:'src',title:'manual.pdf',kind:'source',layer:'evidence',hiddenByDefault:true,downloadUrl:'https://example/source.pdf'}
 ],edges:[
- {from:'a',to:'b',type:'controls',pathClass:'control'},
- {from:'b',to:'c',type:'observed_by',pathClass:'power',claims:[{status:'documented_reference',evidenceIds:['ev','ev2']},{status:'inferred_mapping',evidenceIds:['ev3']}]},
+ {from:'a',to:'b',type:'controls',pathClass:'control',why:'SleepManager 把休眠阶段的电源控制约束交给 PMIC 执行。',verification:['确认休眠请求已送达','确认 PMIC 接收控制约束']},
+ {from:'b',to:'c',type:'observed_by',pathClass:'power',why:'PMIC 的物理供电结果由电源轨状态观测。',claims:[{status:'documented_reference',evidenceIds:['ev','ev2']},{status:'inferred_mapping',evidenceIds:['ev3']}]},
  {from:'a',to:'ev',type:'supported_by',pathClass:'diagnostic'},{from:'ev',to:'src',type:'supported_by',pathClass:'diagnostic'}]};
 test('search ranks aliases and platform filters',()=>assert.equal(rankSearchResults(graph.nodes,'休眠',{platforms:['MT8676']})[0].id,'a'));
+test('search prefers an absorbed pyramid node over a same-title legacy topic index',()=>{
+ const nodes=[
+  {id:'topic:power',title:'电源与生命周期',kind:'topic'},
+  {id:'domain:power',title:'电源与生命周期',kind:'domain',contentState:'absorbed',knowledge:{role:'组织完整电源链。'}}
+ ];
+ assert.equal(rankSearchResults(nodes,'电源与生命周期')[0].id,'domain:power');
+});
 test('evidence is hidden by default and expands for incoming or outgoing selected relations',()=>{assert.ok(!visibleNodeIds(graph,{}).has('ev'));const ids=visibleNodeIds(graph,{selectedId:'a',evidenceVisible:true});assert.ok(ids.has('ev'));assert.ok(ids.has('src'));assert.deepEqual(expandEvidenceNeighborhood(graph,'b'),new Set(['b','ev','ev2','ev3','src']))});
 test('path filters retain connected knowledge nodes',()=>{const ids=visibleNodeIds(graph,{pathClasses:['control']});assert.ok(ids.has('a')&&ids.has('b'))});
 test('details include evidence scope source page and URL',()=>{const d=detailModel(graph,'b');assert.deepEqual(d.platforms,['MT8676']);assert.equal(d.evidence[0].sourceName,'manual.pdf');assert.deepEqual(d.evidence[0].pages,[4]);assert.match(d.evidence[0].url,/^https:/)});
 test('reader model separates authored summary, graph-derived insight and cited evidence',()=>{
  const model=buildReaderModel(graph,'a');
  assert.equal(model.summary,'协调系统进入休眠并跟踪恢复条件。');
- assert.equal(model.insights[0].basis,'graph_relation');
+ assert.equal(model.insights[0].basis,'structured_technical_relation');
  assert.match(model.insights.map(x=>x.text).join(' '),/PMIC/);
  assert.equal(model.citations[0].sourceName,'manual.pdf');
  assert.deepEqual(model.citations[0].pages,[4]);
@@ -38,8 +46,41 @@ test('reader model exposes a selected raw source as a downloadable reference',()
  const model=buildReaderModel(graph,'src');
  assert.equal(model.references[0].kind,'source');
  assert.equal(model.references[0].url,'https://example/source.pdf');
+ const markdown=readerMarkdown(model);
+ assert.match(markdown,/manual\.pdf/);
+ assert.match(markdown,/https:\/\/example\/source\.pdf/);
+ assert.doesNotMatch(markdown,/暂无已绑定的页码证据/);
 });
-test('topic reader prioritizes topic branches and synthesizes them into the summary',()=>{
+test('all technical path verification points enter the reader and Markdown',()=>{
+ const model=buildReaderModel(graph,'a');
+ assert.ok(model.observations.includes('确认休眠请求已送达'));
+ assert.match(readerMarkdown(model),/确认 PMIC 接收控制约束/);
+});
+test('platform-filtered reader keeps only claims supported for that platform',()=>{
+ const platformGraph={nodes:[
+  {id:'from',title:'Android 显示',kind:'component',knowledge:{role:'提交显示帧。'}},
+  {id:'to',title:'Yocto 显示',kind:'component',knowledge:{role:'接收并输出显示帧。'}},
+  {id:'ev-8676',title:'MT8676 显示证据',kind:'evidence',sourceName:'MT8676-display.pdf',pages:[16],downloadUrl:'https://example/8676.pdf'},
+  {id:'ev-map',title:'MT8668 映射依据',kind:'evidence',sourceName:'MT8676-display.pdf',pages:[16],downloadUrl:'https://example/8676.pdf'}
+ ],edges:[{from:'from',to:'to',type:'carries_data_to',pathClass:'data',claims:[
+  {status:'documented_reference',platforms:['MT8676'],evidenceIds:['ev-8676']},
+  {status:'inferred_mapping',platforms:['MT8668'],evidenceIds:['ev-map']}
+ ]}]};
+ const mt8668=buildReaderModel(platformGraph,'from',{platforms:['MT8668']});
+ assert.deepEqual(mt8668.citations.map(item=>item.status),['inferred_mapping']);
+ assert.deepEqual(mt8668.citations[0].platforms,['MT8668']);
+ const mt8676=buildReaderModel(platformGraph,'from',{platforms:['MT8676']});
+ assert.deepEqual(mt8676.citations.map(item=>item.status),['documented_reference']);
+});
+test('platform-filtered reader excludes technical edges from another platform',async()=>{
+ const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
+ const spi=buildReaderModel(live,'interface:spi-ipcl',{platforms:['MT8668']});
+ assert.equal(Object.values(spi.technicalPaths).flat().some(item=>item.id==='rel:power:004'),false);
+ const barrier=buildReaderModel(live,'component:hypervisor-barrier',{platforms:['MT8668']});
+ assert.equal(Object.values(barrier.technicalPaths).flat().some(item=>item.id==='rel:power:006'),false);
+ assert.ok(barrier.citations.every(item=>!item.platforms?.length||item.platforms.includes('MT8668')));
+});
+test('topic reader keeps classification branches in folded navigation',()=>{
  const topicGraph={nodes:[
   {id:'t',title:'电源专题',kind:'topic',description:'围绕上下电与休眠。'},
   {id:'chapter',title:'课程章节',kind:'chapter',description:'导航章节。'},
@@ -49,9 +90,8 @@ test('topic reader prioritizes topic branches and synthesizes them into the summ
   {from:'t',to:'branch',type:'主题细分'}
  ]};
  const model=buildReaderModel(topicGraph,'t',{maxRelations:1});
- assert.equal(model.insights[0].relatedId,'branch');
- assert.equal(model.summaryBasis,'graph_synthesis');
- assert.match(model.summary,/MCU 电源握手/);
+ assert.equal(model.insights.length,0);
+ assert.equal(model.navigation[0].relatedId,'branch');
 });
 test('citations from the same source pages merge only when their evidence status matches',()=>{
  const model=buildReaderModel(graph,'b');
@@ -77,6 +117,22 @@ test('indirect citations explain the adjacent relation and do not claim direct p
  const article=model.references.find(item=>item.kind==='article');
  assert.match(article.whyCited,/公开学习正文/);
  assert.match(article.evidenceBoundary,/不是原始手册页级证据/);
+});
+test('citation traversal stops at the selected technical neighborhood and excludes unrelated sibling evidence',()=>{
+ const scopedGraph={nodes:[
+  {id:'selected',title:'物理屏',kind:'component',knowledge:{role:'形成可见画面。'}},
+  {id:'host',title:'Yocto DRM',kind:'component'},
+  {id:'android',title:'Android HWC',kind:'component'},
+  {id:'usb',title:'USB 控制器',kind:'component'},
+  {id:'display-ev',title:'显示证据',kind:'evidence',sourceName:'display.pdf',pages:[16],status:'documented_reference'},
+  {id:'usb-ev',title:'USB 证据',kind:'evidence',sourceName:'usb.pdf',pages:[15],status:'documented_reference'}
+ ],edges:[
+  {from:'host',to:'selected',type:'carries_data_to',pathClass:'data',claims:[{status:'documented_reference',evidenceIds:['display-ev']}]},
+  {from:'android',to:'host',type:'carries_data_to',pathClass:'data'},
+  {from:'usb',to:'android',type:'depends_on',pathClass:'data',claims:[{status:'documented_reference',evidenceIds:['usb-ev']}]}
+ ]};
+ const model=buildReaderModel(scopedGraph,'selected');
+ assert.deepEqual(model.citations.map(item=>item.sourceName),['display.pdf']);
 });
 test('direct source neighbors and learning articles expose complete reference metadata',()=>{
  const sourceGraph={nodes:[
@@ -115,17 +171,52 @@ test('belongs_to explains source membership in the domain without reversing cont
   {id:'android',title:'Android AAOS',kind:'domain',description:'Android 座舱运行域。'}
  ],edges:[{from:'manual',to:'android',type:'belongs_to',pathClass:'index'}]};
  const model=buildReaderModel(membershipGraph,'manual');
- assert.match(model.insights[0].whyRelated,/原始资料/);
- assert.match(model.insights[0].whyRelated,/归入.*Android AAOS/);
- assert.doesNotMatch(model.insights[0].whyRelated,/Android AAOS.*纳入.*手册/);
+ assert.equal(model.insights.length,0);
+ assert.match(model.navigation[0].whyRelated,/原始资料/);
+ assert.match(model.navigation[0].whyRelated,/归入.*Android AAOS/);
+ assert.doesNotMatch(model.navigation[0].whyRelated,/Android AAOS.*纳入.*手册/);
+});
+
+test('pyramid reader exposes breadcrumb responsibility children and grouped technical paths',async()=>{
+ const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
+ const index=buildHierarchyIndex(live);
+ assert.deepEqual(buildBreadcrumb(live,'component:physical-display').map(item=>item.title),['座舱知识','功能域','显示与触控','显示输出链','物理屏 / SerDes']);
+ assert.ok(index.children.get('component:physical-display').length>=1);
+ assert.ok(directChildren(live,'component:physical-display').every(item=>item.primaryParentId==='component:physical-display'));
+ const grouped=groupTechnicalRelations(live,'component:physical-display');
+ assert.ok(grouped.data?.length);
+ assert.match(grouped.data[0].why,/物理|面板|显示/);
+ const model=buildReaderModel(live,'component:physical-display');
+ assert.equal(model.contentState,'absorbed');
+ assert.match(model.responsibility.role,/Host|显示数据|面板/);
+ assert.ok(model.children.length>=1);
+ assert.ok(model.technicalPaths.data.length);
+ assert.ok(model.observations.length);
+ assert.ok(model.breadcrumb.length===5);
+});
+
+test('awaiting absorption never fabricates a technical rationale',()=>{
+ const awaiting={nodes:[
+  {id:'root',title:'座舱知识',kind:'root',hierarchyLevel:0},
+  {id:'x',title:'待吸收节点',kind:'component',primaryParentId:'root',hierarchyLevel:1,contentState:'awaiting_absorption'},
+  {id:'y',title:'分类节点',kind:'domain',primaryParentId:'root',hierarchyLevel:1}
+ ],edges:[
+  {from:'root',to:'x',type:'primary_contains',pathClass:'hierarchy'},
+  {from:'x',to:'y',type:'belongs_to',pathClass:'index'}
+ ]};
+ const model=buildReaderModel(awaiting,'x');
+ assert.equal(model.contentState,'awaiting_absorption');
+ assert.equal(model.technicalPaths.control,undefined);
+ assert.equal(model.insights.length,0);
+ assert.ok(model.navigation.some(item=>item.relationType==='belongs_to'));
+ assert.match(readerMarkdown(model),/资料尚未吸收/);
 });
 test('fails_as distinguishes recovery transitions from failure manifestations',()=>{
  const recoveryGraph={nodes:[
-  {id:'crash',title:'App / Process Crash',kind:'failure_mode'},
+  {id:'crash',title:'App / Process Crash',kind:'failure_mode',knowledge:{role:'记录应用进程直接失效。',input:['异常'],output:['进程退出']}},
   {id:'restart',title:'Process Restart',kind:'state'}
  ],edges:[{from:'crash',to:'restart',type:'fails_as',pathClass:'control'}]};
  const model=buildReaderModel(recoveryGraph,'crash');
  assert.match(model.insights[0].whyRelated,/发生后的处置或恢复状态/);
  assert.doesNotMatch(model.insights[0].whyRelated,/失效表现或结果层级/);
 });
-

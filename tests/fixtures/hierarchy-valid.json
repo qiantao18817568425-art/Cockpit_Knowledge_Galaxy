@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    {"id":"root","title":"座舱知识","kind":"root","hierarchyLevel":0,"branchType":"root"},
+    {"id":"pyramid:functional","title":"功能域","kind":"pyramid","primaryParentId":"root","hierarchyLevel":1,"branchType":"entry"},
+    {"id":"domain:display","title":"显示与触控","kind":"domain","primaryParentId":"pyramid:functional","hierarchyLevel":2,"branchType":"domain"},
+    {"id":"chain:display-output","title":"显示输出链","kind":"process","primaryParentId":"domain:display","hierarchyLevel":3,"branchType":"chain"},
+    {"id":"component:physical-display","title":"物理屏 / SerDes","kind":"component","primaryParentId":"chain:display-output","hierarchyLevel":4,"branchType":"component"}
+  ]
+}

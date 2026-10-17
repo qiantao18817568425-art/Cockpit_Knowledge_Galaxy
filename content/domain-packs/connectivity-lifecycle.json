@@ -11,7 +11,25 @@
       ],
       "description": "TBox 与连接",
       "aliases": [],
-      "runtimeDomain": "tbox"
+      "runtimeDomain": "tbox",
+      "knowledge": {
+        "role": "组织 Modem、车联网、远控和独立唤醒相关能力。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "TBox 与连接 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:connectivity",
@@ -24,7 +42,25 @@
       ],
       "description": "有线与无线连接",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "组织以太网、Wi-Fi、热点和手机互联的分层连通性。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "有线与无线连接 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:lifecycle",
@@ -37,7 +73,25 @@
       ],
       "description": "启动与生命周期",
       "aliases": [],
-      "runtimeDomain": "lifecycle"
+      "runtimeDomain": "lifecycle",
+      "knowledge": {
+        "role": "区分冷启动、STR 恢复、VM 重建和单进程重启的运行周期。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "启动与生命周期 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:usb-storage",
@@ -50,7 +104,25 @@
       ],
       "description": "USB 与存储",
       "aliases": [],
-      "runtimeDomain": "usb"
+      "runtimeDomain": "usb",
+      "knowledge": {
+        "role": "组织 Type-C/USB 连接、控制器、块设备和文件系统层级。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "USB 与存储 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "domain:security",
@@ -63,7 +135,25 @@
       ],
       "description": "安全与 TEE",
       "aliases": [],
-      "runtimeDomain": "security"
+      "runtimeDomain": "security",
+      "knowledge": {
+        "role": "组织 TEE 传输、安全服务和安全存储边界。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "安全与 TEE 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:ethernet-pcs",
@@ -76,7 +166,25 @@
       ],
       "description": "SGMII / PCS",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "完成 SGMII/PCS 编码、对齐和链路状态，为外部 PHY 提供数字侧连接。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Ethernet PHY / Carrier」的数据、控制或状态"
+        ],
+        "observations": [
+          "SGMII / PCS 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:ethernet-phy",
@@ -89,7 +197,25 @@
       ],
       "description": "Ethernet PHY / Carrier",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "完成物理介质收发与载波状态，向上提供可用以太网链路。",
+        "input": [
+          "来自「SGMII / PCS」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「L3 / IP Reachability」的数据、控制或状态"
+        ],
+        "observations": [
+          "Ethernet PHY / Carrier 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:l3-connectivity",
@@ -102,7 +228,26 @@
       ],
       "description": "L3 / IP Reachability",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "在物理链路之上建立地址、路由和可达性。",
+        "input": [
+          "来自「Ethernet PHY / Carrier」的输入、状态或触发",
+          "来自「Wi-Fi STA」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "L3 / IP Reachability 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:wifi-sta",
@@ -115,7 +260,25 @@
       ],
       "description": "Wi-Fi STA",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "作为客户端关联外部 AP 并建立 WLAN 接入。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「L3 / IP Reachability」的数据、控制或状态"
+        ],
+        "observations": [
+          "Wi-Fi STA 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:wifi-softap",
@@ -128,7 +291,25 @@
       ],
       "description": "Wi-Fi SoftAP",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "作为车机热点为手机互联或终端提供无线接入。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「手机互联会话」的数据、控制或状态"
+        ],
+        "observations": [
+          "Wi-Fi SoftAP 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:phone-link",
@@ -141,7 +322,25 @@
       ],
       "description": "手机互联会话",
       "aliases": [],
-      "runtimeDomain": "connectivity"
+      "runtimeDomain": "connectivity",
+      "knowledge": {
+        "role": "在网络连接之上建立 HiCar/CarLink 等手机互联业务。",
+        "input": [
+          "来自「Wi-Fi SoftAP」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "手机互联会话 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:modem",
@@ -154,7 +353,25 @@
       ],
       "description": "Modem / TSP",
       "aliases": [],
-      "runtimeDomain": "tbox"
+      "runtimeDomain": "tbox",
+      "knowledge": {
+        "role": "维持蜂窝注册与数据通道，为远控和车联网提供广域连接。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Remote Wake」的数据、控制或状态"
+        ],
+        "observations": [
+          "Modem / TSP 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "process:remote-wake",
@@ -167,7 +384,25 @@
       ],
       "description": "Remote Wake",
       "aliases": [],
-      "runtimeDomain": "tbox"
+      "runtimeDomain": "tbox",
+      "knowledge": {
+        "role": "接收远端请求并按电源策略触发座舱或相关域唤醒。",
+        "input": [
+          "来自「Modem / TSP」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "Remote Wake 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "state:cold-boot",
@@ -180,7 +415,25 @@
       ],
       "description": "Cold Boot",
       "aliases": [],
-      "runtimeDomain": "lifecycle"
+      "runtimeDomain": "lifecycle",
+      "knowledge": {
+        "role": "表示从完整上电开始重新建立 Host、VM、服务和业务。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "按运行周期和进入/退出条件维护状态"
+        ],
+        "output": [
+          "交付给「observation:boot-generation」的数据、控制或状态"
+        ],
+        "observations": [
+          "Cold Boot 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "state:str-resume",
@@ -193,7 +446,25 @@
       ],
       "description": "STR Resume",
       "aliases": [],
-      "runtimeDomain": "lifecycle"
+      "runtimeDomain": "lifecycle",
+      "knowledge": {
+        "role": "表示从保留上下文的 STR 状态恢复设备、VM 和业务。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "按运行周期和进入/退出条件维护状态"
+        ],
+        "output": [
+          "交付给「observation:boot-generation」的数据、控制或状态"
+        ],
+        "observations": [
+          "STR Resume 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "state:vm-recreate",
@@ -206,7 +477,25 @@
       ],
       "description": "VM Recreate",
       "aliases": [],
-      "runtimeDomain": "lifecycle"
+      "runtimeDomain": "lifecycle",
+      "knowledge": {
+        "role": "表示 Guest/VM 实例被销毁后重新创建，旧会话不可直接沿用。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "按运行周期和进入/退出条件维护状态"
+        ],
+        "output": [
+          "交付给「observation:boot-generation」的数据、控制或状态"
+        ],
+        "observations": [
+          "VM Recreate 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "state:process-restart",
@@ -219,7 +508,25 @@
       ],
       "description": "Process Restart",
       "aliases": [],
-      "runtimeDomain": "lifecycle"
+      "runtimeDomain": "lifecycle",
+      "knowledge": {
+        "role": "表示单进程直接失效后的重启或拉起，影响范围小于 VM/Host 重启。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "按运行周期和进入/退出条件维护状态"
+        ],
+        "output": [
+          "交付给「observation:request-id」的数据、控制或状态"
+        ],
+        "observations": [
+          "Process Restart 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:usb-connector",
@@ -232,7 +539,25 @@
       ],
       "description": "USB Connector / Type-C",
       "aliases": [],
-      "runtimeDomain": "usb"
+      "runtimeDomain": "usb",
+      "knowledge": {
+        "role": "承载 Type-C/USB 物理插拔、角色和电气连接。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「xHCI / USB Controller」的数据、控制或状态"
+        ],
+        "observations": [
+          "USB Connector / Type-C 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:usb-controller",
@@ -245,7 +570,25 @@
       ],
       "description": "xHCI / USB Controller",
       "aliases": [],
-      "runtimeDomain": "usb"
+      "runtimeDomain": "usb",
+      "knowledge": {
+        "role": "执行 xHCI/USB 枚举、端点和传输控制。",
+        "input": [
+          "来自「USB Connector / Type-C」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Block Device」的数据、控制或状态"
+        ],
+        "observations": [
+          "xHCI / USB Controller 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:block-device",
@@ -258,7 +601,25 @@
       ],
       "description": "Block Device",
       "aliases": [],
-      "runtimeDomain": "usb"
+      "runtimeDomain": "usb",
+      "knowledge": {
+        "role": "把已枚举的存储设备呈现为块设备并报告读写错误。",
+        "input": [
+          "来自「xHCI / USB Controller」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「Filesystem / Volume」的数据、控制或状态"
+        ],
+        "observations": [
+          "Block Device 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:filesystem-volume",
@@ -271,7 +632,25 @@
       ],
       "description": "Filesystem / Volume",
       "aliases": [],
-      "runtimeDomain": "usb"
+      "runtimeDomain": "usb",
+      "knowledge": {
+        "role": "完成文件系统挂载、卷状态和用户可见存储访问。",
+        "input": [
+          "来自「Block Device」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "Filesystem / Volume 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "interface:tee-transport",
@@ -284,7 +663,25 @@
       ],
       "description": "TEE Transport",
       "aliases": [],
-      "runtimeDomain": "security"
+      "runtimeDomain": "security",
+      "knowledge": {
+        "role": "在 Normal World 与 TEE 之间传递安全调用和响应。",
+        "input": [
+          "所属链路的上游输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「TEE Service」的数据、控制或状态"
+        ],
+        "observations": [
+          "TEE Transport 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:tee-service",
@@ -297,7 +694,25 @@
       ],
       "description": "TEE Service",
       "aliases": [],
-      "runtimeDomain": "security"
+      "runtimeDomain": "security",
+      "knowledge": {
+        "role": "在安全世界执行受保护服务与访问控制。",
+        "input": [
+          "来自「TEE Transport」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "交付给「RPMB / Secure Storage」的数据、控制或状态"
+        ],
+        "observations": [
+          "TEE Service 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     },
     {
       "id": "component:secure-storage",
@@ -310,7 +725,25 @@
       ],
       "description": "RPMB / Secure Storage",
       "aliases": [],
-      "runtimeDomain": "security"
+      "runtimeDomain": "security",
+      "knowledge": {
+        "role": "保存 RPMB/SFS 等受保护数据并维护完整性。",
+        "input": [
+          "来自「TEE Service」的输入、状态或触发"
+        ],
+        "mechanism": [
+          "执行本节点职责并保留输入、内部状态和输出"
+        ],
+        "output": [
+          "本节点可验证的处理结果"
+        ],
+        "observations": [
+          "RPMB / Secure Storage 的上游输入、内部状态、下游输出与同一运行周期日志"
+        ],
+        "limits": [
+          "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
+        ]
+      }
     }
   ],
   "relations": [
@@ -325,6 +758,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "以太网 PCS 的数字链路状态需要交给 PHY 形成介质侧连接，两层均正常才具备物理 Link 条件。",
+      "input": "「SGMII / PCS」产生的可验证输入或状态",
+      "handoff": "connectivity 到 connectivity 的 carries_data_to 边界",
+      "output": "「Ethernet PHY / Carrier」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「SGMII / PCS」与「Ethernet PHY / Carrier」"
       ]
     },
     {
@@ -338,6 +778,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "PHY Link Up 只提供物理连接，仍需建立地址、路由与 L3 可达性。",
+      "input": "「Ethernet PHY / Carrier」产生的可验证输入或状态",
+      "handoff": "connectivity 到 connectivity 的 carries_data_to 边界",
+      "output": "「L3 / IP Reachability」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Ethernet PHY / Carrier」与「L3 / IP Reachability」"
       ]
     },
     {
@@ -351,6 +798,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Wi-Fi STA 关联和链路建立后，仍需完成地址、路由与 L3 连通。",
+      "input": "「Wi-Fi STA」产生的可验证输入或状态",
+      "handoff": "connectivity 到 connectivity 的 carries_data_to 边界",
+      "output": "「L3 / IP Reachability」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Wi-Fi STA」与「L3 / IP Reachability」"
       ]
     },
     {
@@ -364,6 +818,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "SoftAP 为手机互联提供接入网络，但热点在线不等于互联会话和业务成功。",
+      "input": "「Wi-Fi SoftAP」产生的可验证输入或状态",
+      "handoff": "connectivity 到 connectivity 的 carries_data_to 边界",
+      "output": "「手机互联会话」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Wi-Fi SoftAP」与「手机互联会话」"
       ]
     },
     {
@@ -377,6 +838,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Modem 接收到远端业务后触发 Remote Wake 流程，仍受电源策略和唤醒接口约束。",
+      "input": "「Modem / TSP」产生的可验证输入或状态",
+      "handoff": "tbox 到 tbox 的 controls 边界",
+      "output": "「Remote Wake」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Modem / TSP」与「Remote Wake」"
       ]
     },
     {
@@ -390,6 +858,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Cold Boot 必须绑定新的 boot generation，防止把上一次运行周期的日志混入。",
+      "input": "「Cold Boot」产生的可验证输入或状态",
+      "handoff": "lifecycle 到 diagnosis 的 observed_by 边界",
+      "output": "「Boot / VM Generation」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Cold Boot」与「Boot / VM Generation」"
       ]
     },
     {
@@ -403,6 +878,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "STR Resume 需与原 suspend attempt 和当前 boot/VM generation 关联。",
+      "input": "「STR Resume」产生的可验证输入或状态",
+      "handoff": "lifecycle 到 diagnosis 的 observed_by 边界",
+      "output": "「Boot / VM Generation」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「STR Resume」与「Boot / VM Generation」"
       ]
     },
     {
@@ -416,6 +898,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "VM Recreate 产生新的 VM generation，旧通道、订阅与会话需要重新建立。",
+      "input": "「VM Recreate」产生的可验证输入或状态",
+      "handoff": "lifecycle 到 diagnosis 的 observed_by 边界",
+      "output": "「Boot / VM Generation」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「VM Recreate」与「Boot / VM Generation」"
       ]
     },
     {
@@ -429,6 +918,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "Process Restart 用 request ID 或进程实例关联恢复前后的业务请求，避免误判为连续处理。",
+      "input": "「Process Restart」产生的可验证输入或状态",
+      "handoff": "lifecycle 到 diagnosis 的 observed_by 边界",
+      "output": "「Request ID」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Process Restart」与「Request ID」"
       ]
     },
     {
@@ -442,6 +938,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "USB 连接器的物理插入和角色确定后，控制器才能开始枚举与传输。",
+      "input": "「USB Connector / Type-C」产生的可验证输入或状态",
+      "handoff": "usb 到 usb 的 carries_data_to 边界",
+      "output": "「xHCI / USB Controller」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「USB Connector / Type-C」与「xHCI / USB Controller」"
       ]
     },
     {
@@ -455,6 +958,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "USB 控制器完成枚举后，存储设备还需成功呈现为块设备。",
+      "input": "「xHCI / USB Controller」产生的可验证输入或状态",
+      "handoff": "usb 到 usb 的 carries_data_to 边界",
+      "output": "「Block Device」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「xHCI / USB Controller」与「Block Device」"
       ]
     },
     {
@@ -468,6 +978,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "块设备可读写后，文件系统仍需检查、挂载并形成可用卷。",
+      "input": "「Block Device」产生的可验证输入或状态",
+      "handoff": "usb 到 usb 的 carries_data_to 边界",
+      "output": "「Filesystem / Volume」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「Block Device」与「Filesystem / Volume」"
       ]
     },
     {
@@ -481,6 +998,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "TEE Transport 把 Normal World 请求送入安全服务，调用成功需核对请求和响应。",
+      "input": "「TEE Transport」产生的可验证输入或状态",
+      "handoff": "security 到 security 的 sends_to 边界",
+      "output": "「TEE Service」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「TEE Transport」与「TEE Service」"
       ]
     },
     {
@@ -494,6 +1018,13 @@
       "platforms": [
         "MT8668",
         "MT8676"
+      ],
+      "why": "TEE Service 依赖 Secure Storage 保存受保护状态，服务在线不能替代 RPMB/SFS 访问结果。",
+      "input": "「TEE Service」产生的可验证输入或状态",
+      "handoff": "security 到 security 的 depends_on 边界",
+      "output": "「RPMB / Secure Storage」收到或形成的结果",
+      "verification": [
+        "在两端用同一时间基准、运行周期和标识核对「TEE Service」与「RPMB / Secure Storage」"
       ]
     }
   ],
@@ -506,7 +1037,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:conn:001:inferred",
+      "relationId": "rel:conn:001",
+      "evidenceIds": [
+        "ev:conn:001"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -518,7 +1059,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:conn:002:inferred",
+      "relationId": "rel:conn:002",
+      "evidenceIds": [
+        "ev:conn:002"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -530,8 +1081,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:003:inferred",
+      "relationId": "rel:conn:003",
+      "evidenceIds": [
+        "ev:conn:003"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -542,8 +1103,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:004:inferred",
+      "relationId": "rel:conn:004",
+      "evidenceIds": [
+        "ev:conn:004"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -554,8 +1125,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:005:inferred",
+      "relationId": "rel:conn:005",
+      "evidenceIds": [
+        "ev:conn:005"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -566,7 +1147,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:conn:006:inferred",
+      "relationId": "rel:conn:006",
+      "evidenceIds": [
+        "ev:conn:006"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -578,7 +1169,17 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
+        "MT8668"
+      ]
+    },
+    {
+      "id": "claim:conn:007:inferred",
+      "relationId": "rel:conn:007",
+      "evidenceIds": [
+        "ev:conn:007"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
         "MT8676"
       ]
     },
@@ -590,8 +1191,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:008:inferred",
+      "relationId": "rel:conn:008",
+      "evidenceIds": [
+        "ev:conn:008"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -602,8 +1213,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:009:inferred",
+      "relationId": "rel:conn:009",
+      "evidenceIds": [
+        "ev:conn:009"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -614,8 +1235,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:010:inferred",
+      "relationId": "rel:conn:010",
+      "evidenceIds": [
+        "ev:conn:010"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -626,8 +1257,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:011:inferred",
+      "relationId": "rel:conn:011",
+      "evidenceIds": [
+        "ev:conn:011"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -638,8 +1279,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:012:inferred",
+      "relationId": "rel:conn:012",
+      "evidenceIds": [
+        "ev:conn:012"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -650,8 +1301,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:013:inferred",
+      "relationId": "rel:conn:013",
+      "evidenceIds": [
+        "ev:conn:013"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     },
     {
@@ -662,8 +1323,18 @@
       ],
       "status": "documented_reference",
       "platforms": [
-        "MT8668",
         "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:014:inferred",
+      "relationId": "rel:conn:014",
+      "evidenceIds": [
+        "ev:conn:014"
+      ],
+      "status": "inferred_mapping",
+      "platforms": [
+        "MT8668"
       ]
     }
   ],
@@ -675,7 +1346,10 @@
         4
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“SGMII / PCS”与“Ethernet PHY / Carrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“SGMII / PCS”与“Ethernet PHY / Carrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:conn:002",
@@ -684,7 +1358,10 @@
         4
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“Ethernet PHY / Carrier”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“Ethernet PHY / Carrier”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:conn:003",
@@ -693,7 +1370,10 @@
         2
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi STA”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi STA”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:004",
@@ -702,7 +1382,10 @@
         2
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi SoftAP”与“手机互联会话”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi SoftAP”与“手机互联会话”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:005",
@@ -711,7 +1394,10 @@
         2
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Modem / TSP”与“Remote Wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Modem / TSP”与“Remote Wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:006",
@@ -720,7 +1406,10 @@
         4
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“Cold Boot”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“Cold Boot”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:conn:007",
@@ -729,7 +1418,10 @@
         4
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“STR Resume”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“STR Resume”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8668"
+      ]
     },
     {
       "id": "ev:conn:008",
@@ -738,7 +1430,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“VM Recreate”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“VM Recreate”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:009",
@@ -747,7 +1442,10 @@
         6
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Process Restart”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Process Restart”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:010",
@@ -756,7 +1454,10 @@
         15
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“USB Connector / Type-C”与“xHCI / USB Controller”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“USB Connector / Type-C”与“xHCI / USB Controller”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:011",
@@ -765,7 +1466,10 @@
         15
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“xHCI / USB Controller”与“Block Device”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“xHCI / USB Controller”与“Block Device”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:012",
@@ -774,7 +1478,10 @@
         15
       ],
       "status": "documented_reference",
-      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“Block Device”与“Filesystem / Volume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“Block Device”与“Filesystem / Volume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:013",
@@ -783,7 +1490,10 @@
         3
       ],
       "status": "documented_reference",
-      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Transport”与“TEE Service”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Transport”与“TEE Service”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     },
     {
       "id": "ev:conn:014",
@@ -792,8 +1502,10 @@
         3
       ],
       "status": "documented_reference",
-      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Service”与“RPMB / Secure Storage”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Service”与“RPMB / Secure Storage”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ]
 }
-

@@ -10,7 +10,9 @@ export function rankSearchResults(nodes,query,filters={}){
     return text(node).includes(q);
   }).sort((a,b)=>{
     const at=a.title.toLocaleLowerCase(),bt=b.title.toLocaleLowerCase();
-    return Number(bt===q)-Number(at===q)||Number(bt.startsWith(q))-Number(at.startsWith(q))||a.title.localeCompare(b.title,'zh-CN');
+    const aq=Number(Boolean(a.knowledge?.role)||a.contentState==='absorbed')-Number(Boolean(a.navigationOnly));
+    const bq=Number(Boolean(b.knowledge?.role)||b.contentState==='absorbed')-Number(Boolean(b.navigationOnly));
+    return Number(bt===q)-Number(at===q)||bq-aq||Number(bt.startsWith(q))-Number(at.startsWith(q))||a.title.localeCompare(b.title,'zh-CN');
   });
 }
 
@@ -64,6 +66,53 @@ const relationLabels={
 };
 const pathLabels={control:'控制路径',data:'数据路径',power:'电源路径',diagnostic:'诊断与证据路径',index:'知识索引'};
 const navigationRelations=new Set(['主题目录','主题归类','主题细分','内容索引','课程覆盖','课程顺序','belongs_to']);
+const technicalRelationTypes=new Set(['controls','depends_on','observed_by','transitions_to','fails_as','runs_on','carries_data_to','sends_to','publishes','subscribes','powers','variant_of','conflicts_with','supersedes']);
+
+export function buildHierarchyIndex(graph){
+  const byId=new Map(graph.nodes.map(node=>[node.id,node]));
+  const children=new Map(graph.nodes.map(node=>[node.id,[]]));
+  for(const node of graph.nodes)if(node.primaryParentId&&children.has(node.primaryParentId))children.get(node.primaryParentId).push(node);
+  for(const items of children.values())items.sort((a,b)=>(a.hierarchyOrder??0)-(b.hierarchyOrder??0)||a.title.localeCompare(b.title,'zh-CN'));
+  return {byId,children};
+}
+
+export function buildBreadcrumb(graph,nodeId){
+  const {byId}=buildHierarchyIndex(graph),result=[],seen=new Set();let node=byId.get(nodeId);
+  while(node&&!seen.has(node.id)){result.push(node);seen.add(node.id);node=node.primaryParentId?byId.get(node.primaryParentId):undefined;}
+  return result.reverse();
+}
+
+export function directChildren(graph,nodeId){
+  return buildHierarchyIndex(graph).children.get(nodeId)||[];
+}
+
+function claimsForPlatforms(claims,platforms=[]){
+  const selected=new Set(platforms);
+  if(!selected.size)return claims||[];
+  return (claims||[]).filter(claim=>!(claim.platforms||[]).length||(claim.platforms||[]).some(platform=>selected.has(platform)));
+}
+
+export function groupTechnicalRelations(graph,nodeId,{platforms=[]}={}){
+  const byId=new Map(graph.nodes.map(node=>[node.id,node])),selected=byId.get(nodeId),groups={};
+  const awaiting=selected?.contentState==='awaiting_absorption'||!selected?.knowledge?.role;
+  for(const edge of graph.edges){
+    if(edge.from!==nodeId&&edge.to!==nodeId)continue;
+    if(!technicalRelationTypes.has(edge.type)||navigationRelations.has(edge.type)||edge.layer==='hierarchy')continue;
+    if(platforms.length&&(edge.platforms||[]).length&&!(edge.platforms||[]).some(platform=>platforms.includes(platform)))continue;
+    if(awaiting&&!edge.why)continue;
+    const relatedId=edge.from===nodeId?edge.to:edge.from,related=byId.get(relatedId);if(!related)continue;
+    const key=edge.pathClass==='control'&&edge.type==='transitions_to'?'state':edge.pathClass||'state';
+    (groups[key]||=[]).push({
+      id:edge.id||`${edge.from}:${edge.to}:${edge.type}`,
+      fromId:edge.from,toId:edge.to,relatedId,relatedTitle:related.title,
+      direction:edge.from===nodeId?'outgoing':'incoming',relationType:edge.type,
+      pathClass:key,pathLabel:pathLabels[key]||'状态路径',
+      why:edge.why||relationRationale(edge,byId),input:edge.input||'',handoff:edge.handoff||'',output:edge.output||'',
+      verification:edge.verification||[],status:edge.status,claims:claimsForPlatforms(edge.claims,platforms)
+    });
+  }
+  return groups;
+}
 
 function relationLabel(edge,byId){
   const from=byId.get(edge.from),to=byId.get(edge.to);
@@ -111,7 +160,7 @@ function relationRationale(edge,byId){
 function relationEvidenceBasis(edge,byId){
   const claims=edge.claims||[];
   if(claims.length){
-    const statuses=[...new Set(claims.map(claim=>claim.status||edge.status||'reference'))];
+    const statuses=[...new Set(claims.map(claim=>`${claim.status||edge.status||'reference'}${claim.platforms?.length?`（${claim.platforms.join('/')}）`:''}`))];
     const evidenceIds=[...new Set(claims.flatMap(claim=>claim.evidenceIds||[]))];
     const names=[...new Set(evidenceIds.map(id=>byId.get(id)?.sourceName).filter(Boolean))];
     return `该关系绑定 ${evidenceIds.length} 条页级证据，证据状态为 ${statuses.join('、')}${names.length?`，来源包括 ${names.slice(0,3).join('、')}`:''}。这些状态决定它是原文依据、映射推断还是版本冲突。`;
@@ -120,8 +169,8 @@ function relationEvidenceBasis(edge,byId){
   return '当前图谱为这条技术关系未绑定页级证据，因此只能作为结构化理解和待复核线索，不能当作已验证的现车事实。';
 }
 
-function relationSupport(edge,byId,selectedId,distance,status){
-  return {id:`${edge.from}:${edge.to}:${edge.type}`,title:relationTitle(edge,byId),relationType:edge.type,direct:edge.from===selectedId||edge.to===selectedId,distance,status:status||edge.status||'reference',pathLabel:pathLabels[edge.pathClass]||'知识关系'};
+function relationSupport(edge,byId,selectedId,distance,status,platforms=[]){
+  return {id:`${edge.from}:${edge.to}:${edge.type}`,title:relationTitle(edge,byId),relationType:edge.type,direct:edge.from===selectedId||edge.to===selectedId,distance,status:status||edge.status||'reference',platforms,pathLabel:pathLabels[edge.pathClass]||'知识关系'};
 }
 
 function evidenceBoundary(status,pages=[]){
@@ -146,7 +195,7 @@ function explainCitation(item){
   return item;
 }
 
-function evidenceItem(node,status,relation,support){
+function evidenceItem(node,status,relation,support,platforms=[]){
   return {
     id:node.id,
     kind:node.kind,
@@ -155,11 +204,11 @@ function evidenceItem(node,status,relation,support){
     pages:node.pages||[],
     url:node.downloadUrl||node.url,
     summary:node.summary||node.description||'已收录的原始资料，可在线加载或下载后结合对应车型与版本核对。',summaries:[node.summary||node.description||'已收录的原始资料，可在线加载或下载后结合对应车型与版本核对。'],
-    relationType:relation?.type||'supported_by',supports:support?[support]:[]
+    relationType:relation?.type||'supported_by',platforms,supports:support?[support]:[]
   };
 }
 
-export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,maxDepth=2}={}){
+export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,maxDepth=1,platforms=[]}={}){
   const byId=new Map(graph.nodes.map(node=>[node.id,node]));
   const node=byId.get(nodeId);if(!node)return null;
   const relationPriority=edge=>{
@@ -171,28 +220,25 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
     if(kind==='chapter')return 5;if(kind==='lesson')return 6;if(kind==='review')return 7;if(kind==='root')return 9;return 4;
   };
   const direct=graph.edges.filter(edge=>edge.from===nodeId||edge.to===nodeId).sort((a,b)=>relationPriority(a)-relationPriority(b));
-  const insights=[];
-  for(const edge of direct){
-    const other=byId.get(edge.from===nodeId?edge.to:edge.from);
-    if(!other||other.kind==='evidence'||other.kind==='source')continue;
-    const outgoing=edge.from===nodeId;
-    const relation=relationLabel(edge,byId);
-    const path=pathLabels[edge.pathClass]||'知识关系';
-    const text=outgoing
-      ? `「${node.title}」通过“${relation}”关联到「${other.title}」。${other.description||''}`
-      : `「${other.title}」通过“${relation}”关联到「${node.title}」。${other.description||''}`;
-    insights.push({
-      id:`${edge.from}:${edge.to}:${edge.type}`,basis:'graph_relation',pathClass:edge.pathClass||'index',pathLabel:path,relationType:edge.type,
-      text:text.trim(),whyRelated:relationRationale(edge,byId),evidenceBasis:relationEvidenceBasis(edge,byId),
-      evidenceStatuses:[...new Set((edge.claims||[]).map(claim=>claim.status||edge.status||'reference'))],
-      relatedId:other.id,relatedTitle:other.title
-    });
-    if(insights.length>=maxRelations)break;
-  }
+  const technicalPaths=groupTechnicalRelations(graph,nodeId,{platforms});
+  const insights=Object.values(technicalPaths).flat().slice(0,maxRelations).map(item=>{
+    const edge=direct.find(candidate=>(candidate.id&&candidate.id===item.id)||(!candidate.id&&`${candidate.from}:${candidate.to}:${candidate.type}`===item.id));
+    return {
+      ...item,basis:'structured_technical_relation',
+      text:`「${byId.get(item.fromId)?.title||item.fromId}」→「${byId.get(item.toId)?.title||item.toId}」（${relationLabel(edge||item,byId)}）`,
+      whyRelated:item.why,evidenceBasis:edge?relationEvidenceBasis({...edge,claims:item.claims},byId):'当前关系未绑定页级证据。',
+      evidenceStatuses:[...new Set((item.claims||[]).map(claim=>claim.status||item.status||'reference'))]
+    };
+  });
+  const navigation=direct.filter(edge=>navigationRelations.has(edge.type)||edge.pathClass==='index').map(edge=>{
+    const relatedId=edge.from===nodeId?edge.to:edge.from,other=byId.get(relatedId);
+    return {id:edge.id||`${edge.from}:${edge.to}:${edge.type}`,relationType:edge.type,relatedId,relatedTitle:other?.title||relatedId,
+      whyRelated:relationRationale(edge,byId),direction:edge.from===nodeId?'outgoing':'incoming'};
+  });
 
   const citationByKey=new Map(),visited=new Set([nodeId]),queue=[{id:nodeId,depth:0}];
   const addCitation=(item)=>{
-    const key=`${item.sourceName}:${JSON.stringify(item.pages)}:${item.status}`,existing=citationByKey.get(key);
+    const key=`${item.sourceName}:${JSON.stringify(item.pages)}:${item.status}:${[...(item.platforms||[])].sort().join(',')}`,existing=citationByKey.get(key);
     if(existing){
       if(item.summary&&!existing.summaries.includes(item.summary)&&existing.summaries.length<3){existing.summaries.push(item.summary);existing.summary=existing.summaries.join('；')}
       for(const support of item.supports||[])if(!existing.supports.some(current=>current.id===support.id&&current.status===support.status))existing.supports.push(support);
@@ -204,11 +250,15 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
     const current=queue.shift();
     for(const edge of graph.edges){
       if(edge.from!==current.id&&edge.to!==current.id)continue;
-      for(const claim of edge.claims||[])for(const evidenceId of claim.evidenceIds||[]){const evidence=byId.get(evidenceId);if(evidence)addCitation(evidenceItem(evidence,claim.status,edge,relationSupport(edge,byId,nodeId,current.depth+1,claim.status)))}
+      const edgeMatchesPlatform=!platforms.length||!(edge.platforms||[]).length||(edge.platforms||[]).some(platform=>platforms.includes(platform));
+      const isTechnical=edgeMatchesPlatform&&technicalRelationTypes.has(edge.type)&&edge.layer!=='hierarchy'&&edge.pathClass!=='hierarchy'&&edge.pathClass!=='index';
+      const isDirectEvidence=edge.type==='supported_by'&&current.depth===0&&edgeMatchesPlatform;
+      if(!isTechnical&&!isDirectEvidence)continue;
+      for(const claim of claimsForPlatforms(edge.claims,platforms))for(const evidenceId of claim.evidenceIds||[]){const evidence=byId.get(evidenceId);if(evidence)addCitation(evidenceItem(evidence,claim.status,edge,relationSupport(edge,byId,nodeId,current.depth+1,claim.status,claim.platforms||[]),claim.platforms||[]))}
       const otherId=edge.from===current.id?edge.to:edge.from,other=byId.get(otherId);
       if(!other)continue;
-      if(other.kind==='evidence'||other.kind==='source')addCitation(evidenceItem(other,edge.status,edge,relationSupport(edge,byId,nodeId,current.depth+1,edge.status||other.status||other.processingState)));
-      if(current.depth<maxDepth&&!visited.has(otherId)&&other.kind!=='evidence'&&other.kind!=='source'){
+      if(isDirectEvidence&&(other.kind==='evidence'||other.kind==='source'))addCitation(evidenceItem(other,edge.status,edge,relationSupport(edge,byId,nodeId,current.depth+1,edge.status||other.status||other.processingState,edge.platforms||[]),edge.platforms||[]));
+      if(isTechnical&&current.depth<maxDepth&&!visited.has(otherId)&&other.kind!=='evidence'&&other.kind!=='source'){
         visited.add(otherId);queue.push({id:otherId,depth:current.depth+1});
       }
     }
@@ -223,34 +273,39 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
   const references=[];
   if(node.url)references.push({
     id:`article:${node.id}`,kind:'article',title:`${node.title} · 学习文章`,url:node.url,pages:node.pages||[],
-    status:'published_article',summary:`围绕「${node.title}」整理的公开学习文章，章节定位以链接锚点为准。`,
+    status:'published_article',platforms:node.platforms||[],summary:`围绕「${node.title}」整理的公开学习文章，章节定位以链接锚点为准。`,
     whyCited:'该文章是此知识节点对应的公开学习正文，用于补充专题说明、概念边界和阅读入口。',
     evidenceBoundary:evidenceBoundary('published_article',node.pages||[]),supports:[]
   });
   if(node.downloadUrl)references.push({
     id:`source:${node.id}`,kind:'source',title:node.sourceName||node.title,url:node.downloadUrl,pages:node.pages||[],
-    status:node.status||node.processingState||'source_register',
+    status:node.status||node.processingState||'source_register',platforms:node.platforms||[],
     summary:node.summary||node.description||'已收录的原始资料，可在线加载或下载后结合对应车型与版本核对。',
     whyCited:'当前选中的节点就是这份原始资料，因此把它作为专题的直接资料入口。',
     evidenceBoundary:evidenceBoundary(node.status||node.processingState||'source_register',node.pages||[]),supports:[]
   });
   for(const citation of citations)if(citation.url)references.push({
     id:`source:${citation.id}`,kind:'source',title:citation.sourceName,url:citation.url,pages:citation.pages,
-    status:citation.status,summary:citation.summary,whyCited:citation.whyCited,evidenceBoundary:citation.evidenceBoundary,supports:citation.supports,displaySupports:citation.displaySupports
+    status:citation.status,platforms:citation.platforms||[],summary:citation.summary,whyCited:citation.whyCited,evidenceBoundary:citation.evidenceBoundary,supports:citation.supports,displaySupports:citation.displaySupports
   });
   const uniqueReferences=[...new Map(references.map(item=>[item.url,item])).values()];
-  let summary=node.summary||node.description||`本专题整理「${node.title}」在座舱知识图谱中的职责、边界与关联。`;
-  let summaryBasis=node.summary?'curated_summary':node.description?'curated_description':'generated_outline';
-  if(['topic','domain','platform'].includes(node.kind)){
-    const branches=direct.map(edge=>byId.get(edge.from===nodeId?edge.to:edge.from)).filter(item=>item?.description&&['subtopic','component','interface','state','process','observation','failure_mode'].includes(item.kind)).slice(0,5);
-    if(branches.length){summary=`${summary.replace(/[。；]$/,'')}。结合已整理的知识关系，本专题重点覆盖：${branches.map(item=>`${item.title}（${item.description}）`).join('；')}。`;summaryBasis='graph_synthesis'}
-  }
+  const contentState=node.contentState||(node.knowledge?.role?'absorbed':'awaiting_absorption');
+  const responsibility=contentState==='absorbed'?{
+    role:node.knowledge.role,input:node.knowledge.input||[],mechanism:node.knowledge.mechanism||[],output:node.knowledge.output||[],
+    observations:node.knowledge.observations||[],limits:node.knowledge.limits||[]
+  }:{role:'资料尚未吸收',input:[],mechanism:[],output:[],observations:[],limits:[]};
+  const breadcrumb=buildBreadcrumb(graph,nodeId).map(item=>({id:item.id,title:item.title,level:item.hierarchyLevel,branchType:item.branchType}));
+  const children=directChildren(graph,nodeId).map(item=>({id:item.id,title:item.title,kind:item.kind,branchType:item.branchType,
+    role:item.knowledge?.role||item.description||'资料尚未吸收',contentState:item.contentState||(item.knowledge?.role?'absorbed':'awaiting_absorption')}));
+  const observations=[...new Set([...(responsibility.observations||[]),...Object.values(technicalPaths).flat().flatMap(item=>item.verification||[])])];
+  const summary=contentState==='absorbed'?(node.summary||responsibility.role):(node.summary||node.description||'该节点已完成归类，技术内容尚待吸收。');
+  const summaryBasis=contentState==='absorbed'?(node.summary?'curated_summary':'structured_knowledge'):'classification_only';
   return {
     id:node.id,title:node.title,kind:node.kind,
     summary,summaryBasis,
     scope:{platforms:node.platforms||[],runtimeDomain:node.runtimeDomain||node.domain,version:node.version,status:node.status},
-    insights,citations,references:uniqueReferences,
-    notice:'每条衍生关系都说明关系语义与证据基础。知识分类只解释内容为什么放在一起；技术关系只有绑定页级证据时才具备相应证据强度，车型、版本、接口编号及时序仍以引用原文和现车资料为准。'
+    breadcrumb,responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
+    notice:contentState==='awaiting_absorption'?'该节点已完成层级归类，但资料尚未吸收；分类关系不作为技术结论。':'技术关系优先采用结构化说明；车型、版本、接口编号及时序仍以引用原文和现车资料为准。'
   };
 }
 
@@ -259,19 +314,42 @@ function pageText(pages=[]){const flat=pages.flat?.(Infinity)||pages;return flat
 export function readerMarkdown(model){
   if(!model)return'';
   const scope=[...(model.scope.platforms||[]),model.scope.runtimeDomain,model.scope.version].filter(Boolean).join(' · ')||'未限定';
-  const basis={curated_summary:'人工整理摘要',curated_description:'知识图谱整理说明',graph_synthesis:'知识图谱综合整理',generated_outline:'图谱结构生成提纲'}[model.summaryBasis]||'知识整理';
-  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 图谱关系衍生',''];
-  if(model.insights.length)for(const item of model.insights)lines.push(`- **${item.pathLabel}**：${item.text}\n  - **为什么有关：** ${item.whyRelated}\n  - **引用依据：** ${item.evidenceBasis}`);else lines.push('- 当前节点暂无可展开的知识关系。');
+  const basis={curated_summary:'人工整理摘要',structured_knowledge:'结构化知识整理',classification_only:'分类完成、内容待吸收'}[model.summaryBasis]||'知识整理';
+  const breadcrumb=(model.breadcrumb||[]).map(item=>item.title).join(' → ')||model.title;
+  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 本层职责',''];
+  if(model.contentState==='awaiting_absorption')lines.push('- **资料尚未吸收**：当前只保留层级与分类，不生成技术职责和因果解释。');
+  else{
+    lines.push(`- **职责：** ${model.responsibility.role}`);
+    for(const [label,values] of [['输入',model.responsibility.input],['机制',model.responsibility.mechanism],['输出',model.responsibility.output],['限制',model.responsibility.limits]])for(const value of values||[])lines.push(`- **${label}：** ${value}`);
+  }
+  lines.push('','## 继续向下钻','');
+  if(model.children?.length)for(const child of model.children)lines.push(`- **${child.title}**：${child.role}`);else lines.push('- 当前节点没有更下一层的公开节点。');
+  lines.push('','## 正常技术链（图谱关系衍生）','');
+  const groups=Object.entries(model.technicalPaths||{});
+  if(groups.length)for(const [path,items] of groups){
+    lines.push(`### ${pathLabels[path]||path}`,'');
+    for(const item of items)lines.push(`- **${item.relatedTitle}**：${item.why}\n  - **输入：** ${item.input||'待确认'}\n  - **交接：** ${item.handoff||'待确认'}\n  - **输出：** ${item.output||'待确认'}\n  - **引用依据：** ${item.evidenceBasis||'见引用区'}`);
+  }else lines.push('- 当前没有可发布的结构化技术关系。');
+  lines.push('','## 如何验证','');
+  if(model.observations?.length)for(const item of model.observations)lines.push(`- ${item}`);else lines.push('- 资料尚未吸收，暂未形成可靠观测清单。');
   lines.push('','> '+model.notice,'','## 引用资料与文章','');
+  const representedReferenceUrls=new Set();
   if(model.citations.length)for(const item of model.citations){
-    lines.push(`- **${item.sourceName}**（${pageText(item.pages)}，${item.status}）${item.summary?`：${item.summary}`:''}`);
+    const platformText=item.platforms?.length?`，适用 ${item.platforms.join('/')}`:'';
+    lines.push(`- **${item.sourceName}**（${pageText(item.pages)}，${item.status}${platformText}）${item.summary?`：${item.summary}`:''}`);
     lines.push(`  - **为什么引用：** ${item.whyCited}`);
     lines.push(`  - **证据边界：** ${item.evidenceBoundary}`);
     for(const support of (item.displaySupports||item.supports||[]).slice(0,5))lines.push(`  - **支撑关系：** ${support.direct?'直接':'相邻'} · ${support.title}`);
-    if(item.url)lines.push(`  - ${item.url}`);
-  }else lines.push('- 当前节点暂无已绑定的页码证据。');
-  for(const item of model.references.filter(item=>item.kind==='article'))lines.push(`- **学习文章：${item.title}**（${pageText(item.pages)}，${item.status||'published_article'}）${item.summary?`：${item.summary}`:''}\n  - **为什么引用：** ${item.whyCited}\n  - **证据边界：** ${item.evidenceBoundary}  \n  ${item.url}`);
+    if(item.url){lines.push(`  - ${item.url}`);representedReferenceUrls.add(item.url)}
+  }
+  const articleReferences=model.references.filter(item=>item.kind==='article');
+  for(const item of articleReferences){const platformText=item.platforms?.length?`，适用 ${item.platforms.join('/')}`:'';lines.push(`- **学习文章：${item.title}**（${pageText(item.pages)}，${item.status||'published_article'}${platformText}）${item.summary?`：${item.summary}`:''}\n  - **为什么引用：** ${item.whyCited}\n  - **证据边界：** ${item.evidenceBoundary}  \n  ${item.url}`);representedReferenceUrls.add(item.url)}
+  const sourceReferences=model.references.filter(item=>item.kind==='source'&&!representedReferenceUrls.has(item.url));
+  for(const item of sourceReferences){const platformText=item.platforms?.length?`，适用 ${item.platforms.join('/')}`:'';lines.push(`- **原始资料：${item.title}**（${pageText(item.pages)}，${item.status||'source_register'}${platformText}）${item.summary?`：${item.summary}`:''}\n  - **为什么引用：** ${item.whyCited}\n  - **证据边界：** ${item.evidenceBoundary}  \n  ${item.url}`);representedReferenceUrls.add(item.url)}
+  if(!model.citations.length&&!articleReferences.length&&!sourceReferences.length)lines.push('- 当前节点暂无已绑定的页码证据或可加载原始资料。');
+  lines.push('','<details>','<summary>导航关系</summary>','');
+  if(model.navigation?.length)for(const item of model.navigation)lines.push(`- ${item.relatedTitle}（${relationLabels[item.relationType]||item.relationType}）：${item.whyRelated}`);else lines.push('- 无');
+  lines.push('','</details>');
   lines.push('','---','','生成自座舱知识银河。引用内容应结合对应车型、软件版本和原始资料复核。','');
   return lines.join('\n');
 }
-

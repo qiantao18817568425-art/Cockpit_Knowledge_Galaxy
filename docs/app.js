@@ -1,5 +1,5 @@
 import {rankSearchResults,visibleNodeIds,detailModel} from './graph-model.js';
-import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,orbitPose} from './space-scene.js';
+import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,fitLabelSize,isProjectedVisible,orbitPose,releaseVelocity,starPulse} from './space-scene.js';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -98,7 +98,7 @@ function background(time){
   ctx.globalCompositeOperation='source-over';
   for(const s of stars){
     const px=((s.x+(yaw*.012*s.depth))%1+1)%1*width,py=((s.y+(pitch*.018*s.depth))%1+1)%1*height;
-    const pulse=.72+.28*Math.sin(time*.0013+s.twinkle);
+    const pulse=starPulse(time,s.twinkle,reducedMotion);
     ctx.globalAlpha=s.a*pulse;ctx.fillStyle=s.depth>.72?'#d9f7ff':s.depth>.38?'#b8cfff':'#a895ff';ctx.beginPath();ctx.arc(px,py,s.r*(.65+s.depth*.65),0,Math.PI*2);ctx.fill();
   }
   ctx.restore();ctx.globalAlpha=1;
@@ -150,16 +150,20 @@ function draw(){
     ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=active||preview?22:11;ctx.beginPath();ctx.arc(n.x,n.y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
     if(active||hover>.3){ctx.strokeStyle='#f8fcff';ctx.lineWidth=1.5;ctx.stroke()}
     ctx.globalAlpha=1;
+    if(!isProjectedVisible({x:n.x,y:n.y,radius,width,height}))continue;
     const labelStyle=depthLabelStyle({depth:n.z,perspective:n.p,kind:n.kind,active,hover});
     if(!labelStyle.visible)continue;
     labelQueue.push({n,active,preview,hover,dim,radius,color,labelStyle});
   }
   labelQueue.sort((a,b)=>(Number(a.active)+Number(a.preview)*2)-(Number(b.active)+Number(b.preview)*2));
   for(const {n,active,preview,hover,dim,radius,color,labelStyle} of labelQueue){
-    const size=labelStyle.size;
+    let size=labelStyle.size;
     ctx.font=`${labelStyle.weight} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
     const text=n.title;
-    const textWidth=ctx.measureText(text).width;
+    let textWidth=ctx.measureText(text).width;
+    size=fitLabelSize({size,textWidth,availableWidth:Math.max(80,width-16)});
+    ctx.font=`${labelStyle.weight} ${size}px system-ui, "Microsoft YaHei", sans-serif`;
+    textWidth=ctx.measureText(text).width;
     let x=n.x+radius+7+hover*4;
     if(x+textWidth>width-12)x=n.x-radius-9-textWidth;
     x=clampLabelX(x,textWidth,width);
@@ -236,8 +240,8 @@ function frame(time){
 
 canvas.addEventListener('pointerdown',event=>{setHovered(null);yawVelocity=0;pitchVelocity=0;pointer={x:event.clientX,y:event.clientY,lastX:event.clientX,lastY:event.clientY,lastTime:performance.now(),yaw,pitch,moved:false};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');interaction()});
 canvas.addEventListener('pointermove',event=>{if(pointer){const now=performance.now(),dx=event.clientX-pointer.x,dy=event.clientY-pointer.y,step=Math.max(8,now-pointer.lastTime),stepX=event.clientX-pointer.lastX,stepY=event.clientY-pointer.lastY;if(Math.abs(dx)+Math.abs(dy)>5)pointer.moved=true;if(pointer.moved){yaw=pointer.yaw+dx*.006;pitch=Math.max(-1.05,Math.min(1.05,pointer.pitch+dy*.004));yawVelocity=reducedMotion?0:Math.max(-.004,Math.min(.004,stepX*.006/step));pitchVelocity=reducedMotion?0:Math.max(-.003,Math.min(.003,stepY*.004/step));pointer.lastX=event.clientX;pointer.lastY=event.clientY;pointer.lastTime=now;interaction()}return}if(event.pointerType==='touch')return;const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)});
-canvas.addEventListener('pointerup',event=>{if(pointer&&!pointer.moved){const bounds=canvas.getBoundingClientRect(),hit=pickNode(event.clientX-bounds.left,event.clientY-bounds.top);if(hit)showNode(hit.id);else clearSelection()}pointer=null;canvas.classList.remove('dragging');if(event.pointerType!=='touch'){const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)}interaction()});
-canvas.addEventListener('pointercancel',()=>{pointer=null;canvas.classList.remove('dragging');setHovered(null)});
+canvas.addEventListener('pointerup',event=>{if(pointer&&!pointer.moved){const bounds=canvas.getBoundingClientRect(),hit=pickNode(event.clientX-bounds.left,event.clientY-bounds.top);if(hit)showNode(hit.id);else clearSelection()}if(pointer?.moved){const idle=performance.now()-pointer.lastTime;yawVelocity=releaseVelocity(yawVelocity,idle);pitchVelocity=releaseVelocity(pitchVelocity,idle)}pointer=null;canvas.classList.remove('dragging');if(event.pointerType!=='touch'){const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)}interaction()});
+canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVelocity=0;canvas.classList.remove('dragging');setHovered(null)});
 canvas.addEventListener('pointerleave',()=>{if(!pointer)setHovered(null)});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,Math.min(2.3,zoom*(event.deltaY<0?1.09:1/1.09)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});

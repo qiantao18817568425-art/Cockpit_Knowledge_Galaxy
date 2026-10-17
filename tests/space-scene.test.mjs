@@ -5,8 +5,33 @@ import {
   clampLabelX,
   depthLabelStyle,
   fibonacciSpherePoint,
+  fitLabelSize,
+  isProjectedVisible,
   orbitPose,
+  releaseVelocity,
+  starPulse,
 } from '../docs/space-scene.js';
+
+test('reduced motion disables star pulsing',()=>{
+  assert.equal(starPulse(1000,.3,true),1);
+  assert.notEqual(starPulse(1000,.3,false),starPulse(1600,.3,false));
+});
+
+test('only on-screen projected nodes receive labels',()=>{
+  assert.equal(isProjectedVisible({x:100,y:100,radius:8,width:375,height:667}),true);
+  assert.equal(isProjectedVisible({x:-30,y:100,radius:8,width:375,height:667}),false);
+  assert.equal(isProjectedVisible({x:390,y:100,radius:8,width:375,height:667}),false);
+});
+
+test('long mobile labels shrink to the available width',()=>{
+  assert.equal(fitLabelSize({size:12,textWidth:443,availableWidth:359}),9.72);
+  assert.equal(fitLabelSize({size:10,textWidth:100,availableWidth:359}),10);
+});
+
+test('release inertia expires after the pointer pauses',()=>{
+  assert.equal(releaseVelocity(.003,35),.003);
+  assert.equal(releaseVelocity(.003,140),0);
+});
 
 test('labels at the screen edge are clamped into view instead of disappearing',()=>{
   assert.equal(clampLabelX(-42,120,800),8);

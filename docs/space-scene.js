@@ -12,6 +12,23 @@ export function clampLabelX(x,textWidth,viewportWidth,padding=8){
   return Math.max(padding,Math.min(viewportWidth-textWidth-padding,x));
 }
 
+export function fitLabelSize({size,textWidth,availableWidth,minSize=5}){
+  if(textWidth<=availableWidth)return size;
+  return Math.max(minSize,Math.round(size*availableWidth/textWidth*100)/100);
+}
+
+export function isProjectedVisible({x,y,radius=0,width,height}){
+  return x+radius>=0&&x-radius<=width&&y+radius>=0&&y-radius<=height;
+}
+
+export function starPulse(time,phase,reducedMotion=false){
+  return reducedMotion?1:.72+.28*Math.sin(time*.0013+phase);
+}
+
+export function releaseVelocity(velocity,idleMs,expiryMs=90){
+  return idleMs<=expiryMs?velocity:0;
+}
+
 export function depthLabelStyle({depth=0,perspective=1,kind='component',active=false,hover=0}){
   const importance={root:9,topic:4,platform:3,domain:3,subtopic:2}[kind]||0;
   const depthLevel=Math.max(0,Math.min(1,(depth+560)/1120));

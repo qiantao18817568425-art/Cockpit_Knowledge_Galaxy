@@ -33,6 +33,17 @@ test('rotation labels only the nearest front-facing nodes plus forced interactio
   assert.deepEqual([...ids].sort(),['hovered-back','near-a','near-b','root'].sort());
 });
 
+test('forced interaction labels stay capped and honor priority',()=>{
+  const ids=selectFrontLabelIds([
+    {id:'root',kind:'root',depth:0,onScreen:true},
+    {id:'selected',kind:'platform',depth:-300,onScreen:true,forced:true,forcePriority:100},
+    {id:'hovered',kind:'component',depth:-260,onScreen:true,forced:true,forcePriority:90},
+    {id:'match-a',kind:'component',depth:80,onScreen:true,forced:true,forcePriority:60},
+    {id:'match-b',kind:'component',depth:70,onScreen:true,forced:true,forcePriority:60},
+  ],{limit:0,minDepth:40,forcedLimit:2});
+  assert.deepEqual([...ids].sort(),['hovered','root','selected'].sort());
+});
+
 test('reduced motion disables star pulsing',()=>{
   assert.equal(starPulse(1000,.3,true),1);
   assert.notEqual(starPulse(1000,.3,false),starPulse(1600,.3,false));

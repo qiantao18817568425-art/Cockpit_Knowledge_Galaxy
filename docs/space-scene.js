@@ -29,13 +29,15 @@ export function releaseVelocity(velocity,idleMs,expiryMs=90){
   return idleMs<=expiryMs?velocity:0;
 }
 
-export function selectFrontLabelIds(candidates,{limit=28,minDepth=30}={}){
-  const selected=new Set();
-  for(const item of candidates){
-    if(item.kind==='root'||item.forced)selected.add(item.id);
-  }
+export function selectFrontLabelIds(candidates,{limit=28,minDepth=30,forcedLimit=8}={}){
+  const selected=new Set(candidates.filter(item=>item.kind==='root').map(item=>item.id));
+  const forced=candidates
+    .filter(item=>item.kind!=='root'&&item.forced&&item.onScreen)
+    .sort((a,b)=>(b.forcePriority||0)-(a.forcePriority||0)||b.depth-a.depth)
+    .slice(0,Math.max(0,forcedLimit));
+  for(const item of forced)selected.add(item.id);
   const front=candidates
-    .filter(item=>item.onScreen&&item.kind!=='root'&&!item.forced&&item.depth>=minDepth)
+    .filter(item=>item.onScreen&&item.kind!=='root'&&!selected.has(item.id)&&item.depth>=minDepth)
     .sort((a,b)=>b.depth-a.depth)
     .slice(0,Math.max(0,limit));
   for(const item of front)selected.add(item.id);

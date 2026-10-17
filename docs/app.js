@@ -22,6 +22,7 @@ let width=0,height=0,dpr=1, yaw=.22,pitch=-.18,roll=0,zoom=1,selected=null,proje
 let yawVelocity=0,pitchVelocity=0;
 let hovered=null;
 const hoverLevels=new Map();
+let matchingIds=new Set();
 let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
@@ -114,7 +115,7 @@ function draw(){
   const sceneTime=performance.now();
   ctx.clearRect(0,0,width,height);background(sceneTime);
   const query=search.value.trim().toLocaleLowerCase();
-  const matching=new Set(query?nodes.filter(n=>n.title.toLocaleLowerCase().includes(query)).map(n=>n.id):[]);
+  const matching=matchingIds;
   const visible=n=>visibleIds.has(n.id)&&(n.kind==='root'||!hidden.has(n.kind));
   const emphasis=hovered||selected;
   const related=emphasis?neighbors.get(emphasis):null;
@@ -144,8 +145,9 @@ function draw(){
   const labelLimit=frontLabelLimit(width);
   const labelIds=selectFrontLabelIds(sorted.filter(visible).map(n=>{
     const hover=hoverLevels.get(n.id)||0;
-    return{id:n.id,kind:n.kind,depth:n.z,onScreen:isProjectedVisible({x:n.x,y:n.y,radius:Math.max(3,n.r*n.p*n.fit),width,height}),forced:n.id===selected||n.id===hovered||hover>.02||matching.has(n.id)||!!related?.has(n.id)};
-  }),{limit:labelLimit,minDepth:width<720?90:35});
+    const forcePriority=n.id===selected?100:n.id===hovered?90:hover>.02?70+hover:matching.has(n.id)?60:0;
+    return{id:n.id,kind:n.kind,depth:n.z,onScreen:isProjectedVisible({x:n.x,y:n.y,radius:Math.max(3,n.r*n.p*n.fit),width,height}),forced:forcePriority>0,forcePriority};
+  }),{limit:labelLimit,minDepth:width<720?90:35,forcedLimit:8});
   const labelQueue=[];
   const occupied=[];
   for(const n of sorted){
@@ -225,8 +227,9 @@ function clearSelection(){selected=null;viewState.selectedId=null;focusTarget.x=
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
-  if(!q){results.hidden=true;clearSelection();return}
+  if(!q){matchingIds=new Set();results.hidden=true;clearSelection();return}
   const matches=rankSearchResults(nodes,q,viewState).slice(0,10);
+  matchingIds=new Set(matches.slice(0,8).map(node=>node.id));
   results.hidden=false;
   if(!matches.length){const empty=document.createElement('div');empty.className='empty-result';empty.textContent='没有匹配的节点';empty.style.padding='9px';empty.style.color='#a9bad6';results.append(empty);return}
   for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}

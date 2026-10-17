@@ -38,15 +38,32 @@
 
     <div id="hover-card" class="glass hover-card" aria-hidden="true"><span id="hover-kind"></span><strong id="hover-title"></strong><small id="hover-meta"></small></div>
 
-    <aside id="detail" class="glass detail" aria-live="polite" hidden>
+    <aside id="detail" class="glass detail" role="dialog" aria-modal="false" aria-labelledby="detail-title" aria-live="polite" hidden>
       <button id="detail-close" class="detail-close" type="button" aria-label="关闭节点详情">×</button>
-      <div id="detail-kind" class="detail-kind"></div>
-      <h2 id="detail-title"></h2>
-      <p id="detail-description"></p>
-      <div class="detail-source"><span>来源</span><strong id="detail-source"></strong></div>
-      <a id="detail-link" class="source-link" target="_blank" rel="noopener noreferrer" hidden>打开原文 ↗</a>
-      <div id="detail-scope" class="detail-scope"></div>
-      <div id="detail-evidence" class="detail-evidence"></div>
+      <header class="reader-header">
+        <div id="detail-kind" class="detail-kind"></div>
+        <h2 id="detail-title"></h2>
+        <div id="detail-scope" class="detail-scope"></div>
+        <button id="reader-download-summary" class="reader-download" type="button">下载专题总结</button>
+      </header>
+      <section class="reader-section" aria-labelledby="reader-summary-title">
+        <div class="reader-heading"><h3 id="reader-summary-title">专题总结</h3><span id="reader-summary-basis" class="basis-badge"></span></div>
+        <p id="reader-summary"></p>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-insights-title">
+        <div class="reader-heading"><h3 id="reader-insights-title">衍生理解</h3><span class="basis-badge derived">图谱关系衍生</span></div>
+        <div id="reader-insights" class="reader-insights"></div>
+        <p id="reader-notice" class="reader-notice"></p>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-citations-title">
+        <div class="reader-heading"><h3 id="reader-citations-title">引用资料与文章</h3><span id="reader-citation-count" class="citation-count"></span></div>
+        <div id="reader-citations" class="reader-citations"></div>
+      </section>
+      <section id="reader-preview-section" class="reader-preview-section" aria-label="资料在线预览" hidden>
+        <div class="preview-toolbar"><strong id="reader-preview-title">资料预览</strong><div><a id="reader-preview-open" target="_blank" rel="noopener noreferrer">打开原文</a><a id="reader-preview-download" download hidden>下载</a><button id="reader-preview-close" type="button" aria-label="关闭资料预览">关闭</button></div></div>
+        <iframe id="reader-preview" title="资料在线预览" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <p>若资料因站点安全策略不能嵌入，请使用“打开原文”或“下载”。</p>
+      </section>
       <div class="related"><b>直接关联</b><div id="related-list"></div></div>
     </aside>
 

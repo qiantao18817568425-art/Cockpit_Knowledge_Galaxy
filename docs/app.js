@@ -1,5 +1,6 @@
-import {rankSearchResults,visibleNodeIds,detailModel} from './graph-model.js';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js';
 import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,selectFrontLabelIds,starPulse} from './space-scene.js';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -23,6 +24,7 @@ let yawVelocity=0,pitchVelocity=0;
 let hovered=null;
 const hoverLevels=new Map();
 let matchingIds=new Set();
+let currentReader=null;
 let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
@@ -198,32 +200,60 @@ function updateMotionLabel(query){
 }
 
 function interaction(){lastAction=performance.now()}
+
+function pagesLabel(pages=[]){const flat=pages.flat?.(Infinity)||pages;return flat.length?`第 ${flat.join('、')} 页`:'页码未标注'}
+function emptyReader(container,text){const item=document.createElement('div');item.className='reader-empty';item.textContent=text;container.append(item)}
+function closeReaderPreview(){const section=document.querySelector('#reader-preview-section');section.hidden=true;document.querySelector('#reader-preview').src='about:blank'}
+function showReference(reference){
+  const action=referenceAction(reference.url);if(!action.canLoad)return;
+  const section=document.querySelector('#reader-preview-section'),frame=document.querySelector('#reader-preview');
+  document.querySelector('#reader-preview-title').textContent=reference.title||'资料预览';
+  const open=document.querySelector('#reader-preview-open');open.href=action.externalUrl;
+  const download=document.querySelector('#reader-preview-download');download.hidden=!action.canDownload;download.href=action.externalUrl;download.download=reference.title||'原始资料';
+  frame.title=`${reference.title||'资料'}在线预览`;frame.src=action.externalUrl;section.hidden=false;section.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+}
+function appendReferenceActions(container,reference){
+  const action=referenceAction(reference.url);if(!action.externalUrl)return;
+  const actions=document.createElement('div');actions.className='citation-actions';
+  if(action.canLoad){const load=document.createElement('button');load.type='button';load.textContent='页面内加载';load.addEventListener('click',()=>showReference(reference));actions.append(load)}
+  const open=document.createElement('a');open.href=action.externalUrl;open.target='_blank';open.rel='noopener noreferrer';open.textContent='打开原文';actions.append(open);
+  if(action.canDownload){const download=document.createElement('a');download.href=action.externalUrl;download.download=reference.title||'原始资料';download.textContent='下载资料';actions.append(download)}
+  container.append(actions);
+}
+function renderReader(model){
+  document.querySelector('#reader-summary').textContent=model.summary;
+  document.querySelector('#reader-summary-basis').textContent={curated_summary:'人工整理摘要',curated_description:'知识图谱整理',graph_synthesis:'知识图谱综合整理',generated_outline:'图谱结构提纲'}[model.summaryBasis]||'知识整理';
+  document.querySelector('#reader-notice').textContent=model.notice;
+  const insights=document.querySelector('#reader-insights');insights.replaceChildren();
+  if(!model.insights.length)emptyReader(insights,'当前节点暂无可继续展开的图谱关系。');
+  for(const insight of model.insights){const card=document.createElement('article');card.className='reader-insight';const label=document.createElement('strong');label.textContent=`${insight.pathLabel} · 图谱关系衍生`;const text=document.createElement('p');text.textContent=insight.text;card.append(label,text);card.addEventListener('click',()=>showNode(insight.relatedId));insights.append(card)}
+  const citations=document.querySelector('#reader-citations');citations.replaceChildren();
+  const represented=new Set();
+  for(const reference of model.references.filter(item=>item.kind==='article')){const card=document.createElement('article');card.className='citation-card article';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(reference.pages)} · ${reference.status||'published_article'}`;head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReferenceActions(card,reference);citations.append(card);represented.add(reference.url)}
+  for(const citation of model.citations){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=citation.sourceName;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(citation.pages)} · ${citation.status}`;head.append(title,meta);card.append(head);if(citation.summary){const text=document.createElement('p');text.textContent=citation.summary;card.append(text)}if(citation.url){appendReferenceActions(card,{title:citation.sourceName,url:citation.url});represented.add(citation.url)}citations.append(card)}
+  for(const reference of model.references.filter(item=>item.kind==='source'&&!represented.has(item.url))){const card=document.createElement('article');card.className='citation-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=`${pagesLabel(reference.pages)} · ${reference.status||'source_register'}`;head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReferenceActions(card,reference);citations.append(card)}
+  if(!citations.children.length)emptyReader(citations,'当前节点尚未绑定可公开加载的原始资料或文章。');
+  document.querySelector('#reader-citation-count').textContent=`${citations.children.length} 项`;
+}
+function downloadReaderSummary(){
+  if(!currentReader)return;const spec=markdownDownloadSpec(currentReader.title,readerMarkdown(currentReader));const url=URL.createObjectURL(new Blob([spec.content],{type:spec.type}));const link=document.createElement('a');link.href=url;link.download=spec.filename;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),0);
+}
 function showNode(id){
   const node=byId.get(id);if(!node)return;
   selected=id;viewState.selectedId=id;refreshVisible();interaction();detail.hidden=false;
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
-  const model=detailModel(graph,id);
-  document.querySelector('#detail-description').textContent=model.description;
-  document.querySelector('#detail-source').textContent=node.sourceName||node.source||model.evidence[0]?.sourceName||'知识图谱整理';
-  const link=document.querySelector('#detail-link');
-  const primaryUrl=node.url||node.downloadUrl||model.evidence[0]?.url;
-  if(primaryUrl&&(primaryUrl.startsWith('https://')||primaryUrl.startsWith('./'))){
-    link.href=primaryUrl;
-    link.textContent=node.id==='topic:raw'?'查看原始资料目录 ↗':node.id.startsWith('subtopic:raw:')?'查看分类资料 ↗':node.kind==='topic'?'阅读相关章节 ↗':node.kind==='root'?'前往学习站点 ↗':node.kind==='subtopic'?'阅读对应段落 ↗':'打开原文 ↗';
-    link.hidden=false;
-  }else{link.removeAttribute('href');link.hidden=true}
+  currentReader=buildReaderModel(graph,id);renderReader(currentReader);closeReaderPreview();
   const scope=document.querySelector('#detail-scope');scope.replaceChildren();
-  for(const value of [...(model.platforms||[]),model.runtimeDomain,model.status].filter(Boolean)){const tag=document.createElement('span');tag.textContent=value;scope.append(tag)}
-  const evidenceBox=document.querySelector('#detail-evidence');evidenceBox.replaceChildren();
-  for(const ev of model.evidence.slice(0,6)){const card=document.createElement('div');card.className='evidence-card';const head=document.createElement('b');head.textContent=`${ev.status||'证据'} · ${ev.sourceName||'原始资料'} · 第 ${(ev.pages||[]).flat().join('–')} 页`;card.append(head);card.append(document.createTextNode(ev.summary||''));if(ev.url){const a=document.createElement('a');a.href=ev.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' 打开来源 ↗';card.append(a)}evidenceBox.append(card)}
+  for(const value of [...(currentReader.scope.platforms||[]),currentReader.scope.runtimeDomain,currentReader.scope.version,currentReader.scope.status].filter(Boolean)){const tag=document.createElement('span');tag.textContent=value;scope.append(tag)}
   const list=document.querySelector('#related-list');list.replaceChildren();
   const order={subtopic:0,chapter:1,lesson:2,review:3,topic:4,root:5};
   const relations=[...neighbors.get(id)].filter(other=>byId.has(other)).sort((a,b)=>order[byId.get(a).kind]-order[byId.get(b).kind]);
   for(const other of relations){const item=document.createElement('button');item.type='button';item.textContent=byId.get(other).title;item.addEventListener('click',()=>showNode(other));list.append(item)}
+  detail.scrollTop=0;
 }
-function clearSelection(){selected=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;refreshVisible();interaction()}
+function clearSelection(){selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction()}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
@@ -258,6 +288,8 @@ canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,
 search.addEventListener('input',()=>{interaction();renderResults()});
 search.addEventListener('keydown',event=>{if(event.key==='Escape'){search.value='';renderResults();search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}});
 document.querySelector('#detail-close').addEventListener('click',clearSelection);
+document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
+document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
 for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{const kind=button.dataset.kind;hidden.has(kind)?hidden.delete(kind):hidden.add(kind);syncFilters();interaction()});
 for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{const value=button.dataset.platform;viewState.platforms=viewState.platforms.includes(value)?viewState.platforms.filter(x=>x!==value):[...viewState.platforms,value];button.setAttribute('aria-pressed',String(viewState.platforms.includes(value)));refreshVisible();interaction()});
 for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{const value=button.dataset.path;viewState.pathClasses=viewState.pathClasses.includes(value)?viewState.pathClasses.filter(x=>x!==value):[...viewState.pathClasses,value];button.setAttribute('aria-pressed',String(viewState.pathClasses.includes(value)));refreshVisible();interaction()});

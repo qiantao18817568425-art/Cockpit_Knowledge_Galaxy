@@ -111,9 +111,10 @@ function draw(){
     if(!visible(a)||!visible(b))continue;
     const active=emphasis&&(edge.from===emphasis||edge.to===emphasis);
     const dim=(query&&!matching.has(a.id)&&!matching.has(b.id)&&!active)||(emphasis&&!active);
-    ctx.globalAlpha=dim?.05:active?.68:edge.type==='课程顺序'?.13:.23;
+    const indexEdge=edge.pathClass==='index';
+    ctx.globalAlpha=dim?.05:active?.68:indexEdge?.06:edge.type==='课程顺序'?.13:.23;
     const pathColor={control:'#74bbff',data:'#7fe2cd',power:'#ffc15d',diagnostic:'#f7aadd'}[edge.pathClass];
-    ctx.strokeStyle=active?'#ffffff':(pathColor||(edge.type==='课程顺序'?'#b5a4e7':'#7599c6'));ctx.lineWidth=active?1.7:edge.pathClass?1.15:1;
+    ctx.strokeStyle=active?'#ffffff':(pathColor||(edge.type==='课程顺序'?'#b5a4e7':indexEdge?'#536b90':'#7599c6'));ctx.lineWidth=active?1.7:indexEdge?.7:edge.pathClass?1.15:1;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
   }ctx.globalAlpha=1;
 

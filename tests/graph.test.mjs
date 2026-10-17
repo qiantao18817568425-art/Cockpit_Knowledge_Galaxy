@@ -78,6 +78,17 @@ test('semantic graph is evidence backed and covers every public source',()=>{
   assert.ok(graph.nodes.filter(x=>!x.hiddenByDefault).length<350,'default view must remain bounded');
 });
 
+test('cockpit root, domains, platforms and sources form one navigable knowledge graph',()=>{
+  const adjacency=new Map(graph.nodes.map(node=>[node.id,new Set()]));
+  for(const edge of graph.edges){adjacency.get(edge.from).add(edge.to);adjacency.get(edge.to).add(edge.from)}
+  for(const id of ['platform:mt8668','platform:mt8676','domain:platform','domain:power','domain:android'])assert.ok(adjacency.get(id)?.size>0,`${id} is isolated`);
+  const reached=new Set(['root']),queue=['root'];
+  while(queue.length){const id=queue.shift();for(const other of adjacency.get(id)||[])if(!reached.has(other)){reached.add(other);queue.push(other)}}
+  for(const node of graph.nodes.filter(node=>node.layer==='knowledge'))assert.ok(reached.has(node.id),`${node.id} is disconnected from cockpit root`);
+  for(const node of graph.nodes.filter(node=>node.kind==='source'))assert.ok(adjacency.get(node.id)?.size>0,`${node.id} has no knowledge mapping edge`);
+  assert.ok(graph.edges.some(edge=>edge.type==='variant_of'&&new Set([edge.from,edge.to]).has('platform:mt8668')&&new Set([edge.from,edge.to]).has('platform:mt8676')),'MT8668 and MT8676 need an explicit shared-family relation');
+});
+
 test('raw materials have a distinct category and complete classified directory',()=>{
   const categories=graph.nodes.filter(node=>node.id.startsWith('subtopic:raw:'));
   assert.equal(categories.length,graph.meta.rawCategoryCount);

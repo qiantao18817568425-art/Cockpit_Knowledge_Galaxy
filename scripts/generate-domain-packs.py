@@ -88,6 +88,7 @@ platform_entities=[
  E('observation:sequence','Sequence ID','observation','diagnosis',('MT8668','MT8676')),E('observation:freshness','Freshness / Timestamp','observation','diagnosis',('MT8668','MT8676')),E('observation:boot-generation','Boot / VM Generation','observation','diagnosis',('MT8668','MT8676')),E('observation:request-id','Request ID','observation','diagnosis',('MT8668','MT8676'))]
 platform_rels=[
  {'from':'component:hypervisor','to':'component:yocto-host','type':'controls','pathClass':'control','platforms':['MT8668','MT8676'],'category':'virtualization'},
+ {'from':'platform:mt8676','to':'platform:mt8668','type':'variant_of','pathClass':'control','platforms':['MT8668','MT8676'],'scope':'shared','status':'inferred_mapping','category':'virtualization','sourceId':'ccd5b795d5d9','pages':[6],'additionalEvidence':[{'sourceId':'adec16da0d62','pages':[6]}]},
  {'from':'component:android-guest','to':'component:hypervisor','type':'runs_on','pathClass':'control','platforms':['MT8668','MT8676'],'category':'virtualization'},
  {'from':'component:yocto-host','to':'interface:fdbus','type':'publishes','pathClass':'data','platforms':['MT8668','MT8676'],'category':'yocto'},
  {'from':'component:android-guest','to':'interface:binder','type':'publishes','pathClass':'data','platforms':['MT8668','MT8676'],'category':'android'},

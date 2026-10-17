@@ -13,10 +13,10 @@
     "rawDocumentCount": 299,
     "semantic": {
       "entityCount": 106,
-      "relationCount": 71,
-      "evidenceCount": 72,
+      "relationCount": 72,
+      "evidenceCount": 74,
       "sourceCount": 299,
-      "claimCount": 71
+      "claimCount": 72
     },
     "sourceCoverage": {
       "total": 299,
@@ -9381,6 +9381,36 @@
       "pages": [
         6
       ],
+      "status": "inferred_mapping",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“MT8676”与“MT8668”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "title": "证据 · MT8676_Hypervisor_System_User_Manual_V1.1.pdf",
+      "kind": "evidence",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "sourceName": "MT8676_Hypervisor_System_User_Manual_V1.1.pdf",
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ccd5b795d5d9.pdf"
+    },
+    {
+      "id": "ev:runtime:002:1",
+      "sourceId": "adec16da0d62",
+      "pages": [
+        6
+      ],
+      "status": "inferred_mapping",
+      "summary": "《MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。",
+      "title": "证据 · MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf",
+      "kind": "evidence",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "sourceName": "MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf",
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-adec16da0d62.pdf"
+    },
+    {
+      "id": "ev:runtime:003",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
       "status": "documented_reference",
       "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Hypervisor”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
       "title": "证据 · MT8676_Hypervisor_System_User_Manual_V1.1.pdf",
@@ -9391,7 +9421,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ccd5b795d5d9.pdf"
     },
     {
-      "id": "ev:runtime:003",
+      "id": "ev:runtime:004",
       "sourceId": "aa722a95a0ab",
       "pages": [
         7
@@ -9406,7 +9436,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-aa722a95a0ab.pdf"
     },
     {
-      "id": "ev:runtime:004",
+      "id": "ev:runtime:005",
       "sourceId": "a8a1aa448b88",
       "pages": [
         6
@@ -9421,7 +9451,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-a8a1aa448b88.pdf"
     },
     {
-      "id": "ev:runtime:005",
+      "id": "ev:runtime:006",
       "sourceId": "f24f4fe4d19c",
       "pages": [
         2
@@ -9436,7 +9466,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-f24f4fe4d19c.pdf"
     },
     {
-      "id": "ev:runtime:006",
+      "id": "ev:runtime:007",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -9451,7 +9481,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ccd5b795d5d9.pdf"
     },
     {
-      "id": "ev:runtime:007",
+      "id": "ev:runtime:008",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -9466,7 +9496,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ccd5b795d5d9.pdf"
     },
     {
-      "id": "ev:runtime:008",
+      "id": "ev:runtime:009",
       "sourceId": "183254d73cbd",
       "pages": [
         6
@@ -9481,7 +9511,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-183254d73cbd.pdf"
     },
     {
-      "id": "ev:runtime:009",
+      "id": "ev:runtime:010",
       "sourceId": "2131e9dacedf",
       "pages": [
         6
@@ -9496,7 +9526,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2131e9dacedf.pdf"
     },
     {
-      "id": "ev:runtime:010",
+      "id": "ev:runtime:011",
       "sourceId": "2131e9dacedf",
       "pages": [
         6
@@ -9511,7 +9541,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2131e9dacedf.pdf"
     },
     {
-      "id": "ev:runtime:011",
+      "id": "ev:runtime:012",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -9526,7 +9556,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ccd5b795d5d9.pdf"
     },
     {
-      "id": "ev:runtime:012",
+      "id": "ev:runtime:013",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -12952,10 +12982,10 @@
     {
       "id": "rel:runtime:002",
       "scope": "shared",
-      "status": "documented_reference",
-      "from": "component:android-guest",
-      "to": "component:hypervisor",
-      "type": "runs_on",
+      "status": "inferred_mapping",
+      "from": "platform:mt8676",
+      "to": "platform:mt8668",
+      "type": "variant_of",
       "pathClass": "control",
       "platforms": [
         "MT8668",
@@ -12967,9 +12997,10 @@
           "id": "claim:runtime:002",
           "relationId": "rel:runtime:002",
           "evidenceIds": [
-            "ev:runtime:002"
+            "ev:runtime:002",
+            "ev:runtime:002:1"
           ],
-          "status": "documented_reference",
+          "status": "inferred_mapping",
           "platforms": [
             "MT8668",
             "MT8676"
@@ -12981,10 +13012,10 @@
       "id": "rel:runtime:003",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:yocto-host",
-      "to": "interface:fdbus",
-      "type": "publishes",
-      "pathClass": "data",
+      "from": "component:android-guest",
+      "to": "component:hypervisor",
+      "type": "runs_on",
+      "pathClass": "control",
       "platforms": [
         "MT8668",
         "MT8676"
@@ -13009,8 +13040,8 @@
       "id": "rel:runtime:004",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:android-guest",
-      "to": "interface:binder",
+      "from": "component:yocto-host",
+      "to": "interface:fdbus",
       "type": "publishes",
       "pathClass": "data",
       "platforms": [
@@ -13037,8 +13068,8 @@
       "id": "rel:runtime:005",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:tbox",
-      "to": "interface:someip",
+      "from": "component:android-guest",
+      "to": "interface:binder",
       "type": "publishes",
       "pathClass": "data",
       "platforms": [
@@ -13065,9 +13096,9 @@
       "id": "rel:runtime:006",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:android-guest",
-      "to": "interface:vsock",
-      "type": "sends_to",
+      "from": "component:tbox",
+      "to": "interface:someip",
+      "type": "publishes",
       "pathClass": "data",
       "platforms": [
         "MT8668",
@@ -13094,8 +13125,8 @@
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:android-guest",
-      "to": "interface:virtio",
-      "type": "depends_on",
+      "to": "interface:vsock",
+      "type": "sends_to",
       "pathClass": "data",
       "platforms": [
         "MT8668",
@@ -13121,10 +13152,10 @@
       "id": "rel:runtime:008",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:mcu",
-      "to": "interface:spi-ipcl",
-      "type": "publishes",
-      "pathClass": "control",
+      "from": "component:android-guest",
+      "to": "interface:virtio",
+      "type": "depends_on",
+      "pathClass": "data",
       "platforms": [
         "MT8668",
         "MT8676"
@@ -13149,10 +13180,10 @@
       "id": "rel:runtime:009",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "interface:fdbus",
-      "to": "observation:sequence",
-      "type": "observed_by",
-      "pathClass": "diagnostic",
+      "from": "component:mcu",
+      "to": "interface:spi-ipcl",
+      "type": "publishes",
+      "pathClass": "control",
       "platforms": [
         "MT8668",
         "MT8676"
@@ -13177,8 +13208,8 @@
       "id": "rel:runtime:010",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "interface:someip",
-      "to": "observation:freshness",
+      "from": "interface:fdbus",
+      "to": "observation:sequence",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13205,8 +13236,8 @@
       "id": "rel:runtime:011",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "component:hypervisor",
-      "to": "observation:boot-generation",
+      "from": "interface:someip",
+      "to": "observation:freshness",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13233,8 +13264,8 @@
       "id": "rel:runtime:012",
       "scope": "shared",
       "status": "documented_reference",
-      "from": "interface:vsock",
-      "to": "observation:request-id",
+      "from": "component:hypervisor",
+      "to": "observation:boot-generation",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13248,6 +13279,34 @@
           "relationId": "rel:runtime:012",
           "evidenceIds": [
             "ev:runtime:012"
+          ],
+          "status": "documented_reference",
+          "platforms": [
+            "MT8668",
+            "MT8676"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rel:runtime:013",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:vsock",
+      "to": "observation:request-id",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "layer": "knowledge",
+      "claims": [
+        {
+          "id": "claim:runtime:013",
+          "relationId": "rel:runtime:013",
+          "evidenceIds": [
+            "ev:runtime:013"
           ],
           "status": "documented_reference",
           "platforms": [
@@ -14218,7 +14277,7 @@
     },
     {
       "id": "support:claim:runtime:002:ev:runtime:002",
-      "from": "component:android-guest",
+      "from": "platform:mt8676",
       "to": "ev:runtime:002",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14227,8 +14286,18 @@
       "claimId": "claim:runtime:002"
     },
     {
+      "id": "support:claim:runtime:002:ev:runtime:002:1",
+      "from": "platform:mt8676",
+      "to": "ev:runtime:002:1",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "claimId": "claim:runtime:002"
+    },
+    {
       "id": "support:claim:runtime:003:ev:runtime:003",
-      "from": "component:yocto-host",
+      "from": "component:android-guest",
       "to": "ev:runtime:003",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14238,7 +14307,7 @@
     },
     {
       "id": "support:claim:runtime:004:ev:runtime:004",
-      "from": "component:android-guest",
+      "from": "component:yocto-host",
       "to": "ev:runtime:004",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14248,7 +14317,7 @@
     },
     {
       "id": "support:claim:runtime:005:ev:runtime:005",
-      "from": "component:tbox",
+      "from": "component:android-guest",
       "to": "ev:runtime:005",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14258,7 +14327,7 @@
     },
     {
       "id": "support:claim:runtime:006:ev:runtime:006",
-      "from": "component:android-guest",
+      "from": "component:tbox",
       "to": "ev:runtime:006",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14278,7 +14347,7 @@
     },
     {
       "id": "support:claim:runtime:008:ev:runtime:008",
-      "from": "component:mcu",
+      "from": "component:android-guest",
       "to": "ev:runtime:008",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14288,7 +14357,7 @@
     },
     {
       "id": "support:claim:runtime:009:ev:runtime:009",
-      "from": "interface:fdbus",
+      "from": "component:mcu",
       "to": "ev:runtime:009",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14298,7 +14367,7 @@
     },
     {
       "id": "support:claim:runtime:010:ev:runtime:010",
-      "from": "interface:someip",
+      "from": "interface:fdbus",
       "to": "ev:runtime:010",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14308,7 +14377,7 @@
     },
     {
       "id": "support:claim:runtime:011:ev:runtime:011",
-      "from": "component:hypervisor",
+      "from": "interface:someip",
       "to": "ev:runtime:011",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14318,13 +14387,23 @@
     },
     {
       "id": "support:claim:runtime:012:ev:runtime:012",
-      "from": "interface:vsock",
+      "from": "component:hypervisor",
       "to": "ev:runtime:012",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
       "hiddenByDefault": true,
       "claimId": "claim:runtime:012"
+    },
+    {
+      "id": "support:claim:runtime:013:ev:runtime:013",
+      "from": "interface:vsock",
+      "to": "ev:runtime:013",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "claimId": "claim:runtime:013"
     },
     {
       "id": "support:claim:power:001:ev:power:001",
@@ -14908,9 +14987,18 @@
       "hiddenByDefault": true
     },
     {
+      "id": "source:ev:runtime:002:1",
+      "from": "ev:runtime:002:1",
+      "to": "adec16da0d62",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true
+    },
+    {
       "id": "source:ev:runtime:003",
       "from": "ev:runtime:003",
-      "to": "aa722a95a0ab",
+      "to": "ccd5b795d5d9",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14919,7 +15007,7 @@
     {
       "id": "source:ev:runtime:004",
       "from": "ev:runtime:004",
-      "to": "a8a1aa448b88",
+      "to": "aa722a95a0ab",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14928,7 +15016,7 @@
     {
       "id": "source:ev:runtime:005",
       "from": "ev:runtime:005",
-      "to": "f24f4fe4d19c",
+      "to": "a8a1aa448b88",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14937,7 +15025,7 @@
     {
       "id": "source:ev:runtime:006",
       "from": "ev:runtime:006",
-      "to": "ccd5b795d5d9",
+      "to": "f24f4fe4d19c",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14955,7 +15043,7 @@
     {
       "id": "source:ev:runtime:008",
       "from": "ev:runtime:008",
-      "to": "183254d73cbd",
+      "to": "ccd5b795d5d9",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14964,7 +15052,7 @@
     {
       "id": "source:ev:runtime:009",
       "from": "ev:runtime:009",
-      "to": "2131e9dacedf",
+      "to": "183254d73cbd",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14982,7 +15070,7 @@
     {
       "id": "source:ev:runtime:011",
       "from": "ev:runtime:011",
-      "to": "ccd5b795d5d9",
+      "to": "2131e9dacedf",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14991,6 +15079,15 @@
     {
       "id": "source:ev:runtime:012",
       "from": "ev:runtime:012",
+      "to": "ccd5b795d5d9",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "source:ev:runtime:013",
+      "from": "ev:runtime:013",
       "to": "ccd5b795d5d9",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -15202,6 +15299,6318 @@
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:topic:system:domain:platform",
+      "from": "topic:system",
+      "to": "domain:platform",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:virtualization:domain:virtualization",
+      "from": "topic:virtualization",
+      "to": "domain:virtualization",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:virtualization:domain:security",
+      "from": "topic:virtualization",
+      "to": "domain:security",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:android:domain:android",
+      "from": "topic:android",
+      "to": "domain:android",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:yocto:domain:yocto",
+      "from": "topic:yocto",
+      "to": "domain:yocto",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:mcu:domain:mcu",
+      "from": "topic:mcu",
+      "to": "domain:mcu",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:tbox:domain:tbox",
+      "from": "topic:tbox",
+      "to": "domain:tbox",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:tbox:domain:connectivity",
+      "from": "topic:tbox",
+      "to": "domain:connectivity",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:display:domain:display",
+      "from": "topic:display",
+      "to": "domain:display",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:display:domain:hmi",
+      "from": "topic:display",
+      "to": "domain:hmi",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:camera:domain:camera",
+      "from": "topic:camera",
+      "to": "domain:camera",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:audio:domain:audio",
+      "from": "topic:audio",
+      "to": "domain:audio",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:power:domain:power",
+      "from": "topic:power",
+      "to": "domain:power",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:power:domain:lifecycle",
+      "from": "topic:power",
+      "to": "domain:lifecycle",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:cross:domain:cross-domain",
+      "from": "topic:cross",
+      "to": "domain:cross-domain",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:cross:domain:connectivity",
+      "from": "topic:cross",
+      "to": "domain:connectivity",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:diagnosis:domain:diagnosis",
+      "from": "topic:diagnosis",
+      "to": "domain:diagnosis",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:diagnosis:domain:assurance",
+      "from": "topic:diagnosis",
+      "to": "domain:assurance",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:diagnosis:domain:performance",
+      "from": "topic:diagnosis",
+      "to": "domain:performance",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:topic:diagnosis:domain:usb-storage",
+      "from": "topic:diagnosis",
+      "to": "domain:usb-storage",
+      "type": "主题归类",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:failure:app-crash",
+      "from": "domain:assurance",
+      "to": "failure:app-crash",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:failure:app-crash",
+      "from": "platform:mt8668",
+      "to": "failure:app-crash",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:failure:app-crash",
+      "from": "platform:mt8676",
+      "to": "failure:app-crash",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:failure:system-server",
+      "from": "domain:assurance",
+      "to": "failure:system-server",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:failure:system-server",
+      "from": "platform:mt8668",
+      "to": "failure:system-server",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:failure:system-server",
+      "from": "platform:mt8676",
+      "to": "failure:system-server",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:failure:vm-reset",
+      "from": "domain:assurance",
+      "to": "failure:vm-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:failure:vm-reset",
+      "from": "platform:mt8668",
+      "to": "failure:vm-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:failure:vm-reset",
+      "from": "platform:mt8676",
+      "to": "failure:vm-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:failure:host-reset",
+      "from": "domain:assurance",
+      "to": "failure:host-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:failure:host-reset",
+      "from": "platform:mt8668",
+      "to": "failure:host-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:failure:host-reset",
+      "from": "platform:mt8676",
+      "to": "failure:host-reset",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:process:db-ke-forensics",
+      "from": "domain:diagnosis",
+      "to": "process:db-ke-forensics",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:db-ke-forensics",
+      "from": "platform:mt8668",
+      "to": "process:db-ke-forensics",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:db-ke-forensics",
+      "from": "platform:mt8676",
+      "to": "process:db-ke-forensics",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:first-fatal",
+      "from": "domain:diagnosis",
+      "to": "observation:first-fatal",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:first-fatal",
+      "from": "platform:mt8668",
+      "to": "observation:first-fatal",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:first-fatal",
+      "from": "platform:mt8676",
+      "to": "observation:first-fatal",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:performance:observation:cpu-io-memory",
+      "from": "domain:performance",
+      "to": "observation:cpu-io-memory",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:cpu-io-memory",
+      "from": "platform:mt8668",
+      "to": "observation:cpu-io-memory",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:cpu-io-memory",
+      "from": "platform:mt8676",
+      "to": "observation:cpu-io-memory",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:performance:observation:frame-chain",
+      "from": "domain:performance",
+      "to": "observation:frame-chain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:frame-chain",
+      "from": "platform:mt8668",
+      "to": "observation:frame-chain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:frame-chain",
+      "from": "platform:mt8676",
+      "to": "observation:frame-chain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:component:log-producer",
+      "from": "domain:diagnosis",
+      "to": "component:log-producer",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:log-producer",
+      "from": "platform:mt8668",
+      "to": "component:log-producer",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:log-producer",
+      "from": "platform:mt8676",
+      "to": "component:log-producer",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:component:log-retention",
+      "from": "domain:diagnosis",
+      "to": "component:log-retention",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:log-retention",
+      "from": "platform:mt8668",
+      "to": "component:log-retention",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:log-retention",
+      "from": "platform:mt8676",
+      "to": "component:log-retention",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:failure:log-storm",
+      "from": "domain:diagnosis",
+      "to": "failure:log-storm",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:failure:log-storm",
+      "from": "platform:mt8668",
+      "to": "failure:log-storm",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:failure:log-storm",
+      "from": "platform:mt8676",
+      "to": "failure:log-storm",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:process:tpm-trigger",
+      "from": "domain:assurance",
+      "to": "process:tpm-trigger",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:tpm-trigger",
+      "from": "platform:mt8668",
+      "to": "process:tpm-trigger",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:tpm-trigger",
+      "from": "platform:mt8676",
+      "to": "process:tpm-trigger",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:process:tpm-direct-failure",
+      "from": "domain:assurance",
+      "to": "process:tpm-direct-failure",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:tpm-direct-failure",
+      "from": "platform:mt8668",
+      "to": "process:tpm-direct-failure",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:tpm-direct-failure",
+      "from": "platform:mt8676",
+      "to": "process:tpm-direct-failure",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:process:tpm-recovery",
+      "from": "domain:assurance",
+      "to": "process:tpm-recovery",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:tpm-recovery",
+      "from": "platform:mt8668",
+      "to": "process:tpm-recovery",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:tpm-recovery",
+      "from": "platform:mt8676",
+      "to": "process:tpm-recovery",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:assurance:process:tpm-verification",
+      "from": "domain:assurance",
+      "to": "process:tpm-verification",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:tpm-verification",
+      "from": "platform:mt8668",
+      "to": "process:tpm-verification",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:tpm-verification",
+      "from": "platform:mt8676",
+      "to": "process:tpm-verification",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:component:ethernet-pcs",
+      "from": "domain:connectivity",
+      "to": "component:ethernet-pcs",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:ethernet-pcs",
+      "from": "platform:mt8668",
+      "to": "component:ethernet-pcs",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:ethernet-pcs",
+      "from": "platform:mt8676",
+      "to": "component:ethernet-pcs",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:component:ethernet-phy",
+      "from": "domain:connectivity",
+      "to": "component:ethernet-phy",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:ethernet-phy",
+      "from": "platform:mt8668",
+      "to": "component:ethernet-phy",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:ethernet-phy",
+      "from": "platform:mt8676",
+      "to": "component:ethernet-phy",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:process:l3-connectivity",
+      "from": "domain:connectivity",
+      "to": "process:l3-connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:l3-connectivity",
+      "from": "platform:mt8668",
+      "to": "process:l3-connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:l3-connectivity",
+      "from": "platform:mt8676",
+      "to": "process:l3-connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:component:wifi-sta",
+      "from": "domain:connectivity",
+      "to": "component:wifi-sta",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:wifi-sta",
+      "from": "platform:mt8668",
+      "to": "component:wifi-sta",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:wifi-sta",
+      "from": "platform:mt8676",
+      "to": "component:wifi-sta",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:component:wifi-softap",
+      "from": "domain:connectivity",
+      "to": "component:wifi-softap",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:wifi-softap",
+      "from": "platform:mt8668",
+      "to": "component:wifi-softap",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:wifi-softap",
+      "from": "platform:mt8676",
+      "to": "component:wifi-softap",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:connectivity:process:phone-link",
+      "from": "domain:connectivity",
+      "to": "process:phone-link",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:phone-link",
+      "from": "platform:mt8668",
+      "to": "process:phone-link",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:phone-link",
+      "from": "platform:mt8676",
+      "to": "process:phone-link",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:tbox:component:modem",
+      "from": "domain:tbox",
+      "to": "component:modem",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:modem",
+      "from": "platform:mt8668",
+      "to": "component:modem",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:modem",
+      "from": "platform:mt8676",
+      "to": "component:modem",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:tbox:process:remote-wake",
+      "from": "domain:tbox",
+      "to": "process:remote-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:remote-wake",
+      "from": "platform:mt8668",
+      "to": "process:remote-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:remote-wake",
+      "from": "platform:mt8676",
+      "to": "process:remote-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:lifecycle:state:cold-boot",
+      "from": "domain:lifecycle",
+      "to": "state:cold-boot",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:state:cold-boot",
+      "from": "platform:mt8668",
+      "to": "state:cold-boot",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:cold-boot",
+      "from": "platform:mt8676",
+      "to": "state:cold-boot",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:lifecycle:state:str-resume",
+      "from": "domain:lifecycle",
+      "to": "state:str-resume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:state:str-resume",
+      "from": "platform:mt8668",
+      "to": "state:str-resume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:str-resume",
+      "from": "platform:mt8676",
+      "to": "state:str-resume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:lifecycle:state:vm-recreate",
+      "from": "domain:lifecycle",
+      "to": "state:vm-recreate",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:state:vm-recreate",
+      "from": "platform:mt8668",
+      "to": "state:vm-recreate",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:vm-recreate",
+      "from": "platform:mt8676",
+      "to": "state:vm-recreate",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:lifecycle:state:process-restart",
+      "from": "domain:lifecycle",
+      "to": "state:process-restart",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:state:process-restart",
+      "from": "platform:mt8668",
+      "to": "state:process-restart",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:process-restart",
+      "from": "platform:mt8676",
+      "to": "state:process-restart",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:usb-storage:component:usb-connector",
+      "from": "domain:usb-storage",
+      "to": "component:usb-connector",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:usb-connector",
+      "from": "platform:mt8668",
+      "to": "component:usb-connector",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:usb-connector",
+      "from": "platform:mt8676",
+      "to": "component:usb-connector",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:usb-storage:component:usb-controller",
+      "from": "domain:usb-storage",
+      "to": "component:usb-controller",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:usb-controller",
+      "from": "platform:mt8668",
+      "to": "component:usb-controller",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:usb-controller",
+      "from": "platform:mt8676",
+      "to": "component:usb-controller",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:usb-storage:component:block-device",
+      "from": "domain:usb-storage",
+      "to": "component:block-device",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:block-device",
+      "from": "platform:mt8668",
+      "to": "component:block-device",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:block-device",
+      "from": "platform:mt8676",
+      "to": "component:block-device",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:usb-storage:component:filesystem-volume",
+      "from": "domain:usb-storage",
+      "to": "component:filesystem-volume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:filesystem-volume",
+      "from": "platform:mt8668",
+      "to": "component:filesystem-volume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:filesystem-volume",
+      "from": "platform:mt8676",
+      "to": "component:filesystem-volume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:security:interface:tee-transport",
+      "from": "domain:security",
+      "to": "interface:tee-transport",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:tee-transport",
+      "from": "platform:mt8668",
+      "to": "interface:tee-transport",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:tee-transport",
+      "from": "platform:mt8676",
+      "to": "interface:tee-transport",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:security:component:tee-service",
+      "from": "domain:security",
+      "to": "component:tee-service",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:tee-service",
+      "from": "platform:mt8668",
+      "to": "component:tee-service",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:tee-service",
+      "from": "platform:mt8676",
+      "to": "component:tee-service",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:security:component:secure-storage",
+      "from": "domain:security",
+      "to": "component:secure-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:secure-storage",
+      "from": "platform:mt8668",
+      "to": "component:secure-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:secure-storage",
+      "from": "platform:mt8676",
+      "to": "component:secure-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:display:component:android-display",
+      "from": "domain:display",
+      "to": "component:android-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:android-display",
+      "from": "platform:mt8668",
+      "to": "component:android-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:android-display",
+      "from": "platform:mt8676",
+      "to": "component:android-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:display:component:yocto-display",
+      "from": "domain:display",
+      "to": "component:yocto-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:yocto-display",
+      "from": "platform:mt8668",
+      "to": "component:yocto-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:yocto-display",
+      "from": "platform:mt8676",
+      "to": "component:yocto-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:display:component:physical-display",
+      "from": "domain:display",
+      "to": "component:physical-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:physical-display",
+      "from": "platform:mt8668",
+      "to": "component:physical-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:physical-display",
+      "from": "platform:mt8676",
+      "to": "component:physical-display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:display:component:backlight",
+      "from": "domain:display",
+      "to": "component:backlight",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:backlight",
+      "from": "platform:mt8668",
+      "to": "component:backlight",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:backlight",
+      "from": "platform:mt8676",
+      "to": "component:backlight",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:display:interface:input-event",
+      "from": "domain:display",
+      "to": "interface:input-event",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:input-event",
+      "from": "platform:mt8668",
+      "to": "interface:input-event",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:input-event",
+      "from": "platform:mt8676",
+      "to": "interface:input-event",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:first-frame",
+      "from": "domain:diagnosis",
+      "to": "observation:first-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:first-frame",
+      "from": "platform:mt8668",
+      "to": "observation:first-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:first-frame",
+      "from": "platform:mt8676",
+      "to": "observation:first-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:camera:component:camera-control",
+      "from": "domain:camera",
+      "to": "component:camera-control",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:camera-control",
+      "from": "platform:mt8668",
+      "to": "component:camera-control",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:camera-control",
+      "from": "platform:mt8676",
+      "to": "component:camera-control",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:camera:interface:camera-frame",
+      "from": "domain:camera",
+      "to": "interface:camera-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:camera-frame",
+      "from": "platform:mt8668",
+      "to": "interface:camera-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:camera-frame",
+      "from": "platform:mt8676",
+      "to": "interface:camera-frame",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:camera:component:avm-stitch",
+      "from": "domain:camera",
+      "to": "component:avm-stitch",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:avm-stitch",
+      "from": "platform:mt8668",
+      "to": "component:avm-stitch",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:avm-stitch",
+      "from": "platform:mt8676",
+      "to": "component:avm-stitch",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:camera-four-stream",
+      "from": "domain:diagnosis",
+      "to": "observation:camera-four-stream",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:camera-four-stream",
+      "from": "platform:mt8668",
+      "to": "observation:camera-four-stream",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:camera-four-stream",
+      "from": "platform:mt8676",
+      "to": "observation:camera-four-stream",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:audio:process:audio-playback",
+      "from": "domain:audio",
+      "to": "process:audio-playback",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:audio-playback",
+      "from": "platform:mt8668",
+      "to": "process:audio-playback",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:audio-playback",
+      "from": "platform:mt8676",
+      "to": "process:audio-playback",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:audio:process:audio-capture",
+      "from": "domain:audio",
+      "to": "process:audio-capture",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:process:audio-capture",
+      "from": "platform:mt8668",
+      "to": "process:audio-capture",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:audio-capture",
+      "from": "platform:mt8676",
+      "to": "process:audio-capture",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:audio:component:aec-reference",
+      "from": "domain:audio",
+      "to": "component:aec-reference",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:aec-reference",
+      "from": "platform:mt8668",
+      "to": "component:aec-reference",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:aec-reference",
+      "from": "platform:mt8676",
+      "to": "component:aec-reference",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:audio:component:dsp-variant",
+      "from": "domain:audio",
+      "to": "component:dsp-variant",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:dsp-variant",
+      "from": "platform:mt8668",
+      "to": "component:dsp-variant",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:dsp-variant",
+      "from": "platform:mt8676",
+      "to": "component:dsp-variant",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:component:hypervisor",
+      "from": "domain:virtualization",
+      "to": "component:hypervisor",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:hypervisor",
+      "from": "platform:mt8668",
+      "to": "component:hypervisor",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:hypervisor",
+      "from": "platform:mt8676",
+      "to": "component:hypervisor",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:yocto:component:yocto-host",
+      "from": "domain:yocto",
+      "to": "component:yocto-host",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:yocto-host",
+      "from": "platform:mt8668",
+      "to": "component:yocto-host",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:yocto-host",
+      "from": "platform:mt8676",
+      "to": "component:yocto-host",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:mcu:component:mcu",
+      "from": "domain:mcu",
+      "to": "component:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:mcu",
+      "from": "platform:mt8668",
+      "to": "component:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:mcu",
+      "from": "platform:mt8676",
+      "to": "component:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:tbox:component:tbox",
+      "from": "domain:tbox",
+      "to": "component:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:tbox",
+      "from": "platform:mt8668",
+      "to": "component:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:tbox",
+      "from": "platform:mt8676",
+      "to": "component:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:android:interface:binder",
+      "from": "domain:android",
+      "to": "interface:binder",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:binder",
+      "from": "platform:mt8668",
+      "to": "interface:binder",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:binder",
+      "from": "platform:mt8676",
+      "to": "interface:binder",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:cross-domain:interface:fdbus",
+      "from": "domain:cross-domain",
+      "to": "interface:fdbus",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:fdbus",
+      "from": "platform:mt8668",
+      "to": "interface:fdbus",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:fdbus",
+      "from": "platform:mt8676",
+      "to": "interface:fdbus",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:cross-domain:interface:someip",
+      "from": "domain:cross-domain",
+      "to": "interface:someip",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:someip",
+      "from": "platform:mt8668",
+      "to": "interface:someip",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:someip",
+      "from": "platform:mt8676",
+      "to": "interface:someip",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:interface:vsock",
+      "from": "domain:virtualization",
+      "to": "interface:vsock",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:vsock",
+      "from": "platform:mt8668",
+      "to": "interface:vsock",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:vsock",
+      "from": "platform:mt8676",
+      "to": "interface:vsock",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:interface:virtio",
+      "from": "domain:virtualization",
+      "to": "interface:virtio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:virtio",
+      "from": "platform:mt8668",
+      "to": "interface:virtio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:virtio",
+      "from": "platform:mt8676",
+      "to": "interface:virtio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:sequence",
+      "from": "domain:diagnosis",
+      "to": "observation:sequence",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:sequence",
+      "from": "platform:mt8668",
+      "to": "observation:sequence",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:sequence",
+      "from": "platform:mt8676",
+      "to": "observation:sequence",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:freshness",
+      "from": "domain:diagnosis",
+      "to": "observation:freshness",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:freshness",
+      "from": "platform:mt8668",
+      "to": "observation:freshness",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:freshness",
+      "from": "platform:mt8676",
+      "to": "observation:freshness",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:boot-generation",
+      "from": "domain:diagnosis",
+      "to": "observation:boot-generation",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:boot-generation",
+      "from": "platform:mt8668",
+      "to": "observation:boot-generation",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:boot-generation",
+      "from": "platform:mt8676",
+      "to": "observation:boot-generation",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:request-id",
+      "from": "domain:diagnosis",
+      "to": "observation:request-id",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:observation:request-id",
+      "from": "platform:mt8668",
+      "to": "observation:request-id",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:request-id",
+      "from": "platform:mt8676",
+      "to": "observation:request-id",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:platform:platform:mt8668",
+      "from": "domain:platform",
+      "to": "platform:mt8668",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:platform:platform:mt8676",
+      "from": "domain:platform",
+      "to": "platform:mt8676",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:vehicle-power-input",
+      "from": "domain:power",
+      "to": "component:vehicle-power-input",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:vehicle-power-input",
+      "from": "platform:mt8668",
+      "to": "component:vehicle-power-input",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:vehicle-power-input",
+      "from": "platform:mt8676",
+      "to": "component:vehicle-power-input",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:mcu:component:mcu-power-manager",
+      "from": "domain:mcu",
+      "to": "component:mcu-power-manager",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:mcu-power-manager",
+      "from": "platform:mt8668",
+      "to": "component:mcu-power-manager",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:mcu-power-manager",
+      "from": "platform:mt8676",
+      "to": "component:mcu-power-manager",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:interface:gpio-wake",
+      "from": "domain:power",
+      "to": "interface:gpio-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:gpio-wake",
+      "from": "platform:mt8668",
+      "to": "interface:gpio-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:gpio-wake",
+      "from": "platform:mt8676",
+      "to": "interface:gpio-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:cross-domain:interface:spi-ipcl",
+      "from": "domain:cross-domain",
+      "to": "interface:spi-ipcl",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:interface:spi-ipcl",
+      "from": "platform:mt8668",
+      "to": "interface:spi-ipcl",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:interface:spi-ipcl",
+      "from": "platform:mt8676",
+      "to": "interface:spi-ipcl",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:yocto:component:yocto-sleep-manager",
+      "from": "domain:yocto",
+      "to": "component:yocto-sleep-manager",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:yocto-sleep-manager",
+      "from": "platform:mt8676",
+      "to": "component:yocto-sleep-manager",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:component:hypervisor-barrier",
+      "from": "domain:virtualization",
+      "to": "component:hypervisor-barrier",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:hypervisor-barrier",
+      "from": "platform:mt8676",
+      "to": "component:hypervisor-barrier",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:component:hypervisor-suspend-v11",
+      "from": "domain:virtualization",
+      "to": "component:hypervisor-suspend-v11",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:hypervisor-suspend-v11",
+      "from": "platform:mt8676",
+      "to": "component:hypervisor-suspend-v11",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:virtualization:component:hypervisor-suspend-v13",
+      "from": "domain:virtualization",
+      "to": "component:hypervisor-suspend-v13",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:hypervisor-suspend-v13",
+      "from": "platform:mt8676",
+      "to": "component:hypervisor-suspend-v13",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:android:component:android-guest",
+      "from": "domain:android",
+      "to": "component:android-guest",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8668:component:android-guest",
+      "from": "platform:mt8668",
+      "to": "component:android-guest",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:android-guest",
+      "from": "platform:mt8676",
+      "to": "component:android-guest",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:tbox:component:tbox-guest",
+      "from": "domain:tbox",
+      "to": "component:tbox-guest",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:tbox-guest",
+      "from": "platform:mt8676",
+      "to": "component:tbox-guest",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:process:kernel-suspend",
+      "from": "domain:power",
+      "to": "process:kernel-suspend",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:process:kernel-suspend",
+      "from": "platform:mt8676",
+      "to": "process:kernel-suspend",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:atf",
+      "from": "domain:power",
+      "to": "component:atf",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:atf",
+      "from": "platform:mt8676",
+      "to": "component:atf",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:spm",
+      "from": "domain:power",
+      "to": "component:spm",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:spm",
+      "from": "platform:mt8676",
+      "to": "component:spm",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:pmic",
+      "from": "domain:power",
+      "to": "component:pmic",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:pmic",
+      "from": "platform:mt8676",
+      "to": "component:pmic",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:mt6363",
+      "from": "domain:power",
+      "to": "component:mt6363",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:mt6363",
+      "from": "platform:mt8676",
+      "to": "component:mt6363",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:state:power-active",
+      "from": "domain:power",
+      "to": "state:power-active",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:power-active",
+      "from": "platform:mt8676",
+      "to": "state:power-active",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:state:power-suspend-entry",
+      "from": "domain:power",
+      "to": "state:power-suspend-entry",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:power-suspend-entry",
+      "from": "platform:mt8676",
+      "to": "state:power-suspend-entry",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:state:power-suspended",
+      "from": "domain:power",
+      "to": "state:power-suspended",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:power-suspended",
+      "from": "platform:mt8676",
+      "to": "state:power-suspended",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:state:power-resume",
+      "from": "domain:power",
+      "to": "state:power-resume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:state:power-resume",
+      "from": "platform:mt8676",
+      "to": "state:power-resume",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:wake-source",
+      "from": "domain:diagnosis",
+      "to": "observation:wake-source",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:wake-source",
+      "from": "platform:mt8676",
+      "to": "observation:wake-source",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:framework-wake",
+      "from": "domain:diagnosis",
+      "to": "observation:framework-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:framework-wake",
+      "from": "platform:mt8676",
+      "to": "observation:framework-wake",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:suspend-abort",
+      "from": "domain:diagnosis",
+      "to": "observation:suspend-abort",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:suspend-abort",
+      "from": "platform:mt8676",
+      "to": "observation:suspend-abort",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:diagnosis:observation:wake-after-suspend",
+      "from": "domain:diagnosis",
+      "to": "observation:wake-after-suspend",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:observation:wake-after-suspend",
+      "from": "platform:mt8676",
+      "to": "observation:wake-after-suspend",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:domain:domain:power:component:backup-power",
+      "from": "domain:power",
+      "to": "component:backup-power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:platform:platform:mt8676:component:backup-power",
+      "from": "platform:mt8676",
+      "to": "component:backup-power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index"
+    },
+    {
+      "id": "index:source:a8a1aa448b88:domain:android",
+      "from": "a8a1aa448b88",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3e5afcb20755:domain:android",
+      "from": "3e5afcb20755",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:37f5ed85e31d:domain:android",
+      "from": "37f5ed85e31d",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4372e62da7d8:domain:android",
+      "from": "4372e62da7d8",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:83cce0f0d84a:domain:android",
+      "from": "83cce0f0d84a",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4276ac3d43b1:domain:android",
+      "from": "4276ac3d43b1",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:fe5c7bebad68:domain:android",
+      "from": "fe5c7bebad68",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9d35060e0261:domain:android",
+      "from": "9d35060e0261",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cd4da46210e1:domain:android",
+      "from": "cd4da46210e1",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:fb0f163b34e6:domain:android",
+      "from": "fb0f163b34e6",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d5578aaa112e:domain:android",
+      "from": "d5578aaa112e",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:07ba8708b032:domain:android",
+      "from": "07ba8708b032",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6bd2fa3feaf4:domain:android",
+      "from": "6bd2fa3feaf4",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b724dfbe0dbe:domain:android",
+      "from": "b724dfbe0dbe",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:fe255878b698:domain:android",
+      "from": "fe255878b698",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:aa85206665a9:domain:android",
+      "from": "aa85206665a9",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b1169fd18761:domain:android",
+      "from": "b1169fd18761",
+      "to": "domain:android",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6c11069e244f:domain:camera",
+      "from": "6c11069e244f",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4330ba7eddf6:domain:camera",
+      "from": "4330ba7eddf6",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2faacfd1b738:domain:camera",
+      "from": "2faacfd1b738",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:355d4f791169:domain:camera",
+      "from": "355d4f791169",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:db487565233b:domain:camera",
+      "from": "db487565233b",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1f7b85f8dfc6:domain:camera",
+      "from": "1f7b85f8dfc6",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d5c445e4df99:domain:camera",
+      "from": "d5c445e4df99",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e2124eed8257:domain:camera",
+      "from": "e2124eed8257",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ce4327878058:domain:camera",
+      "from": "ce4327878058",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ffda3633b49:domain:camera",
+      "from": "3ffda3633b49",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:59ccf9c0f25e:domain:camera",
+      "from": "59ccf9c0f25e",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:140b4869f951:domain:camera",
+      "from": "140b4869f951",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1fce1e40a576:domain:camera",
+      "from": "1fce1e40a576",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2cb616e3e186:domain:camera",
+      "from": "2cb616e3e186",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:74c716f63dfe:domain:camera",
+      "from": "74c716f63dfe",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b0adb12e154f:domain:camera",
+      "from": "b0adb12e154f",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e914c6daaad7:domain:camera",
+      "from": "e914c6daaad7",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:984278ee09e5:domain:camera",
+      "from": "984278ee09e5",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:01d0f7d1891c:domain:camera",
+      "from": "01d0f7d1891c",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6344b359854e:domain:camera",
+      "from": "6344b359854e",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:fa5f43dca8d4:domain:camera",
+      "from": "fa5f43dca8d4",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bf16d2b93d43:domain:camera",
+      "from": "bf16d2b93d43",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a235c6e6765:domain:camera",
+      "from": "7a235c6e6765",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:52452e66baed:domain:camera",
+      "from": "52452e66baed",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:28f33b5b442f:domain:camera",
+      "from": "28f33b5b442f",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8ffa08647b60:domain:camera",
+      "from": "8ffa08647b60",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ca0cfa195c8:domain:camera",
+      "from": "2ca0cfa195c8",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4e82f0cb886e:domain:camera",
+      "from": "4e82f0cb886e",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e8c210d3eda4:domain:camera",
+      "from": "e8c210d3eda4",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0a8a2336080c:domain:camera",
+      "from": "0a8a2336080c",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:781dfbb6e151:domain:camera",
+      "from": "781dfbb6e151",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3bd2f904e632:domain:camera",
+      "from": "3bd2f904e632",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6fb99f5d4fea:domain:camera",
+      "from": "6fb99f5d4fea",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ae0c98cf808:domain:camera",
+      "from": "0ae0c98cf808",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:231ce2823668:domain:camera",
+      "from": "231ce2823668",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:24e652ef273a:domain:camera",
+      "from": "24e652ef273a",
+      "to": "domain:camera",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:81a8c931d000:domain:mcu",
+      "from": "81a8c931d000",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:81a8c931d000:domain:power",
+      "from": "81a8c931d000",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9f37a8db2acd:domain:mcu",
+      "from": "9f37a8db2acd",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9f37a8db2acd:domain:power",
+      "from": "9f37a8db2acd",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7d1e0f95c34f:domain:mcu",
+      "from": "7d1e0f95c34f",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7d1e0f95c34f:domain:power",
+      "from": "7d1e0f95c34f",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:40192730210a:domain:mcu",
+      "from": "40192730210a",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:40192730210a:domain:power",
+      "from": "40192730210a",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d3691b28be36:domain:mcu",
+      "from": "d3691b28be36",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d3691b28be36:domain:power",
+      "from": "d3691b28be36",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:183254d73cbd:domain:mcu",
+      "from": "183254d73cbd",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:183254d73cbd:domain:power",
+      "from": "183254d73cbd",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:852e551201a0:domain:mcu",
+      "from": "852e551201a0",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:852e551201a0:domain:power",
+      "from": "852e551201a0",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2397734a51c2:domain:mcu",
+      "from": "2397734a51c2",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2397734a51c2:domain:power",
+      "from": "2397734a51c2",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1befc8374cfe:domain:mcu",
+      "from": "1befc8374cfe",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1befc8374cfe:domain:power",
+      "from": "1befc8374cfe",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:398af5949db9:domain:mcu",
+      "from": "398af5949db9",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:398af5949db9:domain:power",
+      "from": "398af5949db9",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4ae975b91299:domain:mcu",
+      "from": "4ae975b91299",
+      "to": "domain:mcu",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4ae975b91299:domain:power",
+      "from": "4ae975b91299",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:58bac8d6e11b:domain:tbox",
+      "from": "58bac8d6e11b",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:58bac8d6e11b:domain:connectivity",
+      "from": "58bac8d6e11b",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:be1aff227afa:domain:tbox",
+      "from": "be1aff227afa",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:be1aff227afa:domain:connectivity",
+      "from": "be1aff227afa",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:63729693d95a:domain:tbox",
+      "from": "63729693d95a",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:63729693d95a:domain:connectivity",
+      "from": "63729693d95a",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:617e4896eb57:domain:tbox",
+      "from": "617e4896eb57",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:617e4896eb57:domain:connectivity",
+      "from": "617e4896eb57",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a9437a7db8a:domain:tbox",
+      "from": "7a9437a7db8a",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a9437a7db8a:domain:connectivity",
+      "from": "7a9437a7db8a",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b6db294b7916:domain:tbox",
+      "from": "b6db294b7916",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b6db294b7916:domain:connectivity",
+      "from": "b6db294b7916",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f24f4fe4d19c:domain:tbox",
+      "from": "f24f4fe4d19c",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f24f4fe4d19c:domain:connectivity",
+      "from": "f24f4fe4d19c",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e52de38fef83:domain:tbox",
+      "from": "e52de38fef83",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e52de38fef83:domain:connectivity",
+      "from": "e52de38fef83",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:200f3c05d9cd:domain:tbox",
+      "from": "200f3c05d9cd",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:200f3c05d9cd:domain:connectivity",
+      "from": "200f3c05d9cd",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a498a5dfafa:domain:tbox",
+      "from": "7a498a5dfafa",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a498a5dfafa:domain:connectivity",
+      "from": "7a498a5dfafa",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f1e3a5801e5d:domain:tbox",
+      "from": "f1e3a5801e5d",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f1e3a5801e5d:domain:connectivity",
+      "from": "f1e3a5801e5d",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:73b34cf0a80b:domain:tbox",
+      "from": "73b34cf0a80b",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:73b34cf0a80b:domain:connectivity",
+      "from": "73b34cf0a80b",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:14958f21236f:domain:tbox",
+      "from": "14958f21236f",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:14958f21236f:domain:connectivity",
+      "from": "14958f21236f",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:250adb38e25c:domain:tbox",
+      "from": "250adb38e25c",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:250adb38e25c:domain:connectivity",
+      "from": "250adb38e25c",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d5672b3d4f5d:domain:tbox",
+      "from": "d5672b3d4f5d",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d5672b3d4f5d:domain:connectivity",
+      "from": "d5672b3d4f5d",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6e1afbe19015:domain:tbox",
+      "from": "6e1afbe19015",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6e1afbe19015:domain:connectivity",
+      "from": "6e1afbe19015",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a7e4b3132313:domain:tbox",
+      "from": "a7e4b3132313",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a7e4b3132313:domain:connectivity",
+      "from": "a7e4b3132313",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3e6385ac82ab:domain:tbox",
+      "from": "3e6385ac82ab",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3e6385ac82ab:domain:connectivity",
+      "from": "3e6385ac82ab",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6a7c492cf597:domain:tbox",
+      "from": "6a7c492cf597",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6a7c492cf597:domain:connectivity",
+      "from": "6a7c492cf597",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:839d3d6f2a0d:domain:tbox",
+      "from": "839d3d6f2a0d",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:839d3d6f2a0d:domain:connectivity",
+      "from": "839d3d6f2a0d",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6ee6bf39eea0:domain:tbox",
+      "from": "6ee6bf39eea0",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6ee6bf39eea0:domain:connectivity",
+      "from": "6ee6bf39eea0",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3c456da9d243:domain:tbox",
+      "from": "3c456da9d243",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3c456da9d243:domain:connectivity",
+      "from": "3c456da9d243",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9eae122081b6:domain:tbox",
+      "from": "9eae122081b6",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9eae122081b6:domain:connectivity",
+      "from": "9eae122081b6",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6035c10be62b:domain:tbox",
+      "from": "6035c10be62b",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6035c10be62b:domain:connectivity",
+      "from": "6035c10be62b",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0de6d012049c:domain:tbox",
+      "from": "0de6d012049c",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0de6d012049c:domain:connectivity",
+      "from": "0de6d012049c",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c4d8634dee6e:domain:tbox",
+      "from": "c4d8634dee6e",
+      "to": "domain:tbox",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c4d8634dee6e:domain:connectivity",
+      "from": "c4d8634dee6e",
+      "to": "domain:connectivity",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:fefa132a945d:domain:usb-storage",
+      "from": "fefa132a945d",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:dbba8095559d:domain:usb-storage",
+      "from": "dbba8095559d",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e2492abe19ec:domain:usb-storage",
+      "from": "e2492abe19ec",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cba4630088f7:domain:usb-storage",
+      "from": "cba4630088f7",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f71b132e4ab4:domain:usb-storage",
+      "from": "f71b132e4ab4",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:36817cbb1339:domain:usb-storage",
+      "from": "36817cbb1339",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a3042f158d97:domain:usb-storage",
+      "from": "a3042f158d97",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:afa3d415e857:domain:usb-storage",
+      "from": "afa3d415e857",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f89d9f4cd89b:domain:usb-storage",
+      "from": "f89d9f4cd89b",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8f66a6dab8b6:domain:usb-storage",
+      "from": "8f66a6dab8b6",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4b5c8e0b65ad:domain:usb-storage",
+      "from": "4b5c8e0b65ad",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:998ce13df798:domain:usb-storage",
+      "from": "998ce13df798",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:45d28fd50a95:domain:usb-storage",
+      "from": "45d28fd50a95",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:36e7fa1f93e4:domain:usb-storage",
+      "from": "36e7fa1f93e4",
+      "to": "domain:usb-storage",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:aa722a95a0ab:domain:yocto",
+      "from": "aa722a95a0ab",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:18ec91283d4d:domain:yocto",
+      "from": "18ec91283d4d",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4c95c7252a57:domain:yocto",
+      "from": "4c95c7252a57",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:20554ef2677e:domain:yocto",
+      "from": "20554ef2677e",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:dbdab38836d5:domain:yocto",
+      "from": "dbdab38836d5",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e7b728514d1d:domain:yocto",
+      "from": "e7b728514d1d",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:dc694aa327b5:domain:yocto",
+      "from": "dc694aa327b5",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4348c8ad81a0:domain:yocto",
+      "from": "4348c8ad81a0",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e81920c10d11:domain:yocto",
+      "from": "e81920c10d11",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b4d883053c20:domain:yocto",
+      "from": "b4d883053c20",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2e0992f640ab:domain:yocto",
+      "from": "2e0992f640ab",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:46a716eaaab4:domain:yocto",
+      "from": "46a716eaaab4",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6cfac687decb:domain:yocto",
+      "from": "6cfac687decb",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f59aa6695702:domain:yocto",
+      "from": "f59aa6695702",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:15e56401fb86:domain:yocto",
+      "from": "15e56401fb86",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5cdc83a70bf8:domain:yocto",
+      "from": "5cdc83a70bf8",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:444fcacd8f06:domain:yocto",
+      "from": "444fcacd8f06",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0bcc7a720a9d:domain:yocto",
+      "from": "0bcc7a720a9d",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:63e4e4b10e6b:domain:yocto",
+      "from": "63e4e4b10e6b",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:60ac08ad3143:domain:yocto",
+      "from": "60ac08ad3143",
+      "to": "domain:yocto",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7807e7a6bd97:domain:lifecycle",
+      "from": "7807e7a6bd97",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5b4522578daf:domain:lifecycle",
+      "from": "5b4522578daf",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bcd7023dd6c3:domain:lifecycle",
+      "from": "bcd7023dd6c3",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b41590638432:domain:lifecycle",
+      "from": "b41590638432",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:25514cae24e4:domain:lifecycle",
+      "from": "25514cae24e4",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ebcdec122bb5:domain:lifecycle",
+      "from": "ebcdec122bb5",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:15941d5cdc16:domain:lifecycle",
+      "from": "15941d5cdc16",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3b1e52e682f9:domain:lifecycle",
+      "from": "3b1e52e682f9",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3b4bd744f5de:domain:lifecycle",
+      "from": "3b4bd744f5de",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ee34dd854e09:domain:lifecycle",
+      "from": "ee34dd854e09",
+      "to": "domain:lifecycle",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c94a6f788bd3:domain:security",
+      "from": "c94a6f788bd3",
+      "to": "domain:security",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:390860030f5a:domain:security",
+      "from": "390860030f5a",
+      "to": "domain:security",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ca55da6a9f2:domain:platform",
+      "from": "3ca55da6a9f2",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ca55da6a9f2:domain:cross-domain",
+      "from": "3ca55da6a9f2",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:defe098f947a:domain:platform",
+      "from": "defe098f947a",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:defe098f947a:domain:cross-domain",
+      "from": "defe098f947a",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a9dd302399ca:domain:platform",
+      "from": "a9dd302399ca",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a9dd302399ca:domain:cross-domain",
+      "from": "a9dd302399ca",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a0c89b2f3e7:domain:platform",
+      "from": "7a0c89b2f3e7",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a0c89b2f3e7:domain:cross-domain",
+      "from": "7a0c89b2f3e7",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0970f5784a42:domain:platform",
+      "from": "0970f5784a42",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0970f5784a42:domain:cross-domain",
+      "from": "0970f5784a42",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:45846faca00d:domain:platform",
+      "from": "45846faca00d",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:45846faca00d:domain:cross-domain",
+      "from": "45846faca00d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:daaf8317f91f:domain:platform",
+      "from": "daaf8317f91f",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:daaf8317f91f:domain:cross-domain",
+      "from": "daaf8317f91f",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2576411b5ab1:domain:platform",
+      "from": "2576411b5ab1",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2576411b5ab1:domain:cross-domain",
+      "from": "2576411b5ab1",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0072a842cf3c:domain:platform",
+      "from": "0072a842cf3c",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0072a842cf3c:domain:cross-domain",
+      "from": "0072a842cf3c",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d6b8534c0193:domain:platform",
+      "from": "d6b8534c0193",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d6b8534c0193:domain:cross-domain",
+      "from": "d6b8534c0193",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:11b9316f312a:domain:platform",
+      "from": "11b9316f312a",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:11b9316f312a:domain:cross-domain",
+      "from": "11b9316f312a",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:98b9631a8af5:domain:platform",
+      "from": "98b9631a8af5",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:98b9631a8af5:domain:cross-domain",
+      "from": "98b9631a8af5",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:074e04a0dae5:domain:platform",
+      "from": "074e04a0dae5",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:074e04a0dae5:domain:cross-domain",
+      "from": "074e04a0dae5",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5d77a1dea038:domain:platform",
+      "from": "5d77a1dea038",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5d77a1dea038:domain:cross-domain",
+      "from": "5d77a1dea038",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:369a167bab94:domain:platform",
+      "from": "369a167bab94",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:369a167bab94:domain:cross-domain",
+      "from": "369a167bab94",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:27c28fa1cf19:domain:platform",
+      "from": "27c28fa1cf19",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:27c28fa1cf19:domain:cross-domain",
+      "from": "27c28fa1cf19",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:81862b4f99af:domain:platform",
+      "from": "81862b4f99af",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:81862b4f99af:domain:cross-domain",
+      "from": "81862b4f99af",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9efe4b97a91b:domain:platform",
+      "from": "9efe4b97a91b",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9efe4b97a91b:domain:cross-domain",
+      "from": "9efe4b97a91b",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f202b6567e43:domain:platform",
+      "from": "f202b6567e43",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f202b6567e43:domain:cross-domain",
+      "from": "f202b6567e43",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a34c5b731928:domain:platform",
+      "from": "a34c5b731928",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a34c5b731928:domain:cross-domain",
+      "from": "a34c5b731928",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4a5404071a65:domain:platform",
+      "from": "4a5404071a65",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4a5404071a65:domain:cross-domain",
+      "from": "4a5404071a65",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:508dbeafcf88:domain:platform",
+      "from": "508dbeafcf88",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:508dbeafcf88:domain:cross-domain",
+      "from": "508dbeafcf88",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:286280b15067:domain:platform",
+      "from": "286280b15067",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:286280b15067:domain:cross-domain",
+      "from": "286280b15067",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:add7ebe4914c:domain:platform",
+      "from": "add7ebe4914c",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:add7ebe4914c:domain:cross-domain",
+      "from": "add7ebe4914c",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b0dbacda5c87:domain:platform",
+      "from": "b0dbacda5c87",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b0dbacda5c87:domain:cross-domain",
+      "from": "b0dbacda5c87",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:38c50e5e32f9:domain:platform",
+      "from": "38c50e5e32f9",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:38c50e5e32f9:domain:cross-domain",
+      "from": "38c50e5e32f9",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c9b8980cc5a6:domain:platform",
+      "from": "c9b8980cc5a6",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c9b8980cc5a6:domain:cross-domain",
+      "from": "c9b8980cc5a6",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a14bf24fda30:domain:platform",
+      "from": "a14bf24fda30",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a14bf24fda30:domain:cross-domain",
+      "from": "a14bf24fda30",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:770f8cb07c32:domain:platform",
+      "from": "770f8cb07c32",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:770f8cb07c32:domain:cross-domain",
+      "from": "770f8cb07c32",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:76602ab493ab:domain:platform",
+      "from": "76602ab493ab",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:76602ab493ab:domain:cross-domain",
+      "from": "76602ab493ab",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:41ce1e67fadb:domain:platform",
+      "from": "41ce1e67fadb",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:41ce1e67fadb:domain:cross-domain",
+      "from": "41ce1e67fadb",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e2519aa16e3b:domain:platform",
+      "from": "e2519aa16e3b",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e2519aa16e3b:domain:cross-domain",
+      "from": "e2519aa16e3b",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b1c3ea09c6d9:domain:platform",
+      "from": "b1c3ea09c6d9",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b1c3ea09c6d9:domain:cross-domain",
+      "from": "b1c3ea09c6d9",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ff3311f490ff:domain:platform",
+      "from": "ff3311f490ff",
+      "to": "domain:platform",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ff3311f490ff:domain:cross-domain",
+      "from": "ff3311f490ff",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0554d880bcfb:domain:display",
+      "from": "0554d880bcfb",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0554d880bcfb:domain:hmi",
+      "from": "0554d880bcfb",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ac675257290:domain:display",
+      "from": "0ac675257290",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ac675257290:domain:hmi",
+      "from": "0ac675257290",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e6f862cdda05:domain:display",
+      "from": "e6f862cdda05",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e6f862cdda05:domain:hmi",
+      "from": "e6f862cdda05",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d2054c264cae:domain:display",
+      "from": "d2054c264cae",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d2054c264cae:domain:hmi",
+      "from": "d2054c264cae",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f389ba21d747:domain:display",
+      "from": "f389ba21d747",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f389ba21d747:domain:hmi",
+      "from": "f389ba21d747",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e6746757e7bf:domain:display",
+      "from": "e6746757e7bf",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e6746757e7bf:domain:hmi",
+      "from": "e6746757e7bf",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1ae2434832d6:domain:display",
+      "from": "1ae2434832d6",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1ae2434832d6:domain:hmi",
+      "from": "1ae2434832d6",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a0a4b6d5cee9:domain:display",
+      "from": "a0a4b6d5cee9",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a0a4b6d5cee9:domain:hmi",
+      "from": "a0a4b6d5cee9",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a861eabc5efa:domain:display",
+      "from": "a861eabc5efa",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a861eabc5efa:domain:hmi",
+      "from": "a861eabc5efa",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:14b704107bcc:domain:display",
+      "from": "14b704107bcc",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:14b704107bcc:domain:hmi",
+      "from": "14b704107bcc",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:377e840a30a0:domain:display",
+      "from": "377e840a30a0",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:377e840a30a0:domain:hmi",
+      "from": "377e840a30a0",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1619663e55af:domain:display",
+      "from": "1619663e55af",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1619663e55af:domain:hmi",
+      "from": "1619663e55af",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6d1c9931e889:domain:display",
+      "from": "6d1c9931e889",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6d1c9931e889:domain:hmi",
+      "from": "6d1c9931e889",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5aac82d4d7aa:domain:display",
+      "from": "5aac82d4d7aa",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5aac82d4d7aa:domain:hmi",
+      "from": "5aac82d4d7aa",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9ec9003f71b1:domain:display",
+      "from": "9ec9003f71b1",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9ec9003f71b1:domain:hmi",
+      "from": "9ec9003f71b1",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1ee440ddc61d:domain:display",
+      "from": "1ee440ddc61d",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1ee440ddc61d:domain:hmi",
+      "from": "1ee440ddc61d",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ed864e63e29b:domain:display",
+      "from": "ed864e63e29b",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ed864e63e29b:domain:hmi",
+      "from": "ed864e63e29b",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:753ab8dd0db2:domain:display",
+      "from": "753ab8dd0db2",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:753ab8dd0db2:domain:hmi",
+      "from": "753ab8dd0db2",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:30174454fb71:domain:display",
+      "from": "30174454fb71",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:30174454fb71:domain:hmi",
+      "from": "30174454fb71",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:318e6af558f5:domain:display",
+      "from": "318e6af558f5",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:318e6af558f5:domain:hmi",
+      "from": "318e6af558f5",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4bdcab0b5af6:domain:display",
+      "from": "4bdcab0b5af6",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4bdcab0b5af6:domain:hmi",
+      "from": "4bdcab0b5af6",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:36a4f8b59bde:domain:display",
+      "from": "36a4f8b59bde",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:36a4f8b59bde:domain:hmi",
+      "from": "36a4f8b59bde",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ba0a3c4a44e:domain:display",
+      "from": "2ba0a3c4a44e",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ba0a3c4a44e:domain:hmi",
+      "from": "2ba0a3c4a44e",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b229bc10d601:domain:display",
+      "from": "b229bc10d601",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b229bc10d601:domain:hmi",
+      "from": "b229bc10d601",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1a3df9ee9ed8:domain:display",
+      "from": "1a3df9ee9ed8",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1a3df9ee9ed8:domain:hmi",
+      "from": "1a3df9ee9ed8",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b41e1bc58922:domain:display",
+      "from": "b41e1bc58922",
+      "to": "domain:display",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b41e1bc58922:domain:hmi",
+      "from": "b41e1bc58922",
+      "to": "domain:hmi",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:78ba6687962e:domain:power",
+      "from": "78ba6687962e",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:232daa16ff71:domain:power",
+      "from": "232daa16ff71",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:45653c777bca:domain:power",
+      "from": "45653c777bca",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f22832cfa268:domain:power",
+      "from": "f22832cfa268",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b3ab2e67d52d:domain:power",
+      "from": "b3ab2e67d52d",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e8cfe763d374:domain:power",
+      "from": "e8cfe763d374",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bd4864cd0a67:domain:power",
+      "from": "bd4864cd0a67",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bbb5ef8aa8ec:domain:power",
+      "from": "bbb5ef8aa8ec",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:02961279599c:domain:power",
+      "from": "02961279599c",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:872b38c6d67f:domain:power",
+      "from": "872b38c6d67f",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c79914693d64:domain:power",
+      "from": "c79914693d64",
+      "to": "domain:power",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0d324bedb45f:domain:assurance",
+      "from": "0d324bedb45f",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0d324bedb45f:domain:performance",
+      "from": "0d324bedb45f",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5d4fbbe82209:domain:assurance",
+      "from": "5d4fbbe82209",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5d4fbbe82209:domain:performance",
+      "from": "5d4fbbe82209",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b2b210bfd555:domain:assurance",
+      "from": "b2b210bfd555",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b2b210bfd555:domain:performance",
+      "from": "b2b210bfd555",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:891b4546ef85:domain:assurance",
+      "from": "891b4546ef85",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:891b4546ef85:domain:performance",
+      "from": "891b4546ef85",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7ace10c59839:domain:assurance",
+      "from": "7ace10c59839",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7ace10c59839:domain:performance",
+      "from": "7ace10c59839",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3dfcfd692b65:domain:assurance",
+      "from": "3dfcfd692b65",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3dfcfd692b65:domain:performance",
+      "from": "3dfcfd692b65",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:107ee51d6420:domain:assurance",
+      "from": "107ee51d6420",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:107ee51d6420:domain:performance",
+      "from": "107ee51d6420",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8d74a6884c58:domain:assurance",
+      "from": "8d74a6884c58",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8d74a6884c58:domain:performance",
+      "from": "8d74a6884c58",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:543e357866a5:domain:assurance",
+      "from": "543e357866a5",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:543e357866a5:domain:performance",
+      "from": "543e357866a5",
+      "to": "domain:performance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e673c34c0d4c:domain:virtualization",
+      "from": "e673c34c0d4c",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e673c34c0d4c:domain:cross-domain",
+      "from": "e673c34c0d4c",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:398c051fcb7f:domain:virtualization",
+      "from": "398c051fcb7f",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:398c051fcb7f:domain:cross-domain",
+      "from": "398c051fcb7f",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:99f3e33f914d:domain:virtualization",
+      "from": "99f3e33f914d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:99f3e33f914d:domain:cross-domain",
+      "from": "99f3e33f914d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6891b99c5e09:domain:virtualization",
+      "from": "6891b99c5e09",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6891b99c5e09:domain:cross-domain",
+      "from": "6891b99c5e09",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:adec16da0d62:domain:virtualization",
+      "from": "adec16da0d62",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:adec16da0d62:domain:cross-domain",
+      "from": "adec16da0d62",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3f04bd3f157a:domain:virtualization",
+      "from": "3f04bd3f157a",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3f04bd3f157a:domain:cross-domain",
+      "from": "3f04bd3f157a",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d2f773042f68:domain:virtualization",
+      "from": "d2f773042f68",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d2f773042f68:domain:cross-domain",
+      "from": "d2f773042f68",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:58292e0d0987:domain:virtualization",
+      "from": "58292e0d0987",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:58292e0d0987:domain:cross-domain",
+      "from": "58292e0d0987",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cb4f3b88886b:domain:virtualization",
+      "from": "cb4f3b88886b",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cb4f3b88886b:domain:cross-domain",
+      "from": "cb4f3b88886b",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:607cd3a86dd3:domain:virtualization",
+      "from": "607cd3a86dd3",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:607cd3a86dd3:domain:cross-domain",
+      "from": "607cd3a86dd3",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:88161ea5f13a:domain:virtualization",
+      "from": "88161ea5f13a",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:88161ea5f13a:domain:cross-domain",
+      "from": "88161ea5f13a",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0b8cec92f7cc:domain:virtualization",
+      "from": "0b8cec92f7cc",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0b8cec92f7cc:domain:cross-domain",
+      "from": "0b8cec92f7cc",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d78592d209d4:domain:virtualization",
+      "from": "d78592d209d4",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d78592d209d4:domain:cross-domain",
+      "from": "d78592d209d4",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cd58cb9b620f:domain:virtualization",
+      "from": "cd58cb9b620f",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:cd58cb9b620f:domain:cross-domain",
+      "from": "cd58cb9b620f",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4e0dab399b5c:domain:virtualization",
+      "from": "4e0dab399b5c",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4e0dab399b5c:domain:cross-domain",
+      "from": "4e0dab399b5c",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2d16db982b9d:domain:virtualization",
+      "from": "2d16db982b9d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2d16db982b9d:domain:cross-domain",
+      "from": "2d16db982b9d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0488ba34acae:domain:virtualization",
+      "from": "0488ba34acae",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0488ba34acae:domain:cross-domain",
+      "from": "0488ba34acae",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3e135840f638:domain:virtualization",
+      "from": "3e135840f638",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3e135840f638:domain:cross-domain",
+      "from": "3e135840f638",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ffc4e91d4e3:domain:virtualization",
+      "from": "0ffc4e91d4e3",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ffc4e91d4e3:domain:cross-domain",
+      "from": "0ffc4e91d4e3",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b71a9b733004:domain:virtualization",
+      "from": "b71a9b733004",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b71a9b733004:domain:cross-domain",
+      "from": "b71a9b733004",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:967c72386c01:domain:virtualization",
+      "from": "967c72386c01",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:967c72386c01:domain:cross-domain",
+      "from": "967c72386c01",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b17a1b72d94d:domain:virtualization",
+      "from": "b17a1b72d94d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b17a1b72d94d:domain:cross-domain",
+      "from": "b17a1b72d94d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d85a6dc3de1f:domain:virtualization",
+      "from": "d85a6dc3de1f",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:d85a6dc3de1f:domain:cross-domain",
+      "from": "d85a6dc3de1f",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a3b9551a0d4:domain:virtualization",
+      "from": "7a3b9551a0d4",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7a3b9551a0d4:domain:cross-domain",
+      "from": "7a3b9551a0d4",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:17d10bf0927d:domain:virtualization",
+      "from": "17d10bf0927d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:17d10bf0927d:domain:cross-domain",
+      "from": "17d10bf0927d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b339a40764b5:domain:virtualization",
+      "from": "b339a40764b5",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:b339a40764b5:domain:cross-domain",
+      "from": "b339a40764b5",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1a36c8bd89a4:domain:virtualization",
+      "from": "1a36c8bd89a4",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1a36c8bd89a4:domain:cross-domain",
+      "from": "1a36c8bd89a4",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7cf96d09b15a:domain:virtualization",
+      "from": "7cf96d09b15a",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7cf96d09b15a:domain:cross-domain",
+      "from": "7cf96d09b15a",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:17db370a3228:domain:virtualization",
+      "from": "17db370a3228",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:17db370a3228:domain:cross-domain",
+      "from": "17db370a3228",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:521a9a064592:domain:virtualization",
+      "from": "521a9a064592",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:521a9a064592:domain:cross-domain",
+      "from": "521a9a064592",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7f22bbdfff2f:domain:virtualization",
+      "from": "7f22bbdfff2f",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:7f22bbdfff2f:domain:cross-domain",
+      "from": "7f22bbdfff2f",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bdd771d7f372:domain:virtualization",
+      "from": "bdd771d7f372",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bdd771d7f372:domain:cross-domain",
+      "from": "bdd771d7f372",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6252ad362114:domain:virtualization",
+      "from": "6252ad362114",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6252ad362114:domain:cross-domain",
+      "from": "6252ad362114",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:98681c23e375:domain:virtualization",
+      "from": "98681c23e375",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:98681c23e375:domain:cross-domain",
+      "from": "98681c23e375",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2b1a7d97f0a2:domain:virtualization",
+      "from": "2b1a7d97f0a2",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2b1a7d97f0a2:domain:cross-domain",
+      "from": "2b1a7d97f0a2",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8fb29ac94bce:domain:virtualization",
+      "from": "8fb29ac94bce",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:8fb29ac94bce:domain:cross-domain",
+      "from": "8fb29ac94bce",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ccd5b795d5d9:domain:virtualization",
+      "from": "ccd5b795d5d9",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ccd5b795d5d9:domain:cross-domain",
+      "from": "ccd5b795d5d9",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ee3f30c7a2c:domain:virtualization",
+      "from": "0ee3f30c7a2c",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ee3f30c7a2c:domain:cross-domain",
+      "from": "0ee3f30c7a2c",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:eb1ea503dfd4:domain:virtualization",
+      "from": "eb1ea503dfd4",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:eb1ea503dfd4:domain:cross-domain",
+      "from": "eb1ea503dfd4",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:65f0b3b1b2de:domain:virtualization",
+      "from": "65f0b3b1b2de",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:65f0b3b1b2de:domain:cross-domain",
+      "from": "65f0b3b1b2de",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:34c55692de98:domain:virtualization",
+      "from": "34c55692de98",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:34c55692de98:domain:cross-domain",
+      "from": "34c55692de98",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:242e09880a72:domain:virtualization",
+      "from": "242e09880a72",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:242e09880a72:domain:cross-domain",
+      "from": "242e09880a72",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:35d787f62e6d:domain:virtualization",
+      "from": "35d787f62e6d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:35d787f62e6d:domain:cross-domain",
+      "from": "35d787f62e6d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:01e41793db8d:domain:virtualization",
+      "from": "01e41793db8d",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:01e41793db8d:domain:cross-domain",
+      "from": "01e41793db8d",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:86df72575171:domain:virtualization",
+      "from": "86df72575171",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:86df72575171:domain:cross-domain",
+      "from": "86df72575171",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:dff007dcc6b0:domain:virtualization",
+      "from": "dff007dcc6b0",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:dff007dcc6b0:domain:cross-domain",
+      "from": "dff007dcc6b0",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ebfa2518d112:domain:virtualization",
+      "from": "ebfa2518d112",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ebfa2518d112:domain:cross-domain",
+      "from": "ebfa2518d112",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9b473bff3155:domain:virtualization",
+      "from": "9b473bff3155",
+      "to": "domain:virtualization",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9b473bff3155:domain:cross-domain",
+      "from": "9b473bff3155",
+      "to": "domain:cross-domain",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bfd28e7774c5:domain:diagnosis",
+      "from": "bfd28e7774c5",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bfd28e7774c5:domain:assurance",
+      "from": "bfd28e7774c5",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4ed1bbbfed20:domain:diagnosis",
+      "from": "4ed1bbbfed20",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:4ed1bbbfed20:domain:assurance",
+      "from": "4ed1bbbfed20",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ea5dbd9f6ab:domain:diagnosis",
+      "from": "3ea5dbd9f6ab",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ea5dbd9f6ab:domain:assurance",
+      "from": "3ea5dbd9f6ab",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ad653e0a5c99:domain:diagnosis",
+      "from": "ad653e0a5c99",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ad653e0a5c99:domain:assurance",
+      "from": "ad653e0a5c99",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:13d506954e81:domain:diagnosis",
+      "from": "13d506954e81",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:13d506954e81:domain:assurance",
+      "from": "13d506954e81",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ce096834385:domain:diagnosis",
+      "from": "2ce096834385",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ce096834385:domain:assurance",
+      "from": "2ce096834385",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ba1f7bc0db6:domain:diagnosis",
+      "from": "2ba1f7bc0db6",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2ba1f7bc0db6:domain:assurance",
+      "from": "2ba1f7bc0db6",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f608befe136c:domain:diagnosis",
+      "from": "f608befe136c",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:f608befe136c:domain:assurance",
+      "from": "f608befe136c",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:508bdcafc604:domain:diagnosis",
+      "from": "508bdcafc604",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:508bdcafc604:domain:assurance",
+      "from": "508bdcafc604",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2131e9dacedf:domain:diagnosis",
+      "from": "2131e9dacedf",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:2131e9dacedf:domain:assurance",
+      "from": "2131e9dacedf",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e81eb416e8a5:domain:diagnosis",
+      "from": "e81eb416e8a5",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:e81eb416e8a5:domain:assurance",
+      "from": "e81eb416e8a5",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a0ea4cd59f56:domain:diagnosis",
+      "from": "a0ea4cd59f56",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a0ea4cd59f56:domain:assurance",
+      "from": "a0ea4cd59f56",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1e4d22f0c69a:domain:diagnosis",
+      "from": "1e4d22f0c69a",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:1e4d22f0c69a:domain:assurance",
+      "from": "1e4d22f0c69a",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9fb78cf7bec9:domain:diagnosis",
+      "from": "9fb78cf7bec9",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:9fb78cf7bec9:domain:assurance",
+      "from": "9fb78cf7bec9",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:843085143d8a:domain:diagnosis",
+      "from": "843085143d8a",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:843085143d8a:domain:assurance",
+      "from": "843085143d8a",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:815b1152cb31:domain:diagnosis",
+      "from": "815b1152cb31",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:815b1152cb31:domain:assurance",
+      "from": "815b1152cb31",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0f87b2ff1abc:domain:diagnosis",
+      "from": "0f87b2ff1abc",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0f87b2ff1abc:domain:assurance",
+      "from": "0f87b2ff1abc",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ffcd662cc34:domain:diagnosis",
+      "from": "3ffcd662cc34",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:3ffcd662cc34:domain:assurance",
+      "from": "3ffcd662cc34",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c31539cad8dd:domain:diagnosis",
+      "from": "c31539cad8dd",
+      "to": "domain:diagnosis",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c31539cad8dd:domain:assurance",
+      "from": "c31539cad8dd",
+      "to": "domain:assurance",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:0ff179c39e73:domain:audio",
+      "from": "0ff179c39e73",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:a7ec0789a073:domain:audio",
+      "from": "a7ec0789a073",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6799a6ae5ba0:domain:audio",
+      "from": "6799a6ae5ba0",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:04511451ad4d:domain:audio",
+      "from": "04511451ad4d",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:91086931dad2:domain:audio",
+      "from": "91086931dad2",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:860275ad7461:domain:audio",
+      "from": "860275ad7461",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ac6a8bed3a3e:domain:audio",
+      "from": "ac6a8bed3a3e",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:5a70e60b5e6d:domain:audio",
+      "from": "5a70e60b5e6d",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:742b67255442:domain:audio",
+      "from": "742b67255442",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:6d282f57b1ca:domain:audio",
+      "from": "6d282f57b1ca",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:bc8290b990b1:domain:audio",
+      "from": "bc8290b990b1",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:38c540b592d3:domain:audio",
+      "from": "38c540b592d3",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:c5db8e284bad:domain:audio",
+      "from": "c5db8e284bad",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:ca45b12d0d50:domain:audio",
+      "from": "ca45b12d0d50",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:10a842dbdf31:domain:audio",
+      "from": "10a842dbdf31",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:source:09d7c99d2c2a:domain:audio",
+      "from": "09d7c99d2c2a",
+      "to": "domain:audio",
+      "type": "belongs_to",
+      "pathClass": "index",
+      "layer": "index",
       "hiddenByDefault": true
     }
   ]

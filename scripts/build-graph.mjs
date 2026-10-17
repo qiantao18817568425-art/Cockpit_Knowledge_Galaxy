@@ -154,6 +154,39 @@ const duplicateSemantic = semantic.nodes.find(node=>knownIds.has(node.id));
 if(duplicateSemantic) throw new Error(`Semantic node collides with navigation node: ${duplicateSemantic.id}`);
 nodes.push(...semantic.nodes);
 edges.push(...semantic.edges);
+
+// Bridge the legacy learning navigation, semantic entities, platforms and source register.
+// These are index relations rather than technical claims, so they do not require evidence claims.
+const semanticById = new Map(semantic.nodes.map(node=>[node.id,node]));
+const topicDomains = {
+  system:['domain:platform'], virtualization:['domain:virtualization','domain:security'],
+  android:['domain:android'], yocto:['domain:yocto'], mcu:['domain:mcu'],
+  tbox:['domain:tbox','domain:connectivity'], display:['domain:display','domain:hmi'],
+  camera:['domain:camera'], audio:['domain:audio'], power:['domain:power','domain:lifecycle'],
+  cross:['domain:cross-domain','domain:connectivity'],
+  diagnosis:['domain:diagnosis','domain:assurance','domain:performance','domain:usb-storage']
+};
+for(const [topic,domains] of Object.entries(topicDomains))for(const domain of domains)if(semanticById.has(domain)){
+  edges.push({id:`index:topic:${topic}:${domain}`,from:`topic:${topic}`,to:domain,type:'主题归类',pathClass:'index',layer:'index'});
+}
+const domainIds = {
+  platform:'domain:platform',virtualization:'domain:virtualization',android:'domain:android',yocto:'domain:yocto',mcu:'domain:mcu',
+  tbox:'domain:tbox',connectivity:'domain:connectivity',display:'domain:display',hmi:'domain:hmi',camera:'domain:camera',audio:'domain:audio',
+  power:'domain:power','cross-domain':'domain:cross-domain',lifecycle:'domain:lifecycle',usb:'domain:usb-storage',security:'domain:security',
+  assurance:'domain:assurance',performance:'domain:performance',diagnosis:'domain:diagnosis'
+};
+for(const node of semantic.nodes){
+  if(['source','evidence','domain'].includes(node.kind))continue;
+  const domainId=domainIds[node.domain];
+  if(domainId&&semanticById.has(domainId)&&domainId!==node.id)edges.push({id:`index:domain:${domainId}:${node.id}`,from:domainId,to:node.id,type:'belongs_to',pathClass:'index',layer:'index'});
+  if(!['platform'].includes(node.kind))for(const platform of node.platforms||[]){
+    const platformId=`platform:${platform.toLocaleLowerCase()}`;
+    if(semanticById.has(platformId))edges.push({id:`index:platform:${platformId}:${node.id}`,from:platformId,to:node.id,type:'belongs_to',pathClass:'index',layer:'index'});
+  }
+}
+for(const node of semantic.nodes.filter(node=>node.kind==='source'))for(const knowledgeId of node.knowledgeIds||[])if(semanticById.has(knowledgeId)){
+  edges.push({id:`index:source:${node.id}:${knowledgeId}`,from:node.id,to:knowledgeId,type:'belongs_to',pathClass:'index',layer:'index',hiddenByDefault:true});
+}
 const data = {
   meta: {
     title:'座舱知识银河',

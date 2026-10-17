@@ -10,6 +10,9 @@ const ids=new Set(merged.entities.map(x=>x.id));
 
 test('platform runtime knowledge has scoped boundaries and interfaces',()=>{
   for(const id of ['platform:mt8668','platform:mt8676','component:android-guest','component:yocto-host','component:mcu','component:tbox','component:hypervisor','interface:binder','interface:fdbus','interface:someip','interface:vsock','interface:virtio','interface:spi-ipcl','observation:sequence','observation:freshness','observation:boot-generation','observation:request-id']) assert.ok(ids.has(id),id);
+  const shared=merged.relations.find(x=>x.type==='variant_of'&&x.from==='platform:mt8676'&&x.to==='platform:mt8668');assert.ok(shared,'platform commonality relation missing');
+  assert.equal(shared.scope,'shared');
+  assert.ok(merged.claims.find(x=>x.relationId===shared.id).evidenceIds.length>=2,'both platform references are required');
 });
 test('HMI media knowledge separates control, frame, playback and capture paths',()=>{
   for(const id of ['component:android-display','component:yocto-display','component:physical-display','component:backlight','interface:input-event','observation:first-frame','component:camera-control','interface:camera-frame','component:avm-stitch','observation:camera-four-stream','process:audio-playback','process:audio-capture','component:aec-reference','component:dsp-variant']) assert.ok(ids.has(id),id);

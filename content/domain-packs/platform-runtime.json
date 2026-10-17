@@ -265,6 +265,19 @@
     {
       "id": "rel:runtime:002",
       "scope": "shared",
+      "status": "inferred_mapping",
+      "from": "platform:mt8676",
+      "to": "platform:mt8668",
+      "type": "variant_of",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:003",
+      "scope": "shared",
       "status": "documented_reference",
       "from": "component:android-guest",
       "to": "component:hypervisor",
@@ -276,7 +289,7 @@
       ]
     },
     {
-      "id": "rel:runtime:003",
+      "id": "rel:runtime:004",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:yocto-host",
@@ -289,7 +302,7 @@
       ]
     },
     {
-      "id": "rel:runtime:004",
+      "id": "rel:runtime:005",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:android-guest",
@@ -302,7 +315,7 @@
       ]
     },
     {
-      "id": "rel:runtime:005",
+      "id": "rel:runtime:006",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:tbox",
@@ -315,7 +328,7 @@
       ]
     },
     {
-      "id": "rel:runtime:006",
+      "id": "rel:runtime:007",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:android-guest",
@@ -328,7 +341,7 @@
       ]
     },
     {
-      "id": "rel:runtime:007",
+      "id": "rel:runtime:008",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:android-guest",
@@ -341,7 +354,7 @@
       ]
     },
     {
-      "id": "rel:runtime:008",
+      "id": "rel:runtime:009",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:mcu",
@@ -354,7 +367,7 @@
       ]
     },
     {
-      "id": "rel:runtime:009",
+      "id": "rel:runtime:010",
       "scope": "shared",
       "status": "documented_reference",
       "from": "interface:fdbus",
@@ -367,7 +380,7 @@
       ]
     },
     {
-      "id": "rel:runtime:010",
+      "id": "rel:runtime:011",
       "scope": "shared",
       "status": "documented_reference",
       "from": "interface:someip",
@@ -380,7 +393,7 @@
       ]
     },
     {
-      "id": "rel:runtime:011",
+      "id": "rel:runtime:012",
       "scope": "shared",
       "status": "documented_reference",
       "from": "component:hypervisor",
@@ -393,7 +406,7 @@
       ]
     },
     {
-      "id": "rel:runtime:012",
+      "id": "rel:runtime:013",
       "scope": "shared",
       "status": "documented_reference",
       "from": "interface:vsock",
@@ -423,9 +436,10 @@
       "id": "claim:runtime:002",
       "relationId": "rel:runtime:002",
       "evidenceIds": [
-        "ev:runtime:002"
+        "ev:runtime:002",
+        "ev:runtime:002:1"
       ],
-      "status": "documented_reference",
+      "status": "inferred_mapping",
       "platforms": [
         "MT8668",
         "MT8676"
@@ -550,6 +564,18 @@
         "MT8668",
         "MT8676"
       ]
+    },
+    {
+      "id": "claim:runtime:013",
+      "relationId": "rel:runtime:013",
+      "evidenceIds": [
+        "ev:runtime:013"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
     }
   ],
   "evidence": [
@@ -568,11 +594,29 @@
       "pages": [
         6
       ],
+      "status": "inferred_mapping",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“MT8676”与“MT8668”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:002:1",
+      "sourceId": "adec16da0d62",
+      "pages": [
+        6
+      ],
+      "status": "inferred_mapping",
+      "summary": "《MT8668_Hypervisor_General_Introduction_CN_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。"
+    },
+    {
+      "id": "ev:runtime:003",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
       "status": "documented_reference",
       "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Hypervisor”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:003",
+      "id": "ev:runtime:004",
       "sourceId": "aa722a95a0ab",
       "pages": [
         7
@@ -581,7 +625,7 @@
       "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“Yocto Host”与“FDBus”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:004",
+      "id": "ev:runtime:005",
       "sourceId": "a8a1aa448b88",
       "pages": [
         6
@@ -590,7 +634,7 @@
       "summary": "核对《MT8668_Android_IPO_User_Manual_CN_V1.0.pdf》对应章节后，将“Android Guest”与“Binder”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:005",
+      "id": "ev:runtime:006",
       "sourceId": "f24f4fe4d19c",
       "pages": [
         2
@@ -599,7 +643,7 @@
       "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“TBox”与“SOME/IP”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:006",
+      "id": "ev:runtime:007",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -608,7 +652,7 @@
       "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Vsock”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:007",
+      "id": "ev:runtime:008",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -617,7 +661,7 @@
       "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“virtio”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:008",
+      "id": "ev:runtime:009",
       "sourceId": "183254d73cbd",
       "pages": [
         6
@@ -626,7 +670,7 @@
       "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:009",
+      "id": "ev:runtime:010",
       "sourceId": "2131e9dacedf",
       "pages": [
         6
@@ -635,7 +679,7 @@
       "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“FDBus”与“Sequence ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:010",
+      "id": "ev:runtime:011",
       "sourceId": "2131e9dacedf",
       "pages": [
         6
@@ -644,7 +688,7 @@
       "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“SOME/IP”与“Freshness / Timestamp”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:011",
+      "id": "ev:runtime:012",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6
@@ -653,7 +697,7 @@
       "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
     },
     {
-      "id": "ev:runtime:012",
+      "id": "ev:runtime:013",
       "sourceId": "ccd5b795d5d9",
       "pages": [
         6

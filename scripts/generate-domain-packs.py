@@ -25,7 +25,7 @@ def E(i,title,kind,domain,platforms=('MT8676',),description='',aliases=(),runtim
 def make_pack(name,entities,rels):
     evidence=[]; claims=[]; relations=[]
     for idx,r in enumerate(rels,1):
-        rid=f'rel:{name}:{idx:03d}'; category=r.pop('category'); source_id=r.pop('sourceId',None); pages=r.pop('pages',None)
+        rid=f'rel:{name}:{idx:03d}'; category=r.pop('category'); source_id=r.pop('sourceId',None); pages=r.pop('pages',None); additional=r.pop('additionalEvidence',[])
         src=next((d for d in docs if d['id']==source_id),source(category))
         rel={'id':rid,'scope':'platform_scoped','status':'documented_reference',**r}
         if set(rel.get('platforms',[]))=={'MT8668','MT8676'}: rel['scope']='shared'
@@ -33,7 +33,12 @@ def make_pack(name,entities,rels):
         evid=f'ev:{name}:{idx:03d}'
         evidence.append({'id':evid,'sourceId':src['id'],'pages':pages or [evidence_page.get(category,1)],'status':rel.get('status','documented_reference'),
           'summary':f"核对《{src['name']}》对应章节后，将“{ALL_ENTITY_TITLES.get(rel['from'],rel['from'])}”与“{ALL_ENTITY_TITLES.get(rel['to'],rel['to'])}”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"})
-        claims.append({'id':f'claim:{name}:{idx:03d}','relationId':rid,'evidenceIds':[evid],
+        evidence_ids=[evid]
+        for extra_idx,extra in enumerate(additional,1):
+          extra_src=next(d for d in docs if d['id']==extra['sourceId']); extra_id=f'{evid}:{extra_idx}'; evidence_ids.append(extra_id)
+          evidence.append({'id':extra_id,'sourceId':extra_src['id'],'pages':extra['pages'],'status':rel.get('status','documented_reference'),
+            'summary':f"《{extra_src['name']}》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。"})
+        claims.append({'id':f'claim:{name}:{idx:03d}','relationId':rid,'evidenceIds':evidence_ids,
           'status':rel.get('status','documented_reference'),'platforms':rel.get('platforms',[])})
     return {'entities':entities,'relations':relations,'claims':claims,'evidence':evidence}
 
@@ -43,6 +48,7 @@ power_entities=[
  E('component:vehicle-power-input','车辆电源输入','component','power',('MT8668','MT8676')),E('component:mcu-power-manager','MCU PowerManager','component','mcu',('MT8668','MT8676')),
  E('interface:gpio-wake','GPIO / Wake IRQ','interface','power',('MT8668','MT8676')),E('interface:spi-ipcl','SPI / IPCL','interface','cross-domain',('MT8668','MT8676')),
  E('component:yocto-sleep-manager','Yocto SleepManager','component','yocto'),E('component:hypervisor-barrier','Hypervisor Suspend Barrier','component','virtualization'),
+ E('component:hypervisor-suspend-v11','Hypervisor Suspend V1.1','component','virtualization'),E('component:hypervisor-suspend-v13','Hypervisor Suspend V1.3','component','virtualization'),
  E('component:android-guest','Android Guest','component','android',('MT8668','MT8676')),E('component:tbox-guest','TBox Guest','component','tbox'),
  E('process:kernel-suspend','Kernel Suspend','process','power'),E('component:atf','ATF','component','power'),E('component:spm','SPM','component','power'),
  E('component:pmic','PMIC / VCORE / DRAM','component','power'),E('component:mt6363','MT6363 Buck / LDO','component','power'),
@@ -59,6 +65,7 @@ power_rels=[
  {'from':'component:hypervisor-barrier','to':'component:android-guest','type':'controls','pathClass':'control','platforms':['MT8676'],'category':'power'},
  {'from':'component:hypervisor-barrier','to':'component:tbox-guest','type':'controls','pathClass':'control','platforms':['MT8676'],'category':'tbox'},
  {'from':'component:hypervisor-barrier','to':'process:kernel-suspend','type':'controls','pathClass':'control','platforms':['MT8676'],'category':'power'},
+ {'from':'component:hypervisor-suspend-v11','to':'component:hypervisor-suspend-v13','type':'conflicts_with','pathClass':'control','platforms':['MT8676'],'category':'power','status':'conflicting','sourceId':'e8cfe763d374','pages':[6],'additionalEvidence':[{'sourceId':'bd4864cd0a67','pages':[6]}]},
  {'from':'process:kernel-suspend','to':'component:atf','type':'sends_to','pathClass':'control','platforms':['MT8676'],'category':'power'},
  {'from':'component:atf','to':'component:spm','type':'controls','pathClass':'control','platforms':['MT8676'],'category':'power'},
  {'from':'component:spm','to':'component:pmic','type':'controls','pathClass':'power','platforms':['MT8676'],'category':'power'},

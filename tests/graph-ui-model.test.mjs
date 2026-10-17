@@ -9,7 +9,7 @@ const graph={nodes:[
  {from:'a',to:'b',type:'controls',pathClass:'control',claims:[{status:'documented_reference',evidenceIds:['ev']}]},
  {from:'a',to:'ev',type:'supported_by',pathClass:'diagnostic'},{from:'ev',to:'src',type:'supported_by',pathClass:'diagnostic'}]};
 test('search ranks aliases and platform filters',()=>assert.equal(rankSearchResults(graph.nodes,'休眠',{platforms:['MT8676']})[0].id,'a'));
-test('evidence is hidden by default and expands only for selected node',()=>{assert.ok(!visibleNodeIds(graph,{}).has('ev'));const ids=visibleNodeIds(graph,{selectedId:'a',evidenceVisible:true});assert.ok(ids.has('ev'));assert.ok(ids.has('src'));assert.deepEqual(expandEvidenceNeighborhood(graph,'b'),new Set(['b']))});
+test('evidence is hidden by default and expands for incoming or outgoing selected relations',()=>{assert.ok(!visibleNodeIds(graph,{}).has('ev'));const ids=visibleNodeIds(graph,{selectedId:'a',evidenceVisible:true});assert.ok(ids.has('ev'));assert.ok(ids.has('src'));assert.deepEqual(expandEvidenceNeighborhood(graph,'b'),new Set(['b','ev','src']))});
 test('path filters retain connected knowledge nodes',()=>{const ids=visibleNodeIds(graph,{pathClasses:['control']});assert.ok(ids.has('a')&&ids.has('b'))});
 test('details include evidence scope source page and URL',()=>{const d=detailModel(graph,'a');assert.deepEqual(d.platforms,['MT8676']);assert.equal(d.evidence[0].sourceName,'manual.pdf');assert.deepEqual(d.evidence[0].pages,[4]);assert.match(d.evidence[0].url,/^https:/)});
 

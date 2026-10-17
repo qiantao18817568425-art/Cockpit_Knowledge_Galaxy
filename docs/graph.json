@@ -12,11 +12,11 @@
     "rawCategoryCount": 15,
     "rawDocumentCount": 299,
     "semantic": {
-      "entityCount": 104,
-      "relationCount": 70,
-      "evidenceCount": 70,
+      "entityCount": 106,
+      "relationCount": 71,
+      "evidenceCount": 72,
       "sourceCount": 299,
-      "claimCount": 70
+      "claimCount": 71
     },
     "sourceCoverage": {
       "total": 299,
@@ -3011,6 +3011,32 @@
         "MT8676"
       ],
       "description": "Hypervisor Suspend Barrier",
+      "aliases": [],
+      "runtimeDomain": "virtualization",
+      "layer": "knowledge"
+    },
+    {
+      "id": "component:hypervisor-suspend-v11",
+      "title": "Hypervisor Suspend V1.1",
+      "kind": "component",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Hypervisor Suspend V1.1",
+      "aliases": [],
+      "runtimeDomain": "virtualization",
+      "layer": "knowledge"
+    },
+    {
+      "id": "component:hypervisor-suspend-v13",
+      "title": "Hypervisor Suspend V1.3",
+      "kind": "component",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Hypervisor Suspend V1.3",
       "aliases": [],
       "runtimeDomain": "virtualization",
       "layer": "knowledge"
@@ -9636,6 +9662,36 @@
     },
     {
       "id": "ev:power:009",
+      "sourceId": "e8cfe763d374",
+      "pages": [
+        6
+      ],
+      "status": "conflicting",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf》对应章节后，将“Hypervisor Suspend V1.1”与“Hypervisor Suspend V1.3”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "title": "证据 · MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf",
+      "kind": "evidence",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "sourceName": "MT8676_Hypervisor_Suspend_Resume_User_Manual_V1.3.pdf",
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-e8cfe763d374.pdf"
+    },
+    {
+      "id": "ev:power:009:1",
+      "sourceId": "bd4864cd0a67",
+      "pages": [
+        6
+      ],
+      "status": "conflicting",
+      "summary": "《MT8676_Hypervisor_Suspend_Resume_V1.1.pdf》作为另一版本依据，与同一关系的其他版本并列保留，差异项在实车版本确认前不合并为当前事实。",
+      "title": "证据 · MT8676_Hypervisor_Suspend_Resume_V1.1.pdf",
+      "kind": "evidence",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "sourceName": "MT8676_Hypervisor_Suspend_Resume_V1.1.pdf",
+      "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-bd4864cd0a67.pdf"
+    },
+    {
+      "id": "ev:power:010",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9650,7 +9706,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:010",
+      "id": "ev:power:011",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9665,7 +9721,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:011",
+      "id": "ev:power:012",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9680,7 +9736,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:012",
+      "id": "ev:power:013",
       "sourceId": "232daa16ff71",
       "pages": [
         [
@@ -9698,7 +9754,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-232daa16ff71.pdf"
     },
     {
-      "id": "ev:power:013",
+      "id": "ev:power:014",
       "sourceId": "232daa16ff71",
       "pages": [
         16
@@ -9713,7 +9769,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-232daa16ff71.pdf"
     },
     {
-      "id": "ev:power:014",
+      "id": "ev:power:015",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9728,7 +9784,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:015",
+      "id": "ev:power:016",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9743,7 +9799,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:016",
+      "id": "ev:power:017",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9758,7 +9814,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:017",
+      "id": "ev:power:018",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         5
@@ -9773,7 +9829,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:018",
+      "id": "ev:power:019",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         8
@@ -9788,7 +9844,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:019",
+      "id": "ev:power:020",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         7
@@ -9803,7 +9859,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:020",
+      "id": "ev:power:021",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         14
@@ -9818,7 +9874,7 @@
       "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-b3ab2e67d52d.pdf"
     },
     {
-      "id": "ev:power:021",
+      "id": "ev:power:022",
       "sourceId": "b3ab2e67d52d",
       "pages": [
         15
@@ -13418,10 +13474,10 @@
     {
       "id": "rel:power:009",
       "scope": "platform_scoped",
-      "status": "documented_reference",
-      "from": "process:kernel-suspend",
-      "to": "component:atf",
-      "type": "sends_to",
+      "status": "conflicting",
+      "from": "component:hypervisor-suspend-v11",
+      "to": "component:hypervisor-suspend-v13",
+      "type": "conflicts_with",
       "pathClass": "control",
       "platforms": [
         "MT8676"
@@ -13432,9 +13488,10 @@
           "id": "claim:power:009",
           "relationId": "rel:power:009",
           "evidenceIds": [
-            "ev:power:009"
+            "ev:power:009",
+            "ev:power:009:1"
           ],
-          "status": "documented_reference",
+          "status": "conflicting",
           "platforms": [
             "MT8676"
           ]
@@ -13445,9 +13502,9 @@
       "id": "rel:power:010",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "component:atf",
-      "to": "component:spm",
-      "type": "controls",
+      "from": "process:kernel-suspend",
+      "to": "component:atf",
+      "type": "sends_to",
       "pathClass": "control",
       "platforms": [
         "MT8676"
@@ -13471,10 +13528,10 @@
       "id": "rel:power:011",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "component:spm",
-      "to": "component:pmic",
+      "from": "component:atf",
+      "to": "component:spm",
       "type": "controls",
-      "pathClass": "power",
+      "pathClass": "control",
       "platforms": [
         "MT8676"
       ],
@@ -13497,9 +13554,9 @@
       "id": "rel:power:012",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "component:pmic",
-      "to": "component:mt6363",
-      "type": "powers",
+      "from": "component:spm",
+      "to": "component:pmic",
+      "type": "controls",
       "pathClass": "power",
       "platforms": [
         "MT8676"
@@ -13523,8 +13580,8 @@
       "id": "rel:power:013",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "component:backup-power",
-      "to": "component:pmic",
+      "from": "component:pmic",
+      "to": "component:mt6363",
       "type": "powers",
       "pathClass": "power",
       "platforms": [
@@ -13549,10 +13606,10 @@
       "id": "rel:power:014",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-active",
-      "to": "state:power-suspend-entry",
-      "type": "transitions_to",
-      "pathClass": "control",
+      "from": "component:backup-power",
+      "to": "component:pmic",
+      "type": "powers",
+      "pathClass": "power",
       "platforms": [
         "MT8676"
       ],
@@ -13575,8 +13632,8 @@
       "id": "rel:power:015",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-suspend-entry",
-      "to": "state:power-suspended",
+      "from": "state:power-active",
+      "to": "state:power-suspend-entry",
       "type": "transitions_to",
       "pathClass": "control",
       "platforms": [
@@ -13601,8 +13658,8 @@
       "id": "rel:power:016",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-suspended",
-      "to": "state:power-resume",
+      "from": "state:power-suspend-entry",
+      "to": "state:power-suspended",
       "type": "transitions_to",
       "pathClass": "control",
       "platforms": [
@@ -13627,8 +13684,8 @@
       "id": "rel:power:017",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-resume",
-      "to": "state:power-active",
+      "from": "state:power-suspended",
+      "to": "state:power-resume",
       "type": "transitions_to",
       "pathClass": "control",
       "platforms": [
@@ -13653,10 +13710,10 @@
       "id": "rel:power:018",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "process:kernel-suspend",
-      "to": "observation:wake-source",
-      "type": "observed_by",
-      "pathClass": "diagnostic",
+      "from": "state:power-resume",
+      "to": "state:power-active",
+      "type": "transitions_to",
+      "pathClass": "control",
       "platforms": [
         "MT8676"
       ],
@@ -13679,8 +13736,8 @@
       "id": "rel:power:019",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-active",
-      "to": "observation:framework-wake",
+      "from": "process:kernel-suspend",
+      "to": "observation:wake-source",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13705,8 +13762,8 @@
       "id": "rel:power:020",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-suspend-entry",
-      "to": "observation:suspend-abort",
+      "from": "state:power-active",
+      "to": "observation:framework-wake",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13731,8 +13788,8 @@
       "id": "rel:power:021",
       "scope": "platform_scoped",
       "status": "documented_reference",
-      "from": "state:power-suspended",
-      "to": "observation:wake-after-suspend",
+      "from": "state:power-suspend-entry",
+      "to": "observation:suspend-abort",
       "type": "observed_by",
       "pathClass": "diagnostic",
       "platforms": [
@@ -13745,6 +13802,32 @@
           "relationId": "rel:power:021",
           "evidenceIds": [
             "ev:power:021"
+          ],
+          "status": "documented_reference",
+          "platforms": [
+            "MT8676"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rel:power:022",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-suspended",
+      "to": "observation:wake-after-suspend",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8676"
+      ],
+      "layer": "knowledge",
+      "claims": [
+        {
+          "id": "claim:power:022",
+          "relationId": "rel:power:022",
+          "evidenceIds": [
+            "ev:power:022"
           ],
           "status": "documented_reference",
           "platforms": [
@@ -14325,7 +14408,7 @@
     },
     {
       "id": "support:claim:power:009:ev:power:009",
-      "from": "process:kernel-suspend",
+      "from": "component:hypervisor-suspend-v11",
       "to": "ev:power:009",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14334,8 +14417,18 @@
       "claimId": "claim:power:009"
     },
     {
+      "id": "support:claim:power:009:ev:power:009:1",
+      "from": "component:hypervisor-suspend-v11",
+      "to": "ev:power:009:1",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "claimId": "claim:power:009"
+    },
+    {
       "id": "support:claim:power:010:ev:power:010",
-      "from": "component:atf",
+      "from": "process:kernel-suspend",
       "to": "ev:power:010",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14345,7 +14438,7 @@
     },
     {
       "id": "support:claim:power:011:ev:power:011",
-      "from": "component:spm",
+      "from": "component:atf",
       "to": "ev:power:011",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14355,7 +14448,7 @@
     },
     {
       "id": "support:claim:power:012:ev:power:012",
-      "from": "component:pmic",
+      "from": "component:spm",
       "to": "ev:power:012",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14365,7 +14458,7 @@
     },
     {
       "id": "support:claim:power:013:ev:power:013",
-      "from": "component:backup-power",
+      "from": "component:pmic",
       "to": "ev:power:013",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14375,7 +14468,7 @@
     },
     {
       "id": "support:claim:power:014:ev:power:014",
-      "from": "state:power-active",
+      "from": "component:backup-power",
       "to": "ev:power:014",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14385,7 +14478,7 @@
     },
     {
       "id": "support:claim:power:015:ev:power:015",
-      "from": "state:power-suspend-entry",
+      "from": "state:power-active",
       "to": "ev:power:015",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14395,7 +14488,7 @@
     },
     {
       "id": "support:claim:power:016:ev:power:016",
-      "from": "state:power-suspended",
+      "from": "state:power-suspend-entry",
       "to": "ev:power:016",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14405,7 +14498,7 @@
     },
     {
       "id": "support:claim:power:017:ev:power:017",
-      "from": "state:power-resume",
+      "from": "state:power-suspended",
       "to": "ev:power:017",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14415,7 +14508,7 @@
     },
     {
       "id": "support:claim:power:018:ev:power:018",
-      "from": "process:kernel-suspend",
+      "from": "state:power-resume",
       "to": "ev:power:018",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14425,7 +14518,7 @@
     },
     {
       "id": "support:claim:power:019:ev:power:019",
-      "from": "state:power-active",
+      "from": "process:kernel-suspend",
       "to": "ev:power:019",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14435,7 +14528,7 @@
     },
     {
       "id": "support:claim:power:020:ev:power:020",
-      "from": "state:power-suspend-entry",
+      "from": "state:power-active",
       "to": "ev:power:020",
       "type": "supported_by",
       "pathClass": "diagnostic",
@@ -14445,13 +14538,23 @@
     },
     {
       "id": "support:claim:power:021:ev:power:021",
-      "from": "state:power-suspended",
+      "from": "state:power-suspend-entry",
       "to": "ev:power:021",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
       "hiddenByDefault": true,
       "claimId": "claim:power:021"
+    },
+    {
+      "id": "support:claim:power:022:ev:power:022",
+      "from": "state:power-suspended",
+      "to": "ev:power:022",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true,
+      "claimId": "claim:power:022"
     },
     {
       "id": "source:ev:assurance:001",
@@ -14969,7 +15072,16 @@
     {
       "id": "source:ev:power:009",
       "from": "ev:power:009",
-      "to": "b3ab2e67d52d",
+      "to": "e8cfe763d374",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "source:ev:power:009:1",
+      "from": "ev:power:009:1",
+      "to": "bd4864cd0a67",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -14996,7 +15108,7 @@
     {
       "id": "source:ev:power:012",
       "from": "ev:power:012",
-      "to": "232daa16ff71",
+      "to": "b3ab2e67d52d",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -15014,7 +15126,7 @@
     {
       "id": "source:ev:power:014",
       "from": "ev:power:014",
-      "to": "b3ab2e67d52d",
+      "to": "232daa16ff71",
       "type": "supported_by",
       "pathClass": "diagnostic",
       "layer": "evidence",
@@ -15082,6 +15194,16 @@
       "pathClass": "diagnostic",
       "layer": "evidence",
       "hiddenByDefault": true
+    },
+    {
+      "id": "source:ev:power:022",
+      "from": "ev:power:022",
+      "to": "b3ab2e67d52d",
+      "type": "supported_by",
+      "pathClass": "diagnostic",
+      "layer": "evidence",
+      "hiddenByDefault": true
     }
   ]
 }
+

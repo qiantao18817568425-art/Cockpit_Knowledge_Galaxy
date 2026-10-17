@@ -19,6 +19,7 @@ export function expandEvidenceNeighborhood(graph,nodeId){
   for(const edge of graph.edges){
     if(edge.from===nodeId&&edge.type==='supported_by')found.add(edge.to);
     if(edge.to===nodeId&&edge.type==='supported_by')found.add(edge.from);
+    if(edge.type!=='supported_by'&&(edge.from===nodeId||edge.to===nodeId))for(const claim of edge.claims||[])for(const evidenceId of claim.evidenceIds||[])found.add(evidenceId);
   }
   let changed=true;
   while(changed){changed=false;for(const edge of graph.edges){if(edge.type!=='supported_by')continue;if(found.has(edge.from)&&!found.has(edge.to)){found.add(edge.to);changed=true}}}

@@ -13,6 +13,8 @@ test('power domain covers the end-to-end control, state, power and observation p
   for(const cls of ['control','power','diagnostic']) assert.ok(pack.relations.some(x=>x.pathClass===cls),cls);
   assert.ok(pack.relations.some(x=>x.type==='transitions_to'));
   assert.equal(pack.claims.length,pack.relations.length);
-  assert.equal(pack.evidence.length,pack.relations.length);
+  assert.ok(pack.evidence.length>=pack.relations.length);
+  const conflict=pack.relations.find(x=>x.status==='conflicting');assert.ok(conflict,'version conflict must be retained');
+  assert.ok(pack.claims.find(x=>x.relationId===conflict.id).evidenceIds.length>=2,'conflict needs evidence from both revisions');
 });
 

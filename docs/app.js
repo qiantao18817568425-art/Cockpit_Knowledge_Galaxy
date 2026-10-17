@@ -106,6 +106,7 @@ function draw(){
   positionHoverCard(map);
   for(const edge of edges){
     if(edge.type==='课程顺序'&&!sequenceVisible)continue;
+    if(viewState.pathClasses.length&&edge.pathClass&&!viewState.pathClasses.includes(edge.pathClass))continue;
     const a=map.get(edge.from),b=map.get(edge.to);
     if(!visible(a)||!visible(b))continue;
     const active=emphasis&&(edge.from===emphasis||edge.to===emphasis);

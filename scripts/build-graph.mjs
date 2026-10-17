@@ -1,6 +1,7 @@
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {loadKnowledgeContent, compileKnowledgeGraph} from './lib/knowledge-model.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceArg = process.argv.indexOf('--source');
@@ -11,6 +12,7 @@ const lessonDir = path.join(sourceRoot, 'docs', 'lessons');
 const powerTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'power-taxonomy.json'), 'utf8'));
 const rawTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'raw-taxonomy.json'), 'utf8'));
 const rawCatalog = JSON.parse(await readFile(path.join(projectRoot, 'docs', 'raw-sources.json'), 'utf8'));
+const sourceRegister = JSON.parse(await readFile(path.join(projectRoot, 'content', 'source-register.json'), 'utf8'));
 
 function plain(value) {
   return value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
@@ -142,6 +144,16 @@ for (const category of rawTaxonomy) {
 const daily = nodes.filter(n=>n.kind==='lesson').sort((a,b)=>Number(a.id.slice(11))-Number(b.id.slice(11)));
 for(let i=1;i<daily.length;i++) edges.push({ from:daily[i-1].id, to:daily[i].id, type:'课程顺序' });
 const reviews = nodes.filter(n=>n.kind==='review');
+const knowledgeModel = await loadKnowledgeContent(path.join(projectRoot,'content','domain-packs'));
+knowledgeModel.sources = sourceRegister.documents.map(item=>({
+  id:item.id,name:item.name,title:item.name,downloadUrl:item.downloadUrl,platforms:[item.platform],version:item.version,
+  processingState:item.processingState,knowledgeIds:item.knowledgeIds,category:item.category
+}));
+const semantic = compileKnowledgeGraph(knowledgeModel);
+const duplicateSemantic = semantic.nodes.find(node=>knownIds.has(node.id));
+if(duplicateSemantic) throw new Error(`Semantic node collides with navigation node: ${duplicateSemantic.id}`);
+nodes.push(...semantic.nodes);
+edges.push(...semantic.edges);
 const data = {
   meta: {
     title:'座舱知识银河',
@@ -155,10 +167,16 @@ const data = {
     powerPathCount:powerTaxonomy.filter(branch => branch.parent).length,
     rawCategoryCount:rawTaxonomy.length,
     rawDocumentCount:rawCatalog.documents.length,
+    semantic:semantic.meta,
+    sourceCoverage:{total:sourceRegister.summary.publicDocuments,mapped:sourceRegister.summary.mappedDocuments,
+      archiveDocuments:sourceRegister.summary.archiveDocuments,processingStates:sourceRegister.summary.processingStates},
+    layers:{navigation:true,knowledge:true,evidence:'on-demand'},
     relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
   },
   nodes, edges
 };
 await mkdir(path.join(projectRoot,'docs'),{recursive:true});
 await writeFile(path.join(projectRoot,'docs','graph.json'),JSON.stringify(data,null,2)+'\n','utf8');
+await writeFile(path.join(projectRoot,'docs','source-register.json'),JSON.stringify(sourceRegister,null,2)+'\n','utf8');
 console.log(`Graph generated: ${nodes.length} nodes, ${edges.length} edges; ${daily.length} days, ${reviews.length} reviews.`);
+

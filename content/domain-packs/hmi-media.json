@@ -1,0 +1,619 @@
+{
+  "entities": [
+    {
+      "id": "domain:hmi",
+      "title": "HMI",
+      "kind": "domain",
+      "domain": "hmi",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "HMI",
+      "aliases": [],
+      "runtimeDomain": "hmi"
+    },
+    {
+      "id": "domain:display",
+      "title": "显示与触控",
+      "kind": "domain",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "显示与触控",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "domain:camera",
+      "title": "Camera / AVM",
+      "kind": "domain",
+      "domain": "camera",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Camera / AVM",
+      "aliases": [],
+      "runtimeDomain": "camera"
+    },
+    {
+      "id": "domain:audio",
+      "title": "音频与语音",
+      "kind": "domain",
+      "domain": "audio",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "音频与语音",
+      "aliases": [],
+      "runtimeDomain": "audio"
+    },
+    {
+      "id": "component:android-display",
+      "title": "Android HWC / SurfaceFlinger",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Android HWC / SurfaceFlinger",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "component:yocto-display",
+      "title": "Yocto DRM / Weston",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Yocto DRM / Weston",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "component:physical-display",
+      "title": "物理屏 / SerDes",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "物理屏 / SerDes",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "component:backlight",
+      "title": "背光",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "背光",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "interface:input-event",
+      "title": "Input Event",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Input Event",
+      "aliases": [],
+      "runtimeDomain": "display"
+    },
+    {
+      "id": "observation:first-frame",
+      "title": "首帧 submit / present",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "首帧 submit / present",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "component:camera-control",
+      "title": "Camera Control",
+      "kind": "component",
+      "domain": "camera",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Camera Control",
+      "aliases": [],
+      "runtimeDomain": "camera"
+    },
+    {
+      "id": "interface:camera-frame",
+      "title": "Camera Frame Data",
+      "kind": "interface",
+      "domain": "camera",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Camera Frame Data",
+      "aliases": [],
+      "runtimeDomain": "camera"
+    },
+    {
+      "id": "component:avm-stitch",
+      "title": "AVM 四路拼接",
+      "kind": "component",
+      "domain": "camera",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "AVM 四路拼接",
+      "aliases": [],
+      "runtimeDomain": "camera"
+    },
+    {
+      "id": "observation:camera-four-stream",
+      "title": "四路帧计数",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "四路帧计数",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "process:audio-playback",
+      "title": "Audio Playback",
+      "kind": "process",
+      "domain": "audio",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Audio Playback",
+      "aliases": [],
+      "runtimeDomain": "audio"
+    },
+    {
+      "id": "process:audio-capture",
+      "title": "Audio Capture",
+      "kind": "process",
+      "domain": "audio",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Audio Capture",
+      "aliases": [],
+      "runtimeDomain": "audio"
+    },
+    {
+      "id": "component:aec-reference",
+      "title": "AEC / Echo Reference",
+      "kind": "component",
+      "domain": "audio",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "AEC / Echo Reference",
+      "aliases": [],
+      "runtimeDomain": "audio"
+    },
+    {
+      "id": "component:dsp-variant",
+      "title": "ADSP / External DSP Variant",
+      "kind": "component",
+      "domain": "audio",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "ADSP / External DSP Variant",
+      "aliases": [],
+      "runtimeDomain": "audio"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:hmi:001",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-display",
+      "to": "component:yocto-display",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:002",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:yocto-display",
+      "to": "component:physical-display",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:003",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:mcu",
+      "to": "component:backlight",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:004",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:input-event",
+      "to": "component:android-guest",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:005",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-display",
+      "to": "observation:first-frame",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:006",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:camera-control",
+      "to": "component:avm-stitch",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:007",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:camera-frame",
+      "to": "component:avm-stitch",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:008",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:avm-stitch",
+      "to": "observation:camera-four-stream",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:009",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:audio-playback",
+      "to": "component:dsp-variant",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:010",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:audio-capture",
+      "to": "component:aec-reference",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:011",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:aec-reference",
+      "to": "component:dsp-variant",
+      "type": "depends_on",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:hmi:001",
+      "relationId": "rel:hmi:001",
+      "evidenceIds": [
+        "ev:hmi:001"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:002",
+      "relationId": "rel:hmi:002",
+      "evidenceIds": [
+        "ev:hmi:002"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:003",
+      "relationId": "rel:hmi:003",
+      "evidenceIds": [
+        "ev:hmi:003"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:004",
+      "relationId": "rel:hmi:004",
+      "evidenceIds": [
+        "ev:hmi:004"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:005",
+      "relationId": "rel:hmi:005",
+      "evidenceIds": [
+        "ev:hmi:005"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:006",
+      "relationId": "rel:hmi:006",
+      "evidenceIds": [
+        "ev:hmi:006"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:007",
+      "relationId": "rel:hmi:007",
+      "evidenceIds": [
+        "ev:hmi:007"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:008",
+      "relationId": "rel:hmi:008",
+      "evidenceIds": [
+        "ev:hmi:008"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:009",
+      "relationId": "rel:hmi:009",
+      "evidenceIds": [
+        "ev:hmi:009"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:010",
+      "relationId": "rel:hmi:010",
+      "evidenceIds": [
+        "ev:hmi:010"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:011",
+      "relationId": "rel:hmi:011",
+      "evidenceIds": [
+        "ev:hmi:011"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev:hmi:001",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“Yocto DRM / Weston”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:002",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Yocto DRM / Weston”与“物理屏 / SerDes”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:003",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“MCU”与“背光”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:004",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Input Event”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:005",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Display_User_Manual_V1.3.pdf》对应章节后，将“Android HWC / SurfaceFlinger”与“首帧 submit / present”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:006",
+      "sourceId": "28f33b5b442f",
+      "pages": [
+        8
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Control”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:007",
+      "sourceId": "28f33b5b442f",
+      "pages": [
+        8
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“Camera Frame Data”与“AVM 四路拼接”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:008",
+      "sourceId": "28f33b5b442f",
+      "pages": [
+        8
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Camera_User_Manual_V1.1.pdf》对应章节后，将“AVM 四路拼接”与“四路帧计数”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:009",
+      "sourceId": "38c540b592d3",
+      "pages": [
+        24
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Playback”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:010",
+      "sourceId": "38c540b592d3",
+      "pages": [
+        24
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“Audio Capture”与“AEC / Echo Reference”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:hmi:011",
+      "sourceId": "38c540b592d3",
+      "pages": [
+        24
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“AEC / Echo Reference”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    }
+  ]
+}
+

@@ -23,12 +23,12 @@ test('public learning content is complete and traceable',()=>{
   }
 });
 
-test('every edge resolves and states an index relation',()=>{
+test('every edge resolves and states a navigation or semantic relation',()=>{
   assert.equal(ids.size,graph.nodes.length);
   for(const edge of graph.edges){
     assert.ok(ids.has(edge.from),edge.from);
     assert.ok(ids.has(edge.to),edge.to);
-    assert.ok(['主题目录','主题归类','主题细分','内容索引','课程顺序'].includes(edge.type));
+    assert.ok(['主题目录','主题归类','主题细分','内容索引','课程顺序','belongs_to','runs_on','controls','sends_to','publishes','subscribes','carries_data_to','powers','transitions_to','depends_on','observed_by','fails_as','supported_by','variant_of','conflicts_with','supersedes'].includes(edge.type),edge.type);
   }
 });
 
@@ -36,7 +36,7 @@ test('every public reading link resolves to a published file and heading', async
   assert.ok(sourceRoot,'public source checkout is required for link validation');
   const sourceSite = new URL(graph.meta.sourceSite);
   const cache = new Map();
-  for (const node of graph.nodes) {
+  for (const node of graph.nodes.filter(node=>node.layer!=='knowledge'&&node.layer!=='evidence')) {
     assert.ok(node.url,`Missing reading link: ${node.id}`);
     if (node.url.startsWith('./raw-sources.html')) {
       assert.ok(existsSync(path.join(projectRoot,'docs','raw-sources.html')),node.id);
@@ -58,6 +58,24 @@ test('every public reading link resolves to a published file and heading', async
     if (topic.id==='topic:raw') continue;
     assert.ok(graph.nodes.some(node=>node.kind==='chapter'&&node.url===topic.url&&graph.edges.some(edge=>edge.from===topic.id&&edge.to===node.id)),topic.id);
   }
+});
+
+test('semantic graph is evidence backed and covers every public source',()=>{
+  assert.equal(graph.meta.sourceCoverage.total,299);
+  assert.equal(graph.meta.sourceCoverage.mapped,299);
+  assert.ok(graph.meta.semantic.entityCount>=100);
+  assert.ok(graph.meta.semantic.relationCount>=70);
+  const evidenceIds=new Set(graph.nodes.filter(x=>x.kind==='evidence').map(x=>x.id));
+  const sourceIds=new Set(graph.nodes.filter(x=>x.kind==='source').map(x=>x.id));
+  assert.equal(sourceIds.size,299);
+  for(const node of graph.nodes.filter(x=>['source','evidence'].includes(x.kind)))assert.equal(node.hiddenByDefault,true,node.id);
+  for(const edge of graph.edges.filter(x=>x.layer==='knowledge')){
+    assert.ok(edge.claims?.length,edge.id);
+    for(const claim of edge.claims)for(const evidenceId of claim.evidenceIds)assert.ok(evidenceIds.has(evidenceId),evidenceId);
+  }
+  for(const node of graph.nodes.filter(x=>x.kind==='evidence')){assert.ok(sourceIds.has(node.sourceId),node.id);assert.match(node.downloadUrl,/^https:\/\//)}
+  assert.ok(!JSON.stringify(graph).includes('I:\\'));
+  assert.ok(graph.nodes.filter(x=>!x.hiddenByDefault).length<350,'default view must remain bounded');
 });
 
 test('raw materials have a distinct category and complete classified directory',()=>{
@@ -107,3 +125,4 @@ test('power management has traceable, detailed learning paths',()=>{
     assert.ok(powerTargets.has(target),target);
   }
 });
+

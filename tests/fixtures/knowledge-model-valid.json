@@ -1,0 +1,11 @@
+{
+  "sources": [{"id":"src-a","name":"Manual.pdf","downloadUrl":"https://example.com/a.pdf","processingState":"indexed"}],
+  "entities": [
+    {"id":"platform:mt8676","title":"MT8676","kind":"platform","platforms":["MT8676"]},
+    {"id":"component:sleep","title":"SleepManager","kind":"component","platforms":["MT8676"]}
+  ],
+  "relations": [{"id":"rel:sleep-platform","from":"component:sleep","to":"platform:mt8676","type":"runs_on","pathClass":"control","platforms":["MT8676"]}],
+  "evidence": [{"id":"ev-a","sourceId":"src-a","pages":[4],"status":"documented_reference","summary":"The manual identifies the component boundary."}],
+  "claims": [{"id":"claim-a","relationId":"rel:sleep-platform","evidenceIds":["ev-a"],"status":"documented_reference","platforms":["MT8676"]}]
+}
+

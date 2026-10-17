@@ -1,0 +1,998 @@
+{
+  "entities": [
+    {
+      "id": "domain:power",
+      "title": "电源与生命周期",
+      "kind": "domain",
+      "domain": "power",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "座舱供电、低功耗、休眠和唤醒主域。",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "platform:mt8668",
+      "title": "MT8668",
+      "kind": "platform",
+      "domain": "platform",
+      "platforms": [
+        "MT8668"
+      ],
+      "description": "MT8668",
+      "aliases": [],
+      "runtimeDomain": "platform"
+    },
+    {
+      "id": "platform:mt8676",
+      "title": "MT8676",
+      "kind": "platform",
+      "domain": "platform",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "MT8676",
+      "aliases": [],
+      "runtimeDomain": "platform"
+    },
+    {
+      "id": "component:vehicle-power-input",
+      "title": "车辆电源输入",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "车辆电源输入",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "component:mcu-power-manager",
+      "title": "MCU PowerManager",
+      "kind": "component",
+      "domain": "mcu",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "MCU PowerManager",
+      "aliases": [],
+      "runtimeDomain": "mcu"
+    },
+    {
+      "id": "interface:gpio-wake",
+      "title": "GPIO / Wake IRQ",
+      "kind": "interface",
+      "domain": "power",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "GPIO / Wake IRQ",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "interface:spi-ipcl",
+      "title": "SPI / IPCL",
+      "kind": "interface",
+      "domain": "cross-domain",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "SPI / IPCL",
+      "aliases": [],
+      "runtimeDomain": "cross-domain"
+    },
+    {
+      "id": "component:yocto-sleep-manager",
+      "title": "Yocto SleepManager",
+      "kind": "component",
+      "domain": "yocto",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Yocto SleepManager",
+      "aliases": [],
+      "runtimeDomain": "yocto"
+    },
+    {
+      "id": "component:hypervisor-barrier",
+      "title": "Hypervisor Suspend Barrier",
+      "kind": "component",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Hypervisor Suspend Barrier",
+      "aliases": [],
+      "runtimeDomain": "virtualization"
+    },
+    {
+      "id": "component:android-guest",
+      "title": "Android Guest",
+      "kind": "component",
+      "domain": "android",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Android Guest",
+      "aliases": [],
+      "runtimeDomain": "android"
+    },
+    {
+      "id": "component:tbox-guest",
+      "title": "TBox Guest",
+      "kind": "component",
+      "domain": "tbox",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "TBox Guest",
+      "aliases": [],
+      "runtimeDomain": "tbox"
+    },
+    {
+      "id": "process:kernel-suspend",
+      "title": "Kernel Suspend",
+      "kind": "process",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Kernel Suspend",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "component:atf",
+      "title": "ATF",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "ATF",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "component:spm",
+      "title": "SPM",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "SPM",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "component:pmic",
+      "title": "PMIC / VCORE / DRAM",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "PMIC / VCORE / DRAM",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "component:mt6363",
+      "title": "MT6363 Buck / LDO",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "MT6363 Buck / LDO",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "state:power-active",
+      "title": "Active",
+      "kind": "state",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Active",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "state:power-suspend-entry",
+      "title": "Suspend Entry",
+      "kind": "state",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Suspend Entry",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "state:power-suspended",
+      "title": "Suspended",
+      "kind": "state",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Suspended",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "state:power-resume",
+      "title": "Resume",
+      "kind": "state",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Resume",
+      "aliases": [],
+      "runtimeDomain": "power"
+    },
+    {
+      "id": "observation:wake-source",
+      "title": "Wake Source",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Wake Source",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:framework-wake",
+      "title": "framework_wake",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "framework_wake",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:suspend-abort",
+      "title": "suspend_abort",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "suspend_abort",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:wake-after-suspend",
+      "title": "wake_after_suspend",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "wake_after_suspend",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "component:backup-power",
+      "title": "Backup Power",
+      "kind": "component",
+      "domain": "power",
+      "platforms": [
+        "MT8676"
+      ],
+      "description": "Backup Power",
+      "aliases": [],
+      "runtimeDomain": "power"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:power:001",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:vehicle-power-input",
+      "to": "component:mcu-power-manager",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:002",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:mcu-power-manager",
+      "to": "interface:gpio-wake",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:003",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:mcu-power-manager",
+      "to": "interface:spi-ipcl",
+      "type": "sends_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:004",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "interface:spi-ipcl",
+      "to": "component:yocto-sleep-manager",
+      "type": "sends_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:005",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:yocto-sleep-manager",
+      "to": "component:hypervisor-barrier",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:006",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:hypervisor-barrier",
+      "to": "component:android-guest",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:007",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:hypervisor-barrier",
+      "to": "component:tbox-guest",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:008",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:hypervisor-barrier",
+      "to": "process:kernel-suspend",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:009",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "process:kernel-suspend",
+      "to": "component:atf",
+      "type": "sends_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:010",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:atf",
+      "to": "component:spm",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:011",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:spm",
+      "to": "component:pmic",
+      "type": "controls",
+      "pathClass": "power",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:012",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:pmic",
+      "to": "component:mt6363",
+      "type": "powers",
+      "pathClass": "power",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:013",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "component:backup-power",
+      "to": "component:pmic",
+      "type": "powers",
+      "pathClass": "power",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:014",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-active",
+      "to": "state:power-suspend-entry",
+      "type": "transitions_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:015",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-suspend-entry",
+      "to": "state:power-suspended",
+      "type": "transitions_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:016",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-suspended",
+      "to": "state:power-resume",
+      "type": "transitions_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:017",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-resume",
+      "to": "state:power-active",
+      "type": "transitions_to",
+      "pathClass": "control",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:018",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "process:kernel-suspend",
+      "to": "observation:wake-source",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:019",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-active",
+      "to": "observation:framework-wake",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:020",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-suspend-entry",
+      "to": "observation:suspend-abort",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:power:021",
+      "scope": "platform_scoped",
+      "status": "documented_reference",
+      "from": "state:power-suspended",
+      "to": "observation:wake-after-suspend",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8676"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:power:001",
+      "relationId": "rel:power:001",
+      "evidenceIds": [
+        "ev:power:001"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:002",
+      "relationId": "rel:power:002",
+      "evidenceIds": [
+        "ev:power:002"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:003",
+      "relationId": "rel:power:003",
+      "evidenceIds": [
+        "ev:power:003"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:004",
+      "relationId": "rel:power:004",
+      "evidenceIds": [
+        "ev:power:004"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:005",
+      "relationId": "rel:power:005",
+      "evidenceIds": [
+        "ev:power:005"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:006",
+      "relationId": "rel:power:006",
+      "evidenceIds": [
+        "ev:power:006"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:007",
+      "relationId": "rel:power:007",
+      "evidenceIds": [
+        "ev:power:007"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:008",
+      "relationId": "rel:power:008",
+      "evidenceIds": [
+        "ev:power:008"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:009",
+      "relationId": "rel:power:009",
+      "evidenceIds": [
+        "ev:power:009"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:010",
+      "relationId": "rel:power:010",
+      "evidenceIds": [
+        "ev:power:010"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:011",
+      "relationId": "rel:power:011",
+      "evidenceIds": [
+        "ev:power:011"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:012",
+      "relationId": "rel:power:012",
+      "evidenceIds": [
+        "ev:power:012"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:013",
+      "relationId": "rel:power:013",
+      "evidenceIds": [
+        "ev:power:013"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:014",
+      "relationId": "rel:power:014",
+      "evidenceIds": [
+        "ev:power:014"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:015",
+      "relationId": "rel:power:015",
+      "evidenceIds": [
+        "ev:power:015"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:016",
+      "relationId": "rel:power:016",
+      "evidenceIds": [
+        "ev:power:016"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:017",
+      "relationId": "rel:power:017",
+      "evidenceIds": [
+        "ev:power:017"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:018",
+      "relationId": "rel:power:018",
+      "evidenceIds": [
+        "ev:power:018"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:019",
+      "relationId": "rel:power:019",
+      "evidenceIds": [
+        "ev:power:019"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:020",
+      "relationId": "rel:power:020",
+      "evidenceIds": [
+        "ev:power:020"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:power:021",
+      "relationId": "rel:power:021",
+      "evidenceIds": [
+        "ev:power:021"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev:power:001",
+      "sourceId": "183254d73cbd",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“车辆电源输入”与“MCU PowerManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:002",
+      "sourceId": "183254d73cbd",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“GPIO / Wake IRQ”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:003",
+      "sourceId": "183254d73cbd",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU PowerManager”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:004",
+      "sourceId": "aa722a95a0ab",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“SPI / IPCL”与“Yocto SleepManager”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:005",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Yocto SleepManager”与“Hypervisor Suspend Barrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:006",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Android Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:007",
+      "sourceId": "f24f4fe4d19c",
+      "pages": [
+        2
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“TBox Guest”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:008",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Hypervisor Suspend Barrier”与“Kernel Suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:009",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“ATF”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:010",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“ATF”与“SPM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:011",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“SPM”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:012",
+      "sourceId": "232daa16ff71",
+      "pages": [
+        [
+          7,
+          8
+        ]
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“PMIC / VCORE / DRAM”与“MT6363 Buck / LDO”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:013",
+      "sourceId": "232daa16ff71",
+      "pages": [
+        16
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT6363_Design_Notice_for_MT8676_V01.pdf》对应章节后，将“Backup Power”与“PMIC / VCORE / DRAM”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:014",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“Suspend Entry”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:015",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“Suspended”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:016",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“Resume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:017",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Resume”与“Active”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:018",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        8
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Kernel Suspend”与“Wake Source”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:019",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Active”与“framework_wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:020",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        14
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspend Entry”与“suspend_abort”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:power:021",
+      "sourceId": "b3ab2e67d52d",
+      "pages": [
+        15
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_Suspend_Resume_Common_Flow.pdf》对应章节后，将“Suspended”与“wake_after_suspend”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    }
+  ]
+}
+

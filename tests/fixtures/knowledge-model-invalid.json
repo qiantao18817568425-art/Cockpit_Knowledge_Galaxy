@@ -1,0 +1,11 @@
+{
+  "sources": [{"id":"src-a","name":"Broken","downloadUrl":"","processingState":"indexed"}],
+  "entities": [
+    {"id":"component:dup","title":"A","kind":"component","platforms":["MT8668"]},
+    {"id":"component:dup","title":"B","kind":"component","platforms":["MT8676"]}
+  ],
+  "relations": [{"id":"rel:bad","from":"component:dup","to":"component:missing","type":"controls","pathClass":"control","platforms":["MT8668","MT8676"]}],
+  "evidence": [{"id":"ev-bad","sourceId":"missing-source","pages":[0],"status":"made_up","summary":""}],
+  "claims": [{"id":"claim-bad","relationId":"missing-relation","evidenceIds":["missing-evidence"],"status":"confirmed_current","platforms":["MT8676"]}]
+}
+

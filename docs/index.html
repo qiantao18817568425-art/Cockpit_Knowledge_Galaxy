@@ -18,7 +18,11 @@
       <label class="search-label" for="search">搜索知识</label>
       <input id="search" type="search" autocomplete="off" placeholder="模块、链路、Day、关键词…">
       <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
-      <div class="section-label">显示节点</div>
+      <div class="section-label">知识层</div>
+      <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
+      <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
+      <button id="evidence-toggle" class="sequence" type="button" aria-pressed="false">○ 展开所选节点证据</button>
+      <div class="section-label">导航层</div>
       <button class="filter" type="button" data-kind="topic" aria-pressed="true"><i class="swatch topic"></i>主题星系<span>✓</span></button>
       <button class="filter" type="button" data-kind="subtopic" aria-pressed="true"><i class="swatch subtopic"></i>细分链路<span>✓</span></button>
       <button class="filter" type="button" data-kind="chapter" aria-pressed="true"><i class="swatch chapter"></i>架构章节<span>✓</span></button>
@@ -26,7 +30,8 @@
       <button class="filter" type="button" data-kind="review" aria-pressed="true"><i class="swatch review"></i>Week 复盘<span>✓</span></button>
       <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
       <div class="counts" id="counts">正在载入公开知识目录…</div>
-      <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a><a href="https://qiantao18817568425-art.github.io/Architecture_Learning-/architecture/index.html" target="_blank" rel="noopener noreferrer">架构原站 ↗</a></nav>
+      <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="diagnostic">诊断</span></div>
+      <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="knowledge-coverage.html">覆盖报告 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></nav>
     </section>
 
     <div class="glass motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
@@ -40,6 +45,8 @@
       <p id="detail-description"></p>
       <div class="detail-source"><span>来源</span><strong id="detail-source"></strong></div>
       <a id="detail-link" class="source-link" target="_blank" rel="noopener noreferrer" hidden>打开原文 ↗</a>
+      <div id="detail-scope" class="detail-scope"></div>
+      <div id="detail-evidence" class="detail-evidence"></div>
       <div class="related"><b>直接关联</b><div id="related-list"></div></div>
     </aside>
 
@@ -49,3 +56,4 @@
   </main>
 </body>
 </html>
+

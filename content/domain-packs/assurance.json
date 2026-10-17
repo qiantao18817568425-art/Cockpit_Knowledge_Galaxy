@@ -1,0 +1,653 @@
+{
+  "entities": [
+    {
+      "id": "domain:assurance",
+      "title": "稳定性与质量保障",
+      "kind": "domain",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "稳定性与质量保障",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "domain:performance",
+      "title": "性能与卡顿",
+      "kind": "domain",
+      "domain": "performance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "性能与卡顿",
+      "aliases": [],
+      "runtimeDomain": "performance"
+    },
+    {
+      "id": "domain:diagnosis",
+      "title": "诊断与证据",
+      "kind": "domain",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "诊断与证据",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "failure:app-crash",
+      "title": "App / Process Crash",
+      "kind": "failure_mode",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "App / Process Crash",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "failure:system-server",
+      "title": "system_server Restart",
+      "kind": "failure_mode",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "system_server Restart",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "failure:vm-reset",
+      "title": "Guest / VM Reset",
+      "kind": "failure_mode",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Guest / VM Reset",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "failure:host-reset",
+      "title": "Host / SoC Reset",
+      "kind": "failure_mode",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Host / SoC Reset",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "process:db-ke-forensics",
+      "title": "DB / KE 八步取证",
+      "kind": "process",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "DB / KE 八步取证",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:first-fatal",
+      "title": "最早可信致命证据",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "最早可信致命证据",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:cpu-io-memory",
+      "title": "CPU / IO / Memory",
+      "kind": "observation",
+      "domain": "performance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "CPU / IO / Memory",
+      "aliases": [],
+      "runtimeDomain": "performance"
+    },
+    {
+      "id": "observation:frame-chain",
+      "title": "帧端到端链路",
+      "kind": "observation",
+      "domain": "performance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "帧端到端链路",
+      "aliases": [],
+      "runtimeDomain": "performance"
+    },
+    {
+      "id": "component:log-producer",
+      "title": "Log Producer / Caller",
+      "kind": "component",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Log Producer / Caller",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "component:log-retention",
+      "title": "Log Retention / Rotation",
+      "kind": "component",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Log Retention / Rotation",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "failure:log-storm",
+      "title": "Log Storm Amplification",
+      "kind": "failure_mode",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Log Storm Amplification",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "process:tpm-trigger",
+      "title": "TPM 触发与首轮牵头",
+      "kind": "process",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "TPM 触发与首轮牵头",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "process:tpm-direct-failure",
+      "title": "直接失效与责任边界",
+      "kind": "process",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "直接失效与责任边界",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "process:tpm-recovery",
+      "title": "恢复与修复",
+      "kind": "process",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "恢复与修复",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    },
+    {
+      "id": "process:tpm-verification",
+      "title": "验证与关闭",
+      "kind": "process",
+      "domain": "assurance",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "验证与关闭",
+      "aliases": [],
+      "runtimeDomain": "assurance"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:assurance:001",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "failure:app-crash",
+      "to": "state:process-restart",
+      "type": "fails_as",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:002",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "failure:system-server",
+      "to": "state:process-restart",
+      "type": "fails_as",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:003",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "failure:vm-reset",
+      "to": "state:vm-recreate",
+      "type": "fails_as",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:004",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "failure:host-reset",
+      "to": "state:cold-boot",
+      "type": "fails_as",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:005",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:db-ke-forensics",
+      "to": "observation:first-fatal",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:006",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "domain:performance",
+      "to": "observation:cpu-io-memory",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:007",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "domain:performance",
+      "to": "observation:frame-chain",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:008",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:log-producer",
+      "to": "failure:log-storm",
+      "type": "fails_as",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:009",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "failure:log-storm",
+      "to": "component:log-retention",
+      "type": "depends_on",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:010",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:tpm-trigger",
+      "to": "process:tpm-direct-failure",
+      "type": "transitions_to",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:011",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:tpm-direct-failure",
+      "to": "process:tpm-recovery",
+      "type": "transitions_to",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:assurance:012",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "process:tpm-recovery",
+      "to": "process:tpm-verification",
+      "type": "transitions_to",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:assurance:001",
+      "relationId": "rel:assurance:001",
+      "evidenceIds": [
+        "ev:assurance:001"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:002",
+      "relationId": "rel:assurance:002",
+      "evidenceIds": [
+        "ev:assurance:002"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:003",
+      "relationId": "rel:assurance:003",
+      "evidenceIds": [
+        "ev:assurance:003"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:004",
+      "relationId": "rel:assurance:004",
+      "evidenceIds": [
+        "ev:assurance:004"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:005",
+      "relationId": "rel:assurance:005",
+      "evidenceIds": [
+        "ev:assurance:005"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:006",
+      "relationId": "rel:assurance:006",
+      "evidenceIds": [
+        "ev:assurance:006"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:007",
+      "relationId": "rel:assurance:007",
+      "evidenceIds": [
+        "ev:assurance:007"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:008",
+      "relationId": "rel:assurance:008",
+      "evidenceIds": [
+        "ev:assurance:008"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:009",
+      "relationId": "rel:assurance:009",
+      "evidenceIds": [
+        "ev:assurance:009"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:010",
+      "relationId": "rel:assurance:010",
+      "evidenceIds": [
+        "ev:assurance:010"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:011",
+      "relationId": "rel:assurance:011",
+      "evidenceIds": [
+        "ev:assurance:011"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:assurance:012",
+      "relationId": "rel:assurance:012",
+      "evidenceIds": [
+        "ev:assurance:012"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev:assurance:001",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“App / Process Crash”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:002",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“system_server Restart”与“Process Restart”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:003",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Guest / VM Reset”与“VM Recreate”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:004",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“Host / SoC Reset”与“Cold Boot”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:005",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“DB / KE 八步取证”与“最早可信致命证据”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:006",
+      "sourceId": "0d324bedb45f",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_AEE_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“CPU / IO / Memory”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:007",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“性能与卡顿”与“帧端到端链路”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:008",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Producer / Caller”与“Log Storm Amplification”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:009",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Log Storm Amplification”与“Log Retention / Rotation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:010",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“TPM 触发与首轮牵头”与“直接失效与责任边界”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:011",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“直接失效与责任边界”与“恢复与修复”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:assurance:012",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“恢复与修复”与“验证与关闭”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    }
+  ]
+}
+

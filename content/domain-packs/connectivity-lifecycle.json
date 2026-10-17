@@ -1,0 +1,799 @@
+{
+  "entities": [
+    {
+      "id": "domain:tbox",
+      "title": "TBox 与连接",
+      "kind": "domain",
+      "domain": "tbox",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "TBox 与连接",
+      "aliases": [],
+      "runtimeDomain": "tbox"
+    },
+    {
+      "id": "domain:connectivity",
+      "title": "有线与无线连接",
+      "kind": "domain",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "有线与无线连接",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "domain:lifecycle",
+      "title": "启动与生命周期",
+      "kind": "domain",
+      "domain": "lifecycle",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "启动与生命周期",
+      "aliases": [],
+      "runtimeDomain": "lifecycle"
+    },
+    {
+      "id": "domain:usb-storage",
+      "title": "USB 与存储",
+      "kind": "domain",
+      "domain": "usb",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "USB 与存储",
+      "aliases": [],
+      "runtimeDomain": "usb"
+    },
+    {
+      "id": "domain:security",
+      "title": "安全与 TEE",
+      "kind": "domain",
+      "domain": "security",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "安全与 TEE",
+      "aliases": [],
+      "runtimeDomain": "security"
+    },
+    {
+      "id": "component:ethernet-pcs",
+      "title": "SGMII / PCS",
+      "kind": "component",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "SGMII / PCS",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "component:ethernet-phy",
+      "title": "Ethernet PHY / Carrier",
+      "kind": "component",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Ethernet PHY / Carrier",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "process:l3-connectivity",
+      "title": "L3 / IP Reachability",
+      "kind": "process",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "L3 / IP Reachability",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "component:wifi-sta",
+      "title": "Wi-Fi STA",
+      "kind": "component",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Wi-Fi STA",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "component:wifi-softap",
+      "title": "Wi-Fi SoftAP",
+      "kind": "component",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Wi-Fi SoftAP",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "process:phone-link",
+      "title": "手机互联会话",
+      "kind": "process",
+      "domain": "connectivity",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "手机互联会话",
+      "aliases": [],
+      "runtimeDomain": "connectivity"
+    },
+    {
+      "id": "component:modem",
+      "title": "Modem / TSP",
+      "kind": "component",
+      "domain": "tbox",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Modem / TSP",
+      "aliases": [],
+      "runtimeDomain": "tbox"
+    },
+    {
+      "id": "process:remote-wake",
+      "title": "Remote Wake",
+      "kind": "process",
+      "domain": "tbox",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Remote Wake",
+      "aliases": [],
+      "runtimeDomain": "tbox"
+    },
+    {
+      "id": "state:cold-boot",
+      "title": "Cold Boot",
+      "kind": "state",
+      "domain": "lifecycle",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Cold Boot",
+      "aliases": [],
+      "runtimeDomain": "lifecycle"
+    },
+    {
+      "id": "state:str-resume",
+      "title": "STR Resume",
+      "kind": "state",
+      "domain": "lifecycle",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "STR Resume",
+      "aliases": [],
+      "runtimeDomain": "lifecycle"
+    },
+    {
+      "id": "state:vm-recreate",
+      "title": "VM Recreate",
+      "kind": "state",
+      "domain": "lifecycle",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "VM Recreate",
+      "aliases": [],
+      "runtimeDomain": "lifecycle"
+    },
+    {
+      "id": "state:process-restart",
+      "title": "Process Restart",
+      "kind": "state",
+      "domain": "lifecycle",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Process Restart",
+      "aliases": [],
+      "runtimeDomain": "lifecycle"
+    },
+    {
+      "id": "component:usb-connector",
+      "title": "USB Connector / Type-C",
+      "kind": "component",
+      "domain": "usb",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "USB Connector / Type-C",
+      "aliases": [],
+      "runtimeDomain": "usb"
+    },
+    {
+      "id": "component:usb-controller",
+      "title": "xHCI / USB Controller",
+      "kind": "component",
+      "domain": "usb",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "xHCI / USB Controller",
+      "aliases": [],
+      "runtimeDomain": "usb"
+    },
+    {
+      "id": "component:block-device",
+      "title": "Block Device",
+      "kind": "component",
+      "domain": "usb",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Block Device",
+      "aliases": [],
+      "runtimeDomain": "usb"
+    },
+    {
+      "id": "component:filesystem-volume",
+      "title": "Filesystem / Volume",
+      "kind": "component",
+      "domain": "usb",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Filesystem / Volume",
+      "aliases": [],
+      "runtimeDomain": "usb"
+    },
+    {
+      "id": "interface:tee-transport",
+      "title": "TEE Transport",
+      "kind": "interface",
+      "domain": "security",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "TEE Transport",
+      "aliases": [],
+      "runtimeDomain": "security"
+    },
+    {
+      "id": "component:tee-service",
+      "title": "TEE Service",
+      "kind": "component",
+      "domain": "security",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "TEE Service",
+      "aliases": [],
+      "runtimeDomain": "security"
+    },
+    {
+      "id": "component:secure-storage",
+      "title": "RPMB / Secure Storage",
+      "kind": "component",
+      "domain": "security",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "RPMB / Secure Storage",
+      "aliases": [],
+      "runtimeDomain": "security"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:conn:001",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:ethernet-pcs",
+      "to": "component:ethernet-phy",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:002",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:ethernet-phy",
+      "to": "process:l3-connectivity",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:003",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:wifi-sta",
+      "to": "process:l3-connectivity",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:004",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:wifi-softap",
+      "to": "process:phone-link",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:005",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:modem",
+      "to": "process:remote-wake",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:006",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "state:cold-boot",
+      "to": "observation:boot-generation",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:007",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "state:str-resume",
+      "to": "observation:boot-generation",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:008",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "state:vm-recreate",
+      "to": "observation:boot-generation",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:009",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "state:process-restart",
+      "to": "observation:request-id",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:010",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:usb-connector",
+      "to": "component:usb-controller",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:011",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:usb-controller",
+      "to": "component:block-device",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:012",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:block-device",
+      "to": "component:filesystem-volume",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:013",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:tee-transport",
+      "to": "component:tee-service",
+      "type": "sends_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:conn:014",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:tee-service",
+      "to": "component:secure-storage",
+      "type": "depends_on",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:conn:001",
+      "relationId": "rel:conn:001",
+      "evidenceIds": [
+        "ev:conn:001"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:002",
+      "relationId": "rel:conn:002",
+      "evidenceIds": [
+        "ev:conn:002"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:003",
+      "relationId": "rel:conn:003",
+      "evidenceIds": [
+        "ev:conn:003"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:004",
+      "relationId": "rel:conn:004",
+      "evidenceIds": [
+        "ev:conn:004"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:005",
+      "relationId": "rel:conn:005",
+      "evidenceIds": [
+        "ev:conn:005"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:006",
+      "relationId": "rel:conn:006",
+      "evidenceIds": [
+        "ev:conn:006"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:007",
+      "relationId": "rel:conn:007",
+      "evidenceIds": [
+        "ev:conn:007"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:008",
+      "relationId": "rel:conn:008",
+      "evidenceIds": [
+        "ev:conn:008"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:009",
+      "relationId": "rel:conn:009",
+      "evidenceIds": [
+        "ev:conn:009"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:010",
+      "relationId": "rel:conn:010",
+      "evidenceIds": [
+        "ev:conn:010"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:011",
+      "relationId": "rel:conn:011",
+      "evidenceIds": [
+        "ev:conn:011"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:012",
+      "relationId": "rel:conn:012",
+      "evidenceIds": [
+        "ev:conn:012"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:013",
+      "relationId": "rel:conn:013",
+      "evidenceIds": [
+        "ev:conn:013"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:conn:014",
+      "relationId": "rel:conn:014",
+      "evidenceIds": [
+        "ev:conn:014"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev:conn:001",
+      "sourceId": "3ca55da6a9f2",
+      "pages": [
+        4
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“SGMII / PCS”与“Ethernet PHY / Carrier”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:002",
+      "sourceId": "3ca55da6a9f2",
+      "pages": [
+        4
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Android_AI_User_Manual_CN_V1.0.pdf》对应章节后，将“Ethernet PHY / Carrier”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:003",
+      "sourceId": "f24f4fe4d19c",
+      "pages": [
+        2
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi STA”与“L3 / IP Reachability”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:004",
+      "sourceId": "f24f4fe4d19c",
+      "pages": [
+        2
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Wi-Fi SoftAP”与“手机互联会话”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:005",
+      "sourceId": "f24f4fe4d19c",
+      "pages": [
+        2
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“Modem / TSP”与“Remote Wake”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:006",
+      "sourceId": "7807e7a6bd97",
+      "pages": [
+        4
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“Cold Boot”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:007",
+      "sourceId": "7807e7a6bd97",
+      "pages": [
+        4
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Yocto_Secure_Boot_User_Manual_CN_V1.0.pdf》对应章节后，将“STR Resume”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:008",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“VM Recreate”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:009",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“Process Restart”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:010",
+      "sourceId": "f89d9f4cd89b",
+      "pages": [
+        15
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“USB Connector / Type-C”与“xHCI / USB Controller”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:011",
+      "sourceId": "f89d9f4cd89b",
+      "pages": [
+        15
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“xHCI / USB Controller”与“Block Device”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:012",
+      "sourceId": "f89d9f4cd89b",
+      "pages": [
+        15
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Android_USB_User_Manual_V1.0.pdf》对应章节后，将“Block Device”与“Filesystem / Volume”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:013",
+      "sourceId": "c94a6f788bd3",
+      "pages": [
+        3
+      ],
+      "status": "documented_reference",
+      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Transport”与“TEE Service”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:conn:014",
+      "sourceId": "c94a6f788bd3",
+      "pages": [
+        3
+      ],
+      "status": "documented_reference",
+      "summary": "核对《Yocto SELinux Introduction(8676).pdf》对应章节后，将“TEE Service”与“RPMB / Secure Storage”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    }
+  ]
+}
+

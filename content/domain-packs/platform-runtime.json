@@ -1,0 +1,666 @@
+{
+  "entities": [
+    {
+      "id": "domain:platform",
+      "title": "整机与平台",
+      "kind": "domain",
+      "domain": "platform",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "整机与平台",
+      "aliases": [],
+      "runtimeDomain": "platform"
+    },
+    {
+      "id": "domain:virtualization",
+      "title": "虚拟化",
+      "kind": "domain",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "虚拟化",
+      "aliases": [],
+      "runtimeDomain": "virtualization"
+    },
+    {
+      "id": "domain:android",
+      "title": "Android AAOS",
+      "kind": "domain",
+      "domain": "android",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Android AAOS",
+      "aliases": [],
+      "runtimeDomain": "android"
+    },
+    {
+      "id": "domain:yocto",
+      "title": "Yocto Host",
+      "kind": "domain",
+      "domain": "yocto",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Yocto Host",
+      "aliases": [],
+      "runtimeDomain": "yocto"
+    },
+    {
+      "id": "domain:mcu",
+      "title": "MCU 与车信号",
+      "kind": "domain",
+      "domain": "mcu",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "MCU 与车信号",
+      "aliases": [],
+      "runtimeDomain": "mcu"
+    },
+    {
+      "id": "domain:cross-domain",
+      "title": "跨域通信",
+      "kind": "domain",
+      "domain": "cross-domain",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "跨域通信",
+      "aliases": [],
+      "runtimeDomain": "cross-domain"
+    },
+    {
+      "id": "component:hypervisor",
+      "title": "Hypervisor",
+      "kind": "component",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Hypervisor",
+      "aliases": [],
+      "runtimeDomain": "virtualization"
+    },
+    {
+      "id": "component:yocto-host",
+      "title": "Yocto Host",
+      "kind": "component",
+      "domain": "yocto",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Yocto Host",
+      "aliases": [],
+      "runtimeDomain": "yocto"
+    },
+    {
+      "id": "component:mcu",
+      "title": "MCU",
+      "kind": "component",
+      "domain": "mcu",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "MCU",
+      "aliases": [],
+      "runtimeDomain": "mcu"
+    },
+    {
+      "id": "component:tbox",
+      "title": "TBox",
+      "kind": "component",
+      "domain": "tbox",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "TBox",
+      "aliases": [],
+      "runtimeDomain": "tbox"
+    },
+    {
+      "id": "interface:binder",
+      "title": "Binder",
+      "kind": "interface",
+      "domain": "android",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Binder",
+      "aliases": [],
+      "runtimeDomain": "android"
+    },
+    {
+      "id": "interface:fdbus",
+      "title": "FDBus",
+      "kind": "interface",
+      "domain": "cross-domain",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "FDBus",
+      "aliases": [],
+      "runtimeDomain": "cross-domain"
+    },
+    {
+      "id": "interface:someip",
+      "title": "SOME/IP",
+      "kind": "interface",
+      "domain": "cross-domain",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "SOME/IP",
+      "aliases": [],
+      "runtimeDomain": "cross-domain"
+    },
+    {
+      "id": "interface:vsock",
+      "title": "Vsock",
+      "kind": "interface",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Vsock",
+      "aliases": [],
+      "runtimeDomain": "virtualization"
+    },
+    {
+      "id": "interface:virtio",
+      "title": "virtio",
+      "kind": "interface",
+      "domain": "virtualization",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "virtio",
+      "aliases": [],
+      "runtimeDomain": "virtualization"
+    },
+    {
+      "id": "observation:sequence",
+      "title": "Sequence ID",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Sequence ID",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:freshness",
+      "title": "Freshness / Timestamp",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Freshness / Timestamp",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:boot-generation",
+      "title": "Boot / VM Generation",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Boot / VM Generation",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    },
+    {
+      "id": "observation:request-id",
+      "title": "Request ID",
+      "kind": "observation",
+      "domain": "diagnosis",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "description": "Request ID",
+      "aliases": [],
+      "runtimeDomain": "diagnosis"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:runtime:001",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:hypervisor",
+      "to": "component:yocto-host",
+      "type": "controls",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:002",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-guest",
+      "to": "component:hypervisor",
+      "type": "runs_on",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:003",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:yocto-host",
+      "to": "interface:fdbus",
+      "type": "publishes",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:004",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-guest",
+      "to": "interface:binder",
+      "type": "publishes",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:005",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:tbox",
+      "to": "interface:someip",
+      "type": "publishes",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:006",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-guest",
+      "to": "interface:vsock",
+      "type": "sends_to",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:007",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:android-guest",
+      "to": "interface:virtio",
+      "type": "depends_on",
+      "pathClass": "data",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:008",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:mcu",
+      "to": "interface:spi-ipcl",
+      "type": "publishes",
+      "pathClass": "control",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:009",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:fdbus",
+      "to": "observation:sequence",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:010",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:someip",
+      "to": "observation:freshness",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:011",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "component:hypervisor",
+      "to": "observation:boot-generation",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:runtime:012",
+      "scope": "shared",
+      "status": "documented_reference",
+      "from": "interface:vsock",
+      "to": "observation:request-id",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:runtime:001",
+      "relationId": "rel:runtime:001",
+      "evidenceIds": [
+        "ev:runtime:001"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:002",
+      "relationId": "rel:runtime:002",
+      "evidenceIds": [
+        "ev:runtime:002"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:003",
+      "relationId": "rel:runtime:003",
+      "evidenceIds": [
+        "ev:runtime:003"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:004",
+      "relationId": "rel:runtime:004",
+      "evidenceIds": [
+        "ev:runtime:004"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:005",
+      "relationId": "rel:runtime:005",
+      "evidenceIds": [
+        "ev:runtime:005"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:006",
+      "relationId": "rel:runtime:006",
+      "evidenceIds": [
+        "ev:runtime:006"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:007",
+      "relationId": "rel:runtime:007",
+      "evidenceIds": [
+        "ev:runtime:007"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:008",
+      "relationId": "rel:runtime:008",
+      "evidenceIds": [
+        "ev:runtime:008"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:009",
+      "relationId": "rel:runtime:009",
+      "evidenceIds": [
+        "ev:runtime:009"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:010",
+      "relationId": "rel:runtime:010",
+      "evidenceIds": [
+        "ev:runtime:010"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:011",
+      "relationId": "rel:runtime:011",
+      "evidenceIds": [
+        "ev:runtime:011"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:runtime:012",
+      "relationId": "rel:runtime:012",
+      "evidenceIds": [
+        "ev:runtime:012"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev:runtime:001",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Yocto Host”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:002",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Hypervisor”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:003",
+      "sourceId": "aa722a95a0ab",
+      "pages": [
+        7
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Yocto_DDR_User_Manual_CN_V1.0.pdf》对应章节后，将“Yocto Host”与“FDBus”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:004",
+      "sourceId": "a8a1aa448b88",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8668_Android_IPO_User_Manual_CN_V1.0.pdf》对应章节后，将“Android Guest”与“Binder”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:005",
+      "sourceId": "f24f4fe4d19c",
+      "pages": [
+        2
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676 TBOX子系统架构设计.pdf》对应章节后，将“TBox”与“SOME/IP”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:006",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“Vsock”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:007",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Android Guest”与“virtio”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:008",
+      "sourceId": "183254d73cbd",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf》对应章节后，将“MCU”与“SPI / IPCL”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:009",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“FDBus”与“Sequence ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:010",
+      "sourceId": "2131e9dacedf",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Yocto_Log_User_Manual_V1.0.pdf》对应章节后，将“SOME/IP”与“Freshness / Timestamp”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:011",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Hypervisor”与“Boot / VM Generation”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    },
+    {
+      "id": "ev:runtime:012",
+      "sourceId": "ccd5b795d5d9",
+      "pages": [
+        6
+      ],
+      "status": "documented_reference",
+      "summary": "核对《MT8676_Hypervisor_System_User_Manual_V1.1.pdf》对应章节后，将“Vsock”与“Request ID”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。"
+    }
+  ]
+}
+

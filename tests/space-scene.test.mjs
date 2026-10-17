@@ -6,11 +6,32 @@ import {
   depthLabelStyle,
   fibonacciSpherePoint,
   fitLabelSize,
+  frontLabelLimit,
   isProjectedVisible,
   orbitPose,
   releaseVelocity,
+  selectFrontLabelIds,
   starPulse,
 } from '../docs/space-scene.js';
+
+test('label density stays sparse across desktop and mobile views',()=>{
+  assert.equal(frontLabelLimit(1600),16);
+  assert.equal(frontLabelLimit(1000),12);
+  assert.equal(frontLabelLimit(390),6);
+});
+
+test('rotation labels only the nearest front-facing nodes plus forced interaction targets',()=>{
+  const ids=selectFrontLabelIds([
+    {id:'root',kind:'root',depth:0,onScreen:true},
+    {id:'near-a',kind:'component',depth:420,onScreen:true},
+    {id:'near-b',kind:'topic',depth:310,onScreen:true},
+    {id:'middle',kind:'component',depth:80,onScreen:true},
+    {id:'back',kind:'topic',depth:-220,onScreen:true},
+    {id:'hovered-back',kind:'component',depth:-300,onScreen:true,forced:true},
+    {id:'offscreen',kind:'topic',depth:500,onScreen:false},
+  ],{limit:2,minDepth:40});
+  assert.deepEqual([...ids].sort(),['hovered-back','near-a','near-b','root'].sort());
+});
 
 test('reduced motion disables star pulsing',()=>{
   assert.equal(starPulse(1000,.3,true),1);
@@ -49,7 +70,7 @@ test('fibonacci sphere distributes every topic on a deterministic 3D shell',()=>
   assert.equal(new Set(points.map(point=>`${point.x.toFixed(3)}:${point.y.toFixed(3)}:${point.z.toFixed(3)}`)).size,12);
 });
 
-test('all visible nodes keep a readable label while depth changes its prominence',()=>{
+test('front labels use depth to change prominence',()=>{
   const near=depthLabelStyle({depth:420,perspective:1.45,kind:'component',active:false});
   const far=depthLabelStyle({depth:-430,perspective:.68,kind:'component',active:false});
   assert.equal(near.visible,true);
@@ -68,3 +89,4 @@ test('idle orbit advances yaw and adds a gentle three-axis camera drift',()=>{
   assert.notEqual(later.roll,start.roll);
   assert.ok(Math.abs(later.roll)<.08);
 });
+

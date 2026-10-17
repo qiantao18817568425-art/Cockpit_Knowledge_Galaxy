@@ -29,6 +29,23 @@ export function releaseVelocity(velocity,idleMs,expiryMs=90){
   return idleMs<=expiryMs?velocity:0;
 }
 
+export function selectFrontLabelIds(candidates,{limit=28,minDepth=30}={}){
+  const selected=new Set();
+  for(const item of candidates){
+    if(item.kind==='root'||item.forced)selected.add(item.id);
+  }
+  const front=candidates
+    .filter(item=>item.onScreen&&item.kind!=='root'&&!item.forced&&item.depth>=minDepth)
+    .sort((a,b)=>b.depth-a.depth)
+    .slice(0,Math.max(0,limit));
+  for(const item of front)selected.add(item.id);
+  return selected;
+}
+
+export function frontLabelLimit(viewportWidth){
+  return viewportWidth<720?6:viewportWidth<1400?12:16;
+}
+
 export function depthLabelStyle({depth=0,perspective=1,kind='component',active=false,hover=0}){
   const importance={root:9,topic:4,platform:3,domain:3,subtopic:2}[kind]||0;
   const depthLevel=Math.max(0,Math.min(1,(depth+560)/1120));
@@ -48,3 +65,4 @@ export function orbitPose(pose,time,delta){
     roll:Math.sin(time*.000105)*.042,
   };
 }
+

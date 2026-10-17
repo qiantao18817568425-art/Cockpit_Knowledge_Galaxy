@@ -1,5 +1,5 @@
 import {rankSearchResults,visibleNodeIds,detailModel} from './graph-model.js';
-import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,fitLabelSize,isProjectedVisible,orbitPose,releaseVelocity,starPulse} from './space-scene.js';
+import {clampLabelX,depthLabelStyle,fibonacciSpherePoint,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,selectFrontLabelIds,starPulse} from './space-scene.js';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -66,7 +66,7 @@ function prepare(raw){
   refreshVisible();
   dust=Array.from({length:720},()=>{const a=random()*Math.PI*2,r=Math.pow(random(),.58)*650;return{x:Math.cos(a)*r,y:(random()-.5)*(85+r*.13),z:Math.sin(a)*r*.82,size:random()*1.35+.22,tone:random()}});
   stars=Array.from({length:310},()=>({x:random(),y:random(),r:random()*1.05+.18,a:random()*.55+.1,depth:random(),twinkle:random()*Math.PI*2}));
-  nebulae=Array.from({length:9},(_,i)=>({x:.14+random()*.72,y:.12+random()*.76,r:.18+random()*.24,hue:i%3,phase:random()*Math.PI*2}));
+  nebulae=Array.from({length:13},(_,i)=>{const t=i/12;return{x:.2+t*.62+(random()-.5)*.08,y:.83-t*.68+(random()-.5)*.12,r:.12+random()*.14,hue:i%3,phase:random()*Math.PI*2}});
   document.querySelector('#counts').textContent=`${raw.meta.sourceCoverage.total} 份资料 · ${raw.meta.semantic.entityCount} 个知识实体 · ${raw.meta.semantic.relationCount} 条技术关系 · ${raw.meta.semantic.evidenceCount} 条页码证据 · ${raw.meta.chapterCount} 章架构`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
   motionToggle.textContent=auto?'暂停':'旋转';
@@ -83,7 +83,7 @@ function positionHoverCard(map){if(!hovered)return;const n=map.get(hovered);if(!
 
 function background(time){
   const radial=ctx.createRadialGradient(width*.52,height*.48,0,width*.5,height*.5,Math.max(width,height)*.82);
-  radial.addColorStop(0,'#142446');radial.addColorStop(.38,'#080f25');radial.addColorStop(.75,'#030716');radial.addColorStop(1,'#01030b');
+  radial.addColorStop(0,'#0c1731');radial.addColorStop(.32,'#050b1c');radial.addColorStop(.72,'#01040e');radial.addColorStop(1,'#000207');
   ctx.fillStyle=radial;ctx.fillRect(0,0,width,height);
   ctx.save();ctx.globalCompositeOperation='screen';
   for(const cloud of nebulae){
@@ -92,9 +92,12 @@ function background(time){
     const y=(cloud.y+Math.sin(pitch*1.7+cloud.phase)*parallax)*height;
     const radius=Math.max(width,height)*cloud.r;
     const gradient=ctx.createRadialGradient(x,y,0,x,y,radius);
-    const colors=cloud.hue===0?['#305fc629','#15306e10']:cloud.hue===1?['#723b9e24','#28164f0d']:['#177f8c1e','#0d3b4a0c'];
+    const colors=cloud.hue===0?['#4169d42d','#152c7311']:cloud.hue===1?['#7147a82a','#28164f10']:['#1f809324','#0d3b4a0e'];
     gradient.addColorStop(0,colors[0]);gradient.addColorStop(.48,colors[1]);gradient.addColorStop(1,'#00000000');ctx.fillStyle=gradient;ctx.fillRect(x-radius,y-radius,radius*2,radius*2);
   }
+  const coreX=width*.52+Math.sin(yaw)*width*.012,coreY=height*.48+Math.sin(pitch)*height*.016;
+  const core=ctx.createRadialGradient(coreX,coreY,0,coreX,coreY,Math.min(width,height)*.32);
+  core.addColorStop(0,'#9cb9ff18');core.addColorStop(.28,'#536fe51a');core.addColorStop(.62,'#54368810');core.addColorStop(1,'#00000000');ctx.fillStyle=core;ctx.fillRect(0,0,width,height);
   ctx.globalCompositeOperation='source-over';
   for(const s of stars){
     const px=((s.x+(yaw*.012*s.depth))%1+1)%1*width,py=((s.y+(pitch*.018*s.depth))%1+1)%1*height;
@@ -138,6 +141,11 @@ function draw(){
   }ctx.globalAlpha=1;
 
   const sorted=[...projected].sort((a,b)=>a.z-b.z);
+  const labelLimit=frontLabelLimit(width);
+  const labelIds=selectFrontLabelIds(sorted.filter(visible).map(n=>{
+    const hover=hoverLevels.get(n.id)||0;
+    return{id:n.id,kind:n.kind,depth:n.z,onScreen:isProjectedVisible({x:n.x,y:n.y,radius:Math.max(3,n.r*n.p*n.fit),width,height}),forced:n.id===selected||n.id===hovered||hover>.02||matching.has(n.id)||!!related?.has(n.id)};
+  }),{limit:labelLimit,minDepth:width<720?90:35});
   const labelQueue=[];
   const occupied=[];
   for(const n of sorted){
@@ -150,7 +158,7 @@ function draw(){
     ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=active||preview?22:11;ctx.beginPath();ctx.arc(n.x,n.y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
     if(active||hover>.3){ctx.strokeStyle='#f8fcff';ctx.lineWidth=1.5;ctx.stroke()}
     ctx.globalAlpha=1;
-    if(!isProjectedVisible({x:n.x,y:n.y,radius,width,height}))continue;
+    if(!labelIds.has(n.id)||!isProjectedVisible({x:n.x,y:n.y,radius,width,height}))continue;
     const labelStyle=depthLabelStyle({depth:n.z,perspective:n.p,kind:n.kind,active,hover});
     if(!labelStyle.visible)continue;
     labelQueue.push({n,active,preview,hover,dim,radius,color,labelStyle});
@@ -263,3 +271,4 @@ try{
   prepare(await response.json());
   requestAnimationFrame(frame);
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
+

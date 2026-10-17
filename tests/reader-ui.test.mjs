@@ -11,6 +11,8 @@ test('topic reader exposes synthesis, citations, preview and download actions',(
   assert.match(html,/专题总结/);
   assert.match(html,/衍生理解/);
   assert.match(html,/引用资料与文章/);
+  assert.match(html,/为什么有关/);
+  assert.match(html,/为什么引用/);
 });
 
 test('topic reader is full screen on narrow mobile layouts',()=>{
@@ -22,5 +24,8 @@ test('topic reader app supports inline loading and markdown export',()=>{
   assert.match(app,/readerMarkdown/);
   assert.match(app,/showReference/);
   assert.match(app,/downloadReaderSummary/);
+  assert.match(app,/whyRelated/);
+  assert.match(app,/whyCited/);
+  assert.match(app,/evidenceBoundary/);
 });
 

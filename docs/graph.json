@@ -31,8 +31,7 @@
       "learning": 69,
       "skills": 21,
       "cases": 7,
-      "concreteSources": 299,
-      "reviewedReports": 3
+      "concreteSources": 299
     },
     "hierarchy": {
       "nodeCount": 699,
@@ -24001,6 +24000,137 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
+      "cases": [
+        {
+          "id": "case:mtk-flash-boot-a-transport-collapse",
+          "title": "MTK刷写boot_a阶段传输会话崩溃",
+          "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
+          "platforms": [
+            "MediaTek"
+          ],
+          "caseStatus": "direct_failure_confirmed_trigger_open",
+          "evidenceState": "verified",
+          "confidence": "直接失效高；具体触发未定",
+          "scope": {
+            "timeWindow": "2026-10-16 16:24:12—16:26:28",
+            "reportCount": 1
+          },
+          "clocks": {
+            "state": "aligned",
+            "basis": "SP Flash Tool与host日志时间线"
+          },
+          "bootGeneration": {
+            "state": "download_session_bound",
+            "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"
+          },
+          "knowledgeIds": [
+            "chain:platform-family",
+            "chain:usb-storage",
+            "chain:hal-driver-boundary",
+            "chain:ota-lifecycle",
+            "chain:evidence-ledger"
+          ],
+          "skillIds": [
+            "t12t-cockpit-diagnosis",
+            "t12t-log-analysis",
+            "t12t-platform-architecture",
+            "t12t-usb-typec-storage",
+            "t12t-stability-crash-reset",
+            "t12t-tpm-triage",
+            "t12t-tpm-5y8d"
+          ],
+          "publicSummary": "刷写进入boot_a [21/47]后，接收12字节控制帧和发送2MiB数据在同一毫秒均以Windows I/O 0x16、0字节失败，MUX线程随即退出；120秒后的data_mux超时是会话崩溃后的结果。现有证据不能继续区分线缆/端口/供电、Windows驱动、设备复位/DA崩溃或固定偏移交互。",
+          "normalExpectation": "BROM连接、DA加载和UFS识别后，47个下载项应依次完成，每个数据块得到设备响应，会话不应发生双向0字节I/O失败。",
+          "confirmedFacts": [
+            "第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。",
+            "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。",
+            "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。",
+            "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"
+          ],
+          "hypotheses": [
+            "USB线缆、主机端口、Hub、供电或枚举稳定性问题。",
+            "设备端复位、DA崩溃或目标侧退出当前会话。",
+            "Windows MediaTek USB驱动或控制器路径异常。",
+            "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"
+          ],
+          "technicalChain": [
+            {
+              "pathClass": "data",
+              "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入",
+              "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"
+            }
+          ],
+          "reportVersions": [
+            {
+              "id": "report:mtk-flash-20261016",
+              "title": "刷写失败原因分析",
+              "date": "2026-10-16",
+              "status": "current",
+              "statusLabel": "当前分析报告",
+              "url": "case-reports/mtk-flash-boot-a-transport-collapse.html",
+              "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062",
+              "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"
+            }
+          ],
+          "evidence": [
+            {
+              "id": "E-FLASH-01",
+              "type": "direct",
+              "source": "host_0.log",
+              "location": "4696—4704",
+              "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出",
+              "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"
+            },
+            {
+              "id": "E-FLASH-02",
+              "type": "direct",
+              "source": "host_0.log",
+              "location": "4511—4515及前序块响应",
+              "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB",
+              "boundary": "暴露位置不等于boot.img内容错误。"
+            },
+            {
+              "id": "E-FLASH-03",
+              "type": "background",
+              "source": "QT_FLASH_TOOL_V6.log",
+              "location": "前三次扫描失败及166—169",
+              "supports": "连接稳定性值得优先检查；最终-2是上层超时",
+              "boundary": "扫描失败不能独立证明最终刷写失败由线缆或端口造成。"
+            },
+            {
+              "id": "E-FLASH-04",
+              "type": "missing",
+              "source": "待补材料",
+              "location": "Windows PnP/USB、板端UART/DA、复位线与供电波形",
+              "supports": "用于区分主机链路、目标复位和供电假设",
+              "boundary": "这些材料缺失，因此具体触发责任暂不关闭。"
+            }
+          ],
+          "tpm": {
+            "trigger": "待确认：USB/供电/驱动路径异常、设备复位/DA退出或固定偏移交互。",
+            "firstRoundLead": "刷写工具/平台集成牵头，USB/BSP、硬件供电和目标端DA负责人并行取证。",
+            "directFailureOwner": "主机—设备下载传输会话；具体责任件待区分实验。",
+            "repairOwner": "依据复现证据确定，不在证据不足时提前指派最终根因Owner。",
+            "interfaceOwner": "刷写工具、Windows USB驱动、BROM/DA与板端下载链接口双方。",
+            "verifier": "版本发布/刷写验证联合平台、BSP与硬件。",
+            "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"
+          },
+          "projectionKnowledgeId": "chain:platform-family",
+          "projection": {
+            "knowledgeId": "chain:platform-family",
+            "role": "platform_context",
+            "summary": "从MTK平台视角，本案覆盖BROM、DA、UFS和分区下载的正常阶段与故障边界。",
+            "relationReason": "MTK下载链决定设备如何从早期BROM进入DA并访问UFS；只有先确认所处阶段，才能排除认证和早期连接失败。",
+            "evidenceIds": [
+              "E-FLASH-02"
+            ],
+            "tpmFocus": "核对SoC、DA、scatter、镜像和工具版本组合。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:mtk-flash-boot-a-transport-collapse"
+      ],
       "sourceClaims": [
         {
           "sourceId": "3ca55da6a9f2",
@@ -24356,137 +24486,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:mtk-flash-boot-a-transport-collapse",
-          "title": "MTK刷写boot_a阶段传输会话崩溃",
-          "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
-          "platforms": [
-            "MediaTek"
-          ],
-          "caseStatus": "direct_failure_confirmed_trigger_open",
-          "evidenceState": "verified",
-          "confidence": "直接失效高；具体触发未定",
-          "scope": {
-            "timeWindow": "2026-10-16 16:24:12—16:26:28",
-            "reportCount": 1
-          },
-          "clocks": {
-            "state": "aligned",
-            "basis": "SP Flash Tool与host日志时间线"
-          },
-          "bootGeneration": {
-            "state": "download_session_bound",
-            "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"
-          },
-          "knowledgeIds": [
-            "chain:platform-family",
-            "chain:usb-storage",
-            "chain:hal-driver-boundary",
-            "chain:ota-lifecycle",
-            "chain:evidence-ledger"
-          ],
-          "skillIds": [
-            "t12t-cockpit-diagnosis",
-            "t12t-log-analysis",
-            "t12t-platform-architecture",
-            "t12t-usb-typec-storage",
-            "t12t-stability-crash-reset",
-            "t12t-tpm-triage",
-            "t12t-tpm-5y8d"
-          ],
-          "publicSummary": "刷写进入boot_a [21/47]后，接收12字节控制帧和发送2MiB数据在同一毫秒均以Windows I/O 0x16、0字节失败，MUX线程随即退出；120秒后的data_mux超时是会话崩溃后的结果。现有证据不能继续区分线缆/端口/供电、Windows驱动、设备复位/DA崩溃或固定偏移交互。",
-          "normalExpectation": "BROM连接、DA加载和UFS识别后，47个下载项应依次完成，每个数据块得到设备响应，会话不应发生双向0字节I/O失败。",
-          "confirmedFacts": [
-            "第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。",
-            "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。",
-            "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。",
-            "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"
-          ],
-          "hypotheses": [
-            "USB线缆、主机端口、Hub、供电或枚举稳定性问题。",
-            "设备端复位、DA崩溃或目标侧退出当前会话。",
-            "Windows MediaTek USB驱动或控制器路径异常。",
-            "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"
-          ],
-          "technicalChain": [
-            {
-              "pathClass": "data",
-              "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入",
-              "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"
-            }
-          ],
-          "reportVersions": [
-            {
-              "id": "report:mtk-flash-20261016",
-              "title": "刷写失败原因分析",
-              "date": "2026-10-16",
-              "status": "current",
-              "statusLabel": "当前分析报告",
-              "url": "case-reports/mtk-flash-boot-a-transport-collapse.html",
-              "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062",
-              "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"
-            }
-          ],
-          "evidence": [
-            {
-              "id": "E-FLASH-01",
-              "type": "direct",
-              "source": "host_0.log",
-              "location": "4696—4704",
-              "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出",
-              "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"
-            },
-            {
-              "id": "E-FLASH-02",
-              "type": "direct",
-              "source": "host_0.log",
-              "location": "4511—4515及前序块响应",
-              "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB",
-              "boundary": "暴露位置不等于boot.img内容错误。"
-            },
-            {
-              "id": "E-FLASH-03",
-              "type": "background",
-              "source": "QT_FLASH_TOOL_V6.log",
-              "location": "前三次扫描失败及166—169",
-              "supports": "连接稳定性值得优先检查；最终-2是上层超时",
-              "boundary": "扫描失败不能独立证明最终刷写失败由线缆或端口造成。"
-            },
-            {
-              "id": "E-FLASH-04",
-              "type": "missing",
-              "source": "待补材料",
-              "location": "Windows PnP/USB、板端UART/DA、复位线与供电波形",
-              "supports": "用于区分主机链路、目标复位和供电假设",
-              "boundary": "这些材料缺失，因此具体触发责任暂不关闭。"
-            }
-          ],
-          "tpm": {
-            "trigger": "待确认：USB/供电/驱动路径异常、设备复位/DA退出或固定偏移交互。",
-            "firstRoundLead": "刷写工具/平台集成牵头，USB/BSP、硬件供电和目标端DA负责人并行取证。",
-            "directFailureOwner": "主机—设备下载传输会话；具体责任件待区分实验。",
-            "repairOwner": "依据复现证据确定，不在证据不足时提前指派最终根因Owner。",
-            "interfaceOwner": "刷写工具、Windows USB驱动、BROM/DA与板端下载链接口双方。",
-            "verifier": "版本发布/刷写验证联合平台、BSP与硬件。",
-            "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"
-          },
-          "projectionKnowledgeId": "chain:platform-family",
-          "projection": {
-            "knowledgeId": "chain:platform-family",
-            "role": "platform_context",
-            "summary": "从MTK平台视角，本案覆盖BROM、DA、UFS和分区下载的正常阶段与故障边界。",
-            "relationReason": "MTK下载链决定设备如何从早期BROM进入DA并访问UFS；只有先确认所处阶段，才能排除认证和早期连接失败。",
-            "evidenceIds": [
-              "E-FLASH-02"
-            ],
-            "tpmFocus": "核对SoC、DA、scatter、镜像和工具版本组合。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:mtk-flash-boot-a-transport-collapse"
       ]
     },
     {
@@ -24688,132 +24687,6 @@
       "skillIds": [
         "t12t-mcu"
       ],
-      "sourceClaims": [
-        {
-          "sourceId": "81a8c931d000",
-          "title": "MT8668_Hypervisor_GPIO_User_Manual_CN_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-81a8c931d000.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "9f37a8db2acd",
-          "title": "MT8668_Hypervisor_SPI_User_Manual_CN_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-9f37a8db2acd.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "7d1e0f95c34f",
-          "title": "MT8668_Yocto_SPI_User_Manual_CN_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-7d1e0f95c34f.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "40192730210a",
-          "title": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-40192730210a.pdf",
-          "platform": "MT8676",
-          "version": "V1.1",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "d3691b28be36",
-          "title": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-d3691b28be36.pdf",
-          "platform": "MT8676",
-          "version": "V1.1",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "183254d73cbd",
-          "title": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-183254d73cbd.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "852e551201a0",
-          "title": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-852e551201a0.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "2397734a51c2",
-          "title": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2397734a51c2.pdf",
-          "platform": "MT8676",
-          "version": "V1.1",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "1befc8374cfe",
-          "title": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-1befc8374cfe.pdf",
-          "platform": "MT8676",
-          "version": "V1.1",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "398af5949db9",
-          "title": "vehicle方案.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-398af5949db9.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "4ae975b91299",
-          "title": "EINT培训.rar",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-4ae975b91299.rar",
-          "platform": "待确认",
-          "version": "unspecified",
-          "knowledgeId": "chain:mcu-soc-responsibility",
-          "status": "needs_review",
-          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        }
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mt8676-driving-mode-audio-loop",
@@ -24946,6 +24819,132 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "sourceClaims": [
+        {
+          "sourceId": "81a8c931d000",
+          "title": "MT8668_Hypervisor_GPIO_User_Manual_CN_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-81a8c931d000.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "9f37a8db2acd",
+          "title": "MT8668_Hypervisor_SPI_User_Manual_CN_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-9f37a8db2acd.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "7d1e0f95c34f",
+          "title": "MT8668_Yocto_SPI_User_Manual_CN_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-7d1e0f95c34f.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "40192730210a",
+          "title": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-40192730210a.pdf",
+          "platform": "MT8676",
+          "version": "V1.1",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "d3691b28be36",
+          "title": "MT8676_Android_SPI_User_Manual_V1.1.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-d3691b28be36.pdf",
+          "platform": "MT8676",
+          "version": "V1.1",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "183254d73cbd",
+          "title": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-183254d73cbd.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "852e551201a0",
+          "title": "MT8676_Hypervisor_GPIO_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-852e551201a0.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "2397734a51c2",
+          "title": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2397734a51c2.pdf",
+          "platform": "MT8676",
+          "version": "V1.1",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "1befc8374cfe",
+          "title": "MT8676_Yocto_SPI_User_Manual_V1.1.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-1befc8374cfe.pdf",
+          "platform": "MT8676",
+          "version": "V1.1",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "398af5949db9",
+          "title": "vehicle方案.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-398af5949db9.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "4ae975b91299",
+          "title": "EINT培训.rar",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-4ae975b91299.rar",
+          "platform": "待确认",
+          "version": "unspecified",
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -25031,6 +25030,41 @@
       ],
       "skillIds": [
         "t12t-display-black-freeze"
+      ],
+      "cases": [
+        {
+          "id": "case:display-black",
+          "title": "显示黑屏与画面异常案例索引",
+          "symptom": "显示黑屏、异常颜色、卡死或重启",
+          "scope": {
+            "indexedDirectoryCount": 44
+          },
+          "clocks": {
+            "state": "needs_review"
+          },
+          "bootGeneration": {
+            "state": "needs_review"
+          },
+          "knowledgeIds": [
+            "chain:display-output",
+            "chain:stability"
+          ],
+          "skillIds": [
+            "t12t-display-black-freeze",
+            "t12t-stability-crash-reset"
+          ],
+          "evidenceState": "indexed",
+          "caseStatus": "awaiting_review",
+          "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
+          "projectionKnowledgeId": "chain:display-output",
+          "projection": {
+            "knowledgeId": "chain:display-output",
+            "summary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:display-black"
       ],
       "sourceClaims": [
         {
@@ -25317,41 +25351,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:display-black",
-          "title": "显示黑屏与画面异常案例索引",
-          "symptom": "显示黑屏、异常颜色、卡死或重启",
-          "scope": {
-            "indexedDirectoryCount": 44
-          },
-          "clocks": {
-            "state": "needs_review"
-          },
-          "bootGeneration": {
-            "state": "needs_review"
-          },
-          "knowledgeIds": [
-            "chain:display-output",
-            "chain:stability"
-          ],
-          "skillIds": [
-            "t12t-display-black-freeze",
-            "t12t-stability-crash-reset"
-          ],
-          "evidenceState": "indexed",
-          "caseStatus": "awaiting_review",
-          "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
-          "projectionKnowledgeId": "chain:display-output",
-          "projection": {
-            "knowledgeId": "chain:display-output",
-            "summary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:display-black"
       ]
     },
     {
@@ -25433,20 +25432,6 @@
         "course:day-23",
         "course:week-entry-6"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:performance-freeze",
@@ -25480,6 +25465,20 @@
       ],
       "caseIds": [
         "case:performance-freeze"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -25732,20 +25731,6 @@
       "dayIds": [
         "course:day-26"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mt8676-driving-mode-audio-loop",
@@ -25877,6 +25862,20 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -25949,6 +25948,138 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
+      "cases": [
+        {
+          "id": "case:mtk-flash-boot-a-transport-collapse",
+          "title": "MTK刷写boot_a阶段传输会话崩溃",
+          "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
+          "platforms": [
+            "MediaTek"
+          ],
+          "caseStatus": "direct_failure_confirmed_trigger_open",
+          "evidenceState": "verified",
+          "confidence": "直接失效高；具体触发未定",
+          "scope": {
+            "timeWindow": "2026-10-16 16:24:12—16:26:28",
+            "reportCount": 1
+          },
+          "clocks": {
+            "state": "aligned",
+            "basis": "SP Flash Tool与host日志时间线"
+          },
+          "bootGeneration": {
+            "state": "download_session_bound",
+            "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"
+          },
+          "knowledgeIds": [
+            "chain:platform-family",
+            "chain:usb-storage",
+            "chain:hal-driver-boundary",
+            "chain:ota-lifecycle",
+            "chain:evidence-ledger"
+          ],
+          "skillIds": [
+            "t12t-cockpit-diagnosis",
+            "t12t-log-analysis",
+            "t12t-platform-architecture",
+            "t12t-usb-typec-storage",
+            "t12t-stability-crash-reset",
+            "t12t-tpm-triage",
+            "t12t-tpm-5y8d"
+          ],
+          "publicSummary": "刷写进入boot_a [21/47]后，接收12字节控制帧和发送2MiB数据在同一毫秒均以Windows I/O 0x16、0字节失败，MUX线程随即退出；120秒后的data_mux超时是会话崩溃后的结果。现有证据不能继续区分线缆/端口/供电、Windows驱动、设备复位/DA崩溃或固定偏移交互。",
+          "normalExpectation": "BROM连接、DA加载和UFS识别后，47个下载项应依次完成，每个数据块得到设备响应，会话不应发生双向0字节I/O失败。",
+          "confirmedFacts": [
+            "第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。",
+            "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。",
+            "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。",
+            "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"
+          ],
+          "hypotheses": [
+            "USB线缆、主机端口、Hub、供电或枚举稳定性问题。",
+            "设备端复位、DA崩溃或目标侧退出当前会话。",
+            "Windows MediaTek USB驱动或控制器路径异常。",
+            "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"
+          ],
+          "technicalChain": [
+            {
+              "pathClass": "data",
+              "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入",
+              "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"
+            }
+          ],
+          "reportVersions": [
+            {
+              "id": "report:mtk-flash-20261016",
+              "title": "刷写失败原因分析",
+              "date": "2026-10-16",
+              "status": "current",
+              "statusLabel": "当前分析报告",
+              "url": "case-reports/mtk-flash-boot-a-transport-collapse.html",
+              "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062",
+              "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"
+            }
+          ],
+          "evidence": [
+            {
+              "id": "E-FLASH-01",
+              "type": "direct",
+              "source": "host_0.log",
+              "location": "4696—4704",
+              "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出",
+              "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"
+            },
+            {
+              "id": "E-FLASH-02",
+              "type": "direct",
+              "source": "host_0.log",
+              "location": "4511—4515及前序块响应",
+              "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB",
+              "boundary": "暴露位置不等于boot.img内容错误。"
+            },
+            {
+              "id": "E-FLASH-03",
+              "type": "background",
+              "source": "QT_FLASH_TOOL_V6.log",
+              "location": "前三次扫描失败及166—169",
+              "supports": "连接稳定性值得优先检查；最终-2是上层超时",
+              "boundary": "扫描失败不能独立证明最终刷写失败由线缆或端口造成。"
+            },
+            {
+              "id": "E-FLASH-04",
+              "type": "missing",
+              "source": "待补材料",
+              "location": "Windows PnP/USB、板端UART/DA、复位线与供电波形",
+              "supports": "用于区分主机链路、目标复位和供电假设",
+              "boundary": "这些材料缺失，因此具体触发责任暂不关闭。"
+            }
+          ],
+          "tpm": {
+            "trigger": "待确认：USB/供电/驱动路径异常、设备复位/DA退出或固定偏移交互。",
+            "firstRoundLead": "刷写工具/平台集成牵头，USB/BSP、硬件供电和目标端DA负责人并行取证。",
+            "directFailureOwner": "主机—设备下载传输会话；具体责任件待区分实验。",
+            "repairOwner": "依据复现证据确定，不在证据不足时提前指派最终根因Owner。",
+            "interfaceOwner": "刷写工具、Windows USB驱动、BROM/DA与板端下载链接口双方。",
+            "verifier": "版本发布/刷写验证联合平台、BSP与硬件。",
+            "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"
+          },
+          "projectionKnowledgeId": "chain:hal-driver-boundary",
+          "projection": {
+            "knowledgeId": "chain:hal-driver-boundary",
+            "role": "candidate_boundary",
+            "summary": "从HAL/驱动边界看，Windows I/O 0x16只能证明当前设备句柄或驱动路径不可继续，不能单独定责驱动。",
+            "relationReason": "刷写工具通过Windows驱动访问MediaTek设备；相同上层错误可由主机驱动、物理断开或目标退出汇聚产生。",
+            "evidenceIds": [
+              "E-FLASH-01",
+              "E-FLASH-04"
+            ],
+            "tpmFocus": "驱动域提供PnP/USB事件和设备枚举变化，不以错误码直接认领根因。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:mtk-flash-boot-a-transport-collapse"
+      ],
       "sourceClaims": [
         {
           "sourceId": "aa722a95a0ab",
@@ -26164,6 +26295,80 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
+      ]
+    },
+    {
+      "layer": "hierarchy",
+      "id": "chain:device-abstraction",
+      "title": "设备抽象与外设生命周期",
+      "order": 20,
+      "primaryParentId": "architecture:hal-driver-hardware",
+      "secondaryParentIds": [
+        "architecture:power"
+      ],
+      "description": "设备枚举、资源绑定、运行、电源和移除。",
+      "knowledge": {
+        "role": "解释外设从探测到业务可用及异常恢复的生命周期。",
+        "input": [
+          "总线设备和驱动配置"
+        ],
+        "output": [
+          "可用设备节点和业务能力"
+        ],
+        "observations": [
+          "probe、bind、runtime PM、remove"
+        ]
+      },
+      "kind": "architecture_chain",
+      "hierarchyLevel": 2,
+      "hierarchyOrder": 20,
+      "branchType": "architecture-chain",
+      "navigationOnly": false,
+      "referenceState": "awaiting_review",
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
+      ]
+    },
+    {
+      "layer": "hierarchy",
+      "id": "chain:usb-storage",
+      "title": "USB 与存储链",
+      "order": 30,
+      "primaryParentId": "architecture:hal-driver-hardware",
+      "secondaryParentIds": [
+        "architecture:diagnosis-evidence"
+      ],
+      "description": "连接器、控制器、枚举、块设备、文件系统和用户挂载。",
+      "knowledge": {
+        "role": "分层定位 USB/存储从物理连接到文件可见性。",
+        "input": [
+          "Type-C/USB 连接"
+        ],
+        "output": [
+          "挂载卷和用户文件"
+        ],
+        "observations": [
+          "xHCI、枚举、SCSI、block、vold"
+        ]
+      },
+      "kind": "architecture_chain",
+      "hierarchyLevel": 2,
+      "hierarchyOrder": 30,
+      "branchType": "architecture-chain",
+      "navigationOnly": false,
+      "skillIds": [
+        "t12t-usb-typec-storage"
       ],
       "cases": [
         {
@@ -26280,96 +26485,23 @@
             "verifier": "版本发布/刷写验证联合平台、BSP与硬件。",
             "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"
           },
-          "projectionKnowledgeId": "chain:hal-driver-boundary",
+          "projectionKnowledgeId": "chain:usb-storage",
           "projection": {
-            "knowledgeId": "chain:hal-driver-boundary",
-            "role": "candidate_boundary",
-            "summary": "从HAL/驱动边界看，Windows I/O 0x16只能证明当前设备句柄或驱动路径不可继续，不能单独定责驱动。",
-            "relationReason": "刷写工具通过Windows驱动访问MediaTek设备；相同上层错误可由主机驱动、物理断开或目标退出汇聚产生。",
+            "knowledgeId": "chain:usb-storage",
+            "role": "direct_failure",
+            "summary": "从USB与存储链视角，直接断点是主机与设备的双向I/O同时变为0字节，随后MUX退出。",
+            "relationReason": "USB/串口通道承载下载控制帧与数据块；通道消失会让后续分区写入和上层命令同时失去响应。",
             "evidenceIds": [
               "E-FLASH-01",
+              "E-FLASH-03",
               "E-FLASH-04"
             ],
-            "tpmFocus": "驱动域提供PnP/USB事件和设备枚举变化，不以错误码直接认领根因。"
+            "tpmFocus": "用PnP、USB、端口、线缆、供电和目标侧证据区分触发。"
           }
         }
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
-      ]
-    },
-    {
-      "layer": "hierarchy",
-      "id": "chain:device-abstraction",
-      "title": "设备抽象与外设生命周期",
-      "order": 20,
-      "primaryParentId": "architecture:hal-driver-hardware",
-      "secondaryParentIds": [
-        "architecture:power"
-      ],
-      "description": "设备枚举、资源绑定、运行、电源和移除。",
-      "knowledge": {
-        "role": "解释外设从探测到业务可用及异常恢复的生命周期。",
-        "input": [
-          "总线设备和驱动配置"
-        ],
-        "output": [
-          "可用设备节点和业务能力"
-        ],
-        "observations": [
-          "probe、bind、runtime PM、remove"
-        ]
-      },
-      "kind": "architecture_chain",
-      "hierarchyLevel": 2,
-      "hierarchyOrder": 20,
-      "branchType": "architecture-chain",
-      "navigationOnly": false,
-      "referenceState": "awaiting_review",
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ]
-    },
-    {
-      "layer": "hierarchy",
-      "id": "chain:usb-storage",
-      "title": "USB 与存储链",
-      "order": 30,
-      "primaryParentId": "architecture:hal-driver-hardware",
-      "secondaryParentIds": [
-        "architecture:diagnosis-evidence"
-      ],
-      "description": "连接器、控制器、枚举、块设备、文件系统和用户挂载。",
-      "knowledge": {
-        "role": "分层定位 USB/存储从物理连接到文件可见性。",
-        "input": [
-          "Type-C/USB 连接"
-        ],
-        "output": [
-          "挂载卷和用户文件"
-        ],
-        "observations": [
-          "xHCI、枚举、SCSI、block、vold"
-        ]
-      },
-      "kind": "architecture_chain",
-      "hierarchyLevel": 2,
-      "hierarchyOrder": 30,
-      "branchType": "architecture-chain",
-      "navigationOnly": false,
-      "skillIds": [
-        "t12t-usb-typec-storage"
       ],
       "sourceClaims": [
         {
@@ -26536,139 +26668,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:mtk-flash-boot-a-transport-collapse",
-          "title": "MTK刷写boot_a阶段传输会话崩溃",
-          "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
-          "platforms": [
-            "MediaTek"
-          ],
-          "caseStatus": "direct_failure_confirmed_trigger_open",
-          "evidenceState": "verified",
-          "confidence": "直接失效高；具体触发未定",
-          "scope": {
-            "timeWindow": "2026-10-16 16:24:12—16:26:28",
-            "reportCount": 1
-          },
-          "clocks": {
-            "state": "aligned",
-            "basis": "SP Flash Tool与host日志时间线"
-          },
-          "bootGeneration": {
-            "state": "download_session_bound",
-            "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"
-          },
-          "knowledgeIds": [
-            "chain:platform-family",
-            "chain:usb-storage",
-            "chain:hal-driver-boundary",
-            "chain:ota-lifecycle",
-            "chain:evidence-ledger"
-          ],
-          "skillIds": [
-            "t12t-cockpit-diagnosis",
-            "t12t-log-analysis",
-            "t12t-platform-architecture",
-            "t12t-usb-typec-storage",
-            "t12t-stability-crash-reset",
-            "t12t-tpm-triage",
-            "t12t-tpm-5y8d"
-          ],
-          "publicSummary": "刷写进入boot_a [21/47]后，接收12字节控制帧和发送2MiB数据在同一毫秒均以Windows I/O 0x16、0字节失败，MUX线程随即退出；120秒后的data_mux超时是会话崩溃后的结果。现有证据不能继续区分线缆/端口/供电、Windows驱动、设备复位/DA崩溃或固定偏移交互。",
-          "normalExpectation": "BROM连接、DA加载和UFS识别后，47个下载项应依次完成，每个数据块得到设备响应，会话不应发生双向0字节I/O失败。",
-          "confirmedFacts": [
-            "第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。",
-            "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。",
-            "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。",
-            "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"
-          ],
-          "hypotheses": [
-            "USB线缆、主机端口、Hub、供电或枚举稳定性问题。",
-            "设备端复位、DA崩溃或目标侧退出当前会话。",
-            "Windows MediaTek USB驱动或控制器路径异常。",
-            "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"
-          ],
-          "technicalChain": [
-            {
-              "pathClass": "data",
-              "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入",
-              "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"
-            }
-          ],
-          "reportVersions": [
-            {
-              "id": "report:mtk-flash-20261016",
-              "title": "刷写失败原因分析",
-              "date": "2026-10-16",
-              "status": "current",
-              "statusLabel": "当前分析报告",
-              "url": "case-reports/mtk-flash-boot-a-transport-collapse.html",
-              "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062",
-              "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"
-            }
-          ],
-          "evidence": [
-            {
-              "id": "E-FLASH-01",
-              "type": "direct",
-              "source": "host_0.log",
-              "location": "4696—4704",
-              "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出",
-              "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"
-            },
-            {
-              "id": "E-FLASH-02",
-              "type": "direct",
-              "source": "host_0.log",
-              "location": "4511—4515及前序块响应",
-              "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB",
-              "boundary": "暴露位置不等于boot.img内容错误。"
-            },
-            {
-              "id": "E-FLASH-03",
-              "type": "background",
-              "source": "QT_FLASH_TOOL_V6.log",
-              "location": "前三次扫描失败及166—169",
-              "supports": "连接稳定性值得优先检查；最终-2是上层超时",
-              "boundary": "扫描失败不能独立证明最终刷写失败由线缆或端口造成。"
-            },
-            {
-              "id": "E-FLASH-04",
-              "type": "missing",
-              "source": "待补材料",
-              "location": "Windows PnP/USB、板端UART/DA、复位线与供电波形",
-              "supports": "用于区分主机链路、目标复位和供电假设",
-              "boundary": "这些材料缺失，因此具体触发责任暂不关闭。"
-            }
-          ],
-          "tpm": {
-            "trigger": "待确认：USB/供电/驱动路径异常、设备复位/DA退出或固定偏移交互。",
-            "firstRoundLead": "刷写工具/平台集成牵头，USB/BSP、硬件供电和目标端DA负责人并行取证。",
-            "directFailureOwner": "主机—设备下载传输会话；具体责任件待区分实验。",
-            "repairOwner": "依据复现证据确定，不在证据不足时提前指派最终根因Owner。",
-            "interfaceOwner": "刷写工具、Windows USB驱动、BROM/DA与板端下载链接口双方。",
-            "verifier": "版本发布/刷写验证联合平台、BSP与硬件。",
-            "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"
-          },
-          "projectionKnowledgeId": "chain:usb-storage",
-          "projection": {
-            "knowledgeId": "chain:usb-storage",
-            "role": "direct_failure",
-            "summary": "从USB与存储链视角，直接断点是主机与设备的双向I/O同时变为0字节，随后MUX退出。",
-            "relationReason": "USB/串口通道承载下载控制帧与数据块；通道消失会让后续分区写入和上层命令同时失去响应。",
-            "evidenceIds": [
-              "E-FLASH-01",
-              "E-FLASH-03",
-              "E-FLASH-04"
-            ],
-            "tpmFocus": "用PnP、USB、端口、线缆、供电和目标侧证据区分触发。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:mtk-flash-boot-a-transport-collapse"
       ]
     },
     {
@@ -26708,6 +26707,39 @@
       ],
       "skillIds": [
         "t12t-avm-camera-stream"
+      ],
+      "cases": [
+        {
+          "id": "case:avm-no-video",
+          "title": "Camera与AVM无画面案例索引",
+          "symptom": "Camera、AVM 或倒车影像无画面",
+          "scope": {
+            "indexedDirectoryCount": 8
+          },
+          "clocks": {
+            "state": "needs_review"
+          },
+          "bootGeneration": {
+            "state": "needs_review"
+          },
+          "knowledgeIds": [
+            "chain:avm-video-flow"
+          ],
+          "skillIds": [
+            "t12t-avm-camera-stream"
+          ],
+          "evidenceState": "indexed",
+          "caseStatus": "awaiting_review",
+          "publicSummary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
+          "projectionKnowledgeId": "chain:avm-video-flow",
+          "projection": {
+            "knowledgeId": "chain:avm-video-flow",
+            "summary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:avm-no-video"
       ],
       "sourceClaims": [
         {
@@ -27194,39 +27226,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:avm-no-video",
-          "title": "Camera与AVM无画面案例索引",
-          "symptom": "Camera、AVM 或倒车影像无画面",
-          "scope": {
-            "indexedDirectoryCount": 8
-          },
-          "clocks": {
-            "state": "needs_review"
-          },
-          "bootGeneration": {
-            "state": "needs_review"
-          },
-          "knowledgeIds": [
-            "chain:avm-video-flow"
-          ],
-          "skillIds": [
-            "t12t-avm-camera-stream"
-          ],
-          "evidenceState": "indexed",
-          "caseStatus": "awaiting_review",
-          "publicSummary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
-          "projectionKnowledgeId": "chain:avm-video-flow",
-          "projection": {
-            "knowledgeId": "chain:avm-video-flow",
-            "summary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:avm-no-video"
       ]
     },
     {
@@ -27311,6 +27310,40 @@
       ],
       "skillIds": [
         "t12t-audio-path"
+      ],
+      "cases": [
+        {
+          "id": "case:audio-no-output",
+          "title": "音频无声与播报异常案例索引",
+          "symptom": "音频无声或播报异常",
+          "scope": {
+            "indexedDirectoryCount": 4
+          },
+          "clocks": {
+            "state": "needs_review"
+          },
+          "bootGeneration": {
+            "state": "needs_review"
+          },
+          "knowledgeIds": [
+            "chain:audio-paths",
+            "chain:audio-policy-routing"
+          ],
+          "skillIds": [
+            "t12t-audio-path"
+          ],
+          "evidenceState": "indexed",
+          "caseStatus": "awaiting_review",
+          "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
+          "projectionKnowledgeId": "chain:audio-paths",
+          "projection": {
+            "knowledgeId": "chain:audio-paths",
+            "summary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:audio-no-output"
       ],
       "sourceClaims": [
         {
@@ -27517,40 +27550,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:audio-no-output",
-          "title": "音频无声与播报异常案例索引",
-          "symptom": "音频无声或播报异常",
-          "scope": {
-            "indexedDirectoryCount": 4
-          },
-          "clocks": {
-            "state": "needs_review"
-          },
-          "bootGeneration": {
-            "state": "needs_review"
-          },
-          "knowledgeIds": [
-            "chain:audio-paths",
-            "chain:audio-policy-routing"
-          ],
-          "skillIds": [
-            "t12t-audio-path"
-          ],
-          "evidenceState": "indexed",
-          "caseStatus": "awaiting_review",
-          "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
-          "projectionKnowledgeId": "chain:audio-paths",
-          "projection": {
-            "knowledgeId": "chain:audio-paths",
-            "summary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:audio-no-output"
       ]
     },
     {
@@ -27588,20 +27587,6 @@
       ],
       "skillIds": [
         "t12t-audio-path"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -27764,6 +27749,20 @@
       "caseIds": [
         "case:audio-no-output",
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -27793,6 +27792,41 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
+      "cases": [
+        {
+          "id": "case:network-offline",
+          "title": "车辆网络断联案例索引",
+          "symptom": "车辆网络断联或服务离线",
+          "scope": {
+            "indexedDirectoryCount": 2
+          },
+          "clocks": {
+            "state": "needs_review"
+          },
+          "bootGeneration": {
+            "state": "needs_review"
+          },
+          "knowledgeIds": [
+            "chain:ethernet-connectivity",
+            "chain:tbox-connectivity"
+          ],
+          "skillIds": [
+            "t12t-ethernet-sgmii",
+            "t12t-cross-domain-msg"
+          ],
+          "evidenceState": "indexed",
+          "caseStatus": "awaiting_review",
+          "publicSummary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
+          "projectionKnowledgeId": "chain:tbox-connectivity",
+          "projection": {
+            "knowledgeId": "chain:tbox-connectivity",
+            "summary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:network-offline"
+      ],
       "sourceClaims": [
         {
           "sourceId": "58bac8d6e11b",
@@ -28068,41 +28102,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:network-offline",
-          "title": "车辆网络断联案例索引",
-          "symptom": "车辆网络断联或服务离线",
-          "scope": {
-            "indexedDirectoryCount": 2
-          },
-          "clocks": {
-            "state": "needs_review"
-          },
-          "bootGeneration": {
-            "state": "needs_review"
-          },
-          "knowledgeIds": [
-            "chain:ethernet-connectivity",
-            "chain:tbox-connectivity"
-          ],
-          "skillIds": [
-            "t12t-ethernet-sgmii",
-            "t12t-cross-domain-msg"
-          ],
-          "evidenceState": "indexed",
-          "caseStatus": "awaiting_review",
-          "publicSummary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
-          "projectionKnowledgeId": "chain:tbox-connectivity",
-          "projection": {
-            "knowledgeId": "chain:tbox-connectivity",
-            "summary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:network-offline"
       ]
     },
     {
@@ -28226,52 +28225,6 @@
         "course:week-entry-10",
         "course:week-entry-11",
         "course:week-entry-12"
-      ],
-      "sourceClaims": [
-        {
-          "sourceId": "6c11069e244f",
-          "title": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-6c11069e244f.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:vehicle-bus",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "c94a6f788bd3",
-          "title": "Yocto SELinux Introduction(8676).pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-c94a6f788bd3.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:vehicle-bus",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "390860030f5a",
-          "title": "奇瑞项目Yocto SELinux 介绍 资料.zip",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-390860030f5a.zip",
-          "platform": "待确认",
-          "version": "unspecified",
-          "knowledgeId": "chain:vehicle-bus",
-          "status": "needs_review",
-          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        }
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -28404,6 +28357,52 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "sourceClaims": [
+        {
+          "sourceId": "6c11069e244f",
+          "title": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-6c11069e244f.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "c94a6f788bd3",
+          "title": "Yocto SELinux Introduction(8676).pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-c94a6f788bd3.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "390860030f5a",
+          "title": "奇瑞项目Yocto SELinux 介绍 资料.zip",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-390860030f5a.zip",
+          "platform": "待确认",
+          "version": "unspecified",
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -28440,32 +28439,6 @@
       "skillIds": [
         "t12t-ethernet-sgmii"
       ],
-      "sourceClaims": [
-        {
-          "sourceId": "6c11069e244f",
-          "title": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-6c11069e244f.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:ethernet-connectivity",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        }
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "网络/BSP 域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:network-offline",
@@ -28500,6 +28473,32 @@
       ],
       "caseIds": [
         "case:network-offline"
+      ],
+      "sourceClaims": [
+        {
+          "sourceId": "6c11069e244f",
+          "title": "Auto_Camera_ISP8S_CDPHY_Eye_Scan_User_Guide_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-6c11069e244f.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:ethernet-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "网络/BSP 域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -30165,20 +30164,6 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mtk-flash-boot-a-transport-collapse",
@@ -30309,6 +30294,20 @@
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -30638,20 +30637,6 @@
       "skillIds": [
         "t12t-performance-jank"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:performance-freeze",
@@ -30685,6 +30670,20 @@
       ],
       "caseIds": [
         "case:performance-freeze"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -30794,212 +30793,6 @@
         "t12t-log-analysis",
         "t12t-tpm-triage",
         "t12t-tpm-5y8d"
-      ],
-      "sourceClaims": [
-        {
-          "sourceId": "bfd28e7774c5",
-          "title": "MT8668_Android_FBE_Debug_SOP_CN_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-bfd28e7774c5.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "4ed1bbbfed20",
-          "title": "MT8668_Android_Sensor_lssue_Debug_SOP_CN_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-4ed1bbbfed20.pdf",
-          "platform": "MT8668",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "3ea5dbd9f6ab",
-          "title": "Low_power_debug_sop_v1.4.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-3ea5dbd9f6ab.pdf",
-          "platform": "MT8676",
-          "version": "V1.4",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "ad653e0a5c99",
-          "title": "MT8676_Android_DebugLoggerUI_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ad653e0a5c99.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "13d506954e81",
-          "title": "MT8676_Android_DebugLoggerUI_User_Manual_V1.1.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-13d506954e81.pdf",
-          "platform": "MT8676",
-          "version": "V1.1",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "2ce096834385",
-          "title": "MT8676_Android_FBE_Debug_SOP_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2ce096834385.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "2ba1f7bc0db6",
-          "title": "MT8676_Android_Sensor_lssue_Debug_SOP_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2ba1f7bc0db6.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "f608befe136c",
-          "title": "MT8676_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-f608befe136c.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "508bdcafc604",
-          "title": "MT8676_Yocto_Log_Tool_Introduction_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-508bdcafc604.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "2131e9dacedf",
-          "title": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2131e9dacedf.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "e81eb416e8a5",
-          "title": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-e81eb416e8a5.pdf",
-          "platform": "MT8676",
-          "version": "V1.0",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "a0ea4cd59f56",
-          "title": "MTK_Log_SOS_dump_uos_pstore.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-a0ea4cd59f56.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "1e4d22f0c69a",
-          "title": "MTK_Log_SOS_shutdown_pstore_dump_to_BLK.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-1e4d22f0c69a.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "9fb78cf7bec9",
-          "title": "PVT经验教训记录表.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-9fb78cf7bec9.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "843085143d8a",
-          "title": "SF_debug方法.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-843085143d8a.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "815b1152cb31",
-          "title": "显示问题common+sop.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-815b1152cb31.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "0f87b2ff1abc",
-          "title": "汇报材料--软件开发培训-音视频解码常见问题及分析.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-0f87b2ff1abc.pdf",
-          "platform": "MT8676",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "3ffcd662cc34",
-          "title": "常用日志说明.url",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-3ffcd662cc34.url",
-          "platform": "待确认",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        },
-        {
-          "sourceId": "c31539cad8dd",
-          "title": "软件开发培训-音视频解码常见问题及分析.pdf",
-          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-c31539cad8dd.pdf",
-          "platform": "待确认",
-          "version": "unspecified",
-          "knowledgeId": "chain:evidence-ledger",
-          "status": "indexed",
-          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
-        }
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "TPM 与当前主链路技术牵头域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -31264,6 +31057,212 @@
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop",
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "sourceClaims": [
+        {
+          "sourceId": "bfd28e7774c5",
+          "title": "MT8668_Android_FBE_Debug_SOP_CN_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-bfd28e7774c5.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "4ed1bbbfed20",
+          "title": "MT8668_Android_Sensor_lssue_Debug_SOP_CN_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-4ed1bbbfed20.pdf",
+          "platform": "MT8668",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "3ea5dbd9f6ab",
+          "title": "Low_power_debug_sop_v1.4.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-3ea5dbd9f6ab.pdf",
+          "platform": "MT8676",
+          "version": "V1.4",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "ad653e0a5c99",
+          "title": "MT8676_Android_DebugLoggerUI_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-ad653e0a5c99.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "13d506954e81",
+          "title": "MT8676_Android_DebugLoggerUI_User_Manual_V1.1.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-13d506954e81.pdf",
+          "platform": "MT8676",
+          "version": "V1.1",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "2ce096834385",
+          "title": "MT8676_Android_FBE_Debug_SOP_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2ce096834385.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "2ba1f7bc0db6",
+          "title": "MT8676_Android_Sensor_lssue_Debug_SOP_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2ba1f7bc0db6.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "f608befe136c",
+          "title": "MT8676_DMA_Buffer_Debug_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-f608befe136c.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "508bdcafc604",
+          "title": "MT8676_Yocto_Log_Tool_Introduction_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-508bdcafc604.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "2131e9dacedf",
+          "title": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-2131e9dacedf.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "e81eb416e8a5",
+          "title": "MT8676_Yocto_Log_User_Manual_V1.0.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-e81eb416e8a5.pdf",
+          "platform": "MT8676",
+          "version": "V1.0",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "a0ea4cd59f56",
+          "title": "MTK_Log_SOS_dump_uos_pstore.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-a0ea4cd59f56.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "1e4d22f0c69a",
+          "title": "MTK_Log_SOS_shutdown_pstore_dump_to_BLK.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-1e4d22f0c69a.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "9fb78cf7bec9",
+          "title": "PVT经验教训记录表.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-9fb78cf7bec9.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "843085143d8a",
+          "title": "SF_debug方法.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-843085143d8a.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "815b1152cb31",
+          "title": "显示问题common+sop.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-815b1152cb31.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "0f87b2ff1abc",
+          "title": "汇报材料--软件开发培训-音视频解码常见问题及分析.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-0f87b2ff1abc.pdf",
+          "platform": "MT8676",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "3ffcd662cc34",
+          "title": "常用日志说明.url",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-3ffcd662cc34.url",
+          "platform": "待确认",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "sourceId": "c31539cad8dd",
+          "title": "软件开发培训-音视频解码常见问题及分析.pdf",
+          "downloadUrl": "https://qiantao18817568425-art.github.io/Cockpit_Knowledge_Galaxy/raw-files/raw-c31539cad8dd.pdf",
+          "platform": "待确认",
+          "version": "unspecified",
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "TPM 与当前主链路技术牵头域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -31396,6 +31395,41 @@
         "t12t-stability-crash-reset",
         "t12t-tpm-5y8d"
       ],
+      "cases": [
+        {
+          "id": "case:display-black",
+          "title": "显示黑屏与画面异常案例索引",
+          "symptom": "显示黑屏、异常颜色、卡死或重启",
+          "scope": {
+            "indexedDirectoryCount": 44
+          },
+          "clocks": {
+            "state": "needs_review"
+          },
+          "bootGeneration": {
+            "state": "needs_review"
+          },
+          "knowledgeIds": [
+            "chain:display-output",
+            "chain:stability"
+          ],
+          "skillIds": [
+            "t12t-display-black-freeze",
+            "t12t-stability-crash-reset"
+          ],
+          "evidenceState": "indexed",
+          "caseStatus": "awaiting_review",
+          "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
+          "projectionKnowledgeId": "chain:stability",
+          "projection": {
+            "knowledgeId": "chain:stability",
+            "summary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+          }
+        }
+      ],
+      "caseIds": [
+        "case:display-black"
+      ],
       "sourceClaims": [
         {
           "sourceId": "0d324bedb45f",
@@ -31501,41 +31535,6 @@
         "统一时基与 boot/VM generation",
         "逐接口核对输入、状态、输出和完成语义",
         "验证修复及异常恢复并保留可复核证据"
-      ],
-      "cases": [
-        {
-          "id": "case:display-black",
-          "title": "显示黑屏与画面异常案例索引",
-          "symptom": "显示黑屏、异常颜色、卡死或重启",
-          "scope": {
-            "indexedDirectoryCount": 44
-          },
-          "clocks": {
-            "state": "needs_review"
-          },
-          "bootGeneration": {
-            "state": "needs_review"
-          },
-          "knowledgeIds": [
-            "chain:display-output",
-            "chain:stability"
-          ],
-          "skillIds": [
-            "t12t-display-black-freeze",
-            "t12t-stability-crash-reset"
-          ],
-          "evidenceState": "indexed",
-          "caseStatus": "awaiting_review",
-          "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。",
-          "projectionKnowledgeId": "chain:stability",
-          "projection": {
-            "knowledgeId": "chain:stability",
-            "summary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
-          }
-        }
-      ],
-      "caseIds": [
-        "case:display-black"
       ]
     }
   ],

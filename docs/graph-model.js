@@ -62,11 +62,12 @@ const relationLabels={
   controls:'控制',depends_on:'依赖',observed_by:'由观测点确认',transitions_to:'状态流转',fails_as:'失效表现',
   supported_by:'由资料支持',contains:'包含',runs_on:'运行于',connects_to:'连接',implements:'实现',maps_to:'映射到',
   carries_data_to:'传递数据',sends_to:'发送到',variant_of:'平台变体',publishes:'发布',conflicts_with:'存在版本冲突',powers:'供电',belongs_to:'资料归类',
+  provides_input_to:'提供输入',uses:'使用',hosts:'承载运行',requires:'需要',crosses_boundary:'跨越边界',constrains:'约束',verifies:'验证',can_amplify:'可能放大',restores:'恢复',enables:'使能',
   '主题目录':'主题目录','主题归类':'主题归类','主题细分':'主题细分','内容索引':'内容索引','课程覆盖':'课程覆盖','课程顺序':'课程顺序'
 };
 const pathLabels={control:'控制路径',data:'数据路径',power:'电源路径',diagnostic:'诊断与证据路径',index:'知识索引'};
 const navigationRelations=new Set(['主题目录','主题归类','主题细分','内容索引','课程覆盖','课程顺序','belongs_to']);
-const technicalRelationTypes=new Set(['controls','depends_on','observed_by','transitions_to','fails_as','runs_on','carries_data_to','sends_to','publishes','subscribes','powers','variant_of','conflicts_with','supersedes']);
+const technicalRelationTypes=new Set(['controls','depends_on','observed_by','transitions_to','fails_as','runs_on','carries_data_to','sends_to','publishes','subscribes','powers','variant_of','conflicts_with','supersedes','implements','provides_input_to','uses','hosts','requires','crosses_boundary','constrains','verifies','can_amplify','restores','enables']);
 
 export function buildHierarchyIndex(graph){
   const byId=new Map(graph.nodes.map(node=>[node.id,node]));
@@ -167,6 +168,7 @@ function relationRationale(edge,byId){
 }
 
 function relationEvidenceBasis(edge,byId){
+  if(edge.evidenceBasis)return edge.evidenceBasis;
   const claims=edge.claims||[];
   if(claims.length){
     const statuses=[...new Set(claims.map(claim=>`${claim.status||edge.status||'reference'}${claim.platforms?.length?`（${claim.platforms.join('/')}）`:''}`))];
@@ -184,6 +186,8 @@ function relationSupport(edge,byId,selectedId,distance,status,platforms=[]){
 
 function evidenceBoundary(status,pages=[]){
   const hasPages=(pages.flat?.(Infinity)||pages).length>0;
+  if(status==='page_verified')return hasPages?'已逐页核对并登记页码；技术结论仍受所列平台、版本和章节范围约束。':'状态为逐页核对，但页码缺失，引用需要补全。';
+  if(status==='supporting_context')return '这是经过页级核对的背景材料，只支撑所述上下文，不直接证明项目接口或现车实现。';
   if(status==='documented_reference')return hasPages?'这是原文页级引用，可支撑所列关系，但仍需核对车型、版本与上下文。':'状态标为原文依据，但未登记页码，引用强度受限。';
   if(status==='inferred_mapping')return '这是基于资料做出的映射推断，不能直接当作现车事实；当前车型与版本仍需另行验证。';
   if(status==='conflicting')return '资料或版本之间存在冲突，当前只保留差异，不能合并为单一结论。';
@@ -328,14 +332,14 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
   const sourceClaims=(node.sourceClaims||[]).map(item=>({...item}));
   for(const item of sourceClaims)if(item.downloadUrl&&!uniqueReferences.some(reference=>reference.url===item.downloadUrl))uniqueReferences.push({
     id:`mapped-source:${item.sourceId}`,kind:'source',title:item.title,url:item.downloadUrl,pages:item.pages||[],status:item.status,
-    platforms:item.platform?[item.platform]:[],summary:item.basis,whyCited:`资料登记映射理由：${item.basis}`,
+    platforms:item.platform?[item.platform]:[],summary:item.claim||item.basis,whyCited:`${item.basis||'该资料与当前专题存在直接内容映射。'}`,
     evidenceBoundary:item.status==='page_verified'?'已记录页级定位，仍需结合适用版本核对。':'当前是资料索引映射，尚未形成页级技术结论。',supports:[]
   });
   return {
     id:node.id,title:node.title,kind:node.kind,
     summary,summaryBasis,
     scope:{platforms:node.platforms||[],runtimeDomain:node.runtimeDomain||node.domain,version:node.version,status:node.status},
-    breadcrumb,memberships,responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
+    breadcrumb,memberships,architecture:node.architecture||[],responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
     courses,skills,analysis,cases,sourceClaims,tpm:node.responsibility||{},verification:node.verification||[],
     notice:contentState==='awaiting_absorption'?'该节点已完成层级归类，但资料尚未吸收；分类关系不作为技术结论。':'技术关系优先采用结构化说明；车型、版本、接口编号及时序仍以引用原文和现车资料为准。'
   };
@@ -351,6 +355,12 @@ export function readerMarkdown(model){
   const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 本层架构',''];
   if(model.memberships?.primary)lines.push(`- **主要归属：** ${model.memberships.primary.title}`);else lines.push('- **主要归属：** 智能座舱总入口');
   if(model.memberships?.secondary?.length)lines.push(`- **同时关联：** ${model.memberships.secondary.map(item=>item.title).join('、')}`);else lines.push('- **同时关联：** 无已登记交叉归属');
+  if(model.architecture?.length){
+    lines.push('','```mermaid','flowchart LR');
+    model.architecture.forEach((step,index)=>lines.push(`  A${index}["${String(typeof step==='string'?step:step.title||step.label).replaceAll('"','&quot;')}"]`));
+    for(let index=0;index<model.architecture.length-1;index++)lines.push(`  A${index} --> A${index+1}`);
+    lines.push('```');
+  }
   lines.push('','## 本层职责','');
   if(model.contentState==='awaiting_absorption')lines.push('- **资料尚未吸收**：当前只保留层级与分类，不生成技术职责和因果解释。');
   else{
@@ -384,7 +394,13 @@ export function readerMarkdown(model){
     for(const report of item.reportVersions||[])lines.push(`- **分析报告：${report.title}**（${report.statusLabel||report.status}）：${report.summary}  \n  ${report.url}`);
     for(const evidence of item.evidence||[])lines.push(`- **${evidence.id} · ${evidence.source}**（${evidence.type}，${evidence.location}）：${evidence.supports}\n  - **证据边界：** ${evidence.boundary}`);
   }
-  if(model.sourceClaims?.length)for(const item of model.sourceClaims.slice(0,20))lines.push(`- **${item.title}**（${item.status}）：${item.basis}${item.downloadUrl?`  \n  ${item.downloadUrl}`:''}`);else lines.push('- 当前没有登记到该节点的原始资料映射。');
+  if(model.sourceClaims?.length)for(const item of model.sourceClaims.slice(0,40)){
+    lines.push(`- **${item.title}**（${pageText(item.pages||[])}，${item.status}）`);
+    if(item.claim)lines.push(`  - **学习批注：** ${item.claim}`);
+    if(item.basis)lines.push(`  - **为何用于本专题：** ${item.basis}`);
+    if(item.section)lines.push(`  - **原文章节：** ${item.section}`);
+    if(item.downloadUrl)lines.push(`  - ${item.downloadUrl}`);
+  }else lines.push('- 当前没有登记到该节点的原始资料映射。');
   lines.push('','> '+model.notice,'','### 补充引用资料与文章','');
   const representedReferenceUrls=new Set();
   if(model.citations.length)for(const item of model.citations){

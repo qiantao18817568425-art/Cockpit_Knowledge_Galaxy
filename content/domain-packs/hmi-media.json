@@ -335,7 +335,8 @@
         "HWC present"
       ],
       "runtimeDomain": "android",
-      "contentState": "awaiting_absorption"
+      "contentState": "absorbed",
+      "knowledge": {"role":"把 SurfaceFlinger 的合成决策提交给 HWC/Composer，并返回 validate、present 与 fence 结果。","input":["图层列表、显示配置和合成策略"],"mechanism":["validate 决定 Client/Device composition，present 提交本帧并传递同步 fence"],"output":["已提交帧、present 结果和 release/present fence"],"observations":["validate/present 返回码、frame number、fence signal 和首帧时间"],"limits":["present 成功只证明 Android 提交阶段完成，不能证明 Host scanout、SerDes、Panel 或背光正常。"]}
     },
     {
       "id": "interface:drm-atomic",
@@ -351,7 +352,8 @@
         "atomic commit"
       ],
       "runtimeDomain": "yocto",
-      "contentState": "awaiting_absorption"
+      "contentState": "absorbed",
+      "knowledge": {"role":"以一次原子提交更新 CRTC、plane、connector 等显示资源，驱动硬件完成 scanout。","input":["framebuffer、plane/CRTC/connector 状态和 mode"],"mechanism":["DRM 先校验完整状态，再用 atomic commit 将配置交给 OVL/CMDQ/显示管线"],"output":["新的 scanout 状态和 vblank/page-flip 完成"],"observations":["atomic check/commit 返回码、CRTC/plane 状态、vblank 和 underrun"],"limits":["commit 成功仍需确认物理链路、面板和背光。"]}
     },
     {
       "id": "observation:serdes-link",
@@ -367,7 +369,8 @@
         "link lock"
       ],
       "runtimeDomain": "physical-device",
-      "contentState": "awaiting_absorption"
+      "contentState": "absorbed",
+      "knowledge": {"role":"确认加串器、线束和解串器已经锁定，并保持视频时钟与同步信号连续。","input":["DSI/DP/RGB 视频信号、时钟和 SerDes 配置"],"mechanism":["Serializer 编码传输，Deserializer 恢复链路和视频同步后送入 Panel"],"output":["已锁定且同步稳定的物理视频链"],"observations":["link lock、DE/HS/VS、CRC/error counter、remote I2C 和恢复次数"],"limits":["具体寄存器、阈值和 SerDes 型号必须按现车方案核实。"]}
     },
     {
       "id": "failure:display-no-image",
@@ -383,7 +386,8 @@
         "黑屏"
       ],
       "runtimeDomain": "physical-device",
-      "contentState": "awaiting_absorption"
+      "contentState": "absorbed",
+      "knowledge": {"role":"描述上游存在图层或像素数据、但用户仍看不到画面的跨层失效结果。","input":["已确认的图层、帧提交或物理视频输入"],"mechanism":["可能断在 DRM scanout、SerDes 同步、Panel 初始化、电源或背光；需用竞争假设逐层排除"],"output":["黑屏、冻屏、灰屏或亮屏无图"],"observations":["HWC present、DRM/vblank、SerDes lock、Panel status、背光电压和亮度"],"limits":["这是故障表现，不是根因；最后错误或恢复动作不能替代最早断点证据。"]}
     },
     {
       "id": "interface:backlight-control",
@@ -399,7 +403,8 @@
         "backlight enable"
       ],
       "runtimeDomain": "mcu",
-      "contentState": "awaiting_absorption"
+      "contentState": "absorbed",
+      "knowledge": {"role":"把电源/HMI 亮度策略转换为面板背光使能和亮度执行，并回报实际状态。","input":["电源状态、屏幕开关、目标亮度和故障保护"],"mechanism":["MCU 或 SoC 服务经 GPIO、PWM、I2C 或专用控制接口驱动背光电源与亮度"],"output":["背光使能、目标亮度和执行反馈"],"observations":["请求值、GPIO/PWM/I2C 状态、背光电压电流和故障脚"],"limits":["控制所有者和接口随车型硬件方案变化，必须用原理图和接口定义确认。"]}
     },
     {
       "id": "component:camera-control",

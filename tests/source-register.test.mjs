@@ -17,4 +17,3 @@ test('public source register covers all deduplicated public documents',()=>{
   assert.ok(!JSON.stringify(register).includes('I:\\'));
   assert.ok(!register.documents.some(x=>/Thumbs\.db/i.test(x.name)));
 });
-

@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-cases1';
-import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-cases1';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-cases1';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-absorb1';
+import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-absorb1';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-absorb1';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -227,12 +227,22 @@ function renderReader(model){
   appendReaderChip(memberships,'主要归属',model.memberships?.primary||{title:'智能座舱总入口'});
   for(const item of model.memberships?.secondary||[])appendReaderChip(memberships,'同时关联',item);
   if(!model.memberships?.secondary?.length){const note=document.createElement('span');note.className='reader-membership-note';note.textContent='同时关联：无已登记交叉归属';memberships.append(note)}
+  const architecture=document.querySelector('#reader-architecture');architecture.replaceChildren();
+  if(model.architecture?.length){
+    const label=document.createElement('strong');label.className='architecture-flow-title';label.textContent='端到端主链路';architecture.append(label);
+    const flow=document.createElement('div');flow.className='architecture-flow';
+    model.architecture.forEach((step,index)=>{const item=document.createElement('span');item.className='architecture-step';item.textContent=typeof step==='string'?step:(step.title||step.label);flow.append(item);if(index<model.architecture.length-1){const arrow=document.createElement('i');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');flow.append(arrow)}});
+    architecture.append(flow);
+  }
   const responsibility=document.querySelector('#reader-responsibility');responsibility.replaceChildren();
   if(model.contentState==='awaiting_absorption')emptyReader(responsibility,'资料尚未吸收：当前只保留层级和分类，不生成技术职责。');
   else{
     appendReason(responsibility,'职责',model.responsibility.role,'responsibility-block role');
     for(const [label,values] of [['输入',model.responsibility.input],['内部机制',model.responsibility.mechanism],['输出',model.responsibility.output],['证据边界',model.responsibility.limits]])if(values?.length)appendReason(responsibility,label,values.join('；'),'responsibility-block');
   }
+  const annotations=document.querySelector('#reader-annotations');annotations.replaceChildren();
+  const reviewedClaims=(model.sourceClaims||[]).filter(item=>['page_verified','supporting_context'].includes(item.status)&&item.claim);
+  if(reviewedClaims.length){const label=document.createElement('strong');label.className='annotation-title';label.textContent='学习来源批注';annotations.append(label);for(const item of reviewedClaims.slice(0,6)){const card=document.createElement('article');card.className='annotation-card';const source=document.createElement('b');source.textContent=`${item.title}${item.pages?.length?` · 第 ${item.pages.join('、')} 页`:''}`;const claim=document.createElement('p');claim.textContent=item.claim;card.append(source,claim);if(item.basis){const basis=document.createElement('small');basis.textContent=`融入原因：${item.basis}`;card.append(basis)}if(item.downloadUrl)appendReferenceActions(card,{title:item.title,url:item.downloadUrl});annotations.append(card)}}
   const children=document.querySelector('#reader-children');children.replaceChildren();
   if(!model.children.length)emptyReader(children,'当前节点没有更下一层的公开节点。');
   for(const child of model.children){const button=document.createElement('button');button.type='button';button.className='drill-card';const title=document.createElement('strong');title.textContent=child.title;const text=document.createElement('span');text.textContent=child.role;button.append(title,text);button.addEventListener('click',()=>showNode(child.id));children.append(button)}
@@ -281,7 +291,7 @@ function renderReader(model){
   const observations=document.querySelector('#reader-observations');observations.replaceChildren();
   if(!model.observations.length)emptyReader(observations,'当前没有已吸收的观测点。');else{const list=document.createElement('ul');for(const value of model.observations){const item=document.createElement('li');item.textContent=value;list.append(item)}observations.append(list)}
   const sourceMappings=document.querySelector('#reader-source-mappings');sourceMappings.replaceChildren();
-  for(const item of model.sourceClaims||[]){const card=document.createElement('article');card.className='source-mapping-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=item.title||item.sourceId;const status=document.createElement('span');status.className='citation-meta';status.textContent=item.status||'needs_review';head.append(title,status);card.append(head);appendReason(card,'映射理由',item.basis||'资料索引命中当前知识节点。','citation-why');appendReason(card,'证据边界',item.status==='page_verified'?'已登记页级定位，仍需按车型和版本核对。':'当前为资料索引映射，不能单独作为页级技术结论。','citation-boundary');if(item.downloadUrl)appendReferenceActions(card,{title:item.title||item.sourceId,url:item.downloadUrl});sourceMappings.append(card)}
+  for(const item of model.sourceClaims||[]){const card=document.createElement('article');card.className='source-mapping-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=item.title||item.sourceId;const status=document.createElement('span');status.className='citation-meta';status.textContent=`${item.status||'needs_review'}${item.pages?.length?` · 第 ${item.pages.join('、')} 页`:''}`;head.append(title,status);card.append(head);if(item.claim)appendReason(card,'学习批注',item.claim,'citation-claim');appendReason(card,'映射理由（为什么融入当前专题）',item.basis||'资料索引命中当前知识节点。','citation-why');if(item.section)appendReason(card,'原文章节',item.section,'citation-section');appendReason(card,'证据边界',item.status==='page_verified'?'已逐页核对并登记页码；结论仍受对应车型、版本和章节范围约束。':item.status==='supporting_context'?'已逐页核对，但这里只作为上下文，不直接证明项目接口或现车实现。':'当前为资料索引映射，不能单独作为页级技术结论。','citation-boundary');if(item.downloadUrl)appendReferenceActions(card,{title:item.title||item.sourceId,url:item.downloadUrl});sourceMappings.append(card)}
   if(!model.sourceClaims?.length)emptyReader(sourceMappings,'当前没有登记到该节点的原始资料映射。');
   const citations=document.querySelector('#reader-citations');citations.replaceChildren();let citationCount=0;
   const represented=new Set();

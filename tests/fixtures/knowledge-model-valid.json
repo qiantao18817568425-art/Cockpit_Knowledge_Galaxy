@@ -8,4 +8,3 @@
   "evidence": [{"id":"ev-a","sourceId":"src-a","pages":[4],"status":"documented_reference","summary":"The manual identifies the component boundary."}],
   "claims": [{"id":"claim-a","relationId":"rel:sleep-platform","evidenceIds":["ev-a"],"status":"documented_reference","platforms":["MT8676"]}]
 }
-

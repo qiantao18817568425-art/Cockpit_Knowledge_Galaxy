@@ -28,7 +28,7 @@ test('every edge resolves and states a navigation or semantic relation',()=>{
   for(const edge of graph.edges){
     assert.ok(ids.has(edge.from),edge.from);
     assert.ok(ids.has(edge.to),edge.to);
-    assert.ok(['primary_contains','secondary_contains','主题目录','主题归类','主题细分','内容索引','课程顺序','belongs_to','runs_on','controls','sends_to','publishes','subscribes','carries_data_to','powers','transitions_to','depends_on','observed_by','fails_as','supported_by','variant_of','conflicts_with','supersedes'].includes(edge.type),edge.type);
+    assert.ok(['primary_contains','secondary_contains','主题目录','主题归类','主题细分','内容索引','课程顺序','belongs_to','runs_on','controls','sends_to','publishes','subscribes','carries_data_to','powers','transitions_to','depends_on','observed_by','fails_as','supported_by','variant_of','conflicts_with','supersedes','implements','provides_input_to','uses','hosts','requires','crosses_boundary','constrains','verifies','can_amplify','restores','enables'].includes(edge.type),edge.type);
   }
 });
 

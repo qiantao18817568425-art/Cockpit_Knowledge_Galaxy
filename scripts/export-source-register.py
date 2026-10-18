@@ -51,4 +51,3 @@ def main():
   print(json.dumps(out['summary'],ensure_ascii=False))
   db.close()
 if __name__=='__main__': main()
-

@@ -8,4 +8,3 @@
   "evidence": [{"id":"ev-bad","sourceId":"missing-source","pages":[0],"status":"made_up","summary":""}],
   "claims": [{"id":"claim-bad","relationId":"missing-relation","evidenceIds":["missing-evidence"],"status":"confirmed_current","platforms":["MT8676"]}]
 }
-

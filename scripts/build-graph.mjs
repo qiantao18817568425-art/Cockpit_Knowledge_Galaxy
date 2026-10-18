@@ -146,7 +146,10 @@ for (const category of rawTaxonomy) {
   if (knownIds.has(id) || !rawCategoryCounts.has(category.id)) throw new Error(`Invalid raw category: ${id}`);
   for (const chapter of category.chapters) if (!knownIds.has(`chapter:${chapter}`)) throw new Error(`Missing raw chapter ${chapter}`);
   for (const topic of category.topics) if (!knownIds.has(`topic:${topic}`)) throw new Error(`Missing raw topic ${topic}`);
-  nodes.push({id,title:category.title,kind:'subtopic',description:`${rawCategoryCounts.get(category.id)} 份不同内容。按原始文件归类，技术结论与适用版本待核。`,
+  const sourceCount=rawCategoryCounts.get(category.id);
+  nodes.push({id,title:category.title,kind:'subtopic',description:`${sourceCount} 份去重原始资料的分类入口；每份资料的页级结论在其实际归属的架构节点中展示。`,
+    summary:`本目录管理 ${sourceCount} 份「${category.title}」原始资料的检索、版本和证据状态。它是资料账本入口，技术结论已分散到对应的二级、三级和四级专题。`,
+    knowledge:{role:`管理「${category.title}」原始资料的检索、下载、版本和映射状态。`,input:['去重文件、平台、版本和页码索引'],mechanism:['保留原始文件下载入口','把资料映射到具体架构链路','用 page_verified、supporting_context 或 indexed 区分证据强度'],output:['可追溯的资料目录和专题来源批注'],observations:['文件 hash、平台、版本、页数和处理状态'],limits:['资料分类只用于证据管理，不代表该分类本身是实车技术组件。']},contentState:'absorbed',
     url:`./raw-sources.html?category=${category.id}`,source:'原始资料分类目录',topics:['raw'],parentId:'topic:raw',depth:1});
   knownIds.add(id);
   edges.push({from:'topic:raw',to:id,type:'主题细分'});
@@ -202,10 +205,19 @@ for(const node of semantic.nodes.filter(node=>node.kind==='source'))for(const kn
   edges.push({id:`index:source:${node.id}:${knowledgeId}`,from:node.id,to:knowledgeId,type:'belongs_to',pathClass:'index',layer:'index',hiddenByDefault:true});
 }
 const architectureTaxonomy=await loadArchitectureTaxonomy(path.join(projectRoot,'content','architecture-taxonomy.json'));
+const dimensionAbsorption=JSON.parse(await readFile(path.join(projectRoot,'content','dimension-absorption.json'),'utf8'));
 const hierarchy=await loadHierarchy(path.join(projectRoot,'content','hierarchy.json'));
 const architectureNodes=applyArchitectureTaxonomy(nodes,architectureTaxonomy);
 const hierarchicalNodes=applyHierarchy(architectureNodes,hierarchy);
 const hierarchicalById=new Map(hierarchicalNodes.map(node=>[node.id,node]));
+const mergeAbsorption=(node,absorbed)=>{
+  if(!node||!absorbed)return;
+  Object.assign(node,absorbed,{sourceClaims:[...(absorbed.sourceClaims||[])]});
+  node.contentState='absorbed';
+  node.referenceState='page_verified';
+};
+mergeAbsorption(hierarchicalById.get('root'),dimensionAbsorption.root);
+for(const [id,absorbed] of Object.entries(dimensionAbsorption.dimensions||{}))mergeAbsorption(hierarchicalById.get(id),absorbed);
 const addUnique=(node,key,value)=>{if(!node)return;node[key]=[...new Set([...(node[key]||[]),value])];};
 for(const item of learningMapping.items)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'dayIds',item.id);
 for(const item of skillMapping.skills)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'skillIds',item.id);
@@ -242,7 +254,11 @@ const secondaryIssues=validateSecondaryParents(hierarchicalNodes,{allowedParentL
 if(secondaryIssues.length)throw new Error(`Secondary hierarchy invalid:\n${secondaryIssues.join('\n')}`);
 const hierarchyEdges=buildHierarchyEdges(hierarchicalNodes);
 const secondaryHierarchyEdges=buildSecondaryHierarchyEdges(hierarchicalNodes);
-edges.push(...hierarchyEdges,...secondaryHierarchyEdges);
+const absorbedRelations=(dimensionAbsorption.relations||[]).map(edge=>({...edge,layer:'architecture_relation',evidenceState:'explained'}));
+for(const edge of absorbedRelations){
+  if(!hierarchicalById.has(edge.from)||!hierarchicalById.has(edge.to))throw new Error(`Absorbed relation references missing node: ${edge.id}`);
+}
+edges.push(...hierarchyEdges,...secondaryHierarchyEdges,...absorbedRelations);
 const data = {
   meta: {
     title:'座舱知识银河',

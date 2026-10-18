@@ -31,8 +31,7 @@
       "learning": 69,
       "skills": 21,
       "cases": 7,
-      "concreteSources": 0,
-      "reviewedReports": 3
+      "concreteSources": 0
     },
     "hierarchy": {
       "nodeCount": 699,
@@ -20042,21 +20041,6 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
-      "referenceState": "awaiting_review",
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mtk-flash-boot-a-transport-collapse",
@@ -20187,6 +20171,20 @@
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -20315,20 +20313,6 @@
       ],
       "skillIds": [
         "t12t-mcu"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -20462,6 +20446,20 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -20548,20 +20546,6 @@
       "skillIds": [
         "t12t-display-black-freeze"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "显示/HMI 域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:display-black",
@@ -20596,6 +20580,20 @@
       ],
       "caseIds": [
         "case:display-black"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "显示/HMI 域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -20677,20 +20675,6 @@
         "course:day-23",
         "course:week-entry-6"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:performance-freeze",
@@ -20724,6 +20708,20 @@
       ],
       "caseIds": [
         "case:performance-freeze"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -20803,20 +20801,6 @@
       "navigationOnly": false,
       "dayIds": [
         "course:day-26"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -20949,6 +20933,20 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21021,21 +21019,6 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
-      "referenceState": "awaiting_review",
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mtk-flash-boot-a-transport-collapse",
@@ -21167,6 +21150,20 @@
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21241,20 +21238,6 @@
       "navigationOnly": false,
       "skillIds": [
         "t12t-usb-typec-storage"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -21388,6 +21371,20 @@
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21428,20 +21425,6 @@
       "skillIds": [
         "t12t-avm-camera-stream"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "Camera/AVM 域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:avm-no-video",
@@ -21474,6 +21457,20 @@
       ],
       "caseIds": [
         "case:avm-no-video"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "Camera/AVM 域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21559,20 +21556,6 @@
       "skillIds": [
         "t12t-audio-path"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "音频域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:audio-no-output",
@@ -21606,6 +21589,20 @@
       ],
       "caseIds": [
         "case:audio-no-output"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "音频域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21643,20 +21640,6 @@
       ],
       "skillIds": [
         "t12t-audio-path"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -21819,6 +21802,20 @@
       "caseIds": [
         "case:audio-no-output",
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -21848,20 +21845,6 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:network-offline",
@@ -21896,6 +21879,20 @@
       ],
       "caseIds": [
         "case:network-offline"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -22019,20 +22016,6 @@
         "course:week-entry-10",
         "course:week-entry-11",
         "course:week-entry-12"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -22165,6 +22148,20 @@
       ],
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -22201,20 +22198,6 @@
       "skillIds": [
         "t12t-ethernet-sgmii"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "网络/BSP 域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:network-offline",
@@ -22249,6 +22232,20 @@
       ],
       "caseIds": [
         "case:network-offline"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "网络/BSP 域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -22738,21 +22735,6 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
-      "referenceState": "awaiting_review",
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:mtk-flash-boot-a-transport-collapse",
@@ -22883,6 +22865,20 @@
       ],
       "caseIds": [
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -23058,20 +23054,6 @@
       "skillIds": [
         "t12t-performance-jank"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "主要归属架构域（具体团队待确认）",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:performance-freeze",
@@ -23105,6 +23087,20 @@
       ],
       "caseIds": [
         "case:performance-freeze"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "主要归属架构域（具体团队待确认）",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -23214,20 +23210,6 @@
         "t12t-log-analysis",
         "t12t-tpm-triage",
         "t12t-tpm-5y8d"
-      ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "TPM 与当前主链路技术牵头域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
       ],
       "cases": [
         {
@@ -23492,6 +23474,20 @@
       "caseIds": [
         "case:mt8676-driving-mode-audio-loop",
         "case:mtk-flash-boot-a-transport-collapse"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "TPM 与当前主链路技术牵头域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     },
     {
@@ -23624,20 +23620,6 @@
         "t12t-stability-crash-reset",
         "t12t-tpm-5y8d"
       ],
-      "responsibility": {
-        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
-        "firstRoundLead": "直接失效所在运行域",
-        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
-        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
-        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
-        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
-      },
-      "verification": [
-        "确认车型、SoC、软硬件版本和实际拓扑",
-        "统一时基与 boot/VM generation",
-        "逐接口核对输入、状态、输出和完成语义",
-        "验证修复及异常恢复并保留可复核证据"
-      ],
       "cases": [
         {
           "id": "case:display-black",
@@ -23672,6 +23654,20 @@
       ],
       "caseIds": [
         "case:display-black"
+      ],
+      "responsibility": {
+        "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
+        "firstRoundLead": "直接失效所在运行域",
+        "directFailureOwner": "由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。",
+        "repairOwner": "根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。",
+        "verifier": "系统测试与问题提出方；具体人员和期限待项目确认。",
+        "closure": "触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。"
+      },
+      "verification": [
+        "确认车型、SoC、软硬件版本和实际拓扑",
+        "统一时基与 boot/VM generation",
+        "逐接口核对输入、状态、输出和完成语义",
+        "验证修复及异常恢复并保留可复核证据"
       ]
     }
   ],

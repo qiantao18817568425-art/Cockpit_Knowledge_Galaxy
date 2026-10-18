@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-17",
+    "sourceUpdatedOn": "2026-10-18",
     "chapterCount": 25,
     "lessonCount": 44,
-    "reviewCount": 25,
+    "reviewCount": 26,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -34,15 +34,15 @@
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 713,
-      "edgeCount": 768,
+      "nodeCount": 714,
+      "edgeCount": 769,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 203
+      "l4Count": 204
     },
     "layers": {
       "hierarchy": true,
@@ -2272,6 +2272,25 @@
       ],
       "mappingBasis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:someip-service",
+      "hierarchyOrder": 0,
+      "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-14-sunday",
+      "title": "Week 14 - 周日整合：VM—SOME/IP 跨层取证、恢复设计与测试闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-14-sunday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "virtualization",
+        "power"
+      ],
+      "knowledgeIds": [],
+      "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "review",
       "navigationOnly": true,
@@ -52132,6 +52151,16 @@
       "hiddenByDefault": true
     },
     {
+      "from": "topic:virtualization",
+      "to": "course:week-14-sunday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-14-sunday",
+      "type": "主题归类"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -62699,6 +62728,15 @@
       "id": "hierarchy:chain:someip-service:course:week-14-saturday",
       "from": "chain:someip-service",
       "to": "course:week-14-saturday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:week-14-sunday",
+      "from": "chain:system-overview",
+      "to": "course:week-14-sunday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

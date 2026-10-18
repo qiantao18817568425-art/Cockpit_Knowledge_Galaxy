@@ -8,8 +8,8 @@ const byId=new Map(graph.nodes.map(node=>[node.id,node]));
 const path=id=>{const result=[];const seen=new Set();let node=byId.get(id);while(node&&!seen.has(node.id)){result.push(node.id);seen.add(node.id);node=byId.get(node.primaryParentId)}return result.reverse()};
 
 test('MT8668 and MT8676 share one platform family path and keep variant evidence',()=>{
-  assert.deepEqual(path('platform:mt8668').slice(0,4),['root','pyramid:platform','domain:platform','chain:platform-family']);
-  assert.deepEqual(path('platform:mt8676').slice(0,4),['root','pyramid:platform','domain:platform','chain:platform-family']);
+  assert.deepEqual(path('platform:mt8668'),['root','architecture:mtk-platform','chain:platform-family','platform:mt8668']);
+  assert.deepEqual(path('platform:mt8676'),['root','architecture:mtk-platform','chain:platform-family','platform:mt8676']);
   const relation=pack.relations.find(item=>item.id==='rel:runtime:002');
   assert.equal(relation.scope,'shared');
   assert.match(relation.why,/共性|差异|平台|变体/);
@@ -17,8 +17,13 @@ test('MT8668 and MT8676 share one platform family path and keep variant evidence
 });
 
 test('runtime domains and cross-domain transports have visible drill branches',()=>{
-  for(const id of ['component:hypervisor','component:android-guest','component:yocto-host','component:mcu','component:tbox'])assert.ok(path(id).some(value=>value==='chain:runtime-boundaries'),id);
-  for(const id of ['interface:fdbus','interface:someip','interface:vsock','interface:virtio','interface:spi-ipcl'])assert.ok(path(id).some(value=>value==='chain:cross-domain-transport'),id);
+  for(const id of ['component:hypervisor','component:android-guest','component:yocto-host'])assert.ok(path(id).some(value=>value==='chain:runtime-boundaries'),id);
+  assert.ok(path('component:mcu').includes('chain:mcu-soc-responsibility'));
+  assert.ok(path('component:tbox').includes('chain:tbox-connectivity'));
+  for(const id of ['interface:fdbus','interface:vsock'])assert.ok(path(id).some(value=>value==='chain:cross-domain-transport'),id);
+  assert.ok(path('interface:someip').includes('chain:someip-service'));
+  assert.ok(path('interface:virtio').includes('chain:virtio-data'));
+  assert.ok(path('interface:spi-ipcl').includes('chain:mcu-soc-control'));
   assert.equal(byId.get('interface:binder').primaryParentId,'chain:android-internal-ipc');
 });
 

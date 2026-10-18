@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-pyramid';
-import {clampLabelX,depthLabelStyle,drillVisibleNodeIds,fibonacciSpherePoint,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,selectFrontLabelIds,starPulse} from './space-scene.js?v=20261018-pyramid';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-pyramid';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-architecture';
+import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-architecture';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-architecture';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -11,8 +11,8 @@ const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
 
-const colors = { root:'#e6f5ff', pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
-const labels = { root:'知识入口',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
+const colors = { root:'#e6f5ff',architecture_dimension:'#74bbff',architecture_chain:'#7fe2cd',pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
+const labels = { root:'智能座舱',architecture_dimension:'架构维度',architecture_chain:'三级知识链',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
 const labelFor=node=>node.id.startsWith('subtopic:raw:')?'资料分类':labels[node.kind];
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -29,31 +29,16 @@ let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=perfo
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
 
-function seeded(id){let n=2166136261;for(const char of id){n^=char.charCodeAt(0);n=Math.imul(n,16777619)}return (n>>>0)/4294967296}
 function randomStream(seedValue){let n=seedValue>>>0;return()=>((n=(Math.imul(n,1664525)+1013904223)>>>0)/4294967296)}
 const random=randomStream(41867);
 
 function prepare(raw){
   graph=raw;
-  const hierarchyPositions=new Map([['root',{x:0,y:0,z:0}]]),maxLevel=Math.max(...raw.nodes.map(node=>node.hierarchyLevel||0));
-  for(let level=1;level<=maxLevel;level++){
-    const groups=new Map();
-    for(const node of raw.nodes.filter(item=>item.hierarchyLevel===level)){const parent=node.primaryParentId||'root';if(!groups.has(parent))groups.set(parent,[]);groups.get(parent).push(node);}
-    for(const [parentId,children] of groups){
-      const parent=hierarchyPositions.get(parentId)||{x:0,y:0,z:0};
-      children.sort((a,b)=>(a.hierarchyOrder||0)-(b.hierarchyOrder||0)||a.title.localeCompare(b.title,'zh-CN'));
-      children.forEach((node,index)=>{
-        if(level===1){hierarchyPositions.set(node.id,fibonacciSpherePoint(index,children.length,330));return;}
-        const angle=index*Math.PI*2/Math.max(1,children.length)+seeded(parentId)*Math.PI*2;
-        const radius=Math.max(48,178-level*23),tilt=(seeded(node.id)-.5)*radius*.9;
-        hierarchyPositions.set(node.id,{x:parent.x+Math.cos(angle)*radius,y:parent.y+Math.sin(angle)*radius*.7,z:parent.z+tilt});
-      });
-    }
-  }
+  const hierarchyPositions=buildArchitectureLayout(raw,{l2Radius:330,l3Radius:92,l4Spacing:58});
   nodes=raw.nodes.map(n=>{
     if(n.kind==='root')return{...n,x:0,y:0,z:0,r:11};
     const position=hierarchyPositions.get(n.id)||{x:0,y:0,z:0};
-    return{...n,...position,r:n.kind==='pyramid'?7.8:n.kind==='domain'?6.2:n.kind==='platform'?6:n.kind==='component'?4.8:n.kind==='interface'?4:n.kind==='evidence'?3.2:n.kind==='source'?2.7:n.kind==='chapter'?4.2:n.kind==='lesson'?3.4:3.8};
+    return{...n,...position,r:n.kind==='architecture_dimension'?7.8:n.kind==='architecture_chain'?5.6:n.kind==='pyramid'?7.8:n.kind==='domain'?6.2:n.kind==='platform'?6:n.kind==='component'?4.8:n.kind==='interface'?4:n.kind==='evidence'?3.2:n.kind==='source'?2.7:n.kind==='chapter'?4.2:n.kind==='lesson'?3.4:3.8};
   });
   byId=new Map(nodes.map(n=>[n.id,n]));
   edges=raw.edges.filter(e=>byId.has(e.from)&&byId.has(e.to));
@@ -129,20 +114,23 @@ function draw(){
     if(!visible(a)||!visible(b))continue;
     const active=emphasis&&(edge.from===emphasis||edge.to===emphasis);
     const dim=(query&&!matching.has(a.id)&&!matching.has(b.id)&&!active)||(emphasis&&!active);
-    const indexEdge=edge.pathClass==='index';
-    ctx.globalAlpha=dim?.05:active?.68:indexEdge?.06:edge.type==='课程顺序'?.13:.23;
+    const indexEdge=edge.pathClass==='index',edgeStyle=edgeVisualStyle(edge);
+    ctx.globalAlpha=dim?.05:active?.68:edgeStyle.alpha;
     const pathColor={control:'#74bbff',data:'#7fe2cd',power:'#ffc15d',state:'#d6a7ff',diagnostic:'#f7aadd'}[edge.pathClass];
-    ctx.strokeStyle=active?'#ffffff':(pathColor||(edge.type==='课程顺序'?'#b5a4e7':indexEdge?'#536b90':'#7599c6'));ctx.lineWidth=active?1.7:indexEdge?.7:edge.pathClass?1.15:1;
+    ctx.strokeStyle=active?'#ffffff':(pathColor||edgeStyle.color);ctx.lineWidth=active?1.7:edgeStyle.width;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
   }ctx.globalAlpha=1;
 
   const sorted=[...projected].sort((a,b)=>a.z-b.z);
   const labelLimit=frontLabelLimit(width);
-  const labelIds=selectFrontLabelIds(sorted.filter(visible).map(n=>{
+  const labelCandidates=sorted.filter(visible).map(n=>{
     const hover=hoverLevels.get(n.id)||0;
     const forcePriority=n.id===selected?100:n.id===hovered?90:hover>.02?70+hover:matching.has(n.id)?60:0;
-    return{id:n.id,kind:n.kind,depth:n.z,onScreen:isProjectedVisible({x:n.x,y:n.y,radius:Math.max(3,n.r*n.p*n.fit),width,height}),forced:forcePriority>0,forcePriority};
-  }),{limit:labelLimit,minDepth:width<720?90:35,forcedLimit:8});
+    return{id:n.id,kind:n.kind,hierarchyLevel:n.hierarchyLevel,depth:n.z,onScreen:isProjectedVisible({x:n.x,y:n.y,radius:Math.max(3,n.r*n.p*n.fit),width,height}),forced:forcePriority>0,forcePriority};
+  });
+  const currentChainIds=[];
+  if(selected){let cursor=byId.get(selected),guard=new Set();while(cursor&&!guard.has(cursor.id)){currentChainIds.push(cursor.id);guard.add(cursor.id);cursor=byId.get(cursor.primaryParentId)}}
+  const labelIds=visibleLabelIds(labelCandidates,{mode:selected?'drill':'home',hoveredId:hovered,selectedId:selected,matchingIds:[...matching],currentChainIds,limit:labelLimit,minDepth:width<720?90:35,forcedLimit:8});
   const labelQueue=[];
   const occupied=[];
   for(const n of sorted){
@@ -203,6 +191,8 @@ function appendSupports(container,supports=[]){
 }
 function referenceMeta(reference,status){const platforms=reference.platforms?.length?` · ${reference.platforms.join('/')}`:'';return `${pagesLabel(reference.pages)} · ${status}${platforms}`}
 function emptyReader(container,text){const item=document.createElement('div');item.className='reader-empty';item.textContent=text;container.append(item)}
+function appendReaderChip(container,label,item){if(!item)return;const chip=document.createElement(item.id&&byId.has(item.id)?'button':'span');chip.className='reader-chip';chip.textContent=`${label}：${item.title||item.id}`;if(chip.tagName==='BUTTON'){chip.type='button';chip.addEventListener('click',()=>showNode(item.id))}container.append(chip)}
+function appendReaderList(container,values,emptyText){if(!values?.length){emptyReader(container,emptyText);return}const list=document.createElement('ul');for(const value of values){const item=document.createElement('li');item.textContent=value;list.append(item)}container.append(list)}
 function closeReaderPreview(){const section=document.querySelector('#reader-preview-section');section.hidden=true;document.querySelector('#reader-preview').src='about:blank'}
 function showReference(reference){
   const action=referenceAction(reference.url);if(!action.canLoad)return;
@@ -226,6 +216,10 @@ function renderReader(model){
   document.querySelector('#reader-notice').textContent=model.notice;
   const breadcrumb=document.querySelector('#reader-breadcrumb');breadcrumb.replaceChildren();
   for(const [index,item] of model.breadcrumb.entries()){const button=document.createElement('button');button.type='button';button.textContent=item.title;button.addEventListener('click',()=>showNode(item.id));breadcrumb.append(button);if(index<model.breadcrumb.length-1){const sep=document.createElement('span');sep.textContent='›';sep.setAttribute('aria-hidden','true');breadcrumb.append(sep)}}
+  const memberships=document.querySelector('#reader-memberships');memberships.replaceChildren();
+  appendReaderChip(memberships,'主要归属',model.memberships?.primary||{title:'智能座舱总入口'});
+  for(const item of model.memberships?.secondary||[])appendReaderChip(memberships,'同时关联',item);
+  if(!model.memberships?.secondary?.length){const note=document.createElement('span');note.className='reader-membership-note';note.textContent='同时关联：无已登记交叉归属';memberships.append(note)}
   const responsibility=document.querySelector('#reader-responsibility');responsibility.replaceChildren();
   if(model.contentState==='awaiting_absorption')emptyReader(responsibility,'资料尚未吸收：当前只保留层级和分类，不生成技术职责。');
   else{
@@ -235,12 +229,28 @@ function renderReader(model){
   const children=document.querySelector('#reader-children');children.replaceChildren();
   if(!model.children.length)emptyReader(children,'当前节点没有更下一层的公开节点。');
   for(const child of model.children){const button=document.createElement('button');button.type='button';button.className='drill-card';const title=document.createElement('strong');title.textContent=child.title;const text=document.createElement('span');text.textContent=child.role;button.append(title,text);button.addEventListener('click',()=>showNode(child.id));children.append(button)}
+  const learning=document.querySelector('#reader-learning');learning.replaceChildren();
+  for(const item of model.courses||[]){const card=document.createElement('button');card.type='button';card.className='learning-card';const title=document.createElement('strong');title.textContent=item.title;const basis=document.createElement('span');basis.textContent=item.basis||'课程内容映射';card.append(title,basis);card.addEventListener('click',()=>showNode(item.id));learning.append(card)}
+  for(const item of model.skills||[])appendReaderChip(learning,'分析技能',item);
+  if(!(model.courses?.length||model.skills?.length))emptyReader(learning,'当前节点暂无已复核的课程或分析技能映射。');
   const paths=document.querySelector('#reader-paths');paths.replaceChildren();
   const pathNames={control:'控制路径',data:'数据路径',power:'电源路径',state:'状态路径',diagnostic:'诊断路径'};
   for(const [pathClass,items] of Object.entries(model.technicalPaths||{})){const group=document.createElement('section');group.className=`path-group ${pathClass}`;const heading=document.createElement('h4');heading.textContent=pathNames[pathClass]||pathClass;group.append(heading);for(const item of items){const card=document.createElement('button');card.type='button';card.className='path-card';const title=document.createElement('strong');title.textContent=item.relatedTitle;const why=document.createElement('span');why.textContent=item.whyRelated||item.why;card.append(title,why);for(const [label,value] of [['输入',item.input],['交接',item.handoff],['输出',item.output],['验证',(item.verification||[]).join('；')]])if(value){const row=document.createElement('small');row.textContent=`${label}：${value}`;card.append(row)}card.addEventListener('click',()=>showNode(item.relatedId));group.append(card)}paths.append(group)}
   if(!paths.children.length)emptyReader(paths,model.contentState==='awaiting_absorption'?'资料尚未吸收，暂无可发布的技术链。':'当前节点暂无结构化技术关系。');
+  const cases=document.querySelector('#reader-cases');cases.replaceChildren();
+  for(const item of model.cases||[]){const card=document.createElement('article');card.className='case-card';const title=document.createElement('strong');title.textContent=item.symptom||'脱敏案件';const meta=document.createElement('span');meta.className='case-meta';meta.textContent=item.evidenceState||'证据状态待确认';const summary=document.createElement('p');summary.textContent=item.publicSummary||'当前只保留脱敏索引。';card.append(title,meta,summary);cases.append(card)}
+  if(!model.cases?.length)emptyReader(cases,'当前没有已公开的脱敏案件摘要。');
+  const tpm=document.querySelector('#reader-tpm');tpm.replaceChildren();
+  const tpmFields=[['触发方','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['接口／恢复策略方','interfaceOwner'],['验证方','verifier'],['关闭判据','closure']];
+  for(const [label,key] of tpmFields)if(model.tpm?.[key])appendReason(tpm,label,model.tpm[key],'tpm-block');
+  if(!tpm.children.length)emptyReader(tpm,'责任边界随具体链路与案件确认，当前节点未单独登记 TPM 分工。');
+  const verification=document.querySelector('#reader-verification');verification.replaceChildren();
+  appendReaderList(verification,model.verification,'当前节点暂无独立验证判据。');
   const observations=document.querySelector('#reader-observations');observations.replaceChildren();
   if(!model.observations.length)emptyReader(observations,'当前没有已吸收的观测点。');else{const list=document.createElement('ul');for(const value of model.observations){const item=document.createElement('li');item.textContent=value;list.append(item)}observations.append(list)}
+  const sourceMappings=document.querySelector('#reader-source-mappings');sourceMappings.replaceChildren();
+  for(const item of model.sourceClaims||[]){const card=document.createElement('article');card.className='source-mapping-card';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=item.title||item.sourceId;const status=document.createElement('span');status.className='citation-meta';status.textContent=item.status||'needs_review';head.append(title,status);card.append(head);appendReason(card,'映射理由',item.basis||'资料索引命中当前知识节点。','citation-why');appendReason(card,'证据边界',item.status==='page_verified'?'已登记页级定位，仍需按车型和版本核对。':'当前为资料索引映射，不能单独作为页级技术结论。','citation-boundary');if(item.downloadUrl)appendReferenceActions(card,{title:item.title||item.sourceId,url:item.downloadUrl});sourceMappings.append(card)}
+  if(!model.sourceClaims?.length)emptyReader(sourceMappings,'当前没有登记到该节点的原始资料映射。');
   const citations=document.querySelector('#reader-citations');citations.replaceChildren();let citationCount=0;
   const represented=new Set();
   for(const reference of model.references.filter(item=>item.kind==='article')){const card=document.createElement('article');card.className='citation-card article';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=reference.title;const meta=document.createElement('span');meta.className='citation-meta';meta.textContent=referenceMeta(reference,reference.status||'published_article');head.append(title,meta);card.append(head);if(reference.summary){const text=document.createElement('p');text.textContent=reference.summary;card.append(text)}appendReason(card,'为什么引用',reference.whyCited,'citation-why');appendReason(card,'证据边界',reference.evidenceBoundary,'citation-boundary');appendReferenceActions(card,reference);citations.append(card);citationCount++;represented.add(reference.url)}

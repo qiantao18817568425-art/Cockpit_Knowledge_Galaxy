@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "privacy": "仅发布按症状聚合的数量和证据状态，不发布目录名、VIN、人员、地点或原始日志。",
+  "summary": {
+    "indexedTopLevelDirectories": 287
+  },
+  "cases": [
+    {
+      "id": "case:display-black",
+      "symptom": "显示黑屏、异常颜色、卡死或重启",
+      "scope": {
+        "indexedDirectoryCount": 44
+      },
+      "clocks": {
+        "state": "needs_review"
+      },
+      "bootGeneration": {
+        "state": "needs_review"
+      },
+      "knowledgeIds": [
+        "chain:display-output",
+        "chain:stability"
+      ],
+      "skillIds": [
+        "t12t-display-black-freeze",
+        "t12t-stability-crash-reset"
+      ],
+      "evidenceState": "indexed",
+      "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    },
+    {
+      "id": "case:avm-no-video",
+      "symptom": "Camera、AVM 或倒车影像无画面",
+      "scope": {
+        "indexedDirectoryCount": 8
+      },
+      "clocks": {
+        "state": "needs_review"
+      },
+      "bootGeneration": {
+        "state": "needs_review"
+      },
+      "knowledgeIds": [
+        "chain:avm-video-flow"
+      ],
+      "skillIds": [
+        "t12t-avm-camera-stream"
+      ],
+      "evidenceState": "indexed",
+      "publicSummary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    },
+    {
+      "id": "case:network-offline",
+      "symptom": "车辆网络断联或服务离线",
+      "scope": {
+        "indexedDirectoryCount": 2
+      },
+      "clocks": {
+        "state": "needs_review"
+      },
+      "bootGeneration": {
+        "state": "needs_review"
+      },
+      "knowledgeIds": [
+        "chain:ethernet-connectivity",
+        "chain:tbox-connectivity"
+      ],
+      "skillIds": [
+        "t12t-ethernet-sgmii",
+        "t12t-cross-domain-msg"
+      ],
+      "evidenceState": "indexed",
+      "publicSummary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    },
+    {
+      "id": "case:performance-freeze",
+      "symptom": "系统或界面卡顿、卡死",
+      "scope": {
+        "indexedDirectoryCount": 4
+      },
+      "clocks": {
+        "state": "needs_review"
+      },
+      "bootGeneration": {
+        "state": "needs_review"
+      },
+      "knowledgeIds": [
+        "chain:performance-diagnosis",
+        "chain:hmi-runtime"
+      ],
+      "skillIds": [
+        "t12t-performance-jank"
+      ],
+      "evidenceState": "indexed",
+      "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    },
+    {
+      "id": "case:audio-no-output",
+      "symptom": "音频无声或播报异常",
+      "scope": {
+        "indexedDirectoryCount": 4
+      },
+      "clocks": {
+        "state": "needs_review"
+      },
+      "bootGeneration": {
+        "state": "needs_review"
+      },
+      "knowledgeIds": [
+        "chain:audio-paths",
+        "chain:audio-policy-routing"
+      ],
+      "skillIds": [
+        "t12t-audio-path"
+      ],
+      "evidenceState": "indexed",
+      "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    }
+  ]
+}

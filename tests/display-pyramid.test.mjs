@@ -13,9 +13,9 @@ function pathTitles(id){
 
 test('physical display follows the approved L0-L4 drill path',()=>{
   assert.deepEqual(pathTitles('component:physical-display'),[
-    '座舱知识','功能域','显示与触控','显示输出链','物理屏 / SerDes'
+    '智能座舱','Android、HMI 与显示','显示输出链','物理屏 / SerDes'
   ]);
-  assert.equal(byId.get('component:physical-display').hierarchyLevel,4);
+  assert.equal(byId.get('component:physical-display').hierarchyLevel,3);
 });
 
 test('display data, backlight control and diagnosis remain separate',()=>{
@@ -42,5 +42,5 @@ test('physical display explains responsibility, observations and evidence limits
   assert.ok(node.knowledge.output.length);
   assert.ok(node.knowledge.observations.length);
   assert.ok(node.knowledge.limits.some(value=>/未知|接线|版本|待确认/.test(value)));
-  assert.ok(graph.nodes.some(item=>item.primaryParentId===node.id&&item.hierarchyLevel===5));
+  assert.ok(graph.nodes.some(item=>item.primaryParentId===node.id&&item.hierarchyLevel===4));
 });

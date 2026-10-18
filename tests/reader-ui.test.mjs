@@ -16,8 +16,26 @@ test('topic reader exposes synthesis, citations, preview and download actions',(
 });
 
 test('pyramid reader exposes ordered drill sections and folded navigation',()=>{
-  for(const id of ['reader-breadcrumb','reader-responsibility','reader-children','reader-paths','reader-observations','reader-citations','reader-navigation'])assert.match(html,new RegExp(`id="${id}"`));
+  for(const id of ['reader-breadcrumb','reader-memberships','reader-responsibility','reader-children','reader-learning','reader-paths','reader-cases','reader-tpm','reader-verification','reader-source-mappings','reader-observations','reader-citations','reader-navigation'])assert.match(html,new RegExp(`id="${id}"`));
   assert.match(html,/<details[^>]*id="reader-navigation"/);
+  for(const heading of ['架构归属','课程与分析技能','真实案件与责任闭环','资料映射与证据边界'])assert.match(html,new RegExp(heading));
+});
+
+test('reader renders all evidence and responsibility dimensions from the model',()=>{
+  for(const field of ['model.memberships','model.courses','model.skills','model.cases','model.sourceClaims','model.tpm','model.verification'])assert.match(app,new RegExp(field.replace('.','\\.')));
+  assert.match(app,/主要归属/);
+  assert.match(app,/同时关联/);
+  assert.match(app,/首轮牵头/);
+  assert.match(app,/关闭判据/);
+  assert.match(app,/映射理由/);
+});
+
+test('desktop reader is wide and legible while mobile text stays readable',()=>{
+  assert.match(css,/\.detail\{[^}]*width:clamp\(580px,42vw,700px\)/);
+  assert.match(css,/\.detail h2\{[^}]*font-size:24px/);
+  assert.match(css,/\.reader-heading h3\{[^}]*font-size:16px/);
+  assert.match(css,/\.detail p\{[^}]*font-size:14px/);
+  assert.match(css,/@media\(max-width:720px\)[\s\S]*\.detail p\{[^}]*font-size:15px/);
 });
 
 test('topic reader is full screen on narrow mobile layouts',()=>{

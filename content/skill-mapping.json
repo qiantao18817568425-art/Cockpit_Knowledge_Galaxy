@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "t12t-cockpit-diagnosis",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:system-overview"
+      ]
+    },
+    {
+      "id": "t12t-log-analysis",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:cross-domain-time"
+      ]
+    },
+    {
+      "id": "t12t-platform-architecture",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries"
+      ]
+    },
+    {
+      "id": "t12t-display-black-freeze",
+      "knowledgeIds": [
+        "chain:display-output",
+        "chain:str-display-recovery"
+      ]
+    },
+    {
+      "id": "t12t-touch-input",
+      "knowledgeIds": [
+        "chain:touch-input"
+      ]
+    },
+    {
+      "id": "t12t-avm-camera-stream",
+      "knowledgeIds": [
+        "chain:avm-video-flow"
+      ]
+    },
+    {
+      "id": "t12t-power-sleep-str",
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:str-display-recovery"
+      ]
+    },
+    {
+      "id": "t12t-audio-path",
+      "knowledgeIds": [
+        "chain:audio-paths",
+        "chain:audio-policy-routing"
+      ]
+    },
+    {
+      "id": "t12t-stability-crash-reset",
+      "knowledgeIds": [
+        "chain:stability"
+      ]
+    },
+    {
+      "id": "t12t-performance-jank",
+      "knowledgeIds": [
+        "chain:performance-diagnosis",
+        "chain:resource-budget"
+      ]
+    },
+    {
+      "id": "t12t-ethernet-sgmii",
+      "knowledgeIds": [
+        "chain:ethernet-connectivity"
+      ]
+    },
+    {
+      "id": "t12t-wireless-phone-link",
+      "knowledgeIds": [
+        "chain:wireless-phone-link"
+      ]
+    },
+    {
+      "id": "t12t-cross-domain-msg",
+      "knowledgeIds": [
+        "chain:cross-domain-transport",
+        "chain:someip-service"
+      ]
+    },
+    {
+      "id": "t12t-boot-hmi",
+      "knowledgeIds": [
+        "chain:boot-lifecycle",
+        "chain:str-display-recovery"
+      ]
+    },
+    {
+      "id": "t12t-log-storm",
+      "knowledgeIds": [
+        "chain:log-retention"
+      ]
+    },
+    {
+      "id": "t12t-usb-typec-storage",
+      "knowledgeIds": [
+        "chain:usb-storage"
+      ]
+    },
+    {
+      "id": "t12t-virtualization-tee",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:tee-security"
+      ]
+    },
+    {
+      "id": "t12t-db-ke-forensics",
+      "knowledgeIds": [
+        "chain:db-ke-forensics"
+      ]
+    },
+    {
+      "id": "t12t-mcu",
+      "knowledgeIds": [
+        "chain:mcu-soc-responsibility",
+        "chain:mcu-soc-control"
+      ]
+    },
+    {
+      "id": "t12t-tpm-triage",
+      "knowledgeIds": [
+        "chain:evidence-ledger"
+      ]
+    },
+    {
+      "id": "t12t-tpm-5y8d",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:stability"
+      ]
+    }
+  ]
+}

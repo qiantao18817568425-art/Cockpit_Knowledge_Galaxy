@@ -11,7 +11,7 @@ const path=id=>{const result=[];const seen=new Set();let node=byId.get(id);while
 test('power taxonomy exposes all required L3/L4 learning branches',()=>{
   for(const id of ['state-policy','mcu-handshake','primary-supply','backup-supply','hypervisor-barrier','device-suspend','low-power-residency','wake-source','business-resume']){
     const nodeId=`subtopic:power:${id}`,ids=path(nodeId);
-    assert.deepEqual(ids.slice(0,3),['root','pyramid:lifecycle','domain:power'],nodeId);
+    assert.deepEqual(ids.slice(0,3),['root','architecture:power','chain:power-lifecycle'],nodeId);
     assert.ok(ids.length>=5,nodeId);
   }
   assert.ok(taxonomy.every(item=>item.knowledge?.role&&item.knowledge?.observations?.length));

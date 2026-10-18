@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    {"id":"root","title":"智能座舱","kind":"root","hierarchyLevel":0},
+    {"id":"architecture:a","title":"A","kind":"architecture_dimension","primaryParentId":"root","hierarchyLevel":1},
+    {"id":"architecture:b","title":"B","kind":"architecture_dimension","primaryParentId":"root","hierarchyLevel":1},
+    {"id":"chain:missing","title":"缺失父级","kind":"architecture_chain","primaryParentId":"architecture:a","secondaryParentIds":["architecture:none"],"hierarchyLevel":2},
+    {"id":"chain:self","title":"自关联","kind":"architecture_chain","primaryParentId":"architecture:a","secondaryParentIds":["chain:self"],"hierarchyLevel":2},
+    {"id":"chain:duplicate","title":"重复次归属","kind":"architecture_chain","primaryParentId":"architecture:a","secondaryParentIds":["architecture:b","architecture:b"],"hierarchyLevel":2},
+    {"id":"chain:primary","title":"主次重复","kind":"architecture_chain","primaryParentId":"architecture:a","secondaryParentIds":["architecture:a"],"hierarchyLevel":2},
+    {"id":"chain:wrong-level","title":"错误层级","kind":"architecture_chain","primaryParentId":"architecture:a","secondaryParentIds":["chain:duplicate"],"hierarchyLevel":2}
+  ]
+}

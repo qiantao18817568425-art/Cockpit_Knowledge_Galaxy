@@ -2,7 +2,10 @@ import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {loadKnowledgeContent, compileKnowledgeGraph} from './lib/knowledge-model.mjs';
-import {loadHierarchy,applyHierarchy,validateHierarchy,buildHierarchyEdges} from './lib/hierarchy-model.mjs';
+import {
+  loadArchitectureTaxonomy,applyArchitectureTaxonomy,loadHierarchy,applyHierarchy,
+  validateHierarchy,validateSecondaryParents,buildHierarchyEdges,buildSecondaryHierarchyEdges
+} from './lib/hierarchy-model.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceArg = process.argv.indexOf('--source');
@@ -14,6 +17,10 @@ const powerTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content'
 const rawTaxonomy = JSON.parse(await readFile(path.join(projectRoot, 'content', 'raw-taxonomy.json'), 'utf8'));
 const rawCatalog = JSON.parse(await readFile(path.join(projectRoot, 'docs', 'raw-sources.json'), 'utf8'));
 const sourceRegister = JSON.parse(await readFile(path.join(projectRoot, 'content', 'source-register.json'), 'utf8'));
+const learningMapping = JSON.parse(await readFile(path.join(projectRoot, 'content', 'learning-mapping.json'), 'utf8'));
+const skillMapping = JSON.parse(await readFile(path.join(projectRoot, 'content', 'skill-mapping.json'), 'utf8'));
+const caseRegister = JSON.parse(await readFile(path.join(projectRoot, 'content', 'case-register.json'), 'utf8'));
+const learningById = new Map(learningMapping.items.map(item=>[item.id,item]));
 
 function plain(value) {
   return value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
@@ -102,8 +109,11 @@ for (const match of home.matchAll(lessonPattern)) {
   const kind = id.startsWith('day-') ? 'lesson' : 'review';
   const url = publishedLessons.has(id) ? `${siteBase}lessons/${id}.html` : `${siteBase}#${id}`;
   const assignedTopics = classify(title);
-  nodes.push({ id:`course:${id}`, title, kind, description:kind==='lesson'?'公开每日课程。课程发布不代表已完成或掌握。':'公开周复盘。课程发布不代表已完成或掌握。', url, source:'座舱架构学习 · 课程档案', topics:assignedTopics });
+  const explicitLearning=learningById.get(`course:${id}`);
+  nodes.push({ id:`course:${id}`, title, kind, description:kind==='lesson'?'公开每日课程。课程发布不代表已完成或掌握。':'公开周复盘。课程发布不代表已完成或掌握。', url, source:'座舱架构学习 · 课程档案', topics:assignedTopics,
+    knowledgeIds:explicitLearning?.knowledgeIds||[],mappingBasis:explicitLearning?.basis,primaryParentId:explicitLearning?.knowledgeIds?.[0] });
   for (const topic of assignedTopics) edges.push({ from:`topic:${topic}`, to:`course:${id}`, type:'主题归类' });
+  for(const knowledgeId of explicitLearning?.knowledgeIds||[])edges.push({id:`index:learning:${knowledgeId}:course:${id}`,from:knowledgeId,to:`course:${id}`,type:'内容索引',pathClass:'index',layer:'index',hiddenByDefault:true});
 }
 
 const knownIds = new Set(nodes.map(node => node.id));
@@ -149,7 +159,8 @@ const reviews = nodes.filter(n=>n.kind==='review');
 const knowledgeModel = await loadKnowledgeContent(path.join(projectRoot,'content','domain-packs'));
 knowledgeModel.sources = sourceRegister.documents.map(item=>({
   id:item.id,name:item.name,title:item.name,downloadUrl:item.downloadUrl,platforms:[item.platform],version:item.version,
-  processingState:item.processingState,knowledgeIds:item.knowledgeIds,category:item.category
+  processingState:item.processingState,knowledgeIds:item.knowledgeIds,knowledgeMappings:item.knowledgeMappings,category:item.category,
+  primaryParentId:item.knowledgeMappings?.[0]?.knowledgeId
 }));
 const semantic = compileKnowledgeGraph(knowledgeModel);
 const duplicateSemantic = semantic.nodes.find(node=>knownIds.has(node.id));
@@ -189,12 +200,51 @@ for(const node of semantic.nodes){
 for(const node of semantic.nodes.filter(node=>node.kind==='source'))for(const knowledgeId of node.knowledgeIds||[])if(semanticById.has(knowledgeId)){
   edges.push({id:`index:source:${node.id}:${knowledgeId}`,from:node.id,to:knowledgeId,type:'belongs_to',pathClass:'index',layer:'index',hiddenByDefault:true});
 }
+const architectureTaxonomy=await loadArchitectureTaxonomy(path.join(projectRoot,'content','architecture-taxonomy.json'));
 const hierarchy=await loadHierarchy(path.join(projectRoot,'content','hierarchy.json'));
-const hierarchicalNodes=applyHierarchy(nodes,hierarchy);
+const architectureNodes=applyArchitectureTaxonomy(nodes,architectureTaxonomy);
+const hierarchicalNodes=applyHierarchy(architectureNodes,hierarchy);
+const hierarchicalById=new Map(hierarchicalNodes.map(node=>[node.id,node]));
+const addUnique=(node,key,value)=>{if(!node)return;node[key]=[...new Set([...(node[key]||[]),value])];};
+for(const item of learningMapping.items)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'dayIds',item.id);
+for(const item of skillMapping.skills)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'skillIds',item.id);
+for(const item of caseRegister.cases)for(const knowledgeId of item.knowledgeIds||[]){
+  const target=hierarchicalById.get(knowledgeId);addUnique(target,'caseIds',item.id);
+  if(target){target.cases=target.cases||[];target.cases.push(item);}
+}
+for(const source of sourceRegister.documents)for(const mapping of source.knowledgeMappings||[]){
+  const target=hierarchicalById.get(mapping.knowledgeId);if(!target)continue;
+  target.sourceClaims=target.sourceClaims||[];
+  target.sourceClaims.push({sourceId:source.id,title:source.name,downloadUrl:source.downloadUrl,platform:source.platform,version:source.version,...mapping});
+}
+const leadByChain={
+  'chain:display-output':'显示/HMI 域','chain:touch-input':'输入与 HMI 域','chain:avm-video-flow':'Camera/AVM 域',
+  'chain:audio-paths':'音频域','chain:ethernet-connectivity':'网络/BSP 域','chain:someip-service':'SOA 与网络接口双方',
+  'chain:power-lifecycle':'MCU 电源与 SoC 电源双方','chain:str-display-recovery':'电源、虚拟化与显示联合',
+  'chain:runtime-boundaries':'虚拟化平台域','chain:cross-domain-transport':'接口提供方与消费方',
+  'chain:stability':'直接失效所在运行域','chain:evidence-ledger':'TPM 与当前主链路技术牵头域'
+};
+for(const node of hierarchicalNodes.filter(item=>item.kind==='architecture_chain')){
+  const referenceCount=(node.dayIds?.length||0)+(node.sourceClaims?.length||0)+(node.skillIds?.length||0)+(node.caseIds?.length||0);
+  if(!referenceCount)node.referenceState='awaiting_review';
+  node.responsibility={
+    trigger:'该链出现用户现象、异常状态或关键观测缺失时触发分析。',
+    firstRoundLead:leadByChain[node.id]||'主要归属架构域（具体团队待确认）',
+    directFailureOwner:'由统一时间线中的最早可证实断点确定，不依据最后一条错误或恢复动作倒推。',
+    repairOwner:'根因组件或策略的责任域；跨域问题同时保留接口与恢复策略责任。',
+    verifier:'系统测试与问题提出方；具体人员和期限待项目确认。',
+    closure:'触发场景、正常路径、异常恢复、相关版本及共享资源回归均满足判据。'
+  };
+  node.verification=['确认车型、SoC、软硬件版本和实际拓扑','统一时基与 boot/VM generation','逐接口核对输入、状态、输出和完成语义','验证修复及异常恢复并保留可复核证据'];
+}
+for(const node of hierarchicalNodes.filter(item=>item.id?.startsWith('process:tpm-'))){node.hiddenByDefault=true;node.navigationOnly=true;}
 const hierarchyIssues=validateHierarchy(hierarchicalNodes,{rootId:hierarchy.rootId||'root'});
 if(hierarchyIssues.length)throw new Error(`Hierarchy invalid:\n${hierarchyIssues.join('\n')}`);
+const secondaryIssues=validateSecondaryParents(hierarchicalNodes,{allowedParentLevel:1});
+if(secondaryIssues.length)throw new Error(`Secondary hierarchy invalid:\n${secondaryIssues.join('\n')}`);
 const hierarchyEdges=buildHierarchyEdges(hierarchicalNodes);
-edges.push(...hierarchyEdges);
+const secondaryHierarchyEdges=buildSecondaryHierarchyEdges(hierarchicalNodes);
+edges.push(...hierarchyEdges,...secondaryHierarchyEdges);
 const data = {
   meta: {
     title:'座舱知识银河',
@@ -211,9 +261,17 @@ const data = {
     semantic:semantic.meta,
     sourceCoverage:{total:sourceRegister.summary.publicDocuments,mapped:sourceRegister.summary.mappedDocuments,
       archiveDocuments:sourceRegister.summary.archiveDocuments,processingStates:sourceRegister.summary.processingStates},
-    hierarchy:{nodeCount:hierarchicalNodes.length,edgeCount:hierarchyEdges.length,maxLevel:Math.max(...hierarchicalNodes.map(node=>node.hierarchyLevel||0))},
+    referenceMapping:{learning:learningMapping.items.length,skills:skillMapping.skills.length,cases:caseRegister.cases.length,
+      concreteSources:sourceRegister.documents.filter(item=>item.knowledgeMappings?.length).length},
+    hierarchy:{nodeCount:hierarchicalNodes.length,edgeCount:hierarchyEdges.length+secondaryHierarchyEdges.length,maxLevel:Math.max(...hierarchicalNodes.map(node=>node.hierarchyLevel||0))},
+    architecture:{
+      l2Count:architectureTaxonomy.dimensions.length,
+      l3Count:architectureTaxonomy.chains.length,
+      multiParentL3Count:architectureTaxonomy.chains.filter(node=>(node.secondaryParentIds||[]).length).length,
+      l4Count:hierarchicalNodes.filter(node=>node.hierarchyLevel===3).length
+    },
     layers:{hierarchy:true,navigation:true,knowledge:true,evidence:'on-demand'},
-    relationNotice:'连线为主题目录、细分主题、内容索引或课程顺序；不表示已验证的实车硬件连接或故障因果。'
+    relationNotice:'层级线表达架构归属；技术线表达控制、数据、电源、状态或诊断关系。引用状态决定其是否可作为当前车型证据。'
   },
   nodes:hierarchicalNodes, edges
 };

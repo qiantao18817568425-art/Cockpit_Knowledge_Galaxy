@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {buildBreadcrumb,buildHierarchyIndex,buildReaderModel,detailModel,directChildren,expandEvidenceNeighborhood,groupTechnicalRelations,rankSearchResults,readerMarkdown,visibleNodeIds} from '../docs/graph-model.js';
+import {buildBreadcrumb,buildHierarchyIndex,buildMembershipModel,buildReaderModel,detailModel,directChildren,expandEvidenceNeighborhood,groupTechnicalRelations,rankSearchResults,readerMarkdown,visibleNodeIds} from '../docs/graph-model.js';
 import {readFile} from 'node:fs/promises';
 const graph={nodes:[
  {id:'a',title:'SleepManager',description:'协调系统进入休眠并跟踪恢复条件。',aliases:['休眠管理器'],kind:'component',layer:'knowledge',platforms:['MT8676'],url:'https://example/article',knowledge:{role:'协调系统进入休眠并跟踪恢复条件。',input:['休眠请求'],output:['休眠协调结果'],observations:['休眠状态']}},
@@ -180,7 +180,7 @@ test('belongs_to explains source membership in the domain without reversing cont
 test('pyramid reader exposes breadcrumb responsibility children and grouped technical paths',async()=>{
  const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
  const index=buildHierarchyIndex(live);
- assert.deepEqual(buildBreadcrumb(live,'component:physical-display').map(item=>item.title),['座舱知识','功能域','显示与触控','显示输出链','物理屏 / SerDes']);
+ assert.deepEqual(buildBreadcrumb(live,'component:physical-display').map(item=>item.title),['智能座舱','Android、HMI 与显示','显示输出链','物理屏 / SerDes']);
  assert.ok(index.children.get('component:physical-display').length>=1);
  assert.ok(directChildren(live,'component:physical-display').every(item=>item.primaryParentId==='component:physical-display'));
  const grouped=groupTechnicalRelations(live,'component:physical-display');
@@ -192,7 +192,7 @@ test('pyramid reader exposes breadcrumb responsibility children and grouped tech
  assert.ok(model.children.length>=1);
  assert.ok(model.technicalPaths.data.length);
  assert.ok(model.observations.length);
- assert.ok(model.breadcrumb.length===5);
+ assert.ok(model.breadcrumb.length===4);
 });
 
 test('awaiting absorption never fabricates a technical rationale',()=>{
@@ -219,4 +219,30 @@ test('fails_as distinguishes recovery transitions from failure manifestations',(
  const model=buildReaderModel(recoveryGraph,'crash');
  assert.match(model.insights[0].whyRelated,/发生后的处置或恢复状态/);
  assert.doesNotMatch(model.insights[0].whyRelated,/失效表现或结果层级/);
+});
+
+test('multi-parent L3 exposes one primary breadcrumb and explicit secondary memberships',async()=>{
+ const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
+ const membership=buildMembershipModel(live,'chain:someip-service');
+ assert.equal(membership.primary.id,'architecture:can-ethernet');
+ assert.deepEqual(membership.secondary.map(item=>item.id),['architecture:soa']);
+ assert.deepEqual(membership.breadcrumb.map(item=>item.id),['root','architecture:can-ethernet','chain:someip-service']);
+ assert.equal(live.nodes.filter(item=>item.id==='chain:someip-service').length,1);
+});
+
+test('reader exposes embedded courses sources skills cases and TPM closure metadata',async()=>{
+ const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
+ const model=buildReaderModel(live,'chain:display-output');
+ assert.equal(model.memberships.primary.id,'architecture:android-hmi-display');
+ assert.ok(model.memberships.secondary.some(item=>item.id==='architecture:hal-driver-hardware'));
+ assert.ok(model.courses.some(item=>item.id==='course:day-25'&&item.url));
+ assert.ok(model.skills.some(item=>item.id==='t12t-display-black-freeze'));
+ assert.ok(model.cases.some(item=>item.id==='case:display-black'&&item.evidenceState==='indexed'));
+ assert.ok(model.sourceClaims.length>0);
+ assert.ok(model.sourceClaims.every(item=>item.basis&&['indexed','needs_review','page_verified','case_verified'].includes(item.status)));
+ assert.match(model.tpm.firstRoundLead,/显示|HMI/);
+ assert.ok(model.verification.length>=4);
+ const markdown=readerMarkdown(model);
+ for(const heading of ['架构归属','课程与分析技能','真实案件与责任闭环','资料映射与证据边界'])assert.match(markdown,new RegExp(heading));
+ assert.match(markdown,/尚未.*页级|indexed|needs_review/);
 });

@@ -86,6 +86,15 @@ export function directChildren(graph,nodeId){
   return buildHierarchyIndex(graph).children.get(nodeId)||[];
 }
 
+export function buildMembershipModel(graph,nodeId){
+  const byId=new Map(graph.nodes.map(node=>[node.id,node])),node=byId.get(nodeId);
+  if(!node)return{primary:null,secondary:[],breadcrumb:[]};
+  const compact=item=>item?({id:item.id,title:item.title,level:item.hierarchyLevel,branchType:item.branchType}):null;
+  const secondary=(node.secondaryParentIds||[]).map(id=>byId.get(id)).filter(Boolean)
+    .sort((a,b)=>(a.hierarchyOrder??0)-(b.hierarchyOrder??0)||a.title.localeCompare(b.title,'zh-CN')).map(compact);
+  return{primary:compact(byId.get(node.primaryParentId)),secondary,breadcrumb:buildBreadcrumb(graph,nodeId).map(compact)};
+}
+
 function claimsForPlatforms(claims,platforms=[]){
   const selected=new Set(platforms);
   if(!selected.size)return claims||[];
@@ -300,11 +309,22 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
   const observations=[...new Set([...(responsibility.observations||[]),...Object.values(technicalPaths).flat().flatMap(item=>item.verification||[])])];
   const summary=contentState==='absorbed'?(node.summary||responsibility.role):(node.summary||node.description||'该节点已完成归类，技术内容尚待吸收。');
   const summaryBasis=contentState==='absorbed'?(node.summary?'curated_summary':'structured_knowledge'):'classification_only';
+  const memberships=buildMembershipModel(graph,nodeId);
+  const courses=(node.dayIds||[]).map(id=>byId.get(id)).filter(Boolean).map(item=>({id:item.id,title:item.title,kind:item.kind,url:item.url,basis:item.mappingBasis}));
+  const skills=(node.skillIds||[]).map(id=>({id,title:id}));
+  const cases=(node.cases||[]).map(item=>({id:item.id,symptom:item.symptom,evidenceState:item.evidenceState,publicSummary:item.publicSummary,scope:item.scope}));
+  const sourceClaims=(node.sourceClaims||[]).map(item=>({...item}));
+  for(const item of sourceClaims)if(item.downloadUrl&&!uniqueReferences.some(reference=>reference.url===item.downloadUrl))uniqueReferences.push({
+    id:`mapped-source:${item.sourceId}`,kind:'source',title:item.title,url:item.downloadUrl,pages:item.pages||[],status:item.status,
+    platforms:item.platform?[item.platform]:[],summary:item.basis,whyCited:`资料登记映射理由：${item.basis}`,
+    evidenceBoundary:item.status==='page_verified'?'已记录页级定位，仍需结合适用版本核对。':'当前是资料索引映射，尚未形成页级技术结论。',supports:[]
+  });
   return {
     id:node.id,title:node.title,kind:node.kind,
     summary,summaryBasis,
     scope:{platforms:node.platforms||[],runtimeDomain:node.runtimeDomain||node.domain,version:node.version,status:node.status},
-    breadcrumb,responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
+    breadcrumb,memberships,responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
+    courses,skills,cases,sourceClaims,tpm:node.responsibility||{},verification:node.verification||[],
     notice:contentState==='awaiting_absorption'?'该节点已完成层级归类，但资料尚未吸收；分类关系不作为技术结论。':'技术关系优先采用结构化说明；车型、版本、接口编号及时序仍以引用原文和现车资料为准。'
   };
 }
@@ -316,7 +336,10 @@ export function readerMarkdown(model){
   const scope=[...(model.scope.platforms||[]),model.scope.runtimeDomain,model.scope.version].filter(Boolean).join(' · ')||'未限定';
   const basis={curated_summary:'人工整理摘要',structured_knowledge:'结构化知识整理',classification_only:'分类完成、内容待吸收'}[model.summaryBasis]||'知识整理';
   const breadcrumb=(model.breadcrumb||[]).map(item=>item.title).join(' → ')||model.title;
-  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 本层职责',''];
+  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 架构归属',''];
+  if(model.memberships?.primary)lines.push(`- **主要归属：** ${model.memberships.primary.title}`);else lines.push('- **主要归属：** 智能座舱总入口');
+  if(model.memberships?.secondary?.length)lines.push(`- **同时关联：** ${model.memberships.secondary.map(item=>item.title).join('、')}`);else lines.push('- **同时关联：** 无已登记交叉归属');
+  lines.push('','## 本层职责','');
   if(model.contentState==='awaiting_absorption')lines.push('- **资料尚未吸收**：当前只保留层级与分类，不生成技术职责和因果解释。');
   else{
     lines.push(`- **职责：** ${model.responsibility.role}`);
@@ -324,14 +347,23 @@ export function readerMarkdown(model){
   }
   lines.push('','## 继续向下钻','');
   if(model.children?.length)for(const child of model.children)lines.push(`- **${child.title}**：${child.role}`);else lines.push('- 当前节点没有更下一层的公开节点。');
+  lines.push('','## 课程与分析技能','');
+  if(model.courses?.length)for(const item of model.courses)lines.push(`- **${item.title}**${item.url?`：${item.url}`:''}`);else lines.push('- 暂无已映射 Day／Week。');
+  if(model.skills?.length)lines.push(`- **适用技能：** ${model.skills.map(item=>item.id).join('、')}`);else lines.push('- **适用技能：** 待复核。');
   lines.push('','## 正常技术链（图谱关系衍生）','');
   const groups=Object.entries(model.technicalPaths||{});
   if(groups.length)for(const [path,items] of groups){
     lines.push(`### ${pathLabels[path]||path}`,'');
     for(const item of items)lines.push(`- **${item.relatedTitle}**：${item.why}\n  - **输入：** ${item.input||'待确认'}\n  - **交接：** ${item.handoff||'待确认'}\n  - **输出：** ${item.output||'待确认'}\n  - **引用依据：** ${item.evidenceBasis||'见引用区'}`);
   }else lines.push('- 当前没有可发布的结构化技术关系。');
+  lines.push('','## 真实案件与责任闭环','');
+  if(model.cases?.length)for(const item of model.cases)lines.push(`- **${item.symptom}**（${item.evidenceState}）：${item.publicSummary}`);else lines.push('- 当前没有已公开的脱敏案件摘要。');
+  for(const [label,key] of [['触发','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['验证方','verifier'],['关闭判据','closure']])if(model.tpm?.[key])lines.push(`- **${label}：** ${model.tpm[key]}`);
   lines.push('','## 如何验证','');
+  for(const item of model.verification||[])lines.push(`- ${item}`);
   if(model.observations?.length)for(const item of model.observations)lines.push(`- ${item}`);else lines.push('- 资料尚未吸收，暂未形成可靠观测清单。');
+  lines.push('','## 资料映射与证据边界','');
+  if(model.sourceClaims?.length)for(const item of model.sourceClaims.slice(0,20))lines.push(`- **${item.title}**（${item.status}）：${item.basis}${item.downloadUrl?`  \n  ${item.downloadUrl}`:''}`);else lines.push('- 当前没有登记到该节点的原始资料映射。');
   lines.push('','> '+model.notice,'','## 引用资料与文章','');
   const representedReferenceUrls=new Set();
   if(model.citations.length)for(const item of model.citations){

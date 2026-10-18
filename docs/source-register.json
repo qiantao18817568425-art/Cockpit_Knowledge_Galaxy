@@ -13,9 +13,22 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3e5afcb20755",
@@ -29,9 +42,22 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "37f5ed85e31d",
@@ -45,9 +71,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4372e62da7d8",
@@ -61,9 +100,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "83cce0f0d84a",
@@ -77,9 +129,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4276ac3d43b1",
@@ -93,9 +158,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "fe5c7bebad68",
@@ -109,9 +181,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9d35060e0261",
@@ -125,9 +204,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "cd4da46210e1",
@@ -141,9 +227,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "fb0f163b34e6",
@@ -157,9 +250,22 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d5578aaa112e",
@@ -173,9 +279,22 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "07ba8708b032",
@@ -189,9 +308,16 @@
       "indexedPages": 35,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6bd2fa3feaf4",
@@ -205,9 +331,16 @@
       "indexedPages": 37,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b724dfbe0dbe",
@@ -221,9 +354,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "fe255878b698",
@@ -237,9 +377,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "aa85206665a9",
@@ -253,9 +400,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b1169fd18761",
@@ -269,9 +423,22 @@
       "indexedPages": 2,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:android"
+        "chain:android-app-framework",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:android-app-framework",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“android”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6c11069e244f",
@@ -285,9 +452,28 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:ethernet-connectivity",
+        "chain:vehicle-bus"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:ethernet-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4330ba7eddf6",
@@ -301,9 +487,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2faacfd1b738",
@@ -317,9 +510,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "355d4f791169",
@@ -333,9 +533,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "db487565233b",
@@ -349,9 +556,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1f7b85f8dfc6",
@@ -365,9 +585,28 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:audio-paths",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d5c445e4df99",
@@ -381,9 +620,22 @@
       "indexedPages": 233,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e2124eed8257",
@@ -397,9 +649,16 @@
       "indexedPages": 24,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ce4327878058",
@@ -413,9 +672,22 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3ffda3633b49",
@@ -429,9 +701,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "59ccf9c0f25e",
@@ -445,9 +724,16 @@
       "indexedPages": 21,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "140b4869f951",
@@ -461,9 +747,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1fce1e40a576",
@@ -477,9 +770,16 @@
       "indexedPages": 29,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2cb616e3e186",
@@ -493,9 +793,16 @@
       "indexedPages": 30,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "74c716f63dfe",
@@ -509,9 +816,16 @@
       "indexedPages": 25,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b0adb12e154f",
@@ -525,9 +839,16 @@
       "indexedPages": 24,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e914c6daaad7",
@@ -541,9 +862,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "984278ee09e5",
@@ -557,9 +885,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "01d0f7d1891c",
@@ -573,9 +908,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6344b359854e",
@@ -589,9 +931,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "fa5f43dca8d4",
@@ -605,9 +954,22 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bf16d2b93d43",
@@ -621,9 +983,22 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7a235c6e6765",
@@ -637,9 +1012,22 @@
       "indexedPages": 21,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "52452e66baed",
@@ -653,9 +1041,22 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "28f33b5b442f",
@@ -669,9 +1070,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "8ffa08647b60",
@@ -685,9 +1099,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2ca0cfa195c8",
@@ -701,9 +1128,28 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:audio-paths",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4e82f0cb886e",
@@ -717,9 +1163,28 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:audio-paths",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e8c210d3eda4",
@@ -733,9 +1198,16 @@
       "indexedPages": 28,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0a8a2336080c",
@@ -749,9 +1221,16 @@
       "indexedPages": 28,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "781dfbb6e151",
@@ -765,9 +1244,16 @@
       "indexedPages": 23,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3bd2f904e632",
@@ -781,9 +1267,16 @@
       "indexedPages": 23,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6fb99f5d4fea",
@@ -797,9 +1290,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0ae0c98cf808",
@@ -813,9 +1313,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "231ce2823668",
@@ -829,9 +1336,22 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "24e652ef273a",
@@ -845,9 +1365,22 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:camera"
+        "chain:avm-video-flow",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“camera”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "81a8c931d000",
@@ -861,10 +1394,22 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9f37a8db2acd",
@@ -878,10 +1423,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7d1e0f95c34f",
@@ -895,10 +1452,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "40192730210a",
@@ -912,10 +1475,16 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d3691b28be36",
@@ -929,10 +1498,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "183254d73cbd",
@@ -946,10 +1521,22 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "852e551201a0",
@@ -963,10 +1550,22 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2397734a51c2",
@@ -980,10 +1579,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1befc8374cfe",
@@ -997,10 +1602,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "398af5949db9",
@@ -1014,10 +1625,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4ae975b91299",
@@ -1031,10 +1648,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:mcu",
-        "domain:power"
+        "chain:mcu-soc-responsibility"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:mcu-soc-responsibility",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“mcu”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "58bac8d6e11b",
@@ -1048,10 +1671,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "be1aff227afa",
@@ -1065,10 +1694,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "63729693d95a",
@@ -1082,10 +1717,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "617e4896eb57",
@@ -1099,10 +1746,28 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity",
+        "chain:clock-sources",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7a9437a7db8a",
@@ -1116,10 +1781,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b6db294b7916",
@@ -1133,10 +1804,22 @@
       "indexedPages": 3,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f24f4fe4d19c",
@@ -1150,10 +1833,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e52de38fef83",
@@ -1167,10 +1856,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "200f3c05d9cd",
@@ -1184,10 +1879,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7a498a5dfafa",
@@ -1201,10 +1902,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f1e3a5801e5d",
@@ -1218,10 +1925,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "73b34cf0a80b",
@@ -1235,10 +1948,28 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity",
+        "chain:clock-sources",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "14958f21236f",
@@ -1252,10 +1983,28 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity",
+        "chain:clock-sources",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "250adb38e25c",
@@ -1269,10 +2018,16 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d5672b3d4f5d",
@@ -1286,10 +2041,16 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6e1afbe19015",
@@ -1303,10 +2064,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a7e4b3132313",
@@ -1320,10 +2087,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3e6385ac82ab",
@@ -1337,10 +2110,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6a7c492cf597",
@@ -1354,10 +2133,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "839d3d6f2a0d",
@@ -1371,10 +2156,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6ee6bf39eea0",
@@ -1388,10 +2179,16 @@
       "indexedPages": 22,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3c456da9d243",
@@ -1405,10 +2202,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9eae122081b6",
@@ -1422,10 +2225,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6035c10be62b",
@@ -1439,10 +2248,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0de6d012049c",
@@ -1456,10 +2271,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c4d8634dee6e",
@@ -1473,10 +2294,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:tbox",
-        "domain:connectivity"
+        "chain:tbox-connectivity"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tbox-connectivity",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“tbox”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "fefa132a945d",
@@ -1490,9 +2317,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "dbba8095559d",
@@ -1506,9 +2340,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e2492abe19ec",
@@ -1522,9 +2363,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "cba4630088f7",
@@ -1538,9 +2386,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f71b132e4ab4",
@@ -1554,9 +2409,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "36817cbb1339",
@@ -1570,9 +2432,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a3042f158d97",
@@ -1586,9 +2455,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "afa3d415e857",
@@ -1602,9 +2478,16 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f89d9f4cd89b",
@@ -1618,9 +2501,16 @@
       "indexedPages": 22,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "8f66a6dab8b6",
@@ -1634,9 +2524,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4b5c8e0b65ad",
@@ -1650,9 +2547,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "998ce13df798",
@@ -1666,9 +2570,16 @@
       "indexedPages": 22,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "45d28fd50a95",
@@ -1682,9 +2593,16 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "36e7fa1f93e4",
@@ -1698,9 +2616,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:usb-storage"
+        "chain:usb-storage"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“usb”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "aa722a95a0ab",
@@ -1714,9 +2639,22 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "18ec91283d4d",
@@ -1730,9 +2668,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4c95c7252a57",
@@ -1746,9 +2691,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "20554ef2677e",
@@ -1762,9 +2714,16 @@
       "indexedPages": 38,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "dbdab38836d5",
@@ -1778,9 +2737,16 @@
       "indexedPages": 38,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e7b728514d1d",
@@ -1794,9 +2760,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "dc694aa327b5",
@@ -1810,9 +2783,22 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4348c8ad81a0",
@@ -1826,9 +2812,22 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary",
+        "chain:clock-sources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:clock-sources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e81920c10d11",
@@ -1842,9 +2841,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b4d883053c20",
@@ -1858,9 +2864,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2e0992f640ab",
@@ -1874,9 +2887,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "46a716eaaab4",
@@ -1890,9 +2910,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6cfac687decb",
@@ -1906,9 +2933,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f59aa6695702",
@@ -1922,9 +2956,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "15e56401fb86",
@@ -1938,9 +2979,16 @@
       "indexedPages": 39,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5cdc83a70bf8",
@@ -1954,9 +3002,16 @@
       "indexedPages": 35,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "444fcacd8f06",
@@ -1970,9 +3025,16 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0bcc7a720a9d",
@@ -1986,9 +3048,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "63e4e4b10e6b",
@@ -2002,9 +3071,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "60ac08ad3143",
@@ -2018,9 +3094,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:yocto"
+        "chain:hal-driver-boundary"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:hal-driver-boundary",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“yocto”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7807e7a6bd97",
@@ -2034,9 +3117,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5b4522578daf",
@@ -2050,9 +3140,16 @@
       "indexedPages": 21,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bcd7023dd6c3",
@@ -2066,9 +3163,16 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b41590638432",
@@ -2082,9 +3186,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "25514cae24e4",
@@ -2098,9 +3209,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ebcdec122bb5",
@@ -2114,9 +3232,16 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "15941d5cdc16",
@@ -2130,9 +3255,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3b1e52e682f9",
@@ -2146,9 +3278,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3b4bd744f5de",
@@ -2162,9 +3301,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ee34dd854e09",
@@ -2178,9 +3324,22 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:lifecycle"
+        "chain:boot-lifecycle",
+        "chain:tee-security"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“boot”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c94a6f788bd3",
@@ -2194,9 +3353,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:security"
+        "chain:tee-security",
+        "chain:vehicle-bus"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "390860030f5a",
@@ -2210,9 +3382,22 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:security"
+        "chain:tee-security",
+        "chain:vehicle-bus"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:vehicle-bus",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“security”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3ca55da6a9f2",
@@ -2226,10 +3411,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "defe098f947a",
@@ -2243,10 +3434,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a9dd302399ca",
@@ -2260,10 +3457,16 @@
       "indexedPages": 60,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7a0c89b2f3e7",
@@ -2277,10 +3480,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0970f5784a42",
@@ -2294,10 +3503,16 @@
       "indexedPages": 129,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "45846faca00d",
@@ -2311,10 +3526,16 @@
       "indexedPages": 74,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "daaf8317f91f",
@@ -2328,10 +3549,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2576411b5ab1",
@@ -2345,10 +3572,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0072a842cf3c",
@@ -2362,10 +3595,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d6b8534c0193",
@@ -2379,10 +3618,16 @@
       "indexedPages": 33,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "11b9316f312a",
@@ -2396,10 +3641,16 @@
       "indexedPages": 43,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "98b9631a8af5",
@@ -2413,10 +3664,16 @@
       "indexedPages": 214,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "074e04a0dae5",
@@ -2430,10 +3687,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5d77a1dea038",
@@ -2447,10 +3710,16 @@
       "indexedPages": 30,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "369a167bab94",
@@ -2464,10 +3733,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "27c28fa1cf19",
@@ -2481,10 +3756,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "81862b4f99af",
@@ -2498,10 +3779,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9efe4b97a91b",
@@ -2515,10 +3802,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f202b6567e43",
@@ -2532,10 +3825,16 @@
       "indexedPages": 52,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a34c5b731928",
@@ -2549,10 +3848,16 @@
       "indexedPages": 60,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4a5404071a65",
@@ -2566,10 +3871,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "508dbeafcf88",
@@ -2583,10 +3894,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "286280b15067",
@@ -2600,10 +3917,16 @@
       "indexedPages": 70,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "add7ebe4914c",
@@ -2617,10 +3940,16 @@
       "indexedPages": 73,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b0dbacda5c87",
@@ -2634,10 +3963,16 @@
       "indexedPages": 67,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "38c50e5e32f9",
@@ -2651,10 +3986,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c9b8980cc5a6",
@@ -2668,10 +4009,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a14bf24fda30",
@@ -2685,10 +4032,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "770f8cb07c32",
@@ -2702,10 +4055,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "76602ab493ab",
@@ -2719,10 +4078,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "41ce1e67fadb",
@@ -2736,10 +4101,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e2519aa16e3b",
@@ -2753,10 +4124,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b1c3ea09c6d9",
@@ -2770,10 +4147,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ff3311f490ff",
@@ -2787,10 +4170,16 @@
       "indexedPages": 1,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:platform",
-        "domain:cross-domain"
+        "chain:platform-family"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:platform-family",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“platform”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0554d880bcfb",
@@ -2804,10 +4193,16 @@
       "indexedPages": 98,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0ac675257290",
@@ -2821,10 +4216,16 @@
       "indexedPages": 98,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e6f862cdda05",
@@ -2838,10 +4239,28 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d2054c264cae",
@@ -2855,10 +4274,28 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f389ba21d747",
@@ -2872,10 +4309,28 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e6746757e7bf",
@@ -2889,10 +4344,22 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1ae2434832d6",
@@ -2906,10 +4373,16 @@
       "indexedPages": 38,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a0a4b6d5cee9",
@@ -2923,10 +4396,16 @@
       "indexedPages": 103,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a861eabc5efa",
@@ -2940,10 +4419,16 @@
       "indexedPages": 37,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "14b704107bcc",
@@ -2957,10 +4442,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "377e840a30a0",
@@ -2974,10 +4465,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1619663e55af",
@@ -2991,10 +4488,16 @@
       "indexedPages": 44,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6d1c9931e889",
@@ -3008,10 +4511,16 @@
       "indexedPages": 40,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5aac82d4d7aa",
@@ -3025,10 +4534,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9ec9003f71b1",
@@ -3042,10 +4563,22 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1ee440ddc61d",
@@ -3059,10 +4592,22 @@
       "indexedPages": 46,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ed864e63e29b",
@@ -3076,10 +4621,28 @@
       "indexedPages": 14,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "753ab8dd0db2",
@@ -3093,10 +4656,28 @@
       "indexedPages": 24,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "30174454fb71",
@@ -3110,10 +4691,28 @@
       "indexedPages": 24,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "318e6af558f5",
@@ -3127,10 +4726,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4bdcab0b5af6",
@@ -3144,10 +4755,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "36a4f8b59bde",
@@ -3161,10 +4784,16 @@
       "indexedPages": 37,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2ba0a3c4a44e",
@@ -3178,10 +4807,16 @@
       "indexedPages": 44,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b229bc10d601",
@@ -3195,10 +4830,22 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1a3df9ee9ed8",
@@ -3212,10 +4859,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output",
+        "chain:avm-video-flow"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b41e1bc58922",
@@ -3229,10 +4888,16 @@
       "indexedPages": 19,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:display",
-        "domain:hmi"
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“display”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "78ba6687962e",
@@ -3246,9 +4911,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "232daa16ff71",
@@ -3262,9 +4940,16 @@
       "indexedPages": 85,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "45653c777bca",
@@ -3278,9 +4963,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f22832cfa268",
@@ -3294,9 +4986,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b3ab2e67d52d",
@@ -3310,9 +5009,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e8cfe763d374",
@@ -3326,9 +5038,22 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bd4864cd0a67",
@@ -3342,9 +5067,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bbb5ef8aa8ec",
@@ -3358,9 +5096,22 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "02961279599c",
@@ -3374,9 +5125,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle",
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "872b38c6d67f",
@@ -3390,9 +5154,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c79914693d64",
@@ -3406,9 +5177,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:power"
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“power”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0d324bedb45f",
@@ -3422,10 +5200,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5d4fbbe82209",
@@ -3439,10 +5223,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b2b210bfd555",
@@ -3456,10 +5246,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "891b4546ef85",
@@ -3473,10 +5269,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7ace10c59839",
@@ -3490,10 +5292,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3dfcfd692b65",
@@ -3507,10 +5315,16 @@
       "indexedPages": 5,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "107ee51d6420",
@@ -3524,10 +5338,16 @@
       "indexedPages": 1,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "8d74a6884c58",
@@ -3541,10 +5361,22 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "543e357866a5",
@@ -3558,10 +5390,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:assurance",
-        "domain:performance"
+        "chain:stability"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:stability",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“stability”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e673c34c0d4c",
@@ -3575,10 +5413,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "398c051fcb7f",
@@ -3592,10 +5436,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "99f3e33f914d",
@@ -3609,10 +5459,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6891b99c5e09",
@@ -3626,10 +5482,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "adec16da0d62",
@@ -3643,10 +5505,16 @@
       "indexedPages": 7,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3f04bd3f157a",
@@ -3660,10 +5528,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d2f773042f68",
@@ -3677,10 +5551,22 @@
       "indexedPages": 39,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:tee-security"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "58292e0d0987",
@@ -3694,10 +5580,22 @@
       "indexedPages": 37,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "cb4f3b88886b",
@@ -3711,10 +5609,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "607cd3a86dd3",
@@ -3728,10 +5632,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "88161ea5f13a",
@@ -3745,10 +5661,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0b8cec92f7cc",
@@ -3762,10 +5684,22 @@
       "indexedPages": 19,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d78592d209d4",
@@ -3779,10 +5713,22 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "cd58cb9b620f",
@@ -3796,10 +5742,16 @@
       "indexedPages": 26,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4e0dab399b5c",
@@ -3813,10 +5765,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2d16db982b9d",
@@ -3830,10 +5788,22 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:usb-storage"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:usb-storage",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0488ba34acae",
@@ -3847,10 +5817,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3e135840f638",
@@ -3864,10 +5840,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0ffc4e91d4e3",
@@ -3881,10 +5863,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b71a9b733004",
@@ -3898,10 +5886,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "967c72386c01",
@@ -3915,10 +5909,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b17a1b72d94d",
@@ -3932,10 +5932,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "d85a6dc3de1f",
@@ -3949,10 +5955,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7a3b9551a0d4",
@@ -3966,10 +5978,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "17d10bf0927d",
@@ -3983,10 +6001,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "b339a40764b5",
@@ -4000,10 +6024,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1a36c8bd89a4",
@@ -4017,10 +6047,22 @@
       "indexedPages": 34,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:tee-security"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7cf96d09b15a",
@@ -4034,10 +6076,22 @@
       "indexedPages": 34,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:tee-security"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:tee-security",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "17db370a3228",
@@ -4051,10 +6105,22 @@
       "indexedPages": 59,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "521a9a064592",
@@ -4068,10 +6134,22 @@
       "indexedPages": 55,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "7f22bbdfff2f",
@@ -4085,10 +6163,22 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bdd771d7f372",
@@ -4102,10 +6192,22 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:mtk-compute-resources"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:mtk-compute-resources",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6252ad362114",
@@ -4119,10 +6221,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "98681c23e375",
@@ -4136,10 +6244,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2b1a7d97f0a2",
@@ -4153,10 +6267,22 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "8fb29ac94bce",
@@ -4170,10 +6296,22 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ccd5b795d5d9",
@@ -4187,10 +6325,16 @@
       "indexedPages": 20,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0ee3f30c7a2c",
@@ -4204,10 +6348,16 @@
       "indexedPages": 25,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "eb1ea503dfd4",
@@ -4221,10 +6371,16 @@
       "indexedPages": 30,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "65f0b3b1b2de",
@@ -4238,10 +6394,16 @@
       "indexedPages": 29,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "34c55692de98",
@@ -4255,10 +6417,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "242e09880a72",
@@ -4272,10 +6440,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "35d787f62e6d",
@@ -4289,10 +6463,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "01e41793db8d",
@@ -4306,10 +6486,16 @@
       "indexedPages": 8,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "86df72575171",
@@ -4323,10 +6509,16 @@
       "indexedPages": 12,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "dff007dcc6b0",
@@ -4340,10 +6532,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ebfa2518d112",
@@ -4357,10 +6555,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9b473bff3155",
@@ -4374,10 +6578,16 @@
       "indexedPages": 4,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:virtualization",
-        "domain:cross-domain"
+        "chain:runtime-boundaries"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:runtime-boundaries",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“virtualization”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bfd28e7774c5",
@@ -4391,10 +6601,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "4ed1bbbfed20",
@@ -4408,10 +6624,16 @@
       "indexedPages": 27,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3ea5dbd9f6ab",
@@ -4425,10 +6647,22 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger",
+        "chain:power-lifecycle"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ad653e0a5c99",
@@ -4442,10 +6676,16 @@
       "indexedPages": 15,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "13d506954e81",
@@ -4459,10 +6699,16 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2ce096834385",
@@ -4476,10 +6722,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2ba1f7bc0db6",
@@ -4493,10 +6745,16 @@
       "indexedPages": 26,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "f608befe136c",
@@ -4510,10 +6768,16 @@
       "indexedPages": 16,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "508bdcafc604",
@@ -4527,10 +6791,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "2131e9dacedf",
@@ -4544,10 +6814,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "e81eb416e8a5",
@@ -4561,10 +6837,16 @@
       "indexedPages": 9,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a0ea4cd59f56",
@@ -4578,10 +6860,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "1e4d22f0c69a",
@@ -4595,10 +6883,16 @@
       "indexedPages": 10,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "9fb78cf7bec9",
@@ -4612,10 +6906,16 @@
       "indexedPages": 3,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "843085143d8a",
@@ -4629,10 +6929,16 @@
       "indexedPages": 11,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "815b1152cb31",
@@ -4646,10 +6952,22 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger",
+        "chain:display-output"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        },
+        {
+          "knowledgeId": "chain:display-output",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0f87b2ff1abc",
@@ -4663,10 +6981,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "3ffcd662cc34",
@@ -4680,10 +7004,16 @@
       "indexedPages": 1,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c31539cad8dd",
@@ -4697,10 +7027,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:diagnosis",
-        "domain:assurance"
+        "chain:evidence-ledger"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“diagnosis”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "0ff179c39e73",
@@ -4714,9 +7050,16 @@
       "indexedPages": 4,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "a7ec0789a073",
@@ -4730,9 +7073,16 @@
       "indexedPages": 25,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6799a6ae5ba0",
@@ -4746,9 +7096,16 @@
       "indexedPages": 46,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "04511451ad4d",
@@ -4762,9 +7119,16 @@
       "indexedPages": 13,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "91086931dad2",
@@ -4778,9 +7142,16 @@
       "indexedPages": 1,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "860275ad7461",
@@ -4794,9 +7165,16 @@
       "indexedPages": 21,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ac6a8bed3a3e",
@@ -4810,9 +7188,16 @@
       "indexedPages": 1,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "5a70e60b5e6d",
@@ -4826,9 +7211,16 @@
       "indexedPages": 0,
       "processingState": "container_indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "容器内可读成员已单独登记。"
+      "reviewNote": "容器内可读成员已单独登记。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "needs_review",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "742b67255442",
@@ -4842,9 +7234,16 @@
       "indexedPages": 4,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "6d282f57b1ca",
@@ -4858,9 +7257,16 @@
       "indexedPages": 3,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "bc8290b990b1",
@@ -4874,9 +7280,16 @@
       "indexedPages": 32,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "38c540b592d3",
@@ -4890,9 +7303,16 @@
       "indexedPages": 44,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "c5db8e284bad",
@@ -4906,9 +7326,16 @@
       "indexedPages": 6,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "ca45b12d0d50",
@@ -4922,9 +7349,16 @@
       "indexedPages": 18,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "10a842dbdf31",
@@ -4938,9 +7372,16 @@
       "indexedPages": 17,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     },
     {
       "id": "09d7c99d2c2a",
@@ -4954,9 +7395,16 @@
       "indexedPages": 26,
       "processingState": "indexed",
       "knowledgeIds": [
-        "domain:audio"
+        "chain:audio-paths"
       ],
-      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。"
+      "reviewNote": "可检索文本已建立索引；技术结论仍按具体版本和页码核验。",
+      "knowledgeMappings": [
+        {
+          "knowledgeId": "chain:audio-paths",
+          "status": "indexed",
+          "basis": "依据文件名、平台字段和“audio”资料分类映射；尚未完成该文件的页级技术结论核验。"
+        }
+      ]
     }
   ],
   "archiveDocuments": [
@@ -5461,4 +7909,3 @@
     "mappedDocuments": 299
   }
 }
-

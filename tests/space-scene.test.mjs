@@ -2,17 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  buildArchitectureLayout,
   clampLabelX,
   depthLabelStyle,
   drillVisibleNodeIds,
+  edgeVisualStyle,
   fibonacciSpherePoint,
   fitLabelSize,
   frontLabelLimit,
+  homeVisibleNodeIds,
   isProjectedVisible,
   orbitPose,
   releaseVelocity,
   selectFrontLabelIds,
   starPulse,
+  visibleLabelIds,
 } from '../docs/space-scene.js';
 
 const drillGraph={nodes:[
@@ -36,8 +40,15 @@ const drillGraph={nodes:[
   {from:'ev-sibling',to:'source',type:'supported_by',pathClass:'diagnostic'}
 ]};
 
-test('drill visibility starts at L1 and focuses ancestors, children and capped technical neighbors',()=>{
-  assert.deepEqual([...drillVisibleNodeIds(drillGraph,{selectedId:null})].sort(),['l1-a','l1-b','root'].sort());
+test('home visibility includes L1 L2 and every L3 star while keeping deeper content hidden',()=>{
+  const home=homeVisibleNodeIds(drillGraph);
+  assert.deepEqual([...home].sort(),['domain','l1-a','l1-b','root'].sort());
+  assert.equal(home.has('selected'),false);
+  assert.equal(home.has('source'),false);
+  assert.deepEqual([...drillVisibleNodeIds(drillGraph,{selectedId:null})].sort(),[...home].sort());
+});
+
+test('drill visibility focuses ancestors children and capped technical neighbors',()=>{
   const focused=drillVisibleNodeIds(drillGraph,{selectedId:'selected',technicalNeighborLimit:1});
   for(const id of ['root','l1-a','domain','selected','child-a','child-b'])assert.ok(focused.has(id),id);
   assert.equal(['neighbor-a','neighbor-b'].filter(id=>focused.has(id)).length,1);
@@ -46,6 +57,21 @@ test('drill visibility starts at L1 and focuses ancestors, children and capped t
   assert.ok(withEvidence.has('ev'));
   assert.ok(withEvidence.has('source'));
   assert.equal(withEvidence.has('ev-sibling'),false);
+});
+
+test('home labels keep L3 hidden until interaction explicitly reveals it',()=>{
+  const candidates=[
+    {id:'root',kind:'root',hierarchyLevel:0,depth:0,onScreen:true},
+    {id:'l2',kind:'architecture_dimension',hierarchyLevel:1,depth:100,onScreen:true},
+    {id:'l3-front',kind:'architecture_chain',hierarchyLevel:2,depth:500,onScreen:true},
+    {id:'l3-hover',kind:'architecture_chain',hierarchyLevel:2,depth:-200,onScreen:true},
+    {id:'l4',kind:'component',hierarchyLevel:3,depth:600,onScreen:true}
+  ];
+  assert.deepEqual([...visibleLabelIds(candidates,{mode:'home'})].sort(),['l2','root']);
+  assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',hoveredId:'l3-hover'})].sort(),['l2','l3-hover','root']);
+  assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',matchingIds:['l3-front']})].sort(),['l2','l3-front','root']);
+  assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',selectedId:'l3-front',currentChainIds:['l3-hover']})].sort(),['l2','l3-front','l3-hover','root']);
+  assert.equal(visibleLabelIds(candidates,{mode:'home'}).has('l3-hover'),false);
 });
 
 test('label density stays sparse across desktop and mobile views',()=>{
@@ -133,4 +159,30 @@ test('idle orbit advances yaw and adds a gentle three-axis camera drift',()=>{
   assert.notEqual(later.pitch,start.pitch);
   assert.notEqual(later.roll,start.roll);
   assert.ok(Math.abs(later.roll)<.08);
+});
+
+test('architecture layout creates one deterministic cluster per L2 center',()=>{
+  const dimensions=Array.from({length:17},(_,index)=>({id:`l2-${index}`,title:`L2 ${index}`,kind:'architecture_dimension',primaryParentId:'root',hierarchyLevel:1,hierarchyOrder:(index+1)*10}));
+  const graph={nodes:[
+    {id:'root',title:'智能座舱',kind:'root',hierarchyLevel:0},...dimensions,
+    {id:'shared',title:'共享三级',kind:'architecture_chain',primaryParentId:'l2-3',secondaryParentIds:['l2-7','l2-11'],hierarchyLevel:2,hierarchyOrder:10},
+    {id:'l4',title:'四级阶段',kind:'component',primaryParentId:'shared',hierarchyLevel:3,hierarchyOrder:10}
+  ]};
+  const first=buildArchitectureLayout(graph,{l2Radius:330,l3Radius:92,l4Spacing:58});
+  const second=buildArchitectureLayout(graph,{l2Radius:330,l3Radius:92,l4Spacing:58});
+  assert.deepEqual(first,second);
+  assert.deepEqual(first.get('root'),{x:0,y:0,z:0});
+  assert.equal(new Set(dimensions.map(item=>JSON.stringify(first.get(item.id)))).size,17);
+  for(const item of dimensions)assert.ok(Math.abs(Math.hypot(...Object.values(first.get(item.id)))-330)<1e-6,item.id);
+  const primary=first.get('l2-3'),shared=first.get('shared');
+  assert.ok(Math.hypot(shared.x-primary.x,shared.y-primary.y,shared.z-primary.z)<Math.hypot(shared.x,shared.y,shared.z));
+  const withoutSecondary=buildArchitectureLayout({nodes:graph.nodes.map(item=>item.id==='shared'?{...item,secondaryParentIds:[]}:item)},{l2Radius:330,l3Radius:92,l4Spacing:58});
+  assert.deepEqual(first.get('shared'),withoutSecondary.get('shared'));
+});
+
+test('secondary membership edges are quieter than primary hierarchy edges',()=>{
+  const primary=edgeVisualStyle({type:'primary_contains',pathClass:'hierarchy'});
+  const secondary=edgeVisualStyle({type:'secondary_contains',pathClass:'hierarchy-secondary'});
+  assert.ok(secondary.width<primary.width);
+  assert.ok(secondary.alpha<primary.alpha);
 });

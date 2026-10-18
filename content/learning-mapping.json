@@ -1,0 +1,542 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "course:day-1",
+      "knowledgeIds": [
+        "chain:system-overview"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-2",
+      "knowledgeIds": [
+        "chain:ee-boundaries"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-3",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:mcu-soc-responsibility"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-4",
+      "knowledgeIds": [
+        "chain:mtk-compute-resources",
+        "chain:mcu-soc-responsibility"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-5",
+      "knowledgeIds": [
+        "chain:hmi-runtime",
+        "chain:display-output"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-6",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:android-app-framework"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-7",
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:boot-lifecycle"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-8",
+      "knowledgeIds": [
+        "chain:power-lifecycle"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-9",
+      "knowledgeIds": [
+        "chain:vehicle-bus",
+        "chain:ethernet-connectivity"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-10",
+      "knowledgeIds": [
+        "chain:soa-service-contract"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-11",
+      "knowledgeIds": [
+        "chain:mcu-soc-responsibility",
+        "chain:soa-service-contract"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-12",
+      "knowledgeIds": [
+        "chain:someip-service"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-13",
+      "knowledgeIds": [
+        "chain:someip-service",
+        "chain:soa-discovery-subscription"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-14",
+      "knowledgeIds": [
+        "chain:soa-service-contract"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-15",
+      "knowledgeIds": [
+        "chain:soa-service-contract"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-16",
+      "knowledgeIds": [
+        "chain:soa-service-contract",
+        "chain:tee-security"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-17",
+      "knowledgeIds": [
+        "chain:android-internal-ipc"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-18",
+      "knowledgeIds": [
+        "chain:cross-domain-transport"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-19",
+      "knowledgeIds": [
+        "chain:virtio-data",
+        "chain:runtime-boundaries"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-20",
+      "knowledgeIds": [
+        "chain:clock-sources"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-21",
+      "knowledgeIds": [
+        "chain:cross-domain-time"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-22",
+      "knowledgeIds": [
+        "chain:android-app-framework",
+        "chain:hmi-runtime"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-23",
+      "knowledgeIds": [
+        "chain:hmi-runtime"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-24",
+      "knowledgeIds": [
+        "chain:display-output"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-25",
+      "knowledgeIds": [
+        "chain:display-output"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-26",
+      "knowledgeIds": [
+        "chain:vehicle-service-framework"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-27",
+      "knowledgeIds": [
+        "chain:stability",
+        "chain:android-app-framework"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-28",
+      "knowledgeIds": [
+        "chain:avm-video-flow",
+        "chain:mtk-peripheral-map"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-29",
+      "knowledgeIds": [
+        "chain:avm-video-flow",
+        "chain:virtio-data",
+        "chain:resource-budget"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-30",
+      "knowledgeIds": [
+        "chain:avm-video-flow"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-31",
+      "knowledgeIds": [
+        "chain:cabin-perception"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-32",
+      "knowledgeIds": [
+        "chain:avm-video-flow",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-33",
+      "knowledgeIds": [
+        "chain:avm-video-flow",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-34",
+      "knowledgeIds": [
+        "chain:audio-policy-routing"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-35",
+      "knowledgeIds": [
+        "chain:audio-paths"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-36",
+      "knowledgeIds": [
+        "chain:audio-policy-routing",
+        "chain:audio-paths"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-37",
+      "knowledgeIds": [
+        "chain:audio-policy-routing",
+        "chain:audio-paths"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-38",
+      "knowledgeIds": [
+        "chain:str-display-recovery",
+        "chain:power-lifecycle"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-39",
+      "knowledgeIds": [
+        "chain:str-display-recovery",
+        "chain:power-lifecycle",
+        "chain:cross-domain-transport"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-40",
+      "knowledgeIds": [
+        "chain:display-output",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-41",
+      "knowledgeIds": [
+        "chain:stability",
+        "chain:runtime-boundaries"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-42",
+      "knowledgeIds": [
+        "chain:stability",
+        "chain:runtime-boundaries"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-43",
+      "knowledgeIds": [
+        "chain:someip-service",
+        "chain:soa-discovery-subscription"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-44",
+      "knowledgeIds": [
+        "chain:ethernet-connectivity",
+        "chain:someip-service",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-11-saturday",
+      "knowledgeIds": [
+        "chain:audio-paths",
+        "chain:audio-policy-routing"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-11-sunday",
+      "knowledgeIds": [
+        "chain:audio-paths",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-12-friday",
+      "knowledgeIds": [
+        "chain:audio-paths",
+        "chain:cross-domain-transport"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-12-sunday",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-13-friday",
+      "knowledgeIds": [
+        "chain:display-output",
+        "chain:runtime-boundaries"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-13-saturday",
+      "knowledgeIds": [
+        "chain:display-output",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-13-sunday",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-14-friday",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:someip-service",
+        "chain:stability"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-14-saturday",
+      "knowledgeIds": [
+        "chain:someip-service",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-1",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-2",
+      "knowledgeIds": [
+        "chain:ee-boundaries",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-3",
+      "knowledgeIds": [
+        "chain:ee-boundaries",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-4",
+      "knowledgeIds": [
+        "chain:mtk-compute-resources",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-5",
+      "knowledgeIds": [
+        "chain:mtk-compute-resources",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-6",
+      "knowledgeIds": [
+        "chain:hmi-runtime",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-7",
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-8",
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-9",
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-10",
+      "knowledgeIds": [
+        "chain:vehicle-bus",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-11",
+      "knowledgeIds": [
+        "chain:vehicle-bus",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-12",
+      "knowledgeIds": [
+        "chain:vehicle-bus",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-13",
+      "knowledgeIds": [
+        "chain:soa-service-contract",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-14",
+      "knowledgeIds": [
+        "chain:soa-service-contract",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-15",
+      "knowledgeIds": [
+        "chain:soa-service-contract",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-entry-16",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    }
+  ]
+}

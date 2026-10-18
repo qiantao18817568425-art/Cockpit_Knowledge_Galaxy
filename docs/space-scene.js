@@ -124,7 +124,7 @@ export function drillVisibleNodeIds(graph,{selectedId=null,expandedDepth=1,evide
   let frontier=[selectedId];
   for(let depth=0;depth<Math.max(0,expandedDepth);depth++){
     const next=[];
-    for(const parentId of frontier)for(const node of graph.nodes)if(node.primaryParentId===parentId){visible.add(node.id);next.push(node.id);}
+    for(const parentId of frontier)for(const node of graph.nodes)if(node.primaryParentId===parentId&&!node.navigationOnly&&!['source','evidence','lesson','review','chapter','topic'].includes(node.kind)){visible.add(node.id);next.push(node.id);}
     frontier=next;
   }
   const neighbors=[];

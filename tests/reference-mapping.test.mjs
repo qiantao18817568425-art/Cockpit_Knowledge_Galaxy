@@ -45,10 +45,21 @@ test('all public sources use evidence-bounded concrete mappings',async()=>{
     for(const mapping of source.knowledgeMappings){
       assertConcreteTarget(mapping.knowledgeId,source.id);
       assert.ok(mapping.basis?.trim(),source.id);
-      assert.ok(['indexed','needs_review','page_verified','case_verified'].includes(mapping.status),`${source.id}: ${mapping.status}`);
+      assert.ok(['indexed','content_indexed','needs_review','page_verified','case_verified'].includes(mapping.status),`${source.id}: ${mapping.status}`);
       if(mapping.status==='page_verified')assert.ok(mapping.pages?.length,source.id);
     }
   }
+});
+
+test('raw documents stay in the evidence catalogue rather than the knowledge pyramid',()=>{
+  const sources=graph.nodes.filter(node=>node.kind==='source');
+  assert.equal(sources.length,299);
+  for(const source of sources){
+    assert.match(source.primaryParentId,/^subtopic:raw:/,source.id);
+    assert.equal(source.navigationOnly,true,source.id);
+  }
+  const technicalParents=new Set(graph.nodes.filter(node=>!node.navigationOnly&&node.kind!=='source').map(node=>node.id));
+  assert.equal(sources.some(source=>technicalParents.has(source.primaryParentId)),false);
 });
 
 test('sanitized cases declare evidence state and never publish local raw paths',async()=>{

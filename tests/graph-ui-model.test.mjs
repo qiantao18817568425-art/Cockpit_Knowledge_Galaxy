@@ -230,6 +230,16 @@ test('multi-parent L3 exposes one primary breadcrumb and explicit secondary memb
  assert.equal(live.nodes.filter(item=>item.id==='chain:someip-service').length,1);
 });
 
+test('raw source files never appear as child knowledge cards',()=>{
+ const sourceGraph={nodes:[
+  {id:'chain',title:'显示输出链',kind:'architecture_chain',primaryParentId:'root',hierarchyLevel:2,knowledge:{role:'解释显示输出。'}},
+  {id:'component',title:'HWC',kind:'component',primaryParentId:'chain',hierarchyLevel:3,knowledge:{role:'合成图层。'}},
+  {id:'pdf',title:'Display.pdf',kind:'source',primaryParentId:'chain',hierarchyLevel:3,navigationOnly:true,processingState:'indexed'}
+ ],edges:[]};
+ assert.deepEqual(directChildren(sourceGraph,'chain').map(item=>item.id),['component']);
+ assert.deepEqual(buildReaderModel(sourceGraph,'chain').children.map(item=>item.id),['component']);
+});
+
 test('reader exposes embedded courses sources skills cases and TPM closure metadata',async()=>{
  const live=JSON.parse(await readFile(new URL('../docs/graph.json',import.meta.url),'utf8'));
  const model=buildReaderModel(live,'chain:display-output');
@@ -239,7 +249,7 @@ test('reader exposes embedded courses sources skills cases and TPM closure metad
  assert.ok(model.skills.some(item=>item.id==='t12t-display-black-freeze'));
  assert.ok(model.cases.some(item=>item.id==='case:display-black'&&item.evidenceState==='indexed'));
  assert.ok(model.sourceClaims.length>0);
- assert.ok(model.sourceClaims.every(item=>item.basis&&['indexed','needs_review','page_verified','case_verified'].includes(item.status)));
+ assert.ok(model.sourceClaims.every(item=>item.basis&&['indexed','content_indexed','needs_review','page_verified','case_verified'].includes(item.status)));
  assert.match(model.tpm.firstRoundLead,/显示|HMI/);
  assert.ok(model.verification.length>=4);
  const markdown=readerMarkdown(model);

@@ -164,7 +164,10 @@ const knowledgeModel = await loadKnowledgeContent(path.join(projectRoot,'content
 knowledgeModel.sources = sourceRegister.documents.map(item=>({
   id:item.id,name:item.name,title:item.name,downloadUrl:item.downloadUrl,platforms:[item.platform],version:item.version,
   processingState:item.processingState,knowledgeIds:item.knowledgeIds,knowledgeMappings:item.knowledgeMappings,category:item.category,
-  primaryParentId:item.knowledgeMappings?.[0]?.knowledgeId
+  summary:item.contentDigest?.summary,contentDigest:item.contentDigest,
+  // Raw files live in the evidence catalogue. Their knowledgeMappings remain
+  // index/evidence links and must never turn a PDF into a child knowledge node.
+  primaryParentId:`subtopic:raw:${item.category}`
 }));
 const semantic = compileKnowledgeGraph(knowledgeModel);
 const duplicateSemantic = semantic.nodes.find(node=>knownIds.has(node.id));

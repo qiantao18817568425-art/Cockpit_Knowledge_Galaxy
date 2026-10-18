@@ -336,7 +336,24 @@
       ],
       "runtimeDomain": "android",
       "contentState": "absorbed",
-      "knowledge": {"role":"把 SurfaceFlinger 的合成决策提交给 HWC/Composer，并返回 validate、present 与 fence 结果。","input":["图层列表、显示配置和合成策略"],"mechanism":["validate 决定 Client/Device composition，present 提交本帧并传递同步 fence"],"output":["已提交帧、present 结果和 release/present fence"],"observations":["validate/present 返回码、frame number、fence signal 和首帧时间"],"limits":["present 成功只证明 Android 提交阶段完成，不能证明 Host scanout、SerDes、Panel 或背光正常。"]}
+      "knowledge": {
+        "role": "把 SurfaceFlinger 的合成决策提交给 HWC/Composer，并返回 validate、present 与 fence 结果。",
+        "input": [
+          "图层列表、显示配置和合成策略"
+        ],
+        "mechanism": [
+          "validate 决定 Client/Device composition，present 提交本帧并传递同步 fence"
+        ],
+        "output": [
+          "已提交帧、present 结果和 release/present fence"
+        ],
+        "observations": [
+          "validate/present 返回码、frame number、fence signal 和首帧时间"
+        ],
+        "limits": [
+          "present 成功只证明 Android 提交阶段完成，不能证明 Host scanout、SerDes、Panel 或背光正常。"
+        ]
+      }
     },
     {
       "id": "interface:drm-atomic",
@@ -353,7 +370,24 @@
       ],
       "runtimeDomain": "yocto",
       "contentState": "absorbed",
-      "knowledge": {"role":"以一次原子提交更新 CRTC、plane、connector 等显示资源，驱动硬件完成 scanout。","input":["framebuffer、plane/CRTC/connector 状态和 mode"],"mechanism":["DRM 先校验完整状态，再用 atomic commit 将配置交给 OVL/CMDQ/显示管线"],"output":["新的 scanout 状态和 vblank/page-flip 完成"],"observations":["atomic check/commit 返回码、CRTC/plane 状态、vblank 和 underrun"],"limits":["commit 成功仍需确认物理链路、面板和背光。"]}
+      "knowledge": {
+        "role": "以一次原子提交更新 CRTC、plane、connector 等显示资源，驱动硬件完成 scanout。",
+        "input": [
+          "framebuffer、plane/CRTC/connector 状态和 mode"
+        ],
+        "mechanism": [
+          "DRM 先校验完整状态，再用 atomic commit 将配置交给 OVL/CMDQ/显示管线"
+        ],
+        "output": [
+          "新的 scanout 状态和 vblank/page-flip 完成"
+        ],
+        "observations": [
+          "atomic check/commit 返回码、CRTC/plane 状态、vblank 和 underrun"
+        ],
+        "limits": [
+          "commit 成功仍需确认物理链路、面板和背光。"
+        ]
+      }
     },
     {
       "id": "observation:serdes-link",
@@ -370,7 +404,24 @@
       ],
       "runtimeDomain": "physical-device",
       "contentState": "absorbed",
-      "knowledge": {"role":"确认加串器、线束和解串器已经锁定，并保持视频时钟与同步信号连续。","input":["DSI/DP/RGB 视频信号、时钟和 SerDes 配置"],"mechanism":["Serializer 编码传输，Deserializer 恢复链路和视频同步后送入 Panel"],"output":["已锁定且同步稳定的物理视频链"],"observations":["link lock、DE/HS/VS、CRC/error counter、remote I2C 和恢复次数"],"limits":["具体寄存器、阈值和 SerDes 型号必须按现车方案核实。"]}
+      "knowledge": {
+        "role": "确认加串器、线束和解串器已经锁定，并保持视频时钟与同步信号连续。",
+        "input": [
+          "DSI/DP/RGB 视频信号、时钟和 SerDes 配置"
+        ],
+        "mechanism": [
+          "Serializer 编码传输，Deserializer 恢复链路和视频同步后送入 Panel"
+        ],
+        "output": [
+          "已锁定且同步稳定的物理视频链"
+        ],
+        "observations": [
+          "link lock、DE/HS/VS、CRC/error counter、remote I2C 和恢复次数"
+        ],
+        "limits": [
+          "具体寄存器、阈值和 SerDes 型号必须按现车方案核实。"
+        ]
+      }
     },
     {
       "id": "failure:display-no-image",
@@ -387,7 +438,24 @@
       ],
       "runtimeDomain": "physical-device",
       "contentState": "absorbed",
-      "knowledge": {"role":"描述上游存在图层或像素数据、但用户仍看不到画面的跨层失效结果。","input":["已确认的图层、帧提交或物理视频输入"],"mechanism":["可能断在 DRM scanout、SerDes 同步、Panel 初始化、电源或背光；需用竞争假设逐层排除"],"output":["黑屏、冻屏、灰屏或亮屏无图"],"observations":["HWC present、DRM/vblank、SerDes lock、Panel status、背光电压和亮度"],"limits":["这是故障表现，不是根因；最后错误或恢复动作不能替代最早断点证据。"]}
+      "knowledge": {
+        "role": "描述上游存在图层或像素数据、但用户仍看不到画面的跨层失效结果。",
+        "input": [
+          "已确认的图层、帧提交或物理视频输入"
+        ],
+        "mechanism": [
+          "可能断在 DRM scanout、SerDes 同步、Panel 初始化、电源或背光；需用竞争假设逐层排除"
+        ],
+        "output": [
+          "黑屏、冻屏、灰屏或亮屏无图"
+        ],
+        "observations": [
+          "HWC present、DRM/vblank、SerDes lock、Panel status、背光电压和亮度"
+        ],
+        "limits": [
+          "这是故障表现，不是根因；最后错误或恢复动作不能替代最早断点证据。"
+        ]
+      }
     },
     {
       "id": "interface:backlight-control",
@@ -404,7 +472,24 @@
       ],
       "runtimeDomain": "mcu",
       "contentState": "absorbed",
-      "knowledge": {"role":"把电源/HMI 亮度策略转换为面板背光使能和亮度执行，并回报实际状态。","input":["电源状态、屏幕开关、目标亮度和故障保护"],"mechanism":["MCU 或 SoC 服务经 GPIO、PWM、I2C 或专用控制接口驱动背光电源与亮度"],"output":["背光使能、目标亮度和执行反馈"],"observations":["请求值、GPIO/PWM/I2C 状态、背光电压电流和故障脚"],"limits":["控制所有者和接口随车型硬件方案变化，必须用原理图和接口定义确认。"]}
+      "knowledge": {
+        "role": "把电源/HMI 亮度策略转换为面板背光使能和亮度执行，并回报实际状态。",
+        "input": [
+          "电源状态、屏幕开关、目标亮度和故障保护"
+        ],
+        "mechanism": [
+          "MCU 或 SoC 服务经 GPIO、PWM、I2C 或专用控制接口驱动背光电源与亮度"
+        ],
+        "output": [
+          "背光使能、目标亮度和执行反馈"
+        ],
+        "observations": [
+          "请求值、GPIO/PWM/I2C 状态、背光电压电流和故障脚"
+        ],
+        "limits": [
+          "控制所有者和接口随车型硬件方案变化，必须用原理图和接口定义确认。"
+        ]
+      }
     },
     {
       "id": "component:camera-control",
@@ -655,6 +740,298 @@
           "车型、版本、接口编号、器件方案和阈值以当前项目资料为准"
         ]
       }
+    },
+    {
+      "id": "component:display-ovl-cmdq",
+      "title": "OVL / CMDQ / MML 显示管线",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8676"
+      ],
+      "runtimeDomain": "yocto",
+      "contentState": "absorbed",
+      "description": "Host 侧完成图层叠加、命令队列提交和缩放/旋转/格式转换。",
+      "knowledge": {
+        "role": "在 MT8676 显示子系统中承接 DRM/HWC 的图层计划：OVL 负责硬件叠图，CMDQ/GCE 代替 CPU 批量访问多媒体寄存器，MML/MDP 处理缩放、旋转、色彩格式和画质。",
+        "input": [
+          "DRM atomic 状态、图层 buffer、裁剪/缩放/色彩参数"
+        ],
+        "mechanism": [
+          "OVL 分配硬件图层",
+          "MML/MDP 处理视频层",
+          "CMDQ 提交寄存器序列并与显示时序同步"
+        ],
+        "output": [
+          "送往 CRTC 与 DSI/DP 的像素流",
+          "fence、vblank 或 underrun 状态"
+        ],
+        "observations": [
+          "dumpsys SurfaceFlinger 的 DEV/CLI 合成类型",
+          "DRM/OVL/CMDQ 日志、vblank、buffer underrun"
+        ],
+        "limits": [
+          "OVL 数量、pipe 组合与频率是 MT8676 V1.3 资料范围；MT8668 需按其手册单独核实。"
+        ]
+      }
+    },
+    {
+      "id": "interface:virtual-display-connector",
+      "title": "虚拟 Connector / Encoder",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8676"
+      ],
+      "runtimeDomain": "hypervisor",
+      "contentState": "absorbed",
+      "description": "Guest 查询显示模式和控制 CRTC 的虚拟化接口。",
+      "knowledge": {
+        "role": "把 Android Guest 的 connector/encoder 语义映射到 Host DRM；Guest 通过 virtio 获取 display mode、开关 CRTC，而完整 CRTC、DSI/DP 和 Panel 驱动归 Host。",
+        "input": [
+          "Guest display mode 查询、CRTC 开关和虚拟 connector 配置"
+        ],
+        "mechanism": [
+          "virt_dsi/virt_dp 节点把 Guest 控制请求交给 Host DRM",
+          "图层更新可按资料定义的直通路径驱动 OVL"
+        ],
+        "output": [
+          "Host CRTC 资源状态与 Guest 可见的虚拟显示设备"
+        ],
+        "observations": [
+          "Host/Guest DTS 的 dsi/virt_dsi/virt_dp 节点",
+          "CRTC 分配、display mode 与开关结果"
+        ],
+        "limits": [
+          "公版六屏 CRTC 编号不能直接套用到现车；必须核对当前 project DTS 与 superframe 配置。"
+        ]
+      }
+    },
+    {
+      "id": "component:dsi-panel-chain",
+      "title": "DSI / SerDes / Panel 输出",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "runtimeDomain": "physical-device",
+      "contentState": "absorbed",
+      "description": "从 SoC 显示接口到串行链路、面板扫描和可见画面的物理输出。",
+      "knowledge": {
+        "role": "把 CRTC 的像素与时序经 DSI、可选 SerDes 和 Panel 送显；其初始化依赖 DTS、lane/timing、供电、reset、I2C/GPIO 与面板驱动。",
+        "input": [
+          "CRTC 像素流、DSI timing/lane 配置、Panel 初始化序列、供电和背光条件"
+        ],
+        "mechanism": [
+          "DSI 产生视频时序",
+          "Serializer/Deserializer 传输并恢复 DE/HS/VS",
+          "Panel 执行初始化和扫描"
+        ],
+        "output": [
+          "Panel 像素显示；与背光共同形成用户可见画面"
+        ],
+        "observations": [
+          "DSI_START/INTSTA/SIZE_CON",
+          "DSI Pattern",
+          "SerDes pixel clock 与 DE/HS/VS",
+          "Panel 供电/reset/初始化状态"
+        ],
+        "limits": [
+          "SerDes 型号、寄存器、GPIO、lane swap 和 timing 必须按现车原理图与当前版本核实。"
+        ]
+      }
+    },
+    {
+      "id": "component:touch-controller-driver",
+      "title": "Touch 控制器与 Host 驱动",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "runtimeDomain": "yocto",
+      "contentState": "absorbed",
+      "description": "触摸控制器、I2C/GPIO、驱动 probe 与 Linux input 设备。",
+      "knowledge": {
+        "role": "把触控面板的原始报点转换成 Linux input event；驱动需要正确的 DTS compatible、I2C、IRQ/reset GPIO、供电和 SerDes 透传。",
+        "input": [
+          "Touch 控制器报点、I2C 数据、IRQ、reset 与供电"
+        ],
+        "mechanism": [
+          "驱动 probe 并注册 input device",
+          "中断触发后读取坐标并按 Linux input 协议上报"
+        ],
+        "output": [
+          "Host /dev/input/event* 的触摸事件"
+        ],
+        "observations": [
+          "probe 日志、lsmod、I2C -6/-110、GPIO 状态、Host getevent -l"
+        ],
+        "limits": [
+          "I2C 频率、GPIO 号、供电电压和时序必须按控制器规格及现车原理图确认。"
+        ]
+      }
+    },
+    {
+      "id": "interface:virtio-input-touch",
+      "title": "virtio-input 触摸转发",
+      "kind": "interface",
+      "domain": "display",
+      "platforms": [
+        "MT8676"
+      ],
+      "runtimeDomain": "hypervisor",
+      "contentState": "absorbed",
+      "description": "Host input device 到 Android Guest 的触摸事件虚拟化通道。",
+      "knowledge": {
+        "role": "Hypervisor input service 监控 Host 触摸节点并通过 virtio-input 把 event 送到 Android Guest，使 Guest 无需直接持有物理 Touch 驱动。",
+        "input": [
+          "Host input device 事件、转发节点名、display/raw size 配置"
+        ],
+        "mechanism": [
+          "Hypervisor service 轮询或读取事件",
+          "virtio-input 前后端跨 VM 传输"
+        ],
+        "output": [
+          "Android Guest virtio-input 设备事件"
+        ],
+        "observations": [
+          "Yocto 与 Android 两端 getevent -l",
+          "uos_config:setInput 与 setDisplayParam",
+          "virtio-input driver 状态"
+        ],
+        "limits": [
+          "MT8676 V1.1 资料记录最多 4 个虚拟节点且只支持 Type A；其他版本必须重新核实。"
+        ]
+      }
+    },
+    {
+      "id": "component:android-input-framework",
+      "title": "EventHub / InputReader / InputDispatcher",
+      "kind": "component",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "runtimeDomain": "android",
+      "contentState": "absorbed",
+      "description": "Android 从 evdev 读取、解释并分发输入事件的 Framework 链。",
+      "knowledge": {
+        "role": "在 Android Guest 内由 EventHub 监听 input device，InputReader 解释触点和设备配置，InputDispatcher 按窗口、焦点和触摸目标把事件交给 WMS/应用。",
+        "input": [
+          "virtio-input 或直通 evdev 事件、设备与坐标配置"
+        ],
+        "mechanism": [
+          "EventHub epoll 取事件",
+          "InputReader 生成 MotionEvent",
+          "InputDispatcher 依据窗口/焦点执行分发"
+        ],
+        "output": [
+          "窗口与应用收到的触摸事件"
+        ],
+        "observations": [
+          "Android getevent、dumpsys input、InputReader/InputDispatcher 日志、窗口焦点"
+        ],
+        "limits": [
+          "事件到达 Framework 仍不等于应用必然消费；手势竞争、窗口策略与 pilferPointers 需单独验证。"
+        ]
+      }
+    },
+    {
+      "id": "observation:dsi-pattern-cut",
+      "title": "DSI Pattern 分段定位",
+      "kind": "observation",
+      "domain": "display",
+      "platforms": [
+        "MT8676"
+      ],
+      "runtimeDomain": "physical-device",
+      "contentState": "absorbed",
+      "description": "用接口 Pattern 把显示管线问题与后级 SerDes/Panel 问题切开。",
+      "knowledge": {
+        "role": "在先确认背光后，通过 DSI Pattern 是否正常显示划分 SoC 显示管线与 SerDes/Panel/硬件后级，形成可反证的竞争假设。",
+        "input": [
+          "黑屏、花屏或卡屏现象；背光状态；Pattern 测试条件"
+        ],
+        "mechanism": [
+          "注入 DSI Pattern 并观察屏端结果",
+          "结合 SerDes Pattern、寄存器和 PCB/供电状态继续切分"
+        ],
+        "output": [
+          "故障范围落在 Display owner、DSI/SerDes 或 Panel/硬件侧的初步边界"
+        ],
+        "observations": [
+          "背光、DSI Pattern、SerDes Pattern、DSI/SerDes 寄存器"
+        ],
+        "limits": [
+          "Pattern 只用于链路切分，不能单独证明原业务帧、时序与恢复策略正常。"
+        ]
+      }
+    },
+    {
+      "id": "observation:touch-dual-getevent",
+      "title": "Host / Guest 双端 getevent",
+      "kind": "observation",
+      "domain": "display",
+      "platforms": [
+        "MT8676"
+      ],
+      "runtimeDomain": "diagnosis",
+      "contentState": "absorbed",
+      "description": "用两端事件存在性确定断点在源驱动还是虚拟化/Guest。",
+      "knowledge": {
+        "role": "同一触摸动作同时检查 Yocto Host 与 Android Guest 的 getevent：Host 无事件先查物理驱动；Host 有而 Guest 无则查虚拟节点、virtio-input 与节点名配置。",
+        "input": [
+          "同一时间窗口的 Host/Guest getevent 和设备枚举"
+        ],
+        "mechanism": [
+          "比较同一触点的事件是否跨越 VM 边界"
+        ],
+        "output": [
+          "最早缺失事件所在层级"
+        ],
+        "observations": [
+          "Yocto getevent -l、Android getevent -l/-I、input device 名称与 raw size"
+        ],
+        "limits": [
+          "两端都有事件仍需继续检查 InputReader/InputDispatcher、坐标变换和应用消费。"
+        ]
+      }
+    },
+    {
+      "id": "failure:touch-coordinate-mismatch",
+      "title": "触摸坐标偏移或错屏",
+      "kind": "failure_mode",
+      "domain": "display",
+      "platforms": [
+        "MT8668",
+        "MT8676"
+      ],
+      "runtimeDomain": "display",
+      "contentState": "absorbed",
+      "description": "报点存在但坐标、屏幕或节点绑定错误。",
+      "knowledge": {
+        "role": "描述触摸事件已产生但 raw size、display size、节点顺序/location 或坐标变换不一致，导致偏移、出界或作用到错误屏幕。",
+        "input": [
+          "触摸原始坐标、display 尺寸、节点顺序/location 和变换矩阵"
+        ],
+        "mechanism": [
+          "虚拟化与 Android 输入栈按配置缩放并绑定目标显示"
+        ],
+        "output": [
+          "偏移、错屏、边缘不可触或多屏绑定异常"
+        ],
+        "observations": [
+          "getevent -I、pointer_location、display_size、ko_table/input device 顺序"
+        ],
+        "limits": [
+          "这是故障表现；需用 Host/Guest 原始报点与目标 display 映射确定直接失效。"
+        ]
+      }
     }
   ],
   "relations": [
@@ -881,6 +1258,183 @@
       "output": "「ADSP / External DSP Variant」收到或形成的结果",
       "verification": [
         "在两端用同一时间基准、运行周期和标识核对「AEC / Echo Reference」与「ADSP / External DSP Variant」"
+      ]
+    },
+    {
+      "id": "rel:hmi:012",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:yocto-display",
+      "to": "component:display-ovl-cmdq",
+      "type": "controls",
+      "pathClass": "control",
+      "why": "DRM atomic 状态必须由 OVL/CMDQ/MML 显示硬件管线执行，才会形成真正的 scanout。",
+      "input": "DRM 图层和 CRTC 状态",
+      "handoff": "DRM/KMS 到 MTK 显示硬件",
+      "output": "OVL/CMDQ 执行结果",
+      "verification": [
+        "检查 atomic commit、OVL 分配、CMDQ 与 vblank/underrun"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:013",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "interface:virtual-display-connector",
+      "to": "component:yocto-display",
+      "type": "controls",
+      "pathClass": "control",
+      "why": "Guest 的虚拟 connector/encoder 通过 virtio 向 Host DRM 获取 mode 并控制 CRTC；Host 持有完整 CRTC 与物理接口驱动。",
+      "input": "Guest mode/CRTC 请求",
+      "handoff": "virtio 虚拟显示控制边界",
+      "output": "Host DRM 资源状态",
+      "verification": [
+        "核对 Guest virt_dsi/virt_dp 与 Host dsi/dp 节点",
+        "核对 CRTC 分配和开关结果"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:014",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:display-ovl-cmdq",
+      "to": "component:dsi-panel-chain",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "why": "OVL/MML 完成的像素流经 CRTC 进入 DSI/DP，随后才可能通过 SerDes 到达 Panel。",
+      "input": "已合成像素与显示时序",
+      "handoff": "CRTC 到 DSI/DP 物理接口",
+      "output": "Panel 输入视频",
+      "verification": [
+        "检查 vblank、DSI_START/INTSTA、SerDes DE/HS/VS"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:015",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:dsi-panel-chain",
+      "to": "component:physical-display",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "why": "DSI、SerDes 与 Panel 初始化共同决定像素是否到达并被面板扫描显示。",
+      "input": "DSI 视频、SerDes 配置和 Panel 时序",
+      "handoff": "物理传输与面板初始化",
+      "output": "屏幕像素画面",
+      "verification": [
+        "先确认背光，再比较 DSI Pattern 与 SerDes Pattern",
+        "核对供电、reset、I2C/GPIO 和 Panel 状态"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:016",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:physical-display",
+      "to": "observation:dsi-pattern-cut",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "why": "DSI Pattern 能绕过部分业务合成路径，帮助判断故障位于 SoC 显示管线还是 SerDes/Panel 后级。",
+      "input": "黑/花/卡屏和背光状态",
+      "handoff": "DSI Pattern 与后级 Pattern 对照",
+      "output": "分段定位结果",
+      "verification": [
+        "Pattern 正常则回查业务图层/HWC/DRM",
+        "Pattern 异常则继续查 DSI、SerDes、Panel 与硬件"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:017",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:touch-controller-driver",
+      "to": "interface:virtio-input-touch",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "why": "Host Touch 驱动先产生 Linux input event，Hypervisor 才能把该事件转发给 Android Guest。",
+      "input": "Host /dev/input/event* 触摸事件",
+      "handoff": "Hypervisor input service 与 virtio-input",
+      "output": "Guest input event",
+      "verification": [
+        "同一触点比较 Host/Guest getevent",
+        "核对转发节点名与虚拟化 enable"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:018",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "interface:virtio-input-touch",
+      "to": "component:android-input-framework",
+      "type": "carries_data_to",
+      "pathClass": "data",
+      "why": "Guest virtio-input 驱动注册 evdev 后，EventHub/InputReader/InputDispatcher 才能解释并交付触摸。",
+      "input": "Guest virtio-input event",
+      "handoff": "evdev 到 Android InputManagerService",
+      "output": "MotionEvent 与窗口分发",
+      "verification": [
+        "核对 getevent、dumpsys input、InputReader/InputDispatcher 和窗口焦点"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:019",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "component:touch-controller-driver",
+      "to": "observation:touch-dual-getevent",
+      "type": "observed_by",
+      "pathClass": "diagnostic",
+      "why": "Host/Guest 双端 getevent 直接区分源驱动无报点和跨 VM 转发丢失。",
+      "input": "同一物理触点",
+      "handoff": "两端事件对齐",
+      "output": "最早缺失层级",
+      "verification": [
+        "Host 无事件查 I2C/GPIO/probe",
+        "Host 有而 Guest 无查 virtio-input 与节点配置"
+      ],
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "rel:hmi:020",
+      "scope": "platform_specific",
+      "status": "documented_reference",
+      "from": "interface:virtio-input-touch",
+      "to": "failure:touch-coordinate-mismatch",
+      "type": "fails_as",
+      "pathClass": "data",
+      "why": "raw touch size、display size 或 input 节点与 panel 的绑定不一致时，事件虽到达 Guest 仍会偏移或作用到错误屏。",
+      "input": "触摸 raw 坐标与显示映射配置",
+      "handoff": "虚拟节点与 display/location 绑定",
+      "output": "偏移、错屏或边缘不可触",
+      "verification": [
+        "比较 getevent -I raw_size 与 display size",
+        "检查 uos_config 与节点加载顺序"
+      ],
+      "platforms": [
+        "MT8676"
       ]
     }
   ],
@@ -1126,6 +1680,107 @@
       "platforms": [
         "MT8668"
       ]
+    },
+    {
+      "id": "claim:hmi:012",
+      "relationId": "rel:hmi:012",
+      "evidenceIds": [
+        "ev:hmi:display-modules"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:013",
+      "relationId": "rel:hmi:013",
+      "evidenceIds": [
+        "ev:hmi:display-virtual-connector"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:014",
+      "relationId": "rel:hmi:014",
+      "evidenceIds": [
+        "ev:hmi:display-modules",
+        "ev:hmi:dsi-panel-debug"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:015",
+      "relationId": "rel:hmi:015",
+      "evidenceIds": [
+        "ev:hmi:dsi-panel-debug"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:016",
+      "relationId": "rel:hmi:016",
+      "evidenceIds": [
+        "ev:hmi:dsi-panel-debug"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:017",
+      "relationId": "rel:hmi:017",
+      "evidenceIds": [
+        "ev:hmi:touch-porting",
+        "ev:hmi:touch-virtio"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:018",
+      "relationId": "rel:hmi:018",
+      "evidenceIds": [
+        "ev:hmi:touch-virtio"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:019",
+      "relationId": "rel:hmi:019",
+      "evidenceIds": [
+        "ev:hmi:touch-virtio"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "claim:hmi:020",
+      "relationId": "rel:hmi:020",
+      "evidenceIds": [
+        "ev:hmi:touch-virtio"
+      ],
+      "status": "documented_reference",
+      "platforms": [
+        "MT8676"
+      ]
     }
   ],
   "evidence": [
@@ -1257,6 +1912,71 @@
       ],
       "status": "documented_reference",
       "summary": "核对《MT8676_Android_Audio_User_Manual_V1.1.pdf》对应章节后，将“AEC / Echo Reference”与“ADSP / External DSP Variant”整理为资料参考关系；具体接线、编号和时序仍按对应版本复核。",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "ev:hmi:display-modules",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        6,
+        9
+      ],
+      "status": "documented_reference",
+      "summary": "V1.3 手册说明 HWC 的 Client/Device composition 以及 OVL、CMDQ、MML/MDP 的分工。",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "ev:hmi:display-virtual-connector",
+      "sourceId": "753ab8dd0db2",
+      "pages": [
+        11,
+        12
+      ],
+      "status": "documented_reference",
+      "summary": "V1.3 手册说明完整 CRTC 驱动在 Host，Guest 使用虚拟 connector/encoder 通过 virtio 获取 mode 与控制 CRTC。",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "ev:hmi:dsi-panel-debug",
+      "sourceId": "1ee440ddc61d",
+      "pages": [
+        23
+      ],
+      "status": "documented_reference",
+      "summary": "显示调试 SOP 要求黑屏先确认背光，并用 DSI Pattern 与 SerDes Pattern 切分 Display、DSI/SerDes 和 Panel/硬件问题。",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "ev:hmi:touch-porting",
+      "sourceId": "318e6af558f5",
+      "pages": [
+        4,
+        5
+      ],
+      "status": "documented_reference",
+      "summary": "Touch 手册说明 I2C、IRQ/reset GPIO、DTS、供电与 SerDes 透传是源驱动移植和无报点排查入口。",
+      "platforms": [
+        "MT8676"
+      ]
+    },
+    {
+      "id": "ev:hmi:touch-virtio",
+      "sourceId": "318e6af558f5",
+      "pages": [
+        7,
+        8,
+        9
+      ],
+      "status": "documented_reference",
+      "summary": "Touch 手册给出 Host input device 经 Hypervisor service 与 virtio-input 到 Android Input Framework 的链路，以及双端 getevent 和坐标/绑定核对方法。",
       "platforms": [
         "MT8676"
       ]

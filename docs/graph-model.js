@@ -84,7 +84,31 @@ export function buildBreadcrumb(graph,nodeId){
 }
 
 export function directChildren(graph,nodeId){
-  return buildHierarchyIndex(graph).children.get(nodeId)||[];
+  return (buildHierarchyIndex(graph).children.get(nodeId)||[]).filter(node=>
+    !node.navigationOnly&&!['source','evidence','lesson','review','chapter','topic'].includes(node.kind)
+  );
+}
+
+function normalizedSourceTitle(value=''){
+  return value.replace(/\s+/g,'').replace(/_V(?=\d)/i,'_V').toLocaleLowerCase();
+}
+
+function dedupeSourceClaims(items=[]){
+  const rank={page_verified:5,case_verified:5,supporting_context:4,content_indexed:3,indexed:2,needs_review:1};
+  const groups=new Map();
+  for(const item of items){
+    const key=[normalizedSourceTitle(item.title||item.sourceName||item.sourceId),item.platform||'',item.version||''].join('|');
+    const current=groups.get(key);
+    if(!current){groups.set(key,{...item,duplicateCount:1,alternateSourceIds:[]});continue;}
+    current.duplicateCount+=1;
+    current.alternateSourceIds.push(item.sourceId);
+    if((rank[item.status]||0)>(rank[current.status]||0)){
+      const count=current.duplicateCount,alternates=current.alternateSourceIds;
+      Object.assign(current,item,{duplicateCount:count,alternateSourceIds:alternates});
+    }
+    current.pages=[...new Set([...(current.pages||[]),...(item.pages||[])])].sort((a,b)=>a-b);
+  }
+  return [...groups.values()];
 }
 
 export function buildMembershipModel(graph,nodeId){
@@ -191,6 +215,7 @@ function evidenceBoundary(status,pages=[]){
   if(status==='documented_reference')return hasPages?'这是原文页级引用，可支撑所列关系，但仍需核对车型、版本与上下文。':'状态标为原文依据，但未登记页码，引用强度受限。';
   if(status==='inferred_mapping')return '这是基于资料做出的映射推断，不能直接当作现车事实；当前车型与版本仍需另行验证。';
   if(status==='conflicting')return '资料或版本之间存在冲突，当前只保留差异，不能合并为单一结论。';
+  if(status==='content_indexed')return hasPages?'已读取全文可检索内容，并用所列代表页完成知识链重组；参数、时序和现车适用性仍需逐页复核。':'已读取全文可检索内容，但代表页未登记，当前只能作为内容级知识线索。';
   if(['indexed','container_indexed','source_register','reference'].includes(status))return '这是一条资料登记或目录关联，没有页码级结论，只用于定位可能相关的原始资料。';
   if(status==='published_article')return '这是知识库公开学习正文，不是原始手册页级证据。';
   return hasPages?'该引用已定位页码，证据含义仍以状态和原文上下文为准。':'该引用未登记页码，不能单独证明技术结论。';
@@ -279,7 +304,7 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
   const citationPriority=item=>{
     const hasPages=(item.pages?.flat?.(Infinity)||item.pages||[]).length>0;
     const isEvidence=item.kind==='evidence';
-    const isIndexed=['indexed','container_indexed','source_register','reference'].includes(item.status);
+    const isIndexed=['indexed','content_indexed','container_indexed','source_register','reference'].includes(item.status);
     return (hasPages?0:4)+(isEvidence?0:2)+(isIndexed?1:0);
   };
   const citations=[...citationByKey.values()].sort((a,b)=>citationPriority(a)-citationPriority(b)).slice(0,maxCitations).map(explainCitation);
@@ -329,7 +354,7 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
     checkDomains:[...new Set([memberships.primary?.title,...(memberships.secondary||[]).map(item=>item.title)].filter(Boolean))],
     observationPoints:observations.slice(0,10),skills
   };
-  const sourceClaims=(node.sourceClaims||[]).map(item=>({...item}));
+  const sourceClaims=dedupeSourceClaims((node.sourceClaims||[]).map(item=>({...item})));
   for(const item of sourceClaims)if(item.downloadUrl&&!uniqueReferences.some(reference=>reference.url===item.downloadUrl))uniqueReferences.push({
     id:`mapped-source:${item.sourceId}`,kind:'source',title:item.title,url:item.downloadUrl,pages:item.pages||[],status:item.status,
     platforms:item.platform?[item.platform]:[],summary:item.claim||item.basis,whyCited:`${item.basis||'该资料与当前专题存在直接内容映射。'}`,

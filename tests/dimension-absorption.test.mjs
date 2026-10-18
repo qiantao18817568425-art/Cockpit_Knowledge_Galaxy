@@ -53,3 +53,19 @@ test('cross-dimension relations explain why they connect and how to verify them'
     assert.ok(edge.evidenceBasis,edge.id);
   }
 });
+
+test('display and touch manuals are decomposed into technical L3 and L4 nodes',()=>{
+  const ids=['component:display-ovl-cmdq','interface:virtual-display-connector','component:dsi-panel-chain','component:touch-controller-driver','interface:virtio-input-touch','component:android-input-framework','observation:dsi-pattern-cut','observation:touch-dual-getevent'];
+  for(const id of ids){
+    const node=graph.nodes.find(item=>item.id===id);
+    assert.ok(node,id);
+    assert.equal(node.contentState,'absorbed',id);
+    assert.ok(node.knowledge?.role&&node.knowledge?.observations?.length,id);
+    assert.ok(node.hierarchyLevel>=3&&node.hierarchyLevel<=5,id);
+  }
+  const display=buildReaderModel(graph,'chain:display-output');
+  assert.ok(display.children.some(item=>item.id==='component:android-display'));
+  assert.equal(display.children.some(item=>item.kind==='source'),false);
+  const touch=buildReaderModel(graph,'interface:virtio-input-touch');
+  assert.ok(touch.citations.some(item=>item.sourceName==='MT8676_Hypervisor_Touch_User_Manual_V1.1.pdf'&&item.pages.includes(7)));
+});

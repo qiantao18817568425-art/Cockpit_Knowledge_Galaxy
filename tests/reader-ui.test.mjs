@@ -45,6 +45,11 @@ test('topic reader is full screen on narrow mobile layouts',()=>{
   assert.match(css,/@media\(max-width:720px\)[\s\S]*\.drill-card\{[^}]*width:100%/);
 });
 
+test('long source filenames wrap instead of widening the mobile reader',()=>{
+  assert.match(css,/\.citation-card\{[^}]*min-width:0/);
+  assert.match(css,/\.citation-card>header strong,\.source-mapping-card>header strong\{[^}]*overflow-wrap:anywhere/);
+});
+
 test('topic reader app supports inline loading and markdown export',()=>{
   assert.match(app,/buildReaderModel/);
   assert.match(app,/readerMarkdown/);

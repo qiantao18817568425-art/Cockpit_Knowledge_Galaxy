@@ -9,20 +9,20 @@ const app=readFileSync(new URL('../docs/app.js',import.meta.url),'utf8');
 test('topic reader exposes synthesis, citations, preview and download actions',()=>{
   for(const id of ['reader-summary','reader-insights','reader-citations','reader-preview','reader-download-summary'])assert.match(html,new RegExp(`id="${id}"`));
   assert.match(html,/专题总结/);
-  assert.match(html,/正常技术链/);
-  assert.match(html,/引用资料与文章/);
+  assert.match(html,/技术关系及关联原因/);
+  assert.match(html,/原始资料与证据/);
   assert.match(html,/为什么有关/);
   assert.match(html,/为什么引用/);
 });
 
 test('pyramid reader exposes ordered drill sections and folded navigation',()=>{
-  for(const id of ['reader-breadcrumb','reader-memberships','reader-responsibility','reader-children','reader-learning','reader-paths','reader-cases','reader-tpm','reader-verification','reader-source-mappings','reader-observations','reader-citations','reader-navigation'])assert.match(html,new RegExp(`id="${id}"`));
+  for(const id of ['reader-breadcrumb','reader-memberships','reader-responsibility','reader-children','reader-learning','reader-analysis','reader-cases','reader-paths','reader-case-relations','reader-case-evidence','reader-source-mappings','reader-citations','reader-tpm','reader-verification','reader-observations','reader-navigation'])assert.match(html,new RegExp(`id="${id}"`));
   assert.match(html,/<details[^>]*id="reader-navigation"/);
-  for(const heading of ['架构归属','课程与分析技能','真实案件与责任闭环','资料映射与证据边界'])assert.match(html,new RegExp(heading));
+  for(const heading of ['本层架构','课程','分析','历史日志案例','技术关系及关联原因','原始资料与证据','TPM责任与验证关闭'])assert.match(html,new RegExp(heading));
 });
 
 test('reader renders all evidence and responsibility dimensions from the model',()=>{
-  for(const field of ['model.memberships','model.courses','model.skills','model.cases','model.sourceClaims','model.tpm','model.verification'])assert.match(app,new RegExp(field.replace('.','\\.')));
+  for(const field of ['model.memberships','model.courses','model.analysis','model.cases','model.sourceClaims','model.tpm','model.verification'])assert.match(app,new RegExp(field.replace('.','\\.')));
   assert.match(app,/主要归属/);
   assert.match(app,/同时关联/);
   assert.match(app,/首轮牵头/);

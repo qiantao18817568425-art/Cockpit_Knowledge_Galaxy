@@ -312,7 +312,19 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
   const memberships=buildMembershipModel(graph,nodeId);
   const courses=(node.dayIds||[]).map(id=>byId.get(id)).filter(Boolean).map(item=>({id:item.id,title:item.title,kind:item.kind,url:item.url,basis:item.mappingBasis}));
   const skills=(node.skillIds||[]).map(id=>({id,title:id}));
-  const cases=(node.cases||[]).map(item=>({id:item.id,symptom:item.symptom,evidenceState:item.evidenceState,publicSummary:item.publicSummary,scope:item.scope}));
+  const cases=(node.cases||[]).map(item=>({
+    id:item.id,title:item.title,symptom:item.symptom,evidenceState:item.evidenceState,caseStatus:item.caseStatus,
+    confidence:item.confidence,publicSummary:item.publicSummary,normalExpectation:item.normalExpectation,scope:item.scope,
+    confirmedFacts:item.confirmedFacts||[],hypotheses:item.hypotheses||[],technicalChain:item.technicalChain||[],
+    reportVersions:item.reportVersions||[],evidence:item.evidence||[],tpm:item.tpm||{},projection:item.projection||null,
+    projectionKnowledgeId:item.projectionKnowledgeId,mappedNodeId:item.mappedNodeId,platforms:item.platforms||[]
+  }));
+  const analysis={
+    entry:contentState==='awaiting_absorption'?'先补齐当前节点资料、适用版本和正常预期，再进入故障分析。':`先确认车型、软件版本、运行域和正常预期，再沿「${responsibility.role}」的输入、内部机制与输出定位最早可证实断点。`,
+    possibilities:[...new Set(cases.flatMap(item=>item.hypotheses||[]))].slice(0,8),
+    checkDomains:[...new Set([memberships.primary?.title,...(memberships.secondary||[]).map(item=>item.title)].filter(Boolean))],
+    observationPoints:observations.slice(0,10),skills
+  };
   const sourceClaims=(node.sourceClaims||[]).map(item=>({...item}));
   for(const item of sourceClaims)if(item.downloadUrl&&!uniqueReferences.some(reference=>reference.url===item.downloadUrl))uniqueReferences.push({
     id:`mapped-source:${item.sourceId}`,kind:'source',title:item.title,url:item.downloadUrl,pages:item.pages||[],status:item.status,
@@ -324,7 +336,7 @@ export function buildReaderModel(graph,nodeId,{maxRelations=12,maxCitations=12,m
     summary,summaryBasis,
     scope:{platforms:node.platforms||[],runtimeDomain:node.runtimeDomain||node.domain,version:node.version,status:node.status},
     breadcrumb,memberships,responsibility,children,technicalPaths,observations,citations,references:uniqueReferences,navigation,contentState,insights,
-    courses,skills,cases,sourceClaims,tpm:node.responsibility||{},verification:node.verification||[],
+    courses,skills,analysis,cases,sourceClaims,tpm:node.responsibility||{},verification:node.verification||[],
     notice:contentState==='awaiting_absorption'?'该节点已完成层级归类，但资料尚未吸收；分类关系不作为技术结论。':'技术关系优先采用结构化说明；车型、版本、接口编号及时序仍以引用原文和现车资料为准。'
   };
 }
@@ -336,7 +348,7 @@ export function readerMarkdown(model){
   const scope=[...(model.scope.platforms||[]),model.scope.runtimeDomain,model.scope.version].filter(Boolean).join(' · ')||'未限定';
   const basis={curated_summary:'人工整理摘要',structured_knowledge:'结构化知识整理',classification_only:'分类完成、内容待吸收'}[model.summaryBasis]||'知识整理';
   const breadcrumb=(model.breadcrumb||[]).map(item=>item.title).join(' → ')||model.title;
-  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 架构归属',''];
+  const lines=[`# ${model.title}`,'',`> 专题总结依据：${basis}`,'',`**所在层级：** ${breadcrumb}`,'',model.summary,'',`**适用范围：** ${scope}`,'','## 本层架构',''];
   if(model.memberships?.primary)lines.push(`- **主要归属：** ${model.memberships.primary.title}`);else lines.push('- **主要归属：** 智能座舱总入口');
   if(model.memberships?.secondary?.length)lines.push(`- **同时关联：** ${model.memberships.secondary.map(item=>item.title).join('、')}`);else lines.push('- **同时关联：** 无已登记交叉归属');
   lines.push('','## 本层职责','');
@@ -345,26 +357,35 @@ export function readerMarkdown(model){
     lines.push(`- **职责：** ${model.responsibility.role}`);
     for(const [label,values] of [['输入',model.responsibility.input],['机制',model.responsibility.mechanism],['输出',model.responsibility.output],['限制',model.responsibility.limits]])for(const value of values||[])lines.push(`- **${label}：** ${value}`);
   }
-  lines.push('','## 继续向下钻','');
+  lines.push('','## 下级节点','');
   if(model.children?.length)for(const child of model.children)lines.push(`- **${child.title}**：${child.role}`);else lines.push('- 当前节点没有更下一层的公开节点。');
-  lines.push('','## 课程与分析技能','');
+  lines.push('','## 课程','');
   if(model.courses?.length)for(const item of model.courses)lines.push(`- **${item.title}**${item.url?`：${item.url}`:''}`);else lines.push('- 暂无已映射 Day／Week。');
-  if(model.skills?.length)lines.push(`- **适用技能：** ${model.skills.map(item=>item.id).join('、')}`);else lines.push('- **适用技能：** 待复核。');
-  lines.push('','## 正常技术链（图谱关系衍生）','');
+  lines.push('','## 分析','',`- **分析入口：** ${model.analysis.entry}`);
+  if(model.analysis.skills?.length)lines.push(`- **适用技能：** ${model.analysis.skills.map(item=>item.id).join('、')}`);else lines.push('- **适用技能：** 待复核。');
+  if(model.analysis.possibilities?.length)for(const item of model.analysis.possibilities)lines.push(`- **可能性：** ${item}`);
+  if(model.analysis.checkDomains?.length)lines.push(`- **需要检查的域：** ${model.analysis.checkDomains.join('、')}`);
+  if(model.analysis.observationPoints?.length)for(const item of model.analysis.observationPoints)lines.push(`- **观测点：** ${item}`);
+  lines.push('','## 历史日志案例','');
+  if(model.cases?.length)for(const item of model.cases){
+    lines.push(`- **${item.title||item.symptom}**（${item.caseStatus||item.evidenceState}，置信度：${item.confidence||'待确认'}）：${item.projection?.summary||item.publicSummary}`);
+    if(item.projection?.relationReason)lines.push(`  - **映射到本节点的原因：** ${item.projection.relationReason}`);
+    for(const report of item.reportVersions||[])lines.push(`  - **报告版本：** ${report.title}（${report.statusLabel||report.status}）  \n    ${report.url}`);
+  }else lines.push('- 当前没有已公开的脱敏案件摘要。');
+  lines.push('','## 技术关系及关联原因','');
   const groups=Object.entries(model.technicalPaths||{});
   if(groups.length)for(const [path,items] of groups){
     lines.push(`### ${pathLabels[path]||path}`,'');
     for(const item of items)lines.push(`- **${item.relatedTitle}**：${item.why}\n  - **输入：** ${item.input||'待确认'}\n  - **交接：** ${item.handoff||'待确认'}\n  - **输出：** ${item.output||'待确认'}\n  - **引用依据：** ${item.evidenceBasis||'见引用区'}`);
   }else lines.push('- 当前没有可发布的结构化技术关系。');
-  lines.push('','## 真实案件与责任闭环','');
-  if(model.cases?.length)for(const item of model.cases)lines.push(`- **${item.symptom}**（${item.evidenceState}）：${item.publicSummary}`);else lines.push('- 当前没有已公开的脱敏案件摘要。');
-  for(const [label,key] of [['触发','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['验证方','verifier'],['关闭判据','closure']])if(model.tpm?.[key])lines.push(`- **${label}：** ${model.tpm[key]}`);
-  lines.push('','## 如何验证','');
-  for(const item of model.verification||[])lines.push(`- ${item}`);
-  if(model.observations?.length)for(const item of model.observations)lines.push(`- ${item}`);else lines.push('- 资料尚未吸收，暂未形成可靠观测清单。');
-  lines.push('','## 资料映射与证据边界','');
+  for(const item of model.cases||[])for(const relation of item.technicalChain||[])lines.push(`- **案例链：${item.title||item.symptom}**：${relation.text}\n  - **故障为何传播：** ${relation.failurePropagation}${item.projection?.relationReason?`\n  - **与本节点的关系：** ${item.projection.relationReason}`:''}`);
+  lines.push('','## 原始资料与证据','');
+  for(const item of model.cases||[]){
+    for(const report of item.reportVersions||[])lines.push(`- **分析报告：${report.title}**（${report.statusLabel||report.status}）：${report.summary}  \n  ${report.url}`);
+    for(const evidence of item.evidence||[])lines.push(`- **${evidence.id} · ${evidence.source}**（${evidence.type}，${evidence.location}）：${evidence.supports}\n  - **证据边界：** ${evidence.boundary}`);
+  }
   if(model.sourceClaims?.length)for(const item of model.sourceClaims.slice(0,20))lines.push(`- **${item.title}**（${item.status}）：${item.basis}${item.downloadUrl?`  \n  ${item.downloadUrl}`:''}`);else lines.push('- 当前没有登记到该节点的原始资料映射。');
-  lines.push('','> '+model.notice,'','## 引用资料与文章','');
+  lines.push('','> '+model.notice,'','### 补充引用资料与文章','');
   const representedReferenceUrls=new Set();
   if(model.citations.length)for(const item of model.citations){
     const platformText=item.platforms?.length?`，适用 ${item.platforms.join('/')}`:'';
@@ -379,6 +400,11 @@ export function readerMarkdown(model){
   const sourceReferences=model.references.filter(item=>item.kind==='source'&&!representedReferenceUrls.has(item.url));
   for(const item of sourceReferences){const platformText=item.platforms?.length?`，适用 ${item.platforms.join('/')}`:'';lines.push(`- **原始资料：${item.title}**（${pageText(item.pages)}，${item.status||'source_register'}${platformText}）${item.summary?`：${item.summary}`:''}\n  - **为什么引用：** ${item.whyCited}\n  - **证据边界：** ${item.evidenceBoundary}  \n  ${item.url}`);representedReferenceUrls.add(item.url)}
   if(!model.citations.length&&!articleReferences.length&&!sourceReferences.length)lines.push('- 当前节点暂无已绑定的页码证据或可加载原始资料。');
+  lines.push('','## TPM责任与验证关闭','');
+  for(const [label,key] of [['触发','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['接口／恢复策略方','interfaceOwner'],['验证方','verifier'],['关闭判据','closure']])if(model.tpm?.[key])lines.push(`- **${label}：** ${model.tpm[key]}`);
+  for(const item of model.cases||[])for(const [label,key] of [['触发','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['接口／恢复策略方','interfaceOwner'],['验证方','verifier'],['关闭判据','closure']])if(item.tpm?.[key])lines.push(`- **${item.title||item.symptom} · ${label}：** ${item.tpm[key]}`);
+  for(const item of model.verification||[])lines.push(`- **节点验证：** ${item}`);
+  if(model.observations?.length)for(const item of model.observations)lines.push(`- **观测点：** ${item}`);
   lines.push('','<details>','<summary>导航关系</summary>','');
   if(model.navigation?.length)for(const item of model.navigation)lines.push(`- ${item.relatedTitle}（${relationLabels[item.relationType]||item.relationType}）：${item.whyRelated}`);else lines.push('- 无');
   lines.push('','</details>');

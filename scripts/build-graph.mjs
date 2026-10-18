@@ -2,6 +2,7 @@ import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {loadKnowledgeContent, compileKnowledgeGraph} from './lib/knowledge-model.mjs';
+import {embedCases} from './lib/case-model.mjs';
 import {
   loadArchitectureTaxonomy,applyArchitectureTaxonomy,loadHierarchy,applyHierarchy,
   validateHierarchy,validateSecondaryParents,buildHierarchyEdges,buildSecondaryHierarchyEdges
@@ -208,10 +209,7 @@ const hierarchicalById=new Map(hierarchicalNodes.map(node=>[node.id,node]));
 const addUnique=(node,key,value)=>{if(!node)return;node[key]=[...new Set([...(node[key]||[]),value])];};
 for(const item of learningMapping.items)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'dayIds',item.id);
 for(const item of skillMapping.skills)for(const knowledgeId of item.knowledgeIds||[])addUnique(hierarchicalById.get(knowledgeId),'skillIds',item.id);
-for(const item of caseRegister.cases)for(const knowledgeId of item.knowledgeIds||[]){
-  const target=hierarchicalById.get(knowledgeId);addUnique(target,'caseIds',item.id);
-  if(target){target.cases=target.cases||[];target.cases.push(item);}
-}
+embedCases(hierarchicalNodes,architectureTaxonomy,caseRegister);
 for(const source of sourceRegister.documents)for(const mapping of source.knowledgeMappings||[]){
   const target=hierarchicalById.get(mapping.knowledgeId);if(!target)continue;
   target.sourceClaims=target.sourceClaims||[];

@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T12T（MT8676）整车间歇性异常噪声根因分析</title>
+  <style>
+    :root {
+      --ink:#172033; --muted:#657086; --line:#dfe5ee; --panel:#ffffff;
+      --bg:#f2f5f9; --red:#b42318; --red-bg:#fff1f0; --blue:#175cd3;
+      --blue-bg:#eff8ff; --green:#067647; --green-bg:#ecfdf3;
+      --amber:#b54708; --amber-bg:#fffaeb; --violet:#6938ef;
+      --shadow:0 6px 22px rgba(25,39,66,.08);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:"Microsoft YaHei","Segoe UI",Arial,sans-serif; }
+    .page { max-width:1240px; margin:0 auto; padding:30px 28px 46px; }
+    .hero { background:linear-gradient(135deg,#151f32 0%,#243a63 66%,#7a271a 100%); color:#fff; border-radius:16px; padding:28px 30px 24px; box-shadow:var(--shadow); }
+    .eyebrow { font-size:12px; letter-spacing:.12em; opacity:.78; text-transform:uppercase; }
+    h1 { margin:8px 0 8px; font-size:28px; line-height:1.35; }
+    .subtitle { color:#d5deed; font-size:13px; line-height:1.75; }
+    .chips { display:flex; gap:9px; flex-wrap:wrap; margin-top:18px; }
+    .chip { padding:7px 11px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); font-size:12px; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin-top:18px; }
+    .card { grid-column:span 12; background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:20px 22px; box-shadow:var(--shadow); }
+    .half { grid-column:span 6; }
+    .third { grid-column:span 4; }
+    .section-title { display:flex; align-items:center; gap:10px; margin:0 0 12px; font-size:18px; }
+    .section-title .num { width:28px; height:28px; display:inline-grid; place-items:center; border-radius:8px; color:#fff; background:#344054; font-size:13px; }
+    .lead { font-size:15px; line-height:1.9; margin:0; }
+    .newbie { border-top:6px solid var(--green); background:linear-gradient(180deg,#f6fffa 0%,#fff 58%); }
+    .newbie h2 { margin:0; color:#05603a; font-size:22px; }
+    .newbie-intro { margin:7px 0 15px; color:#475467; font-size:14px; line-height:1.75; }
+    .story-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .story { border:1px solid #d0d5dd; border-radius:10px; padding:13px 15px; background:#fff; }
+    .story h3 { margin:0 0 7px; font-size:15px; color:#25324a; }
+    .story p { margin:0; font-size:13px; line-height:1.8; color:#344054; }
+    .plain-chain { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; align-items:stretch; gap:8px; margin:15px 0; }
+    .plain-step { display:flex; flex-direction:column; justify-content:center; min-height:94px; padding:12px; text-align:center; border-radius:10px; border:1px solid #b2ddff; background:#eff8ff; }
+    .plain-step b { color:#1849a9; font-size:14px; }
+    .plain-step span { margin-top:5px; color:#475467; font-size:12px; line-height:1.55; }
+    .plain-step.bad { border-color:#fda29b; background:#fff1f0; }
+    .plain-step.bad b { color:#b42318; }
+    .plain-arrow { display:grid; place-items:center; color:#667085; font-size:22px; }
+    .term-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; }
+    .term { border:1px solid var(--line); border-radius:9px; padding:12px; background:#fbfcfe; }
+    .term b { display:block; font-size:13px; color:#25324a; margin-bottom:5px; }
+    .term span { display:block; font-size:12px; line-height:1.65; color:#667085; }
+    .read-path { margin-top:13px; padding:11px 13px; border-radius:8px; background:#f2f4f7; color:#475467; font-size:12px; line-height:1.7; }
+    .finding { border-left:6px solid var(--red); background:linear-gradient(90deg,var(--red-bg),#fff 42%); }
+    .finding h2 { margin:0 0 10px; color:var(--red); font-size:20px; }
+    .callout { border-radius:9px; padding:12px 14px; margin-top:12px; font-size:13px; line-height:1.7; }
+    .direct { background:var(--blue-bg); border:1px solid #b2ddff; color:#1849a9; }
+    .inference { background:var(--amber-bg); border:1px dashed #fdb022; color:#7a2e0e; }
+    .pending { background:#f8fafc; border:1px dashed #98a2b3; color:#475467; }
+    .legend { display:flex; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:12px; margin-top:12px; }
+    .dot { display:inline-block; width:10px; height:10px; margin-right:5px; border-radius:3px; vertical-align:-1px; }
+    .metric-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:14px; }
+    .metric { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:13px; }
+    .metric strong { display:block; font-size:25px; line-height:1.1; color:#1d2939; }
+    .metric span { display:block; margin-top:5px; color:var(--muted); font-size:12px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; font-size:13px; overflow:hidden; border:1px solid var(--line); border-radius:9px; }
+    th { background:#f5f7fa; color:#344054; text-align:left; font-weight:700; padding:9px 10px; border-bottom:1px solid var(--line); }
+    td { padding:8px 10px; border-bottom:1px solid #edf0f4; vertical-align:top; line-height:1.55; }
+    tr:last-child td { border-bottom:0; }
+    code { font-family:Consolas,"SFMono-Regular",monospace; background:#f2f4f7; padding:1px 5px; border-radius:4px; font-size:.95em; }
+    pre { margin:8px 0 0; padding:13px 15px; overflow:auto; border-radius:9px; background:#101828; color:#e4e7ec; font:12px/1.65 Consolas,"SFMono-Regular",monospace; white-space:pre-wrap; word-break:break-all; }
+    .evidence-tag { display:inline-block; font-size:11px; font-weight:700; padding:3px 7px; border-radius:999px; margin-right:6px; }
+    .tag-direct { color:#1849a9; background:#d1e9ff; }
+    .tag-inference { color:#93370d; background:#fef0c7; }
+    .tag-pending { color:#475467; background:#eaecf0; }
+    .bar-wrap { min-width:150px; background:#eef2f6; height:10px; border-radius:5px; overflow:hidden; margin-top:4px; }
+    .bar { height:100%; background:#f97066; border-radius:5px; }
+    .ok { background:#12b76a; }
+    .steps { margin:0; padding-left:22px; line-height:1.85; font-size:13px; }
+    .steps li { margin:5px 0; }
+    .source { color:var(--muted); font-size:12px; margin-top:10px; }
+    .summary-card { border-top:5px solid #344054; background:linear-gradient(180deg,#fff 0%,#f9fafb 100%); }
+    .summary-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .summary-block { border:1px solid var(--line); border-radius:10px; background:#fff; padding:14px 16px; }
+    .summary-block h3 { margin:0 0 8px; color:#25324a; font-size:15px; }
+    .summary-block p { margin:0; font-size:13px; line-height:1.8; }
+    .summary-block ul { margin:0; padding-left:20px; font-size:13px; line-height:1.8; }
+    .verdict { margin-top:14px; border:1px solid #fda29b; border-left:6px solid var(--red); border-radius:10px; background:var(--red-bg); padding:15px 17px; font-size:14px; line-height:1.85; }
+    .explain-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:10px 0 18px; }
+    .explain { border-radius:9px; padding:11px 12px; font-size:12px; line-height:1.7; }
+    .explain b { display:block; margin-bottom:4px; font-size:13px; }
+    .saw { background:#eff8ff; border:1px solid #b2ddff; color:#1849a9; }
+    .means { background:#ecfdf3; border:1px solid #abefc6; color:#05603a; }
+    .limit { background:#fffaeb; border:1px dashed #fdb022; color:#7a2e0e; }
+    .footer { text-align:center; color:#7b8494; font-size:11px; margin-top:22px; line-height:1.7; }
+    .flow { width:100%; height:auto; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; }
+    @media (max-width:860px) {
+      .page { padding:16px 12px 30px; } .half,.third { grid-column:span 12; }
+      .metric-row,.summary-grid,.story-grid,.term-grid,.explain-row { grid-template-columns:repeat(1,1fr); } h1 { font-size:22px; }
+      .plain-chain { grid-template-columns:1fr; }
+      .plain-arrow { transform:rotate(90deg); min-height:18px; }
+    }
+    @media print {
+      body { background:#fff; } .page { max-width:none; padding:0; } .card,.hero { box-shadow:none; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <div class="eyebrow">T12T · MT8676 · Audio / Vehicle Signal Investigation</div>
+    <h1>T12T（MT8676）整车间歇性异常噪声根因分析</h1>
+    <div class="subtitle">
+      数据源：E:\问题日志\8676\整车有异常噪声\audio.log（634,149 行）与 versions.txt<br>
+      MBOS：CHERY_T12T-MT86XX-MB-4.0R-CHERY-D00.03.18.7A-202610100049 ｜ com.mb.core 76.0.0.573
+    </div>
+    <div class="chips">
+      <span class="chip">92 次声音请求</span><span class="chip">89 次提前打断</span>
+      <span class="chip">3 次完整播放</span><span class="chip">3 个异常窗口</span>
+      <span class="chip">直接失效机理：已闭环</span><span class="chip">上游信号源：待验证</span>
+    </div>
+  </header>
+
+  <section class="grid">
+    <article class="card newbie">
+      <h2>新人先看：60 秒读懂这个问题</h2>
+      <p class="newbie-intro">
+        先不看 CAN 编号、进程号和音频参数。把问题理解成一句话：<b>车机本来只需要完整播放一次提示音，
+        但它误以为驾驶模式在不停切换，于是同一段提示音刚响一点就被停止，然后又从头播放；连续重复后，乘员听到的就不再像正常提示音，而像来源不明的“滴滴声”或异常噪声。</b>
+      </p>
+
+      <div class="plain-chain" aria-label="面向新人的问题流程说明">
+        <div class="plain-step"><b>① 车辆报告状态</b><span>车内通信系统告诉车机当前驾驶模式</span></div>
+        <div class="plain-arrow">→</div>
+        <div class="plain-step bad"><b>② 状态来回跳变</b><span>日志中模式 0 和 1 在很短时间内反复出现</span></div>
+        <div class="plain-arrow">→</div>
+        <div class="plain-step bad"><b>③ 应用重复播放</b><span>每收到一次模式 1，就重新播放同一提示音</span></div>
+        <div class="plain-arrow">→</div>
+        <div class="plain-step bad"><b>④ 听起来像噪声</b><span>3 秒声音多数只响约 0.1 秒，就被下一次播放打断</span></div>
+      </div>
+
+      <div class="story-grid">
+        <div class="story">
+          <h3>正常情况应该怎样</h3>
+          <p>驾驶模式真正发生一次变化，车机识别到一次有效变化，提示音播放一次，并完整播放结束。重复上报相同状态时，不应再次播放。</p>
+        </div>
+        <div class="story">
+          <h3>实际发生了什么</h3>
+          <p>驾驶模式值在 0 和 1 之间快速往返。应用把每次值 1 都当成一次新的模式变化，累计发起 92 次播放。</p>
+        </div>
+        <div class="story">
+          <h3>为什么会听成“噪声”</h3>
+          <p>声音本身不一定损坏；问题是它被切成许多很短的开头。89 次播放在半秒内被停止，最常见的实际时长只有约 0.085 秒或 0.128 秒。</p>
+        </div>
+        <div class="story">
+          <h3>应该由谁处理</h3>
+          <p>CAN/VHAL 团队需要查清状态为什么跳变和映射为什么失败；com.mb.core 团队需要增加有效值过滤、防抖和播放去重。两侧都属于最高优先级。</p>
+        </div>
+      </div>
+
+      <div class="callout pending"><span class="evidence-tag tag-pending">目前还不知道</span>
+        Android 日志只能证明“车机收到的值在跳”，不能单独证明是 MCU、网关、真实 CAN 总线还是 Android 转换层最先制造了抖动；还需要同一时间段的原始 CAN trace。附件也不是座舱录音，因此声音听感仍需要录音对时确认。
+      </div>
+      <div class="read-path"><b>建议阅读路线：</b>第一次接触问题时，先看本节和下面的名词解释；需要理解原因时看第 1～5 节；需要复核证据时看第 6 节；开发、测试和问题经理可重点看第 7～12 节。</div>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title">先认识 5 个名词</h2>
+      <div class="term-grid">
+        <div class="term"><b>车辆信号（CAN）</b><span>可以理解为车内各控制器之间传递状态的“消息”。这里传递的是驾驶模式等车辆状态。</span></div>
+        <div class="term"><b>Android 车辆翻译层（VHAL）</b><span>把车辆原始信号转换成 Android 应用能理解的属性，相当于车辆与应用之间的翻译员。</span></div>
+        <div class="term"><b>业务应用（com.mb.core）</b><span>根据车辆状态执行功能。本问题中，它判断驾驶模式是否变化，并决定是否播放提示音。</span></div>
+        <div class="term"><b>播放器（AudioTrack）</b><span>Android 真正把声音数据送到音频系统的播放对象。每次重建或停止都会改变实际听到的声音。</span></div>
+        <div class="term"><b>音频帧（frames）</b><span>衡量实际播放了多少声音数据。48 kHz 下，144000 帧是 3 秒；4100 帧只有约 0.085 秒。</span></div>
+      </div>
+    </article>
+
+    <article class="card finding">
+      <h2>根因结论</h2>
+      <p class="lead">
+        异常声音由 <b>com.mb.core（PID 4509）</b> 的 <code>AudioTrackPlayer</code> 发起，属于
+        <b>USAGE_ASSISTANCE_SONIFICATION 系统提示音</b>。单个音频为 48 kHz、双声道、16 bit PCM，
+        数据长度 576000 bytes，对应 <b>3 秒</b>。故障期间，驾驶模式原始信号 <code>0x66002000</code>
+        在 <code>0 ↔ 1</code> 间约每 100 ms 反复切换；模式 0 被跳过，模式 1 每次都触发新的播放请求。
+        因而同一提示音被请求 92 次，其中 89 次在 0.5 秒内被下一次请求打断，形成连续短促、重复的异常提示音听感。
+      </p>
+      <div class="callout direct"><span class="evidence-tag tag-direct">直接证据</span>
+        CAN 值 0/1 各 92 次；<code>DrivingFeature</code> 模式 0/1 各 92 次；<code>AudioTrackPlayer.play()</code> 92 次，计数严格对应。
+      </div>
+      <div class="callout inference"><span class="evidence-tag tag-inference">分析推断</span>
+        用户听到的“偶发噪声”高度疑似就是被反复截断的系统提示音；但附件是 logcat 文本而非座舱录音，具体声纹仍需录音与日志时间对齐确认。
+      </div>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title"><span class="num">1</span>单次抖动周期：毫秒级触发链</h2>
+      <svg class="flow" viewBox="0 0 1120 330" role="img" aria-label="CAN 驾驶模式抖动触发系统提示音的时序图">
+        <defs>
+          <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9Z" fill="#667085"/></marker>
+          <marker id="arrowRed" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9Z" fill="#d92d20"/></marker>
+        </defs>
+        <rect x="0" y="0" width="1120" height="330" rx="10" fill="#fbfcfe"/>
+        <g font-family="Microsoft YaHei, Segoe UI" font-size="12" fill="#344054">
+          <text x="18" y="54" font-weight="700">上游信号源</text><text x="18" y="119" font-weight="700">CAN / VHAL</text>
+          <text x="18" y="184" font-weight="700">DrivingFeature</text><text x="18" y="249" font-weight="700">AudioTrack</text>
+          <line x1="0" y1="75" x2="1120" y2="75" stroke="#e4e7ec"/><line x1="0" y1="140" x2="1120" y2="140" stroke="#e4e7ec"/>
+          <line x1="0" y1="205" x2="1120" y2="205" stroke="#e4e7ec"/><line x1="0" y1="270" x2="1120" y2="270" stroke="#e4e7ec"/>
+          <rect x="160" y="29" width="145" height="32" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="5 4"/>
+          <text x="232" y="49" text-anchor="middle">MCU / 网关 / 配置层？</text>
+          <path d="M305 45 C340 45 340 105 370 105" fill="none" stroke="#98a2b3" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+          <text x="322" y="31" fill="#667085">待验证</text>
+          <rect x="370" y="89" width="160" height="34" rx="6" fill="#eaf2ff" stroke="#2e90fa"/><text x="450" y="111" text-anchor="middle">0x66002000 = 0</text>
+          <rect x="615" y="89" width="160" height="34" rx="6" fill="#eaf2ff" stroke="#2e90fa"/><text x="695" y="111" text-anchor="middle">0x66002000 = 1</text>
+          <rect x="360" y="154" width="180" height="34" rx="6" fill="#fff6e8" stroke="#f79009"/><text x="450" y="176" text-anchor="middle">toCommon = -1；skip</text>
+          <rect x="605" y="154" width="180" height="34" rx="6" fill="#ecfdf3" stroke="#12b76a"/><text x="695" y="176" text-anchor="middle">toCommon = 1；changed</text>
+          <rect x="595" y="219" width="200" height="34" rx="6" fill="#fee4e2" stroke="#f04438"/><text x="695" y="241" text-anchor="middle">play + stopInternal</text>
+          <rect x="875" y="219" width="200" height="34" rx="6" fill="#b42318"/><text x="975" y="241" text-anchor="middle" fill="#fff">下一周期：停止 ACTIVE 轨</text>
+          <line x1="450" y1="123" x2="450" y2="154" stroke="#667085" marker-end="url(#arrow)"/>
+          <line x1="695" y1="123" x2="695" y2="154" stroke="#667085" marker-end="url(#arrow)"/>
+          <line x1="695" y1="188" x2="695" y2="219" stroke="#d92d20" marker-end="url(#arrowRed)"/>
+          <line x1="795" y1="236" x2="875" y2="236" stroke="#d92d20" stroke-width="2" marker-end="url(#arrowRed)"/>
+          <text x="370" y="304" fill="#667085">19:33:59.831</text><text x="615" y="304" fill="#667085">19:33:59.850 / .852</text>
+          <text x="900" y="304" fill="#b42318" font-weight="700">19:33:59.952（约 100 ms 后）</text>
+        </g>
+      </svg>
+      <div class="legend">
+        <span><i class="dot" style="background:#2e90fa"></i>日志直接观测</span>
+        <span><i class="dot" style="background:#12b76a"></i>业务处理</span>
+        <span><i class="dot" style="background:#f04438"></i>声音播放/打断</span>
+        <span><i class="dot" style="background:#98a2b3"></i>虚线为待验证路径</span>
+      </div>
+      <div class="source">证据：audio.log:244516、244518、244546、244553、244759、244761、244774～244777、245567、245589～245592。</div>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title"><span class="num">2</span>92 次播放为什么会听成噪声</h2>
+      <div class="metric-row">
+        <div class="metric"><strong>3.0 s</strong><span>单个 PCM 提示音理论时长</span></div>
+        <div class="metric"><strong>92 次</strong><span>AudioTrackPlayer.play 请求</span></div>
+        <div class="metric"><strong>89 次</strong><span>0.5 秒内即被打断</span></div>
+        <div class="metric"><strong>96.7%</strong><span>提前打断占全部请求比例</span></div>
+      </div>
+      <svg class="flow" viewBox="0 0 1120 205" style="margin-top:14px" role="img" aria-label="提示音反复重启示意图">
+        <g font-family="Microsoft YaHei, Segoe UI" font-size="12">
+          <text x="20" y="34" fill="#344054" font-weight="700">正常：一次请求完整播放 3 秒</text>
+          <rect x="240" y="20" width="820" height="18" rx="5" fill="#a6f4c5" stroke="#12b76a"/><text x="1065" y="34" fill="#067647">3.0 s</text>
+          <text x="20" y="84" fill="#344054" font-weight="700">异常：约每 100 ms 重建一次</text>
+          <g fill="#fda29b" stroke="#f04438">
+            <rect x="240" y="69" width="30" height="18" rx="4"/><rect x="288" y="69" width="30" height="18" rx="4"/>
+            <rect x="336" y="69" width="30" height="18" rx="4"/><rect x="384" y="69" width="30" height="18" rx="4"/>
+            <rect x="432" y="69" width="30" height="18" rx="4"/><rect x="480" y="69" width="30" height="18" rx="4"/>
+            <rect x="528" y="69" width="30" height="18" rx="4"/><rect x="576" y="69" width="30" height="18" rx="4"/>
+          </g>
+          <text x="630" y="83" fill="#667085">…短音反复起头并被下一请求打断…</text>
+          <text x="240" y="118" fill="#b42318">0.085 s</text><text x="336" y="118" fill="#b42318">0.128 s</text><text x="432" y="118" fill="#b42318">0.085 s</text>
+          <text x="20" y="165" fill="#344054" font-weight="700">抖动结束：最后一轨完整播放</text>
+          <rect x="240" y="150" width="820" height="18" rx="5" fill="#6ce9a6" stroke="#039855"/>
+          <text x="240" y="190" fill="#067647">144000 frames / 48000 Hz = 3.0 s；三段窗口各留下 1 次完整播放</text>
+        </g>
+      </svg>
+      <div class="callout direct"><span class="evidence-tag tag-direct">计算依据</span>
+        576000 ÷（48000 samples/s × 2 channels × 2 bytes）= 3 秒。第一轨在 audio.log:245591 为 <code>STATE_ACTIVE</code> 时被停止，audio.log:245592 仅交付 4100 帧，即 0.085 秒。
+      </div>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">3</span>实际播放时长分布</h2>
+      <table>
+        <thead><tr><th>交付帧数</th><th>时长</th><th>次数</th><th>分布</th></tr></thead>
+        <tbody>
+          <tr><td>4100</td><td>0.085 s</td><td>31</td><td><div class="bar-wrap"><div class="bar" style="width:62%"></div></div></td></tr>
+          <tr><td>6148</td><td>0.128 s</td><td>50</td><td><div class="bar-wrap"><div class="bar" style="width:100%"></div></div></td></tr>
+          <tr><td>8196</td><td>0.171 s</td><td>1</td><td><div class="bar-wrap"><div class="bar" style="width:2%"></div></div></td></tr>
+          <tr><td>10244</td><td>0.213 s</td><td>3</td><td><div class="bar-wrap"><div class="bar" style="width:6%"></div></div></td></tr>
+          <tr><td>14340</td><td>0.299 s</td><td>3</td><td><div class="bar-wrap"><div class="bar" style="width:6%"></div></div></td></tr>
+          <tr><td>20484</td><td>0.427 s</td><td>1</td><td><div class="bar-wrap"><div class="bar" style="width:2%"></div></div></td></tr>
+          <tr><td><b>144000</b></td><td><b>3.000 s</b></td><td><b>3</b></td><td><div class="bar-wrap"><div class="bar ok" style="width:6%"></div></div></td></tr>
+        </tbody>
+      </table>
+      <div class="source">89 次提前停止由 PID/TID 4509/4990 的 frames-delivered 日志统计；3 次完整播放见 audio.log:292466、371318、457280。</div>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">4</span>三个异常窗口</h2>
+      <table>
+        <thead><tr><th>窗口</th><th>播放请求起止</th><th>次数</th><th>窗口跨度</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>19:33:59.852 ～ 19:34:06.557</td><td>68</td><td>6.710 s</td></tr>
+          <tr><td>2</td><td>19:35:18.957 ～ 19:35:21.956</td><td>19</td><td>2.999 s</td></tr>
+          <tr><td>3</td><td>19:36:57.558 ～ 19:36:58.056</td><td>5</td><td>0.498 s</td></tr>
+        </tbody>
+      </table>
+      <div class="callout direct"><span class="evidence-tag tag-direct">直接证据</span>
+        三个窗口合计 68 + 19 + 5 = 92 次；窗口结束后最后一轨分别在 19:34:09.549、19:35:24.958、19:37:01.063 完整交付 144000 帧。
+      </div>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title"><span class="num">5</span>同步车辆信号：上游异常线索，不等同于声音触发者</h2>
+      <table>
+        <thead><tr><th>CAN libid</th><th>映射 Property</th><th>业务含义 / Feature</th><th>值 0 / 值 1 接收次数</th><th>证据判断</th></tr></thead>
+        <tbody>
+          <tr><td><code>0x66002000</code></td><td><code>0x21406002</code></td><td>DRIVING_MODE / DrivingFeature</td><td>92 / 92</td><td><b style="color:#175cd3">与 92 次播放一一对应</b></td></tr>
+          <tr><td><code>0x440B2000</code></td><td><code>0x214040B2</code></td><td>转向助力模式 / DrivingFeature</td><td>101 / 101</td><td>同窗同步变化，未证明直接调用播放</td></tr>
+          <tr><td><code>0x440B5000</code></td><td><code>0x214040B5</code></td><td>后视镜展开/折叠 / BodyControlFeature</td><td>101 / 101</td><td>同窗同步变化，未证明直接调用播放</td></tr>
+          <tr><td><code>0x6609B000</code></td><td><code>0x2140609B</code></td><td>制动踏板模式 / DrivingFeature</td><td>101 / 101</td><td>同窗同步变化，未证明直接调用播放</td></tr>
+        </tbody>
+      </table>
+      <div class="callout inference"><span class="evidence-tag tag-inference">分析推断</span>
+        多路车辆属性在同一毫秒批次一起从 0 变 1，再周期性返回 0，提示问题可能位于共同的 CAN source、网关转发、上电默认值或 VehicleConnector 批处理/转换层。日志只证明“Android 收到了抖动值”，不能据此直接判定 MCU 或真实 CAN 总线故障。
+      </div>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title"><span class="num">6</span>原始日志证据</h2>
+      <p><span class="evidence-tag tag-direct">直接证据 A</span><b>驾驶模式 0：转换未命中，业务层判为无效并跳过播放</b></p>
+      <pre>audio.log:244516  10-12 19:33:59.831  VehicleClient: Received item data, CANLib( libid: 0x66002000, value: 0 ).
+audio.log:244518  10-12 19:33:59.831  VehicleConnector: ... didn't find canValue: '0', will use can value as default.
+audio.log:244546  10-12 19:33:59.835  DrivingFeature: 驾驶模式[0] toCommon[-1]
+audio.log:244550  10-12 19:33:59.835  DrivingFeature: 驾驶模式 modeChanged[true]
+audio.log:244553  10-12 19:33:59.835  DrivingFeature: playDriveModeSound skip, unsupported mode=0</pre>
+      <div class="explain-row">
+        <div class="explain saw"><b>日志看到了什么</b>车辆层收到驾驶模式值 0；转换表找不到值 0；业务层把它变成 -1，并决定不播放声音。</div>
+        <div class="explain means"><b>这说明什么</b>值 0 没有被当成一个可正常使用的驾驶模式，而且转换配置与实际收到的值不一致。</div>
+        <div class="explain limit"><b>这还不能说明什么</b>仅凭这几行，不能判断值 0 本身不合法，还是转换表漏配了本来合法的值。</div>
+      </div>
+
+      <p><span class="evidence-tag tag-direct">直接证据 B</span><b>19 ms 后变为 1，触发 3 秒提示音</b></p>
+      <pre>audio.log:244759  10-12 19:33:59.850  VehicleClient: Received item data, CANLib( libid: 0x66002000, value: 1 ).
+audio.log:244761  10-12 19:33:59.850  VehicleConnector: ... didn't find canValue: '1', will use can value as default.
+audio.log:244774  10-12 19:33:59.852  DrivingFeature: 驾驶模式[1] toCommon[1]
+audio.log:244775  10-12 19:33:59.852  DrivingFeature: 驾驶模式 modeChanged[true]
+audio.log:244776  10-12 19:33:59.852  AudioTrackPlayer: play sampleRate=48000 isLoop=false dataLen=576000
+audio.log:244777  10-12 19:33:59.852  AudioTrackPlayer: stopInternal</pre>
+      <div class="explain-row">
+        <div class="explain saw"><b>日志看到了什么</b>19 毫秒后，同一信号变成 1；业务层判断模式发生变化，并调用播放器。</div>
+        <div class="explain means"><b>这说明什么</b>驾驶模式值 1 是此次声音请求的直接业务触发条件；播放器不是无缘无故自行启动。</div>
+        <div class="explain limit"><b>这还不能说明什么</b>不能仅凭值 1 的一次出现判断车辆真的切换过驾驶模式，还必须结合原始 CAN 和车辆实际操作。</div>
+      </div>
+
+      <p><span class="evidence-tag tag-direct">直接证据 C</span><b>约 100 ms 后下一次请求把上一轨在 ACTIVE 状态打断</b></p>
+      <pre>audio.log:245589  10-12 19:33:59.952  AudioTrackPlayer: play sampleRate=48000 isLoop=false dataLen=576000
+audio.log:245590  10-12 19:33:59.952  AudioTrackPlayer: stopInternal
+audio.log:245591  10-12 19:33:59.952  AudioTrack: stop(527): ... prior state:STATE_ACTIVE, packageName: com.mb.core
+audio.log:245592  10-12 19:33:59.952  AudioTrack: stop(527): called with 4100 frames delivered
+audio.log:292466  10-12 19:34:09.549  AudioTrack: stop(594): called with 144000 frames delivered</pre>
+      <div class="explain-row">
+        <div class="explain saw"><b>日志看到了什么</b>新的播放请求到来时，上一条声音仍处于 ACTIVE；它只播放了 4100 帧便被停止，而正常完整播放是 144000 帧。</div>
+        <div class="explain means"><b>这说明什么</b>上一条 3 秒提示音实际只播放约 0.085 秒，随后又从头开始；这正是连续短音的形成机制。</div>
+        <div class="explain limit"><b>这还不能说明什么</b>它证明播放被打断，但不能替代座舱录音来确认乘员主观听到的具体音色和音量。</div>
+      </div>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">7</span>根因与责任边界</h2>
+      <table>
+        <thead><tr><th>层级</th><th>结论</th><th>置信度</th></tr></thead>
+        <tbody>
+          <tr><td>声音来源</td><td>com.mb.core 的系统提示音流</td><td><span class="evidence-tag tag-direct">高</span></td></tr>
+          <tr><td>直接触发</td><td>DRIVING_MODE 0/1 抖动，值 1 重复调用 play</td><td><span class="evidence-tag tag-direct">高</span></td></tr>
+          <tr><td>应用放大</td><td>未对无效态/抖动做防抖，播放中相同音频未去重</td><td><span class="evidence-tag tag-direct">高</span></td></tr>
+          <tr><td>转换缺陷</td><td>conversion 对 0/1 均未命中却继续透传</td><td><span class="evidence-tag tag-direct">高</span></td></tr>
+          <tr><td>上游来源</td><td>MCU、网关、CAN source、上电默认帧或 VHAL 转换层之一</td><td><span class="evidence-tag tag-pending">待验证</span></td></tr>
+          <tr><td>Audio HAL</td><td>增益映射、Headset Volume mixer、htimestamp 告警为伴随问题</td><td><span class="evidence-tag tag-inference">次要</span></td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">8</span>排除项与伴随告警</h2>
+      <ul class="steps">
+        <li>未发现与故障窗口对应的 ADSP reset、assert 或 crash。</li>
+        <li>未发现实际运行时 underrun/overrun；日志中的 xrun 仅为阈值配置文本。</li>
+        <li>每次播放均伴随 gain device fallback（92 次）与 <code>Headset Volume</code> mixer 缺失（184 次），但它们发生在播放请求之后，不能解释触发时机。</li>
+        <li>三个输出窗口各出现一次 <code>pcm_get_htimestamp fail</code>，需音频侧独立清理。</li>
+        <li>18:26 的 com.mb.core ANR 早于本次声音窗口，没有直接因果证据。</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h2 class="section-title"><span class="num">9</span>修复优先级</h2>
+      <table>
+        <thead><tr><th>优先级</th><th>措施</th><th>责任域</th><th>验收结果</th></tr></thead>
+        <tbody>
+          <tr><td><b>P0</b></td><td>核对 <code>0x66002000 → 0x21406002</code> 的 DBC/枚举/conversion；未命中值禁止直接作为有效模式透传。</td><td>CAN / VHAL / VehicleConnector</td><td>0、1 均有明确合法映射；无效值保持 last-known-good 或标记 INVALID。</td></tr>
+          <tr><td><b>P0</b></td><td>追查 20～100 ms 的 0/1 抖动：检查重复 source、周期帧/事件帧竞争、网关转发与上电默认值。</td><td>MCU / 网关 / 整车信号</td><td>真实模式不变时，Android property 不再往返变化。</td></tr>
+          <tr><td><b>P0</b></td><td>只按最后一个合法稳定模式判断 changed；忽略 <code>toCommon=-1</code>，增加 300～500 ms 或连续 N 帧稳定判定。</td><td>com.mb.core / DrivingFeature</td><td>注入抖动时不重复发声，合法切换仍及时响应。</td></tr>
+          <tr><td><b>P1</b></td><td>相同提示音正在播放时去重，设置最小重触发间隔，不再无条件 stop/recreate。</td><td>com.mb.core / AudioTrackPlayer</td><td>单次模式切换只产生一次 play，3 秒正常播完。</td></tr>
+          <tr><td><b>P2</b></td><td>修正 bus 设备 gain 映射、错误的 Headset mixer 访问与 htimestamp 异常。</td><td>Audio HAL</td><td>相关告警归零，切换质量稳定。</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">10</span>回归验证标准</h2>
+      <ol class="steps">
+        <li>复现同一 CAN 场景，同时抓取 MCU/CAN、VehicleConnector、CarProperty、DrivingFeature 与 AudioTrack。</li>
+        <li>一次合法模式切换只允许一次 <code>AudioTrackPlayer.play()</code>。</li>
+        <li>人工注入 0/1 抖动，业务层不得连续播放或 stop/recreate。</li>
+        <li>连续 10 分钟台架/道路验证，确认无 100 ms 周期的模式反复与提示音重启。</li>
+        <li>同步录制座舱音频，以统一时钟对齐日志，完成用户听感闭环。</li>
+      </ol>
+    </article>
+
+    <article class="card half">
+      <h2 class="section-title"><span class="num">11</span>待验证项</h2>
+      <div class="callout pending"><span class="evidence-tag tag-pending">待验证</span>
+        <b>上游抖动源：</b>需要同窗 MCU、网关或原始 CAN trace，区分真实总线值抖动与 Android/VHAL 转换错误。
+      </div>
+      <div class="callout pending"><span class="evidence-tag tag-pending">待验证</span>
+        <b>音频资源名称：</b>logcat 只提供 PCM 参数和 dataLen，没有打印资源文件名；需代码或 APK 资源确认具体提示音。
+      </div>
+      <div class="callout pending"><span class="evidence-tag tag-pending">待验证</span>
+        <b>主观声音闭环：</b>需实际录音或现场准确时间戳，证明用户听到的声音与这三组播放窗口重合。
+      </div>
+    </article>
+
+    <article class="card summary-card">
+      <h2 class="section-title"><span class="num">12</span>最终详细总结（用于问题单与评审会）</h2>
+      <div class="callout direct" style="margin:0 0 14px;font-size:14px;line-height:1.85;">
+        <span class="evidence-tag tag-direct">通俗版结论</span>
+        这不是“喇叭自己突然产生了声音”。车机收到的驾驶模式状态在短时间内不停地变成 0、又变成 1；
+        应用每看到一次 1，就让同一段提示音重新从头播放。新声音开始前，旧声音会被停止，所以原本应该持续 3 秒的提示音，
+        大多数只响了约十分之一秒。许多声音开头连续出现，最终就被乘员感知为间歇性的异常噪声。
+      </div>
+      <div class="summary-grid">
+        <section class="summary-block">
+          <h3>问题现象与最终判定</h3>
+          <p>
+            日志在 19:33:59～19:36:58 之间记录到三段成组出现的系统提示音播放。三段分别包含 68、19、5 次请求，
+            合计 92 次。每个请求的源音频理论长度为 3 秒，但其中 89 次只交付 4100～20484 帧，即约 0.085～0.427 秒，
+            随后就被新的播放请求停止。最终判定为：<b>用户所描述的间歇性异常噪声，高度疑似是同一系统提示音在短周期内反复起播、
+            被打断后形成的密集短音，而不是普通媒体声、持续性底噪或已观察到的 DSP 崩溃。</b>
+          </p>
+        </section>
+
+        <section class="summary-block">
+          <h3>已闭环的直接失效机制</h3>
+          <ul>
+            <li>VehicleClient 收到驾驶模式 CAN libid <code>0x66002000</code> 的值 0 和 1，各 92 次。</li>
+            <li>VehicleConnector 对两个值均提示 conversion 未找到对应 canValue，但仍将原值继续上传。</li>
+            <li>DrivingFeature 将值 0 转换为 <code>toCommon=-1</code> 并跳过播放；将值 1 转换为模式 1，并判定 <code>modeChanged=true</code>。</li>
+            <li>每次模式 1 都调用同一个 <code>AudioTrackPlayer.play()</code>，总计恰好 92 次。</li>
+            <li>下一次请求进入时执行 <code>stopInternal</code>；89 条旧 AudioTrack 在未播完时被停止，仅三个窗口的最后一轨完整交付 144000 帧。</li>
+          </ul>
+        </section>
+
+        <section class="summary-block">
+          <h3>根因分层与责任边界</h3>
+          <ul>
+            <li><b>直接触发源：</b><code>DRIVING_MODE</code> 在 0/1 之间短周期抖动。这一层有严格的事件计数和毫秒级时序证据。</li>
+            <li><b>直接失效点：</b>com.mb.core 对车辆模式输入缺少稳定态过滤，并在相同提示音已经播放时继续 stop/recreate，放大了上游抖动。</li>
+            <li><b>明确配置问题：</b><code>0x66002000</code> 的 conversion 对 0 和 1 均未命中；枚举定义、合法值或映射配置至少有一项需要修正。</li>
+            <li><b>上游根源待验证：</b>当前 Android 日志不能区分 MCU/网关真实发送抖动、多个 source 竞争、上电默认帧覆盖，还是 VHAL 转换/批处理错误。</li>
+            <li><b>Audio HAL 次要问题：</b>gain fallback、Headset mixer 缺失和 htimestamp 失败会影响音频路径质量，但没有证据表明它们产生了本次播放触发。</li>
+          </ul>
+        </section>
+
+        <section class="summary-block">
+          <h3>影响与风险评估</h3>
+          <ul>
+            <li><b>用户体验：</b>3 秒提示音被切成约 0.1 秒的碎片反复起播，容易被感知为“滴滴滴”、爆裂感或来源不明的异常噪音。</li>
+            <li><b>功能风险：</b>多路车辆属性在相同时间窗同步变化，说明风险可能不仅限于声音；若业务层对这些值直接响应，可能产生界面或车控状态抖动。</li>
+            <li><b>复现风险：</b>问题仅在三个短窗口出现，常规静态 AudioFlinger dump 很容易错过，必须使用统一时钟做 CAN→VHAL→业务→AudioTrack 的连续采集。</li>
+            <li><b>误判风险：</b>若只看 Audio HAL 告警，容易把问题归因到扬声器或 DSP；现有时序显示 HAL 告警跟随播放请求出现，而不是先于播放触发。</li>
+          </ul>
+        </section>
+
+        <section class="summary-block">
+          <h3>责任域与建议动作</h3>
+          <ul>
+            <li><b>CAN/VHAL P0：</b>核对 DBC 与 property conversion，抓取同窗原始 CAN trace，确定抖动究竟来自源端还是 Android 转换链。</li>
+            <li><b>com.mb.core P0：</b>以最后一个合法稳定模式判断变化，忽略无效态；增加 300～500 ms 或连续 N 帧稳定判定。</li>
+            <li><b>AudioTrackPlayer P1：</b>相同提示音播放中去重，设置重触发抑制窗口，不再对相同请求无条件停止并重建。</li>
+            <li><b>Audio HAL P2：</b>分别处理 bus gain device 映射、错误 mixer control 和 htimestamp 告警，避免其加重切换听感。</li>
+          </ul>
+        </section>
+
+        <section class="summary-block">
+          <h3>问题关闭标准</h3>
+          <ul>
+            <li>真实驾驶模式保持不变时，Android <code>DRIVING_MODE</code> 不再出现 0/1 往返变化。</li>
+            <li>一次合法模式切换只产生一次提示音播放；重复 property 上报不产生新的 play。</li>
+            <li>人工注入快速 0/1 抖动时，应用能过滤无效输入且不连续重启 AudioTrack。</li>
+            <li>连续 10 分钟台架或道路测试中不再出现约 100 ms 周期的播放/停止序列。</li>
+            <li>座舱录音与日志统一时间对齐，确认现场异常声音消失，同时正常模式切换提示音仍可完整播放。</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="verdict">
+        <b>最终一句话结论：</b>
+        本问题的直接失效链已经由日志闭环——驾驶模式信号 <code>0x66002000</code> 以约 100 ms 周期在 0/1 间抖动，
+        conversion 未命中后仍被透传，com.mb.core 又缺少稳定态过滤和相同提示音播放去重，最终造成一段 3 秒系统提示音被请求 92 次，
+        其中 89 次在 0.5 秒内被打断；当前应由 CAN/VHAL 与 com.mb.core 共同作为 P0 修复责任域，Audio HAL 告警另行清理，
+        而导致上游信号抖动的具体源端仍需 MCU/网关原始 CAN trace 才能最终闭环。
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    报告生成日期：2026-10-12 ｜ 分析原则：日志事实、分析推断、待验证项分层呈现<br>
+    建议问题单标题：DRIVING_MODE 0/1 抖动且 conversion 未命中，触发 com.mb.core 以约 100 ms 周期重复重启 3 秒系统提示音
+  </footer>
+</main>
+</body>
+</html>

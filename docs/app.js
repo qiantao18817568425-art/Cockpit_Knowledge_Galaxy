@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-architecture2';
-import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-architecture2';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-architecture2';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-cases1';
+import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-cases1';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-cases1';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -193,6 +193,13 @@ function referenceMeta(reference,status){const platforms=reference.platforms?.le
 function emptyReader(container,text){const item=document.createElement('div');item.className='reader-empty';item.textContent=text;container.append(item)}
 function appendReaderChip(container,label,item){if(!item)return;const chip=document.createElement(item.id&&byId.has(item.id)?'button':'span');chip.className='reader-chip';chip.textContent=`${label}：${item.title||item.id}`;if(chip.tagName==='BUTTON'){chip.type='button';chip.addEventListener('click',()=>showNode(item.id))}container.append(chip)}
 function appendReaderList(container,values,emptyText){if(!values?.length){emptyReader(container,emptyText);return}const list=document.createElement('ul');for(const value of values){const item=document.createElement('li');item.textContent=value;list.append(item)}container.append(list)}
+const caseStatusLabels={root_cause_confirmed:'根因已确认',direct_failure_confirmed_trigger_open:'直接失效已确认 · 触发待查',awaiting_review:'待逐案核验',indexed:'仅索引',concluded:'已形成结论',verified:'证据已核验'};
+const evidenceTypeLabels={direct:'直接证据',confirmed_input:'已确认输入',background:'背景证据',missing:'证据缺口'};
+function appendCaseMeta(container,item){
+  const meta=document.createElement('div');meta.className='case-meta-row';
+  for(const value of [caseStatusLabels[item.caseStatus]||caseStatusLabels[item.evidenceState]||item.evidenceState,item.confidence&&`置信度：${item.confidence}`,item.scope?.timeWindow].filter(Boolean)){const chip=document.createElement('span');chip.textContent=value;meta.append(chip)}
+  container.append(meta);
+}
 function closeReaderPreview(){const section=document.querySelector('#reader-preview-section');section.hidden=true;document.querySelector('#reader-preview').src='about:blank'}
 function showReference(reference){
   const action=referenceAction(reference.url);if(!action.canLoad)return;
@@ -231,18 +238,43 @@ function renderReader(model){
   for(const child of model.children){const button=document.createElement('button');button.type='button';button.className='drill-card';const title=document.createElement('strong');title.textContent=child.title;const text=document.createElement('span');text.textContent=child.role;button.append(title,text);button.addEventListener('click',()=>showNode(child.id));children.append(button)}
   const learning=document.querySelector('#reader-learning');learning.replaceChildren();
   for(const item of model.courses||[]){const card=document.createElement('button');card.type='button';card.className='learning-card';const title=document.createElement('strong');title.textContent=item.title;const basis=document.createElement('span');basis.textContent=item.basis||'课程内容映射';card.append(title,basis);card.addEventListener('click',()=>showNode(item.id));learning.append(card)}
-  for(const item of model.skills||[])appendReaderChip(learning,'分析技能',item);
-  if(!(model.courses?.length||model.skills?.length))emptyReader(learning,'当前节点暂无已复核的课程或分析技能映射。');
+  if(!model.courses?.length)emptyReader(learning,'当前节点暂无已复核的课程映射。');
+  const analysis=document.querySelector('#reader-analysis');analysis.replaceChildren();
+  appendReason(analysis,'分析入口',model.analysis?.entry,'analysis-block entry');
+  if(model.analysis?.skills?.length){const skills=document.createElement('div');skills.className='analysis-skills';for(const item of model.analysis.skills)appendReaderChip(skills,'适用技能',item);analysis.append(skills)}
+  appendReaderList(analysis,model.analysis?.possibilities,'当前没有从已核验案例吸收的故障可能性。');
+  if(model.analysis?.checkDomains?.length)appendReason(analysis,'需要检查的域与接口',model.analysis.checkDomains.join('、'),'analysis-block');
+  if(model.analysis?.observationPoints?.length)appendReason(analysis,'主要观测点',model.analysis.observationPoints.join('；'),'analysis-block');
   const paths=document.querySelector('#reader-paths');paths.replaceChildren();
   const pathNames={control:'控制路径',data:'数据路径',power:'电源路径',state:'状态路径',diagnostic:'诊断路径'};
   for(const [pathClass,items] of Object.entries(model.technicalPaths||{})){const group=document.createElement('section');group.className=`path-group ${pathClass}`;const heading=document.createElement('h4');heading.textContent=pathNames[pathClass]||pathClass;group.append(heading);for(const item of items){const card=document.createElement('button');card.type='button';card.className='path-card';const title=document.createElement('strong');title.textContent=item.relatedTitle;const why=document.createElement('span');why.textContent=item.whyRelated||item.why;card.append(title,why);for(const [label,value] of [['输入',item.input],['交接',item.handoff],['输出',item.output],['验证',(item.verification||[]).join('；')]])if(value){const row=document.createElement('small');row.textContent=`${label}：${value}`;card.append(row)}card.addEventListener('click',()=>showNode(item.relatedId));group.append(card)}paths.append(group)}
   if(!paths.children.length)emptyReader(paths,model.contentState==='awaiting_absorption'?'资料尚未吸收，暂无可发布的技术链。':'当前节点暂无结构化技术关系。');
   const cases=document.querySelector('#reader-cases');cases.replaceChildren();
-  for(const item of model.cases||[]){const card=document.createElement('article');card.className='case-card';const title=document.createElement('strong');title.textContent=item.symptom||'脱敏案件';const meta=document.createElement('span');meta.className='case-meta';meta.textContent=item.evidenceState||'证据状态待确认';const summary=document.createElement('p');summary.textContent=item.publicSummary||'当前只保留脱敏索引。';card.append(title,meta,summary);cases.append(card)}
+  for(const item of model.cases||[]){
+    const card=document.createElement('article');card.className='case-card';const title=document.createElement('strong');title.textContent=item.title||item.symptom||'脱敏案件';card.append(title);appendCaseMeta(card,item);
+    const summary=document.createElement('p');summary.textContent=item.projection?.summary||item.publicSummary||'当前只保留脱敏索引。';card.append(summary);
+    if(item.projection?.relationReason)appendReason(card,'为什么归入当前专题',item.projection.relationReason,'case-relation-reason');
+    if(item.normalExpectation)appendReason(card,'正常预期',item.normalExpectation,'case-normal');
+    if(item.confirmedFacts?.length)appendReason(card,'已经确认',item.confirmedFacts.join('；'),'case-confirmed');
+    if(item.hypotheses?.length)appendReason(card,'待验证假设',item.hypotheses.join('；'),'case-hypotheses');
+    for(const report of item.reportVersions||[]){const version=document.createElement('div');version.className=`case-version ${report.status||''}`;const versionTitle=document.createElement('b');versionTitle.textContent=report.title;const status=document.createElement('span');status.textContent=report.statusLabel||report.status;const text=document.createElement('p');text.textContent=report.summary;version.append(versionTitle,status,text);appendReferenceActions(version,{title:report.title,url:report.url});card.append(version)}
+    cases.append(card)
+  }
   if(!model.cases?.length)emptyReader(cases,'当前没有已公开的脱敏案件摘要。');
+  const reportCount=(model.cases||[]).reduce((count,item)=>count+(item.reportVersions?.length||0),0);document.querySelector('#reader-case-count').textContent=`${model.cases?.length||0} 个案例 · ${reportCount} 份报告`;
+  const caseRelations=document.querySelector('#reader-case-relations');caseRelations.replaceChildren();
+  for(const item of model.cases||[])for(const relation of item.technicalChain||[]){const card=document.createElement('article');card.className=`case-relation-card ${relation.pathClass||'data'}`;const title=document.createElement('strong');title.textContent=item.title||item.symptom;const chain=document.createElement('p');chain.textContent=relation.text;card.append(title,chain);appendReason(card,'故障为什么沿这条链路传播',relation.failurePropagation,'case-failure-propagation');if(item.projection?.relationReason)appendReason(card,'为什么与当前专题有关',item.projection.relationReason,'case-relation-reason');caseRelations.append(card)}
+  if(!caseRelations.children.length)emptyReader(caseRelations,'当前节点暂无已核验案例的故障传播链。');
+  const caseEvidence=document.querySelector('#reader-case-evidence');caseEvidence.replaceChildren();
+  for(const item of model.cases||[]){
+    for(const report of item.reportVersions||[]){const card=document.createElement('article');card.className='evidence-card report';const head=document.createElement('header');const title=document.createElement('strong');title.textContent=`分析报告 · ${report.title}`;const status=document.createElement('span');status.textContent=report.statusLabel||report.status;head.append(title,status);const summary=document.createElement('p');summary.textContent=report.summary;card.append(head,summary);appendReason(card,'材料性质','这是由原始日志和项目确认信息形成的分析产物，不等同于原始日志。','citation-boundary');appendReferenceActions(card,{title:report.title,url:report.url});caseEvidence.append(card)}
+    for(const evidence of item.evidence||[]){const card=document.createElement('article');card.className=`evidence-card ${evidence.type||''}`;const head=document.createElement('header');const title=document.createElement('strong');title.textContent=`${evidence.id} · ${evidence.source}`;const status=document.createElement('span');status.textContent=evidenceTypeLabels[evidence.type]||evidence.type;head.append(title,status);const position=document.createElement('small');position.textContent=`定位：${evidence.location}`;card.append(head,position);appendReason(card,'支持什么结论',evidence.supports,'citation-why');appendReason(card,'证据边界',evidence.boundary,'citation-boundary');caseEvidence.append(card)}
+  }
+  if(!caseEvidence.children.length)emptyReader(caseEvidence,'当前节点没有已吸收案例报告或原始日志证据索引。');
   const tpm=document.querySelector('#reader-tpm');tpm.replaceChildren();
   const tpmFields=[['触发方','trigger'],['首轮牵头','firstRoundLead'],['直接失效责任','directFailureOwner'],['修复责任','repairOwner'],['接口／恢复策略方','interfaceOwner'],['验证方','verifier'],['关闭判据','closure']];
   for(const [label,key] of tpmFields)if(model.tpm?.[key])appendReason(tpm,label,model.tpm[key],'tpm-block');
+  for(const item of model.cases||[]){if(!Object.keys(item.tpm||{}).length)continue;const heading=document.createElement('h4');heading.className='case-tpm-title';heading.textContent=item.title||item.symptom;tpm.append(heading);if(item.projection?.tpmFocus)appendReason(tpm,'当前专题的TPM重点',item.projection.tpmFocus,'tpm-block focus');for(const [label,key] of tpmFields)if(item.tpm?.[key])appendReason(tpm,label,item.tpm[key],'tpm-block')}
   if(!tpm.children.length)emptyReader(tpm,'责任边界随具体链路与案件确认，当前节点未单独登记 TPM 分工。');
   const verification=document.querySelector('#reader-verification');verification.replaceChildren();
   appendReaderList(verification,model.verification,'当前节点暂无独立验证判据。');

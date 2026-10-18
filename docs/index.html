@@ -6,8 +6,8 @@
   <meta name="description" content="座舱知识银河：以 Obsidian 式 3D 关系图探索座舱架构章节、原始资料分类与每日学习课程。">
   <meta name="theme-color" content="#01030b">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261018-architecture2">
-  <script type="module" src="app.js?v=20261018-architecture2"></script>
+  <link rel="stylesheet" href="style.css?v=20261018-cases1">
+  <script type="module" src="app.js?v=20261018-cases1"></script>
 </head>
 <body>
   <main class="workbench" aria-label="座舱知识银河工作台">
@@ -52,7 +52,7 @@
         <p id="reader-summary"></p>
       </section>
       <section class="reader-section" aria-labelledby="reader-memberships-title">
-        <div class="reader-heading"><h3 id="reader-memberships-title">架构归属</h3><span class="basis-badge">主要与交叉归属</span></div>
+        <div class="reader-heading"><h3 id="reader-memberships-title">本层架构</h3><span class="basis-badge">位置 · 边界 · 上下游</span></div>
         <div id="reader-memberships" class="reader-memberships"></div>
       </section>
       <section class="reader-section" aria-labelledby="reader-responsibility-title">
@@ -60,36 +60,40 @@
         <div id="reader-responsibility" class="reader-responsibility"></div>
       </section>
       <section class="reader-section" aria-labelledby="reader-children-title">
-        <div class="reader-heading"><h3 id="reader-children-title">继续向下钻</h3><span class="basis-badge">直接子层</span></div>
+        <div class="reader-heading"><h3 id="reader-children-title">下级节点</h3><span class="basis-badge">直接子层</span></div>
         <div id="reader-children" class="reader-children"></div>
       </section>
       <section class="reader-section" aria-labelledby="reader-learning-title">
-        <div class="reader-heading"><h3 id="reader-learning-title">课程与分析技能</h3><span class="basis-badge">Day · Week · T12T</span></div>
+        <div class="reader-heading"><h3 id="reader-learning-title">课程</h3><span class="basis-badge">名称 · 梗概 · 对应知识</span></div>
         <div id="reader-learning" class="reader-learning"></div>
       </section>
+      <section class="reader-section" aria-labelledby="reader-analysis-title">
+        <div class="reader-heading"><h3 id="reader-analysis-title">分析</h3><span class="basis-badge">入口 · 可能性 · 域 · 观测点</span></div>
+        <div id="reader-analysis" class="reader-analysis"></div>
+      </section>
+      <section class="reader-section" aria-labelledby="reader-cases-title">
+        <div class="reader-heading"><h3 id="reader-cases-title">历史日志案例</h3><span id="reader-case-count" class="basis-badge">案例主档 · 多目录映射</span></div>
+        <div id="reader-cases" class="reader-cases"></div>
+      </section>
       <section class="reader-section" aria-labelledby="reader-paths-title">
-        <div class="reader-heading"><h3 id="reader-paths-title">正常技术链：为什么有关</h3><span class="basis-badge derived">结构化技术关系</span></div>
+        <div class="reader-heading"><h3 id="reader-paths-title">技术关系及关联原因</h3><span class="basis-badge derived">正常链路 · 故障传播 · 为什么有关</span></div>
         <div id="reader-paths" class="reader-paths"></div>
+        <div id="reader-case-relations" class="reader-case-relations"></div>
         <div id="reader-insights" class="reader-insights" hidden></div>
         <p id="reader-notice" class="reader-notice"></p>
       </section>
-      <section class="reader-section" aria-labelledby="reader-cases-title">
-        <div class="reader-heading"><h3 id="reader-cases-title">真实案件与责任闭环</h3><span class="basis-badge">脱敏案例 · TPM</span></div>
-        <div id="reader-cases" class="reader-cases"></div>
-        <div id="reader-tpm" class="reader-tpm"></div>
+      <section class="reader-section" aria-labelledby="reader-source-mappings-title">
+        <div class="reader-heading"><h3 id="reader-source-mappings-title">原始资料与证据</h3><span class="basis-badge">报告 · 原始日志 · 为什么引用 · 证据边界</span></div>
+        <div id="reader-case-evidence" class="reader-case-evidence"></div>
+        <div id="reader-source-mappings" class="reader-source-mappings"></div>
+        <div class="reader-subheading"><h4 id="reader-citations-title">补充引用资料与文章</h4><span id="reader-citation-count" class="citation-count"></span></div>
+        <div id="reader-citations" class="reader-citations"></div>
       </section>
-      <section class="reader-section" aria-labelledby="reader-observations-title">
-        <div class="reader-heading"><h3 id="reader-observations-title">如何验证</h3><span class="basis-badge">观测点</span></div>
+      <section class="reader-section" aria-labelledby="reader-tpm-title">
+        <div class="reader-heading"><h3 id="reader-tpm-title">TPM责任与验证关闭</h3><span class="basis-badge">分责 · 行动 · 判据</span></div>
+        <div id="reader-tpm" class="reader-tpm"></div>
         <div id="reader-verification" class="reader-verification"></div>
         <div id="reader-observations" class="reader-observations"></div>
-      </section>
-      <section class="reader-section" aria-labelledby="reader-source-mappings-title">
-        <div class="reader-heading"><h3 id="reader-source-mappings-title">资料映射与证据边界</h3><span class="basis-badge">映射理由 · 状态</span></div>
-        <div id="reader-source-mappings" class="reader-source-mappings"></div>
-      </section>
-      <section class="reader-section" aria-labelledby="reader-citations-title">
-        <div class="reader-heading"><h3 id="reader-citations-title">引用资料与文章：为什么引用</h3><span id="reader-citation-count" class="citation-count"></span></div>
-        <div id="reader-citations" class="reader-citations"></div>
       </section>
       <details id="reader-navigation" class="reader-navigation">
         <summary>导航关系与内容归类</summary>

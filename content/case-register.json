@@ -1,120 +1,110 @@
 {
-  "version": 1,
-  "privacy": "仅发布按症状聚合的数量和证据状态，不发布目录名、VIN、人员、地点或原始日志。",
-  "summary": {
-    "indexedTopLevelDirectories": 287
-  },
+  "version": 2,
+  "privacy": "公开内容只保留技术事实、证据定位和责任域；案例原文已按用户授权发布，页面不把分析报告本身误标为原始日志。",
+  "summary": {"indexedTopLevelDirectories": 287, "canonicalCaseCount": 7, "reviewedReportCount": 3},
   "cases": [
     {
-      "id": "case:display-black",
-      "symptom": "显示黑屏、异常颜色、卡死或重启",
-      "scope": {
-        "indexedDirectoryCount": 44
-      },
-      "clocks": {
-        "state": "needs_review"
-      },
-      "bootGeneration": {
-        "state": "needs_review"
-      },
-      "knowledgeIds": [
-        "chain:display-output",
-        "chain:stability"
-      ],
-      "skillIds": [
-        "t12t-display-black-freeze",
-        "t12t-stability-crash-reset"
-      ],
-      "evidenceState": "indexed",
+      "id": "case:display-black", "title": "显示黑屏与画面异常案例索引", "symptom": "显示黑屏、异常颜色、卡死或重启",
+      "scope": {"indexedDirectoryCount": 44}, "clocks": {"state": "needs_review"}, "bootGeneration": {"state": "needs_review"},
+      "knowledgeIds": ["chain:display-output", "chain:stability"], "skillIds": ["t12t-display-black-freeze", "t12t-stability-crash-reset"],
+      "evidenceState": "indexed", "caseStatus": "awaiting_review",
       "publicSummary": "本地案件目录中索引到 44 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
     },
     {
-      "id": "case:avm-no-video",
-      "symptom": "Camera、AVM 或倒车影像无画面",
-      "scope": {
-        "indexedDirectoryCount": 8
-      },
-      "clocks": {
-        "state": "needs_review"
-      },
-      "bootGeneration": {
-        "state": "needs_review"
-      },
-      "knowledgeIds": [
-        "chain:avm-video-flow"
-      ],
-      "skillIds": [
-        "t12t-avm-camera-stream"
-      ],
-      "evidenceState": "indexed",
+      "id": "case:avm-no-video", "title": "Camera与AVM无画面案例索引", "symptom": "Camera、AVM 或倒车影像无画面",
+      "scope": {"indexedDirectoryCount": 8}, "clocks": {"state": "needs_review"}, "bootGeneration": {"state": "needs_review"},
+      "knowledgeIds": ["chain:avm-video-flow"], "skillIds": ["t12t-avm-camera-stream"], "evidenceState": "indexed", "caseStatus": "awaiting_review",
       "publicSummary": "本地案件目录中索引到 8 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
     },
     {
-      "id": "case:network-offline",
-      "symptom": "车辆网络断联或服务离线",
-      "scope": {
-        "indexedDirectoryCount": 2
-      },
-      "clocks": {
-        "state": "needs_review"
-      },
-      "bootGeneration": {
-        "state": "needs_review"
-      },
-      "knowledgeIds": [
-        "chain:ethernet-connectivity",
-        "chain:tbox-connectivity"
-      ],
-      "skillIds": [
-        "t12t-ethernet-sgmii",
-        "t12t-cross-domain-msg"
-      ],
-      "evidenceState": "indexed",
+      "id": "case:network-offline", "title": "车辆网络断联案例索引", "symptom": "车辆网络断联或服务离线",
+      "scope": {"indexedDirectoryCount": 2}, "clocks": {"state": "needs_review"}, "bootGeneration": {"state": "needs_review"},
+      "knowledgeIds": ["chain:ethernet-connectivity", "chain:tbox-connectivity"], "skillIds": ["t12t-ethernet-sgmii", "t12t-cross-domain-msg"],
+      "evidenceState": "indexed", "caseStatus": "awaiting_review",
       "publicSummary": "本地案件目录中索引到 2 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
     },
     {
-      "id": "case:performance-freeze",
-      "symptom": "系统或界面卡顿、卡死",
-      "scope": {
-        "indexedDirectoryCount": 4
-      },
-      "clocks": {
-        "state": "needs_review"
-      },
-      "bootGeneration": {
-        "state": "needs_review"
-      },
-      "knowledgeIds": [
-        "chain:performance-diagnosis",
-        "chain:hmi-runtime"
-      ],
-      "skillIds": [
-        "t12t-performance-jank"
-      ],
-      "evidenceState": "indexed",
+      "id": "case:performance-freeze", "title": "系统卡顿与卡死案例索引", "symptom": "系统或界面卡顿、卡死",
+      "scope": {"indexedDirectoryCount": 4}, "clocks": {"state": "needs_review"}, "bootGeneration": {"state": "needs_review"},
+      "knowledgeIds": ["chain:performance-diagnosis", "chain:hmi-runtime"], "skillIds": ["t12t-performance-jank"], "evidenceState": "indexed", "caseStatus": "awaiting_review",
       "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
     },
     {
-      "id": "case:audio-no-output",
-      "symptom": "音频无声或播报异常",
-      "scope": {
-        "indexedDirectoryCount": 4
-      },
-      "clocks": {
-        "state": "needs_review"
-      },
-      "bootGeneration": {
-        "state": "needs_review"
-      },
-      "knowledgeIds": [
-        "chain:audio-paths",
-        "chain:audio-policy-routing"
-      ],
-      "skillIds": [
-        "t12t-audio-path"
-      ],
-      "evidenceState": "indexed",
+      "id": "case:audio-no-output", "title": "音频无声与播报异常案例索引", "symptom": "音频无声或播报异常",
+      "scope": {"indexedDirectoryCount": 4}, "clocks": {"state": "needs_review"}, "bootGeneration": {"state": "needs_review"},
+      "knowledgeIds": ["chain:audio-paths", "chain:audio-policy-routing"], "skillIds": ["t12t-audio-path"], "evidenceState": "indexed", "caseStatus": "awaiting_review",
       "publicSummary": "本地案件目录中索引到 4 个可能相关目录；尚未逐案完成版本确认、跨域时间对齐和证据核验，不构成根因结论。"
+    },
+    {
+      "id": "case:mt8676-driving-mode-audio-loop",
+      "title": "MT8676驾驶模式信号冲突触发提示音反复重启",
+      "symptom": "整车出现间歇性异常噪声，驾驶模式提示音被高频重复起播和截断",
+      "platforms": ["MT8676"], "caseStatus": "root_cause_confirmed", "evidenceState": "concluded", "confidence": "高",
+      "scope": {"timeWindow": "2026-10-12 19:33:59—19:36:58", "reportCount": 2},
+      "clocks": {"state": "aligned", "basis": "Android日志毫秒时间线；原始CAN与MCU时基仍需在回归时共同对齐"},
+      "bootGeneration": {"state": "not_required_for_current_conclusion"},
+      "knowledgeIds": ["chain:vehicle-bus", "chain:mcu-soc-responsibility", "chain:vehicle-service-framework", "chain:audio-policy-routing", "chain:evidence-ledger"],
+      "skillIds": ["t12t-cockpit-diagnosis", "t12t-log-analysis", "t12t-platform-architecture", "t12t-mcu", "t12t-cross-domain-msg", "t12t-audio-path", "t12t-tpm-triage", "t12t-tpm-5y8d"],
+      "publicSummary": "ICC CAN稳定上报1、DKCAN稳定上报0，MCU未完成信号源仲裁、过滤和去重，使Android驾驶模式在0/1间往返；业务层又缺少无效值隔离、稳定态过滤和同音频去重，最终把3秒提示音反复截断成密集短音。",
+      "normalExpectation": "驾驶模式应由唯一权威信号源或明确仲裁结果上报；无效值不能改变稳定状态；一次合法模式切换只产生一次完整提示音。",
+      "confirmedFacts": [
+        "项目侧确认ICC CAN稳定为1、DKCAN稳定为0，两路信号同时进入MCU。",
+        "canservice与VehicleClient侧出现0/1交替，0被业务层映射为无效态，1反复触发modeChanged=true。",
+        "约3.43秒内出现16次播放请求；AudioFocus正常授予，AudioTrack实际交付音频帧后被下一次请求停止。",
+        "Audio HAL增益、mixer与htimestamp告警发生在播放请求之后，是伴随问题，不是本案首个触发。"
+      ],
+      "hypotheses": ["其他同期变化的车辆信号是否存在相同双源冲突，需要逐信号核对，不能由本案自动外推。", "修复后的MCU仲裁策略、业务防抖窗口与合法切换时延需要在当前软件版本实车验证。"],
+      "technicalChain": [{"pathClass": "data", "text": "ICC CAN与DKCAN双源输入 → MCU信号源仲裁/过滤 → canservice IPC/VHAL/VehicleClient → DrivingFeature状态判断 → AudioTrackPlayer → 音频输出", "failurePropagation": "MCU把相互冲突的0和1都向上转发，Android把每次1当成新模式变化，播放器再把状态抖动放大为可听异常。"}],
+      "reportVersions": [
+        {"id": "report:mt8676-noise-early", "title": "8676整车异常噪声根因分析（早期分析）", "date": "2026-10-12", "status": "superseded", "statusLabel": "已被后续根因报告更新", "url": "case-reports/mt8676-abnormal-noise-early.html", "sha256": "69086A8BDD3E558762DC4B194866F7327310638D4466E371C36286CB2E7A6885", "summary": "已闭环驾驶模式0/1振荡、conversion未命中和重复播放机制；当时尚未确认上游信号源。"},
+        {"id": "report:mt8676-noise-confirmed", "title": "8676再次异响重新分析报告", "date": "2026-10-15", "status": "current", "statusLabel": "当前根因报告", "url": "case-reports/mt8676-driving-mode-audio-root-confirmed.html", "sha256": "AFA598145C24983671B23A1BD5FEEE224E3558D7B1F9F6296C51BC08514EA08E", "supersedes": "report:mt8676-noise-early", "summary": "在早期直接失效链基础上，结合项目侧信号源确认，闭环到双CAN源冲突和MCU未仲裁。"}
+      ],
+      "evidence": [
+        {"id": "E-AUDIO-01", "type": "direct", "source": "canservice与Android主日志", "location": "报告内逐行证据索引", "supports": "同一驾驶模式属性0/1交替并触发modeChanged与play", "boundary": "证明Android侧事件链；原始CAN物理帧仍应在回归中同步采集。"},
+        {"id": "E-AUDIO-02", "type": "direct", "source": "AudioTrack日志", "location": "16次play/stop及帧交付统计", "supports": "音频被重复起播和截断，而不是扬声器自行产生噪声", "boundary": "没有同步座舱录音时，不能精确还原乘员主观音色。"},
+        {"id": "E-AUDIO-03", "type": "confirmed_input", "source": "项目侧信号源确认", "location": "ICC CAN=1、DKCAN=0、MCU无仲裁", "supports": "双源冲突是Android状态抖动的上游根因", "boundary": "该确认适用于本案版本；其他车型和信号需重新核对。"}
+      ],
+      "tpm": {
+        "trigger": "ICC CAN与DKCAN对同一驾驶模式给出冲突值。", "firstRoundLead": "车辆信号/MCU集成牵头，Android车辆服务与音频业务共同提供上下游证据。",
+        "directFailureOwner": "MCU信号仲裁链与com.mb.core驾驶模式业务链。", "repairOwner": "MCU/CAN集成修复权威源仲裁；DrivingFeature隔离无效值并做稳定态判断；AudioTrackPlayer增加同音频去重。",
+        "interfaceOwner": "信号矩阵、DBC/property conversion与MCU—SoC接口双方。", "verifier": "整车测试联合MCU、Android车辆服务和音频域。",
+        "closure": "双源冲突注入10分钟无往返上报；合法1↔2切换每次只播放一次；1→0→1无效值注入不播放；同值重复100次不产生modeChanged/play；座舱录音与多域日志对齐。"
+      },
+      "projections": [
+        {"knowledgeId": "chain:vehicle-bus", "role": "root_cause", "summary": "从车辆总线视角，本案是同一驾驶模式存在ICC CAN与DKCAN双源冲突，缺少权威源和冲突处置规则。", "relationReason": "CAN源定义决定MCU收到什么；若信号矩阵未规定权威源、优先级和无效值，冲突会直接进入域控制器。", "evidenceIds": ["E-AUDIO-03"], "tpmFocus": "核对信号矩阵、DBC、源优先级及冲突注入结果。"},
+        {"knowledgeId": "chain:mcu-soc-responsibility", "role": "root_cause", "summary": "从MCU与SoC边界看，MCU未对两路驾驶模式做仲裁、过滤或去重，向SoC连续转发互斥值。", "relationReason": "MCU是车辆信号进入SoC前的裁决边界；它的输出应是确定状态，而不是把源冲突原样扩散。", "evidenceIds": ["E-AUDIO-03", "E-AUDIO-01"], "tpmFocus": "MCU负责仲裁修复，接口双方共同确认输出契约。"},
+        {"knowledgeId": "chain:vehicle-service-framework", "role": "direct_failure", "summary": "从应用与Framework视角，conversion未命中、无效值隔离不足且每个值1都被判成modeChanged，放大了上游状态抖动。", "relationReason": "VehicleClient和DrivingFeature承接MCU输出并形成业务状态；输入合法性与last-known-good策略决定抖动是否继续传播。", "evidenceIds": ["E-AUDIO-01"], "tpmFocus": "车辆服务负责合法值、无效值、稳定态和重复上报的防御性验证。"},
+        {"knowledgeId": "chain:audio-policy-routing", "role": "downstream_effect", "summary": "从音频视角，重复play/stop把3秒提示音切成密集短音；焦点和AudioTrack均工作，音频链是下游表现和防御改进点。", "relationReason": "音频业务把上游状态变化转成可听输出；同音频播放中去重可以避免上游抖动被放大，但不能替代源头仲裁。", "evidenceIds": ["E-AUDIO-02"], "tpmFocus": "音频域负责去重与回归，不承担双CAN源冲突的根因责任。"},
+        {"knowledgeId": "chain:evidence-ledger", "role": "diagnostic_method", "summary": "本案展示了从乘员听感逆向到播放请求、业务状态、车辆服务和CAN源的跨域证据链。", "relationReason": "按统一时间线区分根因、直接失效、放大因素与伴随告警，才能避免把Audio HAL尾随告警误定为根因。", "evidenceIds": ["E-AUDIO-01", "E-AUDIO-02", "E-AUDIO-03"], "tpmFocus": "维护报告版本链、证据强度、反证和关闭判据。"}
+      ]
+    },
+    {
+      "id": "case:mtk-flash-boot-a-transport-collapse", "title": "MTK刷写boot_a阶段传输会话崩溃", "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
+      "platforms": ["MediaTek"], "caseStatus": "direct_failure_confirmed_trigger_open", "evidenceState": "verified", "confidence": "直接失效高；具体触发未定",
+      "scope": {"timeWindow": "2026-10-16 16:24:12—16:26:28", "reportCount": 1}, "clocks": {"state": "aligned", "basis": "SP Flash Tool与host日志时间线"},
+      "bootGeneration": {"state": "download_session_bound", "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"},
+      "knowledgeIds": ["chain:platform-family", "chain:usb-storage", "chain:hal-driver-boundary", "chain:ota-lifecycle", "chain:evidence-ledger"],
+      "skillIds": ["t12t-cockpit-diagnosis", "t12t-log-analysis", "t12t-platform-architecture", "t12t-usb-typec-storage", "t12t-stability-crash-reset", "t12t-tpm-triage", "t12t-tpm-5y8d"],
+      "publicSummary": "刷写进入boot_a [21/47]后，接收12字节控制帧和发送2MiB数据在同一毫秒均以Windows I/O 0x16、0字节失败，MUX线程随即退出；120秒后的data_mux超时是会话崩溃后的结果。现有证据不能继续区分线缆/端口/供电、Windows驱动、设备复位/DA崩溃或固定偏移交互。",
+      "normalExpectation": "BROM连接、DA加载和UFS识别后，47个下载项应依次完成，每个数据块得到设备响应，会话不应发生双向0字节I/O失败。",
+      "confirmedFacts": ["第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。", "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。", "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。", "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"],
+      "hypotheses": ["USB线缆、主机端口、Hub、供电或枚举稳定性问题。", "设备端复位、DA崩溃或目标侧退出当前会话。", "Windows MediaTek USB驱动或控制器路径异常。", "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"],
+      "technicalChain": [{"pathClass": "data", "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入", "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"}],
+      "reportVersions": [{"id": "report:mtk-flash-20261016", "title": "刷写失败原因分析", "date": "2026-10-16", "status": "current", "statusLabel": "当前分析报告", "url": "case-reports/mtk-flash-boot-a-transport-collapse.html", "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062", "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"}],
+      "evidence": [
+        {"id": "E-FLASH-01", "type": "direct", "source": "host_0.log", "location": "4696—4704", "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出", "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"},
+        {"id": "E-FLASH-02", "type": "direct", "source": "host_0.log", "location": "4511—4515及前序块响应", "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB", "boundary": "暴露位置不等于boot.img内容错误。"},
+        {"id": "E-FLASH-03", "type": "background", "source": "QT_FLASH_TOOL_V6.log", "location": "前三次扫描失败及166—169", "supports": "连接稳定性值得优先检查；最终-2是上层超时", "boundary": "扫描失败不能独立证明最终刷写失败由线缆或端口造成。"},
+        {"id": "E-FLASH-04", "type": "missing", "source": "待补材料", "location": "Windows PnP/USB、板端UART/DA、复位线与供电波形", "supports": "用于区分主机链路、目标复位和供电假设", "boundary": "这些材料缺失，因此具体触发责任暂不关闭。"}
+      ],
+      "tpm": {"trigger": "待确认：USB/供电/驱动路径异常、设备复位/DA退出或固定偏移交互。", "firstRoundLead": "刷写工具/平台集成牵头，USB/BSP、硬件供电和目标端DA负责人并行取证。", "directFailureOwner": "主机—设备下载传输会话；具体责任件待区分实验。", "repairOwner": "依据复现证据确定，不在证据不足时提前指派最终根因Owner。", "interfaceOwner": "刷写工具、Windows USB驱动、BROM/DA与板端下载链接口双方。", "verifier": "版本发布/刷写验证联合平台、BSP与硬件。", "closure": "固定镜像和板卡做线缆/端口/供电单变量A/B；同步抓PnP/USB与板端UART/DA；记录是否恒定在28MiB；核对boot.img SHA、scatter和DA；47/47完成且同配置连续3次成功、设备可正常启动。"},
+      "projections": [
+        {"knowledgeId": "chain:platform-family", "role": "platform_context", "summary": "从MTK平台视角，本案覆盖BROM、DA、UFS和分区下载的正常阶段与故障边界。", "relationReason": "MTK下载链决定设备如何从早期BROM进入DA并访问UFS；只有先确认所处阶段，才能排除认证和早期连接失败。", "evidenceIds": ["E-FLASH-02"], "tpmFocus": "核对SoC、DA、scatter、镜像和工具版本组合。"},
+        {"knowledgeId": "chain:usb-storage", "role": "direct_failure", "summary": "从USB与存储链视角，直接断点是主机与设备的双向I/O同时变为0字节，随后MUX退出。", "relationReason": "USB/串口通道承载下载控制帧与数据块；通道消失会让后续分区写入和上层命令同时失去响应。", "evidenceIds": ["E-FLASH-01", "E-FLASH-03", "E-FLASH-04"], "tpmFocus": "用PnP、USB、端口、线缆、供电和目标侧证据区分触发。"},
+        {"knowledgeId": "chain:hal-driver-boundary", "role": "candidate_boundary", "summary": "从HAL/驱动边界看，Windows I/O 0x16只能证明当前设备句柄或驱动路径不可继续，不能单独定责驱动。", "relationReason": "刷写工具通过Windows驱动访问MediaTek设备；相同上层错误可由主机驱动、物理断开或目标退出汇聚产生。", "evidenceIds": ["E-FLASH-01", "E-FLASH-04"], "tpmFocus": "驱动域提供PnP/USB事件和设备枚举变化，不以错误码直接认领根因。"},
+        {"knowledgeId": "chain:ota-lifecycle", "role": "process_context", "summary": "从升级流程看，失败发生在boot_a分区的数据阶段；分区名是故障暴露位置，不等于镜像内容根因。", "relationReason": "升级流程需要区分镜像校验、下载会话、分区写入和激活阶段；本案尚未走到完整下载和启动验证。", "evidenceIds": ["E-FLASH-02"], "tpmFocus": "发布侧核对镜像SHA、scatter与DA匹配，并保留固定偏移复现记录。"},
+        {"knowledgeId": "chain:evidence-ledger", "role": "diagnostic_method", "summary": "本案展示了如何把最早I/O断点与120秒后的上层超时分离，并保留竞争假设。", "relationReason": "先按同一下载会话重建时间线，再区分直接失效、背景不稳定、次生超时和缺失证据，可防止从最后报错倒推根因。", "evidenceIds": ["E-FLASH-01", "E-FLASH-02", "E-FLASH-03", "E-FLASH-04"], "tpmFocus": "按证据强度管理假设，以单变量实验和连续成功作为关闭依据。"}
+      ]
     }
   ]
 }

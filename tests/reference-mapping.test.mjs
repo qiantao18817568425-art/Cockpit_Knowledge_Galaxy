@@ -64,6 +64,33 @@ test('sanitized cases declare evidence state and never publish local raw paths',
   }
 });
 
+test('reviewed reports use canonical cases, revision chains and per-node projections',async()=>{
+  const register=await readJson('../content/case-register.json');
+  const audio=register.cases.find(item=>item.id==='case:mt8676-driving-mode-audio-loop');
+  const flashing=register.cases.find(item=>item.id==='case:mtk-flash-boot-a-transport-collapse');
+  assert.equal(audio.caseStatus,'root_cause_confirmed');
+  assert.equal(audio.reportVersions.length,2);
+  assert.equal(audio.reportVersions[1].supersedes,audio.reportVersions[0].id);
+  assert.ok(audio.projections.some(item=>item.knowledgeId==='chain:vehicle-bus'&&item.relationReason));
+  assert.ok(audio.projections.some(item=>item.knowledgeId==='chain:audio-policy-routing'&&item.role==='downstream_effect'));
+  assert.equal(flashing.caseStatus,'direct_failure_confirmed_trigger_open');
+  assert.ok(flashing.evidence.some(item=>item.type==='missing'));
+  assert.ok(flashing.projections.every(item=>item.summary&&item.relationReason&&item.tpmFocus));
+  for(const report of [...audio.reportVersions,...flashing.reportVersions]){
+    const url=new URL(`../docs/${report.url}`,import.meta.url);
+    assert.ok((await readFile(url,'utf8')).length>1000,report.url);
+  }
+});
+
+test('case projections roll up from L3 chains to their L2 architecture dimensions',()=>{
+  const vehicleBus=byId.get('chain:vehicle-bus');
+  const canEthernet=byId.get('architecture:can-ethernet');
+  const audio=byId.get('architecture:audio');
+  assert.ok(vehicleBus.cases.some(item=>item.id==='case:mt8676-driving-mode-audio-loop'&&item.projection.role==='root_cause'));
+  assert.ok(canEthernet.cases.some(item=>item.id==='case:mt8676-driving-mode-audio-loop'&&item.projectionKnowledgeId==='chain:vehicle-bus'));
+  assert.ok(audio.cases.some(item=>item.id==='case:mt8676-driving-mode-audio-loop'&&item.projection.role==='downstream_effect'));
+});
+
 test('compiled L3 nodes embed references or declare an explicit review gap',()=>{
   for(const node of graph.nodes.filter(item=>item.kind==='architecture_chain')){
     const count=(node.dayIds?.length||0)+(node.sourceClaims?.length||0)+(node.skillIds?.length||0)+(node.caseIds?.length||0);

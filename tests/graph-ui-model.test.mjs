@@ -37,7 +37,7 @@ test('reader model separates authored summary, graph-derived insight and cited e
 });
 test('reader markdown includes synthesis provenance, citation pages and load links',()=>{
  const markdown=readerMarkdown(buildReaderModel(graph,'a'));
- assert.match(markdown,/图谱关系衍生/);
+ assert.match(markdown,/技术关系及关联原因/);
  assert.match(markdown,/manual\.pdf.*第 4 页/);
  assert.match(markdown,/https:\/\/example\/a/);
  assert.match(markdown,/https:\/\/example\/article/);
@@ -243,6 +243,6 @@ test('reader exposes embedded courses sources skills cases and TPM closure metad
  assert.match(model.tpm.firstRoundLead,/显示|HMI/);
  assert.ok(model.verification.length>=4);
  const markdown=readerMarkdown(model);
- for(const heading of ['架构归属','课程与分析技能','真实案件与责任闭环','资料映射与证据边界'])assert.match(markdown,new RegExp(heading));
+ for(const heading of ['本层架构','课程','分析','历史日志案例','技术关系及关联原因','原始资料与证据','TPM责任与验证关闭'])assert.match(markdown,new RegExp(heading));
  assert.match(markdown,/尚未.*页级|indexed|needs_review/);
 });

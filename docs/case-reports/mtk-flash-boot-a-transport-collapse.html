@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>刷写失败原因分析｜2026-10-16</title>
+  <style>
+    :root{--bg:#07111f;--panel:#0d1b2a;--panel2:#10243a;--text:#e8f0fa;--muted:#9fb0c5;--line:#29435e;--cyan:#4fd1c5;--blue:#60a5fa;--amber:#f6c453;--red:#fb7185;--green:#66d19e;--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#06101d 0%,#0a1829 55%,#07111f 100%);color:var(--text);font:15px/1.72 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    main{max-width:1120px;margin:auto;padding:42px 22px 72px}.hero{padding:34px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 90% 0%,rgba(79,209,197,.15),transparent 42%),rgba(13,27,42,.92);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+    h1{margin:8px 0 14px;font-size:clamp(28px,4.5vw,48px);line-height:1.18;letter-spacing:-.03em}h2{margin:0 0 18px;font-size:24px}h3{margin:0 0 10px;font-size:18px}p{margin:8px 0 0}.kicker{color:var(--cyan);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.lede{max-width:880px;color:#c7d5e5;font-size:18px}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:#c8d6e6;background:#091523}.pill.red{border-color:#7d3042;color:#fecdd3;background:#2b121c}.pill.amber{border-color:#735b22;color:#fde68a;background:#281f0d}.pill.green{border-color:#236149;color:#bbf7d0;background:#0c2a20}
+    section{margin-top:24px;padding:26px;border:1px solid var(--line);border-radius:18px;background:rgba(13,27,42,.88)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}.metric{font-size:30px;line-height:1.1;font-weight:800;color:var(--white)}.label{margin-top:8px;color:var(--muted)}
+    .verdict{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}.answer{padding:22px;border-left:5px solid var(--red);background:#29131c;border-radius:12px}.answer strong{color:#fecdd3;font-size:18px}.scope{padding:20px;border:1px dashed #43617e;border-radius:12px;color:#c5d3e2}
+    .legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.direct{background:var(--green)}.infer{background:var(--amber)}.pending{background:var(--red)}
+    .flow-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#081522;padding:10px}.flow{min-width:860px;width:100%;height:auto}.node{fill:#11283e;stroke:#36546e;stroke-width:2}.node-ok{fill:#0d3027;stroke:#2d8d69}.node-fail{fill:#391621;stroke:#b94159}.arrow{stroke:#5f7891;stroke-width:3;fill:none;marker-end:url(#arrow)}.arrow-fail{stroke:#fb7185}.svg-title{fill:#f0f6fd;font:700 15px system-ui}.svg-sub{fill:#a9bdd2;font:12px system-ui}.svg-time{fill:#67e8f9;font:700 12px ui-monospace,monospace}
+    .timeline{position:relative;margin-left:8px;padding-left:27px}.timeline:before{content:"";position:absolute;left:6px;top:7px;bottom:6px;width:2px;background:var(--line)}.event{position:relative;padding:0 0 20px}.event:last-child{padding-bottom:0}.event:before{content:"";position:absolute;left:-26px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px #10243a}.event.fail:before{background:var(--red)}.event .time{font:700 13px ui-monospace,Consolas,monospace;color:#93c5fd}.event.fail .time{color:#fda4af}.event .what{font-weight:700}.event .why{color:var(--muted)}
+    table{width:100%;border-collapse:collapse;display:block;overflow:auto}th,td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#d8e5f3;background:#0b1c2d;white-space:nowrap}td{min-width:150px}.evidence-tag{white-space:nowrap;font-weight:800}.evidence-tag.direct-text{color:#86efac}.evidence-tag.infer-text{color:#fde68a}.evidence-tag.pending-text{color:#fda4af}
+    .callout{padding:16px 18px;border-radius:12px;background:#0b2236;border:1px solid #245172}.callout.warn{background:#281f0d;border-color:#6d5721}.callout.danger{background:#2b121c;border-color:#763144}.plain{font-size:17px}.steps{counter-reset:step;display:grid;gap:12px}.step{position:relative;padding:15px 15px 15px 55px;border:1px solid var(--line);border-radius:13px;background:#0b1c2d}.step:before{counter-increment:step;content:counter(step);position:absolute;left:16px;top:15px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#164e63;color:#cffafe;font-weight:800}.step strong{color:#eaf4ff}
+    details{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#081522}summary{cursor:pointer;padding:13px 16px;font-weight:700;color:#d8e7f6}pre{margin:0;padding:16px;overflow:auto;border-top:1px solid var(--line);color:#c5d5e6;background:#050d17;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap}.path{word-break:break-all;color:#a7f3d0}.small{font-size:13px;color:var(--muted)}ul{padding-left:22px}li+li{margin-top:8px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.footer{margin-top:25px;text-align:center;color:#7f93a8;font-size:12px}@media(max-width:780px){.grid,.verdict,.two{grid-template-columns:1fr}.hero,section{padding:21px}main{padding:20px 12px 46px}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="kicker">SP Flash Tool V6 · Evidence-based diagnosis</div>
+    <h1>刷写失败不是最后那条“超时”本身，真正的断点是传输 <code>boot_a</code> 时 USB 数据通道同时读写失败</h1>
+    <p class="lede">日志能确认的直接原因是：主机与设备之间的数据通道在 <code>boot.img</code> 的第 15 个 2 MiB 数据块发送前后失效，Windows I/O 返回 <code>0x16</code>，MUX 线程随即退出；两分钟后的 <code>data_mux receive timeout</code> 只是等待不到响应后的表层报错。</p>
+    <div class="meta">
+      <span class="pill red">失败点已确认</span>
+      <span class="pill amber">链路为什么断开：仍待验证</span>
+      <span class="pill">工具：SP Flash Tool V6 v6.2316.00</span>
+      <span class="pill">设备：MediaTek VID 0E8D / PID 0003 · COM9</span>
+      <span class="pill">分析日期：2026-10-16（Asia/Shanghai）</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>一句话结论</h2>
+    <div class="verdict">
+      <div class="answer"><strong>直接原因（已证实）</strong><p>刷写进行到 <code>boot_a [21/47]</code> 时，USB/串口传输层的接收与发送在同一毫秒均返回 <code>0x16</code>，且均传输了 0 字节，导致 MUX 工作线程退出和会话失去响应。</p></div>
+      <div class="scope"><strong>不能从现有日志直接证明</strong><p>是线缆/端口掉线、板端复位或 DA 崩溃、供电波动，还是 Windows 驱动栈异常。需要一次带 USB/PnP 或板端 UART 证据的复现才能关根因。</p></div>
+    </div>
+    <div class="legend" style="margin-top:16px"><span><i class="dot direct"></i>直接证据</span><span><i class="dot infer"></i>支持性推断</span><span><i class="dot pending"></i>待验证</span></div>
+  </section>
+
+  <section>
+    <h2>面向新人的故障故事</h2>
+    <p class="plain">正常情况下，电脑先找到设备，进入 BROM（芯片最早期下载模式），再加载 DA（下载代理），然后按分区把镜像分块发送给设备，每个块由设备回一个 OK。这里前三次甚至没有扫描到端口；第四次连接成功后，BROM、DA、硬件信息读取和前 20 个镜像传输均能继续。到了第 21 个分区 <code>boot_a</code>，前 14 个完整数据块仍得到响应，但下一块开始时，主机读、写两个方向一起失败，通信线程被迫退出。工具随后继续等了约 120 秒，最终才把问题显示成“超时”。</p>
+    <div class="grid" style="margin-top:18px">
+      <div class="card"><div class="metric">3 次</div><div class="label">刷写前的设备扫描失败，说明连接进入稳定下载模式并不顺畅。</div></div>
+      <div class="card"><div class="metric">20 / 47</div><div class="label">前 20 个下载项已完成并进入第 21 项 <code>boot_a</code>。</div></div>
+      <div class="card"><div class="metric">28 MiB</div><div class="label"><code>boot.img</code> 中 14 个完整 2 MiB 块已发送并收到 OK；第 15 块负载写入失败。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>证据链：从正常连接到链路中断</h2>
+    <div class="flow-wrap">
+      <svg class="flow" viewBox="0 0 1040 220" role="img" aria-label="刷写失败证据链">
+        <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5f7891"/></marker></defs>
+        <path class="arrow" d="M180 110H252"/><path class="arrow" d="M430 110H502"/><path class="arrow" d="M680 110H752"/><path class="arrow arrow-fail" d="M930 110H1002"/>
+        <rect class="node node-ok" x="10" y="55" rx="14" width="170" height="110"/><text class="svg-time" x="25" y="80">16:24:12</text><text class="svg-title" x="25" y="105">COM9 / BROM 成功</text><text class="svg-sub" x="25" y="130">设备枚举并完成握手</text><text class="svg-sub" x="25" y="150">主机可与芯片通信</text>
+        <rect class="node node-ok" x="255" y="55" rx="14" width="175" height="110"/><text class="svg-time" x="270" y="80">16:24:15</text><text class="svg-title" x="270" y="105">DA 模式成功</text><text class="svg-sub" x="270" y="130">硬件信息 / UFS 可读</text><text class="svg-sub" x="270" y="150">非认证或 XML 阶段失败</text>
+        <rect class="node node-ok" x="505" y="55" rx="14" width="175" height="110"/><text class="svg-time" x="520" y="80">16:24:18–27</text><text class="svg-title" x="520" y="105">前 20 项完成</text><text class="svg-sub" x="520" y="130">进入 boot_a [21/47]</text><text class="svg-sub" x="520" y="150">已传 28 MiB 并获 OK</text>
+        <rect class="node node-fail" x="755" y="55" rx="14" width="175" height="110"/><text class="svg-time" x="770" y="80">16:24:27.960</text><text class="svg-title" x="770" y="105">Rx + Tx 同时失败</text><text class="svg-sub" x="770" y="130">0x16 / 0 字节</text><text class="svg-sub" x="770" y="150">MUX worker quit</text>
+        <text class="svg-time" x="942" y="88">+120 s</text><text class="svg-title" x="942" y="112">超时</text><text class="svg-sub" x="942" y="135">结果，不是起点</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>关键时间线</h2>
+    <div class="timeline">
+      <div class="event"><div class="time">16:17:27–16:23:01</div><div class="what">三次扫描设备失败</div><div class="why">分别以错误码 -2、-1、-1 结束；这为“连接稳定性有问题”提供背景证据，但不是最终刷写失败的唯一证明。</div></div>
+      <div class="event"><div class="time">16:24:12.733</div><div class="what">第四次发现 COM9，BROM 连接成功</div><div class="why">设备为 VID_0E8D/PID_0003，随后安全握手通过。</div></div>
+      <div class="event"><div class="time">16:24:15.794</div><div class="what">DA 模式成功，UFS 和硬件信息可读</div><div class="why">排除了“根本没进 DA”“XML schema 不通过”“认证立即失败”等早期故障。</div></div>
+      <div class="event"><div class="time">16:24:18–16:24:27</div><div class="what">下载项 1–20 前进完成</div><div class="why">日志依次进入 preloader、vbmeta、modem、固件子系统、gz 等镜像，说明镜像路径和基本传输流程整体可用。</div></div>
+      <div class="event"><div class="time">16:24:27.208</div><div class="what">开始 <code>boot_a [21/47]</code></div><div class="why">包长 0x200000（2 MiB），源文件为 <code>D:\SPFlash\flat\boot.img</code>。</div></div>
+      <div class="event fail"><div class="time">16:24:27.960</div><div class="what">读写两方向同时返回 0x16，实际传输均为 0 字节</div><div class="why">接收端期望 12 字节控制帧、发送端期望 2 MiB 数据，但两者都没有完成；1.45 ms 后 MUX 工作线程退出。</div></div>
+      <div class="event fail"><div class="time">16:26:27.976</div><div class="what">等待约 120 秒后报 <code>data_mux receive timeout or canceled</code></div><div class="why">这是通信线程已经退出后的等待结果，不应当被当成最初根因。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>哪些结论成立，哪些还不能成立</h2>
+    <table>
+      <thead><tr><th>判断</th><th>证据级别</th><th>日志支持</th><th>证据边界</th></tr></thead>
+      <tbody>
+        <tr><td>直接失败在主机—设备传输层</td><td class="evidence-tag direct-text">已证实</td><td>同一时刻 Rx/Tx 的 Windows I/O 都返回 0x16，长度均为 0；随后 MUX 退出。</td><td>能证明通道失效，不能单独判断是物理链路、驱动还是设备端退出。</td></tr>
+        <tr><td>失败发生在 <code>boot_a</code> 传输中</td><td class="evidence-tag direct-text">已证实</td><td>最后一个下载命令明确为 <code>boot_a [21/47]</code>；之后没有下一个分区进度。</td><td>说明故障暴露于 boot 阶段，不等于证明 boot 镜像内容有错。</td></tr>
+        <tr><td>最终超时是次生结果</td><td class="evidence-tag direct-text">已证实</td><td>I/O 错误与 MUX 退出发生在 16:24:27；超时发生在 16:26:27。</td><td>超时本身没有指出底层触发源。</td></tr>
+        <tr><td>线缆、端口、供电或枚举不稳</td><td class="evidence-tag infer-text">高优先级推断</td><td>刷写前连续 3 次找不到设备，刷写中又出现双向 I/O 同时失败。</td><td>没有 Windows PnP/USB 事件或示波器/供电记录，尚不能定责。</td></tr>
+        <tr><td>设备端复位或 DA 崩溃</td><td class="evidence-tag infer-text">高优先级推断</td><td>主机读取和写入同时失效，表现也符合目标端退出当前会话。</td><td>现有包没有目标 UART/DA 崩溃日志，无法确认是否复位。</td></tr>
+        <tr><td><code>boot.img</code> 文件损坏</td><td class="evidence-tag pending-text">未证实</td><td>失败前日志成功从本地读取下一块 2 MiB，随后是 WriteFile 失败；并无 checksum/format 错误。</td><td>当前环境中原始 <code>D:\SPFlash\flat\boot.img</code> 已不可访问，无法复核大小和哈希；且此次下载使用 <code>CHK_NO</code>。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>根因层级与优先排查顺序</h2>
+    <div class="two">
+      <div class="callout danger"><strong>已闭环到故障层</strong><p>主机到设备的传输会话在 <code>boot_a</code> 数据阶段崩溃。工具显示的 -2/timeout 是该会话崩溃后的上层包装。</p></div>
+      <div class="callout warn"><strong>尚未闭环到责任件</strong><p>缺少“断开瞬间”的 USB/PnP、板端复位或 DA 崩溃证据。因此不能直接把问题归给 boot 镜像、刷写工具、线缆或板卡中的任一方。</p></div>
+    </div>
+    <ol>
+      <li><strong>P1：USB 物理链路或供电/复位不稳定。</strong> 先换已验证短线、直连主板 USB 口、去掉 Hub/延长线、保证板端供电稳定；前三次扫描失败使这个方向优先级上升。</li>
+      <li><strong>P1：设备端在 boot 数据阶段复位或 DA 异常退出。</strong> 若每次都固定在 boot 偏移约 28 MiB，优先抓板端 UART/DA 日志，并核对该版本 DA 与 MT6897 平台、scatter 和 boot 镜像是否配套。</li>
+      <li><strong>P2：Windows MediaTek USB 驱动/控制器路径异常。</strong> <code>0x16</code> 在当前 Windows 上解释为“设备不识别此命令”；结合双向 0 字节更像设备句柄/驱动路径已不可继续，而不是应用层主动返回镜像错误。</li>
+      <li><strong>P3：boot 镜像内容或固定偏移触发设备端问题。</strong> 只有在“更换线缆/端口后仍稳定复现于同一偏移”时，才应提升此假设；需对照发布清单核验大小与 SHA-256，并用已知可用同平台 boot 镜像做单变量 A/B。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>建议的最小验证方案</h2>
+    <div class="steps">
+      <div class="step"><strong>先做链路 A/B。</strong> 同一台板、同一套镜像，只更换短 USB 线并直连另一主板口，同时稳定板端供电；连续刷 3 次。若失败位置漂移或消失，基本锁定链路/供电。</div>
+      <div class="step"><strong>记录“断开瞬间”。</strong> 复现时同步抓 Windows System 日志（Kernel-PnP/USB/DriverFrameworks）、设备管理器枚举变化，以及板端 UART/DA 日志。本次尝试读取系统事件日志被权限拒绝，因此报告未把 PnP 事件当作证据。</div>
+      <div class="step"><strong>验证是否固定在 28 MiB。</strong> 若仍在 <code>boot_a</code>，记录每次最后一个成功块；固定偏移指向镜像/DA/目标端处理路径，随机偏移更像 USB/供电不稳。</div>
+      <div class="step"><strong>再做镜像与版本一致性。</strong> 恢复原始 <code>D:\SPFlash\flat</code> 包后，核对 <code>boot.img</code> 大小和 SHA-256、scatter 对应平台与构建、DA 版本来源；不要同时更换多个变量。</div>
+    </div>
+    <div class="callout" style="margin-top:16px"><strong>闭环标准：</strong>完整通过 47/47 项并出现工具成功结束；同配置连续 3 次无 <code>0x16</code>、无 MUX 退出、无超时；设备断电重启后可正常启动。若只“偶尔刷过一次”，仍不能视为根因关闭。</div>
+  </section>
+
+  <section>
+    <h2>原始证据摘录</h2>
+    <p class="small">以下行号使用文本搜索工具对原始 LF 行进行计数。路径均为分析时读取的原文件。</p>
+    <details open="open"><summary>证据 A：最终成功进入 BROM 和 DA（QT_FLASH_TOOL_V6.log 35–55）</summary><pre>35  16:24:12.733 ... scan device succeed ... USB ... (COM9)
+37  16:24:12.738 ... connect brom successed.
+55  16:24:15.794 ... enter DA mode successed.</pre></details>
+    <details><summary>证据 B：开始下载 boot_a [21/47]（host_0.log 4511–4515）</summary><pre>4513 [16:24:27:208409] ... CMD:DOWNLOAD-FILE ...
+     &lt;info&gt;boot_a [21/47]&lt;/info&gt;
+     &lt;source_file&gt;D:\SPFlash\flat\boot.img&lt;/source_file&gt;
+     &lt;packet_length&gt;0x200000&lt;/packet_length&gt;</pre></details>
+    <details open="open"><summary>证据 C：读写同时失败，MUX 退出（host_0.log 4696–4707）</summary><pre>4696 [16:24:27:917528] [debug] send: data
+4697 ... Tx-&gt;: 0x0000000C ... 00 00 20 00
+4698 [16:24:27:960526] [error] Rx ReadFile error. code: 0x16
+4699 [warning] Rx xferd length[0x0] != expected length[0xc]
+4700 [16:24:27:960526] [error] Tx WriteFile error. code: 0x16
+4701 [warning] Tx xferd_write length[0x0] != expected length[0x200000]
+4703 [16:24:27:961980] [error] MUX worker quit.
+4704 [16:26:27:976507] [error] data_mux receive timeout or canceled.</pre></details>
+    <details><summary>证据 D：上层最终只看到超时（QT_FLASH_TOOL_V6.log 166–169）</summary><pre>166 16:26:27.976 ... CMD:FLASH-UPDATE command execute failed,
+    return error code: -2, error msg: data_mux receive timeout or canceled.
+169 16:26:28.000 ... current operation failed: error code[-2] ...</pre></details>
+    <p class="small" style="margin-top:15px"><strong>源文件：</strong><br /><span class="path">E:\问题日志\8676\SP_FT_V6_Dump_10-16-2026-16-17-10\QT_FLASH_TOOL_V6.log</span><br /><span class="path">E:\问题日志\8676\SP_FT_V6_Dump_10-16-2026-16-17-10\20261016T161710\host_0.log</span></p>
+  </section>
+
+  <section>
+    <h2>验证状态</h2>
+    <ul>
+      <li><span class="evidence-tag direct-text">已完成：</span>两份日志全量扫描；错误/警告检查；命令顺序和分区定位；失败前完整 2 MiB 块计数；Windows <code>0x16</code> 本机解释核对。</li>
+      <li><span class="evidence-tag pending-text">未完成：</span>原始 D 盘刷写包已不在当前环境，无法复核 <code>boot.img</code> 哈希/大小；Windows System 事件日志读取被权限拒绝；没有板端 UART、复位线或电源波形。</li>
+      <li><strong>当前置信度：</strong>“刷写因传输通道在 boot_a 阶段崩溃而失败”＝高；“具体由线缆/供电/设备端/驱动中的哪一个触发”＝未定。</li>
+    </ul>
+  </section>
+
+  <div class="footer">Standalone report · Inline CSS/SVG · No external dependencies</div>
+</main>
+</body>
+</html>

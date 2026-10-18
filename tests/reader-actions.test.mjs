@@ -17,10 +17,16 @@ test('article references load in place and keep an external fallback',()=>{
   assert.equal(action.externalUrl,'https://example.com/architecture/14.html#power');
 });
 
+test('published case reports can be loaded and downloaded',()=>{
+  const action=referenceAction('https://example.com/case-reports/mt8676-root-cause.html');
+  assert.equal(action.previewType,'article');
+  assert.equal(action.canLoad,true);
+  assert.equal(action.canDownload,true);
+});
+
 test('markdown download uses a safe topic filename and UTF-8 content',()=>{
   const spec=markdownDownloadSpec('电源/休眠：STR','## 内容');
   assert.equal(spec.filename,'电源-休眠-STR-专题总结.md');
   assert.equal(spec.type,'text/markdown;charset=utf-8');
   assert.equal(spec.content,'## 内容');
 });
-

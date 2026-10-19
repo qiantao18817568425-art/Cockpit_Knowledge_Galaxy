@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-18",
+    "sourceUpdatedOn": "2026-10-19",
     "chapterCount": 25,
-    "lessonCount": 44,
+    "lessonCount": 45,
     "reviewCount": 26,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -34,15 +34,15 @@
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 714,
-      "edgeCount": 769,
+      "nodeCount": 715,
+      "edgeCount": 770,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 204
+      "l4Count": 205
     },
     "layers": {
       "hierarchy": true,
@@ -2293,6 +2293,24 @@
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-45",
+      "title": "Day 45 - 诊断架构 I：健康状态、故障码与证据留存",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-45.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "diagnosis"
+      ],
+      "knowledgeIds": [],
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
       "navigationOnly": true,
       "hiddenByDefault": true,
       "hierarchyLevel": 3
@@ -52161,6 +52179,11 @@
       "type": "主题归类"
     },
     {
+      "from": "topic:diagnosis",
+      "to": "course:day-45",
+      "type": "主题归类"
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -53463,6 +53486,11 @@
     {
       "from": "course:day-43",
       "to": "course:day-44",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-44",
+      "to": "course:day-45",
       "type": "课程顺序"
     },
     {
@@ -62737,6 +62765,15 @@
       "id": "hierarchy:chain:system-overview:course:week-14-sunday",
       "from": "chain:system-overview",
       "to": "course:week-14-sunday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-45",
+      "from": "chain:system-overview",
+      "to": "course:day-45",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

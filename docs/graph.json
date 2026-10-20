@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-19",
+    "sourceUpdatedOn": "2026-10-20",
     "chapterCount": 25,
-    "lessonCount": 45,
+    "lessonCount": 46,
     "reviewCount": 26,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 69,
+      "learning": 72,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 715,
-      "edgeCount": 770,
+      "nodeCount": 716,
+      "edgeCount": 771,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 205
+      "l4Count": 206
     },
     "layers": {
       "hierarchy": true,
@@ -2289,8 +2289,14 @@
         "virtualization",
         "power"
       ],
-      "knowledgeIds": [],
-      "primaryParentId": "chain:system-overview",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:someip-service",
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "mappingBasis": "依据周日整合中的 VM—SOME/IP 跨层取证、恢复设计和测试闭环进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:runtime-boundaries",
       "hierarchyOrder": 0,
       "branchType": "review",
       "navigationOnly": true,
@@ -2307,8 +2313,34 @@
       "topics": [
         "diagnosis"
       ],
-      "knowledgeIds": [],
-      "primaryParentId": "chain:system-overview",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "mappingBasis": "依据课程中的健康状态、故障码、跨复位留存和证据合同进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:evidence-ledger",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-46",
+      "title": "Day 46 - 诊断架构 II：UDS/DoIP 服务链、清除边界与闭环验证",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-46.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:ethernet-connectivity"
+      ],
+      "mappingBasis": "依据课程中的 UDS/DoIP 服务链、传输确认、业务完成、清除边界和闭环验证进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:evidence-ledger",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -46338,7 +46370,8 @@
       "navigationOnly": false,
       "dayIds": [
         "course:day-9",
-        "course:day-44"
+        "course:day-44",
+        "course:day-46"
       ],
       "skillIds": [
         "t12t-ethernet-sgmii"
@@ -46444,7 +46477,8 @@
         "course:day-43",
         "course:day-44",
         "course:week-14-friday",
-        "course:week-14-saturday"
+        "course:week-14-saturday",
+        "course:week-14-sunday"
       ],
       "skillIds": [
         "t12t-cross-domain-msg"
@@ -46596,6 +46630,7 @@
         "course:day-42",
         "course:week-13-friday",
         "course:week-14-friday",
+        "course:week-14-sunday",
         "course:week-entry-16"
       ],
       "skillIds": [
@@ -49440,11 +49475,14 @@
         "course:day-33",
         "course:day-40",
         "course:day-44",
+        "course:day-45",
+        "course:day-46",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
         "course:week-13-sunday",
         "course:week-14-saturday",
+        "course:week-14-sunday",
         "course:week-entry-1",
         "course:week-entry-2",
         "course:week-entry-3",
@@ -50169,9 +50207,11 @@
         "course:day-27",
         "course:day-41",
         "course:day-42",
+        "course:day-45",
         "course:week-12-sunday",
         "course:week-13-sunday",
-        "course:week-14-friday"
+        "course:week-14-friday",
+        "course:week-14-sunday"
       ],
       "skillIds": [
         "t12t-stability-crash-reset",
@@ -52179,9 +52219,86 @@
       "type": "主题归类"
     },
     {
+      "id": "index:learning:chain:runtime-boundaries:course:week-14-sunday",
+      "from": "chain:runtime-boundaries",
+      "to": "course:week-14-sunday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:someip-service:course:week-14-sunday",
+      "from": "chain:someip-service",
+      "to": "course:week-14-sunday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-14-sunday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-14-sunday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:week-14-sunday",
+      "from": "chain:stability",
+      "to": "course:week-14-sunday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "from": "topic:diagnosis",
       "to": "course:day-45",
       "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-45",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-45",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-45",
+      "from": "chain:stability",
+      "to": "course:day-45",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:day-46",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-46",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-46",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:ethernet-connectivity:course:day-46",
+      "from": "chain:ethernet-connectivity",
+      "to": "course:day-46",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
     },
     {
       "from": "topic:power",
@@ -53491,6 +53608,11 @@
     {
       "from": "course:day-44",
       "to": "course:day-45",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-45",
+      "to": "course:day-46",
       "type": "课程顺序"
     },
     {
@@ -62762,8 +62884,8 @@
       "navigationOnly": true
     },
     {
-      "id": "hierarchy:chain:system-overview:course:week-14-sunday",
-      "from": "chain:system-overview",
+      "id": "hierarchy:chain:runtime-boundaries:course:week-14-sunday",
+      "from": "chain:runtime-boundaries",
       "to": "course:week-14-sunday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
@@ -62771,9 +62893,18 @@
       "navigationOnly": true
     },
     {
-      "id": "hierarchy:chain:system-overview:course:day-45",
-      "from": "chain:system-overview",
+      "id": "hierarchy:chain:evidence-ledger:course:day-45",
+      "from": "chain:evidence-ledger",
       "to": "course:day-45",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:evidence-ledger:course:day-46",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-46",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

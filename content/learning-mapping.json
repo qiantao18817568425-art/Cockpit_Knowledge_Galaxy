@@ -338,6 +338,22 @@
       "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-45",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "basis": "依据课程中的健康状态、故障码、跨复位留存和证据合同进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-46",
+      "knowledgeIds": [
+        "chain:evidence-ledger",
+        "chain:ethernet-connectivity"
+      ],
+      "basis": "依据课程中的 UDS/DoIP 服务链、传输确认、业务完成、清除边界和闭环验证进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",
@@ -409,6 +425,16 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-14-sunday",
+      "knowledgeIds": [
+        "chain:runtime-boundaries",
+        "chain:someip-service",
+        "chain:evidence-ledger",
+        "chain:stability"
+      ],
+      "basis": "依据周日整合中的 VM—SOME/IP 跨层取证、恢复设计和测试闭环进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
       "id": "course:week-entry-1",

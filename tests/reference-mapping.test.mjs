@@ -27,6 +27,20 @@ test('every Day and Week maps explicitly to concrete architecture knowledge',asy
   }
 });
 
+test('Day 45 and Day 46 join the diagnosis knowledge chains with explicit course links',async()=>{
+  const mapping=await readJson('../content/learning-mapping.json');
+  const expected={
+    'course:day-45':['chain:evidence-ledger','chain:stability'],
+    'course:day-46':['chain:evidence-ledger','chain:ethernet-connectivity']
+  };
+  for(const [courseId,knowledgeIds] of Object.entries(expected)){
+    const item=mapping.items.find(candidate=>candidate.id===courseId);
+    assert.ok(item,courseId);
+    assert.deepEqual(item.knowledgeIds,knowledgeIds,courseId);
+    assert.ok(item.basis?.includes('课程发布状态不代表已经掌握'),courseId);
+  }
+});
+
 test('all 21 T12T skills map to applicable L3 or L4 knowledge',async()=>{
   const mapping=await readJson('../content/skill-mapping.json');
   assert.equal(mapping.skills.length,21);

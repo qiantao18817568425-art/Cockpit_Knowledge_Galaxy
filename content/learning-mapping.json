@@ -354,6 +354,25 @@
       "basis": "依据课程中的 UDS/DoIP 服务链、传输确认、业务完成、清除边界和闭环验证进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-47",
+      "knowledgeIds": [
+        "chain:boot-lifecycle",
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程中的 OTA 版本合同、A/B 安装状态机、首启门禁、失败回滚和跨复位证据进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-48",
+      "knowledgeIds": [
+        "chain:boot-lifecycle",
+        "chain:runtime-boundaries",
+        "chain:tee-security",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程中的跨域 Campaign、提交屏障、版本兼容、安全回退边界和整车验证进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

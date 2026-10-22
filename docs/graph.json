@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-20",
+    "sourceUpdatedOn": "2026-10-23",
     "chapterCount": 25,
-    "lessonCount": 46,
+    "lessonCount": 48,
     "reviewCount": 26,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 72,
+      "learning": 74,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 716,
-      "edgeCount": 771,
+      "nodeCount": 718,
+      "edgeCount": 773,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 206
+      "l4Count": 208
     },
     "layers": {
       "hierarchy": true,
@@ -2341,6 +2341,53 @@
       ],
       "mappingBasis": "依据课程中的 UDS/DoIP 服务链、传输确认、业务完成、清除边界和闭环验证进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:evidence-ledger",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-47",
+      "title": "Day 47 - OTA / 回滚 I：版本合同、安装状态机与失败恢复",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-47.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power"
+      ],
+      "knowledgeIds": [
+        "chain:boot-lifecycle",
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据课程中的 OTA 版本合同、A/B 安装状态机、首启门禁、失败回滚和跨复位证据进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:boot-lifecycle",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-48",
+      "title": "Day 48 - OTA / 回滚 II：跨域编排、安全提交与整车验证",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-48.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "cross"
+      ],
+      "knowledgeIds": [
+        "chain:boot-lifecycle",
+        "chain:runtime-boundaries",
+        "chain:tee-security",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据课程中的跨域 Campaign、提交屏障、版本兼容、安全回退边界和整车验证进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:boot-lifecycle",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -46628,6 +46675,7 @@
         "course:day-19",
         "course:day-41",
         "course:day-42",
+        "course:day-48",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
@@ -48057,6 +48105,7 @@
         "course:day-8",
         "course:day-38",
         "course:day-39",
+        "course:day-47",
         "course:week-entry-7",
         "course:week-entry-8",
         "course:week-entry-9"
@@ -48479,7 +48528,9 @@
       "branchType": "architecture-chain",
       "navigationOnly": false,
       "dayIds": [
-        "course:day-7"
+        "course:day-7",
+        "course:day-47",
+        "course:day-48"
       ],
       "skillIds": [
         "t12t-boot-hmi"
@@ -48970,7 +49021,8 @@
       "branchType": "architecture-chain",
       "navigationOnly": false,
       "dayIds": [
-        "course:day-16"
+        "course:day-16",
+        "course:day-48"
       ],
       "skillIds": [
         "t12t-virtualization-tee"
@@ -49477,6 +49529,8 @@
         "course:day-44",
         "course:day-45",
         "course:day-46",
+        "course:day-47",
+        "course:day-48",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -52302,6 +52356,79 @@
     },
     {
       "from": "topic:power",
+      "to": "course:day-47",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:boot-lifecycle:course:day-47",
+      "from": "chain:boot-lifecycle",
+      "to": "course:day-47",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:power-lifecycle:course:day-47",
+      "from": "chain:power-lifecycle",
+      "to": "course:day-47",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-47",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-47",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-48",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:boot-lifecycle:course:day-48",
+      "from": "chain:boot-lifecycle",
+      "to": "course:day-48",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-48",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-48",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:tee-security:course:day-48",
+      "from": "chain:tee-security",
+      "to": "course:day-48",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-48",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-48",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
     },
@@ -53613,6 +53740,16 @@
     {
       "from": "course:day-45",
       "to": "course:day-46",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-46",
+      "to": "course:day-47",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-47",
+      "to": "course:day-48",
       "type": "课程顺序"
     },
     {
@@ -62905,6 +63042,24 @@
       "id": "hierarchy:chain:evidence-ledger:course:day-46",
       "from": "chain:evidence-ledger",
       "to": "course:day-46",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:boot-lifecycle:course:day-47",
+      "from": "chain:boot-lifecycle",
+      "to": "course:day-47",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:boot-lifecycle:course:day-48",
+      "from": "chain:boot-lifecycle",
+      "to": "course:day-48",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

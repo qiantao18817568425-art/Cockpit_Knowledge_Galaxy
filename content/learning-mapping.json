@@ -356,6 +356,7 @@
     {
       "id": "course:day-47",
       "knowledgeIds": [
+        "chain:ota-lifecycle",
         "chain:boot-lifecycle",
         "chain:power-lifecycle",
         "chain:evidence-ledger"
@@ -365,7 +366,7 @@
     {
       "id": "course:day-48",
       "knowledgeIds": [
-        "chain:boot-lifecycle",
+        "chain:ota-lifecycle",
         "chain:runtime-boundaries",
         "chain:tee-security",
         "chain:evidence-ledger"
@@ -582,6 +583,16 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据课程标题、课程正文主题和端到端技术链进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-15-friday",
+      "knowledgeIds": [
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger",
+        "chain:ethernet-connectivity",
+        "chain:tee-security"
+      ],
+      "basis": "依据 Week 15 对诊断证据、UDS/DoIP、OTA 状态机、跨域提交和安全回退的综合复盘进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

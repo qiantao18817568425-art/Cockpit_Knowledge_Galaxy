@@ -5,7 +5,7 @@
     "sourceUpdatedOn": "2026-10-23",
     "chapterCount": 25,
     "lessonCount": 48,
-    "reviewCount": 26,
+    "reviewCount": 27,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 74,
+      "learning": 75,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 718,
-      "edgeCount": 773,
+      "nodeCount": 719,
+      "edgeCount": 774,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 208
+      "l4Count": 209
     },
     "layers": {
       "hierarchy": true,
@@ -2358,12 +2358,13 @@
         "power"
       ],
       "knowledgeIds": [
+        "chain:ota-lifecycle",
         "chain:boot-lifecycle",
         "chain:power-lifecycle",
         "chain:evidence-ledger"
       ],
       "mappingBasis": "依据课程中的 OTA 版本合同、A/B 安装状态机、首启门禁、失败回滚和跨复位证据进行显式映射；课程发布状态不代表已经掌握。",
-      "primaryParentId": "chain:boot-lifecycle",
+      "primaryParentId": "chain:ota-lifecycle",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -2381,15 +2382,39 @@
         "cross"
       ],
       "knowledgeIds": [
-        "chain:boot-lifecycle",
+        "chain:ota-lifecycle",
         "chain:runtime-boundaries",
         "chain:tee-security",
         "chain:evidence-ledger"
       ],
       "mappingBasis": "依据课程中的跨域 Campaign、提交屏障、版本兼容、安全回退边界和整车验证进行显式映射；课程发布状态不代表已经掌握。",
-      "primaryParentId": "chain:boot-lifecycle",
+      "primaryParentId": "chain:ota-lifecycle",
       "hierarchyOrder": 0,
       "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-15-friday",
+      "title": "Week 15 - 周五反思总结：诊断架构与 OTA / 回滚闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-15-friday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger",
+        "chain:ethernet-connectivity",
+        "chain:tee-security"
+      ],
+      "mappingBasis": "依据 Week 15 对诊断证据、UDS/DoIP、OTA 状态机、跨域提交和安全回退的综合复盘进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:ota-lifecycle",
+      "hierarchyOrder": 0,
+      "branchType": "review",
       "navigationOnly": true,
       "hiddenByDefault": true,
       "hierarchyLevel": 3
@@ -46418,7 +46443,8 @@
       "dayIds": [
         "course:day-9",
         "course:day-44",
-        "course:day-46"
+        "course:day-46",
+        "course:week-15-friday"
       ],
       "skillIds": [
         "t12t-ethernet-sgmii"
@@ -48529,8 +48555,7 @@
       "navigationOnly": false,
       "dayIds": [
         "course:day-7",
-        "course:day-47",
-        "course:day-48"
+        "course:day-47"
       ],
       "skillIds": [
         "t12t-boot-hmi"
@@ -48846,6 +48871,11 @@
       "hierarchyOrder": 10,
       "branchType": "architecture-chain",
       "navigationOnly": false,
+      "dayIds": [
+        "course:day-47",
+        "course:day-48",
+        "course:week-15-friday"
+      ],
       "cases": [
         {
           "id": "case:mtk-flash-boot-a-transport-collapse",
@@ -49022,7 +49052,8 @@
       "navigationOnly": false,
       "dayIds": [
         "course:day-16",
-        "course:day-48"
+        "course:day-48",
+        "course:week-15-friday"
       ],
       "skillIds": [
         "t12t-virtualization-tee"
@@ -49552,7 +49583,8 @@
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15",
-        "course:week-entry-16"
+        "course:week-entry-16",
+        "course:week-15-friday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -52360,6 +52392,15 @@
       "type": "主题归类"
     },
     {
+      "id": "index:learning:chain:ota-lifecycle:course:day-47",
+      "from": "chain:ota-lifecycle",
+      "to": "course:day-47",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "id": "index:learning:chain:boot-lifecycle:course:day-47",
       "from": "chain:boot-lifecycle",
       "to": "course:day-47",
@@ -52392,8 +52433,8 @@
       "type": "主题归类"
     },
     {
-      "id": "index:learning:chain:boot-lifecycle:course:day-48",
-      "from": "chain:boot-lifecycle",
+      "id": "index:learning:chain:ota-lifecycle:course:day-48",
+      "from": "chain:ota-lifecycle",
       "to": "course:day-48",
       "type": "内容索引",
       "pathClass": "index",
@@ -52422,6 +52463,47 @@
       "id": "index:learning:chain:evidence-ledger:course:day-48",
       "from": "chain:evidence-ledger",
       "to": "course:day-48",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-15-friday",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:ota-lifecycle:course:week-15-friday",
+      "from": "chain:ota-lifecycle",
+      "to": "course:week-15-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-15-friday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-15-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:ethernet-connectivity:course:week-15-friday",
+      "from": "chain:ethernet-connectivity",
+      "to": "course:week-15-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:tee-security:course:week-15-friday",
+      "from": "chain:tee-security",
+      "to": "course:week-15-friday",
       "type": "内容索引",
       "pathClass": "index",
       "layer": "index",
@@ -63048,8 +63130,8 @@
       "navigationOnly": true
     },
     {
-      "id": "hierarchy:chain:boot-lifecycle:course:day-47",
-      "from": "chain:boot-lifecycle",
+      "id": "hierarchy:chain:ota-lifecycle:course:day-47",
+      "from": "chain:ota-lifecycle",
       "to": "course:day-47",
       "type": "primary_contains",
       "pathClass": "hierarchy",
@@ -63057,9 +63139,18 @@
       "navigationOnly": true
     },
     {
-      "id": "hierarchy:chain:boot-lifecycle:course:day-48",
-      "from": "chain:boot-lifecycle",
+      "id": "hierarchy:chain:ota-lifecycle:course:day-48",
+      "from": "chain:ota-lifecycle",
       "to": "course:day-48",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:ota-lifecycle:course:week-15-friday",
+      "from": "chain:ota-lifecycle",
+      "to": "course:week-15-friday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

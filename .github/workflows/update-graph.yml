@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/build-graph.mjs'
+      - 'content/learning-mapping.json'
       - '.github/workflows/update-graph.yml'
   schedule:
     - cron: '35 1 * * *'
@@ -40,4 +41,3 @@ jobs:
           git add docs/graph.json
           git commit -m 'Update public cockpit knowledge graph'
           git push
-

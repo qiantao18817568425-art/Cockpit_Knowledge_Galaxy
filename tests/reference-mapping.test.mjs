@@ -27,14 +27,15 @@ test('every Day and Week maps explicitly to concrete architecture knowledge',asy
   }
 });
 
-test('Day 45 through Week 15 Friday join diagnosis and OTA knowledge chains with explicit course links',async()=>{
+test('Day 45 through Week 15 Saturday join diagnosis and OTA knowledge chains with explicit course links',async()=>{
   const mapping=await readJson('../content/learning-mapping.json');
   const expected={
     'course:day-45':['chain:evidence-ledger','chain:stability'],
     'course:day-46':['chain:evidence-ledger','chain:ethernet-connectivity'],
     'course:day-47':['chain:ota-lifecycle','chain:boot-lifecycle','chain:power-lifecycle','chain:evidence-ledger'],
     'course:day-48':['chain:ota-lifecycle','chain:runtime-boundaries','chain:tee-security','chain:evidence-ledger'],
-    'course:week-15-friday':['chain:ota-lifecycle','chain:evidence-ledger','chain:ethernet-connectivity','chain:tee-security']
+    'course:week-15-friday':['chain:ota-lifecycle','chain:evidence-ledger','chain:ethernet-connectivity','chain:tee-security'],
+    'course:week-15-saturday':['chain:ota-lifecycle','chain:evidence-ledger']
   };
   for(const [courseId,knowledgeIds] of Object.entries(expected)){
     const item=mapping.items.find(candidate=>candidate.id===courseId);

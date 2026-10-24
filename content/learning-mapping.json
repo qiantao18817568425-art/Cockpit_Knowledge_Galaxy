@@ -593,6 +593,14 @@
         "chain:tee-security"
       ],
       "basis": "依据 Week 15 对诊断证据、UDS/DoIP、OTA 状态机、跨域提交和安全回退的综合复盘进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-15-saturday",
+      "knowledgeIds": [
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week15 周六对 Day45—48 的诊断—OTA 状态机重画、独立故障推演、证据账本、旧代消息拒绝和恢复决策训练进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-23",
+    "sourceUpdatedOn": "2026-10-24",
     "chapterCount": 25,
     "lessonCount": 48,
-    "reviewCount": 27,
+    "reviewCount": 28,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 75,
+      "learning": 76,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 719,
-      "edgeCount": 774,
+      "nodeCount": 720,
+      "edgeCount": 775,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 209
+      "l4Count": 210
     },
     "layers": {
       "hierarchy": true,
@@ -2412,6 +2412,29 @@
         "chain:tee-security"
       ],
       "mappingBasis": "依据 Week 15 对诊断证据、UDS/DoIP、OTA 状态机、跨域提交和安全回退的综合复盘进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:ota-lifecycle",
+      "hierarchyOrder": 0,
+      "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-15-saturday",
+      "title": "Week 15 - 周六巩固：诊断—OTA 状态机、证据链与恢复设计",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-15-saturday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Week15 周六对 Day45—48 的诊断—OTA 状态机重画、独立故障推演、证据账本、旧代消息拒绝和恢复决策训练进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:ota-lifecycle",
       "hierarchyOrder": 0,
       "branchType": "review",
@@ -48874,7 +48897,8 @@
       "dayIds": [
         "course:day-47",
         "course:day-48",
-        "course:week-15-friday"
+        "course:week-15-friday",
+        "course:week-15-saturday"
       ],
       "cases": [
         {
@@ -49584,7 +49608,8 @@
         "course:week-entry-14",
         "course:week-entry-15",
         "course:week-entry-16",
-        "course:week-15-friday"
+        "course:week-15-friday",
+        "course:week-15-saturday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -52504,6 +52529,34 @@
       "id": "index:learning:chain:tee-security:course:week-15-friday",
       "from": "chain:tee-security",
       "to": "course:week-15-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-15-saturday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-15-saturday",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:ota-lifecycle:course:week-15-saturday",
+      "from": "chain:ota-lifecycle",
+      "to": "course:week-15-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-15-saturday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-15-saturday",
       "type": "内容索引",
       "pathClass": "index",
       "layer": "index",
@@ -63151,6 +63204,15 @@
       "id": "hierarchy:chain:ota-lifecycle:course:week-15-friday",
       "from": "chain:ota-lifecycle",
       "to": "course:week-15-friday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:ota-lifecycle:course:week-15-saturday",
+      "from": "chain:ota-lifecycle",
+      "to": "course:week-15-saturday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

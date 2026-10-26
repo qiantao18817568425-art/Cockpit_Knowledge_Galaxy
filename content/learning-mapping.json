@@ -374,6 +374,14 @@
       "basis": "依据课程中的跨域 Campaign、提交屏障、版本兼容、安全回退边界和整车验证进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-49",
+      "knowledgeIds": [
+        "chain:mtk-compute-resources",
+        "chain:resource-budget"
+      ],
+      "basis": "依据课程中的资源所有权、DMA/IOMMU 地址边界、共享缓冲生命周期、fence、代际隔离和资源账本进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

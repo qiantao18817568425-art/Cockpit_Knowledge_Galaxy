@@ -27,13 +27,14 @@ test('every Day and Week maps explicitly to concrete architecture knowledge',asy
   }
 });
 
-test('Day 45 through Week 15 Saturday join diagnosis and OTA knowledge chains with explicit course links',async()=>{
+test('Day 45 through Day49 and Week 15 Saturday join explicit knowledge chains',async()=>{
   const mapping=await readJson('../content/learning-mapping.json');
   const expected={
     'course:day-45':['chain:evidence-ledger','chain:stability'],
     'course:day-46':['chain:evidence-ledger','chain:ethernet-connectivity'],
     'course:day-47':['chain:ota-lifecycle','chain:boot-lifecycle','chain:power-lifecycle','chain:evidence-ledger'],
     'course:day-48':['chain:ota-lifecycle','chain:runtime-boundaries','chain:tee-security','chain:evidence-ledger'],
+    'course:day-49':['chain:mtk-compute-resources','chain:resource-budget'],
     'course:week-15-friday':['chain:ota-lifecycle','chain:evidence-ledger','chain:ethernet-connectivity','chain:tee-security'],
     'course:week-15-saturday':['chain:ota-lifecycle','chain:evidence-ledger']
   };
@@ -43,6 +44,9 @@ test('Day 45 through Week 15 Saturday join diagnosis and OTA knowledge chains wi
     assert.deepEqual(item.knowledgeIds,knowledgeIds,courseId);
     assert.ok(item.basis?.includes('课程发布状态不代表已经掌握'),courseId);
   }
+  assert.equal(byId.get('course:day-49').primaryParentId,'chain:mtk-compute-resources');
+  assert.ok(byId.get('chain:mtk-compute-resources').dayIds.includes('course:day-49'));
+  assert.ok(byId.get('chain:resource-budget').dayIds.includes('course:day-49'));
 });
 
 test('all 21 T12T skills map to applicable L3 or L4 knowledge',async()=>{

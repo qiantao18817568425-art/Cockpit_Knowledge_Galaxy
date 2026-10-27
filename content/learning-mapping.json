@@ -382,6 +382,16 @@
       "basis": "依据课程中的资源所有权、DMA/IOMMU 地址边界、共享缓冲生命周期、fence、代际隔离和资源账本进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-50",
+      "knowledgeIds": [
+        "chain:mtk-compute-resources",
+        "chain:resource-budget",
+        "chain:display-output",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程中的 GPU/DDR 带宽预算、avg_bw/peak_bw、帧截止期、FrameTimeline、BufferQueue/fence、PSI、竞争假设与区分实验进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

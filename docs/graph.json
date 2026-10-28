@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-27",
+    "sourceUpdatedOn": "2026-10-28",
     "chapterCount": 25,
-    "lessonCount": 50,
+    "lessonCount": 51,
     "reviewCount": 28,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 78,
+      "learning": 79,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 722,
-      "edgeCount": 777,
+      "nodeCount": 723,
+      "edgeCount": 778,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 212
+      "l4Count": 213
     },
     "layers": {
       "hierarchy": true,
@@ -2482,6 +2482,29 @@
       ],
       "mappingBasis": "依据课程中的 GPU/DDR 带宽预算、avg_bw/peak_bw、帧截止期、FrameTimeline、BufferQueue/fence、PSI、竞争假设与区分实验进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:mtk-compute-resources",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-51",
+      "title": "Day 51 - 方案设计 I：需求分解、场景边界与系统级验收合同",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-51.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:soa-service-contract",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据课程中的 Need/ConOps、系统需求、场景边界、架构分配、ACK 到 business accepted 的完成阶梯以及 verification/validation 证据合同进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -40822,6 +40845,7 @@
       "dayIds": [
         "course:day-1",
         "course:day-3",
+        "course:day-51",
         "course:week-entry-1"
       ],
       "skillIds": [
@@ -46676,6 +46700,7 @@
         "course:day-14",
         "course:day-15",
         "course:day-16",
+        "course:day-51",
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15"
@@ -49638,6 +49663,7 @@
         "course:day-47",
         "course:day-48",
         "course:day-50",
+        "course:day-51",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -52679,6 +52705,38 @@
       "hiddenByDefault": true
     },
     {
+      "from": "topic:system",
+      "to": "course:day-51",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-51",
+      "from": "chain:system-overview",
+      "to": "course:day-51",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-51",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-51",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-51",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-51",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -54011,6 +54069,11 @@
     {
       "from": "course:day-49",
       "to": "course:day-50",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-50",
+      "to": "course:day-51",
       "type": "课程顺序"
     },
     {
@@ -63357,6 +63420,15 @@
       "id": "hierarchy:chain:mtk-compute-resources:course:day-50",
       "from": "chain:mtk-compute-resources",
       "to": "course:day-50",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-51",
+      "from": "chain:system-overview",
+      "to": "course:day-51",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

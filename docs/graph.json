@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-28",
+    "sourceUpdatedOn": "2026-10-29",
     "chapterCount": 25,
-    "lessonCount": 51,
+    "lessonCount": 52,
     "reviewCount": 28,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 79,
+      "learning": 80,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 723,
-      "edgeCount": 778,
+      "nodeCount": 724,
+      "edgeCount": 779,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 213
+      "l4Count": 214
     },
     "layers": {
       "hierarchy": true,
@@ -2504,6 +2504,31 @@
         "chain:evidence-ledger"
       ],
       "mappingBasis": "依据课程中的 Need/ConOps、系统需求、场景边界、架构分配、ACK 到 business accepted 的完成阶梯以及 verification/validation 证据合同进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-52",
+      "title": "Day 52 - 方案设计 II：模块分层、接口合同与状态/异常恢复",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-52.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据课程中的模块责任、权威状态、接口完成语义、未知最终状态、VM generation、旧代隔离、恢复屏障与验证矩阵进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "lesson",
@@ -40846,6 +40871,7 @@
         "course:day-1",
         "course:day-3",
         "course:day-51",
+        "course:day-52",
         "course:week-entry-1"
       ],
       "skillIds": [
@@ -46701,6 +46727,7 @@
         "course:day-15",
         "course:day-16",
         "course:day-51",
+        "course:day-52",
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15"
@@ -46799,6 +46826,7 @@
         "course:day-41",
         "course:day-42",
         "course:day-48",
+        "course:day-52",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
@@ -49664,6 +49692,7 @@
         "course:day-48",
         "course:day-50",
         "course:day-51",
+        "course:day-52",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -50397,6 +50426,7 @@
         "course:day-41",
         "course:day-42",
         "course:day-45",
+        "course:day-52",
         "course:week-12-sunday",
         "course:week-13-sunday",
         "course:week-14-friday",
@@ -52738,6 +52768,56 @@
     },
     {
       "from": "topic:power",
+      "to": "course:day-52",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-52",
+      "from": "chain:system-overview",
+      "to": "course:day-52",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-52",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-52",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-52",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-52",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-52",
+      "from": "chain:stability",
+      "to": "course:day-52",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-52",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-52",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
     },
@@ -54074,6 +54154,11 @@
     {
       "from": "course:day-50",
       "to": "course:day-51",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-51",
+      "to": "course:day-52",
       "type": "课程顺序"
     },
     {
@@ -63429,6 +63514,15 @@
       "id": "hierarchy:chain:system-overview:course:day-51",
       "from": "chain:system-overview",
       "to": "course:day-51",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-52",
+      "from": "chain:system-overview",
+      "to": "course:day-52",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

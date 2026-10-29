@@ -401,6 +401,17 @@
       "basis": "依据课程中的 Need/ConOps、系统需求、场景边界、架构分配、ACK 到 business accepted 的完成阶梯以及 verification/validation 证据合同进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-52",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据课程中的模块责任、权威状态、接口完成语义、未知最终状态、VM generation、旧代隔离、恢复屏障与验证矩阵进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

@@ -1,0 +1,25 @@
+export const VISUAL_CONFIG=Object.freeze({
+  background:'#050812',
+  backgroundFar:'#09111f',
+  activeGold:'#d8bd78',
+  activeGoldSoft:'#aa9360',
+  root:'#e6ecf5',
+  dimension:'#a9b8cd',
+  topic:'#8295ae',
+  detail:'#697c95',
+  hierarchy:'#50627a',
+  hierarchySecondary:'#35475e',
+  control:'#9aa9bb',
+  data:'#6f9eaa',
+  power:'#a88474',
+  state:'#8584a8',
+  diagnostic:'#7e967d',
+  maxPrimaryNodePixels:12,
+  maxDetailNodePixels:7,
+  pointOpacity:.82,
+  inactiveEdgeOpacity:.14,
+  activeEdgeOpacity:.88,
+  hierarchyEdgeOpacity:.24,
+  secondaryEdgeOpacity:.12
+});
+

@@ -6,34 +6,18 @@
   <meta name="description" content="座舱知识银河：以 Obsidian 式 3D 关系图探索座舱架构章节、原始资料分类与每日学习课程。">
   <meta name="theme-color" content="#01030b">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261028-hybrid2">
-  <link rel="stylesheet" href="hybrid-preview.css?v=20261028-hybrid2">
-  <link rel="stylesheet" href="hybrid-production.css?v=20261028-hybrid2">
-  <script type="module" src="boot.js?v=20261028-hybrid2"></script>
+  <link rel="stylesheet" href="style.css?v=20261018-absorb2">
+  <script type="module" src="app.js?v=20261018-absorb2"></script>
 </head>
 <body>
   <main class="workbench" aria-label="座舱知识银河工作台">
-    <div id="hybrid-stage" class="stage" hidden>
-      <div class="sky"></div><canvas id="galaxy-backdrop" aria-hidden="true"></canvas>
-      <header id="top-toolbar" class="top-toolbar"><div class="crumb"><button id="hybrid-back" type="button" aria-label="返回上级">‹</button> &nbsp; 知识图谱 &nbsp; / &nbsp; 智能座舱 &nbsp; / &nbsp; <span id="hybrid-breadcrumb">知识星图</span></div><button id="tools-toggle" type="button" aria-expanded="false">⌕ &nbsp; 搜索与筛选</button></header>
-      <section class="atlas" aria-label="座舱架构星座"><svg id="atlas-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg><div id="atlas-cards"></div><div class="core-label"><span>COCKPIT KNOWLEDGE</span><strong>智能座舱</strong></div></section>
-      <aside id="atlas-fan" class="fan" aria-label="当前星座知识"><div class="fan-caption">当前星座 <strong id="fan-name"></strong></div><svg id="fan-curves" preserveAspectRatio="none" aria-hidden="true"></svg><div id="fan-rows" class="fan-rows"></div><div id="hybrid-groups" class="hybrid-groups"></div></aside>
-      <div id="star-tip" class="star-tip" hidden></div>
-    </div>
-    <canvas id="galaxy" aria-label="兼容模式座舱知识关系图"></canvas>
-    <canvas id="galaxy-three" aria-label="三维座舱知识星座图。点击知识点下钻，悬停查看名称。"></canvas>
-    <div id="galaxy-root-label" class="galaxy-root-label">智能座舱</div>
+    <canvas id="galaxy" aria-label="3D 座舱知识关系图。鼠标悬停预览并放大标题，点击节点将它切换到中心，拖动旋转，滚轮缩放。"></canvas>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
       <label class="search-label" for="search">搜索知识</label>
       <input id="search" type="search" autocomplete="off" placeholder="模块、链路、Day、关键词…">
       <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
-      <div class="section-label">关系视图</div>
-      <div id="relation-mode" class="relation-mode" role="group" aria-label="切换架构层级与技术关系">
-        <button type="button" data-relation-mode="hierarchy" aria-pressed="true">架构层级</button>
-        <button type="button" data-relation-mode="technical" aria-pressed="false">技术关系</button>
-      </div>
       <div class="section-label">知识层</div>
       <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
       <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="state" aria-pressed="false">状态</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
@@ -49,21 +33,6 @@
       <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="state">状态</span><span class="diagnostic">诊断</span></div>
       <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="knowledge-coverage.html">覆盖报告 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></nav>
     </section>
-
-    <section id="constellation-cards" class="constellation-deck" aria-label="当前可见二级星座"></section>
-    <nav id="constellation-index" class="constellation-index" aria-label="全部二级知识维度"></nav>
-
-    <aside class="fan-panel glass" aria-label="当前节点的下级知识">
-      <header><div><span>当前链路</span><strong id="fan-title">智能座舱</strong></div><small id="fan-count"></small></header>
-      <ol id="fan-list" class="fan-list" aria-label="下级节点列表"></ol>
-      <div id="fan-groups" class="fan-groups"></div>
-    </aside>
-
-    <div class="renderer-notice glass">
-      <span id="renderer-status" aria-live="polite">正在准备三维星座</span>
-      <button id="webgl-retry" type="button" hidden>重试 3D</button>
-      <button id="canvas-fallback" type="button" hidden>兼容模式</button>
-    </div>
 
     <div class="glass motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
 

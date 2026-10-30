@@ -639,6 +639,19 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week15 周六对 Day45—48 的诊断—OTA 状态机重画、独立故障推演、证据账本、旧代消息拒绝和恢复决策训练进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-16-friday",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:mtk-compute-resources",
+        "chain:resource-budget",
+        "chain:soa-service-contract",
+        "chain:runtime-boundaries",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week16 周五对 Day49—52 的资源生命周期、GPU/DDR 预算、需求—验收追踪、模块与接口恢复合同的综合复盘进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

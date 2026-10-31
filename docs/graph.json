@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-10-30",
+    "sourceUpdatedOn": "2026-10-31",
     "chapterCount": 25,
     "lessonCount": 52,
-    "reviewCount": 29,
+    "reviewCount": 30,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 81,
+      "learning": 82,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 725,
-      "edgeCount": 780,
+      "nodeCount": 726,
+      "edgeCount": 781,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 215
+      "l4Count": 216
     },
     "layers": {
       "hierarchy": true,
@@ -2556,6 +2556,34 @@
         "chain:evidence-ledger"
       ],
       "mappingBasis": "依据 Week16 周五对 Day49—52 的资源生命周期、GPU/DDR 预算、需求—验收追踪、模块与接口恢复合同的综合复盘进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-16-saturday",
+      "title": "Week 16 - 周六巩固：资源—接口—恢复综合案例与证据链训练",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-16-saturday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:mtk-compute-resources",
+        "chain:resource-budget",
+        "chain:soa-service-contract",
+        "chain:runtime-boundaries",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Week16 周六围绕 Day49—52 开展的六流画图、资源双时间线、竞争假设、证据账本和有界恢复训练进行显式映射；课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "review",
@@ -40900,7 +40928,8 @@
         "course:day-51",
         "course:day-52",
         "course:week-entry-1",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -41743,7 +41772,8 @@
         "course:day-50",
         "course:week-entry-4",
         "course:week-entry-5",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "sourceClaims": [
         {
@@ -46760,7 +46790,8 @@
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "responsibility": {
         "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
@@ -46861,7 +46892,8 @@
         "course:week-14-friday",
         "course:week-14-sunday",
         "course:week-entry-16",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "skillIds": [
         "t12t-platform-architecture",
@@ -49666,7 +49698,8 @@
         "course:day-29",
         "course:day-49",
         "course:day-50",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "skillIds": [
         "t12t-performance-jank"
@@ -49749,7 +49782,8 @@
         "course:week-entry-16",
         "course:week-15-friday",
         "course:week-15-saturday",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -50464,7 +50498,8 @@
         "course:week-13-sunday",
         "course:week-14-friday",
         "course:week-14-sunday",
-        "course:week-16-friday"
+        "course:week-16-friday",
+        "course:week-16-saturday"
       ],
       "skillIds": [
         "t12t-stability-crash-reset",
@@ -52913,6 +52948,79 @@
       "id": "index:learning:chain:evidence-ledger:course:week-16-friday",
       "from": "chain:evidence-ledger",
       "to": "course:week-16-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-16-saturday",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-16-saturday",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:week-16-saturday",
+      "from": "chain:system-overview",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:mtk-compute-resources:course:week-16-saturday",
+      "from": "chain:mtk-compute-resources",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:resource-budget:course:week-16-saturday",
+      "from": "chain:resource-budget",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:week-16-saturday",
+      "from": "chain:soa-service-contract",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:week-16-saturday",
+      "from": "chain:runtime-boundaries",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:week-16-saturday",
+      "from": "chain:stability",
+      "to": "course:week-16-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-16-saturday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-16-saturday",
       "type": "内容索引",
       "pathClass": "index",
       "layer": "index",
@@ -63634,6 +63742,15 @@
       "id": "hierarchy:chain:system-overview:course:week-16-friday",
       "from": "chain:system-overview",
       "to": "course:week-16-friday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:week-16-saturday",
+      "from": "chain:system-overview",
+      "to": "course:week-16-saturday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

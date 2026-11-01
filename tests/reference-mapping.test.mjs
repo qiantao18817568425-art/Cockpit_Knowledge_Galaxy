@@ -42,6 +42,7 @@ test('Day 45 through Day52 and Week16 reviews join explicit knowledge chains',as
     'course:week-15-saturday':['chain:ota-lifecycle','chain:evidence-ledger']
     ,'course:week-16-friday':['chain:system-overview','chain:mtk-compute-resources','chain:resource-budget','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger']
     ,'course:week-16-saturday':['chain:system-overview','chain:mtk-compute-resources','chain:resource-budget','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger']
+    ,'course:week-16-sunday':['chain:system-overview','chain:mtk-compute-resources','chain:resource-budget','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger']
   };
   for(const [courseId,knowledgeIds] of Object.entries(expected)){
     const item=mapping.items.find(candidate=>candidate.id===courseId);
@@ -75,6 +76,10 @@ test('Day 45 through Day52 and Week16 reviews join explicit knowledge chains',as
   assert.ok(byId.get('chain:resource-budget').dayIds.includes('course:week-16-saturday'));
   assert.ok(byId.get('chain:soa-service-contract').dayIds.includes('course:week-16-saturday'));
   assert.ok(byId.get('chain:evidence-ledger').dayIds.includes('course:week-16-saturday'));
+  assert.equal(byId.get('course:week-16-sunday').primaryParentId,'chain:system-overview');
+  assert.ok(byId.get('chain:resource-budget').dayIds.includes('course:week-16-sunday'));
+  assert.ok(byId.get('chain:soa-service-contract').dayIds.includes('course:week-16-sunday'));
+  assert.ok(byId.get('chain:evidence-ledger').dayIds.includes('course:week-16-sunday'));
 });
 
 test('all 21 T12T skills map to applicable L3 or L4 knowledge',async()=>{

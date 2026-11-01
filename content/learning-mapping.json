@@ -665,6 +665,19 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week16 周六围绕 Day49—52 开展的六流画图、资源双时间线、竞争假设、证据账本和有界恢复训练进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-16-sunday",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:mtk-compute-resources",
+        "chain:resource-budget",
+        "chain:soa-service-contract",
+        "chain:runtime-boundaries",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week16 周日围绕 Day49—52 开展的跨层取证、证据冻结与对账、有界恢复、需求—测试—证据闭环和整合方案评审进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

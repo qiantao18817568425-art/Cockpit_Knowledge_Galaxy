@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-11-01",
+    "sourceUpdatedOn": "2026-11-02",
     "chapterCount": 25,
-    "lessonCount": 52,
+    "lessonCount": 53,
     "reviewCount": 31,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 83,
+      "learning": 84,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 727,
-      "edgeCount": 782,
+      "nodeCount": 728,
+      "edgeCount": 783,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 217
+      "l4Count": 218
     },
     "layers": {
       "hierarchy": true,
@@ -2615,6 +2615,31 @@
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-53",
+      "title": "Day 53 - 方案设计 III：A/B 方案权衡、风险与决策记录",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-53.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:soa-service-contract",
+        "chain:runtime-boundaries",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day53 对架构硬门槛、A/B 权衡、证据置信度、敏感性分析、风险三元组、决策记录与验证闭环的课程沉淀进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
       "navigationOnly": true,
       "hiddenByDefault": true,
       "hierarchyLevel": 3
@@ -40955,6 +40980,7 @@
         "course:day-3",
         "course:day-51",
         "course:day-52",
+        "course:day-53",
         "course:week-entry-1",
         "course:week-16-friday",
         "course:week-16-saturday",
@@ -46817,6 +46843,7 @@
         "course:day-16",
         "course:day-51",
         "course:day-52",
+        "course:day-53",
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15",
@@ -46919,6 +46946,7 @@
         "course:day-42",
         "course:day-48",
         "course:day-52",
+        "course:day-53",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
@@ -49791,6 +49819,7 @@
         "course:day-50",
         "course:day-51",
         "course:day-52",
+        "course:day-53",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -50528,6 +50557,7 @@
         "course:day-42",
         "course:day-45",
         "course:day-52",
+        "course:day-53",
         "course:week-12-sunday",
         "course:week-13-sunday",
         "course:week-14-friday",
@@ -53135,6 +53165,56 @@
       "hiddenByDefault": true
     },
     {
+      "from": "topic:system",
+      "to": "course:day-53",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-53",
+      "from": "chain:system-overview",
+      "to": "course:day-53",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-53",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-53",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-53",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-53",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-53",
+      "from": "chain:stability",
+      "to": "course:day-53",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-53",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-53",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -54477,6 +54557,11 @@
     {
       "from": "course:day-51",
       "to": "course:day-52",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-52",
+      "to": "course:day-53",
       "type": "课程顺序"
     },
     {
@@ -63868,6 +63953,15 @@
       "id": "hierarchy:chain:system-overview:course:week-16-sunday",
       "from": "chain:system-overview",
       "to": "course:week-16-sunday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-53",
+      "from": "chain:system-overview",
+      "to": "course:day-53",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

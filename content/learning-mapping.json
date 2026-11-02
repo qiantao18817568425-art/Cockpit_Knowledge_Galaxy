@@ -412,6 +412,17 @@
       "basis": "依据课程中的模块责任、权威状态、接口完成语义、未知最终状态、VM generation、旧代隔离、恢复屏障与验证矩阵进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-53",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:soa-service-contract",
+        "chain:runtime-boundaries",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day53 对架构硬门槛、A/B 权衡、证据置信度、敏感性分析、风险三元组、决策记录与验证闭环的课程沉淀进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

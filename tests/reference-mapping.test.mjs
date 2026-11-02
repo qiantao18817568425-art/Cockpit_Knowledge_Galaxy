@@ -27,7 +27,7 @@ test('every Day and Week maps explicitly to concrete architecture knowledge',asy
   }
 });
 
-test('Day 45 through Day52 and Week16 reviews join explicit knowledge chains',async()=>{
+test('Day 45 through Day53 and Week16 reviews join explicit knowledge chains',async()=>{
   const mapping=await readJson('../content/learning-mapping.json');
   const expected={
     'course:day-45':['chain:evidence-ledger','chain:stability'],
@@ -38,6 +38,7 @@ test('Day 45 through Day52 and Week16 reviews join explicit knowledge chains',as
     'course:day-50':['chain:mtk-compute-resources','chain:resource-budget','chain:display-output','chain:evidence-ledger'],
     'course:day-51':['chain:system-overview','chain:soa-service-contract','chain:evidence-ledger'],
     'course:day-52':['chain:system-overview','chain:runtime-boundaries','chain:soa-service-contract','chain:stability','chain:evidence-ledger'],
+    'course:day-53':['chain:system-overview','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger'],
     'course:week-15-friday':['chain:ota-lifecycle','chain:evidence-ledger','chain:ethernet-connectivity','chain:tee-security'],
     'course:week-15-saturday':['chain:ota-lifecycle','chain:evidence-ledger']
     ,'course:week-16-friday':['chain:system-overview','chain:mtk-compute-resources','chain:resource-budget','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger']
@@ -68,6 +69,9 @@ test('Day 45 through Day52 and Week16 reviews join explicit knowledge chains',as
   assert.ok(byId.get('chain:soa-service-contract').dayIds.includes('course:day-52'));
   assert.ok(byId.get('chain:stability').dayIds.includes('course:day-52'));
   assert.ok(byId.get('chain:evidence-ledger').dayIds.includes('course:day-52'));
+  assert.equal(byId.get('course:day-53').primaryParentId,'chain:system-overview');
+  assert.ok(byId.get('chain:soa-service-contract').dayIds.includes('course:day-53'));
+  assert.ok(byId.get('chain:evidence-ledger').dayIds.includes('course:day-53'));
   assert.equal(byId.get('course:week-16-friday').primaryParentId,'chain:system-overview');
   assert.ok(byId.get('chain:resource-budget').dayIds.includes('course:week-16-friday'));
   assert.ok(byId.get('chain:soa-service-contract').dayIds.includes('course:week-16-friday'));

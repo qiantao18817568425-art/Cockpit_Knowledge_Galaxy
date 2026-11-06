@@ -423,6 +423,40 @@
       "basis": "依据 Day53 对架构硬门槛、A/B 权衡、证据置信度、敏感性分析、风险三元组、决策记录与验证闭环的课程沉淀进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-54",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day54 对跨 Android/Yocto/Hypervisor/MCU/TBox 的 trace、metric、log、generation、完成阶梯、时间误差、证据生命周期与验证矩阵进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-55",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day55 对评审基线、跨域场景走查、接口完成语义、恢复终态、发现项、证据准入与关闭判据进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:day-56",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day56 对变更影响、混合版本、风险与豁免、发布/回滚门禁、旧代隔离、恢复验证和证据关闭进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",
@@ -689,6 +723,18 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week16 周日围绕 Day49—52 开展的跨层取证、证据冻结与对账、有界恢复、需求—测试—证据闭环和整合方案评审进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-17-friday",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week17 周五对 Day53—56 的方案权衡、可观测性、评审发现、变更风险、发布与回滚证据门禁进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

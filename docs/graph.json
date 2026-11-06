@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-11-02",
+    "sourceUpdatedOn": "2026-11-06",
     "chapterCount": 25,
-    "lessonCount": 53,
-    "reviewCount": 31,
+    "lessonCount": 56,
+    "reviewCount": 32,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -28,21 +28,21 @@
       }
     },
     "referenceMapping": {
-      "learning": 84,
+      "learning": 88,
       "skills": 21,
       "cases": 7,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 728,
-      "edgeCount": 783,
+      "nodeCount": 732,
+      "edgeCount": 787,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 218
+      "l4Count": 222
     },
     "layers": {
       "hierarchy": true,
@@ -2640,6 +2640,108 @@
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-54",
+      "title": "Day 54 - 方案设计 IV：可观测性与验证设计",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-54.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day54 对跨 Android/Yocto/Hypervisor/MCU/TBox 的 trace、metric、log、generation、完成阶梯、时间误差、证据生命周期与验证矩阵进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-55",
+      "title": "Day 55 - 方案评审 I：评审基线、场景走查与证据准入",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-55.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day55 对评审基线、跨域场景走查、接口完成语义、恢复终态、发现项、证据准入与关闭判据进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-56",
+      "title": "Day 56 - 方案评审 II：变更影响、风险关闭与发布门禁",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-56.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "system"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day56 对变更影响、混合版本、风险与豁免、发布/回滚门禁、旧代隔离、恢复验证和证据关闭进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-17-friday",
+      "title": "Week 17 - 周五反思总结：方案权衡、可观测性与架构评审闭环",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-17-friday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "diagnosis"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Week17 周五对 Day53—56 的方案权衡、可观测性、评审发现、变更风险、发布与回滚证据门禁进行显式映射；课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "review",
       "navigationOnly": true,
       "hiddenByDefault": true,
       "hierarchyLevel": 3
@@ -40981,10 +41083,14 @@
         "course:day-51",
         "course:day-52",
         "course:day-53",
+        "course:day-54",
+        "course:day-55",
+        "course:day-56",
         "course:week-entry-1",
         "course:week-16-friday",
         "course:week-16-saturday",
-        "course:week-16-sunday"
+        "course:week-16-sunday",
+        "course:week-17-friday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -46844,12 +46950,16 @@
         "course:day-51",
         "course:day-52",
         "course:day-53",
+        "course:day-54",
+        "course:day-55",
+        "course:day-56",
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15",
         "course:week-16-friday",
         "course:week-16-saturday",
-        "course:week-16-sunday"
+        "course:week-16-sunday",
+        "course:week-17-friday"
       ],
       "responsibility": {
         "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
@@ -46947,13 +47057,17 @@
         "course:day-48",
         "course:day-52",
         "course:day-53",
+        "course:day-54",
+        "course:day-55",
+        "course:day-56",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
         "course:week-entry-16",
         "course:week-16-friday",
         "course:week-16-saturday",
-        "course:week-16-sunday"
+        "course:week-16-sunday",
+        "course:week-17-friday"
       ],
       "skillIds": [
         "t12t-platform-architecture",
@@ -49122,8 +49236,10 @@
       "dayIds": [
         "course:day-47",
         "course:day-48",
+        "course:day-56",
         "course:week-15-friday",
-        "course:week-15-saturday"
+        "course:week-15-saturday",
+        "course:week-17-friday"
       ],
       "cases": [
         {
@@ -49820,6 +49936,9 @@
         "course:day-51",
         "course:day-52",
         "course:day-53",
+        "course:day-54",
+        "course:day-55",
+        "course:day-56",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -49846,7 +49965,8 @@
         "course:week-15-saturday",
         "course:week-16-friday",
         "course:week-16-saturday",
-        "course:week-16-sunday"
+        "course:week-16-sunday",
+        "course:week-17-friday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -50558,13 +50678,17 @@
         "course:day-45",
         "course:day-52",
         "course:day-53",
+        "course:day-54",
+        "course:day-55",
+        "course:day-56",
         "course:week-12-sunday",
         "course:week-13-sunday",
         "course:week-14-friday",
         "course:week-14-sunday",
         "course:week-16-friday",
         "course:week-16-saturday",
-        "course:week-16-sunday"
+        "course:week-16-sunday",
+        "course:week-17-friday"
       ],
       "skillIds": [
         "t12t-stability-crash-reset",
@@ -53215,6 +53339,224 @@
       "hiddenByDefault": true
     },
     {
+      "from": "topic:system",
+      "to": "course:day-54",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-54",
+      "from": "chain:system-overview",
+      "to": "course:day-54",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-54",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-54",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-54",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-54",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-54",
+      "from": "chain:stability",
+      "to": "course:day-54",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-54",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-54",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:day-55",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-55",
+      "from": "chain:system-overview",
+      "to": "course:day-55",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-55",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-55",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-55",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-55",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-55",
+      "from": "chain:stability",
+      "to": "course:day-55",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-55",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-55",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:system",
+      "to": "course:day-56",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-56",
+      "from": "chain:system-overview",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-56",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-56",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-56",
+      "from": "chain:stability",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:ota-lifecycle:course:day-56",
+      "from": "chain:ota-lifecycle",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-56",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-56",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:diagnosis",
+      "to": "course:week-17-friday",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:week-17-friday",
+      "from": "chain:system-overview",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:week-17-friday",
+      "from": "chain:runtime-boundaries",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:week-17-friday",
+      "from": "chain:soa-service-contract",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:week-17-friday",
+      "from": "chain:stability",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:ota-lifecycle:course:week-17-friday",
+      "from": "chain:ota-lifecycle",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-17-friday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-17-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -54562,6 +54904,21 @@
     {
       "from": "course:day-52",
       "to": "course:day-53",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-53",
+      "to": "course:day-54",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-54",
+      "to": "course:day-55",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-55",
+      "to": "course:day-56",
       "type": "课程顺序"
     },
     {
@@ -63962,6 +64319,42 @@
       "id": "hierarchy:chain:system-overview:course:day-53",
       "from": "chain:system-overview",
       "to": "course:day-53",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-54",
+      "from": "chain:system-overview",
+      "to": "course:day-54",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-55",
+      "from": "chain:system-overview",
+      "to": "course:day-55",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-56",
+      "from": "chain:system-overview",
+      "to": "course:day-56",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:week-17-friday",
+      "from": "chain:system-overview",
+      "to": "course:week-17-friday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

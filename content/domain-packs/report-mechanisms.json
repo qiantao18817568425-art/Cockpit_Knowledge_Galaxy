@@ -1,0 +1,48 @@
+{
+  "entities": [
+    {
+      "id": "process:android-lmkd-pressure",
+      "title": "Android LMKD、PSI 与后台进程回收",
+      "kind": "process",
+      "domain": "performance",
+      "runtimeDomain": "Android Guest",
+      "platforms": [],
+      "aliases": ["lmkd", "低内存回收", "oom_score_adj", "内存压力", "白名单"],
+      "description": "从 PSI 通知、内存水位、换页与文件页抖动，追到候选选择、实际终止及业务影响。",
+      "url": "case-reports/android-lmkd-memory-pressure.html",
+      "sourceSha256": "1DC34ED32F683854AF536D89EDD767B1B5E018A2B28F1BC27DF0E006A9D06CE1",
+      "knowledge": {
+        "role": "在资源竞争下恢复可用内存，并降低前台与关键座舱业务的中断风险。",
+        "input": ["PSI some/full、内存水位、refault、有效 swap、目标策略与候选进程 adj"],
+        "mechanism": ["压力通知触发评估；按目标构建启用的策略分支确定候选范围，选择可回收进程并跟踪退出。"],
+        "output": ["回收理由、候选和实际受害进程；回收后内存及业务可用性变化"],
+        "observations": ["同步记录 PSI/水位、回收理由、PID/adj、退出与首帧；固定版本和负载比较候选配置。"],
+        "limits": ["项目快照、会议候选、已生效配置与实车验证分别记录。保护目标、包名名单和阈值依目标构建核验。"]
+      }
+    },
+    {
+      "id": "process:filesystem-mount-recovery",
+      "title": "文件系统挂载失败与受控恢复",
+      "kind": "process",
+      "domain": "usb-storage",
+      "runtimeDomain": "Android Guest／Yocto Host／MCU",
+      "platforms": [],
+      "aliases": ["NVdata", "virtio-blk", "ext4", "e2fsck", "紧急模式", "挂载失败"],
+      "description": "分别验证块 I/O、日志回放、检查退出、挂载及 MCU 电源约束。",
+      "url": "case-reports/filesystem-mount-recovery-design.html",
+      "sourceSha256": "FB56B769D76CAF02DBF7699B69B8D2D6BD93B54E4941811780D037C317276314",
+      "knowledge": {
+        "role": "把挂载失败定位到 Guest 文件系统、虚拟块传输、Host 后端或物理存储，并规划分级恢复。",
+        "input": ["当前构建的分区映射、块设备与文件系统状态、重启原因及电源窗口"],
+        "mechanism": ["先确定同一运行周期块 I/O 与文件系统检查的首个断点；优先保数据修复，受控重建仅在可恢复边界内评审。"],
+        "output": ["可追踪的检查退出、挂载状态和数据完整性验收"],
+        "observations": ["Guest/Host 块请求与完成、fsck 实际参数和退出位、最终挂载、MCU 心跳与供电。"],
+        "limits": ["不同平台或分区样本分别引用。上游 e2fsck -f 强制检查，-F 刷新缓存；目标 wrapper 需核对。重建、掉电和数据风险尚待实测。"]
+      }
+    }
+  ],
+  "relations": [],
+  "sources": [],
+  "evidence": [],
+  "claims": []
+}

@@ -178,6 +178,51 @@ test('case projections roll up from L3 chains to their L2 architecture dimension
   assert.ok(audio.cases.some(item=>item.id==='case:mt8676-driving-mode-audio-loop'&&item.projection.role==='downstream_effect'));
 });
 
+test('report updates preserve canonical cases, evidence boundaries and reader links',async()=>{
+  const register=await readJson('../content/case-register.json');
+  const reviewed=register.cases.filter(item=>item.reportVersions?.length);
+  assert.equal(register.summary.canonicalCaseCount,register.cases.length);
+  assert.equal(register.summary.reviewedReportCount,reviewed.flatMap(item=>item.reportVersions).length);
+  assert.equal(graph.meta.referenceMapping.reviewedReports,register.summary.reviewedReportCount);
+  for(const id of ['case:mt8668-dvr-callback-restart','case:t12t-soc-mcu-upgrade-breakpoints']){
+    const item=reviewed.find(entry=>entry.id===id);
+    assert.equal(item?.caseStatus,'direct_failure_confirmed_trigger_open');
+    assert.equal(item.verificationStatus,'pending');
+    assert.ok(item.evidence.some(entry=>entry.type==='missing'));
+    assert.deepEqual(item.projections.map(projection=>projection.knowledgeId),item.knowledgeIds);
+    for(const projection of item.projections){
+      assertConcreteTarget(projection.knowledgeId,id);
+      assert.ok(projection.evidenceIds.every(evidenceId=>item.evidence.some(entry=>entry.id===evidenceId)));
+      assert.ok(byId.get(projection.knowledgeId).caseIds.includes(id));
+    }
+    assert.ok(item.tpm.firstRoundLead&&item.tpm.verifier&&item.tpm.closure);
+    for(const report of item.reportVersions){
+      assert.match(report.sourceSha256,/^[A-F0-9]{64}$/);
+      const html=await readFile(new URL('../docs/'+report.url,import.meta.url),'utf8');
+      assert.ok(html.includes('<h1>'));
+      assert.doesNotMatch(html,/[A-Z]:[\\/]|feishu\.cn/);
+    }
+  }
+  assert.deepEqual(reviewed.find(item=>item.id==='case:mt8668-dvr-callback-restart').reportVersions.map(report=>report.status),['current','supplement']);
+});
+
+test('mechanism reports remain independent searchable knowledge topics',async()=>{
+  for(const [id,parent,phrase] of [
+    ['process:android-lmkd-pressure','chain:performance-diagnosis','50/70 ms'],
+    ['process:filesystem-mount-recovery','chain:usb-storage','小写 <code>-f</code>']
+  ]){
+    const node=byId.get(id);
+    assert.equal(node?.primaryParentId,parent);
+    assert.equal(node.hierarchyLevel,3);
+    assert.equal(node.kind,'process');
+    assert.match(node.sourceSha256,/^[A-F0-9]{64}$/);
+    for(const key of ['role','input','mechanism','output','observations','limits']) assert.ok(node.knowledge[key].length);
+    const html=await readFile(new URL('../docs/'+node.url,import.meta.url),'utf8');
+    assert.ok(html.includes(phrase));
+    assert.doesNotMatch(html,/[A-Z]:[\\/]|feishu\.cn/);
+  }
+});
+
 test('compiled L3 nodes embed references or declare an explicit review gap',()=>{
   for(const node of graph.nodes.filter(item=>item.kind==='architecture_chain')){
     const count=(node.dayIds?.length||0)+(node.sourceClaims?.length||0)+(node.skillIds?.length||0)+(node.caseIds?.length||0);

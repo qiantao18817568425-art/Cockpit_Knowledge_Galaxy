@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "privacy": "公开内容只保留技术事实、证据定位和责任域；案例原文已按用户授权发布，页面不把分析报告本身误标为原始日志。",
-  "summary": {"indexedTopLevelDirectories": 287, "canonicalCaseCount": 7, "reviewedReportCount": 3},
+  "privacy": "公开案例页面保留脱敏技术事实、证据定位和责任域。sourceSha256 指向本地源报告的版本指纹。分析报告与原始日志分别登记。",
+  "summary": {"indexedTopLevelDirectories": 287, "canonicalCaseCount": 9, "reviewedReportCount": 6},
   "cases": [
     {
       "id": "case:display-black", "title": "显示黑屏与画面异常案例索引", "symptom": "显示黑屏、异常颜色、卡死或重启",
@@ -40,7 +40,8 @@
       "title": "MT8676驾驶模式信号冲突触发提示音反复重启",
       "symptom": "整车出现间歇性异常噪声，驾驶模式提示音被高频重复起播和截断",
       "platforms": ["MT8676"], "caseStatus": "root_cause_confirmed", "evidenceState": "concluded", "confidence": "高",
-      "scope": {"timeWindow": "2026-10-12 19:33:59—19:36:58", "reportCount": 2},
+      "scope": {"timeWindow": "2026-10-12 初次分析；2026-10-15 11:09:00—11:11:20 再次复现", "reportCount": 2},
+      "verificationStatus": "pending",
       "clocks": {"state": "aligned", "basis": "Android日志毫秒时间线；原始CAN与MCU时基仍需在回归时共同对齐"},
       "bootGeneration": {"state": "not_required_for_current_conclusion"},
       "knowledgeIds": ["chain:vehicle-bus", "chain:mcu-soc-responsibility", "chain:vehicle-service-framework", "chain:audio-policy-routing", "chain:evidence-ledger"],
@@ -56,8 +57,8 @@
       "hypotheses": ["其他同期变化的车辆信号是否存在相同双源冲突，需要逐信号核对，不能由本案自动外推。", "修复后的MCU仲裁策略、业务防抖窗口与合法切换时延需要在当前软件版本实车验证。"],
       "technicalChain": [{"pathClass": "data", "text": "ICC CAN与DKCAN双源输入 → MCU信号源仲裁/过滤 → canservice IPC/VHAL/VehicleClient → DrivingFeature状态判断 → AudioTrackPlayer → 音频输出", "failurePropagation": "MCU把相互冲突的0和1都向上转发，Android把每次1当成新模式变化，播放器再把状态抖动放大为可听异常。"}],
       "reportVersions": [
-        {"id": "report:mt8676-noise-early", "title": "8676整车异常噪声根因分析（早期分析）", "date": "2026-10-12", "status": "superseded", "statusLabel": "已被后续根因报告更新", "url": "case-reports/mt8676-abnormal-noise-early.html", "sha256": "69086A8BDD3E558762DC4B194866F7327310638D4466E371C36286CB2E7A6885", "summary": "已闭环驾驶模式0/1振荡、conversion未命中和重复播放机制；当时尚未确认上游信号源。"},
-        {"id": "report:mt8676-noise-confirmed", "title": "8676再次异响重新分析报告", "date": "2026-10-15", "status": "current", "statusLabel": "当前根因报告", "url": "case-reports/mt8676-driving-mode-audio-root-confirmed.html", "sha256": "AFA598145C24983671B23A1BD5FEEE224E3558D7B1F9F6296C51BC08514EA08E", "supersedes": "report:mt8676-noise-early", "summary": "在早期直接失效链基础上，结合项目侧信号源确认，闭环到双CAN源冲突和MCU未仲裁。"}
+        {"id": "report:mt8676-noise-early", "title": "8676整车异常噪声根因分析（早期分析）", "date": "2026-10-12", "status": "superseded", "statusLabel": "已被后续根因报告更新", "url": "case-reports/mt8676-abnormal-noise-early.html", "sourceSha256": "69086A8BDD3E558762DC4B194866F7327310638D4466E371C36286CB2E7A6885", "summary": "已闭环驾驶模式0/1振荡、conversion未命中和重复播放机制；当时尚未确认上游信号源。"},
+        {"id": "report:mt8676-noise-confirmed", "title": "8676再次异响重新分析报告", "date": "2026-10-15", "status": "current", "statusLabel": "根因已确认 · 修复回归待补", "url": "case-reports/mt8676-driving-mode-audio-root-confirmed.html", "sourceSha256": "AFA598145C24983671B23A1BD5FEEE224E3558D7B1F9F6296C51BC08514EA08E", "supersedes": "report:mt8676-noise-early", "summary": "在早期直接失效链基础上，结合项目侧信号源确认，闭环到双CAN源冲突和MCU未仲裁。"}
       ],
       "evidence": [
         {"id": "E-AUDIO-01", "type": "direct", "source": "canservice与Android主日志", "location": "报告内逐行证据索引", "supports": "同一驾驶模式属性0/1交替并触发modeChanged与play", "boundary": "证明Android侧事件链；原始CAN物理帧仍应在回归中同步采集。"},
@@ -81,6 +82,7 @@
     {
       "id": "case:mtk-flash-boot-a-transport-collapse", "title": "MTK刷写boot_a阶段传输会话崩溃", "symptom": "SP Flash Tool在boot_a刷写阶段失败并在120秒后显示data_mux超时",
       "platforms": ["MediaTek"], "caseStatus": "direct_failure_confirmed_trigger_open", "evidenceState": "verified", "confidence": "直接失效高；具体触发未定",
+      "verificationStatus": "pending",
       "scope": {"timeWindow": "2026-10-16 16:24:12—16:26:28", "reportCount": 1}, "clocks": {"state": "aligned", "basis": "SP Flash Tool与host日志时间线"},
       "bootGeneration": {"state": "download_session_bound", "basis": "第四次COM9/BROM连接至MUX退出属于同一下载会话"},
       "knowledgeIds": ["chain:platform-family", "chain:usb-storage", "chain:hal-driver-boundary", "chain:ota-lifecycle", "chain:evidence-ledger"],
@@ -90,7 +92,7 @@
       "confirmedFacts": ["第四次连接已成功进入BROM和DA，UFS及硬件信息可读，前20项完成。", "boot_a前14个2MiB块成功，约28MiB后下一块发送与控制帧接收同时失败。", "MUX worker在I/O错误后立即退出；两分钟后的超时是后果。", "没有checksum、镜像格式或认证立即失败证据，不能把boot.img直接定为根因。"],
       "hypotheses": ["USB线缆、主机端口、Hub、供电或枚举稳定性问题。", "设备端复位、DA崩溃或目标侧退出当前会话。", "Windows MediaTek USB驱动或控制器路径异常。", "若每次固定在约28MiB，需提升boot镜像、DA与目标端固定偏移交互假设。"],
       "technicalChain": [{"pathClass": "data", "text": "Windows刷写工具 → MediaTek USB/串口驱动 → BROM → DA → MUX数据通道 → UFS分区写入", "failurePropagation": "主机与目标之间的双向通道先失效，MUX退出，上层命令随后等待不到响应并包装为超时。"}],
-      "reportVersions": [{"id": "report:mtk-flash-20261016", "title": "刷写失败原因分析", "date": "2026-10-16", "status": "current", "statusLabel": "当前分析报告", "url": "case-reports/mtk-flash-boot-a-transport-collapse.html", "sha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062", "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"}],
+      "reportVersions": [{"id": "report:mtk-flash-20261016", "title": "刷写失败原因分析", "date": "2026-10-16", "status": "current", "statusLabel": "直接失效已确认 · 触发与回归待补", "url": "case-reports/mtk-flash-boot-a-transport-collapse.html", "sourceSha256": "5C8C70317B1F97D5E3E1A797927EC4199620CCB7140B1653662389E9FC42B062", "summary": "闭环到boot_a阶段的传输会话崩溃，具体物理、驱动或目标侧触发仍需区分实验。"}],
       "evidence": [
         {"id": "E-FLASH-01", "type": "direct", "source": "host_0.log", "location": "4696—4704", "supports": "Rx/Tx同毫秒0x16、0字节失败及MUX退出", "boundary": "证明传输通道失效，不能单独指认物理链、驱动或设备端。"},
         {"id": "E-FLASH-02", "type": "direct", "source": "host_0.log", "location": "4511—4515及前序块响应", "supports": "失败暴露于boot_a [21/47]且此前已传约28MiB", "boundary": "暴露位置不等于boot.img内容错误。"},
@@ -104,6 +106,430 @@
         {"knowledgeId": "chain:hal-driver-boundary", "role": "candidate_boundary", "summary": "从HAL/驱动边界看，Windows I/O 0x16只能证明当前设备句柄或驱动路径不可继续，不能单独定责驱动。", "relationReason": "刷写工具通过Windows驱动访问MediaTek设备；相同上层错误可由主机驱动、物理断开或目标退出汇聚产生。", "evidenceIds": ["E-FLASH-01", "E-FLASH-04"], "tpmFocus": "驱动域提供PnP/USB事件和设备枚举变化，不以错误码直接认领根因。"},
         {"knowledgeId": "chain:ota-lifecycle", "role": "process_context", "summary": "从升级流程看，失败发生在boot_a分区的数据阶段；分区名是故障暴露位置，不等于镜像内容根因。", "relationReason": "升级流程需要区分镜像校验、下载会话、分区写入和激活阶段；本案尚未走到完整下载和启动验证。", "evidenceIds": ["E-FLASH-02"], "tpmFocus": "发布侧核对镜像SHA、scatter与DA匹配，并保留固定偏移复现记录。"},
         {"knowledgeId": "chain:evidence-ledger", "role": "diagnostic_method", "summary": "本案展示了如何把最早I/O断点与120秒后的上层超时分离，并保留竞争假设。", "relationReason": "先按同一下载会话重建时间线，再区分直接失效、背景不稳定、次生超时和缺失证据，可防止从最后报错倒推根因。", "evidenceIds": ["E-FLASH-01", "E-FLASH-02", "E-FLASH-03", "E-FLASH-04"], "tpmFocus": "按证据强度管理假设，以单变量实验和连续成功作为关闭依据。"}
+      ]
+    },
+    {
+      "id": "case:mt8668-dvr-callback-restart",
+      "title": "MT8668 DVR 服务启动分叉与介质回调崩溃",
+      "symptom": "DVR 介质回调注册失败，客户端共享进程反复退出，伴随蓝牙、亮度及音频异常",
+      "platforms": [
+        "MT8668"
+      ],
+      "caseStatus": "direct_failure_confirmed_trigger_open",
+      "evidenceState": "verified",
+      "confidence": "进程失效和启动分叉高；服务端拒绝及部分传播待核验",
+      "scope": {
+        "timeWindow": "2026-10-25 对照样本",
+        "reportCount": 2
+      },
+      "clocks": {
+        "state": "sample_local",
+        "basis": "以报告中启动相对时间和 Android 日志各自排序"
+      },
+      "bootGeneration": {
+        "state": "process_generation_bound",
+        "basis": "同一构建的对照样本按开机周期及 PID 区分，物理设备同一性待核"
+      },
+      "knowledgeIds": [
+        "chain:android-internal-ipc",
+        "chain:boot-lifecycle",
+        "chain:avm-video-flow",
+        "chain:stability",
+        "chain:wireless-phone-link",
+        "chain:display-output",
+        "chain:audio-policy-routing",
+        "chain:evidence-ledger"
+      ],
+      "skillIds": [
+        "t12t-cockpit-diagnosis",
+        "t12t-log-analysis",
+        "t12t-platform-architecture",
+        "t12t-avm-camera-stream",
+        "t12t-boot-hmi",
+        "t12t-stability-crash-reset",
+        "t12t-db-ke-forensics",
+        "t12t-cross-domain-msg",
+        "t12t-audio-path",
+        "t12t-wireless-phone-link",
+        "t12t-display-black-freeze",
+        "t12t-tpm-triage",
+        "t12t-tpm-5y8d"
+      ],
+      "publicSummary": "板级识别通过启动属性和 init 条件决定服务是否出现。服务启动的样本在介质回调注册时收到未捕获异常，客户端共享进程退出并反复拉起。蓝牙初始化超时关联共享服务不可用，音频和亮度传播需另补证据。",
+      "normalExpectation": "受支持板型按产品定义启服务，连接后逐项注册并返回可诊断结果，单项拒绝不影响共享服务和相邻业务。",
+      "confirmedFacts": [
+        "两样本启动配置分叉早于用户操作，软件业务开关相同。",
+        "报告中可连样本的前序注册成功，介质回调失败后出现 Java 异常及 PID 重建。",
+        "未启动分支仅有界重连，未进入相同介质事务。"
+      ],
+      "hypotheses": [
+        "服务端接口版本、方法鉴权或初始化状态导致拒绝。",
+        "若两样本来自同一设备，则需另查板型识别稳定性。"
+      ],
+      "technicalChain": [
+        {
+          "pathClass": "control",
+          "text": "板级识别 → 启动属性 → init → DVR 服务 → Android Binder 介质注册 → 共享进程",
+          "failurePropagation": "服务启动是暴露条件；注册异常未隔离使共享进程退出，下游影响按业务逐项确认。"
+        }
+      ],
+      "reportVersions": [
+        {
+          "id": "report:mt8668-dvr-media-callback",
+          "title": "DVR 介质回调与多业务回弹",
+          "date": "2026-10-25",
+          "status": "current",
+          "statusLabel": "当前故障分析",
+          "url": "case-reports/dvr-media-callback-failure.html",
+          "sourceSha256": "966D5DD4617A6CEC364CCAF1A1A3561F9435604221EC6EB03B1677073F157810",
+          "summary": "固定介质事务的直接失败与客户端崩溃，保留服务端及下游传播缺口。"
+        },
+        {
+          "id": "report:mt8668-dvr-service-variant",
+          "title": "HIK DVR 服务启动分叉",
+          "date": "2026-10-25",
+          "status": "supplement",
+          "statusLabel": "同案启动补充",
+          "url": "case-reports/dvr-service-start-variant.html",
+          "sourceSha256": "D23365C5AB2004191F66DD6D4153E9BB0A6A47C4D567D9565447D23956112938",
+          "summary": "解释同构建样本因板级配置走不同 init 路径，补充故障暴露条件。"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E-DVR-01",
+          "type": "direct",
+          "source": "介质回调报告",
+          "location": "§4、§6、§8",
+          "supports": "同一进程完成连接与前序注册，介质回调时抛未捕获异常，随后进程退出重启。",
+          "boundary": "可固定客户端直接失效，服务端具体拒绝分支未提供。"
+        },
+        {
+          "id": "E-DVR-02",
+          "type": "direct",
+          "source": "服务启动分叉报告",
+          "location": "§2–4、§7",
+          "supports": "板级类型转为启动属性，满足 init 条件的分支启动服务。",
+          "boundary": "实际物理设备身份与板型映射待核。"
+        },
+        {
+          "id": "E-DVR-03",
+          "type": "correlated",
+          "source": "介质回调报告",
+          "location": "§4–6",
+          "supports": "共享服务不可用与蓝牙设置初始化超时相关。",
+          "boundary": "逐次关联须保持同一进程和业务请求范围。"
+        },
+        {
+          "id": "E-DVR-04",
+          "type": "missing",
+          "source": "介质回调报告",
+          "location": "§5、§9",
+          "supports": "待补音频焦点/路由、亮度写后回读和输出证据。",
+          "boundary": "音频与显示作为待核传播域。"
+        },
+        {
+          "id": "E-DVR-05",
+          "type": "missing",
+          "source": "两份对照报告",
+          "location": "介质报告 §7、启动报告 §8",
+          "supports": "需核对客户端/服务端版本、接口哈希、鉴权日志及修复回归。",
+          "boundary": "当前触发归因与修复验证仍未关闭。"
+        }
+      ],
+      "tpm": {
+        "trigger": "AVM 配置分支启动服务后暴露介质事务拒绝。服务端异常原因待确认。",
+        "firstRoundLead": "系统集成与 DVR 服务负责人，BSP/硬件提供板型证据。",
+        "directFailureOwner": "共享客户端异常隔离；服务端拒绝边界由接口双方复核。",
+        "repairOwner": "客户端隔离可选能力并有界重试；服务端按取证确认修复接口、鉴权或状态问题。",
+        "interfaceOwner": "DVR 服务端、Android 客户端及板型配置集成。",
+        "verifier": "系统测试联合蓝牙、音频、HMI 和 DVR。",
+        "closure": "同版本验证正常回调、服务晚到/重启、拒绝注入、共享进程可用及相邻业务回归，保存补丁与原始结果。"
+      },
+      "verificationStatus": "pending",
+      "projections": [
+        {
+          "knowledgeId": "chain:android-internal-ipc",
+          "role": "direct_failure",
+          "summary": "介质回调是已连接 Binder 服务上的单项事务。",
+          "relationReason": "前序回调成功后单项抛异常，排查该方法的契约、鉴权和服务状态。",
+          "evidenceIds": [
+            "E-DVR-01",
+            "E-DVR-05"
+          ],
+          "tpmFocus": "DVR 服务与客户端对照双方接口哈希、事务与服务端拒绝分支。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "role": "exposure_condition",
+          "summary": "板级识别驱动 init 条件，决定是否启动服务。",
+          "relationReason": "构建相同的两个样本可以走不同的启动分支，进而有不同的故障暴露条件。",
+          "evidenceIds": [
+            "E-DVR-02"
+          ],
+          "tpmFocus": "BSP 与测试核对板型映射、样本身份和冷启动稳定性。"
+        },
+        {
+          "knowledgeId": "chain:avm-video-flow",
+          "role": "process_context",
+          "summary": "DVR/AVM 选择影响 DVR 服务启动和介质状态链。",
+          "relationReason": "可复用的是启动配置和介质注册的分层取证。摄像数据面尚无失效证据。",
+          "evidenceIds": [
+            "E-DVR-02"
+          ],
+          "tpmFocus": "在各配置下独立验证录制和介质状态。"
+        },
+        {
+          "knowledgeId": "chain:stability",
+          "role": "direct_failure",
+          "summary": "未捕获异常终止共享客户端进程，随后出现重复拉起。",
+          "relationReason": "进程级退出需按 PID 区分，失败回调应隔离在单项能力内。",
+          "evidenceIds": [
+            "E-DVR-01",
+            "E-DVR-03"
+          ],
+          "tpmFocus": "注入远端异常及服务死亡，验证共享进程和业务持续可用。"
+        },
+        {
+          "knowledgeId": "chain:wireless-phone-link",
+          "role": "downstream_effect",
+          "summary": "共享服务不可用关联蓝牙设置初始化超时。",
+          "relationReason": "报告定位到应用依赖和超时，射频和连接层需另有证据。",
+          "evidenceIds": [
+            "E-DVR-03"
+          ],
+          "tpmFocus": "验证依赖中断及恢复后设置、连接与通话。"
+        },
+        {
+          "knowledgeId": "chain:display-output",
+          "role": "candidate_boundary",
+          "summary": "亮度异常需补应用状态、持久化和物理输出的逐层证据。",
+          "relationReason": "亮度设置属于控制链，面板及背光输出尚待同窗回读。",
+          "evidenceIds": [
+            "E-DVR-04"
+          ],
+          "tpmFocus": "比对亮度请求、回读和物理结果。"
+        },
+        {
+          "knowledgeId": "chain:audio-policy-routing",
+          "role": "candidate_boundary",
+          "summary": "音频跳变需补焦点、路由和物理输出。",
+          "relationReason": "共享进程重启与音频现象同窗，传播边仍待验证。",
+          "evidenceIds": [
+            "E-DVR-04"
+          ],
+          "tpmFocus": "对齐音频焦点、路由与实际播放。"
+        },
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "role": "diagnostic_method",
+          "summary": "把对照样本的启动暴露条件与介质方法失败分开。",
+          "relationReason": "只有进入同一事务才可比较其结果，同 build 也需绑定硬件配置及进程实例。",
+          "evidenceIds": [
+            "E-DVR-01",
+            "E-DVR-02",
+            "E-DVR-05"
+          ],
+          "tpmFocus": "保留两份互补报告及其证据范围。"
+        }
+      ]
+    },
+    {
+      "id": "case:t12t-soc-mcu-upgrade-breakpoints",
+      "title": "T12T 组合升级与单独 SoC 升级的两个断点",
+      "symptom": "组合升级中断并出现复位，单独 SoC 升级未进入实际升级会话",
+      "caseStatus": "direct_failure_confirmed_trigger_open",
+      "evidenceState": "verified",
+      "confidence": "MCU 擦除后进度停滞与 Bootloader 等待后回退较高；上游触发待核验",
+      "scope": {
+        "timeWindow": "2026-11-05 上午",
+        "reportCount": 1
+      },
+      "clocks": {
+        "state": "partially_aligned",
+        "basis": "报告对齐 MCU 与后段 SoC 串口，早期 SoC 缺同窗"
+      },
+      "bootGeneration": {
+        "state": "partially_bound",
+        "basis": "单独升级对应关机与后续启动，早期冷启动按 uptime/boot reason 回推"
+      },
+      "knowledgeIds": [
+        "chain:ota-lifecycle",
+        "chain:mcu-soc-control",
+        "chain:cross-domain-transport",
+        "chain:boot-lifecycle",
+        "chain:power-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "skillIds": [
+        "t12t-cockpit-diagnosis",
+        "t12t-log-analysis",
+        "t12t-platform-architecture",
+        "t12t-mcu",
+        "t12t-cross-domain-msg",
+        "t12t-stability-crash-reset",
+        "t12t-power-sleep-str",
+        "t12t-boot-hmi",
+        "t12t-usb-typec-storage",
+        "t12t-tpm-triage",
+        "t12t-tpm-5y8d"
+      ],
+      "publicSummary": "组合升级中 MCU 报告擦除成功，此后未观察到数据推进并出现复位请求。另一单独升级窗口里 Host 正常关机重启，Bootloader 等待升级进入事件后回退至正常启动。应用触发、数据断点的上游位置及掉电责任仍待验证。",
+      "normalExpectation": "组合升级逐域确认擦除、写入和版本生效。单独升级需形成可追踪进入会话、写入和读回闭环，异常时有明确终态。",
+      "confirmedFacts": [
+        "MCU 串口有擦除成功、随后复位请求及通信超时记录。",
+        "单独升级观察到关机重启、Bootloader 进入等待与正常启动。",
+        "线刷后另一次 MCU 单独升级成功。"
+      ],
+      "hypotheses": [
+        "应用未发送、发送后传输丢失或接收未进入数据状态。",
+        "升级进入事件、USB 枚举或触发标志未闭环。",
+        "早期掉电联动及请求复位的实际发起者待同窗确认。"
+      ],
+      "technicalChain": [
+        {
+          "pathClass": "control",
+          "text": "升级应用 → MCU 擦除/写入或 SoC 升级标志 → Bootloader 会话 → 读回与激活",
+          "failurePropagation": "两个测试阶段分别中断于擦除后的数据推进、等待后的升级会话建立。"
+        },
+        {
+          "pathClass": "power",
+          "text": "复位请求 → MCU/SoC 电源裁决 → 启动原因和版本读回",
+          "failurePropagation": "早期日志窗口不完整，需复位发起者与供电轨迹证明传播。"
+        }
+      ],
+      "reportVersions": [
+        {
+          "id": "report:t12t-soc-mcu-20261105",
+          "title": "升级失败分析：SoC 与 MCU 两个断点",
+          "date": "2026-11-05",
+          "status": "current",
+          "statusLabel": "当前分析报告",
+          "url": "case-reports/soc-mcu-upgrade-two-breakpoints.html",
+          "sourceSha256": "0C186908551386087EAF2E32999ED9AD916B316E9810030ED9540FFE23D5FEC7",
+          "summary": "保留直接观测、同窗关联及升级应用和电源证据缺口。"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E-UP-01",
+          "type": "direct",
+          "source": "升级失败报告／MCU 串口",
+          "location": "§3、§6 条目 1–2",
+          "supports": "擦除成功后未见目标写入里程碑，随后有复位请求。",
+          "boundary": "只覆盖接收侧可见证据。"
+        },
+        {
+          "id": "E-UP-02",
+          "type": "correlated",
+          "source": "升级失败报告／MCU 串口与后段启动",
+          "location": "§3、§6 条目 3–6",
+          "supports": "通信异常、MCU 复位和回推的 SoC 冷启处于相关时窗。",
+          "boundary": "不凭时序确认应用调用者、SPI 首因或供电裁决。"
+        },
+        {
+          "id": "E-UP-03",
+          "type": "direct",
+          "source": "升级失败报告／SoC 串口",
+          "location": "§3、§6 单独升级阶段",
+          "supports": "关机重启后等待升级进入事件，之后转正常启动。",
+          "boundary": "进入事件为何未到、是否与 USB 枚举有关待核。"
+        },
+        {
+          "id": "E-UP-04",
+          "type": "correlated",
+          "source": "升级失败报告／操作记录",
+          "location": "§3 后续试验",
+          "supports": "后续线刷及单独 MCU 升级成功。",
+          "boundary": "只验证该次组合与路径，不能排除原流程中状态或输入差异。"
+        },
+        {
+          "id": "E-UP-05",
+          "type": "missing",
+          "source": "升级失败报告／待补证据",
+          "location": "§8、§12",
+          "supports": "早段 SoC 日志、升级应用日志、双端序列、复位与供电同窗记录。",
+          "boundary": "应用触发、掉电传播与修复回归仍开放。"
+        }
+      ],
+      "tpm": {
+        "trigger": "升级应用、进入事件与复位触发仍需联合取证。",
+        "firstRoundLead": "系统升级集成牵头，SoC、MCU、Bootloader 和电源域并行。",
+        "directFailureOwner": "MCU 数据交接与 SoC Bootloader 进入升级会话两处边界。",
+        "repairOwner": "由双端序列和触发记录确认；先评审有界恢复及结果对账。",
+        "interfaceOwner": "升级编排、MCU 升级协议、Bootloader 和电源裁决。",
+        "verifier": "整车升级测试。",
+        "closure": "保留组合与单独升级的版本、数据推进、激活读回与原始日志，覆盖缺包、缺进入事件、掉电恢复及相邻业务回归。"
+      },
+      "verificationStatus": "pending",
+      "projections": [
+        {
+          "knowledgeId": "chain:ota-lifecycle",
+          "role": "direct_failure",
+          "summary": "同一事件的组合与单独升级暴露两个断点。",
+          "relationReason": "擦除、数据推进、升级会话、版本激活分别需要证据。",
+          "evidenceIds": [
+            "E-UP-01",
+            "E-UP-03",
+            "E-UP-04"
+          ],
+          "tpmFocus": "升级编排按事务记录状态进展、退出原因和读回版本。"
+        },
+        {
+          "knowledgeId": "chain:mcu-soc-control",
+          "role": "direct_failure",
+          "summary": "MCU 擦除后未观察到数据阶段推进，随后出现复位请求和链路异常。",
+          "relationReason": "接收侧记录只能固定可见边界，需发送端和传输端对账定位数据未推进的位置。",
+          "evidenceIds": [
+            "E-UP-01",
+            "E-UP-02"
+          ],
+          "tpmFocus": "接口双方留存序列、阶段、状态和复位来源。"
+        },
+        {
+          "knowledgeId": "chain:cross-domain-transport",
+          "role": "candidate_boundary",
+          "summary": "发送、接收、链路超时需对照同一事务。",
+          "relationReason": "相邻 SPI 超时提高链路调查优先级，仍需对齐先后与双端序列。",
+          "evidenceIds": [
+            "E-UP-02",
+            "E-UP-05"
+          ],
+          "tpmFocus": "补双端抓取和缺包/超时区分实验。"
+        },
+        {
+          "knowledgeId": "chain:boot-lifecycle",
+          "role": "direct_failure",
+          "summary": "单独 SoC 升级在 Bootloader 等待后转正常启动。",
+          "relationReason": "正常启动与升级会话是否建立是独立里程碑。",
+          "evidenceIds": [
+            "E-UP-03"
+          ],
+          "tpmFocus": "核对升级进入事件、USB 枚举与超时退出。"
+        },
+        {
+          "knowledgeId": "chain:power-lifecycle",
+          "role": "candidate_boundary",
+          "summary": "MCU 复位与 SoC 掉电冷启同窗，电源触发链未定。",
+          "relationReason": "后续启动原因和 uptime 能支持冷启解释，不能识别电源裁决发起者。",
+          "evidenceIds": [
+            "E-UP-02",
+            "E-UP-05"
+          ],
+          "tpmFocus": "对齐复位、供电与升级应用状态。"
+        },
+        {
+          "knowledgeId": "chain:evidence-ledger",
+          "role": "diagnostic_method",
+          "summary": "两段样本按独立时窗和运行周期整理。",
+          "relationReason": "保留设备端观测、重启后回推、现场描述和缺失应用日志的差别。",
+          "evidenceIds": [
+            "E-UP-03",
+            "E-UP-04",
+            "E-UP-05"
+          ],
+          "tpmFocus": "补齐版本、时间锚和原始证据后再关闭触发责任。"
+        }
       ]
     }
   ]

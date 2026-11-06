@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Android 16 LMKD 压力回收与业务验证</title></head>
+<body><main>
+<p><a href="../">座舱知识银河</a> · 性能机制专题 · 报告更新 2026-11-06</p>
+<h1>Android 16 LMKD 压力回收与业务验证</h1>
+<h2>从压力通知到实际退出</h2>
+<p>内核 PSI some/full 提供累计停顿。lmkd 在启用对应策略时结合内存水位、文件页 refault/thrashing 和有效 swap 等信号评估压力。候选资格受当前分支和进程 oom_score_adj 约束，成功终止后还要用同一 PID 的退出证据和前台体验验证业务影响。<a href="https://source.android.com/docs/core/perf/lmkd">AOSP lmkd</a> · <a href="https://docs.kernel.org/accounting/psi.html">Linux PSI</a></p>
+<h2>参数如何分组核验</h2>
+<ul>
+<li>通知：psi_partial_stall_ms、psi_complete_stall_ms、psi_update_window_ms。区分 some/full、统计窗口和通知次数。</li>
+<li>回收决策：thrashing_limit、thrashing_limit_decay、swap_free_low_percentage、swap_util_max。核对派生阈值、分支优先级和有效 swap 的口径。</li>
+<li>进程与观测：kill_heaviest_task、kill_timeout_ms、downgrade_pressure、debug。结合目标代码确认选择、等待、兼容分支和日志开销。</li>
+</ul>
+<h2>项目记录与待验证项</h2>
+<p>11 月 2 日配置快照记录部分停顿门槛调整为 30 ms。11 月 6 日讨论将 50/70 ms 保留为复测候选。初步反馈的可用内存及前台体验尚缺配套原始曲线和完整样本。adj &lt; 250 是保护目标，候选分支、名单配置、实际读取及补丁合入需要分别验证。</p>
+<h2>最小回归</h2>
+<p>性能域与测试固定硬件内存、版本、冷热启动和业务脚本，逐项比较候选，采集 PSI、SwapFree、refault、回收原因、受害 PID/adj、退出与首帧。应用集成校验名单内外和多进程，覆盖导航、音频/通话、Camera/AVM 与前后台切换。分别记录压力通知、回收与业务中断，区分 LMKD 终止、其他 SIGKILL 与应用崩溃。保留版本化对照包后再作生效和验收判断。</p>
+</main></body></html>

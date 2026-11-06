@@ -279,6 +279,7 @@ const data = {
     sourceCoverage:{total:sourceRegister.summary.publicDocuments,mapped:sourceRegister.summary.mappedDocuments,
       archiveDocuments:sourceRegister.summary.archiveDocuments,processingStates:sourceRegister.summary.processingStates},
     referenceMapping:{learning:learningMapping.items.length,skills:skillMapping.skills.length,cases:caseRegister.cases.length,
+      reviewedReports:caseRegister.cases.reduce((total,item)=>total+(item.reportVersions?.length||0),0),
       concreteSources:sourceRegister.documents.filter(item=>item.knowledgeMappings?.length).length},
     hierarchy:{nodeCount:hierarchicalNodes.length,edgeCount:hierarchyEdges.length+secondaryHierarchyEdges.length,maxLevel:Math.max(...hierarchicalNodes.map(node=>node.hierarchyLevel||0))},
     architecture:{

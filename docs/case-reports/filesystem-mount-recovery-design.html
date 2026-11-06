@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>虚拟块设备挂载失败与受控恢复</title></head>
+<body><main>
+<p><a href="../">座舱知识银河</a> · 恢复设计专题 · 来源报告日期 2026-10-24</p>
+<h1>虚拟块设备挂载失败与受控恢复</h1>
+<p>正常样本显示 Guest 的 ext4 检查、日志回放和挂载里程碑。另一平台、另一分区的异常样本显示块 I/O 失败后出现日志中止与内核故障。两个样本分别支持正常流程和一种失效机制，目标 NVdata 的直接触发和 Host 映射仍需同版本证据。</p>
+<h2>区分四层观测</h2>
+<ol>
+<li>Guest：记录同一启动周期的 virtio-blk 设备、文件系统类型、检查退出码及最终挂载结果。</li>
+<li>虚拟化边界：关联 Guest 虚拟盘、Host 后端及物理分区，检查是否先出现完成超时或块错误。</li>
+<li>Host/BSP：按实际工具与封装配置查最终命令参数。上游 e2fsck 小写 <code>-f</code> 强制检查，大写 <code>-F</code> 刷新设备缓冲缓存。原报告对大写参数的解释须按目标二进制或 wrapper 实际参数复核。<a href="https://github.com/tytso/e2fsprogs/blob/master/e2fsck/e2fsck.8.in">e2fsprogs 上游手册</a></li>
+<li>MCU/电源：记录恢复状态下心跳、供电和复位动作，核对恢复过程会否被提前中断。</li>
+</ol>
+<h2>恢复方案与门槛</h2>
+<p>优先验证挂载前检查与可保数据修复。不可修复时，报告讨论受控重建兜底，需独立审批其可重建范围、备份/恢复、数据损失判据、目标分区身份、掉电后的幂等性和安全退出条件。先用可恢复测试介质验证，保存变更、失败注入、启动时延、持久数据与相邻分区回归记录。测试结果及生效版本待补。</p>
+</main></body></html>

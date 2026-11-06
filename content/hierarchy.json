@@ -116,6 +116,8 @@
     "failure:vm-reset": "chain:stability",
     "failure:host-reset": "chain:stability",
     "observation:cpu-io-memory": "chain:performance-diagnosis",
+    "process:android-lmkd-pressure": "chain:performance-diagnosis",
+    "process:filesystem-mount-recovery": "chain:usb-storage",
     "observation:frame-chain": "chain:performance-diagnosis",
     "process:db-ke-forensics": "chain:db-ke-forensics",
     "observation:first-fatal": "process:db-ke-forensics",

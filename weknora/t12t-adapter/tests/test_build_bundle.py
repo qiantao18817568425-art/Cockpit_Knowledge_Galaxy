@@ -254,6 +254,20 @@ class BundleTests(unittest.TestCase):
 
             self.assertEqual(output.read_bytes(), b"previous bundle")
 
+    def test_output_cannot_overwrite_source_skill(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).parent) as temp_dir:
+            work = Path(temp_dir)
+            source = work / "source"
+            source.mkdir()
+            make_family(source)
+            entry = source / NAMES[0] / "SKILL.md"
+            original = entry.read_bytes()
+
+            with self.assertRaisesRegex(ValueError, "outside source directory"):
+                load_module().build_bundle(source, entry)
+
+            self.assertEqual(entry.read_bytes(), original)
+
 
 if __name__ == "__main__":
     unittest.main()

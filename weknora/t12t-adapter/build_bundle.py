@@ -152,6 +152,9 @@ def _root_skill() -> bytes:
 def build_bundle(source: Path, output: Path) -> dict:
     """Validate source and atomically write a deterministic WeKnora ZIP."""
     source_files = collect_source(source)
+    output = Path(output)
+    if output.resolve().is_relative_to(Path(source).resolve()):
+        raise ValueError(f"output must be outside source directory: {output}")
     manifest = {
         "source_files": [
             {
@@ -180,7 +183,6 @@ def build_bundle(source: Path, output: Path) -> dict:
             info.external_attr = 0o644 << 16
             archive.writestr(info, content)
 
-    output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary_path = None
     try:

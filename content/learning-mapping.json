@@ -747,6 +747,20 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week17 周六对 Day53—56 的六流图、接口观测合同、时钟与代际、竞争假设、恢复验证和发布评审训练进行显式映射；课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-17-sunday",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:vehicle-bus",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:boot-lifecycle",
+        "chain:stability",
+        "chain:ota-lifecycle",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week17 周日对 Day53—56 的车辆状态跨域取证、有界恢复、混合版本验证、评审发现和发布门禁整合练习进行显式映射；课程发布状态不代表已经掌握。"
     }
   ]
 }

@@ -7,6 +7,7 @@ import json
 import os
 import posixpath
 import re
+import stat
 import tempfile
 import zipfile
 from pathlib import Path
@@ -41,6 +42,13 @@ SKILL_NAMES = (
 def _reject_link(path: Path) -> None:
     if path.is_symlink():
         raise ValueError(f"symbolic link is not allowed: {path}")
+    if os.name == "nt":
+        try:
+            attributes = path.lstat().st_file_attributes
+        except FileNotFoundError:
+            attributes = 0
+        if attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT:
+            raise ValueError(f"reparse point is not allowed: {path}")
     if hasattr(path, "is_junction") and path.is_junction():
         raise ValueError(f"junction is not allowed: {path}")
 

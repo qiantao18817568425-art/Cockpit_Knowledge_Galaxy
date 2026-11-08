@@ -139,11 +139,11 @@ class CollectSourceTests(unittest.TestCase):
                     load_module().collect_source(source)
 
     @unittest.skipUnless(sys.platform == "win32", "Windows reparse points only")
-    def test_rejects_reparse_point_without_junction_api(self):
+    def test_rejects_reparse_point_via_lstat(self):
         fake_stat = mock.Mock(st_file_attributes=stat.FILE_ATTRIBUTE_REPARSE_POINT)
         with (
             mock.patch.object(Path, "is_symlink", return_value=False),
-            mock.patch.object(Path, "is_junction", return_value=False),
+            mock.patch.object(Path, "is_junction", return_value=False, create=True),
             mock.patch.object(Path, "lstat", return_value=fake_stat),
         ):
             with self.assertRaisesRegex(ValueError, "reparse point"):

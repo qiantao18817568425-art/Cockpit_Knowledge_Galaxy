@@ -1,3 +1,4 @@
 *.zip
+.t12t-bundle-*.tmp
 __pycache__/
 

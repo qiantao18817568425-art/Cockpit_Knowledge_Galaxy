@@ -457,6 +457,19 @@
       "basis": "依据 Day56 对变更影响、混合版本、风险与豁免、发布/回滚门禁、旧代隔离、恢复验证和证据关闭进行显式映射；课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-57",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:vehicle-bus",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:boot-lifecycle",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day57 的跨域车辆状态提示链、ACK 到业务结果完成阶梯、旧代事件隔离、评审决议及可追溯发现项验证方法建立显式关联；教学构造案例不作为实车事实，课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

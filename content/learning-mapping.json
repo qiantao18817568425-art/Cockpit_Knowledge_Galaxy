@@ -470,6 +470,21 @@
       "basis": "依据 Day57 的跨域车辆状态提示链、ACK 到业务结果完成阶梯、旧代事件隔离、评审决议及可追溯发现项验证方法建立显式关联；教学构造案例不作为实车事实，课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-58",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:power-lifecycle",
+        "chain:avm-video-flow",
+        "chain:display-output",
+        "chain:resource-budget",
+        "chain:soa-service-contract",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day58 对域控制器系统边界、部署及六流视图、分段资源/时序预算、当前代可见结果、异常恢复和需求—验证证据合同建立显式关联；构造案例不是实车结论，课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

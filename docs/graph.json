@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-11-10",
+    "sourceUpdatedOn": "2026-11-11",
     "chapterCount": 25,
-    "lessonCount": 58,
+    "lessonCount": 59,
     "reviewCount": 34,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,22 +28,22 @@
       }
     },
     "referenceMapping": {
-      "learning": 92,
+      "learning": 93,
       "skills": 21,
       "cases": 9,
       "reviewedReports": 6,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 738,
-      "edgeCount": 793,
+      "nodeCount": 739,
+      "edgeCount": 794,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 228
+      "l4Count": 229
     },
     "layers": {
       "hierarchy": true,
@@ -2853,6 +2853,34 @@
       ],
       "mappingBasis": "依据 Day58 对域控制器系统边界、部署及六流视图、分段资源/时序预算、当前代可见结果、异常恢复和需求—验证证据合同建立显式关联；构造案例不是实车结论，课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-59",
+      "title": "Day 59 - STR 后黑屏根因分析：电源连续性、显示分层与最早断点",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-59.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "display",
+        "power"
+      ],
+      "knowledgeIds": [
+        "chain:power-lifecycle",
+        "chain:str-display-recovery",
+        "chain:display-output",
+        "chain:runtime-boundaries",
+        "chain:boot-lifecycle",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day59 的 STR 运行周期判别、显示四层完成语义、最早可证实断点、旧代隔离、有界恢复与差分验证方法建立显式关联；教学构造案例不是实车根因，课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:power-lifecycle",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -48100,6 +48128,7 @@
         "course:day-40",
         "course:day-50",
         "course:day-58",
+        "course:day-59",
         "course:week-13-friday",
         "course:week-13-saturday"
       ],
@@ -53407,6 +53436,7 @@
         "course:day-56",
         "course:day-57",
         "course:day-58",
+        "course:day-59",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
@@ -54990,6 +55020,7 @@
         "course:day-39",
         "course:day-47",
         "course:day-58",
+        "course:day-59",
         "course:week-entry-7",
         "course:week-entry-8",
         "course:week-entry-9"
@@ -55507,7 +55538,8 @@
       "navigationOnly": false,
       "dayIds": [
         "course:day-38",
-        "course:day-39"
+        "course:day-39",
+        "course:day-59"
       ],
       "skillIds": [
         "t12t-display-black-freeze",
@@ -55561,6 +55593,7 @@
         "course:day-7",
         "course:day-47",
         "course:day-57",
+        "course:day-59",
         "course:week-17-sunday"
       ],
       "skillIds": [
@@ -57029,6 +57062,7 @@
         "course:day-56",
         "course:day-57",
         "course:day-58",
+        "course:day-59",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -58074,6 +58108,7 @@
         "course:day-56",
         "course:day-57",
         "course:day-58",
+        "course:day-59",
         "course:week-12-sunday",
         "course:week-13-sunday",
         "course:week-14-friday",
@@ -61405,6 +61440,79 @@
       "hiddenByDefault": true
     },
     {
+      "from": "topic:display",
+      "to": "course:day-59",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:power",
+      "to": "course:day-59",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:power-lifecycle:course:day-59",
+      "from": "chain:power-lifecycle",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:str-display-recovery:course:day-59",
+      "from": "chain:str-display-recovery",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:display-output:course:day-59",
+      "from": "chain:display-output",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-59",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:boot-lifecycle:course:day-59",
+      "from": "chain:boot-lifecycle",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-59",
+      "from": "chain:stability",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-59",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-59",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
       "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
@@ -62777,6 +62885,11 @@
     {
       "from": "course:day-57",
       "to": "course:day-58",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-58",
+      "to": "course:day-59",
       "type": "课程顺序"
     },
     {
@@ -72257,6 +72370,15 @@
       "id": "hierarchy:chain:system-overview:course:day-58",
       "from": "chain:system-overview",
       "to": "course:day-58",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:power-lifecycle:course:day-59",
+      "from": "chain:power-lifecycle",
+      "to": "course:day-59",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

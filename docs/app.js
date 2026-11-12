@@ -10,6 +10,31 @@ const motionLabel = document.querySelector('#motion-label');
 const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
+const controlsPanel = document.querySelector('#controls-panel');
+const controlsToggle = document.querySelector('#controls-toggle');
+const controlsBackdrop = document.querySelector('#controls-backdrop');
+const compactLayout = matchMedia('(max-width: 900px)');
+
+function setControlsOpen(open, restoreFocus = true) {
+  if (!compactLayout.matches) return;
+  document.body.classList.toggle('controls-open', open);
+  controlsBackdrop.hidden = !open;
+  controlsPanel.inert = !open;
+  controlsToggle.setAttribute('aria-expanded', String(open));
+  if (open) search.focus();
+  else if (restoreFocus) controlsToggle.focus();
+}
+function syncControlsLayout() {
+  if (compactLayout.matches) {
+    controlsPanel.inert = !document.body.classList.contains('controls-open');
+    return;
+  }
+  document.body.classList.remove('controls-open');
+  controlsBackdrop.hidden = true;
+  controlsPanel.inert = false;
+  controlsToggle.setAttribute('aria-expanded', 'false');
+}
+syncControlsLayout();
 
 const colors = { root:'#e6f5ff',architecture_dimension:'#74bbff',architecture_chain:'#7fe2cd',pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
 const labels = { root:'智能座舱',architecture_dimension:'架构维度',architecture_chain:'三级知识链',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
@@ -50,6 +75,17 @@ function prepare(raw){
   nebulae=Array.from({length:13},(_,i)=>{const t=i/12;return{x:.2+t*.62+(random()-.5)*.08,y:.83-t*.68+(random()-.5)*.12,r:.12+random()*.14,hue:i%3,phase:random()*Math.PI*2}});
   document.querySelector('#counts').textContent=`${raw.meta.sourceCoverage.total} 份资料 · ${raw.meta.semantic.entityCount} 个知识实体 · ${raw.meta.semantic.relationCount} 条技术关系 · ${raw.meta.semantic.evidenceCount} 条页码证据 · ${raw.meta.chapterCount} 章架构`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
+  const topics=raw.nodes.filter(node=>node.kind==='architecture_dimension');
+  document.querySelector('#topic-count').textContent=`· ${topics.length} 个主题`;
+  const topicList=document.querySelector('#topic-list');
+  topicList.replaceChildren();
+  for(const node of topics){
+    const button=document.createElement('button');
+    button.type='button';
+    button.textContent=node.title;
+    button.addEventListener('click',()=>showNode(node.id));
+    topicList.append(button);
+  }
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
 }
@@ -310,6 +346,7 @@ function downloadReaderSummary(){
 function showNode(id){
   const node=byId.get(id);if(!node)return;
   selected=id;viewState.selectedId=id;refreshVisible();interaction();detail.hidden=false;
+  if(compactLayout.matches)setControlsOpen(false,false);
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
@@ -317,19 +354,20 @@ function showNode(id){
   const scope=document.querySelector('#detail-scope');scope.replaceChildren();
   for(const value of [...(currentReader.scope.platforms||[]),currentReader.scope.runtimeDomain,currentReader.scope.version,currentReader.scope.status].filter(Boolean)){const tag=document.createElement('span');tag.textContent=value;scope.append(tag)}
   detail.scrollTop=0;
+  document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction()}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus)(compactLayout.matches?controlsToggle:search).focus({preventScroll:true})}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
-  if(!q){matchingIds=new Set();results.hidden=true;clearSelection();return}
+  if(!q){matchingIds=new Set();results.hidden=true;search.setAttribute('aria-expanded','false');clearSelection();return}
   const matches=rankSearchResults(nodes,q,viewState).slice(0,10);
   matchingIds=new Set(matches.slice(0,8).map(node=>node.id));
   refreshVisible();
   results.hidden=false;
+  search.setAttribute('aria-expanded','true');
   if(!matches.length){const empty=document.createElement('div');empty.className='empty-result';empty.textContent='没有匹配的节点';empty.style.padding='9px';empty.style.color='#a9bad6';results.append(empty);return}
-  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}
-  if(matches.length===1)showNode(matches[0].id);
+  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();results.hidden=true;search.setAttribute('aria-expanded','false');showNode(n.id)});results.append(item)}
 }
 function syncFilters(){for(const button of document.querySelectorAll('.filter')){const on=!hidden.has(button.dataset.kind);button.setAttribute('aria-pressed',String(on));button.querySelector('span').textContent=on?'✓':'○'}}
 
@@ -339,7 +377,7 @@ function frame(time){
   for(const axis of ['x','y','z'])focus[axis]+=(focusTarget[axis]-focus[axis])*easing;
   const hoverEasing=reducedMotion?1:1-Math.exp(-delta/130);
   for(const [id,level] of hoverLevels){const next=level+((id===hovered?1:0)-level)*hoverEasing;if(next<.01&&id!==hovered)hoverLevels.delete(id);else hoverLevels.set(id,next)}
-  const cruising=auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&time-lastAction>10000;
+  const cruising=auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&!document.body.classList.contains('controls-open')&&time-lastAction>10000;
   if(cruising){({yaw,pitch,roll}=orbitPose({yaw,pitch,roll},time,delta));yawVelocity*=.94;pitchVelocity*=.94}
   else if(!pointer){yaw+=yawVelocity*delta;pitch=Math.max(-1.05,Math.min(1.05,pitch+pitchVelocity*delta));const friction=Math.exp(-delta/1450);yawVelocity*=friction;pitchVelocity*=friction;roll+=(0-roll)*(1-Math.exp(-delta/520))}
   draw();requestAnimationFrame(frame);
@@ -352,7 +390,13 @@ canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVel
 canvas.addEventListener('pointerleave',()=>{if(!pointer)setHovered(null)});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,Math.min(2.3,zoom*(event.deltaY<0?1.09:1/1.09)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});
-search.addEventListener('keydown',event=>{if(event.key==='Escape'){search.value='';renderResults();search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}});
+search.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();if(search.value){search.value='';renderResults()}else if(compactLayout.matches&&document.body.classList.contains('controls-open'))setControlsOpen(false);else search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}else if(event.key==='ArrowDown'){const first=results.querySelector('button');if(first){event.preventDefault();first.focus()}}});
+results.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();search.focus()}else if(event.key==='ArrowDown'||event.key==='ArrowUp'){const items=[...results.querySelectorAll('button')];const index=items.indexOf(document.activeElement);const next=items[index+(event.key==='ArrowDown'?1:-1)];if(next){event.preventDefault();next.focus()}}});
+controlsToggle.addEventListener('click',()=>setControlsOpen(!document.body.classList.contains('controls-open')));
+document.querySelector('#controls-close').addEventListener('click',()=>setControlsOpen(false));
+controlsBackdrop.addEventListener('click',()=>setControlsOpen(false));
+compactLayout.addEventListener('change',syncControlsLayout);
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(document.body.classList.contains('controls-open'))setControlsOpen(false);else if(!detail.hidden)clearSelection()}else if(event.key==='/'&&!event.altKey&&!event.ctrlKey&&!event.metaKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)){event.preventDefault();if(compactLayout.matches)setControlsOpen(true);else search.focus()}});
 document.querySelector('#detail-close').addEventListener('click',clearSelection);
 document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
@@ -372,3 +416,4 @@ try{
   prepare(await response.json());
   requestAnimationFrame(frame);
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
+

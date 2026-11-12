@@ -2,9 +2,9 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-11-11",
+    "sourceUpdatedOn": "2026-11-12",
     "chapterCount": 25,
-    "lessonCount": 59,
+    "lessonCount": 60,
     "reviewCount": 34,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
@@ -28,22 +28,22 @@
       }
     },
     "referenceMapping": {
-      "learning": 93,
+      "learning": 94,
       "skills": 21,
       "cases": 9,
       "reviewedReports": 6,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 739,
-      "edgeCount": 794,
+      "nodeCount": 740,
+      "edgeCount": 795,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 229
+      "l4Count": 230
     },
     "layers": {
       "hierarchy": true,
@@ -2881,6 +2881,33 @@
       ],
       "mappingBasis": "依据 Day59 的 STR 运行周期判别、显示四层完成语义、最早可证实断点、旧代隔离、有界恢复与差分验证方法建立显式关联；教学构造案例不是实车根因，课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:power-lifecycle",
+      "hierarchyOrder": 0,
+      "branchType": "lesson",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:day-60",
+      "title": "Day 60 - 跨域恢复方案评审：故障域、代际隔离与验收门槛",
+      "kind": "lesson",
+      "description": "公开每日课程。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/day-60.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power",
+        "cross"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:vehicle-bus",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Day60 的跨域恢复故障域、事务权威、ACK 与业务完成、旧代隔离、A/B 硬门槛及验证关闭方法建立显式映射；教学构造案例不是现车结论，课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "lesson",
       "navigationOnly": true,
@@ -46527,6 +46554,7 @@
         "course:day-56",
         "course:day-57",
         "course:day-58",
+        "course:day-60",
         "course:week-entry-1",
         "course:week-16-friday",
         "course:week-16-saturday",
@@ -52929,6 +52957,7 @@
       "dayIds": [
         "course:day-9",
         "course:day-57",
+        "course:day-60",
         "course:week-entry-10",
         "course:week-entry-11",
         "course:week-entry-12",
@@ -53325,6 +53354,7 @@
         "course:day-56",
         "course:day-57",
         "course:day-58",
+        "course:day-60",
         "course:week-entry-13",
         "course:week-entry-14",
         "course:week-entry-15",
@@ -53437,6 +53467,7 @@
         "course:day-57",
         "course:day-58",
         "course:day-59",
+        "course:day-60",
         "course:week-13-friday",
         "course:week-14-friday",
         "course:week-14-sunday",
@@ -57063,6 +57094,7 @@
         "course:day-57",
         "course:day-58",
         "course:day-59",
+        "course:day-60",
         "course:week-11-sunday",
         "course:week-12-sunday",
         "course:week-13-saturday",
@@ -58109,6 +58141,7 @@
         "course:day-57",
         "course:day-58",
         "course:day-59",
+        "course:day-60",
         "course:week-12-sunday",
         "course:week-13-sunday",
         "course:week-14-friday",
@@ -61514,6 +61547,70 @@
     },
     {
       "from": "topic:power",
+      "to": "course:day-60",
+      "type": "主题归类"
+    },
+    {
+      "from": "topic:cross",
+      "to": "course:day-60",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:day-60",
+      "from": "chain:system-overview",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:day-60",
+      "from": "chain:runtime-boundaries",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:day-60",
+      "from": "chain:soa-service-contract",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:vehicle-bus:course:day-60",
+      "from": "chain:vehicle-bus",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:day-60",
+      "from": "chain:stability",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:day-60",
+      "from": "chain:evidence-ledger",
+      "to": "course:day-60",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
       "to": "subtopic:power:inputs",
       "type": "主题细分"
     },
@@ -62890,6 +62987,11 @@
     {
       "from": "course:day-58",
       "to": "course:day-59",
+      "type": "课程顺序"
+    },
+    {
+      "from": "course:day-59",
+      "to": "course:day-60",
       "type": "课程顺序"
     },
     {
@@ -72379,6 +72481,15 @@
       "id": "hierarchy:chain:power-lifecycle:course:day-59",
       "from": "chain:power-lifecycle",
       "to": "course:day-59",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:day-60",
+      "from": "chain:system-overview",
+      "to": "course:day-60",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

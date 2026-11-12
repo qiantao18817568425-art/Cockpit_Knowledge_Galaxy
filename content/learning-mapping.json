@@ -498,6 +498,18 @@
       "basis": "依据 Day59 的 STR 运行周期判别、显示四层完成语义、最早可证实断点、旧代隔离、有界恢复与差分验证方法建立显式关联；教学构造案例不是实车根因，课程发布状态不代表已经掌握。"
     },
     {
+      "id": "course:day-60",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:vehicle-bus",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Day60 的跨域恢复故障域、事务权威、ACK 与业务完成、旧代隔离、A/B 硬门槛及验证关闭方法建立显式映射；教学构造案例不是现车结论，课程发布状态不代表已经掌握。"
+    },
+    {
       "id": "course:week-11-saturday",
       "knowledgeIds": [
         "chain:audio-paths",

@@ -27,7 +27,7 @@ test('every Day and Week maps explicitly to concrete architecture knowledge',asy
   }
 });
 
-test('Day 45 through Day59 and Week17 review join explicit knowledge chains',async()=>{
+test('Day 45 through Day60 and Week17 review join explicit knowledge chains',async()=>{
   const mapping=await readJson('../content/learning-mapping.json');
   const expected={
     'course:day-45':['chain:evidence-ledger','chain:stability'],
@@ -45,6 +45,7 @@ test('Day 45 through Day59 and Week17 review join explicit knowledge chains',asy
     'course:day-57':['chain:system-overview','chain:vehicle-bus','chain:runtime-boundaries','chain:soa-service-contract','chain:boot-lifecycle','chain:stability','chain:evidence-ledger'],
     'course:day-58':['chain:system-overview','chain:runtime-boundaries','chain:power-lifecycle','chain:avm-video-flow','chain:display-output','chain:resource-budget','chain:soa-service-contract','chain:stability','chain:evidence-ledger'],
     'course:day-59':['chain:power-lifecycle','chain:str-display-recovery','chain:display-output','chain:runtime-boundaries','chain:boot-lifecycle','chain:stability','chain:evidence-ledger'],
+    'course:day-60':['chain:system-overview','chain:runtime-boundaries','chain:soa-service-contract','chain:vehicle-bus','chain:stability','chain:evidence-ledger'],
     'course:week-15-friday':['chain:ota-lifecycle','chain:evidence-ledger','chain:ethernet-connectivity','chain:tee-security'],
     'course:week-15-saturday':['chain:ota-lifecycle','chain:evidence-ledger']
     ,'course:week-16-friday':['chain:system-overview','chain:mtk-compute-resources','chain:resource-budget','chain:soa-service-contract','chain:runtime-boundaries','chain:stability','chain:evidence-ledger']
@@ -97,6 +98,8 @@ test('Day 45 through Day59 and Week17 review join explicit knowledge chains',asy
   assert.ok(byId.get('chain:evidence-ledger').dayIds.includes('course:day-57'));
   assert.equal(byId.get('course:day-58').primaryParentId,'chain:system-overview');
   assert.equal(byId.get('course:day-59').primaryParentId,'chain:power-lifecycle');
+  assert.equal(byId.get('course:day-60').primaryParentId,'chain:system-overview');
+  for(const id of ['chain:vehicle-bus','chain:soa-service-contract','chain:evidence-ledger']) assert.ok(byId.get(id).dayIds.includes('course:day-60'));
   for(const id of ['chain:str-display-recovery','chain:display-output','chain:evidence-ledger']) assert.ok(byId.get(id).dayIds.includes('course:day-59'));
 
   for(const id of ['chain:runtime-boundaries','chain:resource-budget','chain:soa-service-contract','chain:evidence-ledger']) assert.ok(byId.get(id).dayIds.includes('course:day-58'));

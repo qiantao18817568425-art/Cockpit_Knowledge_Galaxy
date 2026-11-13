@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import * as THREE from '../docs/vendor/three/three.module.min.js';
 import {buildStarmapLayout,hierarchyRoute} from '../docs/space-scene.js';
-const {buildRenderableStarmap,buildAtmosphericFilaments,createStarmapScene}=await import('../docs/starmap-webgl.js').catch(()=>({}));
+const {buildRenderableStarmap,autonomousPose,createStarmapScene}=await import('../docs/starmap-webgl.js').catch(()=>({}));
 
 const graph=JSON.parse(readFileSync(new URL('../docs/graph.json',import.meta.url),'utf8'));
 
@@ -14,10 +14,10 @@ test('WebGL scene model uses the current graph layout and only actual relation e
   const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
   assert.ok(model.visibleIds.has('root'));
   assert.ok(dimensions.every(node=>model.visibleIds.has(node.id)));
-  assert.ok(model.visibleIds.size>dimensions.length&&model.visibleIds.size<graph.nodes.length);
-  assert.ok(model.backgroundIds.size>100);
+  assert.equal(model.visibleIds.size,dimensions.length+1,'the overview shows architecture regions, not every graph entity');
+  assert.equal(model.backgroundIds.size,0,'the background image supplies non-semantic star texture');
   const actual=new Set(graph.edges.map(edge=>`${edge.from}|${edge.to}`));
-  assert.ok(model.edges.length>100);
+  assert.equal(model.edges.length,model.routeEdges.length,'the overview shows only its highlighted knowledge route');
   assert.ok(model.edges.every(edge=>actual.has(`${edge.from}|${edge.to}`)));
 });
 
@@ -34,21 +34,54 @@ test('overview highlights the real MCU to power to HMI route',()=>{
   assert.equal(buildRenderableStarmap(graph,{pathClasses:['data']}).routeEdges.length,0);
 });
 
-test('ambient star filaments are dense, deterministic and never semantic nodes',()=>{
-  assert.equal(typeof buildAtmosphericFilaments,'function');
-  const layout=buildStarmapLayout(graph);
-  const first=buildAtmosphericFilaments(graph,layout);
-  const second=buildAtmosphericFilaments(graph,layout);
-  assert.ok(first.points.length>=4200);
-  assert.ok(first.segments.length>=7500);
-  assert.ok(first.points.some(point=>point.y>450),'far canopy should reach the top of the frame');
-  assert.ok(first.points.some(point=>point.y< -450),'foreground network should reach the bottom of the frame');
-  assert.deepEqual(first.points.slice(0,12),second.points.slice(0,12));
-  assert.deepEqual(first.segments.slice(0,12),second.segments.slice(0,12));
-  const semanticIds=new Set(graph.nodes.map(node=>node.id));
-  assert.ok(first.points.every(point=>!semanticIds.has(point.id)));
-  assert.ok(first.points.every(point=>[point.x,point.y,point.z,point.size,point.alpha].every(Number.isFinite)));
-  assert.ok(first.segments.every(([from,to])=>from>=0&&to>=0&&from<first.points.length&&to<first.points.length&&from!==to));
+test('selected map shows its local knowledge neighborhood without unrelated regions',()=>{
+  const model=buildRenderableStarmap(graph,{selectedId:'architecture:power'});
+  assert.ok(model.visibleIds.has('architecture:power'));
+  assert.ok(model.visibleIds.size<80);
+  assert.ok(!model.visibleIds.has('architecture:audio'));
+  assert.ok(model.edges.every(edge=>model.visibleIds.has(edge.from)&&model.visibleIds.has(edge.to)));
+  assert.equal(buildRenderableStarmap(graph,{zoom:1.8}).visibleIds.size,graph.nodes.filter(node=>node.kind==='architecture_dimension').length+1);
+});
+
+test('focused graph includes a bounded set of direct navigation children',()=>{
+  for(const id of ['chain:power-lifecycle','subtopic:power:inputs']){
+    const model=buildRenderableStarmap(graph,{selectedId:id});
+    const children=graph.nodes.filter(node=>node.primaryParentId===id);
+    assert.ok(children.length<=12);
+    assert.ok(children.every(node=>model.visibleIds.has(node.id)),`${id} must expose its direct children`);
+  }
+});
+
+test('autonomous 3D pose visibly changes over time and can be switched off',()=>{
+  assert.equal(typeof autonomousPose,'function');
+  const start=autonomousPose(0),later=autonomousPose(4000);
+  assert.notDeepEqual(start,later);
+  assert.ok(Math.abs(later.yaw)>.05);
+  assert.ok(Math.abs(later.dolly)>5);
+  assert.deepEqual(autonomousPose(4000,{enabled:false}),{yaw:0,pitch:0,roll:0,dolly:0});
+});
+
+test('running scene moves in depth, pauses in place, and supports reduced-motion opt-in',()=>{
+  const canvas={addEventListener(){},removeEventListener(){},getBoundingClientRect:()=>({left:0,top:0,width:1400,height:900})};
+  const scheduler={active:new Set(),request(fn){this.active.add(fn);return fn},cancel(fn){this.active.delete(fn)}};
+  const samples=[];
+  const renderer={setPixelRatio(){},setSize(){},render(scene,camera){samples.push({yaw:scene.children[0].rotation.y,depth:camera.position.z})},dispose(){}};
+  const scene=createStarmapScene({THREE,canvas,graph,reducedMotion:true,rendererFactory:()=>renderer,frameScheduler:scheduler});
+  assert.equal(scene.inspect().cruising,false);
+  assert.equal(scene.setCruising(true),true);
+  for(let index=0;index<=250;index++){const frame=[...scheduler.active][0];scheduler.active.delete(frame);frame(1000+index*16)}
+  assert.ok(Math.abs(samples.at(-1).yaw-samples[0].yaw)>.05);
+  assert.ok(Math.abs(samples.at(-1).depth-samples[0].depth)>5);
+  const beforePause=samples.at(-1);
+  scene.setCruising(false);
+  const finalFrame=[...scheduler.active][0];scheduler.active.delete(finalFrame);finalFrame(5016);
+  assert.ok(Math.abs(samples.at(-1).yaw-beforePause.yaw)<.001);
+  assert.ok(Math.abs(samples.at(-1).depth-beforePause.depth)<.001);
+  assert.equal(scheduler.active.size,0);
+  scene.setCruising(true);
+  const resumed=[...scheduler.active][0];scheduler.active.delete(resumed);resumed(8016);
+  assert.ok(Math.abs(samples.at(-1).yaw-beforePause.yaw)<.01,'resume should continue from the frozen pose');
+  scene.dispose();
 });
 
 test('hover and filter updates can reuse one stable 3D layout',()=>{
@@ -80,11 +113,13 @@ test('WebGL renderer stops after context loss and preserves selection for fallba
     setPointerCapture(){}
   };
   const scheduler={active:new Set(),request(fn){this.active.add(fn);return fn},cancel(fn){this.active.delete(fn)}};
-  const renderer={setPixelRatio(){},setSize(){},render(){},dispose(){this.disposed=true}};
+  const clearColors=[];
+  const renderer={setPixelRatio(){},setSize(){},setClearColor:(color,alpha)=>clearColors.push([color,alpha]),render(){},dispose(){this.disposed=true}};
   const lost=[];
   const scene=createStarmapScene({THREE,canvas,graph,reducedMotion:true,rendererFactory:()=>renderer,frameScheduler:scheduler,onContextLost:value=>lost.push(value)});
-  assert.ok(scene.inspect().ambientPoints>=1800);
-  assert.ok(scene.inspect().ambientSegments>=2600);
+  assert.deepEqual(clearColors,[[0,0]],'transparent WebGL clear keeps the background image visible');
+  assert.equal(scene.inspect().ambientPoints,0);
+  assert.equal(scene.inspect().ambientSegments,0);
   assert.equal(scene.inspect().interactiveCount,buildRenderableStarmap(graph,{}).visibleIds.size);
   scene.resize({width:1400,height:900,dpr:3});
   scene.setState({selectedId:graph.nodes.find(node=>node.kind==='architecture_dimension').id});

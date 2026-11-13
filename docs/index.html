@@ -6,13 +6,14 @@
   <meta name="description" content="座舱知识银河：在可旋转的三维知识星图中探索座舱架构、技术链路与原始资料。">
   <meta name="theme-color" content="#050b15">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261113-webgl2">
-  <link rel="stylesheet" href="ui-polish.css?v=20261113-webgl2">
-  <script type="module" src="boot.js?v=20261113-webgl2"></script>
+  <link rel="stylesheet" href="style.css?v=20261114-webgl3">
+  <link rel="stylesheet" href="ui-polish.css?v=20261114-webgl3">
+  <script type="module" src="boot.js?v=20261114-webgl3"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">跳到知识搜索</a>
   <main class="workbench" aria-label="座舱知识银河工作台">
+    <div class="galaxy-backdrop" aria-hidden="true"></div>
     <canvas id="galaxy" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停查看关系，点击星点聚焦并追踪真实知识路径。"></canvas>
     <canvas id="galaxy-three" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停星点查看关系，点击节点打开知识阅读器。"></canvas>
     <div class="starmap-overlay">
@@ -48,14 +49,13 @@
           <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
           <div class="counts" id="counts">正在载入公开知识目录…</div>
           <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="state">状态</span><span class="diagnostic">诊断</span></div>
-          <div class="motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
         </div>
       </details>
       <div class="section-label source-heading">知识来源</div>
       <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="knowledge-coverage.html">覆盖报告 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></nav>
     </section>
 
-    <div class="glass scene-tools" aria-label="星图视图工具"><button type="button" data-zoom="reset" aria-label="重置视角" title="重置视角">⌖</button><button id="map-layers" type="button" aria-controls="advanced-controls" aria-expanded="false" aria-label="打开星图筛选" title="打开星图筛选">▱</button><button id="starmap-fullscreen" type="button" aria-label="切换全屏" title="切换全屏">⛶</button></div>
+    <div class="glass scene-tools" aria-label="星图视图工具"><span class="motion-light" aria-hidden="true"></span><span id="motion-label" class="scene-motion-label">3D 自动巡航</span><button id="motion-toggle" type="button" aria-label="暂停自动巡航" title="暂停自动巡航">暂停</button><span class="tool-divider" aria-hidden="true"></span><button type="button" data-zoom="reset" aria-label="重置视角" title="重置视角">⌖</button><button id="map-layers" type="button" aria-controls="advanced-controls" aria-expanded="false" aria-label="打开星图筛选" title="打开星图筛选">▱</button><button id="starmap-fullscreen" type="button" aria-label="切换全屏" title="切换全屏">⛶</button></div>
 
     <div id="hover-card" class="glass hover-card" aria-hidden="true"><span id="hover-kind"></span><strong id="hover-title"></strong><small id="hover-meta"></small></div>
 

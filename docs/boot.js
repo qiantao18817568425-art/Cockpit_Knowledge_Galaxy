@@ -1,4 +1,4 @@
-export const RELEASE='20261113-webgl2';
+export const RELEASE='20261114-webgl3';
 
 export function detectWebGL(canvas){
   if(!canvas?.getContext)return false;
@@ -19,8 +19,8 @@ export async function startRenderer({mode,importModule}){
 }
 
 function importEntry(entry){
-  if(entry==='app-three')return import('./app-three.js?v=20261113-webgl2');
-  return import('./app.js?v=20261113-webgl2');
+  if(entry==='app-three')return import('./app-three.js?v=20261114-webgl3');
+  return import('./app.js?v=20261114-webgl3');
 }
 
 function setRendererStatus(message,state='ready'){
@@ -34,7 +34,7 @@ export async function bootPage({query=window.location.search,createCanvas=()=>do
   document.documentElement.dataset.renderer=selected;
   try{
     await startRenderer({mode:selected,importModule});
-    setRendererStatus(selected==='three'?'三维星座':'兼容模式');
+    setRendererStatus(selected==='three'?'三维星图已启用':'兼容画布模式 · 3D 效果需要 WebGL',selected==='three'?'ready':'canvas');
     return selected;
   }catch(error){
     if(selected==='canvas')throw error;

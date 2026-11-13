@@ -15,6 +15,7 @@ export function buildRenderableStarmap(graph,state={}){
   const zoom=state.zoom??1;
   const selectedId=state.selectedId||null;
   const matchingIds=new Set(state.matchingIds||[]);
+  const pathClasses=new Set(state.pathClasses||[]);
   const allowedIds=visibleNodeIds(graph,{selectedId,platforms:state.platforms||[],pathClasses:state.pathClasses||[],evidenceVisible:Boolean(state.evidenceVisible),candidateVisible:false});
   const drillIds=selectedId?drillVisibleNodeIds(graph,{selectedId,expandedDepth:1,evidenceVisible:Boolean(state.evidenceVisible),technicalNeighborLimit:5,matchingIds}):[];
   if(selectedId){
@@ -28,6 +29,9 @@ export function buildRenderableStarmap(graph,state={}){
   const overviewIds=graph.nodes.filter(node=>node.kind==='root'||dimensionIds.has(node.id)||chainIds.has(node.id)||
     (chainIds.has(node.primaryParentId)&&OVERVIEW_TECHNICAL_KINDS.has(node.kind))).map(node=>node.id);
   const focusIds=new Set(selectedId?drillIds:overviewIds);
+  if(!selectedId&&pathClasses.size)for(const edge of graph.edges)if(pathClasses.has(edge.pathClass)){
+    focusIds.add(edge.from);focusIds.add(edge.to);
+  }
   if(selectedId)for(const id of hierarchyRoute(graph,selectedId))focusIds.add(id);
   for(const id of [...allowedIds])if(!focusIds.has(id))allowedIds.delete(id);
   if(selectedId)for(const id of hierarchyRoute(graph,selectedId))allowedIds.add(id);
@@ -52,6 +56,7 @@ export function buildRenderableStarmap(graph,state={}){
     if(!view.visibleIds.has(edge.from)||!view.visibleIds.has(edge.to))return false;
     const onRoute=routeKeys.has(`${edge.from}|${edge.to}`);
     if(!selectedId){
+      if(pathClasses.size)return onRoute||pathClasses.has(edge.pathClass);
       const child=byId.get(edge.to);
       return onRoute||edge.pathClass==='hierarchy'&&child?.primaryParentId===edge.from&&
         (dimensionIds.has(edge.from)&&chainIds.has(edge.to)||
@@ -160,14 +165,12 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
         new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.2,metalness:.36,roughness:.48})
       );
       planet.position.set(point.x,point.y,point.z);planet.userData.planetId=node.id;content.add(planet);
-      if(featured){
-        const ring=new THREE.Mesh(
-          new THREE.TorusGeometry(26,.45,6,64),
-          new THREE.MeshBasicMaterial({color,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false})
-        );
-        ring.position.copy(planet.position);ring.rotation.set(.93,.3,0);ring.userData.orbitId=node.id;
-        content.add(ring);orbitalRings.push(ring);
-      }
+      const ring=new THREE.Mesh(
+        new THREE.TorusGeometry(featured?26:21,featured?.45:.24,6,64),
+        new THREE.MeshBasicMaterial({color,transparent:true,opacity:featured?.3:.1,blending:THREE.AdditiveBlending,depthWrite:false})
+      );
+      ring.position.copy(planet.position);ring.rotation.set(.93,.3,0);ring.userData.orbitId=node.id;
+      content.add(ring);orbitalRings.push(ring);
     }
     interactiveCloud=makePointCloud(THREE,foreground,model.positions,node=>{
       const active=node.id===state.selectedId,hover=node.id===state.hoveredId,near=model.emphasisIds.has(node.id),route=routeSet.has(node.id);

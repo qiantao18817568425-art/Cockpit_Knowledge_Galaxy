@@ -45,6 +45,15 @@ test('overview highlights the real MCU to power to HMI route',()=>{
   assert.equal(buildRenderableStarmap(graph,{pathClasses:['data']}).routeEdges.length,0);
 });
 
+test('overview path filters reveal only matching real technical links',()=>{
+  for(const pathClass of ['data','power']){
+    const model=buildRenderableStarmap(graph,{pathClasses:[pathClass]});
+    assert.ok(model.edges.length>0,`${pathClass} must retain its actual relations`);
+    assert.ok(model.edges.every(edge=>edge.pathClass===pathClass));
+    assert.ok(model.edges.every(edge=>model.visibleIds.has(edge.from)&&model.visibleIds.has(edge.to)));
+  }
+});
+
 test('selected map shows its local knowledge neighborhood without unrelated regions',()=>{
   const model=buildRenderableStarmap(graph,{selectedId:'architecture:power'});
   assert.ok(model.visibleIds.has('architecture:power'));
@@ -77,7 +86,11 @@ test('architecture hubs render as shaded 3D planets at their real graph coordina
     assert.deepEqual([planet.position.x,planet.position.y,planet.position.z],[position.x,position.y,position.z]);
   }
   assert.ok(renderedScene.children.some(item=>item.isLight));
-  assert.deepEqual(new Set(rings.map(item=>item.userData.orbitId)),new Set(buildRenderableStarmap(graph,{}).routeIds));
+  assert.deepEqual(new Set(rings.map(item=>item.userData.orbitId)),new Set(dimensions.map(node=>node.id)));
+  assert.equal(rings.length,dimensions.length);
+  const routeIds=new Set(buildRenderableStarmap(graph,{}).routeIds);
+  assert.ok(rings.filter(ring=>routeIds.has(ring.userData.orbitId)).every(ring=>ring.material.opacity>
+    rings.find(other=>!routeIds.has(other.userData.orbitId)).material.opacity));
   const before=rings[0].rotation.z;
   controller.setCruising(true);
   for(const time of [1016,1032]){

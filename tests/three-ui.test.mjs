@@ -21,6 +21,14 @@ test('WebGL coordinator connects scene state to current reader and controls',()=
   assert.match(css,/\.starmap-label/);
 });
 
+test('desktop shell keeps a compact architecture navigator and reachable deep filters',()=>{
+  for(const id of ['quick-constellations','advanced-controls','map-layers','starmap-fullscreen'])assert.match(html,new RegExp(`id="${id}"`));
+  assert.match(html,/<details id="advanced-controls"/);
+  assert.match(html,/class="glass scene-tools"/);
+  for(const id of ['platform-filters','path-filters','topic-list','evidence-toggle','sequence-toggle'])assert.match(html,new RegExp(`id="${id}"`));
+  assert.match(canvasApp,/quick-constellations/);
+});
+
 test('an active WebGL map remains visible if a desktop window becomes narrow',()=>{
   assert.match(css,/html\[data-renderer="three"\] #galaxy-three\s*\{[^}]*display:\s*block/);
   assert.match(css,/html\[data-renderer="three"\] #galaxy\s*\{[^}]*display:\s*none/);

@@ -3,19 +3,52 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import * as THREE from '../docs/vendor/three/three.module.min.js';
 import {buildStarmapLayout,hierarchyRoute} from '../docs/space-scene.js';
-const {buildRenderableStarmap,createStarmapScene}=await import('../docs/starmap-webgl.js').catch(()=>({}));
+const {buildRenderableStarmap,buildAtmosphericFilaments,createStarmapScene}=await import('../docs/starmap-webgl.js').catch(()=>({}));
 
 const graph=JSON.parse(readFileSync(new URL('../docs/graph.json',import.meta.url),'utf8'));
 
-test('WebGL scene model uses the real 740-node layout and only actual relation edges',()=>{
+test('WebGL scene model uses the current graph layout and only actual relation edges',()=>{
   assert.equal(typeof buildRenderableStarmap,'function');
   const model=buildRenderableStarmap(graph,{});
   assert.equal(model.positions.size,graph.nodes.length);
-  assert.equal(model.visibleIds.size,181);
+  const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
+  assert.ok(model.visibleIds.has('root'));
+  assert.ok(dimensions.every(node=>model.visibleIds.has(node.id)));
+  assert.ok(model.visibleIds.size>dimensions.length&&model.visibleIds.size<graph.nodes.length);
   assert.ok(model.backgroundIds.size>100);
   const actual=new Set(graph.edges.map(edge=>`${edge.from}|${edge.to}`));
   assert.ok(model.edges.length>100);
   assert.ok(model.edges.every(edge=>actual.has(`${edge.from}|${edge.to}`)));
+});
+
+test('overview highlights the real MCU to power to HMI route',()=>{
+  const model=buildRenderableStarmap(graph,{});
+  assert.deepEqual(model.routeIds,[
+    'architecture:mcu-soc','architecture:power','architecture:android-hmi-display'
+  ]);
+  assert.deepEqual(model.routeEdges,[
+    ['architecture:mcu-soc','architecture:power'],
+    ['architecture:power','architecture:android-hmi-display']
+  ]);
+  for(const [from,to] of model.routeEdges)assert.ok(graph.edges.some(edge=>edge.from===from&&edge.to===to),`${from} → ${to} must be a published relation`);
+  assert.equal(buildRenderableStarmap(graph,{pathClasses:['data']}).routeEdges.length,0);
+});
+
+test('ambient star filaments are dense, deterministic and never semantic nodes',()=>{
+  assert.equal(typeof buildAtmosphericFilaments,'function');
+  const layout=buildStarmapLayout(graph);
+  const first=buildAtmosphericFilaments(graph,layout);
+  const second=buildAtmosphericFilaments(graph,layout);
+  assert.ok(first.points.length>=4200);
+  assert.ok(first.segments.length>=7500);
+  assert.ok(first.points.some(point=>point.y>450),'far canopy should reach the top of the frame');
+  assert.ok(first.points.some(point=>point.y< -450),'foreground network should reach the bottom of the frame');
+  assert.deepEqual(first.points.slice(0,12),second.points.slice(0,12));
+  assert.deepEqual(first.segments.slice(0,12),second.segments.slice(0,12));
+  const semanticIds=new Set(graph.nodes.map(node=>node.id));
+  assert.ok(first.points.every(point=>!semanticIds.has(point.id)));
+  assert.ok(first.points.every(point=>[point.x,point.y,point.z,point.size,point.alpha].every(Number.isFinite)));
+  assert.ok(first.segments.every(([from,to])=>from>=0&&to>=0&&from<first.points.length&&to<first.points.length&&from!==to));
 });
 
 test('hover and filter updates can reuse one stable 3D layout',()=>{
@@ -50,6 +83,9 @@ test('WebGL renderer stops after context loss and preserves selection for fallba
   const renderer={setPixelRatio(){},setSize(){},render(){},dispose(){this.disposed=true}};
   const lost=[];
   const scene=createStarmapScene({THREE,canvas,graph,reducedMotion:true,rendererFactory:()=>renderer,frameScheduler:scheduler,onContextLost:value=>lost.push(value)});
+  assert.ok(scene.inspect().ambientPoints>=1800);
+  assert.ok(scene.inspect().ambientSegments>=2600);
+  assert.equal(scene.inspect().interactiveCount,buildRenderableStarmap(graph,{}).visibleIds.size);
   scene.resize({width:1400,height:900,dpr:3});
   scene.setState({selectedId:graph.nodes.find(node=>node.kind==='architecture_dimension').id});
   assert.equal(scene.inspect().pixelRatio,1.6);

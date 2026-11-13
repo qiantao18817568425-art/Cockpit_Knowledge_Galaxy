@@ -6,15 +6,21 @@
   <meta name="description" content="座舱知识银河：在可旋转的三维知识星图中探索座舱架构、技术链路与原始资料。">
   <meta name="theme-color" content="#050b15">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261113-starmap1">
-  <link rel="stylesheet" href="ui-polish.css?v=20261113-starmap1">
-  <script type="module" src="app.js?v=20261113-starmap1"></script>
+  <link rel="stylesheet" href="style.css?v=20261113-webgl1">
+  <link rel="stylesheet" href="ui-polish.css?v=20261113-webgl1">
+  <script type="module" src="boot.js?v=20261113-webgl1"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">跳到知识搜索</a>
   <main class="workbench" aria-label="座舱知识银河工作台">
     <canvas id="galaxy" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停查看关系，点击星点聚焦并追踪真实知识路径。"></canvas>
+    <canvas id="galaxy-three" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停星点查看关系，点击节点打开知识阅读器。"></canvas>
+    <div class="starmap-overlay">
+      <div class="starmap-header"><span>COCKPIT // KNOWLEDGE NETWORK</span><strong>座舱知识星图</strong><small id="starmap-visible-count">架构维度 · 技术关系 · 证据边界</small></div>
+      <div id="starmap-labels" class="starmap-labels"></div>
+    </div>
     <div id="starmap-route" class="starmap-route" aria-live="polite" hidden><span>当前知识路径</span><strong></strong></div>
+    <div class="renderer-controls"><span id="renderer-status" aria-live="polite">正在载入三维星图</span><button id="webgl-retry" type="button" hidden>重试三维场景</button><button id="canvas-fallback" type="button" hidden>切换兼容星图</button></div>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>

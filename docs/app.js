@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-starmap1';
-import {buildStarmapLayout,buildStarmapView,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starPulse,starmapBackgroundIds,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261113-starmap1';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-starmap1';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-webgl1';
+import {buildStarmapLayout,buildStarmapView,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starPulse,starmapBackgroundIds,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261113-webgl1';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-webgl1';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -34,7 +34,7 @@ const hoverLevels=new Map();
 let matchingIds=new Set();
 let currentReader=null;
 let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
-let introStart=null,routeStart=0,zoomStage=0;
+let introStart=null,routeStart=0,zoomStage=0,canvasFrameStarted=false,canvasMotionAttached=false;
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
 const parallax={x:0,y:0},parallaxTarget={x:0,y:0};
@@ -87,7 +87,10 @@ function refreshVisible(){
     routePanel.hidden=!selected||starmapView.routeIds.length<2||starmapView.routeEdges.length!==starmapView.routeIds.length-1;
     routePanel.querySelector('strong').textContent=starmapView.routeIds.map(id=>byId.get(id)?.title).filter(Boolean).join('  /  ');
   }
+  emitSceneState();
 }
+function sceneState(){return{selectedId:selected,platforms:[...viewState.platforms],pathClasses:[...viewState.pathClasses],evidenceVisible:viewState.evidenceVisible,matchingIds:[...matchingIds],hiddenKinds:[...hidden],sequenceVisible}}
+function emitSceneState(){if(globalThis.__GALAXY_THREE_HOST__)window.dispatchEvent(new CustomEvent('galaxy:state',{detail:sceneState()}))}
 
 function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,1.6);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch),cr=Math.cos(roll),sr=Math.sin(roll);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const yawX=px*cy+pz*sy,z=pz*cy-px*sy,pitchY=py*cx-z*sx,depth=py*sx+z*cx;const x=yawX*cr-pitchY*sr,y=yawX*sr+pitchY*cr;const perspective=1050/(1050-depth),fit=Math.max(.52,Math.min(width/1450,height/850))*zoom;return{x:width*screenCenter+x*perspective*fit+parallax.x*perspective,y:height*.51+y*perspective*fit+parallax.y*perspective,z:depth,p:perspective,fit}}
@@ -444,8 +447,8 @@ for(const button of document.querySelectorAll('.filter'))button.addEventListener
 for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{const value=button.dataset.platform;viewState.platforms=viewState.platforms.includes(value)?viewState.platforms.filter(x=>x!==value):[...viewState.platforms,value];button.setAttribute('aria-pressed',String(viewState.platforms.includes(value)));refreshVisible();if(selected)showNode(selected);interaction()});
 for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{const value=button.dataset.path;viewState.pathClasses=viewState.pathClasses.includes(value)?viewState.pathClasses.filter(x=>x!==value):[...viewState.pathClasses,value];button.setAttribute('aria-pressed',String(viewState.pathClasses.includes(value)));refreshVisible();interaction()});
 document.querySelector('#evidence-toggle').addEventListener('click',event=>{viewState.evidenceVisible=!viewState.evidenceVisible;event.currentTarget.setAttribute('aria-pressed',String(viewState.evidenceVisible));event.currentTarget.textContent=viewState.evidenceVisible?'● 隐藏所选节点证据':'○ 展开所选节点证据';refreshVisible();interaction()});
-document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';interaction()});
-motionToggle.addEventListener('click',()=>{auto=!auto;motionToggle.textContent=auto?'暂停':'旋转';motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');interaction()});
+document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';emitSceneState();interaction()});
+function handleCanvasMotionToggle(){auto=!auto;motionToggle.textContent=auto?'暂停':'旋转';motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');interaction()}
 for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{const action=button.dataset.zoom;if(action==='reset'){yaw=.18;pitch=-.22;roll=0;yawVelocity=0;pitchVelocity=0;zoomTarget=1;clearSelection()}else zoomTarget=Math.max(.58,Math.min(2.3,zoomTarget*(action==='in'?1.2:1/1.2)));interaction()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)lastAction=performance.now()-11000});
 new ResizeObserver(resize).observe(canvas);resize();
@@ -454,6 +457,8 @@ try{
   const response=await fetch('./graph.json',{cache:'no-cache'});
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   prepare(await response.json());
-  requestAnimationFrame(frame);
+  function startCanvasRenderer(){if(!canvasMotionAttached){motionToggle.addEventListener('click',handleCanvasMotionToggle);canvasMotionAttached=true}if(canvasFrameStarted)return;canvasFrameStarted=true;previousFrame=performance.now();resize();requestAnimationFrame(frame)}
+  globalThis.__GALAXY_BRIDGE__={get graph(){return graph},showNode,clearSelection,getSceneState:sceneState,startCanvasRenderer};
+  if(!globalThis.__GALAXY_THREE_HOST__)startCanvasRenderer();
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
 

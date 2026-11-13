@@ -468,8 +468,18 @@ document.querySelector('#reader-preview-close').addEventListener('click',closeRe
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
 const advancedControls=document.querySelector('#advanced-controls');
 const mapLayers=document.querySelector('#map-layers');
-mapLayers.addEventListener('click',()=>{advancedControls.open=!advancedControls.open});
-advancedControls.addEventListener('toggle',()=>mapLayers.setAttribute('aria-expanded',String(advancedControls.open)));
+const advancedSummary=advancedControls.querySelector('summary');
+mapLayers.addEventListener('click',()=>{
+  advancedControls.open=!advancedControls.open;
+  (advancedControls.open?advancedSummary:mapLayers).focus({preventScroll:true});
+});
+advancedControls.addEventListener('toggle',()=>{
+  const expanded=advancedControls.open;
+  mapLayers.setAttribute('aria-expanded',String(expanded));
+  mapLayers.setAttribute('aria-label',expanded?'关闭星图筛选':'打开星图筛选');
+  mapLayers.title=expanded?'关闭星图筛选':'打开星图筛选';
+  if(!expanded&&advancedControls.contains(document.activeElement)&&document.activeElement!==advancedSummary)advancedSummary.focus({preventScroll:true});
+});
 document.querySelector('#starmap-fullscreen').addEventListener('click',async()=>{
   try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.workbench').requestFullscreen()}
   catch(error){console.error('Fullscreen unavailable',error)}

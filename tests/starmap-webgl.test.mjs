@@ -11,7 +11,10 @@ test('WebGL scene model uses the current graph layout and only actual relation e
   assert.equal(typeof buildRenderableStarmap,'function');
   const model=buildRenderableStarmap(graph,{});
   assert.equal(model.positions.size,graph.nodes.length);
-  assert.equal(model.visibleIds.size,181);
+  const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
+  assert.ok(model.visibleIds.has('root'));
+  assert.ok(dimensions.every(node=>model.visibleIds.has(node.id)));
+  assert.ok(model.visibleIds.size>dimensions.length&&model.visibleIds.size<graph.nodes.length);
   assert.ok(model.backgroundIds.size>100);
   const actual=new Set(graph.edges.map(edge=>`${edge.from}|${edge.to}`));
   assert.ok(model.edges.length>100);

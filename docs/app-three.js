@@ -1,158 +1,160 @@
 import * as THREE from './vendor/three/three.module.min.js';
-import {createStarmapScene} from './starmap-webgl.js?v=20261114-webgl4';
+import {createGalaxyState,reduceGalaxyState,selectSceneMode} from './galaxy-state.js?v=20261028-three1';
+import {buildDrillLayout,selectVisibleCards} from './constellation-layout.js?v=20261028-three1';
+import {createGalaxyScene} from './galaxy-3d.js?v=20261028-three1';
 
-const RELEASE='20261114-webgl4';
+const RELEASE='20261028-three1';
 
-function fallbackUrl(){
-  const url=new URL(window.location.href);
-  url.searchParams.set('renderer','canvas');
-  return url.href;
+function nodeLevel(node){
+  if(Number.isFinite(node?.hierarchyLevel))return node.hierarchyLevel;
+  if(node?.kind==='root')return 0;
+  if(node?.kind==='architecture_dimension')return 1;
+  if(node?.kind==='architecture_chain')return 2;
+  return 3;
+}
+
+function setPressed(container,value){
+  for(const button of container.querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.relationMode===value));
 }
 
 export async function startThreeApp(){
   globalThis.__GALAXY_THREE_HOST__=true;
-  await import(`./app.js?v=${RELEASE}`);
-  const bridge=globalThis.__GALAXY_BRIDGE__;
-  if(!bridge?.graph||typeof bridge.showNode!=='function'||typeof bridge.clearSelection!=='function')throw new Error('Knowledge reader bridge failed to initialize');
-
-  const graph=bridge.graph;
+  await import(`./app-legacy.js?v=${RELEASE}`);
+  const legacy=globalThis.__GALAXY_LEGACY__;
+  if(!legacy?.graph)throw new Error('Knowledge reader bridge failed to initialize');
+  const graph=legacy.graph;
   const byId=new Map(graph.nodes.map(node=>[node.id,node]));
   const canvas=document.querySelector('#galaxy-three');
-  const labelLayer=document.querySelector('#starmap-labels');
+  const relationMode=document.querySelector('#relation-mode');
+  const cardDeck=document.querySelector('#constellation-cards');
+  const constellationIndex=document.querySelector('#constellation-index');
+  const fanList=document.querySelector('#fan-list');
+  const fanGroups=document.querySelector('#fan-groups');
   const hoverCard=document.querySelector('#hover-card');
-  const rendererStatus=document.querySelector('#renderer-status');
-  const retry=document.querySelector('#webgl-retry');
-  const fallback=document.querySelector('#canvas-fallback');
-  const motionToggle=document.querySelector('#motion-toggle');
-  const motionLabel=document.querySelector('#motion-label');
-  if(!canvas||!labelLayer||!rendererStatus||!retry||!fallback)throw new Error('WebGL shell is incomplete');
-
-  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const labels=new Map();
-  let lastPointer={x:0,y:0};
-  let hoveredId=null;
-  let cruising=!reducedMotion;
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(pointer:coarse)').matches||innerWidth<=720;
+  let state=createGalaxyState({reducedMotion});
   let scene;
+  let frontIds=[];
+  let threeCruising=!reducedMotion;
 
-  function renderLabels(items=[]){
-    const nextIds=new Set();
-    for(const item of items){
-      const id=item.id;
-      if(!byId.has(id))continue;
-      nextIds.add(id);
-      let button=labels.get(id);
-      if(!button){
-        button=document.createElement('button');
-        button.type='button';
-        button.className='starmap-label';
-        button.dataset.nodeId=id;
-        button.textContent=item.title;
-        button.setAttribute('aria-label',`查看 ${item.title}`);
-        button.addEventListener('click',()=>bridge.showNode(id));
-        labelLayer.append(button);
-        labels.set(id,button);
-      }
-      button.style.left=`${Math.round(item.x)}px`;
-      button.style.top=`${Math.round(item.y)}px`;
-      button.classList.toggle('is-active',Boolean(item.active));
-      button.classList.toggle('is-hovered',Boolean(item.hovered));
-      button.classList.toggle('is-featured',Boolean(item.featured));
+  function sceneState(){return{...state,mode:selectSceneMode(state)}}
+
+  function dispatch(action){
+    state=reduceGalaxyState(state,action);
+    sync();
+    return state;
+  }
+
+  function showNode(id){
+    if(byId.has(id))legacy.showNode(id);
+  }
+
+  function renderCards(){
+    const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
+    const visibleFront=frontIds.length?frontIds:dimensions.slice(0,innerWidth<=720?3:7).map(node=>node.id);
+    const model=selectVisibleCards(graph,{selectedId:state.selectedId,hoveredId:state.hoveredId,frontIds:visibleFront},{mobile:innerWidth<=720});
+    cardDeck.replaceChildren();
+    for(const card of model.cards){
+      const button=document.createElement('button');button.type='button';button.className='constellation-card';button.dataset.nodeId=card.id;
+      const count=document.createElement('span');count.textContent=String(card.count).padStart(2,'0');
+      const title=document.createElement('strong');title.textContent=card.title;
+      const meta=document.createElement('small');meta.textContent='座舱架构星座';
+      button.append(count,title,meta);button.addEventListener('click',()=>showNode(card.id));cardDeck.append(button);
     }
-    for(const [id,button] of labels){
-      if(nextIds.has(id))continue;
-      button.remove();
-      labels.delete(id);
+    constellationIndex.replaceChildren();
+  }
+
+  function makeFanButton(item){
+    const li=document.createElement('li');
+    const button=document.createElement('button');button.type='button';button.tabIndex=0;button.dataset.nodeId=item.id;
+    const title=document.createElement('strong');title.textContent=item.title;
+    const meta=document.createElement('small');meta.textContent=`L${nodeLevel(item)+1} · ${item.description||'知识节点'}`;
+    button.append(title,meta);
+    const activate=()=>showNode(item.id);
+    button.addEventListener('click',activate);
+    button.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();activate()}});
+    li.append(button);return li;
+  }
+
+  function renderFan(){
+    fanList.replaceChildren();fanGroups.replaceChildren();
+    const selected=byId.get(state.selectedId);
+    document.querySelector('.fan-panel').classList.toggle('is-active',Boolean(selected));
+    if(!selected){fanList.classList.remove('is-scrollable');document.querySelector('#fan-title').textContent='智能座舱';document.querySelector('#fan-count').textContent='';return}
+    const layout=buildDrillLayout(graph,selected.id,{state:sceneState(),maxListItems:24});
+    fanList.classList.toggle('is-scrollable',layout.requiresScroll);
+    for(const item of layout.listItems)fanList.append(makeFanButton(item));
+    for(const group of layout.collapsedGroups){
+      const expanded=group.expanded;
+      const button=document.createElement('button');button.type='button';button.className='fan-group';
+      button.textContent=`${expanded?'收起':'展开'} ${group.title} · ${group.nodeIds.length}`;
+      button.addEventListener('click',()=>dispatch({type:expanded?'COLLAPSE_GROUP':'EXPAND_GROUP',groupId:group.id}));
+      fanGroups.append(button);
     }
+    document.querySelector('#fan-title').textContent=selected.title;
+    document.querySelector('#fan-count').textContent=`${layout.listItems.length} 个下级节点${layout.requiresScroll?' · 可滚动':''}`;
   }
 
   function renderHover(id){
-    hoveredId=id;
-    hoverCard?.classList.toggle('is-visible',Boolean(id));
-    hoverCard?.setAttribute('aria-hidden',String(!id));
+    hoverCard.classList.toggle('is-visible',Boolean(id));hoverCard.setAttribute('aria-hidden',String(!id));
     if(!id)return;
-    const node=byId.get(id);
-    if(!node)return;
-    const kind=node.kind==='architecture_dimension'?'架构星区':node.kind==='architecture_chain'?'知识链路':'知识节点';
-    document.querySelector('#hover-kind').textContent=kind;
+    const node=byId.get(id);if(!node)return;
+    document.querySelector('#hover-kind').textContent=`L${nodeLevel(node)+1} · ${node.kind||'知识节点'}`;
     document.querySelector('#hover-title').textContent=node.title;
-    document.querySelector('#hover-meta').textContent=node.description||'点击聚焦这颗知识星点';
-    const x=Math.min(canvas.clientWidth-hoverCard.offsetWidth-14,Math.max(14,lastPointer.x+22));
-    const y=Math.min(canvas.clientHeight-hoverCard.offsetHeight-14,Math.max(14,lastPointer.y+18));
-    hoverCard.style.left=`${x}px`;
-    hoverCard.style.top=`${y}px`;
+    document.querySelector('#hover-meta').textContent=node.description||'点击进入该知识链路';
   }
 
-  function showFallback(selectedId){
-    rendererStatus.textContent=`三维场景已暂停${selectedId?' · 阅读器仍可使用':''}；切换将重新载入页面`;
-    rendererStatus.dataset.state='fallback';
-    retry.hidden=false;
-    fallback.hidden=false;
-    renderHover(null);
+  function sync(){
+    scene?.setState(sceneState());
+    if(state.selectedId)scene?.focusNode(state.selectedId,{});
+    setPressed(relationMode,state.relationMode);
+    document.querySelector('#galaxy-root-label').hidden=Boolean(state.selectedId);
+    renderCards();renderFan();renderHover(state.hoveredId);
   }
 
-  scene=createStarmapScene({
+  scene=createGalaxyScene({
     THREE,canvas,graph,reducedMotion,
-    onHover:renderHover,
-    onSelect:id=>id?bridge.showNode(id):bridge.clearSelection(),
-    onViewChange:({labels:items,visibleCount})=>{
-      renderLabels(items);
-      const count=document.querySelector('#starmap-visible-count');
-      if(count)count.textContent=`${visibleCount} 个可探索节点`;
-    },
-    onContextLost:({selectedId})=>showFallback(selectedId)
+    onHover:id=>{state={...state,hoveredId:id};sync()},
+    onSelect:id=>id?showNode(id):legacy.clearSelection(),
+    onViewChange:({frontIds:ids})=>{frontIds=ids;renderCards()},
+    onContextLost:({selectedId})=>{
+      state=reduceGalaxyState(state,{type:'CONTEXT_LOST'});
+      document.querySelector('#renderer-status').textContent=`3D 场景已暂停${selectedId?'，当前知识选择已保留':''}`;
+      document.querySelector('#webgl-retry').hidden=false;document.querySelector('#canvas-fallback').hidden=false;
+    }
   });
 
-  const syncState=event=>scene.setState(event.detail||bridge.getSceneState());
-  window.addEventListener('galaxy:state',syncState);
-  scene.setState(bridge.getSceneState());
-
-  const trackPointer=event=>{
-    const bounds=canvas.getBoundingClientRect();
-    lastPointer={x:event.clientX-bounds.left,y:event.clientY-bounds.top};
-    if(hoveredId)renderHover(hoveredId);
-  };
-  canvas.addEventListener('pointermove',trackPointer);
-  retry.addEventListener('click',()=>window.location.reload());
-  fallback.addEventListener('click',()=>window.location.assign(fallbackUrl()));
-  const syncMotion=enabled=>{
-    document.documentElement.classList.toggle('galaxy-paused',!enabled);
-    document.documentElement.classList.toggle('galaxy-motion-opt-in',reducedMotion&&enabled);
-    motionLabel.textContent=enabled?'3D 自动巡航':reducedMotion&&!cruising?'系统减少动态':'巡航已暂停';
-    motionToggle.textContent=enabled?'暂停':'开启';
-    motionToggle.setAttribute('aria-pressed',String(enabled));
-    motionToggle.setAttribute('aria-label',enabled?'暂停自动巡航':'开启自动巡航');
-    motionToggle.title=enabled?'暂停自动巡航':'开启自动巡航';
-  };
-  const motionClick=()=>{cruising=scene.setCruising(!cruising);syncMotion(cruising)};
-  syncMotion(cruising);
-  motionToggle.addEventListener('click',motionClick);
-  const zoomClick=event=>{
-    const action=event.currentTarget.dataset.zoom;
-    if(action==='reset')scene.resetView();
-    else scene.zoomBy(action==='in'?1.2:1/1.2);
-  };
-  for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',zoomClick);
-  const resize=()=>{
-    const bounds=canvas.getBoundingClientRect();
-    scene.resize({width:bounds.width,height:bounds.height,dpr:devicePixelRatio||1});
-  };
-  const observer=new ResizeObserver(resize);
+  window.addEventListener('galaxy:selection',event=>{
+    const node=byId.get(event.detail.id);
+    dispatch(node?{type:'SELECT_NODE',nodeId:node.id,hierarchyLevel:nodeLevel(node)}:{type:'CLEAR_SELECTION'});
+  });
+  relationMode.addEventListener('click',event=>{
+    const mode=event.target.closest('[data-relation-mode]')?.dataset.relationMode;
+    if(mode)dispatch({type:'SET_RELATION_MODE',mode});
+  });
+  for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{
+    queueMicrotask(()=>dispatch({type:'SET_FILTERS',platforms:legacy.viewState.platforms,pathClasses:legacy.viewState.pathClasses,evidenceVisible:legacy.viewState.evidenceVisible}));
+  });
+  for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{
+    queueMicrotask(()=>dispatch({type:'SET_FILTERS',platforms:legacy.viewState.platforms,pathClasses:legacy.viewState.pathClasses,evidenceVisible:legacy.viewState.evidenceVisible}));
+  });
+  window.addEventListener('galaxy:search',event=>dispatch({type:'SET_SEARCH_MATCHES',matchingIds:event.detail.matchingIds||[],focusId:event.detail.focusId||state.selectedId,hierarchyLevel:event.detail.hierarchyLevel??state.selectedLevel}));
+  canvas.addEventListener('pointerleave',()=>{state={...state,hoveredId:null};sync()});
+  document.querySelector('#webgl-retry').addEventListener('click',()=>location.reload());
+  document.querySelector('#canvas-fallback').addEventListener('click',()=>{location.href=`${location.pathname}?renderer=canvas`});
+  document.querySelector('#motion-toggle').addEventListener('click',()=>{
+    threeCruising=!threeCruising;scene.setCruising(threeCruising);
+    document.querySelector('#motion-label').textContent=threeCruising?'银河缓慢旋转':'旋转已暂停';
+  });
+  for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{
+    const action=button.dataset.zoom;
+    if(action==='reset')scene.resetView();else scene.zoomBy(action==='in'?1.2:1/1.2);
+  });
+  const observer=new ResizeObserver(entries=>{const rect=entries[0].contentRect;scene.resize({width:rect.width,height:rect.height,dpr:devicePixelRatio||1});renderCards()});
   observer.observe(canvas);
-  resize();
+  sync();
 
-  return{
-    scene,
-    dispose(){
-      observer.disconnect();
-      window.removeEventListener('galaxy:state',syncState);
-      canvas.removeEventListener('pointermove',trackPointer);
-      motionToggle.removeEventListener('click',motionClick);
-      for(const button of document.querySelectorAll('[data-zoom]'))button.removeEventListener('click',zoomClick);
-      for(const button of labels.values())button.remove();
-      labels.clear();
-      scene.dispose();
-    }
-  };
+  return{dispatch,showNode,showReference:legacy.showReference,downloadReaderSummary:legacy.downloadReaderSummary,dispose(){observer.disconnect();scene.dispose()},get state(){return state}};
 }
 
 if(typeof window!=='undefined'&&typeof document!=='undefined')await startThreeApp();

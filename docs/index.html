@@ -6,9 +6,9 @@
   <meta name="description" content="座舱知识银河：在可旋转的三维知识星图中探索座舱架构、技术链路与原始资料。">
   <meta name="theme-color" content="#050b15">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261113-webgl1">
-  <link rel="stylesheet" href="ui-polish.css?v=20261113-webgl1">
-  <script type="module" src="boot.js?v=20261113-webgl1"></script>
+  <link rel="stylesheet" href="style.css?v=20261113-webgl2">
+  <link rel="stylesheet" href="ui-polish.css?v=20261113-webgl2">
+  <script type="module" src="boot.js?v=20261113-webgl2"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">跳到知识搜索</a>
@@ -16,38 +16,46 @@
     <canvas id="galaxy" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停查看关系，点击星点聚焦并追踪真实知识路径。"></canvas>
     <canvas id="galaxy-three" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停星点查看关系，点击节点打开知识阅读器。"></canvas>
     <div class="starmap-overlay">
-      <div class="starmap-header"><span>COCKPIT // KNOWLEDGE NETWORK</span><strong>座舱知识星图</strong><small id="starmap-visible-count">架构维度 · 技术关系 · 证据边界</small></div>
       <div id="starmap-labels" class="starmap-labels"></div>
     </div>
     <div id="starmap-route" class="starmap-route" aria-live="polite" hidden><span>当前知识路径</span><strong></strong></div>
     <div class="renderer-controls"><span id="renderer-status" aria-live="polite">正在载入三维星图</span><button id="webgl-retry" type="button" hidden>重试三维场景</button><button id="canvas-fallback" type="button" hidden>切换兼容星图</button></div>
 
     <section class="glass controls" aria-label="图谱控制">
-      <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
+      <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p id="starmap-visible-count">架构维度 · 技术关系</p></div></div>
       <label class="search-label" for="search">搜索知识</label>
-      <input id="search" type="search" autocomplete="off" aria-controls="results" aria-expanded="false" placeholder="模块、链路、Day、关键词…">
+      <div class="search-wrap"><input id="search" type="search" autocomplete="off" aria-controls="results" aria-expanded="false" placeholder="搜索知识星、主题或关键词…"></div>
       <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
-      <details class="topic-nav">
-        <summary>按架构主题浏览 <span id="topic-count"></span></summary>
-        <div id="topic-list" class="topic-list"></div>
+      <div class="section-label">主题星区</div>
+      <nav id="quick-constellations" class="quick-constellations" aria-label="常用架构星区"></nav>
+      <details id="advanced-controls" class="advanced-controls">
+        <summary>更多筛选与全部星区</summary>
+        <div class="advanced-content">
+          <details class="topic-nav">
+            <summary>全部架构主题 <span id="topic-count"></span></summary>
+            <div id="topic-list" class="topic-list"></div>
+          </details>
+          <div class="section-label">知识层</div>
+          <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
+          <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="state" aria-pressed="false">状态</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
+          <button id="evidence-toggle" class="sequence" type="button" aria-pressed="false">○ 展开所选节点证据</button>
+          <div class="section-label">导航层</div>
+          <button class="filter" type="button" data-kind="topic" aria-pressed="true"><i class="swatch topic"></i>主题星系<span>✓</span></button>
+          <button class="filter" type="button" data-kind="subtopic" aria-pressed="true"><i class="swatch subtopic"></i>细分链路<span>✓</span></button>
+          <button class="filter" type="button" data-kind="chapter" aria-pressed="true"><i class="swatch chapter"></i>架构章节<span>✓</span></button>
+          <button class="filter" type="button" data-kind="lesson" aria-pressed="true"><i class="swatch lesson"></i>Day 课程<span>✓</span></button>
+          <button class="filter" type="button" data-kind="review" aria-pressed="true"><i class="swatch review"></i>Week 复盘<span>✓</span></button>
+          <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
+          <div class="counts" id="counts">正在载入公开知识目录…</div>
+          <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="state">状态</span><span class="diagnostic">诊断</span></div>
+          <div class="motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
+        </div>
       </details>
-      <div class="section-label">知识层</div>
-      <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
-      <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="state" aria-pressed="false">状态</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
-      <button id="evidence-toggle" class="sequence" type="button" aria-pressed="false">○ 展开所选节点证据</button>
-      <div class="section-label">导航层</div>
-      <button class="filter" type="button" data-kind="topic" aria-pressed="true"><i class="swatch topic"></i>主题星系<span>✓</span></button>
-      <button class="filter" type="button" data-kind="subtopic" aria-pressed="true"><i class="swatch subtopic"></i>细分链路<span>✓</span></button>
-      <button class="filter" type="button" data-kind="chapter" aria-pressed="true"><i class="swatch chapter"></i>架构章节<span>✓</span></button>
-      <button class="filter" type="button" data-kind="lesson" aria-pressed="true"><i class="swatch lesson"></i>Day 课程<span>✓</span></button>
-      <button class="filter" type="button" data-kind="review" aria-pressed="true"><i class="swatch review"></i>Week 复盘<span>✓</span></button>
-      <button id="sequence-toggle" class="sequence" type="button" aria-pressed="false">○ 显示课程顺序连线</button>
-      <div class="counts" id="counts">正在载入公开知识目录…</div>
-      <div class="path-legend"><span class="control">控制</span><span class="data">数据</span><span class="power">电源</span><span class="state">状态</span><span class="diagnostic">诊断</span></div>
+      <div class="section-label source-heading">知识来源</div>
       <nav class="source-nav" aria-label="项目链接"><a href="raw-sources.html">原始资料 ↗</a><a href="knowledge-coverage.html">覆盖报告 ↗</a><a href="https://github.com/qiantao18817568425-art/Cockpit_Knowledge_Galaxy" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></nav>
     </section>
 
-    <div class="glass motion"><span class="motion-light" aria-hidden="true"></span><span id="motion-label">加载中</span><button id="motion-toggle" type="button" aria-label="暂停自动旋转">暂停</button></div>
+    <div class="glass scene-tools" aria-label="星图视图工具"><button type="button" data-zoom="reset" aria-label="重置视角" title="重置视角">⌖</button><button id="map-layers" type="button" aria-controls="advanced-controls" aria-expanded="false" aria-label="打开星图筛选" title="打开星图筛选">▱</button><button id="starmap-fullscreen" type="button" aria-label="切换全屏" title="切换全屏">⛶</button></div>
 
     <div id="hover-card" class="glass hover-card" aria-hidden="true"><span id="hover-kind"></span><strong id="hover-title"></strong><small id="hover-meta"></small></div>
 
@@ -121,7 +129,7 @@
       </section>
     </aside>
 
-    <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
+    <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="in" aria-label="放大">+</button></div>
 
     <div class="hint">拖动旋转星图 · 滚轮推进到细分知识 · 悬停查看关系 · 点击星点追踪真实路径<br><span id="updated"></span> · 层级线用于下钻；技术线按控制、数据、电源、状态和诊断分色</div>
   </main>

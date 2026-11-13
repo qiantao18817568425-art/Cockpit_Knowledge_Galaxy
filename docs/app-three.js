@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three/three.module.min.js';
-import {createStarmapScene} from './starmap-webgl.js?v=20261113-webgl1';
+import {createStarmapScene} from './starmap-webgl.js?v=20261113-webgl2';
 
-const RELEASE='20261113-webgl1';
+const RELEASE='20261113-webgl2';
 
 function fallbackUrl(){
   const url=new URL(window.location.href);
@@ -56,6 +56,7 @@ export async function startThreeApp(){
       button.style.top=`${Math.round(item.y)}px`;
       button.classList.toggle('is-active',Boolean(item.active));
       button.classList.toggle('is-hovered',Boolean(item.hovered));
+      button.classList.toggle('is-featured',Boolean(item.featured));
     }
     for(const [id,button] of labels){
       if(nextIds.has(id))continue;
@@ -121,7 +122,7 @@ export async function startThreeApp(){
     motionToggle.setAttribute('aria-label',enabled?'暂停自动旋转':'开启自动旋转');
   };
   if(reducedMotion){motionToggle.disabled=true;motionToggle.textContent='动态已关闭';motionToggle.setAttribute('aria-label','已关闭自动动态');motionLabel.textContent='减少动态效果';}
-  else motionToggle.addEventListener('click',motionClick);
+  else {motionLabel.textContent='星图缓慢巡航';motionToggle.addEventListener('click',motionClick)}
   const zoomClick=event=>{
     const action=event.currentTarget.dataset.zoom;
     if(action==='reset')scene.resetView();

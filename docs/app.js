@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-webgl1';
-import {buildStarmapLayout,buildStarmapView,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starPulse,starmapBackgroundIds,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261113-webgl1';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-webgl1';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-webgl2';
+import {buildStarmapLayout,buildStarmapView,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starPulse,starmapBackgroundIds,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261113-webgl2';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-webgl2';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -20,6 +20,15 @@ function isUsableFocusTarget(element) {
 
 const colors = {root:'#e9f3ff',architecture_dimension:'#a9cde5',architecture_chain:'#a5c8d8',pyramid:'#a9cde5',index:'#849db3',topic:'#a9cde5',subtopic:'#9ec9c1',chapter:'#a8bacb',lesson:'#b6acd1',review:'#dec99d',platform:'#9dcbe0',domain:'#9fbfd3',component:'#a9c5d2',interface:'#d8c28f',state:'#b8a9ce',process:'#9dc7bd',observation:'#a6c0cd',failure_mode:'#d5a5a6',source:'#7d92a6',evidence:'#e2ca95'};
 const labels = { root:'智能座舱',architecture_dimension:'架构维度',architecture_chain:'三级知识链',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
+const quickArchitecture=[
+  ['architecture:system-concepts','blue','系统架构'],
+  ['architecture:mtk-platform','teal','软件平台'],
+  ['architecture:hal-driver-hardware','blue','硬件与接口'],
+  ['architecture:audio','violet','多媒体与音频'],
+  ['architecture:android-hmi-display','cyan','显示与交互'],
+  ['architecture:diagnosis-evidence','gold','诊断与证据'],
+  ['architecture:power','violet','电源管理']
+];
 const labelFor=node=>node.id.startsWith('subtopic:raw:')?'资料分类':labels[node.kind];
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,9 +81,23 @@ function prepare(raw){
     button.addEventListener('click',()=>showNode(node.id));
     topicList.append(button);
   }
+  const shortcuts=document.querySelector('#quick-constellations');
+  if(shortcuts){
+    shortcuts.replaceChildren();
+    for(const [id,tone,label] of quickArchitecture){
+      const node=byId.get(id);if(!node)continue;
+      const button=document.createElement('button');button.type='button';button.className='quick-node';button.dataset.nodeId=id;button.dataset.tone=tone;
+      button.title=node.title;button.setAttribute('aria-label',`查看${node.title}`);
+      const box=document.createElement('span');box.className='quick-box';box.setAttribute('aria-hidden','true');
+      const dot=document.createElement('i');dot.className='quick-dot';dot.setAttribute('aria-hidden','true');
+      const title=document.createElement('span');title.className='quick-title';title.textContent=label;
+      button.append(box,dot,title);button.addEventListener('click',()=>showNode(id));shortcuts.append(button);
+    }
+  }
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
 }
+function syncQuickSelection(){for(const button of document.querySelectorAll('.quick-node'))button.classList.toggle('is-current',button.dataset.nodeId===selected)}
 function refreshVisible(){
   if(!graph)return;
   viewState.selectedId=selected;
@@ -381,7 +404,7 @@ function downloadReaderSummary(){
 function showNode(id){
   const node=byId.get(id);if(!node)return;
   if(detail.hidden)readerReturnFocus=document.activeElement;
-  selected=id;viewState.selectedId=id;zoomTarget=Math.max(1.5,zoomTarget);screenCenterTarget=.38;routeStart=performance.now();refreshVisible();interaction();detail.hidden=false;
+  selected=id;viewState.selectedId=id;zoomTarget=Math.max(1.5,zoomTarget);screenCenterTarget=.38;routeStart=performance.now();refreshVisible();syncQuickSelection();interaction();detail.hidden=false;
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
@@ -391,7 +414,7 @@ function showNode(id){
   detail.scrollTop=0;
   document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;zoomTarget=1;screenCenterTarget=.55;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:search;target.focus({preventScroll:true})}readerReturnFocus=null}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;zoomTarget=1;screenCenterTarget=.55;detail.hidden=true;closeReaderPreview();refreshVisible();syncQuickSelection();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:search;target.focus({preventScroll:true})}readerReturnFocus=null}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
@@ -443,6 +466,14 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!detail.hid
 document.querySelector('#detail-close').addEventListener('click',clearSelection);
 document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
+const advancedControls=document.querySelector('#advanced-controls');
+const mapLayers=document.querySelector('#map-layers');
+mapLayers.addEventListener('click',()=>{advancedControls.open=!advancedControls.open});
+advancedControls.addEventListener('toggle',()=>mapLayers.setAttribute('aria-expanded',String(advancedControls.open)));
+document.querySelector('#starmap-fullscreen').addEventListener('click',async()=>{
+  try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.workbench').requestFullscreen()}
+  catch(error){console.error('Fullscreen unavailable',error)}
+});
 for(const button of document.querySelectorAll('.filter'))button.addEventListener('click',()=>{const kind=button.dataset.kind;hidden.has(kind)?hidden.delete(kind):hidden.add(kind);syncFilters();refreshVisible();interaction()});
 for(const button of document.querySelectorAll('.platform-chip'))button.addEventListener('click',()=>{const value=button.dataset.platform;viewState.platforms=viewState.platforms.includes(value)?viewState.platforms.filter(x=>x!==value):[...viewState.platforms,value];button.setAttribute('aria-pressed',String(viewState.platforms.includes(value)));refreshVisible();if(selected)showNode(selected);interaction()});
 for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{const value=button.dataset.path;viewState.pathClasses=viewState.pathClasses.includes(value)?viewState.pathClasses.filter(x=>x!==value):[...viewState.pathClasses,value];button.setAttribute('aria-pressed',String(viewState.pathClasses.includes(value)));refreshVisible();interaction()});

@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-ui1';
-import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261113-ui1';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-ui1';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-desktop2';
+import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261113-desktop2';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-desktop2';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -10,64 +10,12 @@ const motionLabel = document.querySelector('#motion-label');
 const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
-const controlsPanel = document.querySelector('#controls-panel');
-const controlsToggle = document.querySelector('#controls-toggle');
-const controlsBackdrop = document.querySelector('#controls-backdrop');
-const compactLayout = matchMedia('(max-width: 900px)');
-const drawerBackground = [...document.querySelector('.workbench').children].filter(element=>element!==controlsPanel&&element!==controlsBackdrop);
-const skipLink = document.querySelector('.skip-link');
-let drawerReturnFocus = null;
 let readerReturnFocus = null;
-
 function isUsableFocusTarget(element) {
   return !!(element?.matches?.('button,a[href],input,summary,[tabindex]') &&
     element.isConnected && !element.closest('[inert]') &&
     getComputedStyle(element).visibility === 'visible' && element.getClientRects().length);
 }
-function setDrawerBackgroundInert(inert) {
-  for (const element of drawerBackground) element.inert = inert;
-  skipLink.inert = inert;
-}
-
-function setControlsOpen(open, restoreFocus = true) {
-  if (!compactLayout.matches) return;
-  if (open && !document.body.classList.contains('controls-open')) drawerReturnFocus = document.activeElement;
-  document.body.classList.toggle('controls-open', open);
-  controlsBackdrop.hidden = !open;
-  controlsPanel.inert = !open;
-  setDrawerBackgroundInert(open);
-  if (open) {
-    controlsPanel.setAttribute('role', 'dialog');
-    controlsPanel.setAttribute('aria-modal', 'true');
-  } else {
-    controlsPanel.removeAttribute('role');
-    controlsPanel.removeAttribute('aria-modal');
-  }
-  controlsToggle.setAttribute('aria-expanded', String(open));
-  if (open) search.focus();
-  else if (restoreFocus) {
-    (isUsableFocusTarget(drawerReturnFocus) ? drawerReturnFocus : controlsToggle).focus();
-  }
-}
-function syncControlsLayout() {
-  if (compactLayout.matches) {
-    const open = document.body.classList.contains('controls-open');
-    const hadPanelFocus = controlsPanel.contains(document.activeElement);
-    controlsPanel.inert = !open;
-    if (!open && hadPanelFocus) controlsToggle.focus();
-    return;
-  }
-  const hadToggleFocus = document.activeElement === controlsToggle;
-  document.body.classList.remove('controls-open');
-  controlsBackdrop.hidden = true;
-  controlsPanel.inert = false;
-  setDrawerBackgroundInert(false);
-  controlsPanel.removeAttribute('role');
-  controlsPanel.removeAttribute('aria-modal');
-  controlsToggle.setAttribute('aria-expanded', 'false');
-  if (hadToggleFocus) search.focus();
-}
-syncControlsLayout();
 
 const colors = { root:'#e6f5ff',architecture_dimension:'#74bbff',architecture_chain:'#7fe2cd',pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
 const labels = { root:'智能座舱',architecture_dimension:'架构维度',architecture_chain:'三级知识链',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
@@ -380,7 +328,6 @@ function showNode(id){
   const node=byId.get(id);if(!node)return;
   if(detail.hidden)readerReturnFocus=document.activeElement;
   selected=id;viewState.selectedId=id;refreshVisible();interaction();detail.hidden=false;
-  if(compactLayout.matches)setControlsOpen(false,false);
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
   document.querySelector('#detail-title').textContent=node.title;
@@ -390,7 +337,7 @@ function showNode(id){
   detail.scrollTop=0;
   document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:(compactLayout.matches?controlsToggle:search);target.focus({preventScroll:true})}readerReturnFocus=null}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:search;target.focus({preventScroll:true})}readerReturnFocus=null}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
@@ -411,7 +358,7 @@ function frame(time){
   for(const axis of ['x','y','z'])focus[axis]+=(focusTarget[axis]-focus[axis])*easing;
   const hoverEasing=reducedMotion?1:1-Math.exp(-delta/130);
   for(const [id,level] of hoverLevels){const next=level+((id===hovered?1:0)-level)*hoverEasing;if(next<.01&&id!==hovered)hoverLevels.delete(id);else hoverLevels.set(id,next)}
-  const cruising=auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&!document.body.classList.contains('controls-open')&&time-lastAction>10000;
+  const cruising=auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&time-lastAction>10000;
   if(cruising){({yaw,pitch,roll}=orbitPose({yaw,pitch,roll},time,delta));yawVelocity*=.94;pitchVelocity*=.94}
   else if(!pointer){yaw+=yawVelocity*delta;pitch=Math.max(-1.05,Math.min(1.05,pitch+pitchVelocity*delta));const friction=Math.exp(-delta/1450);yawVelocity*=friction;pitchVelocity*=friction;roll+=(0-roll)*(1-Math.exp(-delta/520))}
   draw();requestAnimationFrame(frame);
@@ -424,15 +371,9 @@ canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVel
 canvas.addEventListener('pointerleave',()=>{if(!pointer)setHovered(null)});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,Math.min(2.3,zoom*(event.deltaY<0?1.09:1/1.09)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});
-search.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();if(search.value){search.value='';renderResults()}else if(compactLayout.matches&&document.body.classList.contains('controls-open'))setControlsOpen(false);else search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}else if(event.key==='ArrowDown'){const first=results.querySelector('button');if(first){event.preventDefault();first.focus()}}});
+search.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();if(search.value){search.value='';renderResults()}else search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}else if(event.key==='ArrowDown'){const first=results.querySelector('button');if(first){event.preventDefault();first.focus()}}});
 results.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();search.focus()}else if(event.key==='ArrowDown'||event.key==='ArrowUp'){const items=[...results.querySelectorAll('button')];const index=items.indexOf(document.activeElement);const next=items[index+(event.key==='ArrowDown'?1:-1)];if(next){event.preventDefault();next.focus()}}});
-document.querySelector('.skip-link').addEventListener('click',event=>{if(compactLayout.matches){event.preventDefault();setControlsOpen(true)}});
-controlsToggle.addEventListener('click',()=>setControlsOpen(!document.body.classList.contains('controls-open')));
-document.querySelector('#controls-close').addEventListener('click',()=>setControlsOpen(false));
-controlsBackdrop.addEventListener('click',()=>setControlsOpen(false));
-controlsPanel.addEventListener('keydown',event=>{if(event.key!=='Tab'||!document.body.classList.contains('controls-open'))return;const focusable=[...controlsPanel.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),summary,[tabindex]:not([tabindex="-1"])')].filter(element=>!element.inert&&element.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}});
-compactLayout.addEventListener('change',syncControlsLayout);
-document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(document.body.classList.contains('controls-open'))setControlsOpen(false);else if(!detail.hidden)clearSelection()}else if(event.key==='/'&&!event.altKey&&!event.ctrlKey&&!event.metaKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)){event.preventDefault();if(compactLayout.matches)setControlsOpen(true);else search.focus()}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!detail.hidden)clearSelection();else if(event.key==='/'&&!event.altKey&&!event.ctrlKey&&!event.metaKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)){event.preventDefault();search.focus()}});
 document.querySelector('#detail-close').addEventListener('click',clearSelection);
 document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);

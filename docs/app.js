@@ -1,6 +1,7 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-webgl2';
-import {buildStarmapLayout,buildStarmapView,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starPulse,starmapBackgroundIds,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261113-webgl2';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-webgl2';
+import {buildReaderModel,rankSearchResults,readerMarkdown} from './graph-model.js?v=20261114-webgl3';
+import {buildStarmapLayout,clampLabelX,depthLabelStyle,edgeVisualStyle,fitLabelSize,frontLabelLimit,introStarmapPose,isProjectedVisible,orbitPose,releaseVelocity,routeLightProgress,starmapParallax,visibleLabelIds} from './space-scene.js?v=20261114-webgl3';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261114-webgl3';
+import {buildRenderableStarmap} from './starmap-webgl.js?v=20261114-webgl3';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -32,9 +33,9 @@ const quickArchitecture=[
 const labelFor=node=>node.id.startsWith('subtopic:raw:')?'资料分类':labels[node.kind];
 const hidden = new Set();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let graph, nodes=[], edges=[], byId=new Map(), neighbors=new Map(), dust=[], stars=[], nebulae=[];
+let graph, nodes=[], edges=[], renderedEdges=[], byId=new Map(), neighbors=new Map();
 const viewState={selectedId:null,platforms:[],pathClasses:[],evidenceVisible:false,candidateVisible:false};
-let visibleIds=new Set(),backgroundIds=new Set(),starmapView={routeIds:[],routeEdges:[],emphasisIds:new Set()};
+let visibleIds=new Set(),starmapView={routeIds:[],routeEdges:[],emphasisIds:new Set()};
 let width=0,height=0,dpr=1, yaw=.18,pitch=-.22,roll=0,zoom=1,zoomTarget=1,selected=null,projected=[],pointer=null;
 let screenCenter=.55,screenCenterTarget=.55;
 let yawVelocity=0,pitchVelocity=0;
@@ -42,14 +43,11 @@ let hovered=null;
 const hoverLevels=new Map();
 let matchingIds=new Set();
 let currentReader=null;
-let auto=!reducedMotion, lastAction=performance.now()-11000, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
+let auto=!reducedMotion, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
 let introStart=null,routeStart=0,zoomStage=0,canvasFrameStarted=false,canvasMotionAttached=false;
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
 const parallax={x:0,y:0},parallaxTarget={x:0,y:0};
-
-function randomStream(seedValue){let n=seedValue>>>0;return()=>((n=(Math.imul(n,1664525)+1013904223)>>>0)/4294967296)}
-const random=randomStream(41867);
 
 function prepare(raw){
   graph=raw;
@@ -64,9 +62,6 @@ function prepare(raw){
   neighbors=new Map(nodes.map(n=>[n.id,new Set()]));
   for(const e of edges){neighbors.get(e.from).add(e.to);neighbors.get(e.to).add(e.from)}
   refreshVisible();
-  dust=Array.from({length:850},()=>{const a=random()*Math.PI*2,r=Math.pow(random(),.72)*780;return{x:Math.cos(a)*r,y:(random()-.5)*(210+r*.2),z:Math.sin(a)*r*.66,size:random()*1.05+.18,tone:random()}});
-  stars=Array.from({length:260},()=>({x:random(),y:random(),r:random()*.8+.12,a:random()*.28+.04,depth:random(),twinkle:random()*Math.PI*2}));
-  nebulae=Array.from({length:7},(_,i)=>{const t=i/6;return{x:.15+t*.75+(random()-.5)*.1,y:.69-t*.42+(random()-.5)*.15,r:.09+random()*.16,hue:i%3,phase:random()*Math.PI*2}});
   if(!reducedMotion){introStart=performance.now();({yaw,pitch,zoom}=introStarmapPose(0));}
   document.querySelector('#counts').textContent=`${raw.meta.sourceCoverage.total} 份资料 · ${raw.meta.semantic.entityCount} 个知识实体 · ${raw.meta.semantic.relationCount} 条技术关系 · ${raw.meta.semantic.evidenceCount} 条页码证据 · ${raw.meta.chapterCount} 章架构`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
@@ -94,18 +89,16 @@ function prepare(raw){
       button.append(box,dot,title);button.addEventListener('click',()=>showNode(id));shortcuts.append(button);
     }
   }
-  motionToggle.textContent=auto?'暂停':'旋转';
-  motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
+  syncCanvasMotion();
 }
 function syncQuickSelection(){for(const button of document.querySelectorAll('.quick-node'))button.classList.toggle('is-current',button.dataset.nodeId===selected)}
 function refreshVisible(){
   if(!graph)return;
   viewState.selectedId=selected;
-  const allowed=visibleNodeIds(graph,viewState);
-  const drill=selected?drillVisibleNodeIds(graph,{selectedId:selected,expandedDepth:1,evidenceVisible:viewState.evidenceVisible,matchingIds}):[];
-  starmapView=buildStarmapView(graph,{zoom,selectedId:selected,hoveredId:hovered,allowedIds:allowed,drillIds:drill,matchingIds,hiddenKinds:hidden});
-  visibleIds=starmapView.visibleIds;
-  backgroundIds=new Set([...starmapBackgroundIds(graph,{zoom})].filter(id=>allowed.has(id)&&!visibleIds.has(id)&&!hidden.has(byId.get(id)?.kind)));
+  const model=buildRenderableStarmap(graph,{zoom,selectedId:selected,hoveredId:hovered,platforms:viewState.platforms,pathClasses:viewState.pathClasses,evidenceVisible:viewState.evidenceVisible,matchingIds,hiddenKinds:[...hidden],sequenceVisible});
+  visibleIds=model.visibleIds;
+  renderedEdges=model.edges;
+  starmapView={routeIds:model.routeIds,routeEdges:model.routeEdges,emphasisIds:model.emphasisIds};
   if(routePanel){
     routePanel.hidden=!selected||starmapView.routeIds.length<2||starmapView.routeEdges.length!==starmapView.routeIds.length-1;
     routePanel.querySelector('strong').textContent=starmapView.routeIds.map(id=>byId.get(id)?.title).filter(Boolean).join('  /  ');
@@ -122,38 +115,18 @@ function pickNode(x,y){let hit=null,best=Infinity;for(const n of projected){if(!
 function setHovered(id){if(hovered===id)return;hovered=id;refreshVisible();canvas.classList.toggle('is-hovering',!!id);hoverCard.classList.toggle('is-visible',!!id);hoverCard.setAttribute('aria-hidden',String(!id));if(id){const n=byId.get(id);hoverLevels.set(id,hoverLevels.get(id)||0);document.querySelector('#hover-kind').textContent=labelFor(n);document.querySelector('#hover-title').textContent=n.title;document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`}interaction()}
 function positionHoverCard(map){if(!hovered)return;const n=map.get(hovered);if(!n)return;const x=Math.max(14,Math.min(width-hoverCard.offsetWidth-14,n.x+24));const y=Math.max(14,Math.min(height-hoverCard.offsetHeight-14,n.y+18));hoverCard.style.left=`${x}px`;hoverCard.style.top=`${y}px`}
 
-function background(time){
-  const radial=ctx.createRadialGradient(width*.57,height*.48,0,width*.52,height*.5,Math.max(width,height)*.82);
-  radial.addColorStop(0,'#101b2b');radial.addColorStop(.38,'#080f1d');radial.addColorStop(.78,'#03070f');radial.addColorStop(1,'#01040a');
-  ctx.fillStyle=radial;ctx.fillRect(0,0,width,height);
-  ctx.save();ctx.globalCompositeOperation='screen';
-  for(const cloud of nebulae){
-    const parallax=cloud.r*.08;
-    const x=(cloud.x+Math.sin(yaw+cloud.phase)*parallax)*width;
-    const y=(cloud.y+Math.sin(pitch*1.7+cloud.phase)*parallax)*height;
-    const radius=Math.max(width,height)*cloud.r;
-    const gradient=ctx.createRadialGradient(x,y,0,x,y,radius);
-    const colors=cloud.hue===0?['#4b718625','#1834410a']:cloud.hue===1?['#9b74401c','#46321d08']:['#7592a520','#243a4b09'];
-    gradient.addColorStop(0,colors[0]);gradient.addColorStop(.48,colors[1]);gradient.addColorStop(1,'#00000000');ctx.fillStyle=gradient;ctx.fillRect(x-radius,y-radius,radius*2,radius*2);
-  }
-  const coreX=width*.56+Math.sin(yaw)*width*.012,coreY=height*.51+Math.sin(pitch)*height*.016;
-  const core=ctx.createRadialGradient(coreX,coreY,0,coreX,coreY,Math.min(width,height)*.46);
-  core.addColorStop(0,'#b7d9e713');core.addColorStop(.42,'#5b8ba510');core.addColorStop(1,'#00000000');ctx.fillStyle=core;ctx.fillRect(0,0,width,height);
-  ctx.globalCompositeOperation='source-over';
-  for(const s of stars){
-    const px=((s.x+(yaw*.012*s.depth))%1+1)%1*width+parallax.x*s.depth*.3,py=((s.y+(pitch*.018*s.depth))%1+1)%1*height+parallax.y*s.depth*.3;
-    const pulse=starPulse(time,s.twinkle,reducedMotion);
-    ctx.globalAlpha=s.a*pulse;ctx.fillStyle=s.depth>.72?'#e6f4ff':s.depth>.38?'#aabfcb':'#b9a98b';ctx.beginPath();ctx.arc(px,py,s.r*(.65+s.depth*.65),0,Math.PI*2);ctx.fill();
-  }
-  ctx.restore();ctx.globalAlpha=1;
+function background(){
+  const haze=ctx.createRadialGradient(width*.52,height*.5,0,width*.52,height*.5,Math.max(width,height)*.68);
+  haze.addColorStop(0,'#8caeff0c');haze.addColorStop(1,'#00000000');
+  ctx.fillStyle=haze;ctx.fillRect(0,0,width,height);
   const vignette=ctx.createRadialGradient(width*.5,height*.5,Math.min(width,height)*.2,width*.5,height*.5,Math.max(width,height)*.72);
-  vignette.addColorStop(.35,'#00000000');vignette.addColorStop(1,'#00040db3');ctx.fillStyle=vignette;ctx.fillRect(0,0,width,height);
+  vignette.addColorStop(.35,'#00000000');vignette.addColorStop(1,'#00040d60');ctx.fillStyle=vignette;ctx.fillRect(0,0,width,height);
 }
 
 function draw(){
   if(!width||!height||!graph)return;
   const sceneTime=performance.now();
-  ctx.clearRect(0,0,width,height);background(sceneTime);
+  ctx.clearRect(0,0,width,height);background();
   const query=search.value.trim().toLocaleLowerCase();
   const matching=matchingIds;
   const visible=n=>n&&visibleIds.has(n.id);
@@ -161,36 +134,16 @@ function draw(){
   const related=starmapView.emphasisIds;
   const routeKeys=new Set(starmapView.routeEdges.map(([from,to])=>`${from}|${to}`));
 
-  for(const d of dust.map(p=>({...project(p),size:p.size,tone:p.tone})).sort((a,b)=>a.z-b.z)){
-    ctx.globalAlpha=Math.max(.025,Math.min(.22,(d.z+650)/1300*.22));ctx.fillStyle=d.tone<.72?'#9ab8c8':'#d7b88a';ctx.beginPath();ctx.arc(d.x,d.y,Math.max(.22,d.size*d.p*d.fit),0,Math.PI*2);ctx.fill();
-  }ctx.globalAlpha=1;
-
   projected=nodes.filter(visible).map(n=>({...n,...project(n)}));
   const map=new Map(projected.map(n=>[n.id,n]));
-  const backgroundPoints=nodes.filter(n=>backgroundIds.has(n.id)).map(n=>({...n,...project(n)}));
-  const backgroundMap=new Map([...map,...backgroundPoints.map(n=>[n.id,n])]);
   positionHoverCard(map);
-  ctx.strokeStyle='#a6bfce';ctx.lineWidth=.55;
-  for(const edge of edges){
-    if(!backgroundIds.has(edge.from)&&!backgroundIds.has(edge.to))continue;
-    if(!['hierarchy','hierarchy-secondary','control','data','power'].includes(edge.pathClass))continue;
-    if(viewState.pathClasses.length&&edge.pathClass&&!viewState.pathClasses.includes(edge.pathClass))continue;
-    const a=backgroundMap.get(edge.from),b=backgroundMap.get(edge.to);
-    if(!a||!b||a.kind==='root'||b.kind==='root')continue;
-    ctx.globalAlpha=(edge.pathClass==='hierarchy' ? .055 : .032)*(emphasis||query ? .4 : 1);
-    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-  }
-  for(const n of backgroundPoints.sort((a,b)=>a.z-b.z)){
-    ctx.globalAlpha=Math.max(.18,Math.min(.43,(n.z+500)/1100))*(emphasis||query ? .42 : 1);
-    ctx.fillStyle='#b6cbd4';ctx.beginPath();ctx.arc(n.x,n.y,Math.max(.48,n.p*n.fit*.82),0,Math.PI*2);ctx.fill();
-  }ctx.globalAlpha=1;
-  for(const edge of edges){
+  for(const edge of renderedEdges){
     if(edge.type==='课程顺序'&&!sequenceVisible)continue;
-    if(viewState.pathClasses.length&&edge.pathClass&&!viewState.pathClasses.includes(edge.pathClass))continue;
     const a=map.get(edge.from),b=map.get(edge.to);
     if(!a||!b)continue;
     const active=emphasis&&(edge.from===emphasis||edge.to===emphasis);
     const onRoute=routeKeys.has(`${edge.from}|${edge.to}`)||routeKeys.has(`${edge.to}|${edge.from}`);
+    if(viewState.pathClasses.length&&edge.pathClass&&!viewState.pathClasses.includes(edge.pathClass)&&!onRoute)continue;
     if((a.kind==='root'||b.kind==='root')&&!active&&!onRoute)continue;
     if(edge.pathClass==='index'&&!active&&!onRoute)continue;
     const dim=(query&&!matching.has(a.id)&&!matching.has(b.id)&&!active&&!onRoute)||(emphasis&&!active&&!onRoute);
@@ -264,17 +217,26 @@ function draw(){
     if(hover>.03||active){ctx.globalAlpha=Math.max(hover*.82,active ? .85 : 0);ctx.fillStyle='#0b1624';ctx.strokeStyle=color;ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(x-8,y-size*.82,textWidth+16,size*1.64,7);ctx.fill();ctx.globalAlpha=Math.max(hover*.55,active ? .7 : 0);ctx.stroke()}
     ctx.globalAlpha=(dim?.2:labelStyle.alpha)*(collisions===5&&!active&&!preview?.58:1);ctx.fillStyle=active||preview?'#fff9ec':'#d5e5ee';ctx.shadowColor=hover>.03?color:'#06101f';ctx.shadowBlur=hover>.03?14*hover:3;ctx.textBaseline='middle';ctx.fillText(text,x,y);ctx.shadowBlur=0;ctx.globalAlpha=1;
   }
-  updateMotionLabel(query);
+  updateMotionLabel();
 }
 
-function updateMotionLabel(query){
-  const spinning=auto&&!document.hidden&&!query&&!selected&&!hovered&&performance.now()-lastAction>10000;
-  const next=introStart!==null?'正在进入星图':hovered?'悬停预览':selected?'知识路径聚焦':spinning?'星图缓慢巡航':query?'搜索聚焦':auto?'互动中 · 稍后巡航':'巡航已暂停';
+function updateMotionLabel(){
+  const spinning=auto&&!document.hidden&&!hovered&&!pointer;
+  const next=spinning?'3D 自动巡航':auto?'巡航暂缓':reducedMotion?'系统减少动态':'巡航已暂停';
   if(next===currentStatus)return;
   currentStatus=next;motionLabel.textContent=next;motionLight.style.background=spinning?'#91d8ff':'#aab7d1';motionLight.style.boxShadow=spinning?'0 0 10px #91d8ff':'none';
 }
 
-function interaction(){lastAction=performance.now();introStart=null}
+function interaction(){introStart=null}
+function syncCanvasMotion(){
+  document.documentElement.classList.toggle('galaxy-paused',!auto);
+  document.documentElement.classList.toggle('galaxy-motion-opt-in',reducedMotion&&auto);
+  motionToggle.textContent=auto?'暂停':'开启';
+  motionToggle.setAttribute('aria-pressed',String(auto));
+  motionToggle.setAttribute('aria-label',auto?'暂停自动巡航':'开启自动巡航');
+  motionToggle.title=auto?'暂停自动巡航':'开启自动巡航';
+  currentStatus='';
+}
 
 function pagesLabel(pages=[]){const flat=pages.flat?.(Infinity)||pages;return flat.length?`第 ${flat.join('、')} 页`:'页码未标注'}
 function appendReason(container,label,value,className='reader-reason'){
@@ -446,7 +408,7 @@ function frame(time){
   for(const axis of ['x','y','z'])focus[axis]+=(focusTarget[axis]-focus[axis])*easing;
   const hoverEasing=reducedMotion?1:1-Math.exp(-delta/130);
   for(const [id,level] of hoverLevels){const next=level+((id===hovered?1:0)-level)*hoverEasing;if(next<.01&&id!==hovered)hoverLevels.delete(id);else hoverLevels.set(id,next)}
-  const cruising=auto&&!document.hidden&&!selected&&!hovered&&!search.value.trim()&&time-lastAction>10000;
+  const cruising=auto&&!document.hidden&&!hovered&&!pointer;
   if(cruising){({yaw,pitch,roll}=orbitPose({yaw,pitch,roll},time,delta));yawVelocity*=.94;pitchVelocity*=.94}
   else if(!pointer){yaw+=yawVelocity*delta;pitch=Math.max(-1.05,Math.min(1.05,pitch+pitchVelocity*delta));const friction=Math.exp(-delta/1450);yawVelocity*=friction;pitchVelocity*=friction;roll+=(0-roll)*(1-Math.exp(-delta/520))}
   if(!document.hidden)draw();
@@ -489,9 +451,9 @@ for(const button of document.querySelectorAll('.platform-chip'))button.addEventL
 for(const button of document.querySelectorAll('.path-chip'))button.addEventListener('click',()=>{const value=button.dataset.path;viewState.pathClasses=viewState.pathClasses.includes(value)?viewState.pathClasses.filter(x=>x!==value):[...viewState.pathClasses,value];button.setAttribute('aria-pressed',String(viewState.pathClasses.includes(value)));refreshVisible();interaction()});
 document.querySelector('#evidence-toggle').addEventListener('click',event=>{viewState.evidenceVisible=!viewState.evidenceVisible;event.currentTarget.setAttribute('aria-pressed',String(viewState.evidenceVisible));event.currentTarget.textContent=viewState.evidenceVisible?'● 隐藏所选节点证据':'○ 展开所选节点证据';refreshVisible();interaction()});
 document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';emitSceneState();interaction()});
-function handleCanvasMotionToggle(){auto=!auto;motionToggle.textContent=auto?'暂停':'旋转';motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');interaction()}
+function handleCanvasMotionToggle(){auto=!auto;syncCanvasMotion();interaction()}
 for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{const action=button.dataset.zoom;if(action==='reset'){yaw=.18;pitch=-.22;roll=0;yawVelocity=0;pitchVelocity=0;zoomTarget=1;clearSelection()}else zoomTarget=Math.max(.58,Math.min(2.3,zoomTarget*(action==='in'?1.2:1/1.2)));interaction()});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)lastAction=performance.now()-11000});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)currentStatus=''});
 new ResizeObserver(resize).observe(canvas);resize();
 
 try{

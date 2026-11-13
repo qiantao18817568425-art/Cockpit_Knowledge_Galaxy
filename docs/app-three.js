@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three/three.module.min.js';
-import {createStarmapScene} from './starmap-webgl.js?v=20261113-webgl2';
+import {createStarmapScene} from './starmap-webgl.js?v=20261114-webgl3';
 
-const RELEASE='20261113-webgl2';
+const RELEASE='20261114-webgl3';
 
 function fallbackUrl(){
   const url=new URL(window.location.href);
@@ -114,15 +114,18 @@ export async function startThreeApp(){
   canvas.addEventListener('pointermove',trackPointer);
   retry.addEventListener('click',()=>window.location.reload());
   fallback.addEventListener('click',()=>window.location.assign(fallbackUrl()));
-  const motionClick=()=>{
-    cruising=!cruising;
-    const enabled=scene.setCruising(cruising);
-    motionToggle.textContent=enabled?'暂停':'旋转';
-    motionLabel.textContent=enabled?'星图缓慢巡航':'巡航已暂停';
-    motionToggle.setAttribute('aria-label',enabled?'暂停自动旋转':'开启自动旋转');
+  const syncMotion=enabled=>{
+    document.documentElement.classList.toggle('galaxy-paused',!enabled);
+    document.documentElement.classList.toggle('galaxy-motion-opt-in',reducedMotion&&enabled);
+    motionLabel.textContent=enabled?'3D 自动巡航':reducedMotion&&!cruising?'系统减少动态':'巡航已暂停';
+    motionToggle.textContent=enabled?'暂停':'开启';
+    motionToggle.setAttribute('aria-pressed',String(enabled));
+    motionToggle.setAttribute('aria-label',enabled?'暂停自动巡航':'开启自动巡航');
+    motionToggle.title=enabled?'暂停自动巡航':'开启自动巡航';
   };
-  if(reducedMotion){motionToggle.disabled=true;motionToggle.textContent='动态已关闭';motionToggle.setAttribute('aria-label','已关闭自动动态');motionLabel.textContent='减少动态效果';}
-  else {motionLabel.textContent='星图缓慢巡航';motionToggle.addEventListener('click',motionClick)}
+  const motionClick=()=>{cruising=scene.setCruising(!cruising);syncMotion(cruising)};
+  syncMotion(cruising);
+  motionToggle.addEventListener('click',motionClick);
   const zoomClick=event=>{
     const action=event.currentTarget.dataset.zoom;
     if(action==='reset')scene.resetView();

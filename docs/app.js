@@ -1,6 +1,6 @@
-import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261018-absorb2';
-import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261018-absorb2';
-import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261018-absorb2';
+import {buildReaderModel,rankSearchResults,readerMarkdown,visibleNodeIds} from './graph-model.js?v=20261113-desktop2';
+import {buildArchitectureLayout,clampLabelX,depthLabelStyle,drillVisibleNodeIds,edgeVisualStyle,fitLabelSize,frontLabelLimit,isProjectedVisible,orbitPose,releaseVelocity,starPulse,visibleLabelIds} from './space-scene.js?v=20261113-desktop2';
+import {markdownDownloadSpec,referenceAction} from './reader-actions.js?v=20261113-desktop2';
 const canvas = document.querySelector('#galaxy');
 const ctx = canvas.getContext('2d');
 const search = document.querySelector('#search');
@@ -10,6 +10,12 @@ const motionLabel = document.querySelector('#motion-label');
 const motionToggle = document.querySelector('#motion-toggle');
 const motionLight = document.querySelector('.motion-light');
 const hoverCard = document.querySelector('#hover-card');
+let readerReturnFocus = null;
+function isUsableFocusTarget(element) {
+  return !!(element?.matches?.('button,a[href],input,summary,[tabindex]') &&
+    element.isConnected && !element.closest('[inert]') &&
+    getComputedStyle(element).visibility === 'visible' && element.getClientRects().length);
+}
 
 const colors = { root:'#e6f5ff',architecture_dimension:'#74bbff',architecture_chain:'#7fe2cd',pyramid:'#74bbff',index:'#9bb4d8',topic:'#74bbff', subtopic:'#f7aadd', chapter:'#7fe2cd', lesson:'#baa4ff', review:'#ffc885',platform:'#5fc9ff',domain:'#75a7ff',component:'#7fe2cd',interface:'#ffc15d',state:'#d6a7ff',process:'#9ed49e',observation:'#ff9fc6',failure_mode:'#ff7b7b',source:'#8d9bb5',evidence:'#ffe7a3' };
 const labels = { root:'智能座舱',architecture_dimension:'架构维度',architecture_chain:'三级知识链',pyramid:'一级入口',index:'索引', topic:'主题星系', subtopic:'细分链路', chapter:'架构章节', lesson:'Day 课程', review:'Week 复盘',platform:'平台',domain:'知识域',component:'组件',interface:'接口',state:'状态',process:'流程',observation:'观测点',failure_mode:'失效模式',source:'原始资料',evidence:'页码证据' };
@@ -50,6 +56,17 @@ function prepare(raw){
   nebulae=Array.from({length:13},(_,i)=>{const t=i/12;return{x:.2+t*.62+(random()-.5)*.08,y:.83-t*.68+(random()-.5)*.12,r:.12+random()*.14,hue:i%3,phase:random()*Math.PI*2}});
   document.querySelector('#counts').textContent=`${raw.meta.sourceCoverage.total} 份资料 · ${raw.meta.semantic.entityCount} 个知识实体 · ${raw.meta.semantic.relationCount} 条技术关系 · ${raw.meta.semantic.evidenceCount} 条页码证据 · ${raw.meta.chapterCount} 章架构`;
   document.querySelector('#updated').textContent=`课程索引更新 ${raw.meta.sourceUpdatedOn}`;
+  const topics=raw.nodes.filter(node=>node.kind==='architecture_dimension');
+  document.querySelector('#topic-count').textContent=`· ${topics.length} 个主题`;
+  const topicList=document.querySelector('#topic-list');
+  topicList.replaceChildren();
+  for(const node of topics){
+    const button=document.createElement('button');
+    button.type='button';
+    button.textContent=node.title;
+    button.addEventListener('click',()=>showNode(node.id));
+    topicList.append(button);
+  }
   motionToggle.textContent=auto?'暂停':'旋转';
   motionToggle.setAttribute('aria-label',auto?'暂停自动旋转':'开启自动旋转');
 }
@@ -309,6 +326,7 @@ function downloadReaderSummary(){
 }
 function showNode(id){
   const node=byId.get(id);if(!node)return;
+  if(detail.hidden)readerReturnFocus=document.activeElement;
   selected=id;viewState.selectedId=id;refreshVisible();interaction();detail.hidden=false;
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
   document.querySelector('#detail-kind').textContent=labelFor(node);
@@ -317,19 +335,20 @@ function showNode(id){
   const scope=document.querySelector('#detail-scope');scope.replaceChildren();
   for(const value of [...(currentReader.scope.platforms||[]),currentReader.scope.runtimeDomain,currentReader.scope.version,currentReader.scope.status].filter(Boolean)){const tag=document.createElement('span');tag.textContent=value;scope.append(tag)}
   detail.scrollTop=0;
+  document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction()}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:search;target.focus({preventScroll:true})}readerReturnFocus=null}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
-  if(!q){matchingIds=new Set();results.hidden=true;clearSelection();return}
+  if(!q){matchingIds=new Set();results.hidden=true;search.setAttribute('aria-expanded','false');clearSelection();return}
   const matches=rankSearchResults(nodes,q,viewState).slice(0,10);
   matchingIds=new Set(matches.slice(0,8).map(node=>node.id));
   refreshVisible();
   results.hidden=false;
+  search.setAttribute('aria-expanded','true');
   if(!matches.length){const empty=document.createElement('div');empty.className='empty-result';empty.textContent='没有匹配的节点';empty.style.padding='9px';empty.style.color='#a9bad6';results.append(empty);return}
-  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();showNode(n.id);results.hidden=true});results.append(item)}
-  if(matches.length===1)showNode(matches[0].id);
+  for(const n of matches){const item=document.createElement('button');item.type='button';item.setAttribute('role','option');item.textContent=n.title;const kind=document.createElement('small');kind.textContent=labelFor(n);item.append(kind);item.addEventListener('click',()=>{hidden.delete(n.kind);syncFilters();results.hidden=true;search.setAttribute('aria-expanded','false');showNode(n.id)});results.append(item)}
 }
 function syncFilters(){for(const button of document.querySelectorAll('.filter')){const on=!hidden.has(button.dataset.kind);button.setAttribute('aria-pressed',String(on));button.querySelector('span').textContent=on?'✓':'○'}}
 
@@ -352,7 +371,9 @@ canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVel
 canvas.addEventListener('pointerleave',()=>{if(!pointer)setHovered(null)});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoom=Math.max(.6,Math.min(2.3,zoom*(event.deltaY<0?1.09:1/1.09)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});
-search.addEventListener('keydown',event=>{if(event.key==='Escape'){search.value='';renderResults();search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}});
+search.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();if(search.value){search.value='';renderResults()}else search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}else if(event.key==='ArrowDown'){const first=results.querySelector('button');if(first){event.preventDefault();first.focus()}}});
+results.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();search.focus()}else if(event.key==='ArrowDown'||event.key==='ArrowUp'){const items=[...results.querySelectorAll('button')];const index=items.indexOf(document.activeElement);const next=items[index+(event.key==='ArrowDown'?1:-1)];if(next){event.preventDefault();next.focus()}}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!detail.hidden)clearSelection();else if(event.key==='/'&&!event.altKey&&!event.ctrlKey&&!event.metaKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)){event.preventDefault();search.focus()}});
 document.querySelector('#detail-close').addEventListener('click',clearSelection);
 document.querySelector('#reader-preview-close').addEventListener('click',closeReaderPreview);
 document.querySelector('#reader-download-summary').addEventListener('click',downloadReaderSummary);
@@ -372,3 +393,4 @@ try{
   prepare(await response.json());
   requestAnimationFrame(frame);
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}
+

@@ -4,20 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="座舱知识银河：以 Obsidian 式 3D 关系图探索座舱架构章节、原始资料分类与每日学习课程。">
-  <meta name="theme-color" content="#01030b">
+  <meta name="theme-color" content="#071225">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261018-absorb2">
-  <script type="module" src="app.js?v=20261018-absorb2"></script>
+  <link rel="stylesheet" href="style.css?v=20261113-desktop2">
+  <link rel="stylesheet" href="ui-polish.css?v=20261113-desktop2">
+  <script type="module" src="app.js?v=20261113-desktop2"></script>
 </head>
 <body>
+  <a class="skip-link" href="#search">跳到知识搜索</a>
   <main class="workbench" aria-label="座舱知识银河工作台">
     <canvas id="galaxy" aria-label="3D 座舱知识关系图。鼠标悬停预览并放大标题，点击节点将它切换到中心，拖动旋转，滚轮缩放。"></canvas>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
       <label class="search-label" for="search">搜索知识</label>
-      <input id="search" type="search" autocomplete="off" placeholder="模块、链路、Day、关键词…">
+      <input id="search" type="search" autocomplete="off" aria-controls="results" aria-expanded="false" placeholder="模块、链路、Day、关键词…">
       <div id="results" class="results" role="listbox" aria-label="搜索结果" hidden></div>
+      <details class="topic-nav">
+        <summary>按架构主题浏览 <span id="topic-count"></span></summary>
+        <div id="topic-list" class="topic-list"></div>
+      </details>
       <div class="section-label">知识层</div>
       <div class="chip-row" id="platform-filters"><button class="chip platform-chip" data-platform="MT8668" aria-pressed="false">MT8668</button><button class="chip platform-chip" data-platform="MT8676" aria-pressed="false">MT8676</button></div>
       <div class="chip-row" id="path-filters"><button class="chip path-chip" data-path="control" aria-pressed="false">控制</button><button class="chip path-chip" data-path="data" aria-pressed="false">数据</button><button class="chip path-chip" data-path="power" aria-pressed="false">电源</button><button class="chip path-chip" data-path="state" aria-pressed="false">状态</button><button class="chip path-chip" data-path="diagnostic" aria-pressed="false">诊断</button></div>
@@ -38,11 +44,11 @@
 
     <div id="hover-card" class="glass hover-card" aria-hidden="true"><span id="hover-kind"></span><strong id="hover-title"></strong><small id="hover-meta"></small></div>
 
-    <aside id="detail" class="glass detail" role="dialog" aria-modal="false" aria-labelledby="detail-title" aria-live="polite" hidden>
+    <aside id="detail" class="glass detail" role="dialog" aria-modal="false" aria-labelledby="detail-title" hidden>
       <button id="detail-close" class="detail-close" type="button" aria-label="关闭节点详情">×</button>
       <header class="reader-header">
         <div id="detail-kind" class="detail-kind"></div>
-        <h2 id="detail-title"></h2>
+        <h2 id="detail-title" tabindex="-1"></h2>
         <div id="detail-scope" class="detail-scope"></div>
         <button id="reader-download-summary" class="reader-download" type="button">下载专题总结</button>
       </header>
@@ -114,3 +120,5 @@
   </main>
 </body>
 </html>
+
+

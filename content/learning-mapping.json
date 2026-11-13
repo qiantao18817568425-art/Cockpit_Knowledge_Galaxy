@@ -814,21 +814,6 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week17 周日对 Day53—56 的车辆状态跨域取证、有界恢复、混合版本验证、评审发现和发布门禁整合练习进行显式映射；课程发布状态不代表已经掌握。"
-    },
-    {
-      "id": "course:week-18-friday",
-      "knowledgeIds": [
-        "chain:system-overview",
-        "chain:runtime-boundaries",
-        "chain:soa-service-contract",
-        "chain:power-lifecycle",
-        "chain:str-display-recovery",
-        "chain:display-output",
-        "chain:vehicle-bus",
-        "chain:stability",
-        "chain:evidence-ledger"
-      ],
-      "basis": "依据 Week18 周五围绕 Day57—60 的跨域评审、六流方案、STR 显示取证、代际隔离与恢复验证综合复盘建立显式关联；没有新增实车结论，课程发布状态不代表已经掌握。"
     }
   ]
 }

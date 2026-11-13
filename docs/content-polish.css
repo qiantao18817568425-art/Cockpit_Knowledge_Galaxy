@@ -1,3 +1,4 @@
+@media (min-width: 901px) {
 :root {
   color-scheme: dark;
   font-family: system-ui, "Microsoft YaHei", sans-serif;
@@ -81,12 +82,4 @@ p, .intro, .lead { color: #c9daef; font-size: 16px; line-height: 1.7; }
 .bar b { color: #dceaff; font-size: 13px; overflow-wrap: anywhere; }
 .bar span { color: #c4d6ec; font-size: 13px; }
 .queue div { color: #d0def0; font-size: 13px; line-height: 1.55; }
-@media (max-width: 600px) {
-  .shell, main { width: auto; margin: 0 auto; padding: 22px 16px 48px; }
-  .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .metric { min-width: 0; }
-  .categories button, .item a, .unavailable { min-height: 44px; }
-  .list { grid-template-columns: 1fr; }
-  .bar b { width: 100px; }
 }
-

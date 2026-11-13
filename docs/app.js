@@ -19,6 +19,11 @@ const skipLink = document.querySelector('.skip-link');
 let drawerReturnFocus = null;
 let readerReturnFocus = null;
 
+function isUsableFocusTarget(element) {
+  return !!(element?.matches?.('button,a[href],input,summary,[tabindex]') &&
+    element.isConnected && !element.closest('[inert]') &&
+    getComputedStyle(element).visibility === 'visible' && element.getClientRects().length);
+}
 function setDrawerBackgroundInert(inert) {
   for (const element of drawerBackground) element.inert = inert;
   skipLink.inert = inert;
@@ -26,7 +31,7 @@ function setDrawerBackgroundInert(inert) {
 
 function setControlsOpen(open, restoreFocus = true) {
   if (!compactLayout.matches) return;
-  if (open) drawerReturnFocus = document.activeElement;
+  if (open && !document.body.classList.contains('controls-open')) drawerReturnFocus = document.activeElement;
   document.body.classList.toggle('controls-open', open);
   controlsBackdrop.hidden = !open;
   controlsPanel.inert = !open;
@@ -41,8 +46,7 @@ function setControlsOpen(open, restoreFocus = true) {
   controlsToggle.setAttribute('aria-expanded', String(open));
   if (open) search.focus();
   else if (restoreFocus) {
-    const focusable = drawerReturnFocus?.matches?.('button,a[href],input,summary,[tabindex]') && drawerReturnFocus.isConnected && !drawerReturnFocus.inert && drawerReturnFocus.getClientRects().length;
-    (focusable ? drawerReturnFocus : controlsToggle).focus();
+    (isUsableFocusTarget(drawerReturnFocus) ? drawerReturnFocus : controlsToggle).focus();
   }
 }
 function syncControlsLayout() {
@@ -386,7 +390,7 @@ function showNode(id){
   detail.scrollTop=0;
   document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const focusable=readerReturnFocus?.matches?.('button,a[href],input,summary,[tabindex]')&&readerReturnFocus.isConnected&&!readerReturnFocus.inert&&readerReturnFocus.getClientRects().length;const target=focusable?readerReturnFocus:(compactLayout.matches?controlsToggle:search);target.focus({preventScroll:true})}readerReturnFocus=null}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const target=isUsableFocusTarget(readerReturnFocus)?readerReturnFocus:(compactLayout.matches?controlsToggle:search);target.focus({preventScroll:true})}readerReturnFocus=null}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();

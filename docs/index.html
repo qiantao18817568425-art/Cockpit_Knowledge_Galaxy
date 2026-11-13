@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="座舱知识银河：以 Obsidian 式 3D 关系图探索座舱架构章节、原始资料分类与每日学习课程。">
-  <meta name="theme-color" content="#071225">
+  <meta name="description" content="座舱知识银河：在可旋转的三维知识星图中探索座舱架构、技术链路与原始资料。">
+  <meta name="theme-color" content="#050b15">
   <title>座舱知识银河 · 架构与课程关系图</title>
-  <link rel="stylesheet" href="style.css?v=20261113-desktop2">
-  <link rel="stylesheet" href="ui-polish.css?v=20261113-desktop2">
-  <script type="module" src="app.js?v=20261113-desktop2"></script>
+  <link rel="stylesheet" href="style.css?v=20261113-starmap1">
+  <link rel="stylesheet" href="ui-polish.css?v=20261113-starmap1">
+  <script type="module" src="app.js?v=20261113-starmap1"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">跳到知识搜索</a>
   <main class="workbench" aria-label="座舱知识银河工作台">
-    <canvas id="galaxy" aria-label="3D 座舱知识关系图。鼠标悬停预览并放大标题，点击节点将它切换到中心，拖动旋转，滚轮缩放。"></canvas>
+    <canvas id="galaxy" aria-label="三维座舱知识星图。拖动旋转，滚轮缩放，悬停查看关系，点击星点聚焦并追踪真实知识路径。"></canvas>
+    <div id="starmap-route" class="starmap-route" aria-live="polite" hidden><span>当前知识路径</span><strong></strong></div>
 
     <section class="glass controls" aria-label="图谱控制">
       <div class="brand"><span class="brand-orb" aria-hidden="true"></span><div><h1>座舱知识银河</h1><p>架构与每日学习的关系图</p></div></div>
@@ -116,7 +117,7 @@
 
     <div class="glass zoom" aria-label="视图控制"><button type="button" data-zoom="in" aria-label="放大">+</button><button type="button" data-zoom="out" aria-label="缩小">−</button><button type="button" data-zoom="reset" aria-label="重置视角">⌂</button></div>
 
-    <div class="hint">镜头前方节点显示名称 · 拖动产生惯性 · 点击切换中心 · 滚轮缩放 · 点击空白返回总览<br><span id="updated"></span> · 层级线用于下钻；技术线按控制、数据、电源、状态和诊断分色</div>
+    <div class="hint">拖动旋转星图 · 滚轮推进到细分知识 · 悬停查看关系 · 点击星点追踪真实路径<br><span id="updated"></span> · 层级线用于下钻；技术线按控制、数据、电源、状态和诊断分色</div>
   </main>
 </body>
 </html>

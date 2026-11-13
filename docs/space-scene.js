@@ -2,6 +2,137 @@ const GOLDEN_ANGLE=Math.PI*(3-Math.sqrt(5));
 
 function stableUnit(id){let n=2166136261;for(const char of id||''){n^=char.charCodeAt(0);n=Math.imul(n,16777619)}return(n>>>0)/4294967296}
 
+// Irregular anchors keep the 17 architecture regions in one broad, navigable
+// volume. They deliberately avoid the hollow shell used by the older view.
+const STARMAP_ANCHORS=[
+  [-570,190,-160],[-480,-60,80],[-400,290,-40],[-350,80,160],[-300,-210,-110],
+  [-230,210,80],[-170,-30,-170],[-80,320,-110],[-50,100,210],[20,-180,40],
+  [100,190,-50],[170,-20,180],[260,300,-190],[310,70,70],[390,-170,-30],
+  [460,190,150],[550,-30,-140]
+];
+
+export function buildStarmapLayout(graph){
+  const nodes=graph?.nodes||[];
+  const positions=new Map();
+  const root=nodes.find(node=>node.kind==='root');
+  if(root)positions.set(root.id,{x:0,y:0,z:0});
+  const dimensions=nodes.filter(node=>node.kind==='architecture_dimension')
+    .sort((a,b)=>(a.hierarchyOrder??0)-(b.hierarchyOrder??0)||a.id.localeCompare(b.id));
+  dimensions.forEach((node,index)=>{
+    const [x,y,z]=STARMAP_ANCHORS[index%STARMAP_ANCHORS.length];
+    const repeat=Math.floor(index/STARMAP_ANCHORS.length);
+    positions.set(node.id,{x:x+repeat*86,y:y-repeat*62,z:z+repeat*48});
+  });
+  const groups=new Map();
+  for(const node of nodes){
+    if(positions.has(node.id))continue;
+    const parentId=node.primaryParentId||root?.id;
+    if(!groups.has(parentId))groups.set(parentId,[]);
+    groups.get(parentId).push(node);
+  }
+  const levels=[...new Set(nodes.map(node=>node.hierarchyLevel||0))].sort((a,b)=>a-b);
+  for(const level of levels){
+    if(level===0||level===1)continue;
+    for(const [parentId,children] of groups){
+      const parent=positions.get(parentId);
+      if(!parent)continue;
+      const siblings=children.filter(node=>(node.hierarchyLevel||0)===level)
+        .sort((a,b)=>(a.hierarchyOrder??0)-(b.hierarchyOrder??0)||a.id.localeCompare(b.id));
+      const radius=level===2?105:level===3?62:level===4?42:level===5?28:20;
+      siblings.forEach((node,index)=>{
+        const angle=index*GOLDEN_ANGLE+stableUnit(parentId)*Math.PI*2;
+        const spread=Math.sqrt((index+.55)/Math.max(1,siblings.length));
+        const distance=radius*(.42+.58*spread);
+        const depth=(stableUnit(node.id)-.5)*radius*1.25;
+        positions.set(node.id,{
+          x:parent.x+Math.cos(angle)*distance,
+          y:parent.y+Math.sin(angle)*distance*.82,
+          z:parent.z+depth
+        });
+      });
+    }
+  }
+  return positions;
+}
+
+export function starmapOverviewIds(graph,{zoom=1}={}){
+  return new Set((graph?.nodes||[]).filter(node=>{
+    if(node.kind==='root'||node.kind==='architecture_dimension')return true;
+    if(node.kind==='source'||node.kind==='evidence')return false;
+    if(node.kind==='lesson'||node.kind==='review')return zoom>=1.75;
+    if(node.navigationOnly||['topic','chapter','subtopic'].includes(node.kind))return zoom>=1.35;
+    return true;
+  }).map(node=>node.id));
+}
+
+export function starmapBackgroundIds(graph,{zoom=1}={}){
+  const foreground=starmapOverviewIds(graph,{zoom});
+  return new Set((graph?.nodes||[]).filter(node=>
+    node.navigationOnly&&!foreground.has(node.id)&&node.kind!=='source'&&node.kind!=='evidence'
+  ).map(node=>node.id));
+}
+
+export function hierarchyRoute(graph,id){
+  const byId=new Map((graph?.nodes||[]).map(node=>[node.id,node]));
+  const route=[],seen=new Set();
+  let current=byId.get(id);
+  while(current&&!seen.has(current.id)){
+    route.push(current.id);seen.add(current.id);
+    current=byId.get(current.primaryParentId);
+  }
+  return route.reverse();
+}
+
+export function buildStarmapView(graph,{
+  zoom=1,selectedId=null,hoveredId=null,allowedIds=null,drillIds=[],
+  matchingIds=[],hiddenKinds=[]
+}={}){
+  const allowed=allowedIds?new Set(allowedIds):new Set((graph?.nodes||[]).map(node=>node.id));
+  const hidden=new Set(hiddenKinds);
+  const matches=new Set(matchingIds);
+  const selectedRoute=selectedId?hierarchyRoute(graph,selectedId):[];
+  const candidateIds=new Set([...starmapOverviewIds(graph,{zoom}),...drillIds,...matches,...selectedRoute]);
+  const visibleIds=new Set((graph?.nodes||[]).filter(node=>
+    candidateIds.has(node.id)&&(allowed.has(node.id)||matches.has(node.id)||node.id===selectedId)&&
+    (node.kind==='root'||!hidden.has(node.kind))
+  ).map(node=>node.id));
+  const routeFocus=selectedId||hoveredId;
+  const emphasisFocus=hoveredId||selectedId;
+  const fullRoute=routeFocus?hierarchyRoute(graph,routeFocus):[];
+  const routeIds=fullRoute.filter(id=>visibleIds.has(id));
+  const routeEdges=[];
+  for(let index=1;index<fullRoute.length;index++){
+    const from=fullRoute[index-1],to=fullRoute[index];
+    if(visibleIds.has(from)&&visibleIds.has(to))routeEdges.push([from,to]);
+  }
+  const emphasisIds=new Set(routeIds);
+  if(visibleIds.has(emphasisFocus))emphasisIds.add(emphasisFocus);
+  for(const edge of graph?.edges||[]){
+    if(edge.from===emphasisFocus&&visibleIds.has(edge.to))emphasisIds.add(edge.to);
+    if(edge.to===emphasisFocus&&visibleIds.has(edge.from))emphasisIds.add(edge.from);
+  }
+  return{visibleIds,routeIds,routeEdges,emphasisIds};
+}
+
+export function introStarmapPose(progress,{reducedMotion=false}={}){
+  const t=reducedMotion?1:Math.max(0,Math.min(1,progress));
+  const eased=1-Math.pow(1-t,3);
+  return{yaw:.42-.24*eased,pitch:-.42+.2*eased,zoom:.67+.33*eased};
+}
+
+export function starmapParallax(x,y,{reducedMotion=false}={}){
+  if(reducedMotion)return{x:0,y:0};
+  const clamp=value=>Math.max(-1,Math.min(1,value));
+  return{x:7*clamp(x),y:5*clamp(y)};
+}
+
+export function routeLightProgress(elapsedMs,pointCount,{durationMs=2400}={}){
+  if(pointCount<2)return null;
+  const segments=pointCount-1;
+  const phase=((Math.max(0,elapsedMs)%durationMs)/durationMs)*segments;
+  return{segment:Math.floor(phase),t:phase%1};
+}
+
 export function fibonacciSpherePoint(index,total,radius=1){
   const count=Math.max(1,total);
   const y=1-(index+.5)*2/count;
@@ -86,25 +217,28 @@ export function homeVisibleNodeIds(graph){
   return new Set(graph.nodes.filter(node=>node.id==='root'||(!node.hiddenByDefault&&Number.isInteger(node.hierarchyLevel)&&node.hierarchyLevel<=2)).map(node=>node.id));
 }
 
-export function visibleLabelIds(candidates,{mode='drill',hoveredId=null,selectedId=null,matchingIds=[],currentChainIds=[],limit=28,minDepth=30,forcedLimit=8}={}){
+export function visibleLabelIds(candidates,{mode='drill',hoveredId=null,selectedId=null,matchingIds=[],currentChainIds=[],limit=28,minDepth=30,forcedLimit=8,homeLimit=Infinity}={}){
   const interactions=new Set([hoveredId,selectedId,...(matchingIds||[]),...(currentChainIds||[])].filter(Boolean));
   if(mode==='home'){
     const result=new Set();
-    for(const item of candidates)if(item.onScreen&&(item.hierarchyLevel<=1||interactions.has(item.id)))result.add(item.id);
+    const regions=candidates.filter(item=>item.onScreen&&item.hierarchyLevel===1)
+      .sort((a,b)=>b.depth-a.depth).slice(0,homeLimit);
+    for(const item of regions)result.add(item.id);
+    for(const item of candidates)if(item.onScreen&&(item.kind==='root'||interactions.has(item.id)))result.add(item.id);
     return result;
   }
   return selectFrontLabelIds(candidates.map(item=>interactions.has(item.id)?{...item,forced:true,forcePriority:item.id===selectedId?100:item.id===hoveredId?90:70}:item),{limit,minDepth,forcedLimit});
 }
 
 export function depthLabelStyle({depth=0,perspective=1,kind='component',active=false,hover=0}){
-  const importance={root:9,topic:4,platform:3,domain:3,subtopic:2}[kind]||0;
+  const importance={root:9,architecture_dimension:5,architecture_chain:2,topic:4,platform:3,domain:3,subtopic:2}[kind]||0;
   const depthLevel=Math.max(0,Math.min(1,(depth+560)/1120));
-  const base=kind==='root'?17:kind==='topic'?12:kind==='platform'||kind==='domain'?10.5:8;
+  const base=kind==='root'?16:kind==='architecture_dimension'?12:kind==='topic'?12:kind==='platform'||kind==='domain'?10.5:8;
   return{
     visible:true,
     size:Math.max(7,Math.min(22,base*perspective+depthLevel*2.2+hover*5+(active?3:0))),
     alpha:active?1:Math.max(.2,Math.min(.95,.2+depthLevel*.48+importance*.035+hover*.2)),
-    weight:kind==='root'||kind==='topic'||kind==='platform'||kind==='domain'?650:500,
+    weight:kind==='root'||kind==='architecture_dimension'||kind==='topic'||kind==='platform'||kind==='domain'?650:500,
   };
 }
 

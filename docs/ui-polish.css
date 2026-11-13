@@ -1,11 +1,11 @@
 @media (min-width: 901px) {
 :root {
-  --ui-surface: #0b1930;
-  --ui-surface-raised: #132744;
-  --ui-border: #49617f;
+  --ui-surface: #0b141e;
+  --ui-surface-raised: #132330;
+  --ui-border: #42586c;
   --ui-text: #f0f6ff;
-  --ui-muted: #bbcee8;
-  --ui-accent: #91d8ff;
+  --ui-muted: #b2c5d2;
+  --ui-accent: #9fd7e2;
   --ui-focus: #b6e5ff;
 }
 
@@ -22,10 +22,11 @@
 }
 .skip-link:focus { transform: translateY(0); }
 .workbench { color: var(--ui-text); }
+.workbench:after { background:linear-gradient(90deg,#01071156 0%,transparent 26%,transparent 80%,#03081028 100%); }
 .glass {
   border-color: var(--ui-border);
-  background: linear-gradient(150deg, #0d1c34f5, #071222f0);
-  box-shadow: 0 22px 60px #000913b8, inset 0 1px #d6e8ff12;
+  background: linear-gradient(155deg, #0a1520ef, #06101bdf);
+  box-shadow: 0 22px 60px #00060db8, inset 0 1px #d6e8ff10;
 }
 button { touch-action: manipulation; }
 button:active { filter: brightness(1.2); }
@@ -37,15 +38,15 @@ summary:focus-visible, #detail-title:focus-visible {
 
 /* A readable control column with one clear route into every dimension. */
 .controls {
-  width: 306px;
+  width: 278px;
   max-height: calc(100svh - 40px);
-  padding: 22px;
-  border-radius: 16px;
-  scrollbar-color: #5e7697 #0a1729;
+  padding: 20px;
+  border-radius: 12px;
+  scrollbar-color: #5e7684 #0a141e;
   scrollbar-width: thin;
 }
-.brand { margin-bottom: 22px; gap: 13px; }
-.brand-orb { width: 30px; height: 30px; }
+.brand { margin-bottom: 20px; gap: 13px; }
+.brand-orb { width: 27px; height: 27px; background:radial-gradient(circle at 35% 30%,#f5f8ef,#bbdce2 24%,#508da1 64%,#1b3847 90%);box-shadow:0 0 18px #8ccbd470; }
 .brand h1 { font-size: 19px; letter-spacing: .01em; }
 .brand p { margin-top: 4px; color: var(--ui-muted); font-size: 12px; }
 .search-label, .section-label {
@@ -61,7 +62,7 @@ summary:focus-visible, #detail-title:focus-visible {
   padding: 10px 13px;
   border-color: var(--ui-border);
   border-radius: 9px;
-  background: #071324;
+  background: #07111b;
   color: var(--ui-text);
   font-size: 14px;
 }
@@ -85,7 +86,7 @@ summary:focus-visible, #detail-title:focus-visible {
   margin-top: 14px;
   border: 1px solid var(--ui-border);
   border-radius: 10px;
-  background: #0b1c31;
+  background: #0b1925;
 }
 .topic-nav summary {
   min-height: 44px;
@@ -116,7 +117,7 @@ summary:focus-visible, #detail-title:focus-visible {
   min-height: 36px;
   padding: 7px 11px;
   border-color: var(--ui-border);
-  background: #132742;
+  background: #132531;
   color: #d7e7fb;
   font-size: 13px;
 }
@@ -165,6 +166,23 @@ summary:focus-visible, #detail-title:focus-visible {
 }
 .source-nav a:hover { border-color: #91d8ff; text-decoration: none; }
 
+.starmap-route {
+  position:absolute;
+  z-index:3;
+  top:22px;
+  left:322px;
+  max-width:min(520px,calc(100vw - 1080px));
+  padding:10px 15px;
+  border-left:2px solid #e5bd78;
+  background:linear-gradient(90deg,#0a1520d9,#0a15205e);
+  color:#f2d9ab;
+  pointer-events:none;
+  text-shadow:0 2px 12px #000;
+}
+.starmap-route[hidden] { display:none; }
+.starmap-route span { display:block;margin-bottom:4px;color:#c6d8df;font-size:11px;letter-spacing:.08em; }
+.starmap-route strong { display:block;overflow:hidden;color:#f6e5c8;font-size:13px;font-weight:600;line-height:1.5;text-overflow:ellipsis;white-space:nowrap; }
+
 /* Reader text and actions stay legible over the animated scene. */
 .detail {
   width: min(720px, calc(100vw - 360px));
@@ -199,11 +217,14 @@ summary:focus-visible, #detail-title:focus-visible {
   font-size: 12px;
   line-height: 1.5;
 }
-.hint { left: 24px; bottom: 22px; max-width: calc(100vw - 410px); color: #bed2eb; font-size: 12px; }
+.hint { left: 322px; bottom: 22px; max-width: calc(100vw - 560px); color: #afc7d6; font-size: 12px; }
 .motion { font-size: 12px; }
 .motion button { min-height: 36px; padding: 7px 11px; font-size: 12px; }
 .zoom { gap: 5px; }
 }
+@media (min-width: 901px) and (max-width: 1199px) {
+  .starmap-route { display:none; }
+}
 @media (max-width: 900px) {
-  .skip-link, .topic-nav { display: none; }
+  .skip-link, .topic-nav, .starmap-route { display: none; }
 }

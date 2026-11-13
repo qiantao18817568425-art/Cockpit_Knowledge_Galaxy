@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 
 import {
   buildArchitectureLayout,
+  buildStarmapLayout,
+  buildStarmapView,
   clampLabelX,
   depthLabelStyle,
   drillVisibleNodeIds,
@@ -11,13 +13,100 @@ import {
   fitLabelSize,
   frontLabelLimit,
   homeVisibleNodeIds,
+  hierarchyRoute,
+  introStarmapPose,
   isProjectedVisible,
   orbitPose,
   releaseVelocity,
+  routeLightProgress,
   selectFrontLabelIds,
   starPulse,
+  starmapBackgroundIds,
+  starmapOverviewIds,
+  starmapParallax,
   visibleLabelIds,
 } from '../docs/space-scene.js';
+
+test('starmap places 17 irregular regions and keeps descendants near their parent',()=>{
+  const dimensions=Array.from({length:17},(_,index)=>({id:`region-${index}`,kind:'architecture_dimension',hierarchyLevel:1,primaryParentId:'root',hierarchyOrder:index}));
+  const graph={nodes:[{id:'root',kind:'root',hierarchyLevel:0},...dimensions,{id:'chain',kind:'architecture_chain',hierarchyLevel:2,primaryParentId:'region-8'},{id:'detail',kind:'component',hierarchyLevel:3,primaryParentId:'chain'}]};
+  const first=buildStarmapLayout(graph),second=buildStarmapLayout(graph);
+  assert.deepEqual(first,second);
+  const anchors=dimensions.map(node=>first.get(node.id));
+  assert.equal(new Set(anchors.map(point=>`${point.x}:${point.y}:${point.z}`)).size,17);
+  assert.ok(anchors.filter(point=>Math.abs(point.x)<350&&Math.abs(point.y)<230).length>=6);
+  assert.ok(new Set(anchors.map(point=>Math.round(Math.hypot(point.x,point.y,point.z)/50))).size>3,'regions should not sit on one shell');
+  const chain=first.get('chain'),parent=first.get('region-8'),detail=first.get('detail');
+  assert.ok(Math.hypot(chain.x-parent.x,chain.y-parent.y,chain.z-parent.z)<140);
+  assert.ok(Math.hypot(detail.x-chain.x,detail.y-chain.y,detail.z-chain.z)<90);
+});
+
+test('semantic zoom reveals navigation stars without exposing source or evidence by default',()=>{
+  const graph={nodes:[
+    {id:'root',kind:'root'},{id:'region',kind:'architecture_dimension'},
+    {id:'component',kind:'component'},{id:'topic',kind:'topic',navigationOnly:true},
+    {id:'lesson',kind:'lesson',navigationOnly:true},{id:'source',kind:'source'},
+    {id:'evidence',kind:'evidence'}
+  ]};
+  assert.deepEqual([...starmapOverviewIds(graph,{zoom:1})].sort(),['component','region','root']);
+  assert.equal(starmapOverviewIds(graph,{zoom:1.5}).has('topic'),true);
+  assert.equal(starmapOverviewIds(graph,{zoom:1.5}).has('lesson'),false);
+  assert.equal(starmapOverviewIds(graph,{zoom:1.9}).has('lesson'),true);
+  assert.equal(starmapOverviewIds(graph,{zoom:2}).has('source'),false);
+  assert.equal(starmapOverviewIds(graph,{zoom:2}).has('evidence'),false);
+  assert.deepEqual([...starmapBackgroundIds(graph,{zoom:1})].sort(),['lesson','topic']);
+  assert.deepEqual([...starmapBackgroundIds(graph,{zoom:1.5})],['lesson']);
+  assert.equal(starmapBackgroundIds(graph,{zoom:1.9}).size,0);
+});
+
+test('selected route follows real parents and safely stops at missing or cyclic parents',()=>{
+  const graph={nodes:[{id:'root'},{id:'region',primaryParentId:'root'},{id:'chain',primaryParentId:'region'},{id:'orphan',primaryParentId:'missing'},{id:'a',primaryParentId:'b'},{id:'b',primaryParentId:'a'}]};
+  assert.deepEqual(hierarchyRoute(graph,'chain'),['root','region','chain']);
+  assert.deepEqual(hierarchyRoute(graph,'orphan'),['orphan']);
+  assert.deepEqual(hierarchyRoute(graph,'missing'),[]);
+  assert.ok(hierarchyRoute(graph,'a').length<=2);
+});
+
+test('camera entrance and route pulse are bounded and honor reduced motion',()=>{
+  assert.deepEqual(introStarmapPose(1,{reducedMotion:true}),introStarmapPose(1));
+  assert.ok(introStarmapPose(0).zoom<introStarmapPose(1).zoom);
+  assert.ok(introStarmapPose(.5).zoom>introStarmapPose(0).zoom);
+  assert.deepEqual(routeLightProgress(0,3),{segment:0,t:0});
+  assert.deepEqual(routeLightProgress(1200,3,{durationMs:2400}),{segment:1,t:0});
+  assert.equal(routeLightProgress(1000,1),null);
+  assert.deepEqual(starmapParallax(1,-1),{x:7,y:-5});
+  assert.deepEqual(starmapParallax(99,-99),{x:7,y:-5});
+  assert.deepEqual(starmapParallax(1,-1,{reducedMotion:true}),{x:0,y:0});
+});
+
+test('starmap view keeps context and highlights only contiguous visible parent links',()=>{
+  const graph={nodes:[
+    {id:'root',kind:'root'},{id:'region',kind:'architecture_dimension',primaryParentId:'root'},
+    {id:'child',kind:'component',primaryParentId:'region'},
+    {id:'sibling',kind:'component',primaryParentId:'region'},
+    {id:'evidence',kind:'evidence',primaryParentId:'child'}
+  ],edges:[{from:'root',to:'region',pathClass:'hierarchy'},{from:'region',to:'child',pathClass:'hierarchy'},{from:'region',to:'sibling',pathClass:'hierarchy'}]};
+  const view=buildStarmapView(graph,{selectedId:'child',allowedIds:new Set(['root','child','sibling','evidence']),drillIds:new Set(['child','evidence'])});
+  assert.deepEqual([...view.visibleIds].sort(),['child','evidence','root','sibling']);
+  assert.deepEqual(view.routeIds,['root','child']);
+  assert.deepEqual(view.routeEdges,[],'a filtered-out parent must not be bypassed by a fake line');
+  const full=buildStarmapView(graph,{selectedId:'child',allowedIds:new Set(graph.nodes.map(node=>node.id))});
+  assert.deepEqual(full.routeEdges,[['root','region'],['region','child']]);
+  assert.ok(full.visibleIds.has('sibling'),'other regions remain as spatial context');
+  const matched=buildStarmapView(graph,{allowedIds:new Set(['root']),matchingIds:['child'],selectedId:'child'});
+  assert.ok(matched.visibleIds.has('child'),'search focus stays visible even if a filter excluded it');
+});
+
+test('hovered neighbors light up while the selected hierarchy route remains intact',()=>{
+  const graph={nodes:[
+    {id:'root',kind:'root'},{id:'selected',kind:'component',primaryParentId:'root'},
+    {id:'hovered',kind:'component',primaryParentId:'root'},
+    {id:'neighbor',kind:'component',primaryParentId:'root'}
+  ],edges:[{from:'hovered',to:'neighbor',pathClass:'data'}]};
+  const view=buildStarmapView(graph,{selectedId:'selected',hoveredId:'hovered'});
+  assert.deepEqual(view.routeIds,['root','selected']);
+  assert.ok(view.emphasisIds.has('neighbor'));
+});
 
 const drillGraph={nodes:[
   {id:'root',kind:'root',hierarchyLevel:0},
@@ -72,6 +161,17 @@ test('home labels keep L3 hidden until interaction explicitly reveals it',()=>{
   assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',matchingIds:['l3-front']})].sort(),['l2','l3-front','root']);
   assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',selectedId:'l3-front',currentChainIds:['l3-hover']})].sort(),['l2','l3-front','l3-hover','root']);
   assert.equal(visibleLabelIds(candidates,{mode:'home'}).has('l3-hover'),false);
+});
+
+test('overview can cap region labels without hiding the focused route',()=>{
+  const candidates=[
+    {id:'root',kind:'root',hierarchyLevel:0,depth:0,onScreen:true},
+    {id:'back',kind:'architecture_dimension',hierarchyLevel:1,depth:-200,onScreen:true},
+    {id:'front',kind:'architecture_dimension',hierarchyLevel:1,depth:200,onScreen:true},
+    {id:'middle',kind:'architecture_dimension',hierarchyLevel:1,depth:20,onScreen:true}
+  ];
+  assert.deepEqual([...visibleLabelIds(candidates,{mode:'home',homeLimit:2})].sort(),['front','middle','root']);
+  assert.ok(visibleLabelIds(candidates,{mode:'home',homeLimit:2,selectedId:'back'}).has('back'));
 });
 
 test('label density stays sparse across desktop and mobile views',()=>{
@@ -150,6 +250,13 @@ test('front labels use depth to change prominence',()=>{
   assert.ok(near.size>far.size);
   assert.ok(far.alpha>=.2);
   assert.ok(far.size>=7);
+});
+
+test('desktop starmap region labels stay readable while detail labels remain smaller',()=>{
+  const region=depthLabelStyle({depth:80,perspective:1,kind:'architecture_dimension'});
+  const detail=depthLabelStyle({depth:80,perspective:1,kind:'component'});
+  assert.ok(region.size>=12);
+  assert.ok(region.size>detail.size);
 });
 
 test('idle orbit advances yaw and adds a gentle three-axis camera drift',()=>{

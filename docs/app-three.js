@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three/three.module.min.js';
-import {createStarmapScene} from './starmap-webgl.js?v=20261114-webgl3';
+import {createStarmapScene} from './starmap-webgl.js?v=20261114-webgl4';
 
-const RELEASE='20261114-webgl3';
+const RELEASE='20261114-webgl4';
 
 function fallbackUrl(){
   const url=new URL(window.location.href);

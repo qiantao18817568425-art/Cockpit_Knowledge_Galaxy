@@ -12,13 +12,24 @@ test('WebGL scene model uses the current graph layout and only actual relation e
   const model=buildRenderableStarmap(graph,{});
   assert.equal(model.positions.size,graph.nodes.length);
   const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
+  const dimensionIds=new Set(dimensions.map(node=>node.id));
+  const chains=graph.nodes.filter(node=>node.kind==='architecture_chain'&&dimensionIds.has(node.primaryParentId));
+  const chainIds=new Set(chains.map(node=>node.id));
+  const technicalKinds=new Set(['domain','failure_mode','process','observation','component','state','interface','platform']);
+  const satellites=graph.nodes.filter(node=>chainIds.has(node.primaryParentId)&&technicalKinds.has(node.kind));
   assert.ok(model.visibleIds.has('root'));
   assert.ok(dimensions.every(node=>model.visibleIds.has(node.id)));
-  assert.equal(model.visibleIds.size,dimensions.length+1,'the overview shows architecture regions, not every graph entity');
+  assert.ok(chains.every(node=>model.visibleIds.has(node.id)));
+  assert.ok(satellites.every(node=>model.visibleIds.has(node.id)));
+  assert.equal(model.visibleIds.size,dimensions.length+chains.length+satellites.length+1,'the overview shows real architecture clusters and technical satellites');
   assert.equal(model.backgroundIds.size,0,'the background image supplies non-semantic star texture');
   const actual=new Set(graph.edges.map(edge=>`${edge.from}|${edge.to}`));
-  assert.equal(model.edges.length,model.routeEdges.length,'the overview shows only its highlighted knowledge route');
   assert.ok(model.edges.every(edge=>actual.has(`${edge.from}|${edge.to}`)));
+  assert.ok(chains.every(node=>model.edges.some(edge=>edge.from===node.primaryParentId&&edge.to===node.id&&edge.pathClass==='hierarchy')));
+  assert.ok(satellites.every(node=>model.edges.some(edge=>edge.from===node.primaryParentId&&edge.to===node.id&&edge.pathClass==='hierarchy')));
+  assert.ok(model.edges.every(edge=>model.routeEdges.some(([from,to])=>edge.from===from&&edge.to===to)||
+    (edge.pathClass==='hierarchy'&&((dimensionIds.has(edge.from)&&chains.some(node=>node.id===edge.to&&node.primaryParentId===edge.from))||
+      (chainIds.has(edge.from)&&satellites.some(node=>node.id===edge.to&&node.primaryParentId===edge.from))))));
 });
 
 test('overview highlights the real MCU to power to HMI route',()=>{
@@ -40,7 +51,44 @@ test('selected map shows its local knowledge neighborhood without unrelated regi
   assert.ok(model.visibleIds.size<80);
   assert.ok(!model.visibleIds.has('architecture:audio'));
   assert.ok(model.edges.every(edge=>model.visibleIds.has(edge.from)&&model.visibleIds.has(edge.to)));
-  assert.equal(buildRenderableStarmap(graph,{zoom:1.8}).visibleIds.size,graph.nodes.filter(node=>node.kind==='architecture_dimension').length+1);
+  assert.equal(buildRenderableStarmap(graph,{zoom:1.8}).visibleIds.size,146);
+});
+
+test('architecture hubs render as shaded 3D planets at their real graph coordinates',()=>{
+  const canvas={addEventListener(){},removeEventListener(){},getBoundingClientRect:()=>({left:0,top:0,width:1400,height:900})};
+  const scheduler={active:new Set(),request(fn){this.active.add(fn);return fn},cancel(fn){this.active.delete(fn)}};
+  let renderedScene;
+  const renderer={setPixelRatio(){},setSize(){},render(value){renderedScene=value},dispose(){}};
+  const controller=createStarmapScene({THREE,canvas,graph,reducedMotion:true,rendererFactory:()=>renderer,frameScheduler:scheduler});
+  const frame=[...scheduler.active][0];scheduler.active.delete(frame);frame(1000);
+  const planets=[];
+  renderedScene.traverse(item=>{if(item.userData.planetId)planets.push(item)});
+  const rings=[];
+  renderedScene.traverse(item=>{if(item.userData.orbitId)rings.push(item)});
+  const dimensions=graph.nodes.filter(node=>node.kind==='architecture_dimension');
+  assert.deepEqual(new Set(planets.map(item=>item.userData.planetId)),new Set(dimensions.map(node=>node.id)));
+  assert.equal(planets.length,dimensions.length);
+  const positions=buildStarmapLayout(graph);
+  for(const planet of planets){
+    assert.ok(planet instanceof THREE.Mesh);
+    assert.ok(planet.geometry instanceof THREE.SphereGeometry);
+    assert.ok(planet.material instanceof THREE.MeshStandardMaterial);
+    const position=positions.get(planet.userData.planetId);
+    assert.deepEqual([planet.position.x,planet.position.y,planet.position.z],[position.x,position.y,position.z]);
+  }
+  assert.ok(renderedScene.children.some(item=>item.isLight));
+  assert.deepEqual(new Set(rings.map(item=>item.userData.orbitId)),new Set(buildRenderableStarmap(graph,{}).routeIds));
+  const before=rings[0].rotation.z;
+  controller.setCruising(true);
+  for(const time of [1016,1032]){
+    const movingFrame=[...scheduler.active][0];scheduler.active.delete(movingFrame);movingFrame(time);
+  }
+  assert.notEqual(rings[0].rotation.z,before,'an orbital ring moves with autonomous cruise');
+  controller.setCruising(false);
+  const paused=rings[0].rotation.z;
+  const pausedFrame=[...scheduler.active][0];scheduler.active.delete(pausedFrame);pausedFrame(1048);
+  assert.equal(rings[0].rotation.z,paused);
+  controller.dispose();
 });
 
 test('focused graph includes a bounded set of direct navigation children',()=>{

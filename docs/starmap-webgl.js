@@ -1,9 +1,10 @@
-import {visibleNodeIds} from './graph-model.js?v=20261114-webgl3';
-import {buildStarmapLayout,buildStarmapView,drillVisibleNodeIds,hierarchyRoute} from './space-scene.js?v=20261114-webgl3';
+import {visibleNodeIds} from './graph-model.js?v=20261114-webgl4';
+import {buildStarmapLayout,buildStarmapView,drillVisibleNodeIds,hierarchyRoute} from './space-scene.js?v=20261114-webgl4';
 
-const RELEASE='20261114-webgl3';
+const RELEASE='20261114-webgl4';
 const PATH_COLORS={hierarchy:'#7897a8','hierarchy-secondary':'#486677',control:'#90b6cb',data:'#80beb8',power:'#d1ae74',state:'#aaa5c1',diagnostic:'#9ab5ba'};
 const FEATURED_ROUTE=['architecture:mcu-soc','architecture:power','architecture:android-hmi-display'];
+const OVERVIEW_TECHNICAL_KINDS=new Set(['domain','failure_mode','process','observation','component','state','interface','platform']);
 const REGION_COLORS={
   'architecture:mcu-soc':'#ffc479','architecture:power':'#ffc777',
   'architecture:android-hmi-display':'#72b8ff','architecture:virtual-communication':'#54d9df',
@@ -22,11 +23,15 @@ export function buildRenderableStarmap(graph,state={}){
       .slice(0,12);
     for(const child of children)drillIds.add(child.id);
   }
-  const focusIds=new Set(selectedId?drillIds:graph.nodes.filter(node=>node.kind==='root'||node.kind==='architecture_dimension').map(node=>node.id));
+  const dimensionIds=new Set(graph.nodes.filter(node=>node.kind==='architecture_dimension').map(node=>node.id));
+  const chainIds=new Set(graph.nodes.filter(node=>node.kind==='architecture_chain'&&dimensionIds.has(node.primaryParentId)).map(node=>node.id));
+  const overviewIds=graph.nodes.filter(node=>node.kind==='root'||dimensionIds.has(node.id)||chainIds.has(node.id)||
+    (chainIds.has(node.primaryParentId)&&OVERVIEW_TECHNICAL_KINDS.has(node.kind))).map(node=>node.id);
+  const focusIds=new Set(selectedId?drillIds:overviewIds);
   if(selectedId)for(const id of hierarchyRoute(graph,selectedId))focusIds.add(id);
   for(const id of [...allowedIds])if(!focusIds.has(id))allowedIds.delete(id);
   if(selectedId)for(const id of hierarchyRoute(graph,selectedId))allowedIds.add(id);
-  const view=buildStarmapView(graph,{zoom,selectedId,hoveredId:state.hoveredId||null,allowedIds,drillIds,matchingIds,hiddenKinds:state.hiddenKinds||[]});
+  const view=buildStarmapView(graph,{zoom,selectedId,hoveredId:state.hoveredId||null,allowedIds,drillIds:selectedId?drillIds:focusIds,matchingIds,hiddenKinds:state.hiddenKinds||[]});
   const positions=state.positions||buildStarmapLayout(graph);
   const byId=new Map(graph.nodes.map(node=>[node.id,node]));
   const backgroundIds=new Set();
@@ -46,7 +51,12 @@ export function buildRenderableStarmap(graph,state={}){
   const edges=graph.edges.filter(edge=>{
     if(!view.visibleIds.has(edge.from)||!view.visibleIds.has(edge.to))return false;
     const onRoute=routeKeys.has(`${edge.from}|${edge.to}`);
-    if(!selectedId&&!state.hoveredId)return onRoute;
+    if(!selectedId){
+      const child=byId.get(edge.to);
+      return onRoute||edge.pathClass==='hierarchy'&&child?.primaryParentId===edge.from&&
+        (dimensionIds.has(edge.from)&&chainIds.has(edge.to)||
+          chainIds.has(edge.from)&&OVERVIEW_TECHNICAL_KINDS.has(child.kind));
+    }
     if(edge.pathClass==='index'||edge.type==='课程顺序')return onRoute||Boolean(state.sequenceVisible&&edge.type==='课程顺序');
     if(edge.pathClass==='hierarchy'&&(byId.get(edge.from)?.kind==='root'||byId.get(edge.to)?.kind==='root')&&!onRoute)return false;
     if(state.pathClasses?.length&&!state.pathClasses.includes(edge.pathClass)&&!onRoute)return false;
@@ -110,6 +120,9 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
   const scene=new THREE.Scene();scene.fog=new THREE.FogExp2('#020710',.00016);
   const camera=new THREE.PerspectiveCamera(46,1,1,4000);camera.position.set(0,0,1450);camera.lookAt(0,0,0);
   const world=new THREE.Group(),content=new THREE.Group();world.add(content);scene.add(world);
+  scene.add(new THREE.AmbientLight('#9fb9d8',.78));
+  const keyLight=new THREE.DirectionalLight('#e5f2ff',1.65);keyLight.position.set(-350,450,650);scene.add(keyLight);
+  const rimLight=new THREE.DirectionalLight('#4ba9e6',.65);rimLight.position.set(380,-180,-460);scene.add(rimLight);
   const raycaster=new THREE.Raycaster();raycaster.params.Points.threshold=18;
   const pointer=new THREE.Vector2();
   const nodeById=new Map(graph.nodes.map(node=>[node.id,node]));
@@ -117,7 +130,7 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
   const routeOrb=new THREE.Mesh(new THREE.SphereGeometry(3.4,10,8),new THREE.MeshBasicMaterial({color:'#ffd499',transparent:true,opacity:.95,depthWrite:false}));
   routeOrb.visible=false;world.add(routeOrb);
   const state={selectedId:null,hoveredId:null,platforms:[],pathClasses:[],matchingIds:[],hiddenKinds:[],evidenceVisible:false,sequenceVisible:false};
-  let model=null,interactiveCloud=null,frameId=null,disposed=false,contextLost=false,lastFrame=0,startTime=0;
+  let model=null,interactiveCloud=null,orbitalRings=[],frameId=null,disposed=false,contextLost=false,lastFrame=0,startTime=0;
   let intro=!reducedMotion,pixelRatio=1,cruising=!reducedMotion,zoom=1,zoomTarget=1;
   let cruiseTime=0,motionPose=autonomousPose(0);
   let yaw=reducedMotion?.18:.42,pitch=reducedMotion?-.22:-.42,yawVelocity=0,pitchVelocity=0,drag=null,hoverId=null;
@@ -137,10 +150,31 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
     const foreground=graph.nodes.filter(node=>model.visibleIds.has(node.id));
     const background=graph.nodes.filter(node=>model.backgroundIds.has(node.id));
     const routeSet=new Set(model.routeIds);
+    orbitalRings=[];
+    for(const node of foreground){
+      if(node.kind!=='architecture_dimension')continue;
+      const point=model.positions.get(node.id);if(!point)continue;
+      const featured=routeSet.has(node.id),color=featured?'#ffc77a':nodeColor(node);
+      const planet=new THREE.Mesh(
+        new THREE.SphereGeometry(featured?18:15,24,16),
+        new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.2,metalness:.36,roughness:.48})
+      );
+      planet.position.set(point.x,point.y,point.z);planet.userData.planetId=node.id;content.add(planet);
+      if(featured){
+        const ring=new THREE.Mesh(
+          new THREE.TorusGeometry(26,.45,6,64),
+          new THREE.MeshBasicMaterial({color,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false})
+        );
+        ring.position.copy(planet.position);ring.rotation.set(.93,.3,0);ring.userData.orbitId=node.id;
+        content.add(ring);orbitalRings.push(ring);
+      }
+    }
     interactiveCloud=makePointCloud(THREE,foreground,model.positions,node=>{
       const active=node.id===state.selectedId,hover=node.id===state.hoveredId,near=model.emphasisIds.has(node.id),route=routeSet.has(node.id);
       const major=node.kind==='root'||node.kind==='architecture_dimension';
-      return{color:active||hover||route?'#ffd18e':nodeColor(node),size:active?31:hover?27:route?24:major?19:near?11:6.5,alpha:state.selectedId||state.hoveredId?active||hover||near||route?1:.38:1};
+      return{color:active||hover||route?'#ffd18e':nodeColor(node),size:active?31:hover?27:route?24:major?19:node.kind==='architecture_chain'?10:near?11:6.5,
+        alpha:major&&node.kind!=='root'?(active||hover ? .46 : route ? .3 : .24):
+          (state.selectedId||state.hoveredId ? (active||hover||near||route ? 1 : .38) : 1)};
     });
     content.add(interactiveCloud);
     const hubs=foreground.filter(node=>node.kind==='root'||node.kind==='architecture_dimension');
@@ -160,7 +194,8 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
     for(const [key,vertices] of grouped){
       const [pathClass,level]=key.split(':');
       const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-      const opacity=level==='far'?.075:level==='dim'?.055:pathClass==='hierarchy-secondary'?.085:.25;
+      const opacity=level==='far' ? .075 : level==='dim' ? .055 : pathClass==='hierarchy-secondary' ? .085 :
+        pathClass==='hierarchy'&&!state.selectedId ? .16 : .25;
       content.add(new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:PATH_COLORS[pathClass]||'#7795a9',transparent:true,opacity,blending:THREE.AdditiveBlending,depthWrite:false})));
     }
     if(model.routeEdges.length){
@@ -220,6 +255,7 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
     if(!drag){yaw+=yawVelocity*delta;pitch=clamp(pitch+pitchVelocity*delta,-1.05,1.05);const friction=Math.exp(-delta/380);yawVelocity*=friction;pitchVelocity*=friction}
     const pose=motionPose;
     const motionScale=state.selectedId?.45:1;
+    orbitalRings.forEach((ring,index)=>{ring.rotation.z=cruiseTime*.00018+index*.7});
     world.rotation.set(pitch+pose.pitch*motionScale,yaw+pose.yaw*motionScale,pose.roll*motionScale);
     world.position.set(-focus.x+(state.selectedId?-225:0)+parallax.x,-focus.y+parallax.y,-focus.z);
     camera.position.z=1320/zoom+pose.dolly*motionScale;

@@ -16,6 +16,12 @@ export function buildRenderableStarmap(graph,state={}){
   const matchingIds=new Set(state.matchingIds||[]);
   const allowedIds=visibleNodeIds(graph,{selectedId,platforms:state.platforms||[],pathClasses:state.pathClasses||[],evidenceVisible:Boolean(state.evidenceVisible),candidateVisible:false});
   const drillIds=selectedId?drillVisibleNodeIds(graph,{selectedId,expandedDepth:1,evidenceVisible:Boolean(state.evidenceVisible),technicalNeighborLimit:5,matchingIds}):[];
+  if(selectedId){
+    const children=graph.nodes.filter(node=>node.primaryParentId===selectedId&&!['source','evidence'].includes(node.kind))
+      .sort((a,b)=>(a.hierarchyOrder??0)-(b.hierarchyOrder??0)||a.id.localeCompare(b.id))
+      .slice(0,12);
+    for(const child of children)drillIds.add(child.id);
+  }
   const focusIds=new Set(selectedId?drillIds:graph.nodes.filter(node=>node.kind==='root'||node.kind==='architecture_dimension').map(node=>node.id));
   if(selectedId)for(const id of hierarchyRoute(graph,selectedId))focusIds.add(id);
   for(const id of [...allowedIds])if(!focusIds.has(id))allowedIds.delete(id);
@@ -57,7 +63,7 @@ export function autonomousPose(elapsedMs,{enabled=true}={}){
   const time=Math.max(0,elapsedMs)/1000;
   return{
     yaw:Math.sin(time*.42)*.15,
-    pitch:Math.sin(time*.3+.4)*.055,
+    pitch:Math.sin(time*.3)*.055,
     roll:Math.sin(time*.25)*.018,
     dolly:Math.sin(time*.55)*42
   };
@@ -113,9 +119,10 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
   const state={selectedId:null,hoveredId:null,platforms:[],pathClasses:[],matchingIds:[],hiddenKinds:[],evidenceVisible:false,sequenceVisible:false};
   let model=null,interactiveCloud=null,frameId=null,disposed=false,contextLost=false,lastFrame=0,startTime=0;
   let intro=!reducedMotion,pixelRatio=1,cruising=!reducedMotion,zoom=1,zoomTarget=1;
+  let cruiseTime=0,motionPose=autonomousPose(0);
   let yaw=reducedMotion?.18:.42,pitch=reducedMotion?-.22:-.42,yawVelocity=0,pitchVelocity=0,drag=null,hoverId=null;
   let focus={x:0,y:0,z:0},focusTarget={x:0,y:0,z:0},parallax={x:0,y:0},parallaxTarget={x:0,y:0};
-  let routeStart=0,width=1,height=1,zoomStage=0;
+  let routePhaseStart=0,width=1,height=1,zoomStage=0;
   const nodeColor=node=>{
     let current=node;
     while(current){if(REGION_COLORS[current.id])return REGION_COLORS[current.id];current=nodeById.get(current.primaryParentId)}
@@ -169,7 +176,7 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
         halo.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),direction.normalize());
         content.add(halo);
       }
-      routeOrb.visible=cruising;routeStart=performance.now();
+      routeOrb.visible=cruising;routePhaseStart=cruiseTime;
     }else routeOrb.visible=false;
     requestFrame();
   }
@@ -204,19 +211,20 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
     frameId=null;if(disposed||contextLost||visibilitySource?.hidden)return;
     if(!startTime)startTime=time;
     const delta=clamp(time-(lastFrame||time),0,50);lastFrame=time;
+    if(cruising&&!drag){cruiseTime+=delta;motionPose=autonomousPose(cruiseTime)}
     if(intro){const t=clamp((time-startTime)/1500,0,1),ease=1-Math.pow(1-t,3);yaw=.42-.24*ease;pitch=-.42+.2*ease;zoom=.67+.33*ease;if(t>=1)intro=false}
     else zoom=reducedMotion?zoomTarget:damp(zoom,zoomTarget,delta);
     const stage=zoom<1.35?0:zoom<1.75?1:2;if(stage!==zoomStage){zoomStage=stage;rebuild()}
     for(const key of ['x','y','z'])focus[key]=reducedMotion?focusTarget[key]:damp(focus[key],focusTarget[key],delta);
     for(const key of ['x','y'])parallax[key]=reducedMotion?parallaxTarget[key]:damp(parallax[key],parallaxTarget[key],delta,180);
     if(!drag){yaw+=yawVelocity*delta;pitch=clamp(pitch+pitchVelocity*delta,-1.05,1.05);const friction=Math.exp(-delta/380);yawVelocity*=friction;pitchVelocity*=friction}
-    const pose=autonomousPose(time-startTime,{enabled:cruising&&!drag});
+    const pose=motionPose;
     const motionScale=state.selectedId?.45:1;
     world.rotation.set(pitch+pose.pitch*motionScale,yaw+pose.yaw*motionScale,pose.roll*motionScale);
     world.position.set(-focus.x+(state.selectedId?-225:0)+parallax.x,-focus.y+parallax.y,-focus.z);
     camera.position.z=1320/zoom+pose.dolly*motionScale;
     if(routeOrb.visible&&model.routeEdges.length){
-      const phase=((time-routeStart)%2500)/2500*model.routeEdges.length;
+      const phase=((cruiseTime-routePhaseStart)%2500)/2500*model.routeEdges.length;
       const index=Math.min(model.routeEdges.length-1,Math.floor(phase)),t=phase-index;
       const [from,to]=model.routeEdges[index],a=model.positions.get(from),b=model.positions.get(to);
       if(a&&b)routeOrb.position.set(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,a.z+(b.z-a.z)*t);
@@ -253,11 +261,11 @@ export function createStarmapScene({THREE,canvas,graph,onHover=()=>{},onSelect=(
   canvas.addEventListener('pointerdown',handleDown);canvas.addEventListener('pointermove',handleMove);canvas.addEventListener('pointerup',handleUp);canvas.addEventListener('pointercancel',handleCancel);canvas.addEventListener('pointerleave',handleLeave);canvas.addEventListener('wheel',handleWheel,{passive:false});canvas.addEventListener('webglcontextlost',handleContextLost);
   visibilitySource?.addEventListener?.('visibilitychange',handleVisibility);
 
-  function setState(next={}){const previous=state.selectedId;Object.assign(state,next);if(state.selectedId!==previous){const point=state.selectedId?model?.positions.get(state.selectedId):null;focusTarget=point?{...point}:{x:0,y:0,z:0};zoomTarget=state.selectedId?Math.max(1.42,zoomTarget):1;routeStart=performance.now()}rebuild()}
+  function setState(next={}){const previous=state.selectedId;Object.assign(state,next);if(state.selectedId!==previous){const point=state.selectedId?model?.positions.get(state.selectedId):null;focusTarget=point?{...point}:{x:0,y:0,z:0};zoomTarget=state.selectedId?Math.max(1.42,zoomTarget):1}rebuild()}
   function resize({width:nextWidth,height:nextHeight,dpr=1}){width=Math.max(1,nextWidth);height=Math.max(1,nextHeight);pixelRatio=clamp(dpr,1,1.6);renderer.setPixelRatio(pixelRatio);renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();requestFrame()}
   function zoomBy(factor){intro=false;zoomTarget=clamp(zoomTarget*factor,.64,2.05);requestFrame();return zoomTarget}
   function resetView(){focusTarget={x:0,y:0,z:0};zoomTarget=1;yaw=.18;pitch=-.22;yawVelocity=0;pitchVelocity=0;requestFrame()}
-  function setCruising(value){cruising=Boolean(value);routeOrb.visible=Boolean(model?.routeEdges.length&&cruising);requestFrame();return cruising}
+  function setCruising(value){cruising=Boolean(value);lastFrame=0;if(!cruising){yawVelocity=0;pitchVelocity=0}routeOrb.visible=Boolean(model?.routeEdges.length&&cruising);requestFrame();return cruising}
   function dispose(){if(disposed)return;disposed=true;cancelFrame();visibilitySource?.removeEventListener?.('visibilitychange',handleVisibility);for(const [event,handler] of [['pointerdown',handleDown],['pointermove',handleMove],['pointerup',handleUp],['pointercancel',handleCancel],['pointerleave',handleLeave],['wheel',handleWheel],['webglcontextlost',handleContextLost]])canvas.removeEventListener(event,handler);disposeGroup(content);routeOrb.geometry.dispose();routeOrb.material.dispose();renderer.dispose?.()}
   function inspect(){return{pixelRatio,cruising,selectedId:state.selectedId,visibleCount:model?.visibleIds.size,interactiveCount:interactiveCloud?.userData.nodeIds.length,backgroundCount:model?.backgroundIds.size,ambientPoints:0,ambientSegments:0,routeCount:model?.routeEdges.length,zoom,focus:{...focus},focusTarget:{...focusTarget},disposed,contextLost,release:RELEASE}}
   rebuild();requestFrame();

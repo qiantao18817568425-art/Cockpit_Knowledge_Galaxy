@@ -43,6 +43,15 @@ test('selected map shows its local knowledge neighborhood without unrelated regi
   assert.equal(buildRenderableStarmap(graph,{zoom:1.8}).visibleIds.size,graph.nodes.filter(node=>node.kind==='architecture_dimension').length+1);
 });
 
+test('focused graph includes a bounded set of direct navigation children',()=>{
+  for(const id of ['chain:power-lifecycle','subtopic:power:inputs']){
+    const model=buildRenderableStarmap(graph,{selectedId:id});
+    const children=graph.nodes.filter(node=>node.primaryParentId===id);
+    assert.ok(children.length<=12);
+    assert.ok(children.every(node=>model.visibleIds.has(node.id)),`${id} must expose its direct children`);
+  }
+});
+
 test('autonomous 3D pose visibly changes over time and can be switched off',()=>{
   assert.equal(typeof autonomousPose,'function');
   const start=autonomousPose(0),later=autonomousPose(4000);
@@ -52,7 +61,7 @@ test('autonomous 3D pose visibly changes over time and can be switched off',()=>
   assert.deepEqual(autonomousPose(4000,{enabled:false}),{yaw:0,pitch:0,roll:0,dolly:0});
 });
 
-test('running scene moves in depth and supports deliberate reduced-motion opt-in',()=>{
+test('running scene moves in depth, pauses in place, and supports reduced-motion opt-in',()=>{
   const canvas={addEventListener(){},removeEventListener(){},getBoundingClientRect:()=>({left:0,top:0,width:1400,height:900})};
   const scheduler={active:new Set(),request(fn){this.active.add(fn);return fn},cancel(fn){this.active.delete(fn)}};
   const samples=[];
@@ -60,12 +69,18 @@ test('running scene moves in depth and supports deliberate reduced-motion opt-in
   const scene=createStarmapScene({THREE,canvas,graph,reducedMotion:true,rendererFactory:()=>renderer,frameScheduler:scheduler});
   assert.equal(scene.inspect().cruising,false);
   assert.equal(scene.setCruising(true),true);
-  for(const time of [1000,5000]){const frame=[...scheduler.active][0];scheduler.active.delete(frame);frame(time)}
-  assert.ok(Math.abs(samples[1].yaw-samples[0].yaw)>.05);
-  assert.ok(Math.abs(samples[1].depth-samples[0].depth)>5);
+  for(let index=0;index<=250;index++){const frame=[...scheduler.active][0];scheduler.active.delete(frame);frame(1000+index*16)}
+  assert.ok(Math.abs(samples.at(-1).yaw-samples[0].yaw)>.05);
+  assert.ok(Math.abs(samples.at(-1).depth-samples[0].depth)>5);
+  const beforePause=samples.at(-1);
   scene.setCruising(false);
   const finalFrame=[...scheduler.active][0];scheduler.active.delete(finalFrame);finalFrame(5016);
+  assert.ok(Math.abs(samples.at(-1).yaw-beforePause.yaw)<.001);
+  assert.ok(Math.abs(samples.at(-1).depth-beforePause.depth)<.001);
   assert.equal(scheduler.active.size,0);
+  scene.setCruising(true);
+  const resumed=[...scheduler.active][0];scheduler.active.delete(resumed);resumed(8016);
+  assert.ok(Math.abs(samples.at(-1).yaw-beforePause.yaw)<.01,'resume should continue from the frozen pose');
   scene.dispose();
 });
 

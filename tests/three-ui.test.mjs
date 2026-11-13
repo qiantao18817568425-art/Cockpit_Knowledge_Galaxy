@@ -39,6 +39,12 @@ test('published scene uses a real background image and exposes autonomous motion
   assert.match(css,/prefers-reduced-motion:\s*reduce/);
 });
 
+test('Canvas fallback keeps motion reachable in a narrow window and lets idle frames stop',()=>{
+  assert.match(css,/html\[data-renderer="canvas"\] \.scene-tools\s*\{[^}]*display:flex/);
+  assert.match(canvasApp,/function scheduleCanvasFrame\(\)/);
+  assert.match(canvasApp,/if\(moving\)scheduleCanvasFrame\(\)/);
+});
+
 test('an active WebGL map remains visible if a desktop window becomes narrow',()=>{
   assert.match(css,/html\[data-renderer="three"\] #galaxy-three\s*\{[^}]*display:\s*block/);
   assert.match(css,/html\[data-renderer="three"\] #galaxy\s*\{[^}]*display:\s*none/);

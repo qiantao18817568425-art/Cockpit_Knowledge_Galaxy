@@ -44,7 +44,7 @@ const hoverLevels=new Map();
 let matchingIds=new Set();
 let currentReader=null;
 let auto=!reducedMotion, previousFrame=performance.now(),sequenceVisible=false,currentStatus='';
-let introStart=null,routeStart=0,zoomStage=0,canvasFrameStarted=false,canvasMotionAttached=false;
+let introStart=null,routeStart=0,zoomStage=0,canvasFrameStarted=false,canvasFrameId=null,canvasMotionAttached=false;
 const focus={x:0,y:0,z:0};
 const focusTarget={x:0,y:0,z:0};
 const parallax={x:0,y:0},parallaxTarget={x:0,y:0};
@@ -108,7 +108,7 @@ function refreshVisible(){
 function sceneState(){return{selectedId:selected,platforms:[...viewState.platforms],pathClasses:[...viewState.pathClasses],evidenceVisible:viewState.evidenceVisible,matchingIds:[...matchingIds],hiddenKinds:[...hidden],sequenceVisible}}
 function emitSceneState(){if(globalThis.__GALAXY_THREE_HOST__)window.dispatchEvent(new CustomEvent('galaxy:state',{detail:sceneState()}))}
 
-function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,1.6);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;dpr=Math.min(devicePixelRatio||1,1.6);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scheduleCanvasFrame()}
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch),cr=Math.cos(roll),sr=Math.sin(roll);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const yawX=px*cy+pz*sy,z=pz*cy-px*sy,pitchY=py*cx-z*sx,depth=py*sx+z*cx;const x=yawX*cr-pitchY*sr,y=yawX*sr+pitchY*cr;const perspective=1050/(1050-depth),fit=Math.max(.52,Math.min(width/1450,height/850))*zoom;return{x:width*screenCenter+x*perspective*fit+parallax.x*perspective,y:height*.51+y*perspective*fit+parallax.y*perspective,z:depth,p:perspective,fit}}
 function glow(x,y,r,color,alpha){const gradient=ctx.createRadialGradient(x,y,0,x,y,r);gradient.addColorStop(0,color+alpha);gradient.addColorStop(1,color+'00');ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
 function pickNode(x,y){let hit=null,best=Infinity;for(const n of projected){if(!visibleIds.has(n.id)||(n.kind!=='root'&&hidden.has(n.kind)))continue;const distance=Math.hypot(n.x-x,n.y-y),range=Math.max(15,n.r*n.p*n.fit+10);if(distance<=range&&distance<best){hit=n;best=distance}}return hit}
@@ -160,7 +160,7 @@ function draw(){
     ctx.save();ctx.strokeStyle='#eac482';ctx.lineWidth=2.1;ctx.shadowColor='#ffc977';ctx.shadowBlur=12;ctx.globalAlpha=.88;
     for(const [from,to] of starmapView.routeEdges){const a=map.get(from),b=map.get(to);if(!a||!b)continue;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
     ctx.restore();
-    if(selected&&!reducedMotion){
+    if(selected&&auto){
       const progress=routeLightProgress(sceneTime-routeStart,starmapView.routeEdges.length+1);
       const segment=progress&&starmapView.routeEdges[progress.segment];
       if(segment){const a=map.get(segment[0]),b=map.get(segment[1]);if(a&&b){const x=a.x+(b.x-a.x)*progress.t,y=a.y+(b.y-a.y)*progress.t;glow(x,y,17,'#ffd188','aa');ctx.fillStyle='#fff4d6';ctx.beginPath();ctx.arc(x,y,2.2,0,Math.PI*2);ctx.fill()}}
@@ -227,7 +227,8 @@ function updateMotionLabel(){
   currentStatus=next;motionLabel.textContent=next;motionLight.style.background=spinning?'#91d8ff':'#aab7d1';motionLight.style.boxShadow=spinning?'0 0 10px #91d8ff':'none';
 }
 
-function interaction(){introStart=null}
+function interaction(){introStart=null;scheduleCanvasFrame()}
+function scheduleCanvasFrame(){if(canvasFrameStarted&&canvasFrameId===null&&!document.hidden)canvasFrameId=requestAnimationFrame(frame)}
 function syncCanvasMotion(){
   document.documentElement.classList.toggle('galaxy-paused',!auto);
   document.documentElement.classList.toggle('galaxy-motion-opt-in',reducedMotion&&auto);
@@ -392,6 +393,8 @@ function renderResults(){
 function syncFilters(){for(const button of document.querySelectorAll('.filter')){const on=!hidden.has(button.dataset.kind);button.setAttribute('aria-pressed',String(on));button.querySelector('span').textContent=on?'✓':'○'}}
 
 function frame(time){
+  canvasFrameId=null;
+  if(document.hidden)return;
   const delta=Math.min(50,time-previousFrame);previousFrame=time;
   const easing=reducedMotion?1:1-Math.exp(-delta/260);
   const parallaxEasing=reducedMotion?1:1-Math.exp(-delta/180);
@@ -411,15 +414,21 @@ function frame(time){
   const cruising=auto&&!document.hidden&&!hovered&&!pointer;
   if(cruising){({yaw,pitch,roll}=orbitPose({yaw,pitch,roll},time,delta));yawVelocity*=.94;pitchVelocity*=.94}
   else if(!pointer){yaw+=yawVelocity*delta;pitch=Math.max(-1.05,Math.min(1.05,pitch+pitchVelocity*delta));const friction=Math.exp(-delta/1450);yawVelocity*=friction;pitchVelocity*=friction;roll+=(0-roll)*(1-Math.exp(-delta/520))}
-  if(!document.hidden)draw();
-  requestAnimationFrame(frame);
+  draw();
+  const hoverMoving=[...hoverLevels].some(([id,level])=>Math.abs((id===hovered?1:0)-level)>.01);
+  const moving=introStart!==null||cruising||Boolean(pointer)||hoverMoving||
+    Math.abs(yawVelocity)>.00001||Math.abs(pitchVelocity)>.00001||Math.abs(roll)>.001||
+    Math.abs(zoom-zoomTarget)>.002||Math.abs(screenCenter-screenCenterTarget)>.002||
+    Math.hypot(focus.x-focusTarget.x,focus.y-focusTarget.y,focus.z-focusTarget.z)>.5||
+    Math.hypot(parallax.x-parallaxTarget.x,parallax.y-parallaxTarget.y)>.2;
+  if(moving)scheduleCanvasFrame();
 }
 
 canvas.addEventListener('pointerdown',event=>{setHovered(null);yawVelocity=0;pitchVelocity=0;pointer={x:event.clientX,y:event.clientY,lastX:event.clientX,lastY:event.clientY,lastTime:performance.now(),yaw,pitch,moved:false};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');interaction()});
 canvas.addEventListener('pointermove',event=>{if(pointer){const now=performance.now(),dx=event.clientX-pointer.x,dy=event.clientY-pointer.y,step=Math.max(8,now-pointer.lastTime),stepX=event.clientX-pointer.lastX,stepY=event.clientY-pointer.lastY;if(Math.abs(dx)+Math.abs(dy)>5)pointer.moved=true;if(pointer.moved){yaw=pointer.yaw+dx*.006;pitch=Math.max(-1.05,Math.min(1.05,pointer.pitch+dy*.004));yawVelocity=reducedMotion?0:Math.max(-.004,Math.min(.004,stepX*.006/step));pitchVelocity=reducedMotion?0:Math.max(-.003,Math.min(.003,stepY*.004/step));pointer.lastX=event.clientX;pointer.lastY=event.clientY;pointer.lastTime=now;interaction()}return}if(event.pointerType==='touch')return;const bounds=canvas.getBoundingClientRect();Object.assign(parallaxTarget,starmapParallax((event.clientX-bounds.left)/bounds.width*2-1,(event.clientY-bounds.top)/bounds.height*2-1,{reducedMotion}));setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)});
 canvas.addEventListener('pointerup',event=>{if(pointer&&!pointer.moved){const bounds=canvas.getBoundingClientRect(),hit=pickNode(event.clientX-bounds.left,event.clientY-bounds.top);if(hit)showNode(hit.id);else clearSelection()}if(pointer?.moved){const idle=performance.now()-pointer.lastTime;yawVelocity=releaseVelocity(yawVelocity,idle);pitchVelocity=releaseVelocity(pitchVelocity,idle)}pointer=null;canvas.classList.remove('dragging');if(event.pointerType!=='touch'){const bounds=canvas.getBoundingClientRect();setHovered(pickNode(event.clientX-bounds.left,event.clientY-bounds.top)?.id||null)}interaction()});
-canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVelocity=0;canvas.classList.remove('dragging');setHovered(null)});
-canvas.addEventListener('pointerleave',()=>{parallaxTarget.x=0;parallaxTarget.y=0;if(!pointer)setHovered(null)});
+canvas.addEventListener('pointercancel',()=>{pointer=null;yawVelocity=0;pitchVelocity=0;canvas.classList.remove('dragging');setHovered(null);scheduleCanvasFrame()});
+canvas.addEventListener('pointerleave',()=>{parallaxTarget.x=0;parallaxTarget.y=0;if(!pointer)setHovered(null);scheduleCanvasFrame()});
 canvas.addEventListener('wheel',event=>{event.preventDefault();zoomTarget=Math.max(.58,Math.min(2.3,zoomTarget*(event.deltaY<0?1.12:1/1.12)));interaction()},{passive:false});
 search.addEventListener('input',()=>{interaction();renderResults()});
 search.addEventListener('keydown',event=>{if(event.key==='Escape'){event.stopPropagation();if(search.value){search.value='';renderResults()}else search.blur()}else if(event.key==='Enter'){const first=results.querySelector('button');if(first)first.click()}else if(event.key==='ArrowDown'){const first=results.querySelector('button');if(first){event.preventDefault();first.focus()}}});
@@ -453,14 +462,14 @@ document.querySelector('#evidence-toggle').addEventListener('click',event=>{view
 document.querySelector('#sequence-toggle').addEventListener('click',event=>{sequenceVisible=!sequenceVisible;event.currentTarget.setAttribute('aria-pressed',String(sequenceVisible));event.currentTarget.textContent=sequenceVisible?'● 隐藏课程顺序连线':'○ 显示课程顺序连线';emitSceneState();interaction()});
 function handleCanvasMotionToggle(){auto=!auto;syncCanvasMotion();interaction()}
 for(const button of document.querySelectorAll('[data-zoom]'))button.addEventListener('click',()=>{const action=button.dataset.zoom;if(action==='reset'){yaw=.18;pitch=-.22;roll=0;yawVelocity=0;pitchVelocity=0;zoomTarget=1;clearSelection()}else zoomTarget=Math.max(.58,Math.min(2.3,zoomTarget*(action==='in'?1.2:1/1.2)));interaction()});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)currentStatus=''});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){currentStatus='';previousFrame=performance.now();scheduleCanvasFrame()}});
 new ResizeObserver(resize).observe(canvas);resize();
 
 try{
   const response=await fetch('./graph.json',{cache:'no-cache'});
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   prepare(await response.json());
-  function startCanvasRenderer(){if(!canvasMotionAttached){motionToggle.addEventListener('click',handleCanvasMotionToggle);canvasMotionAttached=true}if(canvasFrameStarted)return;canvasFrameStarted=true;previousFrame=performance.now();resize();requestAnimationFrame(frame)}
+  function startCanvasRenderer(){if(!canvasMotionAttached){motionToggle.addEventListener('click',handleCanvasMotionToggle);canvasMotionAttached=true}if(canvasFrameStarted)return;canvasFrameStarted=true;previousFrame=performance.now();resize();scheduleCanvasFrame()}
   globalThis.__GALAXY_BRIDGE__={get graph(){return graph},showNode,clearSelection,getSceneState:sceneState,startCanvasRenderer};
   if(!globalThis.__GALAXY_THREE_HOST__)startCanvasRenderer();
 }catch(error){motionLabel.textContent='图谱加载失败';document.querySelector('#counts').textContent='请检查 graph.json 是否与网页一起发布。';console.error(error)}

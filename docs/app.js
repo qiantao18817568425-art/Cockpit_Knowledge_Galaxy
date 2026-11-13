@@ -112,7 +112,22 @@ function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;hei
 function project(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch),cr=Math.cos(roll),sr=Math.sin(roll);const px=p.x-focus.x,py=p.y-focus.y,pz=p.z-focus.z;const yawX=px*cy+pz*sy,z=pz*cy-px*sy,pitchY=py*cx-z*sx,depth=py*sx+z*cx;const x=yawX*cr-pitchY*sr,y=yawX*sr+pitchY*cr;const perspective=1050/(1050-depth),fit=Math.max(.52,Math.min(width/1450,height/850))*zoom;return{x:width*screenCenter+x*perspective*fit+parallax.x*perspective,y:height*.51+y*perspective*fit+parallax.y*perspective,z:depth,p:perspective,fit}}
 function glow(x,y,r,color,alpha){const gradient=ctx.createRadialGradient(x,y,0,x,y,r);gradient.addColorStop(0,color+alpha);gradient.addColorStop(1,color+'00');ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
 function pickNode(x,y){let hit=null,best=Infinity;for(const n of projected){if(!visibleIds.has(n.id)||(n.kind!=='root'&&hidden.has(n.kind)))continue;const distance=Math.hypot(n.x-x,n.y-y),range=Math.max(15,n.r*n.p*n.fit+10);if(distance<=range&&distance<best){hit=n;best=distance}}return hit}
-function setHovered(id){if(hovered===id)return;hovered=id;refreshVisible();canvas.classList.toggle('is-hovering',!!id);hoverCard.classList.toggle('is-visible',!!id);hoverCard.setAttribute('aria-hidden',String(!id));if(id){const n=byId.get(id);hoverLevels.set(id,hoverLevels.get(id)||0);document.querySelector('#hover-kind').textContent=labelFor(n);document.querySelector('#hover-title').textContent=n.title;document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`}interaction()}
+function setHovered(id){
+  if(hovered===id)return;
+  hovered=id;
+  refreshVisible();
+  canvas.classList.toggle('is-hovering',!!id);
+  hoverCard.classList.toggle('is-visible',!!id);
+  hoverCard.setAttribute('aria-hidden',String(!id));
+  if(id){
+    const n=byId.get(id);
+    hoverLevels.set(id,hoverLevels.get(id)||0);
+    document.querySelector('#hover-kind').textContent=labelFor(n);
+    document.querySelector('#hover-title').textContent=n.title;
+    document.querySelector('#hover-meta').textContent=`${n.description} · ${neighbors.get(id)?.size||0} 个直接关联`;
+  }
+  interaction();
+}
 function positionHoverCard(map){if(!hovered)return;const n=map.get(hovered);if(!n)return;const x=Math.max(14,Math.min(width-hoverCard.offsetWidth-14,n.x+24));const y=Math.max(14,Math.min(height-hoverCard.offsetHeight-14,n.y+18));hoverCard.style.left=`${x}px`;hoverCard.style.top=`${y}px`}
 
 function background(){

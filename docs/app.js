@@ -14,25 +14,54 @@ const controlsPanel = document.querySelector('#controls-panel');
 const controlsToggle = document.querySelector('#controls-toggle');
 const controlsBackdrop = document.querySelector('#controls-backdrop');
 const compactLayout = matchMedia('(max-width: 900px)');
+const drawerBackground = [...document.querySelector('.workbench').children].filter(element=>element!==controlsPanel&&element!==controlsBackdrop);
+const skipLink = document.querySelector('.skip-link');
+let drawerReturnFocus = null;
+let readerReturnFocus = null;
+
+function setDrawerBackgroundInert(inert) {
+  for (const element of drawerBackground) element.inert = inert;
+  skipLink.inert = inert;
+}
 
 function setControlsOpen(open, restoreFocus = true) {
   if (!compactLayout.matches) return;
+  if (open) drawerReturnFocus = document.activeElement;
   document.body.classList.toggle('controls-open', open);
   controlsBackdrop.hidden = !open;
   controlsPanel.inert = !open;
+  setDrawerBackgroundInert(open);
+  if (open) {
+    controlsPanel.setAttribute('role', 'dialog');
+    controlsPanel.setAttribute('aria-modal', 'true');
+  } else {
+    controlsPanel.removeAttribute('role');
+    controlsPanel.removeAttribute('aria-modal');
+  }
   controlsToggle.setAttribute('aria-expanded', String(open));
   if (open) search.focus();
-  else if (restoreFocus) controlsToggle.focus();
+  else if (restoreFocus) {
+    const focusable = drawerReturnFocus?.matches?.('button,a[href],input,summary,[tabindex]') && drawerReturnFocus.isConnected && !drawerReturnFocus.inert && drawerReturnFocus.getClientRects().length;
+    (focusable ? drawerReturnFocus : controlsToggle).focus();
+  }
 }
 function syncControlsLayout() {
   if (compactLayout.matches) {
-    controlsPanel.inert = !document.body.classList.contains('controls-open');
+    const open = document.body.classList.contains('controls-open');
+    const hadPanelFocus = controlsPanel.contains(document.activeElement);
+    controlsPanel.inert = !open;
+    if (!open && hadPanelFocus) controlsToggle.focus();
     return;
   }
+  const hadToggleFocus = document.activeElement === controlsToggle;
   document.body.classList.remove('controls-open');
   controlsBackdrop.hidden = true;
   controlsPanel.inert = false;
+  setDrawerBackgroundInert(false);
+  controlsPanel.removeAttribute('role');
+  controlsPanel.removeAttribute('aria-modal');
   controlsToggle.setAttribute('aria-expanded', 'false');
+  if (hadToggleFocus) search.focus();
 }
 syncControlsLayout();
 
@@ -345,6 +374,7 @@ function downloadReaderSummary(){
 }
 function showNode(id){
   const node=byId.get(id);if(!node)return;
+  if(detail.hidden)readerReturnFocus=document.activeElement;
   selected=id;viewState.selectedId=id;refreshVisible();interaction();detail.hidden=false;
   if(compactLayout.matches)setControlsOpen(false,false);
   focusTarget.x=node.x;focusTarget.y=node.y;focusTarget.z=node.z;
@@ -356,7 +386,7 @@ function showNode(id){
   detail.scrollTop=0;
   document.querySelector('#detail-title').focus({preventScroll:true});
 }
-function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus)(compactLayout.matches?controlsToggle:search).focus({preventScroll:true})}
+function clearSelection(){const restoreFocus=detail.contains(document.activeElement);selected=null;currentReader=null;viewState.selectedId=null;focusTarget.x=0;focusTarget.y=0;focusTarget.z=0;detail.hidden=true;closeReaderPreview();refreshVisible();interaction();if(restoreFocus){const focusable=readerReturnFocus?.matches?.('button,a[href],input,summary,[tabindex]')&&readerReturnFocus.isConnected&&!readerReturnFocus.inert&&readerReturnFocus.getClientRects().length;const target=focusable?readerReturnFocus:(compactLayout.matches?controlsToggle:search);target.focus({preventScroll:true})}readerReturnFocus=null}
 
 function renderResults(){
   const q=search.value.trim().toLocaleLowerCase();results.replaceChildren();
@@ -396,6 +426,7 @@ document.querySelector('.skip-link').addEventListener('click',event=>{if(compact
 controlsToggle.addEventListener('click',()=>setControlsOpen(!document.body.classList.contains('controls-open')));
 document.querySelector('#controls-close').addEventListener('click',()=>setControlsOpen(false));
 controlsBackdrop.addEventListener('click',()=>setControlsOpen(false));
+controlsPanel.addEventListener('keydown',event=>{if(event.key!=='Tab'||!document.body.classList.contains('controls-open'))return;const focusable=[...controlsPanel.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),summary,[tabindex]:not([tabindex="-1"])')].filter(element=>!element.inert&&element.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}});
 compactLayout.addEventListener('change',syncControlsLayout);
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(document.body.classList.contains('controls-open'))setControlsOpen(false);else if(!detail.hidden)clearSelection()}else if(event.key==='/'&&!event.altKey&&!event.ctrlKey&&!event.metaKey&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName)){event.preventDefault();if(compactLayout.matches)setControlsOpen(true);else search.focus()}});
 document.querySelector('#detail-close').addEventListener('click',clearSelection);

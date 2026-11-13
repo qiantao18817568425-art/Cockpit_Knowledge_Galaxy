@@ -1,4 +1,4 @@
-export const RELEASE='20261114-webgl3';
+export const RELEASE='20261114-webgl4';
 
 export function detectWebGL(canvas){
   if(!canvas?.getContext)return false;
@@ -19,8 +19,8 @@ export async function startRenderer({mode,importModule}){
 }
 
 function importEntry(entry){
-  if(entry==='app-three')return import('./app-three.js?v=20261114-webgl3');
-  return import('./app.js?v=20261114-webgl3');
+  if(entry==='app-three')return import('./app-three.js?v=20261114-webgl4');
+  return import('./app.js?v=20261114-webgl4');
 }
 
 function setRendererStatus(message,state='ready'){

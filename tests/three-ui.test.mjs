@@ -34,6 +34,10 @@ test('published scene uses a real background image and exposes autonomous motion
   assert.ok(background.size>100_000);
   assert.match(html,/class="galaxy-backdrop"/);
   assert.match(css,/url\(['"]?assets\/galaxy-background-v3\.png/);
+  const backdrop=css.match(/\.galaxy-backdrop\s*\{([^}]+)\}/)?.[1]||'';
+  assert.match(backdrop,/background-size:\s*(?!cover)/);
+  assert.match(backdrop,/mask-image:\s*radial-gradient/);
+  assert.doesNotMatch(backdrop,/\bcover\b/);
   assert.ok(html.indexOf('id="motion-toggle"')>html.indexOf('class="glass scene-tools"'));
   assert.ok(html.indexOf('id="motion-toggle"')<html.indexOf('id="hover-card"'));
   assert.match(css,/prefers-reduced-motion:\s*reduce/);

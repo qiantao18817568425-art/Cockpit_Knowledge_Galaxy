@@ -2,10 +2,10 @@
   "meta": {
     "title": "座舱知识银河",
     "sourceSite": "https://qiantao18817568425-art.github.io/Architecture_Learning-/",
-    "sourceUpdatedOn": "2026-11-13",
+    "sourceUpdatedOn": "2026-11-14",
     "chapterCount": 25,
     "lessonCount": 60,
-    "reviewCount": 35,
+    "reviewCount": 36,
     "subtopicCount": 30,
     "powerCategoryCount": 10,
     "powerPathCount": 20,
@@ -28,22 +28,22 @@
       }
     },
     "referenceMapping": {
-      "learning": 95,
+      "learning": 96,
       "skills": 21,
       "cases": 9,
       "reviewedReports": 6,
       "concreteSources": 299
     },
     "hierarchy": {
-      "nodeCount": 741,
-      "edgeCount": 796,
+      "nodeCount": 742,
+      "edgeCount": 797,
       "maxLevel": 6
     },
     "architecture": {
       "l2Count": 17,
       "l3Count": 45,
       "multiParentL3Count": 42,
-      "l4Count": 231
+      "l4Count": 232
     },
     "layers": {
       "hierarchy": true,
@@ -2937,6 +2937,35 @@
         "chain:evidence-ledger"
       ],
       "mappingBasis": "依据 Week18 周五围绕 Day57—60 的跨域评审、六流方案、STR 显示取证、代际隔离与恢复验证综合复盘建立显式关联；没有新增实车结论，课程发布状态不代表已经掌握。",
+      "primaryParentId": "chain:system-overview",
+      "hierarchyOrder": 0,
+      "branchType": "review",
+      "navigationOnly": true,
+      "hiddenByDefault": true,
+      "hierarchyLevel": 3
+    },
+    {
+      "id": "course:week-18-saturday",
+      "title": "Week 18 - 周六巩固：双链画图、独立取证与恢复验证",
+      "kind": "review",
+      "description": "公开周复盘。课程发布不代表已完成或掌握。",
+      "url": "https://qiantao18817568425-art.github.io/Architecture_Learning-/lessons/week-18-saturday.html",
+      "source": "座舱架构学习 · 课程档案",
+      "topics": [
+        "power"
+      ],
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:power-lifecycle",
+        "chain:str-display-recovery",
+        "chain:display-output",
+        "chain:vehicle-bus",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "mappingBasis": "依据 Week18 周六围绕 Day57—60 的双链六流画图、独立取证、证据链、STR 显示分层和 A/B 恢复验证练习建立显式关联；无新增实车结论，课程发布状态不代表已经掌握。",
       "primaryParentId": "chain:system-overview",
       "hierarchyOrder": 0,
       "branchType": "review",
@@ -46592,7 +46621,8 @@
         "course:week-17-friday",
         "course:week-17-saturday",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -48190,7 +48220,8 @@
         "course:day-59",
         "course:week-13-friday",
         "course:week-13-saturday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-display-black-freeze"
@@ -52994,7 +53025,8 @@
         "course:week-entry-11",
         "course:week-entry-12",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "cases": [
         {
@@ -53397,7 +53429,8 @@
         "course:week-17-friday",
         "course:week-17-saturday",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "responsibility": {
         "trigger": "该链出现用户现象、异常状态或关键观测缺失时触发分析。",
@@ -53512,7 +53545,8 @@
         "course:week-17-friday",
         "course:week-17-saturday",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-platform-architecture",
@@ -55090,7 +55124,8 @@
         "course:week-entry-7",
         "course:week-entry-8",
         "course:week-entry-9",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-power-sleep-str"
@@ -55607,7 +55642,8 @@
         "course:day-38",
         "course:day-39",
         "course:day-59",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-display-black-freeze",
@@ -57162,7 +57198,8 @@
         "course:week-17-friday",
         "course:week-17-saturday",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-cockpit-diagnosis",
@@ -58190,7 +58227,8 @@
         "course:week-17-friday",
         "course:week-17-saturday",
         "course:week-17-sunday",
-        "course:week-18-friday"
+        "course:week-18-friday",
+        "course:week-18-saturday"
       ],
       "skillIds": [
         "t12t-stability-crash-reset",
@@ -61734,6 +61772,92 @@
       "id": "index:learning:chain:evidence-ledger:course:week-18-friday",
       "from": "chain:evidence-ledger",
       "to": "course:week-18-friday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "from": "topic:power",
+      "to": "course:week-18-saturday",
+      "type": "主题归类"
+    },
+    {
+      "id": "index:learning:chain:system-overview:course:week-18-saturday",
+      "from": "chain:system-overview",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:runtime-boundaries:course:week-18-saturday",
+      "from": "chain:runtime-boundaries",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:soa-service-contract:course:week-18-saturday",
+      "from": "chain:soa-service-contract",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:power-lifecycle:course:week-18-saturday",
+      "from": "chain:power-lifecycle",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:str-display-recovery:course:week-18-saturday",
+      "from": "chain:str-display-recovery",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:display-output:course:week-18-saturday",
+      "from": "chain:display-output",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:vehicle-bus:course:week-18-saturday",
+      "from": "chain:vehicle-bus",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:stability:course:week-18-saturday",
+      "from": "chain:stability",
+      "to": "course:week-18-saturday",
+      "type": "内容索引",
+      "pathClass": "index",
+      "layer": "index",
+      "hiddenByDefault": true
+    },
+    {
+      "id": "index:learning:chain:evidence-ledger:course:week-18-saturday",
+      "from": "chain:evidence-ledger",
+      "to": "course:week-18-saturday",
       "type": "内容索引",
       "pathClass": "index",
       "layer": "index",
@@ -72629,6 +72753,15 @@
       "id": "hierarchy:chain:system-overview:course:week-18-friday",
       "from": "chain:system-overview",
       "to": "course:week-18-friday",
+      "type": "primary_contains",
+      "pathClass": "hierarchy",
+      "layer": "hierarchy",
+      "navigationOnly": true
+    },
+    {
+      "id": "hierarchy:chain:system-overview:course:week-18-saturday",
+      "from": "chain:system-overview",
+      "to": "course:week-18-saturday",
       "type": "primary_contains",
       "pathClass": "hierarchy",
       "layer": "hierarchy",

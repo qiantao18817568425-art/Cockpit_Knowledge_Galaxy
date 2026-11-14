@@ -829,6 +829,21 @@
         "chain:evidence-ledger"
       ],
       "basis": "依据 Week18 周五围绕 Day57—60 的跨域评审、六流方案、STR 显示取证、代际隔离与恢复验证综合复盘建立显式关联；没有新增实车结论，课程发布状态不代表已经掌握。"
+    },
+    {
+      "id": "course:week-18-saturday",
+      "knowledgeIds": [
+        "chain:system-overview",
+        "chain:runtime-boundaries",
+        "chain:soa-service-contract",
+        "chain:power-lifecycle",
+        "chain:str-display-recovery",
+        "chain:display-output",
+        "chain:vehicle-bus",
+        "chain:stability",
+        "chain:evidence-ledger"
+      ],
+      "basis": "依据 Week18 周六围绕 Day57—60 的双链六流画图、独立取证、证据链、STR 显示分层和 A/B 恢复验证练习建立显式关联；无新增实车结论，课程发布状态不代表已经掌握。"
     }
   ]
 }
